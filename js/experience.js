@@ -53,14 +53,15 @@
 
   function initCosmosStars() {
     if (!cW || !cH) return;
-    const count = Math.min(105, Math.max(55, Math.floor((cW * cH) / 13500)));
+    const isMobile = cW < 768;
+    const count = isMobile ? 38 : Math.min(105, Math.max(55, Math.floor((cW * cH) / 13500)));
     cosmosStars = [];
     for (let i = 0; i < count; i++) {
       const depth = Math.random(); // 0: lejana, 1: cercana
       cosmosStars.push({
         x: Math.random() * cW,
         y: Math.random() * cH,
-        size: 0.65 + depth * 1.15,
+        size: (isMobile ? 0.55 : 0.65) + depth * 1.0,
         baseAlpha: 0.14 + depth * 0.42,
         twinkleSpeed: 0.7 + Math.random() * 2.0,
         twinklePhase: Math.random() * Math.PI * 2,
@@ -74,7 +75,8 @@
 
   function resizeCosmos() {
     if (!cosmosCanvas || !cCtx) return;
-    cDpr = Math.min(window.devicePixelRatio || 1, 2);
+    const isMobile = window.innerWidth < 768;
+    cDpr = isMobile ? 1.0 : Math.min(window.devicePixelRatio || 1, 1.5);
     cW = window.innerWidth;
     cH = window.innerHeight;
     cosmosCanvas.width = cW * cDpr;
@@ -646,7 +648,7 @@
     try {
       const T = window.THREE;
       renderer = new T.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'low-power' });
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+      renderer.setPixelRatio(Math.min(devicePixelRatio, window.innerWidth < 768 ? 1.0 : 1.5));
       renderer.outputEncoding = T.sRGBEncoding;
       scene = new T.Scene();
       camera = new T.PerspectiveCamera(38, 1, .1, 100);
@@ -741,8 +743,9 @@
     const delta = Math.min(.04, (t - time) / 1000 || .016);
     time = t;
 
-    // Renderizado Three.js del planeta cósmico (garantiza persistencia continua)
-    const shouldRenderGlobe = renderer && (inView || window.scrollY < 1400);
+    // Renderizado Three.js del planeta cósmico (optimizado para no sobrecargar GPU en móvil)
+    const maxScroll = window.innerWidth < 768 ? 950 : 1400;
+    const shouldRenderGlobe = renderer && (inView || window.scrollY < maxScroll);
     if (shouldRenderGlobe) {
       if (moving) {
         globe.rotation.y += delta * .07;

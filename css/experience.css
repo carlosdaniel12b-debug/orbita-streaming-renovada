@@ -439,12 +439,23 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   50% { border-color: rgba(251, 191, 36, 0.85); box-shadow: 0 6px 24px rgba(245, 158, 11, 0.35), 0 0 16px rgba(251, 191, 36, 0.25); }
 }
 
-.nav{
-  display:flex;
-  gap:10px;
-  font-size:15px;
-  font-weight:700;
-  align-items:center;
+@media (min-width: 861px) {
+  .menu-toggle {
+    display: none !important;
+  }
+  .nav {
+    display: flex !important;
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    flex-direction: row !important;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    align-items: center;
+  }
 }
 .nav-link{
   display:inline-flex;
@@ -1108,24 +1119,109 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   .cinematic-hero .hero-copy{max-width:530px}
 }
 
-@media(max-width:760px){
+@media(max-width:860px){
+  .header{height:72px}
+  .header .contact{display:none !important}
+  .header-actions{gap:8px}
+  .menu-toggle{
+    display:inline-grid !important;
+    place-items:center;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    color:#f2f5f4;
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    transition:transform 0.15s ease, background 0.2s ease;
+  }
+  .menu-toggle:active{
+    transform:scale(0.92);
+    background:rgba(255,255,255,0.12);
+  }
+
+  /* Menú desplegable escondido por defecto */
+  .nav{
+    display:none !important;
+  }
+  .nav.open{
+    display:flex !important;
+    position:absolute;
+    top:calc(100% + 8px);
+    left:14px;
+    right:14px;
+    background:linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(9, 15, 25, 0.95);
+    border:1px solid rgba(255, 255, 255, 0.16);
+    border-radius:22px;
+    padding:16px 14px;
+    flex-direction:column;
+    gap:10px;
+    backdrop-filter:blur(32px) saturate(210%);
+    -webkit-backdrop-filter:blur(32px) saturate(210%);
+    box-shadow:0 24px 70px rgba(0, 0, 0, 0.85), inset 0 1px 1.5px rgba(255, 255, 255, 0.45);
+    z-index:999;
+    animation:mobileNavPop 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes mobileNavPop{
+    from{opacity:0;transform:translateY(-8px) scale(0.97)}
+    to{opacity:1;transform:translateY(0) scale(1)}
+  }
+  .nav-game{
+    text-align:left;
+    padding:12px 18px;
+    font-size:15px;
+    width:100%;
+    justify-content:flex-start;
+    border-radius:14px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    touch-action:manipulation;
+  }
+  .nav-link{
+    padding:12px 18px;
+    font-size:15px;
+    width:100%;
+    border-radius:14px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    touch-action:manipulation;
+  }
+  .nav-link:active, .nav-game:active{
+    transform:scale(0.98);
+    background:rgba(255,255,255,0.1);
+  }
+
+  /* Optimización de rendimiento móvil: ocultar efectos CSS pesados que causan trabas */
+  .cosmic-shooting-stars,
+  .cosmic-floating-dust{
+    display:none !important;
+  }
+  .cosmic-nebula-glow-1,
+  .cosmic-nebula-glow-2{
+    animation:none !important;
+    opacity:0.22 !important;
+    filter:blur(50px) !important;
+  }
+
   .movie-card{flex:0 0 165px}
   .movie-grid{gap:14px;padding:10px 2px 18px}
   .logo-symbol{width:40px;height:36px}
   .logo-type{font-size:25px}
-  .nav-game{text-align:left;padding:10px 18px;font-size:15px;width:100%;justify-content:flex-start}
-  .nav-link{padding:12px 18px;font-size:15px;width:100%}
-  .cinematic-hero{min-height:890px}
-  .cinematic-hero .hero-inner{min-height:790px;align-items:flex-start;padding-top:55px}
-  .cinematic-hero h1{font-size:clamp(45px,9.8vw,67px);max-width:95%;margin:24px 0;line-height:1.02}
+  .cinematic-hero{min-height:auto;padding-bottom:50px}
+  .cinematic-hero .hero-inner{min-height:auto;align-items:flex-start;padding-top:28px}
+  .cinematic-hero h1{font-size:clamp(40px,9.2vw,62px);max-width:95%;margin:20px 0;line-height:1.02}
   .cinematic-hero .hero-copy{width:100%;max-width:none}
-  .hero-copy>p{font-size:13px}
+  .hero-copy>p{font-size:13px;line-height:1.6}
   .hero-buttons{margin-bottom:20px;width:100%}
-  .hero-buttons .button{font-size:14px!important;padding:14px 22px!important;min-height:52px!important;width:100%!important;justify-content:center!important}
+  .hero-buttons .button{font-size:14px!important;padding:14px 22px!important;min-height:50px!important;width:100%!important;justify-content:center!important}
   .cosmos:after{background:linear-gradient(180deg,var(--bg) 3%,transparent 65%,var(--bg))}
-  #planet-scene{width:150%;height:65%;right:-32%;top:38%}
-  .nebula{width:350px;height:350px;top:45%;right:-25%}
-  .planet-fallback{top:45%;height:55%;width:110%;right:-30%}
+  #planet-scene{width:140%;height:58%;right:-24%;top:42%}
+  .nebula{width:320px;height:320px;top:45%;right:-20%}
+  .planet-fallback{top:45%;height:50%;width:105%;right:-25%}
   .planet-note{top:auto;bottom:25%;right:0;font-size:10px}
   .planet-note small{font-size:8px}
   .hero-posters{right:8%;bottom:1%;height:130px;width:75%;gap:12px}

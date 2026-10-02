@@ -20,9 +20,38 @@ $$('dialog').forEach(d=>d.addEventListener('click',e=>{const r=d.getBoundingClie
 function details(id,story=false){const p=byId(id);if(!p)return;const e=editorial.find(x=>x.id===id);$('#detail-body').innerHTML=`<img class="detail-logo" src="${p.icon}" alt="${p.name}"><h2 id="detail-title">${story?e.title:p.name}</h2>${story?`<img class="detail-cover" src="assets/${e.image}" alt="" onerror="this.hidden=true"><p class="muted">${e.desc}</p><a class="text-link" href="${e.url}" target="_blank" rel="noopener">Explorar en la fuente oficial ↗</a>`:`<p class="muted">${p.tagline}</p><ul class="detail-features">${p.features.map(f=>'<li>'+f+'</li>').join('')}</ul><p class="fine-print">Compatible con: ${p.devices.join(', ')}. Confirma características y disponibilidad del plan por WhatsApp.</p>`}<div class="detail-price">$${p.price}<small> USD / ${p.period}</small></div><div class="detail-actions"><a class="button" href="${wa(orderMessage([id]))}" target="_blank" rel="noopener">Pedir por WhatsApp ↗</a><button class="button ghost" id="add-to-combo">Añadir a mi combo</button></div>`;$('#add-to-combo').addEventListener('click',()=>navigateCombo([...new Set([...selected,id])]));showDialog($('#details'))}
 $$('[data-detail]').forEach(b=>b.addEventListener('click',()=>details(b.dataset.detail)));
 $$('[data-story]').forEach(b=>b.addEventListener('click',()=>details(b.dataset.story,true)));
-const menu=$('.menu-toggle'),nav=$('.nav');menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');nav.classList.toggle('open',open)});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus()}});
-nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}});
+const menu=$('.menu-toggle'),nav=$('.nav');
+if(menu&&nav){
+  menu.addEventListener('click',()=>{
+    const open=menu.getAttribute('aria-expanded')!=='true';
+    menu.setAttribute('aria-expanded',String(open));
+    menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+    menu.textContent = open ? '✕' : '☰';
+    nav.classList.toggle('open',open);
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'&&nav.classList.contains('open')){
+      nav.classList.remove('open');
+      menu.setAttribute('aria-expanded','false');
+      menu.textContent = '☰';
+      menu.focus();
+    }
+  });
+  document.addEventListener('pointerdown',e=>{
+    if(nav.classList.contains('open')&&!nav.contains(e.target)&&!menu.contains(e.target)){
+      nav.classList.remove('open');
+      menu.setAttribute('aria-expanded','false');
+      menu.textContent = '☰';
+    }
+  });
+  nav.addEventListener('click',e=>{
+    if(e.target.closest('a')||e.target.closest('button')){
+      nav.classList.remove('open');
+      menu.setAttribute('aria-expanded','false');
+      menu.textContent = '☰';
+    }
+  });
+}
 let category='all';function filter(){const term=normalize($('#search').value);let count=0;$$('.catalog-grid .platform-card').forEach(card=>{const show=(category==='all'||card.dataset.category===category)&&normalize(card.dataset.name).includes(term);card.hidden=!show;if(show)count++});$('#result-count').textContent=count+' plataforma'+(count===1?'':'s')+' para explorar';$('.empty-state').hidden=count>0}
 if($('#search')){$('#search').addEventListener('input',filter);$$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.filter;$$('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));filter()}));$('#reset-filters').addEventListener('click',()=>{$('#search').value='';$('[data-filter="all"]').click();$('#search').focus()});const id=new URLSearchParams(location.search).get('plataforma');if(byId(id))details(id)}
 $$('[data-rail]').forEach(b=>b.addEventListener('click',()=>$('.discovery-rail').scrollBy({left:Number(b.dataset.rail)*300,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.classList.contains('motion-paused')?'instant':'smooth'})));

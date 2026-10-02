@@ -1395,7 +1395,7 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   .cinematic-hero .hero-meta{display:flex;flex-wrap:nowrap;gap:20px}
   .hero-meta span+span{width:auto!important;border-left:1px solid var(--line)!important;padding-left:20px!important}
   #game-dialog:not([open]){display:none!important}
-  #game-dialog[open]{position:fixed!important;inset:0!important;width:100vw!important;max-width:100vw!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:10px 10px 14px!important;border:none!important;border-radius:0!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;background:radial-gradient(circle at center,rgba(13,24,46,0.97) 0%,rgba(5,10,20,0.99) 100%)!important;backdrop-filter:blur(35px) saturate(210%)!important;-webkit-backdrop-filter:blur(35px) saturate(210%)!important;overflow:hidden!important;box-sizing:border-box!important;z-index:1000!important}
+  #game-dialog[open]{position:fixed!important;inset:0!important;width:100vw!important;max-width:100vw!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:10px 10px 14px!important;border:none!important;border-radius:0!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;background:#050a14!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow:hidden!important;box-sizing:border-box!important;z-index:1000!important}
   .game-dialog-head{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 4px 4px!important;margin:0!important}
   .game-dialog-head h2{font-size:18px!important;margin:0!important;color:#fff!important}
   .game-dialog-head .eyebrow{font-size:10px!important;margin-bottom:2px!important;color:#38bdf8!important}
@@ -1422,6 +1422,36 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   .game-over-stats{gap:6px!important;margin:10px 0 14px!important}
   .stat-box{padding:6px 4px!important}
   .stat-box strong{font-size:16px!important}
+
+  /* Optimización extrema de fluidez en celulares */
+  .liquid-glass,
+  .glass-panel,
+  .glass-card,
+  .header,
+  .brand-strip,
+  .cinema-section,
+  .feature-card-glass,
+  .floating-actions,
+  .floating-btn,
+  dialog:not(#game-dialog) {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  button, a, input, select, textarea, [role="button"], .pick-card, .ship-card {
+    touch-action: manipulation !important;
+  }
+
+  .cinema-section,
+  .immersive-feature,
+  .combo-banner,
+  .arcade-promo,
+  .steps,
+  .faq,
+  .footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 300px;
+  }
 }
 
 /* ==========================================================================

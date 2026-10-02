@@ -54,14 +54,14 @@
   function initCosmosStars() {
     if (!cW || !cH) return;
     const isMobile = cW < 768;
-    const count = isMobile ? 38 : Math.min(105, Math.max(55, Math.floor((cW * cH) / 13500)));
+    const count = isMobile ? 22 : Math.min(95, Math.max(50, Math.floor((cW * cH) / 14000)));
     cosmosStars = [];
     for (let i = 0; i < count; i++) {
       const depth = Math.random(); // 0: lejana, 1: cercana
       cosmosStars.push({
         x: Math.random() * cW,
         y: Math.random() * cH,
-        size: (isMobile ? 0.55 : 0.65) + depth * 1.0,
+        size: (isMobile ? 0.5 : 0.65) + depth * 0.9,
         baseAlpha: 0.14 + depth * 0.42,
         twinkleSpeed: 0.7 + Math.random() * 2.0,
         twinklePhase: Math.random() * Math.PI * 2,
@@ -174,11 +174,21 @@
       cCtx.stroke();
     }
 
+    const isMobile = window.innerWidth < 768;
+    const isDialogOpen = Boolean(document.querySelector('dialog[open]'));
+    if (isDialogOpen || (isMobile && window.scrollY > 700)) {
+      cosmosRaf = null;
+      return;
+    }
+
     cosmosRaf = requestAnimationFrame(renderCosmos);
   }
 
   function startCosmos() {
     if (!cosmosRaf && !paused && !reduce.matches && !document.hidden && cCtx) {
+      const isMobile = window.innerWidth < 768;
+      const isDialogOpen = Boolean(document.querySelector('dialog[open]'));
+      if (isDialogOpen || (isMobile && window.scrollY > 700)) return;
       cosmosRaf = requestAnimationFrame(renderCosmos);
     }
   }
@@ -196,6 +206,23 @@
     mouseParallax.tx = (e.clientX - cW / 2);
     mouseParallax.ty = (e.clientY - cH / 2);
   }, { passive: true });
+
+  window.addEventListener('scroll', () => {
+    if (window.innerWidth < 768) {
+      if (window.scrollY > 700) {
+        stopCosmos();
+      } else {
+        startCosmos();
+      }
+    }
+  }, { passive: true });
+
+  window.addEventListener('orbit:dialog-open', stopCosmos);
+  window.addEventListener('orbit:dialog-close', startCosmos);
+  document.querySelectorAll('dialog').forEach(dlg => {
+    dlg.addEventListener('close', startCosmos);
+    dlg.addEventListener('cancel', startCosmos);
+  });
 
   startCosmos();
 
@@ -744,8 +771,9 @@
     time = t;
 
     // Renderizado Three.js del planeta cósmico (optimizado para no sobrecargar GPU en móvil)
-    const maxScroll = window.innerWidth < 768 ? 950 : 1400;
-    const shouldRenderGlobe = renderer && (inView || window.scrollY < maxScroll);
+    const maxScroll = window.innerWidth < 768 ? 700 : 1200;
+    const isAnyDialogOpen = Boolean(document.querySelector('dialog[open]'));
+    const shouldRenderGlobe = !isAnyDialogOpen && renderer && inView && (window.scrollY < maxScroll);
     if (shouldRenderGlobe) {
       if (moving) {
         globe.rotation.y += delta * .07;
@@ -768,13 +796,15 @@
       const factor = innerWidth < 760 ? .45 : 1;
       const vh = innerHeight;
 
-      // Parallax en secciones visuales ligeras
-      $$('.feature-image,.combo-visual,.arcade-art').forEach(el => {
-        const r = el.parentElement.getBoundingClientRect();
-        if (r.bottom > 0 && r.top < vh) {
-          el.style.transform = moving ? `translate3d(0,${Math.max(-65, Math.min(65, (vh / 2 - r.top - r.height / 2) * .13 * factor))}px,0)` : '';
-        }
-      });
+      // Parallax en secciones visuales ligeras (desactivado en pantallas pequeñas para 60fps constantes)
+      if (innerWidth >= 760) {
+        $$('.feature-image,.combo-visual,.arcade-art').forEach(el => {
+          const r = el.parentElement.getBoundingClientRect();
+          if (r.bottom > 0 && r.top < vh) {
+            el.style.transform = moving ? `translate3d(0,${Math.max(-65, Math.min(65, (vh / 2 - r.top - r.height / 2) * .13 * factor))}px,0)` : '';
+          }
+        });
+      }
     }
   }
   requestAnimationFrame(loop);

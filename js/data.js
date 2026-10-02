@@ -187,6 +187,28 @@ window.ORBITA = {
         "App Celulares Android & iOS",
         "Tablets / iPads"
       ]
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT Plus",
+      "category": "tools",
+      "price": 5,
+      "period": "4 meses",
+      "icon": "assets/icons/chatgpt.svg",
+      "tagline": "Inteligencia Artificial Avanzada con GPT-4o y DALL-E",
+      "features": [
+        "4 Meses completos de acceso ChatGPT Plus",
+        "Modelos avanzados GPT-4o con visión y razonamiento",
+        "Generación y edición de imágenes con DALL-E",
+        "Análisis de archivos PDF, hojas de cálculo y código",
+        "Garantía de activación y soporte directo por WhatsApp"
+      ],
+      "devices": [
+        "Navegador Web PC / Mac",
+        "App oficial iOS (iPhone & iPad)",
+        "App oficial Android",
+        "Aplicación de escritorio Windows & macOS"
+      ]
     }
   ],
   "editorial": [
@@ -261,6 +283,14 @@ window.ORBITA = {
       "desc": "De la primera idea a tu próxima gran creación.",
       "url": "https://www.canva.com/pro/",
       "image": "design.svg"
+    },
+    {
+      "id": "chatgpt",
+      "title": "Inteligencia artificial que potencia tus ideas",
+      "genre": "Productividad & IA",
+      "desc": "Respuestas instantáneas, análisis de datos, visión y creatividad al máximo nivel.",
+      "url": "https://chatgpt.com",
+      "image": "icons/chatgpt.svg"
     }
   ]
 };

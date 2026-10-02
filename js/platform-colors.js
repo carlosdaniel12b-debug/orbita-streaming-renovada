@@ -74,6 +74,14 @@
       blue: '#a4f2f5',
       second: '#70eaee',
       brand: '#00c4cc'
+    },
+    chatgpt: {
+      accent: '#10a37f',
+      bg: '#041712',
+      glow: 'rgba(16, 163, 127, 0.48)',
+      blue: '#6ee7b7',
+      second: '#34d399',
+      brand: '#10a37f'
     }
   };
 

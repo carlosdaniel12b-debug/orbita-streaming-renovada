@@ -317,6 +317,7 @@
 
   function open() {
     if (!dialog.open) dialog.showModal();
+    window.dispatchEvent(new CustomEvent('orbit:dialog-open', { detail: 'game' }));
     updateShipSelectionUI();
     render(0);
   }
@@ -339,6 +340,7 @@
     cancelAnimationFrame(frame);
     saveRecord();
     $('#game-pause').disabled = true;
+    window.dispatchEvent(new CustomEvent('orbit:dialog-close', { detail: 'game' }));
   }
 
   dialog.addEventListener('close', stop);
@@ -1001,6 +1003,92 @@
     frame = requestAnimationFrame(tick);
   }
 
+  let bgCanvas = null;
+  let lastBgLevel = -1;
+
+  function drawBackground(c, curLevel) {
+    if (!bgCanvas) {
+      bgCanvas = document.createElement('canvas');
+      bgCanvas.width = 800;
+      bgCanvas.height = 440;
+    }
+    if (lastBgLevel !== level) {
+      lastBgLevel = level;
+      const bc = bgCanvas.getContext('2d');
+      const bgGrad = bc.createLinearGradient(0, 0, 0, 440);
+      bgGrad.addColorStop(0, '#040913');
+      bgGrad.addColorStop(0.5, '#071424');
+      bgGrad.addColorStop(1, '#03070f');
+      bc.fillStyle = bgGrad;
+      bc.fillRect(0, 0, 800, 440);
+
+      // Primera nebulosa cósmica profunda
+      const nebGrad1 = bc.createRadialGradient(680, 240, 20, 680, 240, 380);
+      nebGrad1.addColorStop(0, curLevel.bgNebula);
+      nebGrad1.addColorStop(1, 'transparent');
+      bc.fillStyle = nebGrad1;
+      bc.globalAlpha = 0.72;
+      bc.fillRect(0, 0, 800, 440);
+
+      // Segunda nebulosa cromática secundaria
+      const nebGrad2 = bc.createRadialGradient(160, 120, 10, 160, 120, 280);
+      nebGrad2.addColorStop(0, curLevel.glow);
+      nebGrad2.addColorStop(1, 'transparent');
+      bc.fillStyle = nebGrad2;
+      bc.globalAlpha = 0.32;
+      bc.fillRect(0, 0, 800, 440);
+      bc.globalAlpha = 1;
+    }
+    c.drawImage(bgCanvas, 0, 0);
+  }
+
+  let galaxyCanvas = null;
+  let lastGalaxyColor = null;
+
+  function getGalaxyCanvas(color) {
+    if (galaxyCanvas && lastGalaxyColor === color) return galaxyCanvas;
+    if (!galaxyCanvas) {
+      galaxyCanvas = document.createElement('canvas');
+      galaxyCanvas.width = 160;
+      galaxyCanvas.height = 160;
+    }
+    lastGalaxyColor = color;
+    const gc = galaxyCanvas.getContext('2d');
+    gc.clearRect(0, 0, 160, 160);
+    gc.save();
+    gc.translate(80, 80);
+
+    const coreGrad = gc.createRadialGradient(0, 0, 1, 0, 0, 48);
+    coreGrad.addColorStop(0, '#ffffff');
+    coreGrad.addColorStop(0.25, color);
+    coreGrad.addColorStop(0.6, 'rgba(49, 46, 129, 0.45)');
+    coreGrad.addColorStop(1, 'transparent');
+    gc.fillStyle = coreGrad;
+    gc.beginPath();
+    gc.arc(0, 0, 48, 0, Math.PI * 2);
+    gc.fill();
+
+    const arms = 2;
+    for (let a = 0; a < arms; a++) {
+      const armOffset = a * Math.PI;
+      for (let i = 0; i < 40; i++) {
+        const t = (i / 40) * 3.2;
+        const rad = 10 + t * 24;
+        const theta = armOffset + t * 2.3;
+        const px = Math.cos(theta) * rad;
+        const py = Math.sin(theta) * (rad * 0.48);
+        const alpha = Math.max(0.12, 0.75 - i * 0.015);
+        gc.globalAlpha = alpha;
+        gc.fillStyle = i % 3 === 0 ? '#ffffff' : color;
+        gc.beginPath();
+        gc.arc(px, py, 1.4, 0, Math.PI * 2);
+        gc.fill();
+      }
+    }
+    gc.restore();
+    return galaxyCanvas;
+  }
+
   function render(dt) {
     const curLevel = levels[level];
     const secColor = curLevel.color;
@@ -1013,29 +1101,7 @@
       ctx.translate(sx, sy);
     }
 
-    const bgGrad = ctx.createLinearGradient(0, 0, 0, 440);
-    bgGrad.addColorStop(0, '#040913');
-    bgGrad.addColorStop(0.5, '#071424');
-    bgGrad.addColorStop(1, '#03070f');
-    ctx.fillStyle = bgGrad;
-    ctx.fillRect(0, 0, 800, 440);
-
-    // Primera nebulosa cósmica profunda
-    const nebGrad1 = ctx.createRadialGradient(680, 240, 20, 680, 240, 380);
-    nebGrad1.addColorStop(0, curLevel.bgNebula);
-    nebGrad1.addColorStop(1, 'transparent');
-    ctx.fillStyle = nebGrad1;
-    ctx.globalAlpha = 0.72;
-    ctx.fillRect(0, 0, 800, 440);
-
-    // Segunda nebulosa cromática secundaria
-    const nebGrad2 = ctx.createRadialGradient(160, 120, 10, 160, 120, 280);
-    nebGrad2.addColorStop(0, curLevel.glow);
-    nebGrad2.addColorStop(1, 'transparent');
-    ctx.fillStyle = nebGrad2;
-    ctx.globalAlpha = 0.32;
-    ctx.fillRect(0, 0, 800, 440);
-    ctx.globalAlpha = 1;
+    drawBackground(ctx, curLevel);
 
     starTwinkleTime += dt * 2.5;
 
@@ -1079,8 +1145,6 @@
       ctx.globalAlpha = beamAlpha;
       ctx.strokeStyle = secColor;
       ctx.lineWidth = 2.2;
-      ctx.shadowColor = secColor;
-      ctx.shadowBlur = 14;
       ctx.setLineDash([7, 7]);
       ctx.lineDashOffset = -p.pulse * 10;
       ctx.beginPath();
@@ -1134,8 +1198,6 @@
       ctx.rotate(c.rot);
 
       if (c.type === 'shield') {
-        ctx.shadowColor = '#38bdf8';
-        ctx.shadowBlur = 16;
         ctx.strokeStyle = '#38bdf8';
         ctx.lineWidth = 2;
         ctx.beginPath();
@@ -1151,8 +1213,6 @@
         ctx.textBaseline = 'middle';
         ctx.fillText('🛡', 0, 1);
       } else {
-        ctx.shadowColor = '#ffd066';
-        ctx.shadowBlur = 14;
         ctx.fillStyle = '#ffd066';
         ctx.beginPath();
         ctx.moveTo(0, -9);
@@ -1169,12 +1229,14 @@
       ctx.restore();
     }
 
+    if (particles.length > 30) {
+      particles.splice(0, particles.length - 30);
+    }
+
     for (const p of particles) {
       ctx.save();
       ctx.globalAlpha = Math.max(0, p.life);
       ctx.fillStyle = p.color;
-      ctx.shadowColor = p.color;
-      ctx.shadowBlur = 8;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
       ctx.fill();
@@ -1198,12 +1260,15 @@
       if (hasShield || ship.shieldTime > 0) {
         ctx.save();
         ctx.strokeStyle = hasShield ? '#38bdf8' : '#a7ead8';
-        ctx.lineWidth = 2.5;
+        ctx.lineWidth = 2.4;
         ctx.globalAlpha = 0.85;
-        ctx.shadowColor = '#38bdf8';
-        ctx.shadowBlur = 12;
         ctx.beginPath();
         ctx.arc(0, 0, 24, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.lineWidth = 1;
+        ctx.globalAlpha = 0.35;
+        ctx.beginPath();
+        ctx.arc(0, 0, 28, 0, Math.PI * 2);
         ctx.stroke();
         ctx.restore();
       }
@@ -1233,8 +1298,6 @@
       ctx.globalAlpha = Math.max(0, pop.alpha);
       ctx.fillStyle = pop.color;
       ctx.font = 'bold 16px Manrope, sans-serif';
-      ctx.shadowColor = pop.color;
-      ctx.shadowBlur = 10;
       ctx.fillText(pop.text, pop.x, pop.y);
       ctx.restore();
     }
@@ -1279,14 +1342,16 @@
     // La superficie del planeta que mira hacia la nave queda exactamente alineada con la apertura
     const cy = isTop ? y + h - radius : y + radius;
 
-    // Resplandor y halo atmosférico del planeta
+    // Resplandor y halo atmosférico del planeta sin shadowBlur
     ctx.save();
-    ctx.shadowColor = color;
-    ctx.shadowBlur = 18;
     ctx.fillStyle = color;
-    ctx.globalAlpha = 0.24 + Math.sin(pulse) * 0.08;
+    ctx.globalAlpha = 0.14 + Math.sin(pulse) * 0.05;
     ctx.beginPath();
-    ctx.arc(cx, cy, radius + 5, 0, Math.PI * 2);
+    ctx.arc(cx, cy, radius + 8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 0.26 + Math.sin(pulse) * 0.08;
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius + 4, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
 
@@ -1374,9 +1439,7 @@
       ctx.save();
       ctx.strokeStyle = color;
       ctx.lineWidth = 2.2;
-      ctx.globalAlpha = 0.65 + Math.sin(pulse) * 0.15;
-      ctx.shadowColor = color;
-      ctx.shadowBlur = 8;
+      ctx.globalAlpha = 0.75 + Math.sin(pulse) * 0.15;
       ctx.beginPath();
       ctx.ellipse(cx, cy, radius * 1.55, radius * 0.38, -0.32, 0, Math.PI * 2);
       ctx.stroke();
@@ -1393,11 +1456,15 @@
     // Baliza de advertencia o núcleo de ionización en el extremo más cercano a la nave
     ctx.save();
     const beaconY = isTop ? y + h - 5 : y + 5;
-    ctx.fillStyle = '#ffffff';
-    ctx.shadowColor = color;
-    ctx.shadowBlur = 12;
+    ctx.fillStyle = color;
+    ctx.globalAlpha = 0.45;
     ctx.beginPath();
-    ctx.arc(cx, beaconY, 3, 0, Math.PI * 2);
+    ctx.arc(cx, beaconY, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.globalAlpha = 1;
+    ctx.beginPath();
+    ctx.arc(cx, beaconY, 2.5, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
 
@@ -1405,39 +1472,11 @@
   }
 
   function drawSpiralGalaxy(c, gx, gy, angle, color) {
+    const gCv = getGalaxyCanvas(color);
     c.save();
     c.translate(gx, gy);
     c.rotate(angle);
-
-    // Núcleo brillante y difuso de la galaxia
-    const coreGrad = c.createRadialGradient(0, 0, 1, 0, 0, 48);
-    coreGrad.addColorStop(0, '#ffffff');
-    coreGrad.addColorStop(0.25, color);
-    coreGrad.addColorStop(0.6, 'rgba(49, 46, 129, 0.45)');
-    coreGrad.addColorStop(1, 'transparent');
-    c.fillStyle = coreGrad;
-    c.beginPath();
-    c.arc(0, 0, 48, 0, Math.PI * 2);
-    c.fill();
-
-    // Brazos espirales con cúmulos estelares
-    const arms = 2;
-    for (let a = 0; a < arms; a++) {
-      const armOffset = a * Math.PI;
-      for (let i = 0; i < 55; i++) {
-        const t = (i / 55) * 3.2;
-        const rad = 10 + t * 26;
-        const theta = armOffset + t * 2.3;
-        const px = Math.cos(theta) * rad;
-        const py = Math.sin(theta) * (rad * 0.48); // Inclinación elíptica 3D
-        const alpha = Math.max(0.08, 0.7 - i * 0.011);
-        c.globalAlpha = alpha;
-        c.fillStyle = i % 3 === 0 ? '#ffffff' : color;
-        c.beginPath();
-        c.arc(px, py, Math.random() * 1.6 + 0.7, 0, Math.PI * 2);
-        c.fill();
-      }
-    }
+    c.drawImage(gCv, -80, -80);
     c.restore();
   }
 
@@ -1521,8 +1560,6 @@
 
     // 4. Horizonte de Sucesos: Vacío gravitacional absoluto (negro impenetrable)
     c.fillStyle = '#000000';
-    c.shadowColor = '#000000';
-    c.shadowBlur = 14;
     c.beginPath();
     c.arc(x, y, r, 0, Math.PI * 2);
     c.fill();
@@ -1531,20 +1568,16 @@
     c.save();
     c.translate(x, y);
     c.rotate(-0.28);
-    c.strokeStyle = '#ffffff';
-    c.lineWidth = 3.8;
-    c.shadowColor = '#fde047';
-    c.shadowBlur = 16;
+    c.strokeStyle = '#fde047';
+    c.lineWidth = 3.2;
     c.beginPath();
     c.ellipse(0, 0, r * 1.55, r * 0.44, 0, 0, Math.PI);
     c.stroke();
     c.restore();
 
     // 6. Esfera fotónica crítica
-    c.strokeStyle = '#e0f2fe';
+    c.strokeStyle = '#38bdf8';
     c.lineWidth = 2;
-    c.shadowColor = '#38bdf8';
-    c.shadowBlur = 18;
     c.beginPath();
     c.arc(x, y, r + 2.5, 0, Math.PI * 2);
     c.stroke();
@@ -1558,9 +1591,7 @@
       c.save();
       c.globalAlpha = sw.alpha;
       c.strokeStyle = sw.color;
-      c.lineWidth = 3.5 * sw.alpha;
-      c.shadowColor = sw.color;
-      c.shadowBlur = 20;
+      c.lineWidth = 3 * sw.alpha;
       c.beginPath();
       c.arc(sw.x, sw.y, sw.r, 0, Math.PI * 2);
       c.stroke();

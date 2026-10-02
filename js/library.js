@@ -49,7 +49,7 @@ window.ORBIT_LIBRARY = [
                         "avatar: the way of water"
                     ],
         "genre":  "Ciencia ficción,Aventura,Acción",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2022",
         "image":  "assets/posters/m_avatar2.jpg",
         "source":  "https://www.themoviedb.org",
@@ -69,7 +69,7 @@ window.ORBIT_LIBRARY = [
                         "avengers: endgame"
                     ],
         "genre":  "Acción,Aventura,Ciencia ficción",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2019",
         "image":  "assets/posters/m_endgame.jpg",
         "source":  "https://www.themoviedb.org",
@@ -77,7 +77,7 @@ window.ORBIT_LIBRARY = [
         "origin":  "disneyplus",
         "summary":  "Tras los eventos devastadores provocados por Thanos, los Vengadores sobrevivientes deben reunirse una última vez para revertir el chasquido.",
         "esSummary":  "Tras los eventos devastadores provocados por Thanos, los Vengadores sobrevivientes deben reunirse una última vez para revertir el chasquido.",
-        "badge":  "Ã‰pica Marvel"
+        "badge":  "Épica Marvel"
     },
     {
         "id":  "s618",
@@ -109,7 +109,7 @@ window.ORBIT_LIBRARY = [
                         "bird box"
                     ],
         "genre":  "Suspenso,terror",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "",
         "image":  "assets/posters/m4.jpg",
         "source":  "https://www.netflix.com/title/80196789",
@@ -129,7 +129,7 @@ window.ORBIT_LIBRARY = [
                         "blade runner 2049"
                     ],
         "genre":  "Ciencia ficción,Misterio,Drama",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2017",
         "image":  "assets/posters/m_bladerunner2049.jpg",
         "source":  "https://www.themoviedb.org",
@@ -169,7 +169,7 @@ window.ORBIT_LIBRARY = [
                         "coco"
                     ],
         "genre":  "Animación,familia",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "",
         "image":  "assets/posters/m0.jpg",
         "source":  "https://www.pixar.com/coco",
@@ -197,7 +197,7 @@ window.ORBIT_LIBRARY = [
         "origin":  "netflix",
         "summary":  "En una distopía obsesionada con la tecnología y la modificación corporal, un chico callejero lucha por sobrevivir como mercenario edgerunner.",
         "esSummary":  "En una distopía obsesionada con la tecnología y la modificación corporal, un chico callejero lucha por sobrevivir como mercenario edgerunner.",
-        "badge":  "Visual Ãšnica"
+        "badge":  "Visual Única"
     },
     {
         "id":  "s17861",
@@ -229,7 +229,7 @@ window.ORBIT_LIBRARY = [
                         "deadpool \u0026 wolverine"
                     ],
         "genre":  "Acción,Comedia,Ciencia ficción",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2024",
         "image":  "assets/posters/m_deadpool3.jpg",
         "source":  "https://www.themoviedb.org",
@@ -249,7 +249,7 @@ window.ORBIT_LIBRARY = [
                         "dune: part two"
                     ],
         "genre":  "Ciencia ficción,Aventura",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2024",
         "image":  "assets/posters/m_dune2.jpg",
         "source":  "https://www.themoviedb.org",
@@ -257,7 +257,7 @@ window.ORBIT_LIBRARY = [
         "origin":  "hbomax",
         "summary":  "Paul Atreides se une a Chani y a los Fremen mientras busca venganza contra los conspiradores que destruyeron a su familia.",
         "esSummary":  "Paul Atreides se une a Chani y a los Fremen mientras busca venganza contra los conspiradores que destruyeron a su familia.",
-        "badge":  "Ã‰xito Taquillero"
+        "badge":  "Éxito Taquillero"
     },
     {
         "id":  "s43687",
@@ -289,7 +289,7 @@ window.ORBIT_LIBRARY = [
                         "inception"
                     ],
         "genre":  "Ciencia ficción,Acción,Suspenso",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2010",
         "image":  "assets/posters/m_inception.jpg",
         "source":  "https://www.themoviedb.org",
@@ -329,7 +329,7 @@ window.ORBIT_LIBRARY = [
                         "the adam project"
                     ],
         "genre":  "Ciencia ficción,aventura",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "",
         "image":  "assets/posters/m5.jpg",
         "source":  "https://www.netflix.com/title/81309354",
@@ -349,7 +349,7 @@ window.ORBIT_LIBRARY = [
                         "encanto"
                     ],
         "genre":  "Animación,familia",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "",
         "image":  "assets/posters/m2.jpg",
         "source":  "https://movies.disney.com/encanto",
@@ -369,7 +369,7 @@ window.ORBIT_LIBRARY = [
                         "enola holmes"
                     ],
         "genre":  "Misterio,aventura",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "",
         "image":  "assets/posters/m3.jpg",
         "source":  "https://www.netflix.com/title/81277950",
@@ -429,7 +429,7 @@ window.ORBIT_LIBRARY = [
                         "finch"
                     ],
         "genre":  "Ciencia ficción,drama",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "",
         "image":  "assets/posters/m7.jpg",
         "source":  "https://www.apple.com/tv-pr/originals/finch/",
@@ -449,7 +449,7 @@ window.ORBIT_LIBRARY = [
                         "gladiator ii"
                     ],
         "genre":  "Acción,Aventura,Drama",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2024",
         "image":  "assets/posters/m_gladiator2.jpg",
         "source":  "https://www.themoviedb.org",
@@ -469,7 +469,7 @@ window.ORBIT_LIBRARY = [
                         "inside out 2"
                     ],
         "genre":  "Animación,Comedia,Familia",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2024",
         "image":  "assets/posters/m_insideout2.jpg",
         "source":  "https://www.themoviedb.org",
@@ -489,7 +489,7 @@ window.ORBIT_LIBRARY = [
                         "interstellar"
                     ],
         "genre":  "Ciencia ficción,Drama,Aventura",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2014",
         "image":  "assets/posters/m_interstellar.jpg",
         "source":  "https://www.themoviedb.org",
@@ -549,7 +549,7 @@ window.ORBIT_LIBRARY = [
                         "the tomorrow war"
                     ],
         "genre":  "Acción,ciencia ficción",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "",
         "image":  "assets/posters/m6.jpg",
         "source":  "https://www.primevideo.com",
@@ -609,7 +609,7 @@ window.ORBIT_LIBRARY = [
                         "mad max: fury road"
                     ],
         "genre":  "Acción,Aventura,Ciencia ficción",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2015",
         "image":  "assets/posters/m_madmax.jpg",
         "source":  "https://www.themoviedb.org",
@@ -669,7 +669,7 @@ window.ORBIT_LIBRARY = [
                         "oppenheimer"
                     ],
         "genre":  "Biografía,Drama,Historia",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2023",
         "image":  "assets/posters/m_oppenheimer.jpg",
         "source":  "https://www.themoviedb.org",
@@ -757,7 +757,7 @@ window.ORBIT_LIBRARY = [
         "origin":  "disneyplus",
         "summary":  "En el Japón feudal de 1600, un astuto señor feudal y un navegante inglés cruzan sus destinos en medio de conspiraciones políticas.",
         "esSummary":  "En el Japón feudal de 1600, un astuto señor feudal y un navegante inglés cruzan sus destinos en medio de conspiraciones políticas.",
-        "badge":  "Estreno Ã‰pico"
+        "badge":  "Estreno Épico"
     },
     {
         "id":  "s38052",
@@ -789,7 +789,7 @@ window.ORBIT_LIBRARY = [
                         "soul"
                     ],
         "genre":  "Animación,música",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "",
         "image":  "assets/posters/m1.jpg",
         "source":  "https://www.pixar.com/soul",
@@ -809,7 +809,7 @@ window.ORBIT_LIBRARY = [
                         "spider-man: across the spider-verse"
                     ],
         "genre":  "Animación,Acción,Aventura",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2023",
         "image":  "assets/posters/m_spiderverse.jpg",
         "source":  "https://www.themoviedb.org",
@@ -817,7 +817,7 @@ window.ORBIT_LIBRARY = [
         "origin":  "hbomax",
         "summary":  "Miles Morales es catapultado a través del Multiverso, donde se encuentra con un equipo de Spider-People encargados de proteger su existencia.",
         "esSummary":  "Miles Morales es catapultado a través del Multiverso, donde se encuentra con un equipo de Spider-People encargados de proteger su existencia.",
-        "badge":  "Visual Ã‰pica"
+        "badge":  "Visual Épica"
     },
     {
         "id":  "s2993",
@@ -889,7 +889,7 @@ window.ORBIT_LIBRARY = [
                         "the batman"
                     ],
         "genre":  "Crimen,Misterio,Acción",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2022",
         "image":  "assets/posters/m_thebatman.jpg",
         "source":  "https://www.themoviedb.org",
@@ -989,7 +989,7 @@ window.ORBIT_LIBRARY = [
                         "top gun: maverick"
                     ],
         "genre":  "Acción,Drama",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2022",
         "image":  "assets/posters/m_topgun.jpg",
         "source":  "https://www.themoviedb.org",
@@ -1037,7 +1037,7 @@ window.ORBIT_LIBRARY = [
         "origin":  "paramount",
         "summary":  "John Dutton defiende el rancho continuo más grande de EE.UU. frente a promotores inmobiliarios, reservas indígenas y rivales políticos.",
         "esSummary":  "John Dutton defiende el rancho continuo más grande de EE.UU. frente a promotores inmobiliarios, reservas indígenas y rivales políticos.",
-        "badge":  "Ã‰xito Mundial"
+        "badge":  "Éxito Mundial"
     },
     {
         "id":  "m_houseofthedragon",
@@ -1057,7 +1057,7 @@ window.ORBIT_LIBRARY = [
         "origin":  "hbomax",
         "summary":  "La historia de la Casa Targaryen ambientada 200 años antes de los eventos de Game of Thrones y la legendaria Danza de Dragones.",
         "esSummary":  "La historia de la Casa Targaryen ambientada 200 años antes de los eventos de Game of Thrones y la legendaria Danza de Dragones.",
-        "badge":  "Serie Ã‰pica"
+        "badge":  "Serie Épica"
     },
     {
         "id":  "m_barbie",
@@ -1069,7 +1069,7 @@ window.ORBIT_LIBRARY = [
                         "barbie"
                     ],
         "genre":  "Comedia,Aventura,Fantasía",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2023",
         "image":  "assets/posters/m_barbie.jpg",
         "source":  "https://www.themoviedb.org",
@@ -1089,7 +1089,7 @@ window.ORBIT_LIBRARY = [
                         "alien: romulus"
                     ],
         "genre":  "Terror,Ciencia ficción,Suspenso",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2024",
         "image":  "assets/posters/m_alienromulus.jpg",
         "source":  "https://www.themoviedb.org",
@@ -1109,7 +1109,7 @@ window.ORBIT_LIBRARY = [
                         "the matrix"
                     ],
         "genre":  "Ciencia ficción,Acción",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "1999",
         "image":  "assets/posters/m_matrix.jpg",
         "source":  "https://www.themoviedb.org",
@@ -1129,7 +1129,7 @@ window.ORBIT_LIBRARY = [
                         "joker"
                     ],
         "genre":  "Drama,Crimen,Suspenso",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2019",
         "image":  "assets/posters/m_joker.jpg",
         "source":  "https://www.themoviedb.org",
@@ -1149,7 +1149,7 @@ window.ORBIT_LIBRARY = [
                         "spider-man: no way home"
                     ],
         "genre":  "Acción,Aventura,Ciencia ficción",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "2021",
         "image":  "assets/posters/m_nowayhome.jpg",
         "source":  "https://www.themoviedb.org",
@@ -1209,7 +1209,7 @@ window.ORBIT_LIBRARY = [
                         "blade runner"
                     ],
         "genre":  "Ciencia ficción,Drama",
-        "type":  "PelÃ­cula",
+        "type":  "Película",
         "year":  "1982",
         "image":  "assets/posters/m_interstellar2.jpg",
         "source":  "https://www.themoviedb.org",
@@ -1337,7 +1337,7 @@ window.ORBIT_LIBRARY = [
         "origin":  "paramount",
         "summary":  "Yellowstone follows the Dutton family, led by John Dutton, who controls the largest contiguous ranch in the United States, under constant attack by those it borders - land developers, an Indian reservation, and America\u0027s first National Park. It is an intense study of a violent world far from media scrutiny - where land grabs make developers billions, and politicians are bought and sold by the world\u0027s largest oil and lumber corporations. Where drinking water poisoned by fracking wells and unsolved murders are not news: they are a consequence of living in the new frontier. It is the best and worst of America seen through the eyes of a family that represents both.",
         "esSummary":  "Yellowstone follows the Dutton family, led by John Dutton, who controls the largest contiguous ranch in the United States, under constant attack by those it borders - land developers, an Indian reservation, and America\u0027s first National Park. It is an intense study of a violent world far from media scrutiny - where land grabs make developers billions, and politicians are bought and sold by the world\u0027s largest oil and lumber corporations. Where drinking water poisoned by fracking wells and unsolved murders are not news: they are a consequence of living in the new frontier. It is the best and worst of America seen through the eyes of a family that represents both.",
-        "badge":  "Ã‰xito RÃ©cord"
+        "badge":  "Éxito Récord"
     },
     {
         "id":  "m_peakyblinders",

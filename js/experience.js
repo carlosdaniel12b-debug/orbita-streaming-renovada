@@ -1127,12 +1127,17 @@
   }
 
   function play() {
-    if (paused || reduce.matches) return;
+    if (paused || reduce.matches) {
+      window.OrbitaBoot?.dismiss();
+      arrived();
+      return;
+    }
     if (window.OrbitaBoot) {
       clearTimeout(window.OrbitaBoot.timer);
-      window.OrbitaBoot.pending = false;
+      window.OrbitaBoot.pending = true;
+      window.OrbitaBoot.skipped = false;
     }
-    root.classList.remove('intro-pending');
+    root.classList.add('intro-pending');
     clearTimeout(restoreTimer);
     clearTimeout(introTimer);
 
@@ -1140,8 +1145,8 @@
     intro.classList.remove('dismissed');
     intro.classList.remove('leaving');
     intro.classList.remove('turbo-warp');
+    intro.removeAttribute('hidden');
     intro.hidden = false;
-    intro.style.display = 'grid';
     intro.style.removeProperty('display');
     intro.style.removeProperty('visibility');
     intro.style.removeProperty('pointer-events');
@@ -1175,8 +1180,9 @@
     if (hudBar) hudBar.style.transform = 'scaleX(0)';
 
     flightStart = performance.now();
+    cancelAnimationFrame(introFrame);
     introFrame = requestAnimationFrame(warpFrame);
-    introTimer = setTimeout(closeIntro, 2500);
+    introTimer = setTimeout(closeIntro, 2600);
   }
 
   $('.intro-skip')?.addEventListener('click', closeIntro);
@@ -1215,7 +1221,7 @@
   motionSync();
 
   // Inicio garantizado de la intro en index.html sin bloqueo de sessionStorage
-  if (!window.OrbitaBoot?.skipped && document.body.dataset.page === 'index' && !paused) {
+  if (document.body.dataset.page === 'index' && !paused && !reduce.matches) {
     play();
   } else {
     window.OrbitaBoot?.dismiss();

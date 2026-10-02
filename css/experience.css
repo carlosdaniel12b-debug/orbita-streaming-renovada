@@ -2202,7 +2202,7 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 .cinematic-intro.leaving .intro-copy {
   opacity: 0;
   transform: scale(1.15);
-  transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 350ms cubic-bezier(0.23, 1, 0.32, 1), transform 350ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 /* Entrada escalonada de elementos Hero al llegar al cosmos (Emil Kowalski stagger) */
@@ -2737,7 +2737,7 @@ body:not([data-page="index"]) .header {
   border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
   white-space: nowrap;
-  transition: all 180ms ease;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 180ms ease;
 }
 .chip-btn:hover {
   color: #ffffff;
@@ -2898,7 +2898,7 @@ body:not([data-page="index"]) .header {
     0 0 20px rgba(167, 234, 216, 0.4),
     0 10px 25px rgba(56, 189, 248, 0.35),
     inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
-  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1), background-color 240ms ease, border-color 240ms ease, box-shadow 260ms cubic-bezier(0.23, 1, 0.32, 1) !important;
   z-index: 1;
 }
 .combo-cta-btn::before {
@@ -2930,7 +2930,7 @@ body:not([data-page="index"]) .header {
 /* Pulsación atractiva en el enlace de combo de la barra de navegación */
 .nav-link-combo {
   position: relative;
-  transition: all 220ms ease;
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), color 200ms ease;
 }
 .nav-badge-pill {
   animation: comboPillPulse 2.8s infinite ease-in-out;
@@ -2954,7 +2954,7 @@ body:not([data-page="index"]) .header {
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 16px !important;
-  transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1), border-color 200ms ease, background-color 200ms ease, box-shadow 240ms ease !important;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
 }
 .pick-card:hover {
@@ -3004,7 +3004,7 @@ dialog {
   border-radius: 20px !important;
   box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.3), 
               0 14px 38px rgba(0, 0, 0, 0.45) !important;
-  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1), border-color 200ms ease, background-color 200ms ease, box-shadow 260ms ease !important;
 }
 
 .platform-card:hover {
@@ -3093,7 +3093,7 @@ dialog {
   border-radius: 16px !important;
   margin-bottom: 12px !important;
   padding: 8px 22px !important;
-  transition: all 220ms ease !important;
+  transition: border-color 200ms ease, background-color 200ms ease, box-shadow 220ms ease !important;
 }
 
 .faq-list details[open] {
@@ -3118,7 +3118,7 @@ dialog {
   -webkit-backdrop-filter: blur(14px) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #cbd5e1 !important;
-  transition: all 200ms ease !important;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms cubic-bezier(0.23, 1, 0.32, 1) !important;
 }
 
 .filters button:hover, .cinema-filters button:hover {
@@ -3171,7 +3171,7 @@ dialog {
   -webkit-backdrop-filter: blur(14px) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 14px !important;
-  transition: all 200ms ease !important;
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), border-color 180ms ease, background-color 180ms ease !important;
 }
 
 .presets button:hover {

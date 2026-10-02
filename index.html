@@ -203,14 +203,53 @@
       </div>
     </section>
 
-    <section class="immersive-feature">
-      <div class="feature-image"></div>
-      <div class="feature-shade"></div>
-      <div class="container feature-copy">
-        <span class="pill">Una pausa para perderte en otra historia</span>
-        <h2>No solo lo ves.<br>Lo sientes.</h2>
-        <p>Encuentra algo que te saque de lo de siempre.</p>
-        <button class="button" data-ask="Recomiéndame una serie de aventura">Orbit, recomiéndame algo ↗</button>
+    <section class="immersive-feature" id="immersive-feature" aria-label="Historias destacadas en cine y series">
+      <div class="feature-slides" id="feature-slides">
+        <div class="feature-slide active" style="background-image: url('assets/backdrops/dune.jpg');" data-title="Dune: Prophecy" data-platform="Max" data-genre="Ciencia Ficción"></div>
+        <div class="feature-slide" style="background-image: url('assets/backdrops/lastofus.jpg');" data-title="The Last of Us" data-platform="Max" data-genre="Aventura Postapocalíptica"></div>
+        <div class="feature-slide" style="background-image: url('assets/backdrops/houseofthedragon.jpg');" data-title="La Casa del Dragón" data-platform="Max" data-genre="Fantasía Épica"></div>
+        <div class="feature-slide" style="background-image: url('assets/backdrops/andor.jpg');" data-title="Star Wars: Andor" data-platform="Disney+" data-genre="Espionaje Galáctico"></div>
+        <div class="feature-slide" style="background-image: url('assets/backdrops/arcane.jpg');" data-title="Arcane" data-platform="Netflix" data-genre="Animación & Aventura"></div>
+        <div class="feature-slide" style="background-image: url('assets/backdrops/strangerthings.jpg');" data-title="Stranger Things" data-platform="Netflix" data-genre="Misterio & Retro"></div>
+        <div class="feature-slide" style="background-image: url('assets/backdrops/fallout.jpg');" data-title="Fallout" data-platform="Prime Video" data-genre="Acción Nuclear"></div>
+        <div class="feature-slide" style="background-image: url('assets/backdrops/severance.jpg');" data-title="Severance" data-platform="Apple TV+" data-genre="Suspenso Psicológico"></div>
+        <div class="feature-slide" style="background-image: url('assets/backdrops/theboys.jpg');" data-title="The Boys" data-platform="Prime Video" data-genre="Acción & Superhéroes"></div>
+      </div>
+      <div class="feature-shade" aria-hidden="true"></div>
+      <div class="container feature-inner">
+        <div class="feature-card-glass">
+          <div class="feature-tag-row">
+            <span class="pill">✦ Cine & Series Inmersivas</span>
+            <span class="feature-universe-badge" id="feature-universe-badge">Dune: Prophecy · Max</span>
+          </div>
+          <h2>No solo lo ves.<br>Lo sientes.</h2>
+          <p id="feature-desc">Universos que te atrapan. Sonido que te rodea. Encuentra tu próxima gran historia y disfrútala en máxima calidad.</p>
+          <div class="feature-actions">
+            <button type="button" class="button hero-btn-liquid-primary" data-ask="Recomiéndame una serie de aventura" id="feature-btn-ask">
+              <span>Orbit, recomiéndame algo</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+            <a href="descubre.html" class="button ghost">Ver catálogo completo ↗</a>
+          </div>
+        </div>
+
+        <div class="feature-nav-bar" role="group" aria-label="Galería de universos">
+          <div class="feature-dots" id="feature-dots">
+            <button type="button" class="feature-dot active" data-index="0" aria-label="Ver Dune: Prophecy" title="Dune: Prophecy (Max)"></button>
+            <button type="button" class="feature-dot" data-index="1" aria-label="Ver The Last of Us" title="The Last of Us (Max)"></button>
+            <button type="button" class="feature-dot" data-index="2" aria-label="Ver La Casa del Dragón" title="La Casa del Dragón (Max)"></button>
+            <button type="button" class="feature-dot" data-index="3" aria-label="Ver Star Wars: Andor" title="Star Wars: Andor (Disney+)"></button>
+            <button type="button" class="feature-dot" data-index="4" aria-label="Ver Arcane" title="Arcane (Netflix)"></button>
+            <button type="button" class="feature-dot" data-index="5" aria-label="Ver Stranger Things" title="Stranger Things (Netflix)"></button>
+            <button type="button" class="feature-dot" data-index="6" aria-label="Ver Fallout" title="Fallout (Prime Video)"></button>
+            <button type="button" class="feature-dot" data-index="7" aria-label="Ver Severance" title="Severance (Apple TV+)"></button>
+            <button type="button" class="feature-dot" data-index="8" aria-label="Ver The Boys" title="The Boys (Prime Video)"></button>
+          </div>
+          <div class="feature-arrows">
+            <button type="button" class="feature-arrow prev" id="feature-prev" aria-label="Anterior universo" title="Anterior universo">‹</button>
+            <button type="button" class="feature-arrow next" id="feature-next" aria-label="Siguiente universo" title="Siguiente universo">›</button>
+          </div>
+        </div>
       </div>
     </section>
 

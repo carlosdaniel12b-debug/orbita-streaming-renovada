@@ -792,10 +792,12 @@
     if (paused) {
       stopCosmos();
       closeIntro();
+      window.OrbitaGallery?.pause();
       $$('.feature-image,.combo-visual,.arcade-art,.movie-card,.platform-card').forEach(el => el.style.transform = '');
       $$('.movie-card .poster-wrap img').forEach(im => im.style.transform = '');
     } else {
       startCosmos();
+      window.OrbitaGallery?.resume();
     }
     lastScroll = -1;
   }
@@ -1115,6 +1117,140 @@
     window.OrbitaBoot?.dismiss();
     arrived();
   }
+
+  // Galería de fondos inmersivos interactiva (Backdrops cinematográficos panorámicos)
+  function initImmersiveGallery() {
+    const section = $('#immersive-feature');
+    if (!section) return;
+
+    const slides = $$('#feature-slides .feature-slide');
+    const dots = $$('#feature-dots .feature-dot');
+    const prevBtn = $('#feature-prev');
+    const nextBtn = $('#feature-next');
+    const universeBadge = $('#feature-universe-badge');
+    const askBtn = $('#feature-btn-ask');
+
+    if (!slides.length) return;
+
+    let currentIndex = 0;
+    let autoTimer = null;
+    let isHovered = false;
+
+    function showSlide(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      currentIndex = index;
+
+      slides.forEach((sl, i) => {
+        sl.classList.toggle('active', i === currentIndex);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+
+      const currentSlide = slides[currentIndex];
+      if (currentSlide && universeBadge) {
+        const title = currentSlide.dataset.title || '';
+        const platform = currentSlide.dataset.platform || '';
+        universeBadge.textContent = `${title} · ${platform}`;
+        if (askBtn) {
+          askBtn.dataset.ask = `Cuéntame sobre ${title} y qué planes de ${platform} tienen`;
+        }
+      }
+    }
+
+    function nextSlide() {
+      showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentIndex - 1);
+    }
+
+    function startTimer() {
+      stopTimer();
+      if (!paused && !reduce.matches && !isHovered) {
+        autoTimer = setInterval(nextSlide, 5500);
+      }
+    }
+
+    function stopTimer() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        showSlide(idx);
+        startTimer();
+      });
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        startTimer();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        startTimer();
+      });
+    }
+
+    section.addEventListener('mouseenter', () => {
+      isHovered = true;
+      stopTimer();
+    });
+
+    section.addEventListener('mouseleave', () => {
+      isHovered = false;
+      startTimer();
+    });
+
+    // Soporte para gestos táctiles (swipe)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    section.addEventListener('touchstart', e => {
+      if (!e.changedTouches || !e.changedTouches[0]) return;
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      isHovered = true;
+      stopTimer();
+    }, { passive: true });
+
+    section.addEventListener('touchend', e => {
+      if (!e.changedTouches || !e.changedTouches[0]) return;
+      const touchEndX = e.changedTouches[0].screenX;
+      const touchEndY = e.changedTouches[0].screenY;
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX < 0) nextSlide();
+        else prevSlide();
+      }
+      isHovered = false;
+      startTimer();
+    }, { passive: true });
+
+    showSlide(0);
+    startTimer();
+
+    window.OrbitaGallery = {
+      next: nextSlide,
+      prev: prevSlide,
+      goTo: showSlide,
+      pause: stopTimer,
+      resume: startTimer
+    };
+  }
+
+  initImmersiveGallery();
 
   // Transiciones de navegación suaves entre páginas
   const transition = document.createElement('div');

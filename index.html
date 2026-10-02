@@ -7,9 +7,10 @@
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#081120">
   <meta name="description" content="Explora 10 plataformas de entretenimiento y productividad. Planes desde $3 al mes, combos de 2 por $5 y ChatGPT Plus $5 por 4 meses. Elige y consulta por WhatsApp.">
   <title>Tu mundo en otra órbita | Órbita Streaming</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/syne-700.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/experience.css"><link rel="stylesheet" href="css/portal-glass.css">
+  <link rel="stylesheet" href="css/experience.css"><link rel="stylesheet" href="css/portal-glass.css"><link rel="stylesheet" href="css/sections.css">
   <script src="js/portal.js" defer></script>
   <script src="js/data.js" defer></script>
   <script src="js/app.js" defer></script>
@@ -31,8 +32,8 @@
 
   <!-- ==================== INTRO GALÁCTICA ULTRA-OPTIMIZADA 60FPS ==================== -->
   <div class="intro cinematic-intro dismissed" id="intro" hidden role="dialog" aria-modal="true" aria-label="Viaje de entrada en órbita galáctica">
-    <div class="portal-tunnel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="portal-wordmark"><span class="portal-orbit" aria-hidden="true"></span><strong>órbita</strong><span>Tu próximo universo empieza aquí.</span></div>
+    <div class="portal-tunnel" aria-hidden="true"><div class="portal-lens"><svg viewBox="0 0 400 400"><defs><linearGradient id="portal-light"><stop stop-color="#e9fff7"/><stop offset=".45" stop-color="#71cdbc"/><stop offset="1" stop-color="#527e9c"/></linearGradient></defs><circle class="portal-track" cx="200" cy="200" r="182"/><circle class="portal-light" cx="200" cy="200" r="182"/><circle class="portal-inner" cx="200" cy="200" r="167"/></svg></div></div>
+    <div class="portal-wordmark"><span class="portal-orbit" aria-hidden="true"></span><strong>órbita<span class="portal-subtitle">STREAMING</span></strong><span>Tu próximo universo empieza aquí.</span></div>
     <button type="button" class="intro-skip button ghost" id="btn-skip-intro">Entrar ahora <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-right"/></svg></button>
 
   </div>
@@ -71,13 +72,7 @@
         </svg>
         <span class="logo-type">órbita<small>streaming</small></span>
       </a>
-      <nav class="nav" id="navigation" aria-label="Navegación principal">
-        <a href="index.html" aria-current="page" class="nav-link"><span class="nav-glow"></span>Inicio</a>
-        <a href="descubre.html" class="nav-link">Catálogo</a>
-        <a href="catalogo.html" class="nav-link">Plataformas</a>
-        <a href="combos.html" class="nav-link nav-link-combo"><span class="nav-badge-pill">2x$5</span>Planes</a>
-        <button class="nav-game" data-game><span class="nav-game-icon"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span> Arcade</button>
-      </nav>
+      <nav class="nav" id="navigation" aria-label="Navegación principal"><a href="index.html" class="nav-link" aria-current="page">Inicio</a><a href="catalogo.html" class="nav-link">Plataformas</a><a href="combos.html" class="nav-link">Combos</a><a href="descubre.html" class="nav-link">Descubre</a><button class="nav-game" data-game><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg> Arcade</button></nav>
       <div class="header-actions">
         <button class="motion-toggle icon-button" aria-label="Pausar efectos" title="Pausar efectos"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#pause"/></svg></button>
         <a class="button small contact" href="https://wa.me/593998226756" target="_blank" rel="noopener">Contacto <span aria-hidden="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></span></a>
@@ -87,10 +82,9 @@
   </header>
 
   <main id="main">
-    <!-- ==================== HERO CINEMÁTICO 3D MULTICAPA (REFERENCIA EDITORIAL) ==================== -->
-    <section class="hero-cinematic" id="hero-cinematic" aria-label="Órbita Streaming - Portada principal">
+<section class="hero-cinematic" id="hero-cinematic" aria-label="Órbita Streaming - Portada principal">
       <div class="hero-stage">
-        
+
         <!-- CAPA 1: Fondo cósmico profundo y nebulosas etéreas -->
         <div class="hero-layer hero-layer-bg" aria-hidden="true">
           <div class="hero-cosmic-vignette"></div>
@@ -113,12 +107,12 @@
           <div class="hero-brand-lockup">
             <div class="hero-brand-aura" aria-hidden="true"></div>
             <h1 class="hero-giant-orbita">
-              <span class="sr-only">Órbita Streaming - </span>
+              <span class="sr-only">Órbita Streaming</span>
               <span class="orbita-text-glint" aria-hidden="true"></span>
-              <span class="hero-title-ink">ÓRBITA</span>
+              <span class="hero-title-ink" aria-hidden="true"><span class="letter-window"><span class="letter-ink" style="--letter:0">Ó</span></span><span class="letter-window"><span class="letter-ink" style="--letter:1">R</span></span><span class="letter-window"><span class="letter-ink" style="--letter:2">B</span></span><span class="letter-window"><span class="letter-ink" style="--letter:3">I</span></span><span class="letter-window"><span class="letter-ink" style="--letter:4">T</span></span><span class="letter-window"><span class="letter-ink" style="--letter:5">A</span></span></span>
             </h1>
             <div class="hero-streaming-wrap">
-              <span class="hero-giant-streaming">STREAMING</span>
+              <span class="hero-giant-streaming" aria-hidden="true"><span class="letter-window"><span class="letter-ink" style="--letter:0">S</span></span><span class="letter-window"><span class="letter-ink" style="--letter:1">T</span></span><span class="letter-window"><span class="letter-ink" style="--letter:2">R</span></span><span class="letter-window"><span class="letter-ink" style="--letter:3">E</span></span><span class="letter-window"><span class="letter-ink" style="--letter:4">A</span></span><span class="letter-window"><span class="letter-ink" style="--letter:5">M</span></span><span class="letter-window"><span class="letter-ink" style="--letter:6">I</span></span><span class="letter-window"><span class="letter-ink" style="--letter:7">N</span></span><span class="letter-window"><span class="letter-ink" style="--letter:8">G</span></span></span>
               <div class="hero-streaming-glow-line" aria-hidden="true"></div>
             </div>
           </div>
@@ -126,7 +120,7 @@
 
         <!-- CAPA 5: Elementos editoriales y de interacción de alta gama -->
         <div class="hero-layer hero-layer-ui">
-          
+
           <!-- Elemento editorial izquierdo: badge temático, frase minimalista y CTA principal -->
           <div class="hero-editorial hero-editorial-left">
             <div class="hero-tag-pill">
@@ -205,7 +199,7 @@
       </div>
     </section>
 
-    <div class="brand-strip">
+<div class="brand-strip">
       <div class="container">
         <a href="catalogo.html?plataforma=netflix" aria-label="Ver Netflix"><img src="assets/icons/netflix.svg" alt="Netflix" width="100" height="38"></a>
         <a href="catalogo.html?plataforma=disneyplus" aria-label="Ver Disney+"><img src="assets/icons/disneyplus.svg" alt="Disney+" width="100" height="38"></a>
@@ -220,11 +214,94 @@
       </div>
     </div>
 
-    <!-- ==================== DESCUBRE: HISTORIAS EN CARRUSEL DINÁMICO ==================== -->
-    <section class="section cinema-section" id="descubre">
+
+
+<nav class="section-navigation container" aria-label="Explorar esta página"><span>Encuentra tu órbita</span><a href="#plataformas">Plataformas</a><a href="#planes">Combos</a><a href="#como-funciona">Cómo funciona</a><a href="#descubre">Qué ver</a></nav>
+
+<section class="container section platform-section" id="plataformas" aria-labelledby="platform-heading">
+      <div class="section-head">
+        <div>
+          <h2 id="platform-heading">Un plan para cada versión de ti.</h2><p class="section-intro">Cine, música y herramientas. Elige una plataforma o combina tus favoritas.</p>
+        </div>
+        <a class="text-link" href="catalogo.html">Ver las 10 plataformas <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
+      </div>
+      <div class="platform-grid">
+        <article class="platform-card" data-category="cinema" data-name="netflix">
+          <div class="platform-top">
+            <img src="assets/icons/netflix.svg" alt="Netflix" width="90" height="40" loading="lazy">
+            <span class="tag">Cine y series</span>
+          </div>
+          <h3>Netflix</h3>
+          <p>Ultra HD 4K • Perfil Privado con PIN</p>
+          <div class="platform-bottom">
+            <span class="price">$3<small> / mes</small></span>
+            <button class="round-button" data-detail="netflix" aria-label="Ver planes de Netflix"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
+          </div>
+        </article>
+        <article class="platform-card" data-category="cinema" data-name="disney+">
+          <div class="platform-top">
+            <img src="assets/icons/disneyplus.svg" alt="Disney+" width="90" height="40" loading="lazy">
+            <span class="tag">Cine y series</span>
+          </div>
+          <h3>Disney+</h3>
+          <p>Disney, Pixar, Marvel, Star Wars & ESPN</p>
+          <div class="platform-bottom">
+            <span class="price">$3<small> / mes</small></span>
+            <button class="round-button" data-detail="disneyplus" aria-label="Ver planes de Disney+"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
+          </div>
+        </article>
+        <article class="platform-card" data-category="music" data-name="spotify">
+          <div class="platform-top">
+            <img src="assets/icons/spotify.svg" alt="Spotify" width="90" height="40" loading="lazy">
+            <span class="tag">Música</span>
+          </div>
+          <h3>Spotify</h3>
+          <p>Más de 100M de canciones sin anuncios</p>
+          <div class="platform-bottom">
+            <span class="price">$3<small> / mes</small></span>
+            <button class="round-button" data-detail="spotify" aria-label="Ver planes de Spotify"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+<section class="combo-banner container" id="planes" aria-label="Combina tus plataformas">
+      <div>
+
+        <h2>Dos plataformas.<br>Una buena decisión.</h2>
+        <p>Elige tus favoritas por $5 al mes.<br>Combina dos de video y suma Spotify de regalo.</p>
+        <a class="button dark combo-cta-btn" href="combos.html">Armar mi combo <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
+      </div>
+      <div class="combo-visual" aria-hidden="true">
+        <div class="combo-orbit"></div>
+        <div class="floating-logo one"><img src="assets/icons/netflix.svg" alt=""></div>
+        <div class="floating-logo two"><img src="assets/icons/disneyplus.svg" alt=""></div>
+        <div class="floating-logo three"><img src="assets/icons/spotify.svg" alt=""></div>
+        <div class="big-price">$5<span>/ mes</span></div>
+      </div>
+    </section>
+
+<section class="container activation-section" id="como-funciona" aria-labelledby="activation-title"><div class="section-head"><div><h2 id="activation-title">De elegir a disfrutar.</h2><p class="section-intro">Tu pedido, en tres pasos.</p></div><a class="text-link" href="combos.html">Elegir mis plataformas</a></div><div class="steps">
+      <div>
+        <span>01</span>
+        <h3>Elige lo que te gusta</h3>
+        <p>Una plataforma o un combo a tu medida.</p>
+      </div>
+      <div>
+        <span>02</span>
+        <h3>Hablemos por WhatsApp</h3>
+        <p>Confirma tu selección y la forma de pago.</p>
+      </div>
+      <div>
+        <span>03</span>
+        <h3>Entra en tu órbita</h3>
+        <p>Recibe los pasos de activación y disfruta.</p>
+      </div>
+    </div></section>
+
+<section class="section cinema-section" id="descubre">
       <div class="container section-head">
         <div>
-          <span class="eyebrow">Fuera de lo cotidiano</span>
           <h2>Una historia.<br>Mil formas de viajar.</h2>
         </div>
         <p class="muted">Explora la selección. Desliza de lado a lado<br>o pregúntale a Orbit dónde ver tu película favorita.</p>
@@ -252,7 +329,7 @@
       </div>
     </section>
 
-    <section class="immersive-feature" id="immersive-feature" aria-label="Historias destacadas en cine y series">
+<section class="immersive-feature" id="immersive-feature" aria-label="Historias destacadas en cine y series">
       <div class="feature-slides" id="feature-slides">
         <div class="feature-slide active" style="background-image: url('assets/backdrops/dune.jpg');" data-title="Dune: Prophecy" data-platform="Max" data-genre="Ciencia Ficción"></div>
         <div class="feature-slide" style="background-image: url('assets/backdrops/lastofus.jpg');" data-title="The Last of Us" data-platform="Max" data-genre="Aventura Postapocalíptica"></div>
@@ -302,105 +379,21 @@
       </div>
     </section>
 
-    <section class="combo-banner container">
-      <div>
-        <span class="pill">Más entretenimiento, mejor juntos</span>
-        <h2>Dos plataformas.<br>Una buena decisión.</h2>
-        <p>Elige tus favoritas por $5 al mes.<br>Combina dos de video y suma Spotify de regalo.</p>
-        <a class="button dark combo-cta-btn" href="combos.html">Armar mi combo <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
-      </div>
-      <div class="combo-visual" aria-hidden="true">
-        <div class="combo-orbit"></div>
-        <div class="floating-logo one"><img src="assets/icons/netflix.svg" alt=""></div>
-        <div class="floating-logo two"><img src="assets/icons/disneyplus.svg" alt=""></div>
-        <div class="floating-logo three"><img src="assets/icons/spotify.svg" alt=""></div>
-        <div class="big-price">$5<span>/ mes</span></div>
-      </div>
-    </section>
-
-    <section class="container section">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Elige tu destino</span>
-          <h2>Un plan para cada versión de ti.</h2>
-        </div>
-        <a class="text-link" href="catalogo.html">Ver las 10 plataformas <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
-      </div>
-      <div class="platform-grid">
-        <article class="platform-card" data-category="cinema" data-name="netflix">
-          <div class="platform-top">
-            <img src="assets/icons/netflix.svg" alt="Netflix" width="90" height="40" loading="lazy">
-            <span class="tag">Cine y series</span>
-          </div>
-          <h3>Netflix</h3>
-          <p>Ultra HD 4K • Perfil Privado con PIN</p>
-          <div class="platform-bottom">
-            <span class="price">$3<small> / mes</small></span>
-            <button class="round-button" data-detail="netflix" aria-label="Ver planes de Netflix"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
-          </div>
-        </article>
-        <article class="platform-card" data-category="cinema" data-name="disney+">
-          <div class="platform-top">
-            <img src="assets/icons/disneyplus.svg" alt="Disney+" width="90" height="40" loading="lazy">
-            <span class="tag">Cine y series</span>
-          </div>
-          <h3>Disney+</h3>
-          <p>Disney, Pixar, Marvel, Star Wars & ESPN</p>
-          <div class="platform-bottom">
-            <span class="price">$3<small> / mes</small></span>
-            <button class="round-button" data-detail="disneyplus" aria-label="Ver planes de Disney+"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
-          </div>
-        </article>
-        <article class="platform-card" data-category="music" data-name="spotify">
-          <div class="platform-top">
-            <img src="assets/icons/spotify.svg" alt="Spotify" width="90" height="40" loading="lazy">
-            <span class="tag">Música</span>
-          </div>
-          <h3>Spotify</h3>
-          <p>Más de 100M de canciones sin anuncios</p>
-          <div class="platform-bottom">
-            <span class="price">$3<small> / mes</small></span>
-            <button class="round-button" data-detail="spotify" aria-label="Ver planes de Spotify"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="container arcade-promo">
+<section class="container arcade-promo">
       <div class="arcade-art" aria-hidden="true">
         <div class="arcade-planet"></div>
         <span class="arcade-ship">➤</span>
         <i></i><i></i>
       </div>
       <div>
-        <span class="eyebrow">Una órbita más</span>
         <h2>También viniste<br>a jugar.</h2>
         <p>Enciende motores. Esquiva portales.<br>Conquista seis sectores en Flappy Space.</p>
         <button class="button" data-game>Iniciar misión <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
       </div>
     </section>
 
-    <section class="steps container">
+<section class="container faq section" id="faq">
       <div>
-        <span>01</span>
-        <h3>Elige lo que te gusta</h3>
-        <p>Una plataforma o un combo a tu medida.</p>
-      </div>
-      <div>
-        <span>02</span>
-        <h3>Hablemos por WhatsApp</h3>
-        <p>Confirma tu selección y la forma de pago.</p>
-      </div>
-      <div>
-        <span>03</span>
-        <h3>Entra en tu órbita</h3>
-        <p>Recibe los pasos de activación y disfruta.</p>
-      </div>
-    </section>
-
-    <section class="container faq section" id="faq">
-      <div>
-        <span class="eyebrow">Antes de despegar</span>
         <h2>Todo claro.<br>Desde el inicio.</h2>
         <p class="muted">Si te queda alguna duda, estamos a un mensaje.</p>
       </div>
@@ -496,7 +489,7 @@
       </div>
       <button type="button" class="btn-clear-chat icon-button" id="btn-clear-chat" title="Limpiar conversación" aria-label="Limpiar chat">↺</button>
     </div>
-    <label class="country-label">Buscar disponibilidad en 
+    <label class="country-label">Buscar disponibilidad en
       <select id="orbit-country">
         <option value="EC">Ecuador</option>
         <option value="CO">Colombia</option>

@@ -7,7 +7,8 @@
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#081120">
   <meta name="description" content="Descubre más de 70 películas, series y documentales disponibles en Órbita Streaming. Encuentra tus historias favoritas en Netflix, Max, Disney+, Prime Video y más.">
   <title>Descubre Películas y Series | Órbita Streaming</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/syne-700.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <style id="logo-critical">
   .logo-symbol{overflow:visible;filter:drop-shadow(0 0 6px rgba(167,234,216,0.45));}
   .logo-symbol circle:first-of-type{transform-box:fill-box;transform-origin:center;animation:logo-core-pulse 3.8s ease-in-out infinite}
@@ -18,7 +19,7 @@
   @keyframes logo-moon-orbit{0%{transform:rotate(0deg);opacity:1;filter:drop-shadow(0 0 4px #a7ead8)}25%{transform:rotate(90deg) scale(0.88);opacity:.85}50%{transform:rotate(180deg) scale(0.72);opacity:.45}75%{transform:rotate(270deg) scale(1.15);opacity:.95;filter:drop-shadow(0 0 6px #a7ead8)}100%{transform:rotate(360deg);opacity:1;filter:drop-shadow(0 0 4px #a7ead8)}}
   </style>
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/experience.css"><link rel="stylesheet" href="css/portal-glass.css">
+  <link rel="stylesheet" href="css/experience.css"><link rel="stylesheet" href="css/portal-glass.css"><link rel="stylesheet" href="css/sections.css">
   <script src="js/data.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/library.js" defer></script>
@@ -50,13 +51,7 @@
         <span class="logo-type">órbita<small>streaming</small></span>
       </a>
 
-      <nav class="nav" id="navigation" aria-label="Navegación principal">
-        <a href="index.html" class="nav-link">Inicio</a>
-        <a href="catalogo.html" class="nav-link">Plataformas</a>
-        <a href="combos.html" class="nav-link nav-link-combo"><span class="nav-badge-pill">2x$5</span>Arma tu combo</a>
-        <a href="descubre.html" aria-current="page" class="nav-link">Descubre</a>
-        <button class="nav-game" data-game><span class="nav-game-icon"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span> Arcade</button>
-      </nav>
+      <nav class="nav" id="navigation" aria-label="Navegación principal"><a href="index.html" class="nav-link">Inicio</a><a href="catalogo.html" class="nav-link">Plataformas</a><a href="combos.html" class="nav-link">Combos</a><a href="descubre.html" class="nav-link" aria-current="page">Descubre</a><button class="nav-game" data-game><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg> Arcade</button></nav>
 
       <div class="header-actions">
         <button class="motion-toggle icon-button" aria-label="Pausar efectos" title="Pausar efectos"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#pause"/></svg></button>

@@ -636,18 +636,6 @@
 
   $$('.platform-card').forEach(tilt);
 
-  const observer = new IntersectionObserver(entries => entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('is-visible');
-      observer.unobserve(e.target);
-    }
-  }), { threshold: .08 });
-
-  $$('.section-head,.combo-banner,.arcade-promo,.steps,.faq,.page-heading').forEach(e => {
-    e.classList.add('reveal-ready');
-    observer.observe(e);
-  });
-
   // Selector de temas (Aurora, Atardecer, Océano)
   const palette = {
     aurora: ['#a7ead8', '#c7dbe9'],

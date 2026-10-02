@@ -25,16 +25,28 @@
     if (immediate || reduce.matches) return finish();
     if (intro.classList.contains('leaving')) return;
     intro.classList.add('leaving');
-    document.body.classList.add('arrival');
+    // Start the letter reveal only after the opaque portal has cleared.
     hideTimer = setTimeout(finish, 650);
   }
-  function play() {
+  function play({automatic = false} = {}) {
+    if (automatic) {
+      let seen = false;
+      try { seen = sessionStorage.getItem('orbita-intro-seen') === '1'; } catch {}
+      if (seen || window.location?.hash) {
+        root.classList.add('returning-visit');
+        finish();
+        return;
+      }
+    }
+    root.classList.remove('returning-visit');
     let paused = root.classList.contains('motion-paused');
     try { paused ||= localStorage.getItem('orbita-motion') === 'paused'; } catch {}
     if (reduce.matches || paused) { finish(); return; }
     if (active) finish();
     previous = document.activeElement;
+    window.scrollTo?.({top:0, behavior:"instant"});
     active = true;
+    try { sessionStorage.setItem('orbita-intro-seen', '1'); } catch {}
     intro.hidden = false;
     intro.className = 'intro cinematic-intro portal-active';
     document.body.classList.remove('arrival');
@@ -60,5 +72,5 @@
   window.addEventListener('pagehide', finish);
   window.addEventListener('pageshow', event => { if (event.persisted) finish(); });
   reduce.addEventListener('change', () => { if (reduce.matches) close(true); });
-  play();
+  play({automatic:true});
 })();

@@ -28,3 +28,14 @@
 - Impeccable: https://github.com/pbakaus/impeccable (instalado en el entorno de Codex).
 - Lucide: https://github.com/lucide-icons/lucide (iconos y licencia descargados).
 - Se conservan las tipografías, imágenes y bibliotecas locales existentes.
+
+## Segunda revisión: transiciones y estructura
+- Letras con máscaras individuales, tiempos cortos y sin estiramiento o desenfoque de texto.
+- Apertura con anillo luminoso SVG y expansión hacia el planeta; el título comienza cuando termina la capa de introducción.
+- Intro automática una vez por sesión; repetición manual disponible. Las visitas repetidas también omiten la coreografía de entrada del hero.
+- Reordenadas las secciones para priorizar plataformas, combo y contratación; añadidos enlaces internos y encabezado de proceso.
+- Sistema de cristal común para filtros, tarjetas, paneles, preguntas frecuentes y diálogos; fondos de lectura reforzados y alternativas ligeras en móvil.
+- Navegación consistente en las cuatro páginas; corregidos textos secundarios oscuros y enlaces demasiado estrechos en móvil.
+- Eliminada la dependencia de revelaciones al hacer scroll para leer las secciones.
+- 8 pruebas del controlador aprobadas, incluida sesión repetida y almacenamiento bloqueado. Referencias locales comprobadas sin archivos faltantes.
+- Guías adicionales instaladas: Vercel Web Design Guidelines y Anthropic Frontend Design.

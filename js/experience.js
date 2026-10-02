@@ -868,22 +868,29 @@
     document.body.classList.add('arrival');
   }
 
+  function unlockPage() {
+    root.classList.remove('intro-pending');
+    document.documentElement.classList.remove('intro-pending');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    lock(false);
+    arrived();
+  }
+
   function closeIntro() {
     clearTimeout(introTimer);
     cancelAnimationFrame(introFrame);
     if (window.OrbitaBoot) {
       clearTimeout(window.OrbitaBoot.timer);
       window.OrbitaBoot.pending = false;
+      window.OrbitaBoot.skipped = true;
     }
-    root.classList.remove('intro-pending');
-    if (!intro || intro.hidden) {
-      arrived();
-      return;
-    }
+    unlockPage();
+
+    if (!intro) return;
 
     intro.classList.add('leaving');
-    lock(false);
-    document.body.style.overflow = '';
+    intro.style.pointerEvents = 'none';
 
     if (intro.contains(document.activeElement)) {
       document.activeElement.blur();
@@ -895,13 +902,23 @@
     const copy = $('.intro-copy');
     if (copy) copy.style.transform = 'none';
 
-    arrived();
     clearTimeout(restoreTimer);
     restoreTimer = setTimeout(() => {
+      intro.classList.add('dismissed');
       intro.hidden = true;
+      intro.style.setProperty('display', 'none', 'important');
+      intro.style.setProperty('visibility', 'hidden', 'important');
+      intro.style.setProperty('pointer-events', 'none', 'important');
+      intro.style.setProperty('opacity', '0', 'important');
       intro.classList.remove('leaving');
       intro.classList.remove('turbo-warp');
-    }, 550);
+      unlockPage();
+    }, 450);
+  }
+
+  window.closeOrbitaIntro = closeIntro;
+  if (window.OrbitaBoot) {
+    window.OrbitaBoot.dismiss = closeIntro;
   }
 
   // Interacción de dirección (steering) en la intro para PC y móvil con centrado perfecto
@@ -1011,7 +1028,7 @@
     ctx.fillRect(0, 0, w, h);
 
     const elapsed = (t - flightStart) / 1000;
-    simulatedProgress += (warpSpeed > 2 ? 0.016 : 0.0055);
+    simulatedProgress += (warpSpeed > 2 ? 0.024 : 0.0085);
 
     // Actualizar medidor HUD cósmico
     const hudBar = $('#intro-hud-bar');
@@ -1106,9 +1123,15 @@
     clearTimeout(introTimer);
 
     previous = document.activeElement;
-    intro.hidden = false;
+    intro.classList.remove('dismissed');
     intro.classList.remove('leaving');
     intro.classList.remove('turbo-warp');
+    intro.hidden = false;
+    intro.style.display = 'grid';
+    intro.style.removeProperty('display');
+    intro.style.removeProperty('visibility');
+    intro.style.removeProperty('pointer-events');
+    intro.style.removeProperty('opacity');
     document.body.classList.remove('arrival');
     intro.setAttribute('role', 'dialog');
     intro.setAttribute('aria-modal', 'true');
@@ -1139,10 +1162,11 @@
 
     flightStart = performance.now();
     introFrame = requestAnimationFrame(warpFrame);
-    introTimer = setTimeout(closeIntro, 3200);
+    introTimer = setTimeout(closeIntro, 2500);
   }
 
   $('.intro-skip')?.addEventListener('click', closeIntro);
+  $('.intro-emblem')?.addEventListener('click', closeIntro);
 
   $$('[data-replay]').forEach(b => b.onclick = () => {
     paused = false;

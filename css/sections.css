@@ -88,7 +88,7 @@ dialog .close { top:16px; right:16px; }
 .theme-dots { display:flex; gap:6px; }.theme-dots button { width:20px; height:20px; min-width:20px; padding:0; border-radius:50%; border:3px solid #0c1b29; outline:1px solid transparent; }
 .theme-dots button[data-theme=aurora] { background:#a7ead8; }.theme-dots button[data-theme=sunset] { background:#ffc5a0; }.theme-dots button[data-theme=ocean] { background:#a9d8fc; }.theme-dots button[aria-pressed=true] { outline-color:#e7fff7; }
 .nav-game { display:inline-flex; align-items:center; gap:7px; }
-.returning-visit .letter-ink,.returning-visit .hero-planet-anchor,.returning-visit .hero-editorial-left,.returning-visit .hero-editorial-right,.returning-visit .hero-bottom-bar { animation:none!important; opacity:1; transform:none; }
+.returning-visit .hero-giant-orbita,.returning-visit .hero-giant-streaming,.returning-visit .hero-editorial-left,.returning-visit .hero-editorial-right,.returning-visit .hero-bottom-bar { animation:none!important; opacity:1; transform:none; }
 @media(hover:hover) and (pointer:fine) {
  .platform-card:hover,.pick-card:hover,.presets button:hover { background-color:rgba(26,49,61,.94); border-color:#c6f4e652; }
  .brand-strip a:hover img { opacity:1; }

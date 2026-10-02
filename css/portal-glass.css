@@ -117,15 +117,13 @@ html.motion-paused .hero-brand-lockup,html.motion-paused .hero-giant-orbita,html
   100% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 6px #38bdf8); }
 }
 
-/* Subtle staggered arrival for letter spans */
-.letter-window{display:inline-block;overflow:clip;vertical-align:top;padding-top:.09em;margin-top:-.09em}
-.letter-ink{display:inline-block;transform-origin:50% 100%}
-.arrival .hero-title-ink .letter-ink{animation:letter-arrive 820ms cubic-bezier(.16,1,.3,1) calc(60ms + var(--letter)*32ms) both}
-.arrival .hero-giant-streaming .letter-ink{animation:letter-arrive 740ms cubic-bezier(.16,1,.3,1) calc(270ms + var(--letter)*22ms) both}
+/* Hero entrance transitions */
+.arrival .hero-giant-orbita{animation:heroTitleArrive 900ms cubic-bezier(.16,1,.3,1) 120ms both}
+.arrival .hero-giant-streaming{animation:heroTitleArrive 900ms cubic-bezier(.16,1,.3,1) 240ms both}
 .arrival .hero-editorial-left,.arrival .hero-editorial-right{animation:interface-settle 500ms ease-out 680ms both}
 .arrival .hero-bottom-bar{animation:interface-settle 500ms ease-out 790ms both}
 
-@keyframes letter-arrive{from{transform:translate3d(0,102%,0);opacity:.15}to{transform:translate3d(0,0,0);opacity:1}}
+@keyframes heroTitleArrive{from{transform:translateY(22px);opacity:0}to{transform:translateY(0);opacity:1}}
 @keyframes interface-settle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
 @media(min-width:769px) and (max-width:1100px){
@@ -151,11 +149,9 @@ html.motion-paused .hero-brand-lockup,html.motion-paused .hero-giant-orbita,html
   .hero-scroll-indicator,.hero-bottom-actions,.hero-editorial-right{display:none}
 }
 
-html.motion-paused .letter-ink{animation:none!important;transform:none;opacity:1}
 @media(prefers-reduced-motion:reduce){
   .hero-space-backdrop,.hero-nebula-aurora,.hero-title-ink,.hero-giant-streaming,.hero-streaming-glow-line{animation:none!important}
-  .letter-ink{animation:none!important;transform:none;opacity:1}
 }
 @media(max-width:768px){.portal-lens{width:min(88vw,380px)}.portal-wordmark{gap:18px}.portal-wordmark>span:last-child{font-size:11px}.portal-subtitle{font-size:10px}}
-html.intro-pending .hero-title-ink .letter-ink,html.intro-pending .hero-giant-streaming .letter-ink{transform:translate3d(0,102%,0);opacity:0}
+html.intro-pending .hero-giant-orbita,html.intro-pending .hero-giant-streaming{opacity:0;transform:translateY(22px)}
 html.intro-pending .hero-editorial-left,html.intro-pending .hero-editorial-right,html.intro-pending .hero-bottom-bar{opacity:0}

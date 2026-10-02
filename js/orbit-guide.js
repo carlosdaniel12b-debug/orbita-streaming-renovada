@@ -140,7 +140,7 @@
 
     const note = document.createElement('small');
     note.className = 'readout';
-    note.textContent = (c.monthly ? '$' + c.monthly.toFixed(2) + ' USD/mes' : '') + (c.annual ? (c.monthly ? ' + ' : '') + '$4 USD/año por Canva' : '') + (c.bonus ? ' · Spotify de regalo por 1 mes' : '');
+    note.textContent = (c.monthly ? '$' + c.monthly.toFixed(2) + ' USD/mes' : '') + (c.annual ? (c.monthly ? ' + ' : '') + '$4 USD/año por Canva' : '') + (c.chatgpt ? (c.monthly || c.annual ? ' + ' : '') + '$5 USD / 4 meses por ChatGPT Plus' : '') + (c.bonus ? ' · Spotify de regalo por 1 mes' : '');
     el.append(note);
   }
 
@@ -199,7 +199,8 @@
     paramount: ['paramount'],
     spotify: ['spotify'],
     vix: ['vix'],
-    canva: ['canva']
+    canva: ['canva'],
+    chatgpt: ['chatgpt', 'chat gpt', 'openai', 'gpt', 'gpt4', 'gpt 4', 'ia']
   };
 
   function detectPlatforms(q) {
@@ -354,6 +355,13 @@
     if (/musica|podcast|cancion/.test(q)) {
       await appendBotStream('Spotify es la opción perfecta: música sin anuncios y podcasts por $3 USD/mes. Recuerda que al pedir 2 de video, ¡te lo llevas de regalo por un mes!', el => {
         combo(el, ['spotify']);
+      });
+      return;
+    }
+
+    if (/chatgpt|chat gpt|inteligencia artificial|openai|gpt/.test(q)) {
+      await appendBotStream('¡Tenemos ChatGPT Plus disponible! Acceso completo con GPT-4o, análisis avanzado de datos, navegación y DALL-E en tarifa especial de $5 USD por 4 meses.', el => {
+        combo(el, ['chatgpt']);
       });
       return;
     }

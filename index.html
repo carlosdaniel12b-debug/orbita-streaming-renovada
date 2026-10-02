@@ -28,6 +28,8 @@
   <script src="js/app.js" defer></script>
   <script src="js/library.js" defer></script>
   <script src="assets/vendor/three.min.js" defer></script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/textures.js" defer></script>
   <script src="js/platform-colors.js" defer></script>
   <script src="js/experience.js" defer></script>
@@ -161,7 +163,7 @@
 
   <a class="skip" href="#main">Saltar al contenido</a>
 
-  <header class="header">
+  <header class="header" id="main-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Órbita Streaming, inicio">
         <svg class="logo-symbol" viewBox="0 0 70 60" aria-hidden="true">
@@ -173,65 +175,135 @@
       </a>
       <nav class="nav" id="navigation" aria-label="Navegación principal">
         <a href="index.html" aria-current="page" class="nav-link"><span class="nav-glow"></span>Inicio</a>
+        <a href="descubre.html" class="nav-link">Catálogo</a>
         <a href="catalogo.html" class="nav-link">Plataformas</a>
-        <a href="combos.html" class="nav-link nav-link-combo"><span class="nav-badge-pill">2x$5</span>Arma tu combo</a>
-        <a href="descubre.html" class="nav-link">Descubre</a>
+        <a href="combos.html" class="nav-link nav-link-combo"><span class="nav-badge-pill">2x$5</span>Planes</a>
         <button class="nav-game" data-game><span class="nav-game-icon">✦</span> Arcade</button>
       </nav>
       <div class="header-actions">
         <button class="motion-toggle icon-button" aria-label="Pausar efectos" title="Pausar efectos">◌</button>
-        <a class="button small contact" href="https://wa.me/593998226756" target="_blank" rel="noopener">Hablemos <span aria-hidden="true">↗</span></a>
+        <a class="button small contact" href="https://wa.me/593998226756" target="_blank" rel="noopener">Contacto <span aria-hidden="true">↗</span></a>
         <button class="menu-toggle icon-button" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú">☰</button>
       </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero cinematic-hero">
-      <div class="cosmos" aria-hidden="true">
-        <div class="nebula nebula-a"></div>
-        <div class="nebula nebula-b"></div>
-        <canvas id="planet-scene"></canvas>
-        <div class="planet-fallback"></div>
-      </div>
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <span class="pill"><span class="status-dot"></span> Dale play a otro universo</span>
-          <h1>
-            <span class="title-line">Hay mundos</span>
-            <span class="title-line">que merecen</span>
-            <span class="title-line">tu tiempo.</span>
-          </h1>
-          <p>Cine que se siente. Series que te atrapan.<br>Música que va contigo. Todo en tu órbita.</p>
-          <div class="hero-buttons">
-            <a class="button hero-btn-liquid-primary hero-btn-primary" href="descubre.html" id="hero-btn-explore">
-              <span class="btn-sparkle" aria-hidden="true">✦</span>
-              <span>Explorar Universo</span>
-              <span class="btn-arrow" aria-hidden="true">→</span>
-            </a>
-            <a class="button hero-btn-liquid-glass hero-btn-combo" href="combos.html" id="hero-btn-combos">
-              <span>Planes & Combos</span>
-              <span class="hero-liquid-tag hero-combo-pill">Dúo $5 / mes</span>
-            </a>
-          </div>
-          <div class="hero-meta">
-            <span><strong>10</strong> plataformas</span>
-            <span>Desde <strong>$3</strong> / mes</span>
+    <!-- ==================== HERO CINEMÁTICO 3D MULTICAPA (REFERENCIA EDITORIAL) ==================== -->
+    <section class="hero-cinematic" id="hero-cinematic" aria-label="Órbita Streaming - Portada principal">
+      <div class="hero-stage">
+        
+        <!-- CAPA 1: Fondo cósmico profundo y nebulosas etéreas -->
+        <div class="hero-layer hero-layer-bg" aria-hidden="true">
+          <div class="hero-cosmic-vignette"></div>
+          <div class="hero-cosmic-radial"></div>
+          <div class="hero-nebula-aurora"></div>
+          <div class="hero-stardust"></div>
+        </div>
+
+        <!-- CAPA 2: Texto trasero gigante ÓRBITA (Detrás del planeta / objeto central) -->
+        <div class="hero-layer hero-layer-backtext" aria-hidden="true">
+          <div class="hero-giant-wrap">
+            <h1 class="hero-giant-orbita"><span class="sr-only">Órbita Streaming - </span>ÓRBITA</h1>
           </div>
         </div>
-        <div class="planet-note">
-          <span class="orbit-dot"></span>
-          <span>Un mundo de historias<br><small>Explora. Conecta. Disfruta.</small></span>
+
+        <!-- CAPA 3: Objeto central protagonista (Planeta cósmico 3D Three.js con atmósfera física) -->
+        <div class="hero-layer hero-layer-object" aria-hidden="true">
+          <div class="hero-planet-anchor" id="hero-planet-anchor">
+            <canvas id="planet-scene" class="hero-planet-canvas"></canvas>
+            <div class="hero-planet-fallback"></div>
+            <div class="hero-planet-ambient-glow"></div>
+          </div>
         </div>
-      </div>
-      <div class="container hero-bottom">
-        <button class="text-button" data-replay>↻ Repetir el viaje</button>
-        <a href="#descubre">Sigue explorando ↓</a>
-        <div class="theme-dots" aria-label="Ambiente visual">
-          <button data-theme="aurora" aria-label="Ambiente aurora" aria-pressed="true"></button>
-          <button data-theme="sunset" aria-label="Ambiente atardecer" aria-pressed="false"></button>
-          <button data-theme="ocean" aria-label="Ambiente océano" aria-pressed="false"></button>
+
+        <!-- CAPA 4: Texto delantero STREAMING (Delante del objeto central en primer plano) -->
+        <div class="hero-layer hero-layer-fronttext" aria-hidden="true">
+          <div class="hero-giant-wrap">
+            <span class="hero-giant-streaming">STREAMING</span>
+          </div>
         </div>
+
+        <!-- CAPA 5: Elementos editoriales y de interacción de alta gama -->
+        <div class="hero-layer hero-layer-ui">
+          
+          <!-- Elemento editorial izquierdo: badge temático y frase minimalista -->
+          <div class="hero-editorial hero-editorial-left">
+            <div class="hero-tag-pill">
+              <span class="pill-dot"></span>
+              <span>CINE · SERIES · MÚSICA</span>
+            </div>
+            <p class="hero-tagline">Todo tu entretenimiento en una sola órbita.</p>
+          </div>
+
+          <!-- Elemento editorial derecho: estándar de transmisión -->
+          <div class="hero-editorial hero-editorial-right">
+            <div class="hero-quality-badge">
+              <span class="quality-glint">✦</span>
+              <span>CALIDAD 4K HDR</span>
+            </div>
+            <p class="hero-description">10 plataformas líderes unificadas con activación inmediata y soporte VIP.</p>
+          </div>
+
+          <!-- Botón de acción principal: CTA minimalista tipo píldora moderna -->
+          <div class="hero-cta-container">
+            <a href="catalogo.html" class="hero-cta-pill" id="hero-main-cta">
+              <span class="cta-label">Explorar catálogo</span>
+              <span class="cta-arrow-circle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </a>
+            <a href="combos.html" class="hero-secondary-link">Armar combo 2x$5 ↗</a>
+          </div>
+
+          <!-- Barra inferior: métricas discretas, control de tema e indicador de scroll del video -->
+          <div class="hero-bottom-bar">
+            <div class="hero-stats-group">
+              <div class="stat-pill">
+                <strong class="stat-val">+10</strong>
+                <span class="stat-lbl">Plataformas</span>
+              </div>
+              <div class="stat-sep" aria-hidden="true"></div>
+              <div class="stat-pill">
+                <strong class="stat-val">$3</strong>
+                <span class="stat-lbl">Desde / mes</span>
+              </div>
+              <div class="stat-sep" aria-hidden="true"></div>
+              <div class="stat-pill">
+                <strong class="stat-val">2x$5</strong>
+                <span class="stat-lbl">Combos activos</span>
+              </div>
+              <div class="stat-sep" aria-hidden="true"></div>
+              <div class="stat-pill">
+                <strong class="stat-val">4K</strong>
+                <span class="stat-lbl">Películas y series</span>
+              </div>
+            </div>
+
+            <!-- Indicador minimalista de ratón y scroll animado -->
+            <div class="hero-scroll-indicator" aria-hidden="true">
+              <div class="scroll-pill-mouse">
+                <span class="scroll-pill-wheel"></span>
+              </div>
+              <span class="scroll-pill-text">Desliza para explorar</span>
+            </div>
+
+            <!-- Acciones secundarias discretas (Replay intro y temas) -->
+            <div class="hero-bottom-actions">
+              <button class="text-button hero-replay-btn" data-replay title="Volver a ver la intro cósmica">↻ Intro</button>
+              <div class="theme-dots" aria-label="Ambiente visual">
+                <button data-theme="aurora" aria-label="Ambiente aurora" aria-pressed="true"></button>
+                <button data-theme="sunset" aria-label="Ambiente atardecer" aria-pressed="false"></button>
+                <button data-theme="ocean" aria-label="Ambiente océano" aria-pressed="false"></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
 

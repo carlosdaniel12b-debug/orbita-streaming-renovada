@@ -683,7 +683,7 @@
       renderer.outputEncoding = T.sRGBEncoding;
       scene = new T.Scene();
       camera = new T.PerspectiveCamera(38, 1, .1, 100);
-      camera.position.set(0, 0, 8);
+      camera.position.set(0, 0, 6.8);
 
       const loader = new T.TextureLoader();
       const map = loader.load(window.EARTH_TEXTURE || 'assets/earth.jpg');
@@ -733,8 +733,8 @@
 
       function size() {
         const r = canvas.getBoundingClientRect();
-        const w = Math.max(r.width || canvas.clientWidth || 0, 360);
-        const h = Math.max(r.height || canvas.clientHeight || 0, 360);
+        const w = Math.max(r.width || canvas.clientWidth || 0, 320);
+        const h = Math.max(r.height || canvas.clientHeight || 0, 320);
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
@@ -755,9 +755,10 @@
         renderer = null;
       });
 
-      document.querySelector('.hero')?.addEventListener('pointermove', e => {
-        targetX = (e.clientX / innerWidth - .5) * .25;
-        targetY = (e.clientY / innerHeight - .5) * .12;
+      const heroElem = document.getElementById('hero-cinematic') || document.querySelector('.hero');
+      heroElem?.addEventListener('pointermove', e => {
+        targetX = (e.clientX / innerWidth - .5) * .35;
+        targetY = (e.clientY / innerHeight - .5) * .22;
       });
     } catch (e) {
       root.classList.remove('webgl-ready');
@@ -775,7 +776,7 @@
     time = t;
 
     // Renderizado Three.js del planeta cósmico (optimizado para no sobrecargar GPU en móvil)
-    const maxScroll = window.innerWidth < 768 ? 700 : 1200;
+    const maxScroll = window.innerWidth < 768 ? 700 : 1400;
     const isAnyDialogOpen = Boolean(document.querySelector('dialog[open]'));
     const shouldRenderGlobe = !isAnyDialogOpen && renderer && inView && (window.scrollY < maxScroll);
     if (shouldRenderGlobe) {
@@ -786,6 +787,13 @@
         stars.rotation.y += delta * .003;
         camera.position.x += (targetX - camera.position.x) * .035;
         camera.position.y += (targetY - camera.position.y) * .035;
+
+        // Scroll zoom y rotación 3D del planeta sincronizados con el scroll
+        const scrollFactor = Math.min(1.2, Math.max(0, window.scrollY / (window.innerHeight || 800)));
+        const targetZ = 6.8 - scrollFactor * 1.6;
+        camera.position.z += (targetZ - camera.position.z) * 0.08;
+        globe.rotation.x = 0.06 + scrollFactor * 0.12;
+        globe.rotation.z = 0.15 - scrollFactor * 0.08;
         camera.lookAt(0, 0, 0);
       }
       // Los anillos del planeta reaccionan al color de la plataforma activa
@@ -812,6 +820,216 @@
     }
   }
   requestAnimationFrame(loop);
+
+  // ==========================================================================
+  // HERO CINEMÁTICO EDITORIAL 3D: GSAP SCROLLTRIGGER SCRUB + PARALLAX MULTIPLANO
+  // ==========================================================================
+  function initHeroCinematic() {
+    const hero = document.getElementById('hero-cinematic');
+    if (!hero) return;
+
+    const orbita = hero.querySelector('.hero-giant-orbita');
+    const planetAnchor = document.getElementById('hero-planet-anchor');
+    const streaming = hero.querySelector('.hero-giant-streaming');
+    const heroBg = hero.querySelector('.hero-layer-bg');
+    const heroUi = hero.querySelector('.hero-layer-ui');
+    const header = document.getElementById('main-header') || document.querySelector('.header');
+
+    // 1. Control de navbar: transparente en hero, translúcida con blur al hacer scroll
+    const updateHeader = () => {
+      if (header) {
+        header.classList.toggle('scrolled', window.scrollY > 35);
+      }
+    };
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+
+    // 2. Micro-interacción de cursor en escritorio (movimiento elástico sin competir con GSAP)
+    if (window.innerWidth >= 992 && !reduce.matches) {
+      const layerBack = hero.querySelector('.hero-layer-backtext');
+      const layerFront = hero.querySelector('.hero-layer-fronttext');
+      const ctaPill = hero.querySelector('#hero-main-cta');
+
+      let mTargetX = 0, mTargetY = 0;
+      let mCurX = 0, mCurY = 0;
+
+      hero.addEventListener('pointermove', e => {
+        mTargetX = (e.clientX / window.innerWidth) - 0.5;
+        mTargetY = (e.clientY / window.innerHeight) - 0.5;
+      }, { passive: true });
+
+      hero.addEventListener('pointerleave', () => {
+        mTargetX = 0;
+        mTargetY = 0;
+      });
+
+      const applyMouseFloat = () => {
+        if (!paused && !reduce.matches) {
+          mCurX += (mTargetX - mCurX) * 0.05;
+          mCurY += (mTargetY - mCurY) * 0.05;
+
+          if (layerBack) {
+            layerBack.style.transform = `translate3d(${mCurX * -18}px, ${mCurY * -10}px, 0)`;
+          }
+          if (layerFront) {
+            layerFront.style.transform = `translate3d(${mCurX * 22}px, ${mCurY * 14}px, 0)`;
+          }
+        }
+        requestAnimationFrame(applyMouseFloat);
+      };
+      requestAnimationFrame(applyMouseFloat);
+
+      // Micro-efecto magnético sutil en el botón CTA principal
+      if (ctaPill) {
+        ctaPill.addEventListener('mousemove', e => {
+          const rect = ctaPill.getBoundingClientRect();
+          const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.16;
+          const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.16;
+          ctaPill.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+        });
+        ctaPill.addEventListener('mouseleave', () => {
+          ctaPill.style.transform = '';
+        });
+      }
+    }
+
+    if (reduce.matches) return;
+
+    // 3. Animaciones GSAP vinculadas al scroll con scrub 1:1
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Pre-alineación inicial de transformaciones para garantizar centro óptico
+      if (planetAnchor) {
+        gsap.set(planetAnchor, { xPercent: -50, yPercent: -46 });
+      }
+      if (orbita) {
+        gsap.set(orbita, { yPercent: -16 });
+      }
+      if (streaming) {
+        gsap.set(streaming, { y: 135 });
+      }
+
+      // Animación de entrada inicial suave
+      const tlIntro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      tlIntro
+        .fromTo(planetAnchor, 
+          { scale: 0.84, opacity: 0, filter: 'blur(12px)' }, 
+          { scale: 1, opacity: 1, filter: 'blur(0px)', duration: 1.6, ease: 'power2.out' }
+        )
+        .fromTo(orbita, 
+          { yPercent: 4, scale: 0.94, opacity: 0 }, 
+          { yPercent: -16, scale: 1, opacity: 1, duration: 1.5 }, 
+          '-=1.2'
+        )
+        .fromTo(streaming, 
+          { y: 165, opacity: 0, scale: 0.92 }, 
+          { y: 135, opacity: 1, scale: 1, duration: 1.3 }, 
+          '-=1.0'
+        )
+        .fromTo(heroUi, 
+          { opacity: 0, y: 30 }, 
+          { opacity: 1, y: 0, duration: 1.2 }, 
+          '-=0.9'
+        );
+
+      // Scroll scrubbing con ScrollTrigger:
+      // En desktop (>= 1024px) utilizamos pin para reproducir la cadencia cinematográfica del video
+      const isDesktop = window.innerWidth >= 1024;
+
+      const tlScroll = gsap.timeline({
+        scrollTrigger: {
+          trigger: hero,
+          start: 'top top',
+          end: isDesktop ? '+=125%' : '+=75%',
+          scrub: 1.1,
+          pin: isDesktop,
+          anticipatePin: 1,
+          invalidateOnRefresh: true
+        }
+      });
+
+      // Paso 1: ÓRBITA se desplaza hacia arriba con parallax y escala, ocultándose detrás del planeta
+      if (orbita) {
+        tlScroll.to(orbita, {
+          yPercent: isDesktop ? -36 : -26,
+          scale: 1.08,
+          letterSpacing: '0.01em',
+          opacity: 0.55,
+          ease: 'none'
+        }, 0);
+      }
+
+      // Paso 2: El planeta central 3D realiza un zoom cinematográfico fluido hacia adelante
+      if (planetAnchor) {
+        tlScroll.to(planetAnchor, {
+          scale: isDesktop ? 1.34 : 1.18,
+          yPercent: isDesktop ? -40 : -42,
+          ease: 'none'
+        }, 0);
+      }
+
+      // Paso 3: STREAMING se expande visualmente y viaja en primer plano delante del planeta
+      if (streaming) {
+        tlScroll.to(streaming, {
+          y: isDesktop ? 100 : 115,
+          scale: 1.12,
+          letterSpacing: isDesktop ? '0.36em' : '0.22em',
+          opacity: 1,
+          ease: 'none'
+        }, 0);
+      }
+
+      // Paso 4: Fondo cósmico se mueve a menor velocidad (profundidad cósmica 3D)
+      if (heroBg) {
+        tlScroll.to(heroBg, {
+          scale: 1.12,
+          y: 45,
+          ease: 'none'
+        }, 0);
+      }
+
+      // Paso 5: Elementos de UI (frase, cta, stats) se desvanecen suavemente hacia la siguiente sección
+      if (heroUi) {
+        tlScroll.to(heroUi, {
+          opacity: 0,
+          y: -40,
+          ease: 'power1.in'
+        }, 0.2);
+      }
+    } else {
+      // Fallback 60fps con requestAnimationFrame nativo en caso de que GSAP no esté listo
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const sy = window.scrollY;
+            const heroH = hero.offsetHeight || window.innerHeight;
+            const p = Math.min(1, Math.max(0, sy / heroH));
+
+            if (orbita) {
+              orbita.style.transform = `translate3d(0, ${-p * 70}px, 0) scale(${1 + p * 0.08})`;
+              orbita.style.opacity = `${1 - p * 0.45}`;
+            }
+            if (planetAnchor) {
+              planetAnchor.style.transform = `translate(-50%, -46%) scale(${1 + p * 0.28}) translate3d(0, ${p * 20}px, 0)`;
+            }
+            if (streaming) {
+              streaming.style.transform = `translateY(135px) translate3d(0, ${-p * 25}px, 0) scale(${1 + p * 0.1})`;
+            }
+            if (heroUi) {
+              heroUi.style.opacity = `${Math.max(0, 1 - p * 1.8)}`;
+              heroUi.style.transform = `translate3d(0, ${-p * 35}px, 0)`;
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+  }
+
+  initHeroCinematic();
 
   // Sincronización de reducción de movimiento
   const motion = $('.motion-toggle');
@@ -875,6 +1093,9 @@
     document.documentElement.style.overflow = '';
     lock(false);
     arrived();
+    if (window.ScrollTrigger) {
+      setTimeout(() => window.ScrollTrigger.refresh(), 100);
+    }
   }
 
   function closeIntro() {

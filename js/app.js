@@ -22,39 +22,49 @@ $$('[data-detail]').forEach(b=>b.addEventListener('click',()=>details(b.dataset.
 $$('[data-story]').forEach(b=>b.addEventListener('click',()=>details(b.dataset.story,true)));
 const menu=$('.menu-toggle'),nav=$('.nav');
 if(menu&&nav){
-  menu.addEventListener('click',()=>{
-    const open=menu.getAttribute('aria-expanded')!=='true';
-    menu.setAttribute('aria-expanded',String(open));
-    menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
-    menu.innerHTML = (open ? "<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n  <path d=\"M18 6 6 18\" />\n  <path d=\"m6 6 12 12\" />\n</svg>" : "<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n  <path d=\"M4 5h16\" />\n  <path d=\"M4 12h16\" />\n  <path d=\"M4 19h16\" />\n</svg>");
-    nav.classList.toggle('open',open);
+  function toggleNav(forceState){
+    const isCurrentlyOpen=nav.classList.contains('open');
+    const nextState=forceState!==undefined?forceState:!isCurrentlyOpen;
+    menu.setAttribute('aria-expanded',String(nextState));
+    menu.setAttribute('aria-label',nextState?'Cerrar menú':'Abrir menú');
+    menu.innerHTML=nextState
+      ?'<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>'
+      :'<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>';
+    nav.classList.toggle('open',nextState);
+    if(nextState){
+      document.body.classList.add('mobile-nav-active');
+    }else{
+      document.body.classList.remove('mobile-nav-active');
+    }
+  }
+
+  menu.addEventListener('click',e=>{
+    e.stopPropagation();
+    toggleNav();
   });
+
+  nav.querySelectorAll('a, button').forEach(el=>{
+    el.addEventListener('click',()=>{
+      if(nav.classList.contains('open')) toggleNav(false);
+    });
+  });
+
+  document.addEventListener('click',e=>{
+    if(nav.classList.contains('open')){
+      if(!nav.contains(e.target)&&!menu.contains(e.target)&&!e.target.closest?.('.menu-toggle')){
+        toggleNav(false);
+      }
+    }
+  });
+
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'&&nav.classList.contains('open')){
-      nav.classList.remove('open');
-      menu.setAttribute('aria-expanded','false');
-      menu.setAttribute('aria-label','Abrir menú');
-      menu.innerHTML = '<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg>';
+      toggleNav(false);
       menu.focus();
     }
   });
-  document.addEventListener('pointerdown',e=>{
-    if(nav.classList.contains('open')&&!nav.contains(e.target)&&!menu.contains(e.target)){
-      nav.classList.remove('open');
-      menu.setAttribute('aria-expanded','false');
-      menu.setAttribute('aria-label','Abrir menú');
-      menu.innerHTML = '<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg>';
-    }
-  });
-  nav.addEventListener('click',e=>{
-    if(e.target.closest('a')||e.target.closest('button')){
-      nav.classList.remove('open');
-      menu.setAttribute('aria-expanded','false');
-      menu.setAttribute('aria-label','Abrir menú');
-      menu.innerHTML = '<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg>';
-    }
-  });
 }
+
 let category='all';function filter(){const term=normalize($('#search').value);let count=0;$$('.catalog-grid .platform-card').forEach(card=>{const show=(category==='all'||card.dataset.category===category)&&normalize(card.dataset.name).includes(term);card.hidden=!show;if(show)count++});$('#result-count').textContent=count+' plataforma'+(count===1?'':'s')+' para explorar';$('.empty-state').hidden=count>0}
 if($('#search')){$('#search').addEventListener('input',filter);$$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{category=b.dataset.filter;$$('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));filter()}));$('#reset-filters').addEventListener('click',()=>{$('#search').value='';$('[data-filter="all"]').click();$('#search').focus()});const id=new URLSearchParams(location.search).get('plataforma');if(byId(id))details(id)}
 $$('[data-rail]').forEach(b=>b.addEventListener('click',()=>$('.discovery-rail').scrollBy({left:Number(b.dataset.rail)*300,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches||document.documentElement.classList.contains('motion-paused')?'instant':'smooth'})));

@@ -7,6 +7,15 @@
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#081120">
   <meta name="description" content="Explora 10 plataformas de entretenimiento y productividad. Planes desde $3 al mes, combos de 2 por $5 y ChatGPT Plus $5 por 4 meses. Elige y consulta por WhatsApp.">
   <title>Tu mundo en otra órbita | Órbita Streaming</title>
+  <script>
+    try {
+      if (sessionStorage.getItem('orbita-intro-seen') === '1' || window.location.hash) {
+        document.documentElement.classList.add('returning-visit');
+      } else {
+        document.documentElement.classList.add('intro-pending');
+      }
+    } catch(e) {}
+  </script>
   <link rel="preload" as="image" href="assets/hero-space.jpg">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
@@ -25,41 +34,34 @@
   <script src="js/game.js" defer></script>
 </head>
 <body data-page="index">
-  <!-- Halo ambiental reactivo y lienzo cósmico de estrellas -->
-  <div class="ambient-glow" aria-hidden="true"></div>
-  <canvas id="ambient-cosmos" aria-hidden="true"></canvas>
-
-  <!-- ==================== INTRO GALÁCTICA ULTRA-OPTIMIZADA 60FPS ==================== -->
-  <div class="intro cinematic-intro dismissed" id="intro" hidden role="dialog" aria-modal="true" aria-label="Viaje de entrada en órbita galáctica">
-    <div class="portal-tunnel" aria-hidden="true"><div class="portal-lens"><svg viewBox="0 0 400 400"><defs><linearGradient id="portal-light"><stop stop-color="#e9fff7"/><stop offset=".45" stop-color="#71cdbc"/><stop offset="1" stop-color="#527e9c"/></linearGradient></defs><circle class="portal-track" cx="200" cy="200" r="182"/><circle class="portal-light" cx="200" cy="200" r="182"/><circle class="portal-inner" cx="200" cy="200" r="167"/></svg></div></div>
-    <div class="portal-wordmark"><span class="portal-orbit" aria-hidden="true"></span><strong>órbita<span class="portal-subtitle">STREAMING</span></strong><span>Tu próximo universo empieza aquí.</span></div>
+  <!-- ==================== INTRO PORTAL CINEMÁTICO 60FPS ==================== -->
+  <div class="intro cinematic-intro portal-active" id="intro" role="dialog" aria-modal="true" aria-label="Viaje de entrada en órbita galáctica">
+    <div class="portal-backdrop-grid" aria-hidden="true"></div>
+    <div class="portal-tunnel" aria-hidden="true">
+      <div class="portal-lens">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <linearGradient id="portal-light" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop stop-color="#ffffff"/>
+              <stop offset=".45" stop-color="#5eead4"/>
+              <stop offset="1" stop-color="#38bdf8"/>
+            </linearGradient>
+          </defs>
+          <circle class="portal-track" cx="200" cy="200" r="182"/>
+          <circle class="portal-light" cx="200" cy="200" r="182"/>
+          <circle class="portal-inner" cx="200" cy="200" r="167"/>
+        </svg>
+      </div>
+    </div>
+    <div class="portal-wordmark">
+      <span class="portal-orbit" aria-hidden="true"></span>
+      <strong>órbita<span class="portal-subtitle">STREAMING</span></strong>
+      <span>Tu próximo universo empieza aquí.</span>
+    </div>
     <button type="button" class="intro-skip button ghost" id="btn-skip-intro">Entrar ahora <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-  <path d="M5 12h14" />
-  <path d="m12 5 7 7-7 7" />
-</svg></button>
-
-  </div>
-
-  <!-- Nebulosas Cósmicas Reactivas de Fondo con Animación Cromática -->
-  <div class="cosmic-nebula-glow-1" aria-hidden="true"></div>
-  <div class="cosmic-nebula-glow-2" aria-hidden="true"></div>
-
-  <!-- Meteoros / Estrellas Fugaces Animadas en el Fondo -->
-  <div class="cosmic-shooting-stars" aria-hidden="true">
-    <div class="shooting-star s1"></div>
-    <div class="shooting-star s2"></div>
-    <div class="shooting-star s3"></div>
-    <div class="shooting-star s4"></div>
-  </div>
-
-  <!-- Polvo Cósmico Flotante Bioluminiscente -->
-  <div class="cosmic-floating-dust" aria-hidden="true">
-    <div class="dust-particle d1"></div>
-    <div class="dust-particle d2"></div>
-    <div class="dust-particle d3"></div>
-    <div class="dust-particle d4"></div>
-    <div class="dust-particle d5"></div>
-    <div class="dust-particle d6"></div>
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </svg></button>
   </div>
 
   <a class="skip" href="#main">Saltar al contenido</a>

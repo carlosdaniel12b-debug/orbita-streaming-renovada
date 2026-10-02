@@ -1054,44 +1054,412 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 #ambient-cosmos{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:0;opacity:0.85;transition:opacity 800ms var(--ease)}
 
 /* ==========================================================================
-   INTRO CINEMÁTICA INTERACTIVA CON DIRECCIÓN 3D Y TURBO WARP
+   INTRO GALÁCTICA ULTRA-OPTIMIZADA 60FPS (MÓVIL Y ESCRITORIO)
    ========================================================================== */
-.cinematic-intro{background:#080f19;position:fixed;inset:0;z-index:100;overflow:hidden;transition:opacity 650ms var(--ease),filter 650ms var(--ease),transform 650ms var(--ease);perspective:1000px;cursor:crosshair;touch-action:none;isolation:isolate}
-.cinematic-intro canvas#warp{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-.cinematic-intro.turbo-warp{box-shadow:inset 0 0 140px rgba(167,234,216,0.45)}
-.intro-copy{position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);text-align:center;width:90%;z-index:2;will-change:transform;transition:transform 120ms ease-out;user-select:none}
-.intro-emblem{display:flex;align-items:center;justify-content:center;color:var(--coral);gap:14px;cursor:pointer;margin-bottom:15px}
-.intro-emblem .logo-symbol{width:85px;height:75px;filter:drop-shadow(0 0 20px rgba(167,234,216,0.6))}
-.intro-emblem .logo-type{font-size:58px;font-weight:700;letter-spacing:-.06em;color:white}
-.intro-emblem .logo-type small{display:block;font-size:11px;letter-spacing:.25em;color:var(--coral);text-transform:uppercase}
-.intro-copy p{font-family:Manrope,sans-serif;font-size:14px;color:#c9dfee;margin:18px 0 10px;letter-spacing:.02em}
-.intro-copy small{font-size:11px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
-.intro-track{height:2px;background:rgba(185,216,217,0.18);width:170px;margin:20px auto 12px;overflow:hidden;border-radius:2px}
-.intro-track span{display:block;width:100%;height:100%;background:var(--coral);transform-origin:left;animation:loading-line 3.2s linear both;box-shadow:0 0 10px var(--coral)}
-.intro-hint{display:inline-flex;align-items:center;gap:8px;font-size:11px;color:var(--blue);background:rgba(12,22,38,0.78);padding:7px 16px;border-radius:100px;border:1px solid rgba(167,234,216,0.3);margin-top:16px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
-.intro-hint-dot{width:6px;height:6px;background:var(--coral);border-radius:50%;animation:blink 1.4s ease-in-out infinite}
+.cinematic-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(circle at 50% 50%, #081120 0%, #040812 70%, #020409 100%);
+  color: #a7ead8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 500ms cubic-bezier(0.23, 1, 0.32, 1), transform 500ms cubic-bezier(0.23, 1, 0.32, 1), filter 500ms cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform, filter;
+  cursor: crosshair;
+  isolation: isolate;
+}
 
-.portal-rings{position:absolute;inset:0;display:grid;place-items:center;opacity:.28;perspective:900px;pointer-events:none;will-change:transform;transition:transform 150ms ease-out;z-index:1}
-.portal-rings i{position:absolute;width:65vw;height:65vw;border:1.5px solid var(--coral);border-radius:50%;transform:rotateX(55deg) rotateY(-20deg);animation:portal 3s var(--ease) both;box-shadow:0 0 25px rgba(167,234,216,0.25)}
-.portal-rings i:nth-child(2){width:85vw;height:85vw;animation-delay:.1s}
-.portal-rings i:nth-child(3){width:110vw;height:110vw;animation-delay:.2s}
-.turbo-warp .portal-rings i{animation-duration:1.4s;border-color:color-mix(in srgb,var(--coral) 80%,white);opacity:.45;box-shadow:0 0 45px rgba(167,234,216,0.6)}
+.cinematic-intro canvas#warp {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
 
-.intro-skip{position:absolute;bottom:35px;right:35px;z-index:10;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(167,234,216,0.35);color:#f1f4fc;background:rgba(8,15,25,0.75);transition:all 200ms cubic-bezier(0.23,1,0.32,1);border-radius:100px;font-size:13px;font-weight:600;padding:10px 20px;cursor:pointer}
-.intro-skip:hover{background:rgba(167,234,216,0.18);border-color:var(--coral);color:var(--coral);transform:translateY(-2px);box-shadow:0 0 20px rgba(167,234,216,0.3)}
-.intro-skip:active{transform:scale(0.96)}
+.cinematic-intro.turbo-warp {
+  box-shadow: inset 0 0 120px rgba(93, 224, 255, 0.45), inset 0 0 60px rgba(192, 132, 252, 0.35);
+}
 
-.intro.leaving{opacity:0;filter:blur(22px);transform:scale(1.08);pointer-events:none}
-.intro.leaving .intro-copy{opacity:0;transition:opacity 250ms var(--ease)}
-.arrival .title-line{animation:title-in 950ms var(--ease) both}
-.arrival .title-line:nth-child(2){animation-delay:.08s}
-.arrival .title-line:nth-child(3){animation-delay:.16s}
-.arrival .hero-copy>p,.arrival .hero-buttons{animation:title-in 950ms var(--ease) .25s both}
-.arrival .hero-posters{animation:title-in 1.2s var(--ease) .35s both}
+.portal-rings {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0.35;
+  perspective: 1000px;
+  pointer-events: none;
+  will-change: transform;
+  transition: transform 140ms ease-out;
+  z-index: 2;
+}
 
-@keyframes portal{from{transform:rotateX(60deg) rotateY(-20deg) scale(.55);opacity:0}to{transform:rotateX(0) rotateY(0) scale(1.4);opacity:.7}}
-@keyframes loading-line{from{transform:scaleX(.01)}to{transform:scaleX(1)}}
-@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.portal-rings i {
+  position: absolute;
+  width: 68vw;
+  height: 68vw;
+  max-width: 800px;
+  max-height: 800px;
+  border: 1.5px solid rgba(93, 224, 255, 0.45);
+  border-radius: 50%;
+  transform: rotateX(58deg) rotateY(-18deg);
+  animation: portalOrbit 4s cubic-bezier(0.23, 1, 0.32, 1) infinite alternate;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.25), inset 0 0 20px rgba(167, 234, 216, 0.15);
+}
+.portal-rings i:nth-child(2) {
+  width: 90vw;
+  height: 90vw;
+  max-width: 1050px;
+  max-height: 1050px;
+  border-color: rgba(192, 132, 252, 0.4);
+  animation-duration: 5.5s;
+  animation-delay: -1s;
+}
+.portal-rings i:nth-child(3) {
+  width: 115vw;
+  height: 115vw;
+  max-width: 1350px;
+  max-height: 1350px;
+  border-color: rgba(167, 234, 216, 0.35);
+  animation-duration: 7s;
+  animation-delay: -2s;
+}
+
+.turbo-warp .portal-rings i {
+  border-color: #5de0ff;
+  opacity: 0.65;
+  box-shadow: 0 0 50px rgba(93, 224, 255, 0.7);
+  animation-duration: 1.2s;
+}
+
+@keyframes portalOrbit {
+  0% { transform: rotateX(58deg) rotateY(-18deg) scale(0.94); }
+  100% { transform: rotateX(50deg) rotateY(-10deg) scale(1.06); }
+}
+
+.intro-copy {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 92%;
+  max-width: 580px;
+  margin: 0 auto;
+  pointer-events: auto;
+  will-change: transform;
+  transition: transform 120ms ease-out;
+}
+
+.intro-emblem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 640px) {
+  .intro-emblem {
+    flex-direction: row;
+    gap: 22px;
+  }
+}
+
+.intro-galaxy-logo {
+  width: 92px;
+  height: 92px;
+  flex-shrink: 0;
+  overflow: visible;
+  filter: drop-shadow(0 0 22px rgba(93, 224, 255, 0.5));
+}
+
+@media (min-width: 640px) {
+  .intro-galaxy-logo {
+    width: 114px;
+    height: 114px;
+  }
+}
+
+/* Animaciones de precisión GPU para el Logo Galáctico */
+.logo-aura {
+  transform-origin: 60px 60px;
+  animation: galacticAuraPulse 3.2s ease-in-out infinite alternate;
+}
+@keyframes galacticAuraPulse {
+  0% { transform: scale(0.88); opacity: 0.45; }
+  100% { transform: scale(1.18); opacity: 0.95; }
+}
+
+.logo-core-wrap {
+  transform-origin: 60px 60px;
+  animation: galacticCoreFloat 4s ease-in-out infinite alternate;
+}
+@keyframes galacticCoreFloat {
+  0% { transform: translateY(-2px) scale(0.98); }
+  100% { transform: translateY(2px) scale(1.02); }
+}
+
+.logo-flare {
+  transform-origin: 60px 60px;
+  animation: flareTwinkle 6s linear infinite;
+}
+@keyframes flareTwinkle {
+  0% { transform: rotate(0deg) scale(0.9); opacity: 0.7; }
+  50% { transform: rotate(180deg) scale(1.2); opacity: 1; }
+  100% { transform: rotate(360deg) scale(0.9); opacity: 0.7; }
+}
+
+.logo-ring-group-1 {
+  transform-origin: 60px 60px;
+  transform: rotate(-28deg);
+}
+.logo-ring-primary {
+  animation: ringShimmer1 5s linear infinite;
+}
+@keyframes ringShimmer1 {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -206; }
+}
+.logo-satellite-1 {
+  transform-origin: 60px 60px;
+  animation: satelliteOrbit1 3.8s linear infinite;
+}
+@keyframes satelliteOrbit1 {
+  0% { transform: rotate(0deg) translateX(46px) rotate(0deg) scale(1.18); filter: drop-shadow(0 0 6px #5de0ff); opacity: 1; }
+  25% { transform: rotate(90deg) translateX(15px) rotate(-90deg) scale(0.95); opacity: 0.85; }
+  50% { transform: rotate(180deg) translateX(-46px) rotate(-180deg) scale(0.7); filter: drop-shadow(0 0 2px #38bdf8); opacity: 0.55; }
+  75% { transform: rotate(270deg) translateX(-15px) rotate(-270deg) scale(0.95); opacity: 0.85; }
+  100% { transform: rotate(360deg) translateX(46px) rotate(-360deg) scale(1.18); filter: drop-shadow(0 0 6px #5de0ff); opacity: 1; }
+}
+
+.logo-ring-group-2 {
+  transform-origin: 60px 60px;
+  transform: rotate(42deg);
+}
+.logo-ring-secondary {
+  animation: ringShimmer2 7s linear infinite reverse;
+}
+@keyframes ringShimmer2 {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 190; }
+}
+.logo-satellite-2 {
+  transform-origin: 60px 60px;
+  animation: satelliteOrbit2 5.2s linear infinite reverse;
+}
+@keyframes satelliteOrbit2 {
+  0% { transform: rotate(0deg) translateX(49px) rotate(0deg) scale(1.22); filter: drop-shadow(0 0 6px #fbbf24); opacity: 1; }
+  25% { transform: rotate(90deg) translateX(17px) rotate(-90deg) scale(0.9); opacity: 0.8; }
+  50% { transform: rotate(180deg) translateX(-49px) rotate(-180deg) scale(0.68); opacity: 0.45; }
+  75% { transform: rotate(270deg) translateX(-17px) rotate(-270deg) scale(0.9); opacity: 0.8; }
+  100% { transform: rotate(360deg) translateX(49px) rotate(-360deg) scale(1.22); filter: drop-shadow(0 0 6px #fbbf24); opacity: 1; }
+}
+
+.intro-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .intro-text-block {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.intro-logo-title {
+  font-family: Outfit, Manrope, sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffffff 0%, #a7ead8 35%, #38bdf8 70%, #c084fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(93, 224, 255, 0.45));
+}
+@media (min-width: 640px) {
+  .intro-logo-title {
+    font-size: 54px;
+  }
+}
+
+.intro-logo-subtitle {
+  display: inline-block;
+  margin-top: 6px;
+  font-family: Outfit, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #a7ead8;
+  background: rgba(14, 28, 48, 0.72);
+  border: 1px solid rgba(167, 234, 216, 0.32);
+  padding: 3px 10px;
+  border-radius: 100px;
+  box-shadow: 0 0 12px rgba(167, 234, 216, 0.2);
+}
+
+.intro-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 5px 14px;
+  background: rgba(8, 16, 28, 0.82);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #c9dfee;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.intro-status-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5de0ff;
+  box-shadow: 0 0 10px #5de0ff;
+  animation: introPulse 1.4s ease-in-out infinite;
+}
+@keyframes introPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+
+.intro-hud-meter {
+  width: 100%;
+  max-width: 240px;
+  margin-top: 14px;
+}
+.intro-hud-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(167, 234, 216, 0.18);
+}
+.intro-hud-track span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #38bdf8, #5de0ff, #a7ead8);
+  box-shadow: 0 0 12px #5de0ff;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 60ms linear;
+}
+.intro-hud-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #7dd3fc;
+}
+
+.intro-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: #c9dfee;
+  background: rgba(12, 22, 38, 0.85);
+  padding: 8px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(167, 234, 216, 0.28);
+  margin-top: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+.intro-hint-icon {
+  color: #fbbf24;
+  font-size: 13px;
+  animation: introBlink 1.4s ease-in-out infinite;
+}
+@keyframes introBlink {
+  0%, 100% { opacity: 0.3; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.intro-skip {
+  position: absolute;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  right: calc(24px + env(safe-area-inset-right, 0px));
+  z-index: 20;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(167, 234, 216, 0.4);
+  color: #f1f4fc;
+  background: rgba(8, 16, 28, 0.84);
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  border-radius: 100px;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .intro-skip:hover {
+    background: rgba(167, 234, 216, 0.22);
+    border-color: #5de0ff;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(93, 224, 255, 0.4);
+  }
+}
+.intro-skip:active {
+  transform: scale(0.96);
+}
+
+.cinematic-intro.leaving {
+  opacity: 0;
+  filter: blur(16px) brightness(1.6);
+  transform: scale(1.08);
+  pointer-events: none;
+}
+.cinematic-intro.leaving .intro-copy {
+  opacity: 0;
+  transform: scale(1.15);
+  transition: all 350ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Entrada escalonada de elementos Hero al llegar al cosmos (Emil Kowalski stagger) */
+.arrival .hero-badge { animation: heroElemIn 600ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+.arrival .title-line:nth-child(1) { animation: heroElemIn 650ms cubic-bezier(0.23, 1, 0.32, 1) 50ms both; }
+.arrival .title-line:nth-child(2) { animation: heroElemIn 650ms cubic-bezier(0.23, 1, 0.32, 1) 100ms both; }
+.arrival .title-line:nth-child(3) { animation: heroElemIn 650ms cubic-bezier(0.23, 1, 0.32, 1) 150ms both; }
+.arrival .hero-copy > p { animation: heroElemIn 650ms cubic-bezier(0.23, 1, 0.32, 1) 220ms both; }
+.arrival .hero-buttons { animation: heroElemIn 650ms cubic-bezier(0.23, 1, 0.32, 1) 280ms both; }
+.arrival .hero-posters { animation: heroElemIn 750ms cubic-bezier(0.23, 1, 0.32, 1) 340ms both; }
+
+@keyframes heroElemIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
 
 /* ==========================================================================
    EFECTOS CÓSMICOS DE FONDO (Nebulosas, Meteoros y Polvo Estelar Azul Cósmico)
@@ -1305,9 +1673,10 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   .section-head>.text-link{font-size:10px}
   .motion-toggle{width:35px}
   .footer .logo-type{font-size:25px}
-  /* Floating actions: vertical column on bottom-left for mobile */
-  .floating-actions{bottom:0;left:0;right:0;top:auto;width:100%;flex-direction:row;justify-content:center;gap:8px;padding:10px 12px;background:rgba(7,14,26,0.82);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-top:1px solid rgba(255,255,255,0.1);border-radius:0;filter:none;z-index:200}
-  .floating-btn{flex:1;max-width:33%;padding:10px 8px;font-size:11px;border-radius:16px;gap:6px;justify-content:center}
+  /* Floating actions: bottom bar con safe-area-inset para iOS/Android y feedback nativo */
+  .floating-actions{bottom:0;left:0;right:0;top:auto;width:100%;flex-direction:row;justify-content:center;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom, 0px));background:rgba(7,14,26,0.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-top:1px solid rgba(255,255,255,0.1);border-radius:0;filter:none;z-index:200;touch-action:manipulation}
+  .floating-btn{flex:1;max-width:33%;padding:10px 8px;font-size:11px;border-radius:16px;gap:6px;justify-content:center;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform 120ms cubic-bezier(0.23, 1, 0.32, 1), background 120ms ease}
+  .floating-btn:active{transform:scale(0.95)}
   .floating-btn-orbit .floating-label{display:inline}
   .floating-label{font-size:10px!important;white-space:nowrap}
   body[data-page="combos"] .floating-actions{left:0;right:0}

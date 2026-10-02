@@ -22,8 +22,12 @@
     lib,
     motion: () => !paused,
     replayIntro: () => {
-      sessionStorage.removeItem('orbita-v2-intro');
-      location.reload();
+      if (document.body.dataset.page === 'index' && typeof play === 'function') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        play();
+      } else {
+        location.href = 'index.html';
+      }
     }
   };
 
@@ -842,7 +846,9 @@
   }
   reduce.addEventListener('change', motionSync);
 
-  // MOTOR DE LA INTRO CINEMÁTICA INTERACTIVA
+  // ==========================================================================
+  // MOTOR DE LA INTRO GALÁCTICA ULTRA-OPTIMIZADA 60FPS
+  // ==========================================================================
   const intro = $('#intro');
   const warp = $('#warp');
   const ctx = warp?.getContext('2d');
@@ -870,7 +876,10 @@
       window.OrbitaBoot.pending = false;
     }
     root.classList.remove('intro-pending');
-    if (!intro || intro.hidden) return;
+    if (!intro || intro.hidden) {
+      arrived();
+      return;
+    }
 
     intro.classList.add('leaving');
     lock(false);
@@ -889,39 +898,48 @@
       intro.hidden = true;
       intro.classList.remove('leaving');
       intro.classList.remove('turbo-warp');
-    }, 670);
+    }, 550);
   }
 
-  // Interacción de dirección (steering) en la intro
-  intro?.addEventListener('pointermove', e => {
-    targetSteerX = (e.clientX / innerWidth - 0.5) * 2;
-    targetSteerY = (e.clientY / innerHeight - 0.5) * 2;
+  // Interacción de dirección (steering) en la intro para PC y móvil
+  const handleSteer = (clientX, clientY) => {
+    targetSteerX = (clientX / innerWidth - 0.5) * 2;
+    targetSteerY = (clientY / innerHeight - 0.5) * 2;
 
     const copy = $('.intro-copy');
     if (copy) {
-      copy.style.transform = `translate(-50%, -50%) perspective(900px) rotateX(${-targetSteerY * 9}deg) rotateY(${targetSteerX * 11}deg) translateZ(14px)`;
+      copy.style.transform = `perspective(900px) rotateX(${-targetSteerY * 9}deg) rotateY(${targetSteerX * 11}deg) translateZ(12px)`;
     }
 
     const rings = $('.portal-rings');
     if (rings) {
-      rings.style.transform = `perspective(900px) rotateX(${55 - targetSteerY * 12}deg) rotateY(${-20 + targetSteerX * 15}deg)`;
+      rings.style.transform = `perspective(900px) rotateX(${56 - targetSteerY * 12}deg) rotateY(${-18 + targetSteerX * 15}deg)`;
     }
+  };
+
+  intro?.addEventListener('pointermove', e => {
+    handleSteer(e.clientX, e.clientY);
   });
 
-  // Modo Turbo Warp (Hipersalto) al mantener presionado
+  intro?.addEventListener('touchmove', e => {
+    if (e.touches && e.touches[0]) {
+      handleSteer(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  // Modo Turbo Warp (Hipersalto) al mantener presionado en PC y móvil
   intro?.addEventListener('pointerdown', e => {
     if (e.target.closest('.intro-skip')) return;
     isHolding = true;
-    targetSpeed = 3.6;
+    targetSpeed = 4.2;
     intro.classList.add('turbo-warp');
 
-    // Onda de choque de hipersalto en el punto de contacto
-    const swColors = ['#38bdf8', '#c084fc', '#f472b6', '#a7ead8', '#5de0ff', '#fbbf24'];
+    const swColors = ['#5de0ff', '#38bdf8', '#a7ead8', '#c084fc', '#f472b6', '#fbbf24'];
     shockwaves.push({
-      x: e.clientX,
-      y: e.clientY,
-      radius: 12,
-      maxRadius: Math.max(innerWidth, innerHeight) * 0.75,
+      x: e.clientX || innerWidth / 2,
+      y: e.clientY || innerHeight / 2,
+      radius: 14,
+      maxRadius: Math.max(innerWidth, innerHeight) * 0.85,
       alpha: 0.95,
       color: swColors[Math.floor(Math.random() * swColors.length)]
     });
@@ -948,13 +966,14 @@
 
   intro?.addEventListener('dblclick', () => closeIntro());
 
+  // Renderizador del túnel hiperespacial a 60 FPS puros (SIN shadowBlur)
   function warpFrame(t) {
     if (intro.hidden || document.hidden || !ctx) return;
 
     // Suavizado lerp de dirección y velocidad
     steerX += (targetSteerX - steerX) * 0.08;
     steerY += (targetSteerY - steerY) * 0.08;
-    warpSpeed += (targetSpeed - warpSpeed) * 0.12;
+    warpSpeed += (targetSpeed - warpSpeed) * 0.14;
 
     const w = warp.width;
     const h = warp.height;
@@ -963,80 +982,93 @@
 
     ctx.clearRect(0, 0, w, h);
 
-    // Fondo de aurora cósmica hiperespacial radiante con colores vivos
-    const nebGrad = ctx.createRadialGradient(cx, cy, 15, cx, cy, Math.max(w, h) * 0.65);
-    nebGrad.addColorStop(0, warpSpeed > 2 ? 'rgba(56, 189, 248, 0.35)' : 'rgba(167, 234, 216, 0.18)');
-    nebGrad.addColorStop(0.35, warpSpeed > 2 ? 'rgba(192, 132, 252, 0.22)' : 'rgba(56, 189, 248, 0.10)');
-    nebGrad.addColorStop(0.7, warpSpeed > 2 ? 'rgba(244, 114, 182, 0.14)' : 'rgba(30, 58, 138, 0.08)');
+    // Fondo de aurora cósmica hiperespacial radiante
+    const nebGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, Math.max(w, h) * 0.7);
+    nebGrad.addColorStop(0, warpSpeed > 2 ? 'rgba(93, 224, 255, 0.32)' : 'rgba(167, 234, 216, 0.16)');
+    nebGrad.addColorStop(0.35, warpSpeed > 2 ? 'rgba(192, 132, 252, 0.20)' : 'rgba(56, 189, 248, 0.09)');
+    nebGrad.addColorStop(0.7, warpSpeed > 2 ? 'rgba(244, 114, 182, 0.12)' : 'rgba(14, 28, 48, 0.06)');
     nebGrad.addColorStop(1, 'transparent');
     ctx.fillStyle = nebGrad;
     ctx.fillRect(0, 0, w, h);
 
     const elapsed = (t - flightStart) / 1000;
-    simulatedProgress += 0.006 * warpSpeed;
+    simulatedProgress += (warpSpeed > 2 ? 0.016 : 0.0055);
 
-    // Aceleración de la barra de progreso al activar hipersalto
-    const line = $('.intro-track span');
-    if (line && warpSpeed > 2) {
-      line.style.transform = `scaleX(${Math.min(1, simulatedProgress)})`;
-    }
+    // Actualizar medidor HUD cósmico
+    const hudBar = $('#intro-hud-bar');
+    const hudPct = $('#intro-warp-pct');
+    const hudState = $('#intro-warp-state');
+    const progressClamped = Math.min(1, simulatedProgress);
 
-    // Dibujar estrellas en túnel hiperespacial con paleta policromática
-    for (const s of particles) {
-      const speed = (1 + elapsed * 0.55) * warpSpeed;
-      s.z -= speed * 8.5;
-      if (s.z < 1) {
-        s.z = 1000;
-        s.x = (Math.random() - 0.5) * w * 1.5;
-        s.y = (Math.random() - 0.5) * h * 1.5;
+    if (hudBar) hudBar.style.transform = `scaleX(${progressClamped})`;
+    if (hudPct) hudPct.textContent = `${Math.floor(progressClamped * 100)}%`;
+    if (hudState) hudState.textContent = warpSpeed > 2 ? 'VELOCIDAD LUZ: 4.0X' : 'VELOCIDAD LUZ: 1.0X';
+
+    // Dibujar estrellas en túnel 3D hiperespacial
+    const fov = 480;
+    for (let i = 0; i < particles.length; i++) {
+      const s = particles[i];
+      const step = (1.2 + elapsed * 0.35) * warpSpeed * 9.5;
+      s.z -= step;
+      if (s.z <= 1) {
+        s.z = 1000 + Math.random() * 200;
+        s.x = (Math.random() - 0.5) * w * 1.6;
+        s.y = (Math.random() - 0.5) * h * 1.6;
       }
 
-      const k = 650 / s.z;
-      const x = s.x * k + cx;
-      const y = s.y * k + cy;
-      const alpha = Math.max(0.06, 1 - s.z / 1000);
+      const k = fov / s.z;
+      const x = cx + s.x * k;
+      const y = cy + s.y * k;
 
-      ctx.save();
-      ctx.strokeStyle = s.color || '#a7ead8';
-      ctx.globalAlpha = Math.min(1, alpha * (warpSpeed > 2 ? 1.8 : 1.2));
-      ctx.lineWidth = warpSpeed > 2 ? 2.6 : 1.3;
-      ctx.shadowColor = s.color || '#a7ead8';
-      ctx.shadowBlur = warpSpeed > 2 ? 10 : 4;
+      if (x < -60 || x > w + 60 || y < -60 || y > h + 60) continue;
 
+      const prevK = fov / (s.z + step * 3.6);
+      const prevX = cx + s.x * prevK;
+      const prevY = cy + s.y * prevK;
+
+      const alpha = Math.min(1, Math.max(0.12, 1 - s.z / 1000));
+
+      ctx.strokeStyle = s.color;
+      ctx.globalAlpha = alpha;
+      ctx.lineWidth = s.size * (warpSpeed > 2 ? 1.6 : 1.0);
       ctx.beginPath();
-      ctx.moveTo(x, y);
-
-      const streak = warpSpeed > 2 ? 0.055 : 0.025;
-      ctx.lineTo(x + (x - cx) * streak * speed, y + (y - cy) * streak * speed);
+      ctx.moveTo(prevX, prevY);
+      ctx.lineTo(x, y);
       ctx.stroke();
-      ctx.restore();
+
+      // Destello brillante en la cabeza de la estrella cuando se acerca
+      if (s.z < 420) {
+        ctx.fillStyle = '#ffffff';
+        ctx.globalAlpha = Math.min(1, alpha * 1.2);
+        ctx.beginPath();
+        ctx.arc(x, y, s.size * 0.9, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
 
-    // Dibujar ondas de choque cósmicas cromáticas
+    // Dibujar ondas de choque cósmicas
     for (let i = shockwaves.length - 1; i >= 0; i--) {
       const sw = shockwaves[i];
-      sw.radius += 18 * warpSpeed;
-      sw.alpha *= 0.93;
+      sw.radius += 24 * warpSpeed;
+      sw.alpha *= 0.92;
 
       if (sw.alpha < 0.02 || sw.radius > sw.maxRadius) {
         shockwaves.splice(i, 1);
         continue;
       }
 
-      ctx.save();
-      ctx.strokeStyle = sw.color || '#38bdf8';
+      ctx.strokeStyle = sw.color || '#5de0ff';
       ctx.globalAlpha = sw.alpha;
-      ctx.shadowColor = sw.color || '#38bdf8';
-      ctx.shadowBlur = 16;
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 2.5;
       ctx.beginPath();
       ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
       ctx.stroke();
-      ctx.restore();
     }
 
-    // Si el usuario mantiene pulsado hipersalto hasta completarlo, entrar automáticamente
-    if (simulatedProgress >= 1 && isHolding) {
+    ctx.globalAlpha = 1;
+
+    // Si se completa el salto cósmico, transición cinematográfica a la app
+    if (simulatedProgress >= 1) {
       closeIntro();
       return;
     }
@@ -1069,11 +1101,13 @@
 
     warp.width = innerWidth;
     warp.height = innerHeight;
+    const isMobile = innerWidth < 768;
     const warpColors = ['#5de0ff', '#38bdf8', '#a7ead8', '#c084fc', '#f472b6', '#fbbf24', '#60a5fa', '#ffffff'];
-    particles = Array.from({ length: innerWidth < 760 ? 110 : 220 }, () => ({
-      x: (Math.random() - .5) * innerWidth * 1.5,
-      y: (Math.random() - .5) * innerHeight * 1.5,
+    particles = Array.from({ length: isMobile ? 110 : 230 }, () => ({
+      x: (Math.random() - 0.5) * innerWidth * 1.6,
+      y: (Math.random() - 0.5) * innerHeight * 1.6,
       z: Math.random() * 1000,
+      size: 0.9 + Math.random() * 1.3,
       color: warpColors[Math.floor(Math.random() * warpColors.length)]
     }));
     shockwaves = [];
@@ -1081,24 +1115,12 @@
     warpSpeed = targetSpeed = 1;
     simulatedProgress = 0;
 
-    const line = $('.intro-track span');
-    if (line) {
-      line.style.animation = 'none';
-      void line.offsetWidth;
-      line.style.animation = '';
-    }
-
-    // Agregar indicador interactivo de UX si no existe
-    if (!$('.intro-hint') && $('.intro-copy')) {
-      const hint = document.createElement('div');
-      hint.className = 'intro-hint';
-      hint.innerHTML = '<span class="intro-hint-dot"></span><span>Mueve el cursor para guiar el hiperespacio · Mantén pulsado para acelerar</span>';
-      $('.intro-copy').append(hint);
-    }
+    const hudBar = $('#intro-hud-bar');
+    if (hudBar) hudBar.style.transform = 'scaleX(0)';
 
     flightStart = performance.now();
     introFrame = requestAnimationFrame(warpFrame);
-    introTimer = setTimeout(closeIntro, 3100);
+    introTimer = setTimeout(closeIntro, 3200);
   }
 
   $('.intro-skip')?.addEventListener('click', closeIntro);
@@ -1110,9 +1132,9 @@
   });
 
   addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeIntro();
+    if (e.key === 'Escape' || e.key === 'Enter') closeIntro();
     if (e.code === 'Space' && !intro.hidden && document.activeElement?.tagName !== 'BUTTON') {
-      targetSpeed = 3.6;
+      targetSpeed = 4.2;
       intro.classList.add('turbo-warp');
     }
   });
@@ -1135,13 +1157,8 @@
 
   motionSync();
 
-  let seen = false;
-  try {
-    seen = sessionStorage.getItem('orbita-v2-intro') === 'yes';
-    sessionStorage.setItem('orbita-v2-intro', 'yes');
-  } catch {}
-
-  if (!seen && !window.OrbitaBoot?.skipped && document.body.dataset.page === 'index' && !paused) {
+  // Inicio garantizado de la intro en index.html sin bloqueo de sessionStorage
+  if (!window.OrbitaBoot?.skipped && document.body.dataset.page === 'index' && !paused) {
     play();
   } else {
     window.OrbitaBoot?.dismiss();

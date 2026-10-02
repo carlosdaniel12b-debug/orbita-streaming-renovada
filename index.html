@@ -1,19 +1,20 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <script>(()=>{const root=document.documentElement;let seen=false,paused=false;try{seen=sessionStorage.getItem('orbita-v2-intro')==='yes';paused=localStorage.getItem('orbita-motion')==='paused'}catch{}const boot=window.OrbitaBoot={pending:!seen&&!paused&&!matchMedia('(prefers-reduced-motion: reduce)').matches,skipped:false};boot.dismiss=()=>{boot.skipped=true;boot.pending=false;root.classList.remove('intro-pending');clearTimeout(boot.timer);const el=document.getElementById('intro');if(el)el.hidden=true;try{sessionStorage.setItem('orbita-v2-intro','yes')}catch{}};if(boot.pending){root.classList.add('intro-pending');boot.timer=setTimeout(boot.dismiss,8000)}document.addEventListener('keydown',e=>{if(e.key==='Escape'&&boot.pending)boot.dismiss()})})();</script>
-  <style id="intro-critical">html{background:#090f19}html.intro-pending{overflow:hidden}html.intro-pending body> :not(#intro):not(script):not(style){visibility:hidden}html.intro-pending #intro[hidden]{display:block!important}html.intro-pending #intro{position:fixed;inset:0;z-index:100;background:#080f19;color:#a7ead8}html.intro-pending .intro-copy{position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);text-align:center;width:90%;font-family:sans-serif}html.intro-pending .intro-emblem{display:flex;justify-content:center;align-items:center;gap:14px}html.intro-pending .logo-symbol{width:85px;height:75px}html.intro-pending .logo-type{font-size:58px}html.intro-pending .logo-type small{display:block;font-size:11px}html.intro-pending .intro-skip{position:absolute;bottom:35px;right:35px}
-  .logo-symbol{overflow:visible;filter:drop-shadow(0 0 6px rgba(167,234,216,0.45));}
-  .logo-symbol circle:first-of-type{transform-box:fill-box;transform-origin:center;animation:logo-core-pulse 3.8s ease-in-out infinite}
-  .logo-symbol ellipse{transform-box:view-box;transform-origin:35px 30px;transform:rotate(-32deg);stroke:#a7ead8;stroke-dasharray:190 20;animation:logo-ring-shimmer 7s ease-in-out infinite alternate}
-  .logo-symbol circle:last-of-type{transform-box:view-box;transform-origin:35px 30px;animation:logo-moon-orbit 5.4s linear infinite}
-  @keyframes logo-core-pulse{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.05);filter:brightness(1.25) drop-shadow(0 0 7px #a7ead8)}}
-  @keyframes logo-ring-shimmer{0%{stroke-dashoffset:0;opacity:.85}50%{stroke-dashoffset:-90;opacity:1;filter:drop-shadow(0 0 4px #a7ead8)}100%{stroke-dashoffset:-180;opacity:.85}}
-  @keyframes logo-moon-orbit{0%{transform:rotate(0deg);opacity:1;filter:drop-shadow(0 0 4px #a7ead8)}25%{transform:rotate(90deg) scale(0.88);opacity:.85}50%{transform:rotate(180deg) scale(0.72);opacity:.45}75%{transform:rotate(270deg) scale(1.15);opacity:.95;filter:drop-shadow(0 0 6px #a7ead8)}100%{transform:rotate(360deg);opacity:1;filter:drop-shadow(0 0 4px #a7ead8)}}
+  <script>(()=>{const root=document.documentElement;let paused=false;try{paused=localStorage.getItem('orbita-motion')==='paused'}catch{}const boot=window.OrbitaBoot={pending:!paused&&!matchMedia('(prefers-reduced-motion: reduce)').matches,skipped:false};boot.dismiss=()=>{boot.skipped=true;boot.pending=false;root.classList.remove('intro-pending');clearTimeout(boot.timer);const el=document.getElementById('intro');if(el)el.hidden=true;document.body?.classList.add('arrival')};if(boot.pending){root.classList.add('intro-pending');boot.timer=setTimeout(boot.dismiss,7000)}document.addEventListener('keydown',e=>{if(e.key==='Escape'&&boot.pending)boot.dismiss()})})();</script>
+  <style id="intro-critical">html{background:#040812}html.intro-pending{overflow:hidden}html.intro-pending body> :not(#intro):not(script):not(style){visibility:hidden}html.intro-pending #intro[hidden]{display:flex!important}html.intro-pending #intro{position:fixed;inset:0;z-index:99999;background:radial-gradient(circle at 50% 50%,#081120 0%,#040812 70%,#020409 100%);color:#a7ead8}
+  .logo-symbol{overflow:visible;filter:drop-shadow(0 0 8px rgba(93,224,255,0.45));}
+  .logo-symbol circle:first-of-type{transform-box:fill-box;transform-origin:center;animation:logo-core-pulse 3.6s ease-in-out infinite}
+  .logo-symbol ellipse{transform-box:view-box;transform-origin:35px 30px;transform:rotate(-32deg);stroke:#5de0ff;stroke-dasharray:190 20;animation:logo-ring-shimmer 6s ease-in-out infinite alternate}
+  .logo-symbol circle:last-of-type{transform-box:view-box;transform-origin:35px 30px;animation:logo-moon-orbit 4.8s linear infinite}
+  @keyframes logo-core-pulse{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.08);filter:brightness(1.3) drop-shadow(0 0 10px #5de0ff)}}
+  @keyframes logo-ring-shimmer{0%{stroke-dashoffset:0;opacity:.85}50%{stroke-dashoffset:-90;opacity:1;filter:drop-shadow(0 0 6px #5de0ff)}100%{stroke-dashoffset:-180;opacity:.85}}
+  @keyframes logo-moon-orbit{0%{transform:rotate(0deg);opacity:1;filter:drop-shadow(0 0 6px #5de0ff)}25%{transform:rotate(90deg) scale(0.9);opacity:.85}50%{transform:rotate(180deg) scale(0.7);opacity:.45}75%{transform:rotate(270deg) scale(1.2);opacity:.95;filter:drop-shadow(0 0 8px #ffffff)}100%{transform:rotate(360deg);opacity:1;filter:drop-shadow(0 0 6px #5de0ff)}}
   </style>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080e20">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#040812">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#081120">
   <meta name="description" content="Explora 10 plataformas de entretenimiento y productividad. Planes desde $3 al mes, combos de 2 por $5 y ChatGPT Plus $5 por 4 meses. Elige y consulta por WhatsApp.">
   <title>Tu mundo en otra órbita | Órbita Streaming</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -35,28 +36,101 @@
   <div class="ambient-glow" aria-hidden="true"></div>
   <canvas id="ambient-cosmos" aria-hidden="true"></canvas>
 
-  <!-- ==================== INTRO HIPERESPACIAL AZUL INTERACTIVA ==================== -->
-  <div class="intro cinematic-intro" id="intro" role="dialog" aria-modal="true" aria-label="Viaje de entrada en órbita" hidden>
+  <!-- ==================== INTRO GALÁCTICA ULTRA-OPTIMIZADA 60FPS ==================== -->
+  <div class="intro cinematic-intro" id="intro" role="dialog" aria-modal="true" aria-label="Viaje de entrada en órbita galáctica" hidden>
     <canvas id="warp" aria-hidden="true"></canvas>
     <div class="portal-rings" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="intro-copy">
       <div class="intro-emblem" title="Órbita Streaming">
-        <svg class="logo-symbol" viewBox="0 0 70 60" aria-hidden="true">
-          <circle cx="35" cy="30" r="16" fill="currentColor"/>
-          <ellipse cx="35" cy="30" rx="31" ry="11" transform="rotate(-32 35 30)" fill="none" stroke="currentColor" stroke-width="2"/>
-          <circle cx="59" cy="13" r="3" fill="currentColor"/>
+        <svg class="intro-galaxy-logo" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="intro-core-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+              <stop offset="25%" stop-color="#5de0ff" stop-opacity="0.8" />
+              <stop offset="55%" stop-color="#0284c7" stop-opacity="0.45" />
+              <stop offset="85%" stop-color="#6366f1" stop-opacity="0.18" />
+              <stop offset="100%" stop-color="#a855f7" stop-opacity="0" />
+            </radialGradient>
+            <radialGradient id="intro-planet-core" cx="38%" cy="32%" r="65%">
+              <stop offset="0%" stop-color="#e0f2fe" />
+              <stop offset="28%" stop-color="#38bdf8" />
+              <stop offset="65%" stop-color="#0369a1" />
+              <stop offset="100%" stop-color="#082f49" />
+            </radialGradient>
+            <linearGradient id="intro-ring-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#5de0ff" stop-opacity="0.95" />
+              <stop offset="50%" stop-color="#a7ead8" stop-opacity="0.4" />
+              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.9" />
+            </linearGradient>
+            <linearGradient id="intro-ring-grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.9" />
+              <stop offset="50%" stop-color="#818cf8" stop-opacity="0.3" />
+              <stop offset="100%" stop-color="#5de0ff" stop-opacity="0.8" />
+            </linearGradient>
+            <filter id="intro-glow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="2" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Halo estelar ambiental -->
+          <circle class="logo-aura" cx="60" cy="60" r="52" fill="url(#intro-core-glow)" />
+
+          <!-- Anillo secundario con inclinación inversa y segundo satélite estelar -->
+          <g class="logo-ring-group-2">
+            <ellipse class="logo-ring-secondary" cx="60" cy="60" rx="49" ry="17" stroke="url(#intro-ring-grad2)" stroke-width="1.8" stroke-dasharray="8 6 18 6" />
+            <g class="logo-satellite-2">
+              <circle cx="60" cy="60" r="3.2" fill="#fbbf24" filter="url(#intro-glow)" />
+              <circle cx="60" cy="60" r="1.5" fill="#ffffff" />
+            </g>
+          </g>
+
+          <!-- Núcleo planetario con atmósfera en 3D -->
+          <g class="logo-core-wrap">
+            <circle class="logo-core" cx="60" cy="60" r="23" fill="url(#intro-planet-core)" />
+            <ellipse class="logo-core-band" cx="60" cy="60" rx="22.5" ry="7" stroke="#5de0ff" stroke-width="1.2" stroke-opacity="0.75" />
+            <ellipse class="logo-core-band2" cx="60" cy="60" rx="22" ry="14" stroke="#a7ead8" stroke-width="0.8" stroke-opacity="0.4" stroke-dasharray="3 3" />
+            <path class="logo-flare" d="M60 45 L60 75 M45 60 L75 60" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-opacity="0.85" />
+          </g>
+
+          <!-- Anillo orbital principal con satélite luminiscente -->
+          <g class="logo-ring-group-1">
+            <ellipse class="logo-ring-primary" cx="60" cy="60" rx="46" ry="15" stroke="url(#intro-ring-grad1)" stroke-width="2.4" stroke-dasharray="140 18 30 18" />
+            <g class="logo-satellite-1">
+              <circle cx="60" cy="60" r="4.2" fill="#ffffff" filter="url(#intro-glow)" />
+              <circle cx="60" cy="60" r="2" fill="#5de0ff" />
+            </g>
+          </g>
         </svg>
-        <span class="logo-type">órbita<small>streaming</small></span>
+
+        <div class="intro-text-block">
+          <span class="intro-logo-title">órbita</span>
+          <span class="intro-logo-subtitle">UNIVERSO DE STREAMING</span>
+        </div>
       </div>
-      <p id="intro-caption">Todo empieza con una nueva historia.</p>
-      <div class="intro-track"><span></span></div>
-      <small>Entrando en órbita</small>
+
+      <div class="intro-status-badge">
+        <span class="intro-status-pulse"></span>
+        <span class="intro-status-text" id="intro-caption">SALTO HIPERESPACIAL EN CURSO</span>
+      </div>
+
+      <div class="intro-hud-meter">
+        <div class="intro-hud-track"><span id="intro-hud-bar"></span></div>
+        <div class="intro-hud-info">
+          <span id="intro-warp-state">VELOCIDAD LUZ: 1.0X</span>
+          <span id="intro-warp-pct">0%</span>
+        </div>
+      </div>
+
       <div class="intro-hint">
-        <span class="intro-hint-dot"></span>
-        <span>Mueve el cursor para guiar el hiperespacio · Mantén pulsado para acelerar</span>
+        <span class="intro-hint-icon">⚡</span>
+        <span class="intro-hint-label">Mueve o desliza para guiar · Mantén presionado para acelerar</span>
       </div>
     </div>
-    <button type="button" class="intro-skip button ghost" id="btn-skip-intro" onclick="window.OrbitaBoot?.dismiss()">Saltar intro ↗</button>
+    <button type="button" class="intro-skip button ghost" id="btn-skip-intro" onclick="window.OrbitaBoot?.dismiss()">Entrar al cosmos ↗</button>
   </div>
 
   <!-- Nebulosas Cósmicas Reactivas de Fondo con Animación Cromática -->

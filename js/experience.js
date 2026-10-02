@@ -678,14 +678,22 @@
       camera.position.set(0, 0, 8.6);
 
       const loader = new T.TextureLoader();
-      const map = loader.load(window.EARTH_TEXTURE || 'assets/earth.jpg');
+      let texturesReady = 0;
+      const textureReady = () => {
+        texturesReady += 1;
+        if (texturesReady === 2 && renderer) {
+          renderer.render(scene, camera);
+          root.classList.add('webgl-ready');
+        }
+      };
+      const map = loader.load('assets/earth.jpg', textureReady);
       map.encoding = T.sRGBEncoding;
 
       globe = new T.Mesh(new T.SphereGeometry(1.28, 64, 48), new T.MeshPhongMaterial({ map, color: 0x31545b, shininess: 7, specular: 0x0d2029 }));
       globe.rotation.set(0.08, 1.35, 0.12);
       scene.add(globe);
 
-      clouds = new T.Mesh(new T.SphereGeometry(1.31, 48, 32), new T.MeshPhongMaterial({ map: loader.load(window.CLOUD_TEXTURE || 'assets/clouds.png'), transparent: true, opacity: .36, depthWrite: false }));
+      clouds = new T.Mesh(new T.SphereGeometry(1.31, 48, 32), new T.MeshPhongMaterial({ map: loader.load('assets/clouds.png', textureReady), transparent: true, opacity: .36, depthWrite: false }));
       clouds.rotation.set(0.08, 1.40, 0.12);
       scene.add(clouds);
 
@@ -737,7 +745,6 @@
       }
       size();
       new ResizeObserver(size).observe(canvas);
-      root.classList.add('webgl-ready');
 
       // Observador con amplio margen vertical para que el planeta nunca desaparezca al desplazarse
       new IntersectionObserver(es => {
@@ -848,7 +855,7 @@
     root.classList.toggle('motion-paused', paused || reduce.matches);
     if (motion) {
       motion.disabled = reduce.matches;
-      motion.innerHTML = `<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#${paused ? 'play' : 'pause'}"/></svg>`;
+      motion.innerHTML = (paused ? "<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n  <path d=\"M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z\" />\n</svg>" : "<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n  <rect x=\"14\" y=\"3\" width=\"5\" height=\"18\" rx=\"1\" />\n  <rect x=\"5\" y=\"3\" width=\"5\" height=\"18\" rx=\"1\" />\n</svg>");
       motion.setAttribute('aria-pressed', String(paused));
       motion.setAttribute('aria-label', paused ? 'Activar efectos' : 'Pausar efectos');
     }

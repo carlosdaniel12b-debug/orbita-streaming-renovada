@@ -39,3 +39,11 @@
 - Eliminada la dependencia de revelaciones al hacer scroll para leer las secciones.
 - 8 pruebas del controlador aprobadas, incluida sesión repetida y almacenamiento bloqueado. Referencias locales comprobadas sin archivos faltantes.
 - Guías adicionales instaladas: Vercel Web Design Guidelines y Anthropic Frontend Design.
+
+## Correcciones tras revisión visual del usuario
+- Iconos SVG insertados directamente, con viewBox explícito: cierre, menú, flechas y controles ya no dependen de referencias a un SVG externo.
+- Acceso WhatsApp visible por plataforma, conservando el botón de detalles. 10 enlaces en catálogo y 3 en la portada.
+- Three.js se muestra únicamente cuando las dos texturas han cargado y se ha renderizado la escena. Fondo alternativo con la imagen real de la Tierra; eliminado el script de imágenes base64 en la portada.
+- Pie de página a todo el ancho, con contenido alineado y fondo translúcido continuo.
+- Menor separación entre secciones y hero móvil más compacto.
+- Verificado en navegador: cierre de detalles, menú móvil, iconos sin referencias externas, 10 enlaces de WhatsApp, footer al ancho del viewport, planeta listo y sin desbordamiento móvil.

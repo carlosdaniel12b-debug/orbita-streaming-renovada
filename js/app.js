@@ -26,7 +26,7 @@ if(menu&&nav){
     const open=menu.getAttribute('aria-expanded')!=='true';
     menu.setAttribute('aria-expanded',String(open));
     menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
-    menu.innerHTML = `<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#${open ? 'x' : 'menu'}"/></svg>`;
+    menu.innerHTML = (open ? "<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n  <path d=\"M18 6 6 18\" />\n  <path d=\"m6 6 12 12\" />\n</svg>" : "<svg class=\"ui-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n  <path d=\"M4 5h16\" />\n  <path d=\"M4 12h16\" />\n  <path d=\"M4 19h16\" />\n</svg>");
     nav.classList.toggle('open',open);
   });
   document.addEventListener('keydown',e=>{
@@ -34,7 +34,7 @@ if(menu&&nav){
       nav.classList.remove('open');
       menu.setAttribute('aria-expanded','false');
       menu.setAttribute('aria-label','Abrir menú');
-      menu.innerHTML = '<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#menu"/></svg>';
+      menu.innerHTML = '<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg>';
       menu.focus();
     }
   });
@@ -43,7 +43,7 @@ if(menu&&nav){
       nav.classList.remove('open');
       menu.setAttribute('aria-expanded','false');
       menu.setAttribute('aria-label','Abrir menú');
-      menu.innerHTML = '<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#menu"/></svg>';
+      menu.innerHTML = '<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg>';
     }
   });
   nav.addEventListener('click',e=>{
@@ -51,7 +51,7 @@ if(menu&&nav){
       nav.classList.remove('open');
       menu.setAttribute('aria-expanded','false');
       menu.setAttribute('aria-label','Abrir menú');
-      menu.innerHTML = '<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#menu"/></svg>';
+      menu.innerHTML = '<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg>';
     }
   });
 }

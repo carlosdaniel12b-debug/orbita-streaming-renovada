@@ -117,3 +117,27 @@ dialog .close { top:16px; right:16px; }
 .section-head>.text-link{max-width:none;font-size:13px}
 .faq h2 br{display:initial}
 @media(max-width:768px){.section-navigation{flex-wrap:wrap;overflow:visible;justify-content:center}.section-navigation a{padding:10px 12px}.brand-strip>.container{scrollbar-width:none}.brand-strip>.container::-webkit-scrollbar{display:none}.section-head>.text-link{max-width:none;font-size:13px}.feature-nav-bar{border-radius:16px}.feature-dots{flex-wrap:wrap;justify-content:center}}
+/* Visible inline icons also work when the site is opened directly from disk. */
+.ui-icon{width:20px;height:20px;min-width:20px;display:inline-block;overflow:visible;fill:none;stroke:currentColor;stroke-width:1.8}
+.close .ui-icon{width:22px;height:22px;color:#ecfff7}
+.platform-whatsapp{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:18px;padding:11px 14px;min-height:44px;border-radius:12px;background:linear-gradient(135deg,#b5f5df19,#70cfb30a);border:1px solid #a7ead842;color:#c5f5e4;font-size:13px;font-weight:600}
+.platform-whatsapp:hover{background:#a7ead824;border-color:#a7ead877}.platform-whatsapp .ui-icon{width:21px;height:21px}
+/* Never display an untextured WebGL sphere while the images decode. */
+.hero-planet-canvas{opacity:0;transition:opacity .35s ease-out}
+.webgl-ready .hero-planet-canvas{opacity:1}
+.hero-planet-fallback{background-image:linear-gradient(115deg,#06101900 25%,#020711bc 90%),url('../assets/earth.jpg');background-size:cover;background-position:50% 50%;box-shadow:inset -28px -15px 48px #010911c9,inset 4px 2px 14px #bdf3ed33;opacity:1}
+.webgl-ready .hero-planet-fallback{display:block;opacity:0;transition:opacity .35s ease-out;pointer-events:none}
+/* The footer material spans the viewport, with content aligned to the page. */
+footer.footer.container{width:100%;max-width:none;margin-inline:0;padding:38px max(24px,calc((100% - 1240px)/2)) 90px;background:linear-gradient(180deg,#10223177,#06101dcc);border-top:1px solid #b9e9dd26;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);gap:24px 48px}
+.footer .legal{grid-column:1/-1;margin-top:4px;padding-top:22px;line-height:1.7}.footer p{margin-bottom:16px}.footer>div:nth-child(2){gap:12px}
+:root{--section-space:clamp(44px,5vw,72px)}
+.section-head{margin-bottom:26px}.section-navigation{margin-top:22px}.activation-section{padding-bottom:48px}.steps{padding-top:12px;gap:28px}.steps>div{padding-top:18px}.arcade-promo{margin-block:56px}.faq.section{padding-top:48px;padding-bottom:56px}
+.platform-section{background:radial-gradient(ellipse at 50% 35%,#a7ead807,transparent 65%)}
+@media(max-width:768px){
+ :root{--section-space:44px}
+ .hero-cinematic{min-height:740px;height:max(740px,94svh)}
+ .hero-editorial-left{top:395px}.hero-bottom-bar{bottom:83px}
+ .section-navigation{margin-top:14px}.activation-section{padding-bottom:36px}.steps{gap:20px}.arcade-promo{margin-block:40px}.faq.section{padding-block:38px}
+ footer.footer.container{padding:30px 20px 105px;gap:24px}.footer .legal{padding-top:18px;margin-top:0}.platform-card{min-height:0}
+}
+@media(prefers-reduced-motion:reduce){.hero-planet-canvas,.hero-planet-fallback{transition:none}}

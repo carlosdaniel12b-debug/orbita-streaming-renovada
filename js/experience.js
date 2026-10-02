@@ -682,21 +682,22 @@
       renderer.setPixelRatio(Math.min(devicePixelRatio, window.innerWidth < 768 ? 1.0 : 1.5));
       renderer.outputEncoding = T.sRGBEncoding;
       scene = new T.Scene();
-      camera = new T.PerspectiveCamera(38, 1, .1, 100);
-      camera.position.set(0, 0, 6.8);
+      camera = new T.PerspectiveCamera(36, 1, .1, 100);
+      camera.position.set(0, 0, 8.6);
 
       const loader = new T.TextureLoader();
       const map = loader.load(window.EARTH_TEXTURE || 'assets/earth.jpg');
       map.encoding = T.sRGBEncoding;
 
-      globe = new T.Mesh(new T.SphereGeometry(1.68, 64, 48), new T.MeshPhongMaterial({ map, color: 0x1a364d, shininess: 16, specular: 0x22445b }));
-      globe.rotation.z = .15;
+      globe = new T.Mesh(new T.SphereGeometry(1.28, 64, 48), new T.MeshPhongMaterial({ map, color: 0x1a364d, shininess: 16, specular: 0x22445b }));
+      globe.rotation.set(0.08, 1.35, 0.12);
       scene.add(globe);
 
-      clouds = new T.Mesh(new T.SphereGeometry(1.71, 48, 32), new T.MeshPhongMaterial({ map: loader.load(window.CLOUD_TEXTURE || 'assets/clouds.png'), transparent: true, opacity: .36, depthWrite: false }));
+      clouds = new T.Mesh(new T.SphereGeometry(1.31, 48, 32), new T.MeshPhongMaterial({ map: loader.load(window.CLOUD_TEXTURE || 'assets/clouds.png'), transparent: true, opacity: .36, depthWrite: false }));
+      clouds.rotation.set(0.08, 1.40, 0.12);
       scene.add(clouds);
 
-      const atmosphere = new T.Mesh(new T.SphereGeometry(1.75, 48, 32), new T.ShaderMaterial({
+      const atmosphere = new T.Mesh(new T.SphereGeometry(1.35, 48, 32), new T.ShaderMaterial({
         uniforms: { glowColor: { value: new T.Color(0xa7ead8) } },
         vertexShader: 'varying vec3 n; varying vec3 v; void main(){n=normalize(normalMatrix*normal);vec4 p=modelViewMatrix*vec4(position,1.);v=normalize(-p.xyz);gl_Position=projectionMatrix*p;}',
         fragmentShader: 'uniform vec3 glowColor;varying vec3 n;varying vec3 v;void main(){float a=pow(1.-max(dot(n,v),0.),3.2);gl_FragColor=vec4(glowColor,a*.75);}',
@@ -707,11 +708,11 @@
       scene.add(atmosphere);
 
       rings = new T.Group();
-      [2.15, 2.30, 2.52].forEach((radius, i) => {
-        const r = new T.Mesh(new T.TorusGeometry(radius, .006 + i * .0015, 12, 180), new T.MeshBasicMaterial({ color: palette[theme][0], transparent: true, opacity: .85 - i * .18 }));
-        r.rotation.x = 1.2;
-        r.rotation.y = -.4;
-        r.rotation.z = .25;
+      [1.68, 1.86, 2.04].forEach((radius, i) => {
+        const r = new T.Mesh(new T.TorusGeometry(radius, .007 + i * .002, 16, 200), new T.MeshBasicMaterial({ color: palette[theme][0], transparent: true, opacity: .88 - i * .16 }));
+        r.rotation.x = 1.15;
+        r.rotation.y = -.35;
+        r.rotation.z = .22;
         rings.add(r);
       });
       scene.add(rings);
@@ -731,12 +732,14 @@
       warm.position.set(4, -2, 2);
       scene.add(warm);
 
+      const heroElem = document.getElementById('hero-cinematic') || document.querySelector('.hero');
       function size() {
-        const r = canvas.getBoundingClientRect();
-        const w = Math.max(r.width || canvas.clientWidth || 0, 320);
-        const h = Math.max(r.height || canvas.clientHeight || 0, 320);
+        const w = heroElem ? heroElem.clientWidth : window.innerWidth;
+        const h = heroElem ? heroElem.clientHeight : window.innerHeight;
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
+        // En pantallas angostas (móviles verticales), alejamos la cámara para que los anillos se vean 100% completos
+        camera.position.z = (w < h) ? 10.5 : 8.6;
         camera.updateProjectionMatrix();
         renderer.render(scene, camera);
       }
@@ -754,12 +757,6 @@
         root.classList.remove('webgl-ready');
         renderer = null;
       });
-
-      const heroElem = document.getElementById('hero-cinematic') || document.querySelector('.hero');
-      heroElem?.addEventListener('pointermove', e => {
-        targetX = (e.clientX / innerWidth - .5) * .35;
-        targetY = (e.clientY / innerHeight - .5) * .22;
-      });
     } catch (e) {
       root.classList.remove('webgl-ready');
     }
@@ -771,8 +768,6 @@
     requestAnimationFrame(loop);
     if (document.hidden) return;
 
-    const moving = !paused && !reduce.matches;
-    const delta = Math.min(.04, (t - time) / 1000 || .016);
     time = t;
 
     // Renderizado Three.js del planeta cósmico (optimizado para no sobrecargar GPU en móvil)
@@ -780,22 +775,7 @@
     const isAnyDialogOpen = Boolean(document.querySelector('dialog[open]'));
     const shouldRenderGlobe = !isAnyDialogOpen && renderer && inView && (window.scrollY < maxScroll);
     if (shouldRenderGlobe) {
-      if (moving) {
-        globe.rotation.y += delta * .07;
-        clouds.rotation.y += delta * .085;
-        rings.rotation.z = Math.sin(t * .00015) * .05;
-        stars.rotation.y += delta * .003;
-        camera.position.x += (targetX - camera.position.x) * .035;
-        camera.position.y += (targetY - camera.position.y) * .035;
-
-        // Scroll zoom y rotación 3D del planeta sincronizados con el scroll
-        const scrollFactor = Math.min(1.2, Math.max(0, window.scrollY / (window.innerHeight || 800)));
-        const targetZ = 6.8 - scrollFactor * 1.6;
-        camera.position.z += (targetZ - camera.position.z) * 0.08;
-        globe.rotation.x = 0.06 + scrollFactor * 0.12;
-        globe.rotation.z = 0.15 - scrollFactor * 0.08;
-        camera.lookAt(0, 0, 0);
-      }
+      // El planeta NO se mueve: se mantiene fijo, estático, nítido y elegante
       // Los anillos del planeta reaccionan al color de la plataforma activa
       const targetColor = new THREE.Color(window.OrbitaColors?.color() || palette[theme][0]);
       rings.children.forEach(r => r.material.color.lerp(targetColor, .04));
@@ -828,10 +808,7 @@
     const hero = document.getElementById('hero-cinematic');
     if (!hero) return;
 
-    const orbita = hero.querySelector('.hero-giant-orbita');
-    const planetAnchor = document.getElementById('hero-planet-anchor');
-    const streaming = hero.querySelector('.hero-giant-streaming');
-    const heroBg = hero.querySelector('.hero-layer-bg');
+    const brandLockup = hero.querySelector('.hero-brand-lockup') || hero.querySelector('.hero-giant-wrap');
     const heroUi = hero.querySelector('.hero-layer-ui');
     const header = document.getElementById('main-header') || document.querySelector('.header');
 
@@ -844,188 +821,20 @@
     window.addEventListener('scroll', updateHeader, { passive: true });
     updateHeader();
 
-    // 2. Micro-interacción de cursor en escritorio (movimiento elástico sin competir con GSAP)
-    if (window.innerWidth >= 992 && !reduce.matches) {
-      const layerBack = hero.querySelector('.hero-layer-backtext');
-      const layerFront = hero.querySelector('.hero-layer-fronttext');
-      const ctaPill = hero.querySelector('#hero-main-cta');
-
-      let mTargetX = 0, mTargetY = 0;
-      let mCurX = 0, mCurY = 0;
-
-      hero.addEventListener('pointermove', e => {
-        mTargetX = (e.clientX / window.innerWidth) - 0.5;
-        mTargetY = (e.clientY / window.innerHeight) - 0.5;
-      }, { passive: true });
-
-      hero.addEventListener('pointerleave', () => {
-        mTargetX = 0;
-        mTargetY = 0;
-      });
-
-      const applyMouseFloat = () => {
-        if (!paused && !reduce.matches) {
-          mCurX += (mTargetX - mCurX) * 0.05;
-          mCurY += (mTargetY - mCurY) * 0.05;
-
-          if (layerBack) {
-            layerBack.style.transform = `translate3d(${mCurX * -18}px, ${mCurY * -10}px, 0)`;
-          }
-          if (layerFront) {
-            layerFront.style.transform = `translate3d(${mCurX * 22}px, ${mCurY * 14}px, 0)`;
-          }
-        }
-        requestAnimationFrame(applyMouseFloat);
-      };
-      requestAnimationFrame(applyMouseFloat);
-
-      // Micro-efecto magnético sutil en el botón CTA principal
-      if (ctaPill) {
-        ctaPill.addEventListener('mousemove', e => {
-          const rect = ctaPill.getBoundingClientRect();
-          const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.16;
-          const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.16;
-          ctaPill.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
-        });
-        ctaPill.addEventListener('mouseleave', () => {
-          ctaPill.style.transform = '';
-        });
-      }
-    }
-
-    if (reduce.matches) return;
-
-    // 3. Animaciones GSAP vinculadas al scroll con scrub 1:1
-    if (window.gsap && window.ScrollTrigger) {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Pre-alineación inicial de transformaciones para garantizar centro óptico
-      if (planetAnchor) {
-        gsap.set(planetAnchor, { xPercent: -50, yPercent: -50 });
-      }
-      if (orbita) {
-        gsap.set(orbita, { yPercent: 0 });
-      }
-      if (streaming) {
-        gsap.set(streaming, { yPercent: 0 });
-      }
-
-      // Animación de entrada inicial suave
-      const tlIntro = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tlIntro
-        .fromTo(planetAnchor, 
-          { scale: 0.85, opacity: 0, filter: 'blur(12px)' }, 
-          { scale: 1, opacity: 1, filter: 'blur(0px)', duration: 1.6, ease: 'power2.out' }
-        )
-        .fromTo(orbita, 
-          { yPercent: 12, scale: 0.96, opacity: 0 }, 
-          { yPercent: 0, scale: 1, opacity: 1, duration: 1.4 }, 
-          '-=1.2'
-        )
-        .fromTo(streaming, 
-          { yPercent: 15, opacity: 0, scale: 0.94 }, 
-          { yPercent: 0, opacity: 1, scale: 1, duration: 1.3 }, 
-          '-=1.0'
-        )
-        .fromTo(heroUi, 
-          { opacity: 0, y: 25 }, 
-          { opacity: 1, y: 0, duration: 1.2 }, 
-          '-=0.9'
+    // 2. Animación de entrada: el planeta no se mueve, solo las letras aparecen
+    if (window.gsap && !reduce.matches) {
+      if (brandLockup) {
+        gsap.fromTo(brandLockup, 
+          { opacity: 0, scale: 0.92, y: 24, filter: 'blur(10px)' }, 
+          { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 1.4, ease: 'power2.out', delay: 0.25 }
         );
-
-      // Scroll scrubbing con ScrollTrigger:
-      // En desktop (>= 1024px) utilizamos pin para reproducir la cadencia cinematográfica del video
-      const isDesktop = window.innerWidth >= 1024;
-
-      const tlScroll = gsap.timeline({
-        scrollTrigger: {
-          trigger: hero,
-          start: 'top top',
-          end: isDesktop ? '+=125%' : '+=75%',
-          scrub: 1.1,
-          pin: isDesktop,
-          anticipatePin: 1,
-          invalidateOnRefresh: true
-        }
-      });
-
-      // Paso 1: ÓRBITA se desplaza hacia arriba con parallax y escala, ocultándose más detrás del planeta
-      if (orbita) {
-        tlScroll.to(orbita, {
-          yPercent: isDesktop ? -24 : -18,
-          scale: 1.05,
-          letterSpacing: '-0.02em',
-          opacity: 0.45,
-          ease: 'none'
-        }, 0);
       }
-
-      // Paso 2: El planeta central 3D realiza un zoom cinematográfico fluido hacia adelante
-      if (planetAnchor) {
-        tlScroll.to(planetAnchor, {
-          scale: isDesktop ? 1.28 : 1.16,
-          yPercent: isDesktop ? -46 : -48,
-          ease: 'none'
-        }, 0);
-      }
-
-      // Paso 3: STREAMING se expande sutilmente por delante del hemisferio inferior
-      if (streaming) {
-        tlScroll.to(streaming, {
-          yPercent: isDesktop ? 12 : 8,
-          scale: 1.06,
-          letterSpacing: isDesktop ? '0.28em' : '0.20em',
-          opacity: 1,
-          ease: 'none'
-        }, 0);
-      }
-
-      // Paso 4: Fondo cósmico se mueve a menor velocidad (profundidad cósmica 3D)
-      if (heroBg) {
-        tlScroll.to(heroBg, {
-          scale: 1.12,
-          y: 45,
-          ease: 'none'
-        }, 0);
-      }
-
-      // Paso 5: Elementos de UI (frase, cta, stats) se desvanecen suavemente hacia la siguiente sección
       if (heroUi) {
-        tlScroll.to(heroUi, {
-          opacity: 0,
-          y: -40,
-          ease: 'power1.in'
-        }, 0.2);
+        gsap.fromTo(heroUi, 
+          { opacity: 0, y: 18 }, 
+          { opacity: 1, y: 0, duration: 1.1, ease: 'power2.out', delay: 0.6 }
+        );
       }
-    } else {
-      // Fallback 60fps con requestAnimationFrame nativo en caso de que GSAP no esté listo
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            const sy = window.scrollY;
-            const heroH = hero.offsetHeight || window.innerHeight;
-            const p = Math.min(1, Math.max(0, sy / heroH));
-
-            if (orbita) {
-              orbita.style.transform = `translate3d(0, ${-p * 50}px, 0) scale(${1 + p * 0.05})`;
-              orbita.style.opacity = `${1 - p * 0.55}`;
-            }
-            if (planetAnchor) {
-              planetAnchor.style.transform = `translate(-50%, -50%) scale(${1 + p * 0.25}) translate3d(0, ${p * 15}px, 0)`;
-            }
-            if (streaming) {
-              streaming.style.transform = `translate3d(0, ${p * 20}px, 0) scale(${1 + p * 0.06})`;
-            }
-            if (heroUi) {
-              heroUi.style.opacity = `${Math.max(0, 1 - p * 1.8)}`;
-              heroUi.style.transform = `translate3d(0, ${-p * 35}px, 0)`;
-            }
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
     }
   }
 

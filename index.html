@@ -201,14 +201,7 @@
           <div class="hero-stardust"></div>
         </div>
 
-        <!-- CAPA 2: Texto trasero gigante ÓRBITA (Detrás del planeta / objeto central) -->
-        <div class="hero-layer hero-layer-backtext" aria-hidden="true">
-          <div class="hero-giant-wrap">
-            <h1 class="hero-giant-orbita"><span class="sr-only">Órbita Streaming - </span>ÓRBITA</h1>
-          </div>
-        </div>
-
-        <!-- CAPA 3: Objeto central protagonista (Planeta cósmico 3D Three.js con atmósfera física) -->
+        <!-- CAPA 2: Objeto central protagonista (Planeta cósmico 3D Three.js con atmósfera física y anillos completos) -->
         <div class="hero-layer hero-layer-object" aria-hidden="true">
           <div class="hero-planet-anchor" id="hero-planet-anchor">
             <canvas id="planet-scene" class="hero-planet-canvas"></canvas>
@@ -217,10 +210,19 @@
           </div>
         </div>
 
-        <!-- CAPA 4: Texto delantero STREAMING (Delante del objeto central en primer plano) -->
-        <div class="hero-layer hero-layer-fronttext" aria-hidden="true">
-          <div class="hero-giant-wrap">
-            <span class="hero-giant-streaming">STREAMING</span>
+        <!-- CAPA 3: Marca ÓRBITA STREAMING Delante del Planeta con Efecto Especial Cósmico -->
+        <div class="hero-layer hero-layer-fronttext hero-layer-brand" id="hero-layer-brand">
+          <div class="hero-brand-lockup">
+            <div class="hero-brand-aura" aria-hidden="true"></div>
+            <h1 class="hero-giant-orbita">
+              <span class="sr-only">Órbita Streaming - </span>
+              <span class="orbita-text-glint" aria-hidden="true"></span>
+              ÓRBITA
+            </h1>
+            <div class="hero-streaming-wrap">
+              <span class="hero-giant-streaming">STREAMING</span>
+              <div class="hero-streaming-glow-line" aria-hidden="true"></div>
+            </div>
           </div>
         </div>
 

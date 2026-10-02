@@ -14,6 +14,8 @@
   <script src="js/data.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/library.js" defer></script>
+  <script src="assets/vendor/three.min.js" defer></script>
+  <script src="js/planet-3d.js" defer></script>
   <script src="assets/vendor/gsap.min.js" defer></script>
   <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="js/platform-colors.js" defer></script>
@@ -105,46 +107,11 @@
           <div class="hero-cosmic-radial"></div>
           <div class="hero-nebula-aurora"></div>
           <div class="hero-stardust"></div>
-        <!-- CAPA 2: Planeta Cósmico con Aros Orbitales Giratorios (Identidad Órbita) -->
+        <!-- CAPA 2: Planeta Cósmico 3D Realista con Aros Orbitales (WebGL Three.js) -->
         <div class="hero-layer hero-layer-object" aria-hidden="true">
           <div class="hero-planet-anchor" id="hero-planet-anchor">
-            <div class="orbit-planet-system" id="orbit-planet-system">
-              <!-- Halo cósmico ambiental -->
-              <div class="planet-ambient-glow"></div>
-
-              <!-- Anillos parte trasera (detrás del planeta) -->
-              <div class="planet-rings-wrap rings-back">
-                <div class="planet-ring-band outer"></div>
-                <div class="planet-ring-band main"></div>
-                <div class="planet-ring-band inner"></div>
-                <div class="planet-ring-sheen"></div>
-                <div class="planet-cast-shadow"></div>
-              </div>
-
-              <!-- Esfera cósmica central -->
-              <div class="planet-celestial-body">
-                <div class="planet-sphere-base"></div>
-                <div class="planet-surface-clouds"></div>
-                <div class="planet-specular-glint"></div>
-                <div class="planet-atmosphere-halo"></div>
-              </div>
-
-              <!-- Anillos parte delantera (delante del planeta) -->
-              <div class="planet-rings-wrap rings-front">
-                <div class="planet-ring-band outer"></div>
-                <div class="planet-ring-band main"></div>
-                <div class="planet-ring-band inner"></div>
-                <div class="planet-ring-sheen"></div>
-              </div>
-
-              <!-- Satélite orbital en rotación continua -->
-              <div class="satellite-orbit-track">
-                <div class="satellite-orb">
-                  <div class="satellite-core"></div>
-                  <div class="satellite-glow"></div>
-                </div>
-              </div>
-            </div>
+            <canvas id="planet-scene" class="hero-planet-canvas"></canvas>
+            <div class="hero-planet-ambient-glow"></div>
           </div>
         </div>
 

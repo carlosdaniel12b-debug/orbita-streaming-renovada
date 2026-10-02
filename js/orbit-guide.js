@@ -18,17 +18,22 @@
   const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
   const pBy = id => platforms.find(p => p.id === id);
 
-  try {
-    const saved = localStorage.getItem('orbit-country');
-    if ([...country.options].some(o => o.value === saved)) country.value = saved;
-  } catch {}
+  if (!dialog || !log || !input) return;
 
-  country.onchange = () => {
+  if (country) {
     try {
-      localStorage.setItem('orbit-country', country.value);
+      const saved = localStorage.getItem('orbit-country');
+      if (saved && [...country.options].some(o => o.value === saved)) country.value = saved;
     } catch {}
-    appendBotStream('Usaré ' + country.selectedOptions[0].text + ' para los enlaces de disponibilidad regional. Puedes volver a consultar por cualquier título.');
-  };
+
+    country.onchange = () => {
+      try {
+        localStorage.setItem('orbit-country', country.value);
+      } catch {}
+      const countryName = country.selectedOptions?.[0]?.text || country.value;
+      appendBotStream('Usaré ' + countryName + ' para los enlaces de disponibilidad regional. Puedes volver a consultar por cualquier título.');
+    };
+  }
 
   function open() {
     if (!dialog.open) dialog.showModal();

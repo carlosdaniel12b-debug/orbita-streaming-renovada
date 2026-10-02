@@ -344,6 +344,16 @@
   dialog.addEventListener('close', stop);
   dialog.addEventListener('cancel', stop);
 
+  const closeButton = dialog.querySelector('.close, [data-close]');
+  if (closeButton) {
+    closeButton.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      stop();
+      if (dialog.open) dialog.close();
+    });
+  }
+
   function updateHUDShield() {
     const shieldEl = $('#game-shield');
     if (shieldEl) {

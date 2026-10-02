@@ -25,8 +25,8 @@
     if (immediate || reduce.matches) return finish();
     if (intro.classList.contains('leaving')) return;
     intro.classList.add('leaving');
-    // Start the letter reveal only after the opaque portal has cleared.
-    hideTimer = setTimeout(finish, 650);
+    // Start main arrival smoothly without blocking frames
+    hideTimer = setTimeout(finish, 420);
   }
   function play({automatic = false} = {}) {
     if (automatic) {

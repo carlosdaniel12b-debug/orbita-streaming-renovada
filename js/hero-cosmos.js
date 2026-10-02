@@ -20,24 +20,22 @@
     let height = 0;
     let dpr = 1;
 
-    // 1. Nebulosas volumétricas vivas (Living Cosmic Nebulae)
+    // 1. Nebulosas volumétricas sutiles y estables (sin saturación ni parpadeos bruscos)
     const nebulae = [
-      { xRatio: 0.25, yRatio: 0.35, baseRadius: 320, colorStop0: 'rgba(56, 189, 248, 0.18)', colorStop1: 'rgba(14, 116, 144, 0.08)', speed: 0.45, phase: 0 },
-      { xRatio: 0.72, yRatio: 0.42, baseRadius: 360, colorStop0: 'rgba(168, 85, 247, 0.16)', colorStop1: 'rgba(109, 40, 217, 0.06)', speed: 0.35, phase: 2.1 },
-      { xRatio: 0.50, yRatio: 0.28, baseRadius: 280, colorStop0: 'rgba(45, 212, 191, 0.15)', colorStop1: 'rgba(15, 118, 110, 0.05)', speed: 0.55, phase: 4.3 },
-      { xRatio: 0.85, yRatio: 0.65, baseRadius: 300, colorStop0: 'rgba(99, 102, 241, 0.14)', colorStop1: 'rgba(67, 56, 202, 0.05)', speed: 0.40, phase: 1.5 }
+      { xRatio: 0.25, yRatio: 0.35, baseRadius: 320, colorStop0: 'rgba(56, 189, 248, 0.07)', colorStop1: 'rgba(14, 116, 144, 0.02)', speed: 0.12, phase: 0 },
+      { xRatio: 0.72, yRatio: 0.42, baseRadius: 360, colorStop0: 'rgba(168, 85, 247, 0.06)', colorStop1: 'rgba(109, 40, 217, 0.015)', speed: 0.10, phase: 2.1 },
+      { xRatio: 0.50, yRatio: 0.28, baseRadius: 280, colorStop0: 'rgba(45, 212, 191, 0.05)', colorStop1: 'rgba(15, 118, 110, 0.01)', speed: 0.14, phase: 4.3 }
     ];
 
-    // 2. Estrellas titilantes multicapa con deriva lenta
+    // 2. Estrellas con brillo sutil y parpadeo sereno
     let stars = [];
-    const STAR_COUNT = window.innerWidth < 768 ? 80 : 190;
+    const STAR_COUNT = window.innerWidth < 768 ? 60 : 120;
 
     const STAR_COLORS = [
       'rgba(255, 255, 255, ',
-      'rgba(167, 234, 216, ', // Cian brillante
-      'rgba(56, 189, 248, ',  // Azul eléctrico
-      'rgba(192, 132, 252, ', // Violeta
-      'rgba(253, 230, 138, '  // Destello estelar cálido
+      'rgba(186, 230, 253, ', // Azul hielo suave
+      'rgba(167, 234, 216, ', // Cian delicado
+      'rgba(241, 245, 249, '  // Blanco platino
     ];
 
     function createStars() {
@@ -47,44 +45,44 @@
         stars.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.08,
-          vy: -0.02 - Math.random() * 0.05,
-          size: (0.7 + depth * 1.5) * (window.innerWidth < 768 ? 0.85 : 1.0),
-          baseAlpha: 0.25 + depth * 0.65,
-          twinkleSpeed: 0.9 + Math.random() * 2.4,
+          vx: (Math.random() - 0.5) * 0.02,
+          vy: -0.008 - Math.random() * 0.015,
+          size: (0.6 + depth * 1.1) * (window.innerWidth < 768 ? 0.8 : 1.0),
+          baseAlpha: 0.2 + depth * 0.45,
+          twinkleSpeed: 0.4 + Math.random() * 1.1,
           phase: Math.random() * Math.PI * 2,
           color: STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)],
-          hasCrossGlint: depth > 0.82
+          hasCrossGlint: depth > 0.92
         });
       }
     }
 
-    // 3. Meteoros / Estrellas fugaces cinematográficas
+    // 3. Meteoros / Estrellas fugaces ocasionales y delicadas
     let shootingStars = [];
     let lastSpawnTime = performance.now();
 
     function spawnShootingStar() {
-      if (shootingStars.length >= 3) return;
+      if (shootingStars.length >= 1) return;
       const angle = (28 + Math.random() * 22) * (Math.PI / 180);
-      const speed = 15 + Math.random() * 12;
-      const length = 140 + Math.random() * 150;
+      const speed = 12 + Math.random() * 8;
+      const length = 110 + Math.random() * 90;
 
       shootingStars.push({
-        x: Math.random() * (width * 0.9),
-        y: Math.random() * (height * 0.45),
+        x: Math.random() * (width * 0.85),
+        y: Math.random() * (height * 0.35),
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         length: length,
         life: 0,
-        maxLife: 42 + Math.random() * 28,
-        width: 1.3 + Math.random() * 1.5,
-        color: Math.random() > 0.4 ? '#a7ead8' : '#38bdf8'
+        maxLife: 35 + Math.random() * 20,
+        width: 1.0 + Math.random() * 0.8,
+        color: '#bae6fd'
       });
     }
 
-    // 4. Polvo cósmico bioluminiscente
+    // 4. Polvo cósmico sereno
     let stardust = [];
-    const DUST_COUNT = window.innerWidth < 768 ? 25 : 55;
+    const DUST_COUNT = window.innerWidth < 768 ? 15 : 30;
 
     function createStardust() {
       stardust = [];
@@ -92,10 +90,10 @@
         stardust.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          radius: 0.9 + Math.random() * 2.2,
-          alpha: 0.2 + Math.random() * 0.5,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: (Math.random() - 0.5) * 0.12,
+          radius: 0.7 + Math.random() * 1.4,
+          alpha: 0.15 + Math.random() * 0.25,
           phase: Math.random() * Math.PI * 2
         });
       }
@@ -250,8 +248,8 @@
         ctx.fill();
       }
 
-      // D) GESTIONAR Y DIBUJAR METEOROS / ESTRELLAS FUGACES
-      if (now - lastSpawnTime > 1800 + Math.random() * 2200) {
+      // D) GESTIONAR Y DIBUJAR METEOROS / ESTRELLAS FUGACES (ocasionales y elegantes)
+      if (now - lastSpawnTime > 8000 + Math.random() * 6000) {
         spawnShootingStar();
         lastSpawnTime = now;
       }

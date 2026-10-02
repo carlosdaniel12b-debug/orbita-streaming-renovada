@@ -892,6 +892,9 @@
       }
     }
 
+    const copy = $('.intro-copy');
+    if (copy) copy.style.transform = 'none';
+
     arrived();
     clearTimeout(restoreTimer);
     restoreTimer = setTimeout(() => {
@@ -901,19 +904,19 @@
     }, 550);
   }
 
-  // Interacción de dirección (steering) en la intro para PC y móvil
+  // Interacción de dirección (steering) en la intro para PC y móvil con centrado perfecto
   const handleSteer = (clientX, clientY) => {
     targetSteerX = (clientX / innerWidth - 0.5) * 2;
     targetSteerY = (clientY / innerHeight - 0.5) * 2;
 
     const copy = $('.intro-copy');
     if (copy) {
-      copy.style.transform = `perspective(900px) rotateX(${-targetSteerY * 9}deg) rotateY(${targetSteerX * 11}deg) translateZ(12px)`;
+      copy.style.transform = `perspective(1000px) rotateX(${-targetSteerY * 7}deg) rotateY(${targetSteerX * 9}deg) translateZ(8px)`;
     }
 
     const rings = $('.portal-rings');
     if (rings) {
-      rings.style.transform = `perspective(900px) rotateX(${56 - targetSteerY * 12}deg) rotateY(${-18 + targetSteerX * 15}deg)`;
+      rings.style.transform = `perspective(1000px) rotateX(${56 - targetSteerY * 10}deg) rotateY(${-18 + targetSteerX * 12}deg)`;
     }
   };
 
@@ -921,9 +924,25 @@
     handleSteer(e.clientX, e.clientY);
   });
 
+  intro?.addEventListener('pointerleave', () => {
+    targetSteerX = 0;
+    targetSteerY = 0;
+    const copy = $('.intro-copy');
+    if (copy) copy.style.transform = 'none';
+    const rings = $('.portal-rings');
+    if (rings) rings.style.transform = '';
+  });
+
   intro?.addEventListener('touchmove', e => {
     if (e.touches && e.touches[0]) {
       handleSteer(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    if (warp && (!intro || !intro.hidden)) {
+      warp.width = innerWidth;
+      warp.height = innerHeight;
     }
   }, { passive: true });
 

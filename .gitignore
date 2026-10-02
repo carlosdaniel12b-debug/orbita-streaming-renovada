@@ -1,0 +1,6 @@
+# Archivos temporales y de desarrollo
+scratch/
+.agents/
+*.log
+.DS_Store
+Thumbs.db

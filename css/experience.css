@@ -34,8 +34,8 @@
 .hero-copy>p{font-size:15px;line-height:1.9;color:var(--muted)}
 .hero-meta{margin-top:30px}
 .cosmos{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.cosmos:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 5%,transparent 66%),linear-gradient(0deg,var(--bg),transparent 18%);transition:background 650ms var(--ease)}
-#planet-scene{position:absolute;right:-15%;top:-6%;width:87%;height:100%;opacity:1;transition:opacity 800ms var(--ease)}
+.cosmos:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,14,32,0.45) 0%,transparent 62%),linear-gradient(0deg,rgba(8,14,32,0.2) 0%,transparent 25%);transition:background 650ms var(--ease);pointer-events:none}
+#planet-scene{position:absolute;right:-10%;top:-6%;width:82%;height:105%;opacity:1;transition:opacity 800ms var(--ease);filter:drop-shadow(0 0 50px rgba(56,189,248,0.25))}
 .planet-fallback{position:absolute;right:-8%;top:7%;width:65%;height:80%;background:url('../assets/space.webp') 75% center/cover;border-radius:50%;opacity:.6;mask-image:radial-gradient(ellipse,#000 30%,transparent 70%)}
 .webgl-ready .planet-fallback{display:none}
 .nebula{position:absolute;width:600px;height:600px;border-radius:50%;opacity:.18;filter:blur(80px);background:var(--platform-glow,var(--coral));transition:background 750ms var(--ease),opacity 600ms var(--ease)}
@@ -57,12 +57,12 @@
 .theme-dots button:nth-child(2){background:#ffc5a0}
 .theme-dots button:nth-child(3){background:#a9d8fc}
 .theme-dots button[aria-pressed=true]{outline-color:var(--text)}
-.brand-strip{background:var(--bg);border-color:var(--line);transition:background-color 650ms var(--ease),border-color 450ms var(--ease)}
-.brand-strip img{opacity:.7;transition:opacity 250ms var(--ease),transform 250ms var(--ease)}
-.brand-strip a:hover img{opacity:1;transform:scale(1.08)}
+.brand-strip{background:rgba(10,18,36,0.45)!important;backdrop-filter:blur(24px) saturate(190%)!important;-webkit-backdrop-filter:blur(24px) saturate(190%)!important;border-block:1px solid rgba(255,255,255,0.1)!important;box-shadow:inset 0 1px 1.5px rgba(255,255,255,0.15),0 12px 35px rgba(0,0,0,0.35)!important;position:relative!important;z-index:5!important;transition:background-color 650ms var(--ease),border-color 450ms var(--ease)}
+.brand-strip img{opacity:.8;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4));transition:opacity 250ms var(--ease),transform 250ms var(--ease)}
+.brand-strip a:hover img{opacity:1;transform:scale(1.12) translateY(-2px);filter:drop-shadow(0 0 12px rgba(167,234,216,0.5))}
 
 /* CARRUSEL Y TARJETAS DE PELÍCULAS: DESPLAZAMIENTO LATERAL Y DERIVA ESPACIAL */
-.cinema-section{padding-top:100px}
+.cinema-section{padding-top:100px;background:linear-gradient(180deg, rgba(8,14,28,0.35) 0%, rgba(10,19,36,0.6) 40%, rgba(8,14,28,0.85) 100%)!important;backdrop-filter:blur(18px) saturate(190%)!important;-webkit-backdrop-filter:blur(18px) saturate(190%)!important;border-bottom:1px solid rgba(255,255,255,0.08)!important;position:relative!important;z-index:4!important}
 .cinema-section h2{font-size:50px;line-height:1.04}
 .cinema-section .section-head>p{font-size:13px}
 .cinema-filters{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
@@ -1217,16 +1217,15 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   .cinematic-hero{min-height:auto;padding-bottom:50px}
   .cinematic-hero .hero-inner{min-height:auto;align-items:flex-start;padding-top:28px}
   .cinematic-hero h1{font-size:clamp(40px,9.2vw,62px);max-width:95%;margin:20px 0;line-height:1.02}
-  .cinematic-hero .hero-copy{width:100%;max-width:none}
+  .cinematic-hero .hero-copy{width:100%;max-width:none;background:linear-gradient(135deg, rgba(14, 25, 48, 0.58) 0%, rgba(8, 15, 30, 0.38) 100%);backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);border:1px solid rgba(255, 255, 255, 0.12);border-radius:20px;padding:20px 16px;box-shadow:0 14px 38px rgba(0, 0, 0, 0.45);position:relative;z-index:4}
   .hero-copy>p{font-size:13px;line-height:1.6}
   .hero-buttons{margin-bottom:20px;width:100%}
   .hero-buttons .button{font-size:14px!important;padding:14px 22px!important;min-height:50px!important;width:100%!important;justify-content:center!important}
-  .cosmos:after{background:linear-gradient(180deg,var(--bg) 3%,transparent 65%,var(--bg))}
-  #planet-scene{width:140%;height:58%;right:-24%;top:42%}
-  .nebula{width:320px;height:320px;top:45%;right:-20%}
-  .planet-fallback{top:45%;height:50%;width:105%;right:-25%}
-  .planet-note{top:auto;bottom:25%;right:0;font-size:10px}
-  .planet-note small{font-size:8px}
+  .cosmos:after{background:linear-gradient(180deg, rgba(8, 14, 32, 0.4) 0%, transparent 45%, rgba(8, 14, 32, 0.35) 100%)}
+  #planet-scene{width:120%;height:68%;right:-12%;top:15%;opacity:0.95;filter:drop-shadow(0 0 40px rgba(56, 189, 248, 0.35))}
+  .nebula{width:320px;height:320px;top:20%;right:-15%}
+  .planet-fallback{top:18%;height:50%;width:105%;right:-15%}
+  .planet-note{display:none}
   .hero-posters{right:8%;bottom:1%;height:130px;width:75%;gap:12px}
   .hero-poster{width:75px}
   .hero-poster:nth-child(2){transform:translateY(-17px) rotate(8deg)}
@@ -1368,21 +1367,38 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 .game-controls #game-sound{font-size:11px;padding:11px 16px}
 
 @media(max-width:760px){
-  #planet-scene{top:43%;height:59%}
-  .planet-note{bottom:21%}
-  .hero-posters{bottom:-2%}
+  #planet-scene{top:15%!important;height:68%!important;width:120%!important;right:-12%!important;opacity:.95!important}
+  .planet-note{display:none!important}
+  .hero-posters{display:none!important}
   .cinematic-hero .hero-meta{display:flex;flex-wrap:nowrap;gap:20px}
   .hero-meta span+span{width:auto!important;border-left:1px solid var(--line)!important;padding-left:20px!important}
-  #game-dialog{padding:12px 8px;width:100%;max-width:100%;border-radius:0;max-height:100dvh;margin:0}
-  .game-stage{border-radius:0}
-  #game-canvas{height:55dvh;width:100%;object-fit:cover}
-  .game-over-card{padding:16px 12px;border-radius:16px}
-  .game-over-stats{gap:6px}
-  .stat-box{padding:8px 4px;border-radius:10px}
-  .stat-box strong{font-size:16px}
-  #game-dialog h2{font-size:22px;margin:0 0 10px}
-  .game-hud{padding:8px 0;font-size:10px}
-  .game-hud b{font-size:15px}
+  #game-dialog{position:fixed!important;inset:0!important;width:100vw!important;max-width:100vw!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:10px 10px 14px!important;border:none!important;border-radius:0!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;background:radial-gradient(circle at center,rgba(13,24,46,0.97) 0%,rgba(5,10,20,0.99) 100%)!important;backdrop-filter:blur(35px) saturate(210%)!important;-webkit-backdrop-filter:blur(35px) saturate(210%)!important;overflow:hidden!important;box-sizing:border-box!important;z-index:1000!important}
+  .game-dialog-head{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 4px 4px!important;margin:0!important}
+  .game-dialog-head h2{font-size:18px!important;margin:0!important;color:#fff!important}
+  .game-dialog-head .eyebrow{font-size:10px!important;margin-bottom:2px!important;color:#38bdf8!important}
+  #game-dialog .close{top:10px!important;right:10px!important;width:36px!important;height:36px!important;font-size:22px!important;background:rgba(255,255,255,0.1)!important;border:1px solid rgba(255,255,255,0.2)!important;border-radius:50%!important;color:#fff!important}
+  .ship-select-container{margin:2px 0 6px!important}
+  .ship-select-label{display:none!important}
+  .ship-select-bar{gap:6px!important;padding:2px 0!important;overflow-x:auto!important;scrollbar-width:none!important}
+  .ship-card{padding:5px 10px!important;border-radius:12px!important;font-size:11px!important;background:rgba(255,255,255,0.05)!important;border:1px solid rgba(255,255,255,0.1)!important;flex:0 0 auto!important}
+  .ship-card strong{font-size:11px!important}
+  .ship-card small{display:none!important}
+  .ship-card.active{background:rgba(56,189,248,0.2)!important;border-color:#38bdf8!important;box-shadow:0 0 14px rgba(56,189,248,0.4)!important}
+  .game-hud{padding:4px 8px!important;margin-bottom:4px!important;font-size:11px!important;background:rgba(0,0,0,0.4)!important;border-radius:10px!important;border:1px solid rgba(255,255,255,0.08)!important}
+  .game-hud .hud-item b{font-size:14px!important}
+  .game-stage{flex:1 1 auto!important;width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;position:relative!important;border-radius:16px!important;border:1.5px solid rgba(56,189,248,0.35)!important;background:#040914!important;box-shadow:0 10px 30px rgba(0,0,0,0.8),inset 0 0 35px rgba(56,189,248,0.1)!important;overflow:hidden!important;min-height:0!important;cursor:pointer!important}
+  #game-canvas{width:100%!important;height:100%!important;max-height:100%!important;object-fit:contain!important;display:block!important}
+  .game-controls{display:flex!important;align-items:center!important;gap:8px!important;margin-top:8px!important;width:100%!important;padding-bottom:env(safe-area-inset-bottom,4px)!important}
+  #game-flap{flex:2 1 auto!important;height:56px!important;font-size:17px!important;font-weight:700!important;letter-spacing:0.03em!important;background:linear-gradient(135deg,#38bdf8 0%,#a7ead8 100%)!important;color:#06111f!important;border-radius:14px!important;box-shadow:0 4px 24px rgba(56,189,248,0.55),inset 0 1px 1px #fff!important;border:none!important}
+  #game-flap:active{transform:scale(0.96)!important}
+  #game-pause,#game-sound{flex:1 1 auto!important;height:56px!important;font-size:12.5px!important;font-weight:600!important;padding:0 6px!important;border-radius:14px!important;background:rgba(255,255,255,0.08)!important;border:1px solid rgba(255,255,255,0.16)!important;color:#f1f5f9!important}
+  .game-controls span{display:none!important}
+  .game-overlay h3{font-size:20px!important}
+  .game-overlay p{font-size:12.5px!important}
+  .game-over-card{width:92%!important;padding:18px 14px!important}
+  .game-over-stats{gap:6px!important;margin:10px 0 14px!important}
+  .stat-box{padding:6px 4px!important}
+  .stat-box strong{font-size:16px!important}
 }
 
 /* ==========================================================================
@@ -1794,5 +1810,212 @@ dialog {
     0 24px 70px rgba(0, 0, 0, 0.8) !important;
   border-radius: 24px !important;
 }
+
+/* ==========================================================================
+   SISTEMA INTEGRAL LIQUID GLASS PARA TODA LA PÁGINA
+   ========================================================================== */
+
+/* Tarjetas de Plataformas en Inicio y Catálogo */
+.platform-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.015) 100%), rgba(12, 22, 40, 0.72) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.13) !important;
+  border-radius: 20px !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.3), 
+              0 14px 38px rgba(0, 0, 0, 0.45) !important;
+  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.platform-card:hover {
+  transform: translateY(-6px) scale(1.015) !important;
+  border-color: rgba(167, 234, 216, 0.55) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 
+              0 22px 55px rgba(0, 0, 0, 0.65), 
+              0 0 28px rgba(167, 234, 216, 0.28) !important;
+}
+
+/* Banner de Combos en Inicio (index.html) */
+.combo-banner {
+  background: linear-gradient(135deg, rgba(24, 48, 88, 0.78) 0%, rgba(10, 20, 38, 0.88) 100%) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border: 1px solid rgba(167, 234, 216, 0.35) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), 
+              0 24px 60px rgba(0, 0, 0, 0.6), 
+              0 0 35px rgba(56, 189, 248, 0.18) !important;
+  border-radius: 28px !important;
+  color: #f8fafc !important;
+}
+
+.combo-banner h2 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5) !important;
+}
+
+.combo-banner p {
+  color: #cbd5e1 !important;
+}
+
+.big-price {
+  color: #a7ead8 !important;
+  text-shadow: 0 0 28px rgba(167, 234, 216, 0.45) !important;
+}
+
+/* Resumen del Pedido en Arma tu Combo (combos.html) */
+.order-summary {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(12, 23, 42, 0.85) !important;
+  backdrop-filter: blur(28px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
+              0 24px 60px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 24px !important;
+  color: #f1f5f9 !important;
+}
+
+.order-summary h2 {
+  color: #ffffff !important;
+}
+
+.order-summary .eyebrow {
+  color: #7dd3fc !important;
+}
+
+.order-summary .muted {
+  color: #94a3b8 !important;
+}
+
+.order-summary .total-row strong {
+  color: #a7ead8 !important;
+  text-shadow: 0 0 16px rgba(167, 234, 216, 0.35) !important;
+}
+
+.order-summary .order-button {
+  background: linear-gradient(135deg, #a7ead8 0%, #38bdf8 100%) !important;
+  color: #06111f !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.45) !important;
+  border: none !important;
+}
+
+.order-summary .order-button:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.01) !important;
+  box-shadow: 0 8px 28px rgba(56, 189, 248, 0.65) !important;
+}
+
+/* Preguntas Frecuentes (FAQ) Acordeón */
+.faq-list details {
+  background: rgba(12, 22, 38, 0.52) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  margin-bottom: 12px !important;
+  padding: 8px 22px !important;
+  transition: all 220ms ease !important;
+}
+
+.faq-list details[open] {
+  background: rgba(16, 30, 52, 0.78) !important;
+  border-color: rgba(167, 234, 216, 0.35) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+.faq-list summary {
+  color: #f1f5f9 !important;
+  font-weight: 500 !important;
+}
+
+.faq-list details p {
+  color: #cbd5e1 !important;
+}
+
+/* Buscadores y Filtros Liquid Glass */
+.filters button, .cinema-filters button {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #cbd5e1 !important;
+  transition: all 200ms ease !important;
+}
+
+.filters button:hover, .cinema-filters button:hover {
+  background: rgba(167, 234, 216, 0.15) !important;
+  border-color: rgba(167, 234, 216, 0.4) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+.filters button[aria-pressed=true], .cinema-filters button[aria-pressed=true] {
+  background: linear-gradient(135deg, rgba(167, 234, 216, 0.9) 0%, rgba(56, 189, 248, 0.9) 100%) !important;
+  color: #06111f !important;
+  border-color: transparent !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 16px rgba(167, 234, 216, 0.4) !important;
+}
+
+.search, .movie-search {
+  background: rgba(8, 16, 32, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+  border-radius: 14px !important;
+}
+
+/* Sección de Pasos */
+.steps {
+  background: rgba(10, 19, 36, 0.48) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 24px !important;
+  padding: 40px !important;
+  margin-block: 40px !important;
+}
+
+/* Presets y Nota Promo */
+.promo-note {
+  background: linear-gradient(135deg, rgba(20, 36, 62, 0.7) 0%, rgba(10, 20, 38, 0.6) 100%) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  border: 1px solid rgba(167, 234, 216, 0.25) !important;
+  border-radius: 18px !important;
+}
+
+.presets button {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 14px !important;
+  transition: all 200ms ease !important;
+}
+
+.presets button:hover {
+  background: rgba(16, 30, 52, 0.8) !important;
+  border-color: rgba(167, 234, 216, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Feature Immersivo en Inicio */
+.feature-copy {
+  background: linear-gradient(135deg, rgba(8, 16, 32, 0.8) 0%, rgba(8, 16, 32, 0.45) 100%) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Pie de Página */
+.footer {
+  background: rgba(6, 12, 24, 0.78) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
 
 

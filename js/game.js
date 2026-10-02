@@ -423,10 +423,19 @@
   }
 
   $('#game-flap').onclick = flap;
-  canvas.addEventListener('pointerdown', e => {
-    e.preventDefault();
-    flap();
-  });
+  const stage = $('.game-stage');
+  if (stage) {
+    stage.addEventListener('pointerdown', e => {
+      if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+      e.preventDefault();
+      flap();
+    });
+  } else {
+    canvas.addEventListener('pointerdown', e => {
+      e.preventDefault();
+      flap();
+    });
+  }
 
   dialog.addEventListener('keydown', e => {
     if ((e.code === 'Space' || e.code === 'ArrowUp') && (e.target === canvas || dialog.contains(e.target))) {

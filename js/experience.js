@@ -113,6 +113,10 @@
       cosmosRaf = null;
       return;
     }
+    if (document.hidden || window.scrollY > 950) {
+      cosmosRaf = requestAnimationFrame(renderCosmos);
+      return;
+    }
     if (!cCtx) return;
     cCtx.clearRect(0, 0, cW, cH);
 
@@ -762,80 +766,60 @@
     }
   }
 
-  // LOOP PRINCIPAL DE ANIMACIÓN Y PARALLAX DE SCROLL
-  let time = 0, lastScroll = -1;
-  function loop(t) {
+  // RENDER OPTIMIZADO ON-DEMAND PARA 60/120 FPS FLUIDO SIN LAG
+  let needsPlanetRender = true;
+  let currentRingsColor = new THREE.Color(palette[theme][0]);
+
+  function renderPlanet() {
+    if (!renderer || !scene || !camera) return;
+    renderer.render(scene, camera);
+  }
+
+  function loop() {
     requestAnimationFrame(loop);
     if (document.hidden) return;
 
-    time = t;
+    if (renderer && inView && window.scrollY < 800) {
+      const targetHex = window.OrbitaColors?.color() || palette[theme][0];
+      const targetColor = new THREE.Color(targetHex);
 
-    // Renderizado Three.js del planeta cósmico (optimizado para no sobrecargar GPU en móvil)
-    const maxScroll = window.innerWidth < 768 ? 700 : 1400;
-    const isAnyDialogOpen = Boolean(document.querySelector('dialog[open]'));
-    const shouldRenderGlobe = !isAnyDialogOpen && renderer && inView && (window.scrollY < maxScroll);
-    if (shouldRenderGlobe) {
-      // El planeta NO se mueve: se mantiene fijo, estático, nítido y elegante
-      // Los anillos del planeta reaccionan al color de la plataforma activa
-      const targetColor = new THREE.Color(window.OrbitaColors?.color() || palette[theme][0]);
-      rings.children.forEach(r => r.material.color.lerp(targetColor, .04));
-      renderer.render(scene, camera);
-    }
-
-    const y = scrollY;
-    if (y !== lastScroll) {
-      lastScroll = y;
-      const factor = innerWidth < 760 ? .45 : 1;
-      const vh = innerHeight;
-
-      // Parallax en secciones visuales ligeras (desactivado en pantallas pequeñas para 60fps constantes)
-      if (innerWidth >= 760) {
-        $$('.feature-image,.combo-visual,.arcade-art').forEach(el => {
-          const r = el.parentElement.getBoundingClientRect();
-          if (r.bottom > 0 && r.top < vh) {
-            el.style.transform = moving ? `translate3d(0,${Math.max(-65, Math.min(65, (vh / 2 - r.top - r.height / 2) * .13 * factor))}px,0)` : '';
-          }
-        });
+      // Lerp suave del color de los anillos solo cuando hay transición de plataforma
+      if (rings && !currentRingsColor.equals(targetColor)) {
+        currentRingsColor.lerp(targetColor, 0.08);
+        rings.children.forEach(r => r.material.color.copy(currentRingsColor));
+        renderPlanet();
+      } else if (needsPlanetRender) {
+        renderPlanet();
+        needsPlanetRender = false;
       }
     }
   }
   requestAnimationFrame(loop);
 
   // ==========================================================================
-  // HERO CINEMÁTICO EDITORIAL 3D: GSAP SCROLLTRIGGER SCRUB + PARALLAX MULTIPLANO
+  // HERO CINEMÁTICO: NAVEGACIÓN Y COMPORTAMIENTO ULTRA-FLUIDO
   // ==========================================================================
   function initHeroCinematic() {
     const hero = document.getElementById('hero-cinematic');
     if (!hero) return;
 
-    const brandLockup = hero.querySelector('.hero-brand-lockup') || hero.querySelector('.hero-giant-wrap');
-    const heroUi = hero.querySelector('.hero-layer-ui');
     const header = document.getElementById('main-header') || document.querySelector('.header');
 
-    // 1. Control de navbar: transparente en hero, translúcida con blur al hacer scroll
+    // Control de navbar ligero con rAF
+    let ticking = false;
     const updateHeader = () => {
       if (header) {
         header.classList.toggle('scrolled', window.scrollY > 35);
       }
+      ticking = false;
     };
-    window.addEventListener('scroll', updateHeader, { passive: true });
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
     updateHeader();
-
-    // 2. Animación de entrada: el planeta no se mueve, solo las letras aparecen
-    if (window.gsap && !reduce.matches) {
-      if (brandLockup) {
-        gsap.fromTo(brandLockup, 
-          { opacity: 0, scale: 0.92, y: 24, filter: 'blur(10px)' }, 
-          { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 1.4, ease: 'power2.out', delay: 0.25 }
-        );
-      }
-      if (heroUi) {
-        gsap.fromTo(heroUi, 
-          { opacity: 0, y: 18 }, 
-          { opacity: 1, y: 0, duration: 1.1, ease: 'power2.out', delay: 0.6 }
-        );
-      }
-    }
   }
 
   initHeroCinematic();

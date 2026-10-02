@@ -901,34 +901,34 @@
 
       // Pre-alineación inicial de transformaciones para garantizar centro óptico
       if (planetAnchor) {
-        gsap.set(planetAnchor, { xPercent: -50, yPercent: -46 });
+        gsap.set(planetAnchor, { xPercent: -50, yPercent: -50 });
       }
       if (orbita) {
-        gsap.set(orbita, { yPercent: -16 });
+        gsap.set(orbita, { yPercent: 0 });
       }
       if (streaming) {
-        gsap.set(streaming, { y: 135 });
+        gsap.set(streaming, { yPercent: 0 });
       }
 
       // Animación de entrada inicial suave
       const tlIntro = gsap.timeline({ defaults: { ease: 'power3.out' } });
       tlIntro
         .fromTo(planetAnchor, 
-          { scale: 0.84, opacity: 0, filter: 'blur(12px)' }, 
+          { scale: 0.85, opacity: 0, filter: 'blur(12px)' }, 
           { scale: 1, opacity: 1, filter: 'blur(0px)', duration: 1.6, ease: 'power2.out' }
         )
         .fromTo(orbita, 
-          { yPercent: 4, scale: 0.94, opacity: 0 }, 
-          { yPercent: -16, scale: 1, opacity: 1, duration: 1.5 }, 
+          { yPercent: 12, scale: 0.96, opacity: 0 }, 
+          { yPercent: 0, scale: 1, opacity: 1, duration: 1.4 }, 
           '-=1.2'
         )
         .fromTo(streaming, 
-          { y: 165, opacity: 0, scale: 0.92 }, 
-          { y: 135, opacity: 1, scale: 1, duration: 1.3 }, 
+          { yPercent: 15, opacity: 0, scale: 0.94 }, 
+          { yPercent: 0, opacity: 1, scale: 1, duration: 1.3 }, 
           '-=1.0'
         )
         .fromTo(heroUi, 
-          { opacity: 0, y: 30 }, 
+          { opacity: 0, y: 25 }, 
           { opacity: 1, y: 0, duration: 1.2 }, 
           '-=0.9'
         );
@@ -949,13 +949,13 @@
         }
       });
 
-      // Paso 1: ÓRBITA se desplaza hacia arriba con parallax y escala, ocultándose detrás del planeta
+      // Paso 1: ÓRBITA se desplaza hacia arriba con parallax y escala, ocultándose más detrás del planeta
       if (orbita) {
         tlScroll.to(orbita, {
-          yPercent: isDesktop ? -36 : -26,
-          scale: 1.08,
-          letterSpacing: '0.01em',
-          opacity: 0.55,
+          yPercent: isDesktop ? -24 : -18,
+          scale: 1.05,
+          letterSpacing: '-0.02em',
+          opacity: 0.45,
           ease: 'none'
         }, 0);
       }
@@ -963,18 +963,18 @@
       // Paso 2: El planeta central 3D realiza un zoom cinematográfico fluido hacia adelante
       if (planetAnchor) {
         tlScroll.to(planetAnchor, {
-          scale: isDesktop ? 1.34 : 1.18,
-          yPercent: isDesktop ? -40 : -42,
+          scale: isDesktop ? 1.28 : 1.16,
+          yPercent: isDesktop ? -46 : -48,
           ease: 'none'
         }, 0);
       }
 
-      // Paso 3: STREAMING se expande visualmente y viaja en primer plano delante del planeta
+      // Paso 3: STREAMING se expande sutilmente por delante del hemisferio inferior
       if (streaming) {
         tlScroll.to(streaming, {
-          y: isDesktop ? 100 : 115,
-          scale: 1.12,
-          letterSpacing: isDesktop ? '0.36em' : '0.22em',
+          yPercent: isDesktop ? 12 : 8,
+          scale: 1.06,
+          letterSpacing: isDesktop ? '0.28em' : '0.20em',
           opacity: 1,
           ease: 'none'
         }, 0);
@@ -1008,14 +1008,14 @@
             const p = Math.min(1, Math.max(0, sy / heroH));
 
             if (orbita) {
-              orbita.style.transform = `translate3d(0, ${-p * 70}px, 0) scale(${1 + p * 0.08})`;
-              orbita.style.opacity = `${1 - p * 0.45}`;
+              orbita.style.transform = `translate3d(0, ${-p * 50}px, 0) scale(${1 + p * 0.05})`;
+              orbita.style.opacity = `${1 - p * 0.55}`;
             }
             if (planetAnchor) {
-              planetAnchor.style.transform = `translate(-50%, -46%) scale(${1 + p * 0.28}) translate3d(0, ${p * 20}px, 0)`;
+              planetAnchor.style.transform = `translate(-50%, -50%) scale(${1 + p * 0.25}) translate3d(0, ${p * 15}px, 0)`;
             }
             if (streaming) {
-              streaming.style.transform = `translateY(135px) translate3d(0, ${-p * 25}px, 0) scale(${1 + p * 0.1})`;
+              streaming.style.transform = `translate3d(0, ${p * 20}px, 0) scale(${1 + p * 0.06})`;
             }
             if (heroUi) {
               heroUi.style.opacity = `${Math.max(0, 1 - p * 1.8)}`;

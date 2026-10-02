@@ -5,7 +5,7 @@
   const root = document.documentElement;
   const lib = window.ORBIT_LIBRARY || [];
   const P = window.ORBITA?.platforms || [];
-  const reduce = { matches: false, addEventListener: () => {} };
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   
   let paused = false;
   try {
@@ -693,7 +693,7 @@
       const map = loader.load(window.EARTH_TEXTURE || 'assets/earth.jpg');
       map.encoding = T.sRGBEncoding;
 
-      globe = new T.Mesh(new T.SphereGeometry(1.28, 64, 48), new T.MeshPhongMaterial({ map, color: 0x1a364d, shininess: 16, specular: 0x22445b }));
+      globe = new T.Mesh(new T.SphereGeometry(1.28, 64, 48), new T.MeshPhongMaterial({ map, color: 0x31545b, shininess: 7, specular: 0x0d2029 }));
       globe.rotation.set(0.08, 1.35, 0.12);
       scene.add(globe);
 
@@ -729,17 +729,17 @@
 
       scene.add(new T.AmbientLight(0x8fa3b7, 1.0));
       light = new T.DirectionalLight(0xffffff, 2.4);
-      light.position.set(-4, 3, 5);
+      light.position.set(-5, 4, 3);
       scene.add(light);
 
-      const warm = new T.PointLight(0xffeedd, 1.4, 25);
+      const warm = new T.PointLight(0x91ded0, .7, 25);
       warm.position.set(4, -2, 2);
       scene.add(warm);
 
       const heroElem = document.getElementById('hero-cinematic') || document.querySelector('.hero');
       function size() {
-        const w = heroElem ? heroElem.clientWidth : window.innerWidth;
-        const h = heroElem ? heroElem.clientHeight : window.innerHeight;
+        const w = canvas.parentElement.clientWidth || window.innerWidth;
+        const h = canvas.parentElement.clientHeight || window.innerHeight;
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         // En pantallas angostas (móviles verticales), alejamos la cámara para que los anillos se vean 100% completos
@@ -768,18 +768,27 @@
 
   // RENDER OPTIMIZADO ON-DEMAND PARA 60/120 FPS FLUIDO SIN LAG
   let needsPlanetRender = true;
-  let currentRingsColor = new THREE.Color(palette[theme][0]);
+  let currentRingsColor = window.THREE ? new THREE.Color(palette[theme][0]) : null;
 
   function renderPlanet() {
     if (!renderer || !scene || !camera) return;
     renderer.render(scene, camera);
   }
 
-  function loop() {
+  let planetTick = 0;
+  function loop(now) {
     requestAnimationFrame(loop);
-    if (document.hidden) return;
+    if (document.hidden || now - planetTick < 33) return;
+    const dt = Math.min((now - planetTick) / 1000, .05);
+    planetTick = now;
 
     if (renderer && inView && window.scrollY < 800) {
+      if (!paused && !reduce.matches) {
+        globe.rotation.y += dt * .055;
+        clouds.rotation.y += dt * .075;
+        rings.rotation.z = Math.sin(now * .00015) * .045;
+        needsPlanetRender = true;
+      }
       const targetHex = window.OrbitaColors?.color() || palette[theme][0];
       const targetColor = new THREE.Color(targetHex);
 
@@ -820,6 +829,27 @@
       }
     }, { passive: true });
     updateHeader();
+    let pointerFrame = 0;
+    let pointerX = 0, pointerY = 0;
+    const resetDepth = () => {
+      pointerX = pointerY = 0;
+      hero.style.setProperty('--depth-x', '0px');
+      hero.style.setProperty('--depth-y', '0px');
+    };
+    hero.addEventListener('pointermove', event => {
+      if (paused || reduce.matches || event.pointerType !== 'mouse') return;
+      const box = hero.getBoundingClientRect();
+      pointerX = ((event.clientX - box.left) / box.width - .5) * 16;
+      pointerY = ((event.clientY - box.top) / box.height - .5) * 10;
+      if (!pointerFrame) pointerFrame = requestAnimationFrame(() => {
+        hero.style.setProperty('--depth-x', `${pointerX}px`);
+        hero.style.setProperty('--depth-y', `${pointerY}px`);
+        pointerFrame = 0;
+      });
+    });
+    hero.addEventListener('pointerleave', resetDepth);
+    reduce.addEventListener('change', resetDepth);
+    document.querySelector('.motion-toggle')?.addEventListener('click', resetDepth);
   }
 
   initHeroCinematic();
@@ -827,14 +857,15 @@
   // Sincronización de reducción de movimiento
   const motion = $('.motion-toggle');
   function motionSync() {
-    root.classList.toggle('motion-paused', paused);
+    root.classList.toggle('motion-paused', paused || reduce.matches);
     if (motion) {
-      motion.disabled = false;
+      motion.disabled = reduce.matches;
+      motion.innerHTML = `<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#${paused ? 'play' : 'pause'}"/></svg>`;
       motion.setAttribute('aria-pressed', String(paused));
       motion.setAttribute('aria-label', paused ? 'Activar efectos' : 'Pausar efectos');
     }
     $$('[data-replay]').forEach(b => b.disabled = false);
-    if (paused) {
+    if (paused || reduce.matches) {
       stopCosmos();
       closeIntro();
       window.OrbitaGallery?.pause();
@@ -844,7 +875,7 @@
       startCosmos();
       window.OrbitaGallery?.resume();
     }
-    lastScroll = -1;
+
   }
   if (motion) {
     motion.onclick = () => {
@@ -857,376 +888,14 @@
   }
   reduce.addEventListener('change', motionSync);
 
-  // ==========================================================================
-  // MOTOR DE LA INTRO GALÁCTICA ULTRA-OPTIMIZADA 60FPS
-  // ==========================================================================
-  const intro = $('#intro');
-  const warp = $('#warp');
-  const ctx = warp?.getContext('2d');
-  let introTimer, introFrame, restoreTimer, previous;
-  let flightStart = 0;
-  let particles = [];
-  let shockwaves = [];
-  let steerX = 0, steerY = 0, targetSteerX = 0, targetSteerY = 0;
-  let warpSpeed = 1, targetSpeed = 1, isHolding = false;
-  let simulatedProgress = 0;
-
-  function lock(value) {
-    [...document.body.children].filter(el => el !== intro && !['SCRIPT', 'NOSCRIPT'].includes(el.tagName)).forEach(el => el.inert = value);
-  }
-
-  function arrived() {
-    document.body.classList.add('arrival');
-  }
-
-  function unlockPage() {
-    root.classList.remove('intro-pending');
-    document.documentElement.classList.remove('intro-pending');
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-    lock(false);
-    arrived();
-    if (window.ScrollTrigger) {
-      setTimeout(() => window.ScrollTrigger.refresh(), 100);
-    }
-  }
-
-  function closeIntro() {
-    clearTimeout(introTimer);
-    cancelAnimationFrame(introFrame);
-    if (window.OrbitaBoot) {
-      clearTimeout(window.OrbitaBoot.timer);
-      window.OrbitaBoot.pending = false;
-      window.OrbitaBoot.skipped = true;
-    }
-    unlockPage();
-
-    if (!intro) return;
-
-    intro.classList.add('leaving');
-    intro.style.pointerEvents = 'none';
-
-    if (intro.contains(document.activeElement)) {
-      document.activeElement.blur();
-      if (previous && previous !== document.body && previous.isConnected) {
-        previous.focus({ preventScroll: true });
-      }
-    }
-
-    const copy = $('.intro-copy');
-    if (copy) copy.style.transform = 'none';
-
-    clearTimeout(restoreTimer);
-    restoreTimer = setTimeout(() => {
-      intro.classList.add('dismissed');
-      intro.hidden = true;
-      intro.style.setProperty('display', 'none', 'important');
-      intro.style.setProperty('visibility', 'hidden', 'important');
-      intro.style.setProperty('pointer-events', 'none', 'important');
-      intro.style.setProperty('opacity', '0', 'important');
-      intro.classList.remove('leaving');
-      intro.classList.remove('turbo-warp');
-      unlockPage();
-    }, 450);
-  }
-
-  window.closeOrbitaIntro = closeIntro;
-  if (window.OrbitaBoot) {
-    window.OrbitaBoot.dismiss = closeIntro;
-  }
-
-  // Interacción de dirección (steering) en la intro para PC y móvil con centrado perfecto
-  const handleSteer = (clientX, clientY) => {
-    targetSteerX = (clientX / innerWidth - 0.5) * 2;
-    targetSteerY = (clientY / innerHeight - 0.5) * 2;
-
-    const copy = $('.intro-copy');
-    if (copy) {
-      copy.style.transform = `perspective(1000px) rotateX(${-targetSteerY * 7}deg) rotateY(${targetSteerX * 9}deg) translateZ(8px)`;
-    }
-
-    const rings = $('.portal-rings');
-    if (rings) {
-      rings.style.transform = `perspective(1000px) rotateX(${56 - targetSteerY * 10}deg) rotateY(${-18 + targetSteerX * 12}deg)`;
-    }
-  };
-
-  intro?.addEventListener('pointermove', e => {
-    handleSteer(e.clientX, e.clientY);
-  });
-
-  intro?.addEventListener('pointerleave', () => {
-    targetSteerX = 0;
-    targetSteerY = 0;
-    const copy = $('.intro-copy');
-    if (copy) copy.style.transform = 'none';
-    const rings = $('.portal-rings');
-    if (rings) rings.style.transform = '';
-  });
-
-  intro?.addEventListener('touchmove', e => {
-    if (e.touches && e.touches[0]) {
-      handleSteer(e.touches[0].clientX, e.touches[0].clientY);
-    }
-  }, { passive: true });
-
-  window.addEventListener('resize', () => {
-    if (warp && (!intro || !intro.hidden)) {
-      warp.width = innerWidth;
-      warp.height = innerHeight;
-    }
-  }, { passive: true });
-
-  // Modo Turbo Warp (Hipersalto) al mantener presionado en PC y móvil
-  intro?.addEventListener('pointerdown', e => {
-    if (e.target.closest('.intro-skip')) return;
-    isHolding = true;
-    targetSpeed = 4.2;
-    intro.classList.add('turbo-warp');
-
-    const swColors = ['#5de0ff', '#38bdf8', '#a7ead8', '#c084fc', '#f472b6', '#fbbf24'];
-    shockwaves.push({
-      x: e.clientX || innerWidth / 2,
-      y: e.clientY || innerHeight / 2,
-      radius: 14,
-      maxRadius: Math.max(innerWidth, innerHeight) * 0.85,
-      alpha: 0.95,
-      color: swColors[Math.floor(Math.random() * swColors.length)]
-    });
-
-    try {
-      window.OrbitaAudio?.unlock();
-      window.OrbitaAudio?.play('flap');
-    } catch {}
-  });
-
-  window.addEventListener('pointerup', () => {
-    if (isHolding) {
-      isHolding = false;
-      targetSpeed = 1;
-      intro?.classList.remove('turbo-warp');
-    }
-  });
-
-  window.addEventListener('pointercancel', () => {
-    isHolding = false;
-    targetSpeed = 1;
-    intro?.classList.remove('turbo-warp');
-  });
-
-  intro?.addEventListener('dblclick', () => closeIntro());
-
-  // Renderizador del túnel hiperespacial a 60 FPS puros (SIN shadowBlur)
-  function warpFrame(t) {
-    if (intro.hidden || document.hidden || !ctx) return;
-
-    // Suavizado lerp de dirección y velocidad
-    steerX += (targetSteerX - steerX) * 0.08;
-    steerY += (targetSteerY - steerY) * 0.08;
-    warpSpeed += (targetSpeed - warpSpeed) * 0.14;
-
-    const w = warp.width;
-    const h = warp.height;
-    const cx = w / 2 + steerX * (w * 0.22);
-    const cy = h / 2 + steerY * (h * 0.22);
-
-    ctx.clearRect(0, 0, w, h);
-
-    // Fondo de aurora cósmica hiperespacial radiante
-    const nebGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, Math.max(w, h) * 0.7);
-    nebGrad.addColorStop(0, warpSpeed > 2 ? 'rgba(93, 224, 255, 0.32)' : 'rgba(167, 234, 216, 0.16)');
-    nebGrad.addColorStop(0.35, warpSpeed > 2 ? 'rgba(192, 132, 252, 0.20)' : 'rgba(56, 189, 248, 0.09)');
-    nebGrad.addColorStop(0.7, warpSpeed > 2 ? 'rgba(244, 114, 182, 0.12)' : 'rgba(14, 28, 48, 0.06)');
-    nebGrad.addColorStop(1, 'transparent');
-    ctx.fillStyle = nebGrad;
-    ctx.fillRect(0, 0, w, h);
-
-    const elapsed = (t - flightStart) / 1000;
-    simulatedProgress += (warpSpeed > 2 ? 0.024 : 0.0085);
-
-    // Actualizar medidor HUD cósmico
-    const hudBar = $('#intro-hud-bar');
-    const hudPct = $('#intro-warp-pct');
-    const hudState = $('#intro-warp-state');
-    const progressClamped = Math.min(1, simulatedProgress);
-
-    if (hudBar) hudBar.style.transform = `scaleX(${progressClamped})`;
-    if (hudPct) hudPct.textContent = `${Math.floor(progressClamped * 100)}%`;
-    if (hudState) hudState.textContent = warpSpeed > 2 ? 'VELOCIDAD LUZ: 4.0X' : 'VELOCIDAD LUZ: 1.0X';
-
-    // Dibujar estrellas en túnel 3D hiperespacial
-    const fov = 480;
-    for (let i = 0; i < particles.length; i++) {
-      const s = particles[i];
-      const step = (1.2 + elapsed * 0.35) * warpSpeed * 9.5;
-      s.z -= step;
-      if (s.z <= 1) {
-        s.z = 1000 + Math.random() * 200;
-        s.x = (Math.random() - 0.5) * w * 1.6;
-        s.y = (Math.random() - 0.5) * h * 1.6;
-      }
-
-      const k = fov / s.z;
-      const x = cx + s.x * k;
-      const y = cy + s.y * k;
-
-      if (x < -60 || x > w + 60 || y < -60 || y > h + 60) continue;
-
-      const prevK = fov / (s.z + step * 3.6);
-      const prevX = cx + s.x * prevK;
-      const prevY = cy + s.y * prevK;
-
-      const alpha = Math.min(1, Math.max(0.12, 1 - s.z / 1000));
-
-      ctx.strokeStyle = s.color;
-      ctx.globalAlpha = alpha;
-      ctx.lineWidth = s.size * (warpSpeed > 2 ? 1.6 : 1.0);
-      ctx.beginPath();
-      ctx.moveTo(prevX, prevY);
-      ctx.lineTo(x, y);
-      ctx.stroke();
-
-      // Destello brillante en la cabeza de la estrella cuando se acerca
-      if (s.z < 420) {
-        ctx.fillStyle = '#ffffff';
-        ctx.globalAlpha = Math.min(1, alpha * 1.2);
-        ctx.beginPath();
-        ctx.arc(x, y, s.size * 0.9, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    // Dibujar ondas de choque cósmicas
-    for (let i = shockwaves.length - 1; i >= 0; i--) {
-      const sw = shockwaves[i];
-      sw.radius += 24 * warpSpeed;
-      sw.alpha *= 0.92;
-
-      if (sw.alpha < 0.02 || sw.radius > sw.maxRadius) {
-        shockwaves.splice(i, 1);
-        continue;
-      }
-
-      ctx.strokeStyle = sw.color || '#5de0ff';
-      ctx.globalAlpha = sw.alpha;
-      ctx.lineWidth = 2.5;
-      ctx.beginPath();
-      ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-      ctx.stroke();
-    }
-
-    ctx.globalAlpha = 1;
-
-    // Si se completa el salto cósmico, transición cinematográfica a la app
-    if (simulatedProgress >= 1) {
-      closeIntro();
-      return;
-    }
-
-    introFrame = requestAnimationFrame(warpFrame);
-  }
-
-  function play() {
-    if (paused || reduce.matches) {
-      window.OrbitaBoot?.dismiss();
-      arrived();
-      return;
-    }
-    if (window.OrbitaBoot) {
-      clearTimeout(window.OrbitaBoot.timer);
-      window.OrbitaBoot.pending = true;
-      window.OrbitaBoot.skipped = false;
-    }
-    root.classList.add('intro-pending');
-    clearTimeout(restoreTimer);
-    clearTimeout(introTimer);
-
-    previous = document.activeElement;
-    intro.classList.remove('dismissed');
-    intro.classList.remove('leaving');
-    intro.classList.remove('turbo-warp');
-    intro.removeAttribute('hidden');
-    intro.hidden = false;
-    intro.style.removeProperty('display');
-    intro.style.removeProperty('visibility');
-    intro.style.removeProperty('pointer-events');
-    intro.style.removeProperty('opacity');
-    document.body.classList.remove('arrival');
-    intro.setAttribute('role', 'dialog');
-    intro.setAttribute('aria-modal', 'true');
-    intro.setAttribute('aria-label', 'Viaje de entrada en órbita');
-    document.body.style.overflow = 'hidden';
-    lock(true);
-
-    $('.intro-skip')?.focus({ preventScroll: true });
-
-    warp.width = innerWidth;
-    warp.height = innerHeight;
-    const isMobile = innerWidth < 768;
-    const warpColors = ['#5de0ff', '#38bdf8', '#a7ead8', '#c084fc', '#f472b6', '#fbbf24', '#60a5fa', '#ffffff'];
-    particles = Array.from({ length: isMobile ? 110 : 230 }, () => ({
-      x: (Math.random() - 0.5) * innerWidth * 1.6,
-      y: (Math.random() - 0.5) * innerHeight * 1.6,
-      z: Math.random() * 1000,
-      size: 0.9 + Math.random() * 1.3,
-      color: warpColors[Math.floor(Math.random() * warpColors.length)]
-    }));
-    shockwaves = [];
-    steerX = steerY = targetSteerX = targetSteerY = 0;
-    warpSpeed = targetSpeed = 1;
-    simulatedProgress = 0;
-
-    const hudBar = $('#intro-hud-bar');
-    if (hudBar) hudBar.style.transform = 'scaleX(0)';
-
-    flightStart = performance.now();
-    cancelAnimationFrame(introFrame);
-    introFrame = requestAnimationFrame(warpFrame);
-    introTimer = setTimeout(closeIntro, 2600);
-  }
-
-  $('.intro-skip')?.addEventListener('click', closeIntro);
-  $('.intro-emblem')?.addEventListener('click', closeIntro);
-
-  $$('[data-replay]').forEach(b => b.onclick = () => {
-    paused = false;
-    motionSync();
-    play();
-  });
-
-  addEventListener('keydown', e => {
-    if (e.key === 'Escape' || e.key === 'Enter') closeIntro();
-    if (e.code === 'Space' && !intro.hidden && document.activeElement?.tagName !== 'BUTTON') {
-      targetSpeed = 4.2;
-      intro.classList.add('turbo-warp');
-    }
-  });
-
-  addEventListener('keyup', e => {
-    if (e.code === 'Space' && !intro.hidden) {
-      targetSpeed = 1;
-      intro.classList.remove('turbo-warp');
-    }
-  });
-
+  // The portal owns its lifecycle independently of optional visual engines.
+  function closeIntro() { window.OrbitaPortal?.close(); }
+  function play() { if (window.OrbitaPortal) window.OrbitaPortal.play(); else location.href = 'index.html'; }
+  if (!$('#intro')) $$('[data-replay]').forEach(button => button.addEventListener('click', play));
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      closeIntro();
-      stopCosmos();
-    } else if (!paused) {
-      startCosmos();
-    }
+    if (document.hidden) stopCosmos(); else if (!paused) startCosmos();
   });
-
   motionSync();
-
-  // Inicio garantizado de la intro en index.html sin bloqueo de sessionStorage
-  if (document.body.dataset.page === 'index' && !paused && !reduce.matches) {
-    play();
-  } else {
-    window.OrbitaBoot?.dismiss();
-    arrived();
-  }
 
   // Galería de fondos inmersivos interactiva (Backdrops cinematográficos panorámicos)
   function initImmersiveGallery() {
@@ -1242,6 +911,7 @@
 
     if (!slides.length) return;
 
+    let galleryVisible = false;
     let currentIndex = 0;
     let autoTimer = null;
     let isHovered = false;
@@ -1280,7 +950,7 @@
 
     function startTimer() {
       stopTimer();
-      if (!paused && !reduce.matches && !isHovered) {
+      if (!paused && !reduce.matches && !isHovered && !document.hidden && galleryVisible) {
         autoTimer = setInterval(nextSlide, 5500);
       }
     }
@@ -1348,6 +1018,13 @@
       startTimer();
     }, { passive: true });
 
+    new IntersectionObserver(entries => {
+      galleryVisible = entries[0].isIntersecting;
+      if (galleryVisible) startTimer(); else stopTimer();
+    }).observe(section);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopTimer(); else startTimer();
+    });
     showSlide(0);
     startTimer();
 
@@ -1369,7 +1046,7 @@
 
   document.addEventListener('click', e => {
     const a = e.target.closest('a');
-    if (!a || a.target || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button || reduce.matches || paused) return;
+    if (document.startViewTransition || !a || a.target || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button || reduce.matches || paused) return;
     const url = new URL(a.href, location.href);
     if (url.origin === location.origin && url.pathname !== location.pathname && url.pathname.endsWith('.html')) {
       e.preventDefault();

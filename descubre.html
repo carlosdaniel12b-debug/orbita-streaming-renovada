@@ -18,7 +18,7 @@
   @keyframes logo-moon-orbit{0%{transform:rotate(0deg);opacity:1;filter:drop-shadow(0 0 4px #a7ead8)}25%{transform:rotate(90deg) scale(0.88);opacity:.85}50%{transform:rotate(180deg) scale(0.72);opacity:.45}75%{transform:rotate(270deg) scale(1.15);opacity:.95;filter:drop-shadow(0 0 6px #a7ead8)}100%{transform:rotate(360deg);opacity:1;filter:drop-shadow(0 0 4px #a7ead8)}}
   </style>
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/experience.css"><link rel="stylesheet" href="css/portal-glass.css">
   <script src="js/data.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/library.js" defer></script>
@@ -55,13 +55,13 @@
         <a href="catalogo.html" class="nav-link">Plataformas</a>
         <a href="combos.html" class="nav-link nav-link-combo"><span class="nav-badge-pill">2x$5</span>Arma tu combo</a>
         <a href="descubre.html" aria-current="page" class="nav-link">Descubre</a>
-        <button class="nav-game" data-game><span class="nav-game-icon">✦</span> Arcade</button>
+        <button class="nav-game" data-game><span class="nav-game-icon"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span> Arcade</button>
       </nav>
 
       <div class="header-actions">
-        <button class="motion-toggle icon-button" aria-label="Pausar efectos" title="Pausar efectos">◌</button>
-        <a class="button small contact" href="https://wa.me/593998226756" target="_blank" rel="noopener">Hablemos <span aria-hidden="true">↗</span></a>
-        <button class="menu-toggle icon-button" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú">☰</button>
+        <button class="motion-toggle icon-button" aria-label="Pausar efectos" title="Pausar efectos"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#pause"/></svg></button>
+        <a class="button small contact" href="https://wa.me/593998226756" target="_blank" rel="noopener">Hablemos <span aria-hidden="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></span></a>
+        <button class="menu-toggle icon-button" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#menu"/></svg></button>
       </div>
     </div>
   </header>
@@ -69,7 +69,7 @@
   <main id="main">
     <!-- Encabezado Hero Descubre -->
     <section class="container descubre-header">
-      <span class="pill" style="margin-bottom: 14px;">✦ Catálogo Completo · Descubre</span>
+      <span class="pill" style="margin-bottom: 14px;"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg> Catálogo Completo · Descubre</span>
       <h1 class="descubre-title">Explora todo el universo del entretenimiento.</h1>
       <p class="descubre-subtitle">
         Más de 70 películas de taquilla, series aclamadas y música en estreno. Elige tu historia, descubre en qué plataforma disfrutarla y arma tu combo al mejor precio.
@@ -127,7 +127,7 @@
         <p style="font-size:32px;margin-bottom:12px;">🛸</p>
         <h3 style="font-size:20px;color:#f1f5f9;margin-bottom:8px;">No encontramos títulos con esa búsqueda</h3>
         <p style="color:#94a3b8;font-size:14px;max-width:40ch;margin:0 auto 20px;">Intenta cambiar las palabras clave o restablecer los filtros de plataforma.</p>
-        <button type="button" class="button" id="descubre-empty-reset">Ver todo el catálogo ↗</button>
+        <button type="button" class="button" id="descubre-empty-reset">Ver todo el catálogo <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
       </div>
 
       <!-- Banner Liquid Glass hacia Combos -->
@@ -138,8 +138,8 @@
           <p>Arma tu combo personalizado eligiendo 2 plataformas por solo $5 al mes, con soporte continuo y activación inmediata.</p>
         </div>
         <div style="display:flex;gap:12px;align-items:center;">
-          <a href="combos.html" class="button combo-cta-btn">Armar mi combo 2x$5 ↗</a>
-          <a href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quisiera%20consultar%20por%20un%20combo" target="_blank" rel="noopener" class="button ghost">Consultar asesor ↗</a>
+          <a href="combos.html" class="button combo-cta-btn">Armar mi combo 2x$5 <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
+          <a href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quisiera%20consultar%20por%20un%20combo" target="_blank" rel="noopener" class="button ghost">Consultar asesor <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
         </div>
       </div>
     </section>
@@ -170,7 +170,7 @@
 
     <div>
       <span class="muted">¿Te ayudamos a elegir?</span>
-      <p><a href="https://wa.me/593998226756" target="_blank" rel="noopener">+593 99 822 6756 ↗</a></p>
+      <p><a href="https://wa.me/593998226756" target="_blank" rel="noopener">+593 99 822 6756 <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a></p>
       <span class="muted">Creada por Carlos Daniel</span>
     </div>
 
@@ -194,22 +194,22 @@
       <span class="floating-label">Arcade</span>
     </button>
     <button class="floating-btn floating-btn-orbit" data-assistant aria-label="Pregúntale a Orbit">
-      <span class="floating-icon" aria-hidden="true">✦</span>
+      <span class="floating-icon" aria-hidden="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span>
       <span class="floating-label">Orbit</span>
     </button>
   </div>
 
   <!-- Diálogo de detalles de película / serie -->
   <dialog id="details" aria-labelledby="detail-title">
-    <button class="close icon-button" data-close aria-label="Cerrar detalles">×</button>
+    <button class="close icon-button" data-close aria-label="Cerrar detalles"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#x"/></svg></button>
     <div id="detail-body"></div>
   </dialog>
 
   <!-- Diálogo Asistente Orbit -->
   <dialog id="assistant" aria-labelledby="assistant-title">
-    <button class="close icon-button" data-close aria-label="Cerrar asistente">×</button>
+    <button class="close icon-button" data-close aria-label="Cerrar asistente"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#x"/></svg></button>
     <div class="copilot-head">
-      <span class="copilot-icon">✦</span>
+      <span class="copilot-icon"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span>
       <div>
         <h2 id="assistant-title">Orbit</h2>
         <p>Tu copiloto de entretenimiento</p>
@@ -256,17 +256,17 @@
     <form id="chat-form">
       <label class="sr-only" for="chat-input">Pregunta a Orbit</label>
       <input id="chat-input" maxlength="300" placeholder="¿En qué app está The Last of Us?" required autocomplete="off">
-      <button class="button" type="submit" aria-label="Enviar consulta">↗</button>
+      <button class="button" type="submit" aria-label="Enviar consulta"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
     </form>
     <small class="assistant-note">Guía editorial + búsqueda de series. La disponibilidad se confirma por país. <a href="https://www.tvmaze.com" target="_blank" rel="noopener">Datos de TVmaze</a>.</small>
   </dialog>
 
   <!-- Diálogo Juego Flappy Space Odyssey -->
   <dialog id="game-dialog" aria-labelledby="game-title">
-    <button class="close icon-button" data-close aria-label="Cerrar juego">×</button>
+    <button class="close icon-button" data-close aria-label="Cerrar juego"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#x"/></svg></button>
     <div class="game-dialog-head">
       <div>
-        <span class="eyebrow">Órbita Arcade ✦ Odisea Espacial</span>
+        <span class="eyebrow">Órbita Arcade <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg> Odisea Espacial</span>
         <h2 id="game-title">Flappy Space Odyssey</h2>
       </div>
     </div>
@@ -297,7 +297,7 @@
           </span>
         </button>
         <button type="button" class="ship-card" data-ship="void" aria-checked="false">
-          <span class="ship-glyph" style="color:#c084fc">✦</span>
+          <span class="ship-glyph" style="color:#c084fc"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span>
           <span class="ship-info">
             <strong>Void Phantom</strong>
             <small>Sigilo Cuántico</small>
@@ -324,7 +324,7 @@
       <div class="game-overlay" id="game-overlay">
         <h3>Misión de Vuelo Cósmico</h3>
         <p>Navega a través de planetas gigantes, lunas misteriosas y anillos orbitales. Conquista los 8 sectores estelares.</p>
-        <button class="button" id="game-start">Iniciar Vuelo ↗</button>
+        <button class="button" id="game-start">Iniciar Vuelo <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
       </div>
     </div>
     <div class="game-controls">

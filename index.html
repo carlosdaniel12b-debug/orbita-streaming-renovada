@@ -1,20 +1,6 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <script>(()=>{const root=document.documentElement;let paused=false;try{paused=localStorage.getItem('orbita-motion')==='paused'}catch{}const boot=window.OrbitaBoot={pending:!paused&&!matchMedia('(prefers-reduced-motion: reduce)').matches,skipped:false};boot.dismiss=()=>{boot.skipped=true;boot.pending=false;root.classList.remove('intro-pending');document.documentElement.classList.remove('intro-pending');clearTimeout(boot.timer);const el=document.getElementById('intro');if(el){el.classList.add('dismissed');el.hidden=true;el.style.setProperty('display','none','important');el.style.setProperty('visibility','hidden','important');el.style.setProperty('pointer-events','none','important');el.style.setProperty('opacity','0','important');}document.body?.classList.add('arrival');if(document.body){document.body.style.overflow='';[...document.body.children].forEach(c=>{if(c.inert)c.inert=false;});}};if(boot.pending){root.classList.add('intro-pending');boot.timer=setTimeout(boot.dismiss,7000)}document.addEventListener('keydown',e=>{if((e.key==='Escape'||e.key==='Enter')&&boot.pending)boot.dismiss()})})();</script>
-  <style id="intro-critical">html{background:#040812}html.intro-pending{overflow:hidden}html.intro-pending body> :not(#intro):not(script):not(style){visibility:hidden}#intro.dismissed,.cinematic-intro.dismissed{display:none!important;opacity:0!important;pointer-events:none!important;visibility:hidden!important}#intro:not(.dismissed),.cinematic-intro:not(.dismissed){position:fixed;inset:0;width:100vw;height:100vh;z-index:99999;background:radial-gradient(circle at 50% 50%,#081120 0%,#040812 70%,#020409 100%);color:#a7ead8;display:grid!important;place-items:center!important;place-content:center!important}
-  .intro-copy{position:relative!important;top:auto!important;left:auto!important;transform:none!important;margin:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;max-width:540px!important;width:90vw!important}
-  html.intro-pending .intro-emblem{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;margin:0 auto!important}
-  html.intro-pending .intro-galaxy-logo{display:block!important;margin:0 auto!important}
-  html.intro-pending .intro-text-block{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;margin:0 auto!important}
-  .logo-symbol{overflow:visible;filter:drop-shadow(0 0 8px rgba(93,224,255,0.45));}
-  .logo-symbol circle:first-of-type{transform-box:fill-box;transform-origin:center;animation:logo-core-pulse 3.6s ease-in-out infinite}
-  .logo-symbol ellipse{transform-box:view-box;transform-origin:35px 30px;transform:rotate(-32deg);stroke:#5de0ff;stroke-dasharray:190 20;animation:logo-ring-shimmer 6s ease-in-out infinite alternate}
-  .logo-symbol circle:last-of-type{transform-box:view-box;transform-origin:35px 30px;animation:logo-moon-orbit 4.8s linear infinite}
-  @keyframes logo-core-pulse{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.08);filter:brightness(1.3) drop-shadow(0 0 10px #5de0ff)}}
-  @keyframes logo-ring-shimmer{0%{stroke-dashoffset:0;opacity:.85}50%{stroke-dashoffset:-90;opacity:1;filter:drop-shadow(0 0 6px #5de0ff)}100%{stroke-dashoffset:-180;opacity:.85}}
-  @keyframes logo-moon-orbit{0%{transform:rotate(0deg);opacity:1;filter:drop-shadow(0 0 6px #5de0ff)}25%{transform:rotate(90deg) scale(0.9);opacity:.85}50%{transform:rotate(180deg) scale(0.7);opacity:.45}75%{transform:rotate(270deg) scale(1.2);opacity:.95;filter:drop-shadow(0 0 8px #ffffff)}100%{transform:rotate(360deg);opacity:1;filter:drop-shadow(0 0 6px #5de0ff)}}
-  </style>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#040812">
@@ -23,7 +9,8 @@
   <title>Tu mundo en otra órbita | Órbita Streaming</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/experience.css"><link rel="stylesheet" href="css/portal-glass.css">
+  <script src="js/portal.js" defer></script>
   <script src="js/data.js" defer></script>
   <script src="js/app.js" defer></script>
   <script src="js/library.js" defer></script>
@@ -43,100 +30,11 @@
   <canvas id="ambient-cosmos" aria-hidden="true"></canvas>
 
   <!-- ==================== INTRO GALÁCTICA ULTRA-OPTIMIZADA 60FPS ==================== -->
-  <div class="intro cinematic-intro" id="intro" role="dialog" aria-modal="true" aria-label="Viaje de entrada en órbita galáctica">
-    <canvas id="warp" aria-hidden="true"></canvas>
-    <div class="portal-rings" aria-hidden="true"><i></i><i></i><i></i></div>
-    <div class="intro-copy">
-      <div class="intro-emblem" title="Órbita Streaming">
-        <svg class="intro-galaxy-logo" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <radialGradient id="intro-core-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
-              <stop offset="25%" stop-color="#5de0ff" stop-opacity="0.8" />
-              <stop offset="55%" stop-color="#0284c7" stop-opacity="0.45" />
-              <stop offset="85%" stop-color="#6366f1" stop-opacity="0.18" />
-              <stop offset="100%" stop-color="#a855f7" stop-opacity="0" />
-            </radialGradient>
-            <radialGradient id="intro-planet-core" cx="38%" cy="32%" r="65%">
-              <stop offset="0%" stop-color="#e0f2fe" />
-              <stop offset="28%" stop-color="#38bdf8" />
-              <stop offset="65%" stop-color="#0369a1" />
-              <stop offset="100%" stop-color="#082f49" />
-            </radialGradient>
-            <linearGradient id="intro-ring-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#5de0ff" stop-opacity="0.95" />
-              <stop offset="50%" stop-color="#a7ead8" stop-opacity="0.4" />
-              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.9" />
-            </linearGradient>
-            <linearGradient id="intro-ring-grad2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.9" />
-              <stop offset="50%" stop-color="#818cf8" stop-opacity="0.3" />
-              <stop offset="100%" stop-color="#5de0ff" stop-opacity="0.8" />
-            </linearGradient>
-            <filter id="intro-glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="2" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
+  <div class="intro cinematic-intro dismissed" id="intro" hidden role="dialog" aria-modal="true" aria-label="Viaje de entrada en órbita galáctica">
+    <div class="portal-tunnel" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="portal-wordmark"><span class="portal-orbit" aria-hidden="true"></span><strong>órbita</strong><span>Tu próximo universo empieza aquí.</span></div>
+    <button type="button" class="intro-skip button ghost" id="btn-skip-intro">Entrar ahora <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-right"/></svg></button>
 
-          <!-- Halo estelar ambiental -->
-          <circle class="logo-aura" cx="60" cy="60" r="52" fill="url(#intro-core-glow)" />
-
-          <!-- Anillo secundario con inclinación inversa y segundo satélite estelar -->
-          <g class="logo-ring-group-2">
-            <ellipse class="logo-ring-secondary" cx="60" cy="60" rx="49" ry="17" stroke="url(#intro-ring-grad2)" stroke-width="1.8" stroke-dasharray="8 6 18 6" />
-            <g class="logo-satellite-2">
-              <circle cx="60" cy="60" r="3.2" fill="#fbbf24" filter="url(#intro-glow)" />
-              <circle cx="60" cy="60" r="1.5" fill="#ffffff" />
-            </g>
-          </g>
-
-          <!-- Núcleo planetario con atmósfera en 3D -->
-          <g class="logo-core-wrap">
-            <circle class="logo-core" cx="60" cy="60" r="23" fill="url(#intro-planet-core)" />
-            <ellipse class="logo-core-band" cx="60" cy="60" rx="22.5" ry="7" stroke="#5de0ff" stroke-width="1.2" stroke-opacity="0.75" />
-            <ellipse class="logo-core-band2" cx="60" cy="60" rx="22" ry="14" stroke="#a7ead8" stroke-width="0.8" stroke-opacity="0.4" stroke-dasharray="3 3" />
-            <path class="logo-flare" d="M60 45 L60 75 M45 60 L75 60" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" stroke-opacity="0.85" />
-          </g>
-
-          <!-- Anillo orbital principal con satélite luminiscente -->
-          <g class="logo-ring-group-1">
-            <ellipse class="logo-ring-primary" cx="60" cy="60" rx="46" ry="15" stroke="url(#intro-ring-grad1)" stroke-width="2.4" stroke-dasharray="140 18 30 18" />
-            <g class="logo-satellite-1">
-              <circle cx="60" cy="60" r="4.2" fill="#ffffff" filter="url(#intro-glow)" />
-              <circle cx="60" cy="60" r="2" fill="#5de0ff" />
-            </g>
-          </g>
-        </svg>
-
-        <div class="intro-text-block">
-          <span class="intro-logo-title">órbita</span>
-          <span class="intro-logo-subtitle">UNIVERSO DE STREAMING</span>
-        </div>
-      </div>
-
-      <div class="intro-status-badge">
-        <span class="intro-status-pulse"></span>
-        <span class="intro-status-text" id="intro-caption">SALTO HIPERESPACIAL EN CURSO</span>
-      </div>
-
-      <div class="intro-hud-meter">
-        <div class="intro-hud-track"><span id="intro-hud-bar"></span></div>
-        <div class="intro-hud-info">
-          <span id="intro-warp-state">VELOCIDAD LUZ: 1.0X</span>
-          <span id="intro-warp-pct">0%</span>
-        </div>
-      </div>
-
-      <div class="intro-hint">
-        <span class="intro-hint-icon">⚡</span>
-        <span class="intro-hint-label">Mueve o desliza para guiar · Mantén presionado para acelerar</span>
-      </div>
-    </div>
-    <button type="button" class="intro-skip button ghost" id="btn-skip-intro" onclick="window.closeOrbitaIntro ? window.closeOrbitaIntro() : window.OrbitaBoot?.dismiss()">Entrar al cosmos ↗</button>
   </div>
 
   <!-- Nebulosas Cósmicas Reactivas de Fondo con Animación Cromática -->
@@ -178,12 +76,12 @@
         <a href="descubre.html" class="nav-link">Catálogo</a>
         <a href="catalogo.html" class="nav-link">Plataformas</a>
         <a href="combos.html" class="nav-link nav-link-combo"><span class="nav-badge-pill">2x$5</span>Planes</a>
-        <button class="nav-game" data-game><span class="nav-game-icon">✦</span> Arcade</button>
+        <button class="nav-game" data-game><span class="nav-game-icon"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span> Arcade</button>
       </nav>
       <div class="header-actions">
-        <button class="motion-toggle icon-button" aria-label="Pausar efectos" title="Pausar efectos">◌</button>
-        <a class="button small contact" href="https://wa.me/593998226756" target="_blank" rel="noopener">Contacto <span aria-hidden="true">↗</span></a>
-        <button class="menu-toggle icon-button" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú">☰</button>
+        <button class="motion-toggle icon-button" aria-label="Pausar efectos" title="Pausar efectos"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#pause"/></svg></button>
+        <a class="button small contact" href="https://wa.me/593998226756" target="_blank" rel="noopener">Contacto <span aria-hidden="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></span></a>
+        <button class="menu-toggle icon-button" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#menu"/></svg></button>
       </div>
     </div>
   </header>
@@ -217,7 +115,7 @@
             <h1 class="hero-giant-orbita">
               <span class="sr-only">Órbita Streaming - </span>
               <span class="orbita-text-glint" aria-hidden="true"></span>
-              ÓRBITA
+              <span class="hero-title-ink">ÓRBITA</span>
             </h1>
             <div class="hero-streaming-wrap">
               <span class="hero-giant-streaming">STREAMING</span>
@@ -235,7 +133,7 @@
               <span class="pill-dot"></span>
               <span>CINE · SERIES · MÚSICA</span>
             </div>
-            <p class="hero-tagline">Todo tu entretenimiento en una sola órbita.</p>
+            <p class="hero-tagline">Todo tu entretenimiento.<br>En otra órbita.</p>
             <div class="hero-editorial-cta">
               <a href="catalogo.html" class="hero-cta-pill" id="hero-main-cta">
                 <span class="cta-label">Explorar catálogo</span>
@@ -246,14 +144,14 @@
                   </svg>
                 </span>
               </a>
-              <a href="combos.html" class="hero-secondary-link">Armar combo 2x$5 ↗</a>
+              <a href="combos.html" class="hero-secondary-link">Armar combo 2x$5 <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
             </div>
           </div>
 
           <!-- Elemento editorial derecho: estándar de transmisión -->
           <div class="hero-editorial hero-editorial-right">
             <div class="hero-quality-badge">
-              <span class="quality-glint">✦</span>
+              <span class="quality-glint"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span>
               <span>CALIDAD 4K HDR</span>
             </div>
             <p class="hero-description">10 plataformas líderes unificadas con activación inmediata y soporte VIP.</p>
@@ -293,7 +191,7 @@
 
             <!-- Acciones secundarias discretas (Replay intro y temas) -->
             <div class="hero-bottom-actions">
-              <button class="text-button hero-replay-btn" data-replay title="Volver a ver la intro cósmica">↻ Intro</button>
+              <button class="text-button hero-replay-btn" data-replay title="Volver a ver la intro cósmica"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#rotate-ccw"/></svg> Intro</button>
               <div class="theme-dots" aria-label="Ambiente visual">
                 <button data-theme="aurora" aria-label="Ambiente aurora" aria-pressed="true"></button>
                 <button data-theme="sunset" aria-label="Ambiente atardecer" aria-pressed="false"></button>
@@ -337,8 +235,8 @@
         <button data-cinema="Serie" aria-pressed="false">Series</button>
         <button data-cinema="music" aria-pressed="false">Música</button>
         <div class="carousel-nav-arrows" aria-label="Navegar historias de lado a lado">
-          <button class="carousel-arrow prev" id="movie-carousel-prev" aria-label="Ver anteriores" title="Deslizar a la izquierda">‹</button>
-          <button class="carousel-arrow next" id="movie-carousel-next" aria-label="Ver siguientes" title="Deslizar a la derecha">›</button>
+          <button class="carousel-arrow prev" id="movie-carousel-prev" aria-label="Ver anteriores" title="Deslizar a la izquierda"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#chevron-left"/></svg></button>
+          <button class="carousel-arrow next" id="movie-carousel-next" aria-label="Ver siguientes" title="Deslizar a la derecha"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#chevron-right"/></svg></button>
         </div>
         <label class="movie-search">
           <span aria-hidden="true">⌕</span>
@@ -350,7 +248,7 @@
       </div>
       <div class="container discover-bottom">
         <p class="fine-print">Selección editorial destacada. ¿Buscas más historias? Explora nuestro nuevo catálogo con más de 70 títulos completos, filtros por plataforma y sagas.</p>
-        <a class="button combo-cta-btn" id="more-movies" href="descubre.html">Explorar catálogo completo en Descubre (70+ títulos) ↗</a>
+        <a class="button combo-cta-btn" id="more-movies" href="descubre.html">Explorar catálogo completo en Descubre (70+ títulos) <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
       </div>
     </section>
 
@@ -370,7 +268,7 @@
       <div class="container feature-inner">
         <div class="feature-card-glass">
           <div class="feature-tag-row">
-            <span class="pill">✦ Cine & Series Inmersivas</span>
+            <span class="pill"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg> Cine & Series Inmersivas</span>
             <span class="feature-universe-badge" id="feature-universe-badge">Dune: Prophecy · Max</span>
           </div>
           <h2>No solo lo ves.<br>Lo sientes.</h2>
@@ -378,9 +276,9 @@
           <div class="feature-actions">
             <button type="button" class="button hero-btn-liquid-primary" data-ask="Recomiéndame una serie de aventura" id="feature-btn-ask">
               <span>Orbit, recomiéndame algo</span>
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></span>
             </button>
-            <a href="descubre.html" class="button ghost">Ver catálogo completo ↗</a>
+            <a href="descubre.html" class="button ghost">Ver catálogo completo <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
           </div>
         </div>
 
@@ -397,8 +295,8 @@
             <button type="button" class="feature-dot" data-index="8" aria-label="Ver The Boys" title="The Boys (Prime Video)"></button>
           </div>
           <div class="feature-arrows">
-            <button type="button" class="feature-arrow prev" id="feature-prev" aria-label="Anterior universo" title="Anterior universo">‹</button>
-            <button type="button" class="feature-arrow next" id="feature-next" aria-label="Siguiente universo" title="Siguiente universo">›</button>
+            <button type="button" class="feature-arrow prev" id="feature-prev" aria-label="Anterior universo" title="Anterior universo"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#chevron-left"/></svg></button>
+            <button type="button" class="feature-arrow next" id="feature-next" aria-label="Siguiente universo" title="Siguiente universo"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#chevron-right"/></svg></button>
           </div>
         </div>
       </div>
@@ -409,7 +307,7 @@
         <span class="pill">Más entretenimiento, mejor juntos</span>
         <h2>Dos plataformas.<br>Una buena decisión.</h2>
         <p>Elige tus favoritas por $5 al mes.<br>Combina dos de video y suma Spotify de regalo.</p>
-        <a class="button dark combo-cta-btn" href="combos.html">Armar mi combo ↗</a>
+        <a class="button dark combo-cta-btn" href="combos.html">Armar mi combo <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
       </div>
       <div class="combo-visual" aria-hidden="true">
         <div class="combo-orbit"></div>
@@ -426,7 +324,7 @@
           <span class="eyebrow">Elige tu destino</span>
           <h2>Un plan para cada versión de ti.</h2>
         </div>
-        <a class="text-link" href="catalogo.html">Ver las 10 plataformas ↗</a>
+        <a class="text-link" href="catalogo.html">Ver las 10 plataformas <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a>
       </div>
       <div class="platform-grid">
         <article class="platform-card" data-category="cinema" data-name="netflix">
@@ -438,7 +336,7 @@
           <p>Ultra HD 4K • Perfil Privado con PIN</p>
           <div class="platform-bottom">
             <span class="price">$3<small> / mes</small></span>
-            <button class="round-button" data-detail="netflix" aria-label="Ver planes de Netflix">↗</button>
+            <button class="round-button" data-detail="netflix" aria-label="Ver planes de Netflix"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
           </div>
         </article>
         <article class="platform-card" data-category="cinema" data-name="disney+">
@@ -450,7 +348,7 @@
           <p>Disney, Pixar, Marvel, Star Wars & ESPN</p>
           <div class="platform-bottom">
             <span class="price">$3<small> / mes</small></span>
-            <button class="round-button" data-detail="disneyplus" aria-label="Ver planes de Disney+">↗</button>
+            <button class="round-button" data-detail="disneyplus" aria-label="Ver planes de Disney+"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
           </div>
         </article>
         <article class="platform-card" data-category="music" data-name="spotify">
@@ -462,7 +360,7 @@
           <p>Más de 100M de canciones sin anuncios</p>
           <div class="platform-bottom">
             <span class="price">$3<small> / mes</small></span>
-            <button class="round-button" data-detail="spotify" aria-label="Ver planes de Spotify">↗</button>
+            <button class="round-button" data-detail="spotify" aria-label="Ver planes de Spotify"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
           </div>
         </article>
       </div>
@@ -478,7 +376,7 @@
         <span class="eyebrow">Una órbita más</span>
         <h2>También viniste<br>a jugar.</h2>
         <p>Enciende motores. Esquiva portales.<br>Conquista seis sectores en Flappy Space.</p>
-        <button class="button" data-game>Iniciar misión ↗</button>
+        <button class="button" data-game>Iniciar misión <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
       </div>
     </section>
 
@@ -554,7 +452,7 @@
     </div>
     <div>
       <span class="muted">¿Te ayudamos a elegir?</span>
-      <p><a href="https://wa.me/593998226756" target="_blank" rel="noopener">+593 99 822 6756 ↗</a></p>
+      <p><a href="https://wa.me/593998226756" target="_blank" rel="noopener">+593 99 822 6756 <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></a></p>
       <span class="muted">Creada por Carlos Daniel</span>
     </div>
     <div class="legal">© 2026 Órbita Streaming. Servicio independiente. Las marcas pertenecen a sus titulares. La disponibilidad de contenido depende del país y del plan.</div>
@@ -575,21 +473,21 @@
       <span class="floating-label">Arcade</span>
     </button>
     <button class="floating-btn floating-btn-orbit" data-assistant aria-label="Pregúntale a Orbit">
-      <span class="floating-icon" aria-hidden="true">✦</span>
+      <span class="floating-icon" aria-hidden="true"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span>
       <span class="floating-label">Orbit AI</span>
     </button>
   </div>
 
   <dialog id="details" aria-labelledby="detail-title">
-    <button class="close icon-button" data-close aria-label="Cerrar detalles">×</button>
+    <button class="close icon-button" data-close aria-label="Cerrar detalles"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#x"/></svg></button>
     <div id="detail-body"></div>
   </dialog>
 
   <dialog id="assistant" aria-labelledby="assistant-title">
-    <button class="close icon-button" data-close aria-label="Cerrar asistente">×</button>
+    <button class="close icon-button" data-close aria-label="Cerrar asistente"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#x"/></svg></button>
     <div class="copilot-head">
       <div class="assistant-orb" aria-hidden="true">
-        <span class="orb-core">✦</span>
+        <span class="orb-core"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span>
         <span class="orb-ring"></span>
       </div>
       <div>
@@ -640,7 +538,7 @@
     <form id="chat-form">
       <label class="sr-only" for="chat-input">Pregunta a Orbit</label>
       <input id="chat-input" maxlength="300" placeholder="¿Dónde veo Breaking Bad, Dune o The Boys?" required autocomplete="off">
-      <button class="button" type="submit" aria-label="Enviar consulta">↗</button>
+      <button class="button" type="submit" aria-label="Enviar consulta"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
     </form>
     <small class="assistant-note">Guía inteligente de streaming. Enlaces directos a plataformas y WhatsApp de Órbita. <a href="https://www.tvmaze.com" target="_blank" rel="noopener">Datos de TVmaze & TMDB</a>.</small>
   </dialog>
@@ -648,10 +546,10 @@
   <div class="toast" role="status"></div>
 
   <dialog id="game-dialog" aria-labelledby="game-title">
-    <button class="close icon-button" data-close aria-label="Cerrar juego">×</button>
+    <button class="close icon-button" data-close aria-label="Cerrar juego"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#x"/></svg></button>
     <div class="game-dialog-head">
       <div>
-        <span class="eyebrow">Órbita Arcade ✦ Odisea Espacial</span>
+        <span class="eyebrow">Órbita Arcade <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg> Odisea Espacial</span>
         <h2 id="game-title">Flappy Space Odyssey</h2>
       </div>
     </div>
@@ -682,7 +580,7 @@
           </span>
         </button>
         <button type="button" class="ship-card" data-ship="void" aria-checked="false">
-          <span class="ship-glyph" style="color:#c084fc">✦</span>
+          <span class="ship-glyph" style="color:#c084fc"><svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#sparkles"/></svg></span>
           <span class="ship-info">
             <strong>Void Phantom</strong>
             <small>Sigilo Cuántico</small>
@@ -709,7 +607,7 @@
       <div class="game-overlay" id="game-overlay">
         <h3>Misión de Vuelo Cósmico</h3>
         <p>Esquiva portales cuánticos, asteroides en rotación y barreras láser. Conquista los 8 sectores estelares.</p>
-        <button class="button" id="game-start">Iniciar Vuelo ↗</button>
+        <button class="button" id="game-start">Iniciar Vuelo <svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#arrow-up-right"/></svg></button>
       </div>
     </div>
     <div class="game-controls">

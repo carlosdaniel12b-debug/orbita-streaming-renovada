@@ -26,14 +26,15 @@ if(menu&&nav){
     const open=menu.getAttribute('aria-expanded')!=='true';
     menu.setAttribute('aria-expanded',String(open));
     menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
-    menu.textContent = open ? '✕' : '☰';
+    menu.innerHTML = `<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#${open ? 'x' : 'menu'}"/></svg>`;
     nav.classList.toggle('open',open);
   });
   document.addEventListener('keydown',e=>{
     if(e.key==='Escape'&&nav.classList.contains('open')){
       nav.classList.remove('open');
       menu.setAttribute('aria-expanded','false');
-      menu.textContent = '☰';
+      menu.setAttribute('aria-label','Abrir menú');
+      menu.innerHTML = '<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#menu"/></svg>';
       menu.focus();
     }
   });
@@ -41,14 +42,16 @@ if(menu&&nav){
     if(nav.classList.contains('open')&&!nav.contains(e.target)&&!menu.contains(e.target)){
       nav.classList.remove('open');
       menu.setAttribute('aria-expanded','false');
-      menu.textContent = '☰';
+      menu.setAttribute('aria-label','Abrir menú');
+      menu.innerHTML = '<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#menu"/></svg>';
     }
   });
   nav.addEventListener('click',e=>{
     if(e.target.closest('a')||e.target.closest('button')){
       nav.classList.remove('open');
       menu.setAttribute('aria-expanded','false');
-      menu.textContent = '☰';
+      menu.setAttribute('aria-label','Abrir menú');
+      menu.innerHTML = '<svg class="ui-icon" aria-hidden="true"><use href="assets/icons/interface.svg#menu"/></svg>';
     }
   });
 }

@@ -49,6 +49,7 @@ syncPaymentInputs();
 // 3. Efectos de Reflejo Especular y Cristal Líquido Interactivo al mover puntero o táctil
 const fine=matchMedia('(hover:hover) and (pointer:fine)'),reduce=matchMedia('(prefers-reduced-motion:reduce)');
 function setupLiquidReflection(){
+  if(!fine.matches) return;
   const cards=$$('.platform-card,.plan-glass,.order-summary,.service-glass,.descubre-card,.pick-card,.feature-card-glass');
   cards.forEach(card=>{
     let frame=0;

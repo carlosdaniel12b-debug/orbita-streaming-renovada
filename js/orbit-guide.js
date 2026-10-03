@@ -38,7 +38,9 @@
 
   function open() {
     if (!dialog.open) dialog.showModal();
-    input.focus();
+    if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+      input.focus();
+    }
   }
 
   // Creación de mensajes en el chat

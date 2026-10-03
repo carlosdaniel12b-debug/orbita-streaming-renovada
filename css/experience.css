@@ -2410,11 +2410,132 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   .movie-detail-layout img{width:90px}
   .movie-detail-layout h2{font-size:24px}
   .movie-detail-layout p{font-size:11px}
-  #assistant{padding:23px 18px}
-  .country-label{font-size:10px}
-  .country-label select{max-width:150px}
-  #chat{max-height:40dvh}
-  .copilot-head h2{font-size:26px}
+  /* Orbit AI Asistente compacto y optimizado en teléfono */
+  #assistant {
+    width: min(420px, calc(100% - 24px)) !important;
+    max-height: 72dvh !important;
+    padding: 14px 14px 14px !important;
+    border-radius: 22px !important;
+    margin: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.2) inset !important;
+  }
+  #assistant .close {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    display: grid !important;
+    place-items: center !important;
+    z-index: 60 !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    cursor: pointer !important;
+  }
+  #assistant .close:active {
+    transform: scale(0.92) !important;
+    background: rgba(255, 255, 255, 0.35) !important;
+  }
+  .copilot-head {
+    min-height: auto !important;
+    padding-right: 48px !important;
+    gap: 10px !important;
+    margin-bottom: 8px !important;
+    flex-shrink: 0 !important;
+  }
+  .copilot-head h2 {
+    font-size: 20px !important;
+  }
+  .copilot-head p {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+  .pearl-world #assistant .assistant-orb {
+    width: 34px !important;
+    height: 34px !important;
+    flex: none !important;
+  }
+  .pearl-world #assistant .btn-clear-chat {
+    right: 52px !important;
+    top: 12px !important;
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .country-label {
+    font-size: 10px !important;
+    margin-bottom: 6px !important;
+    flex-shrink: 0 !important;
+  }
+  .country-label select {
+    max-width: 140px !important;
+    padding: 3px 6px !important;
+    font-size: 11px !important;
+  }
+  .quick-prompts {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 6px !important;
+    padding: 2px 0 6px !important;
+    margin-bottom: 6px !important;
+    flex-shrink: 0 !important;
+  }
+  .quick-prompts::-webkit-scrollbar {
+    display: none !important;
+  }
+  .quick-prompts button {
+    white-space: nowrap !important;
+    font-size: 10.5px !important;
+    padding: 6px 11px !important;
+    min-height: 32px !important;
+    flex-shrink: 0 !important;
+  }
+  #chat {
+    flex: 1 1 auto !important;
+    max-height: 200px !important;
+    min-height: 90px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin: 4px 0 8px !important;
+    gap: 8px !important;
+    padding-right: 4px !important;
+  }
+  #chat .bot, #chat .user {
+    padding: 10px 12px !important;
+    font-size: 11.5px !important;
+    line-height: 1.55 !important;
+  }
+  #chat-form {
+    margin-bottom: 6px !important;
+    flex-shrink: 0 !important;
+  }
+  #chat-form input {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+  }
+  #chat-form button {
+    padding: 8px 14px !important;
+  }
+  .assistant-note {
+    font-size: 9.5px !important;
+    line-height: 1.35 !important;
+    margin-top: 2px !important;
+    flex-shrink: 0 !important;
+  }
+  /* Optimización GPU: Desactivar filtros de desenfoque costosos en teléfonos */
+  .cosmic-card,
+  .cosmic-card.anim-pushing-back,
+  .cosmic-card.depth-hidden {
+    filter: none !important;
+  }
   .game-controls{flex-wrap:wrap}
   .game-controls span{width:100%;margin:0}
   .game-overlay h3{font-size:22px}

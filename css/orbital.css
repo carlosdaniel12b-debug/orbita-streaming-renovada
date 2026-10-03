@@ -1111,6 +1111,30 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
   .shelf-head>a{font-size:12px}
   .shelf{padding:20px 0}
   .discovery-shelves{padding-bottom:20px}
+  .pearl-world #assistant {
+    width: min(420px, calc(100% - 24px)) !important;
+    max-height: 72dvh !important;
+    padding: 14px 14px 14px !important;
+    border-radius: 22px !important;
+    margin: auto !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .pearl-world #assistant .close {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.22) !important;
+    color: #fff !important;
+    display: grid !important;
+    place-items: center !important;
+    z-index: 60 !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  }
   .pearl-world #assistant .answer-titles{grid-template-columns:1fr}
   .pearl-world .descubre-card-body{padding:12px}
   .pearl-world .descubre-card-title{font-size:14px}

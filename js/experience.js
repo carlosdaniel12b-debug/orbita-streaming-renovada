@@ -113,8 +113,9 @@
       cosmosRaf = null;
       return;
     }
-    if (document.hidden || window.scrollY > 950) {
-      cosmosRaf = requestAnimationFrame(renderCosmos);
+    const isMobile = window.innerWidth < 768;
+    if (document.hidden || window.scrollY > 850 || (isMobile && window.scrollY > 500)) {
+      cosmosRaf = null;
       return;
     }
     if (!cCtx) return;
@@ -182,9 +183,8 @@
       cCtx.stroke();
     }
 
-    const isMobile = window.innerWidth < 768;
     const isDialogOpen = Boolean(document.querySelector('dialog[open]'));
-    if (isDialogOpen || (isMobile && window.scrollY > 700)) {
+    if (isDialogOpen || (isMobile && window.scrollY > 500)) {
       cosmosRaf = null;
       return;
     }
@@ -196,7 +196,7 @@
     if (!cosmosRaf && !paused && !reduce.matches && !document.hidden && cCtx) {
       const isMobile = window.innerWidth < 768;
       const isDialogOpen = Boolean(document.querySelector('dialog[open]'));
-      if (isDialogOpen || (isMobile && window.scrollY > 700)) return;
+      if (isDialogOpen || (isMobile && window.scrollY > 500)) return;
       cosmosRaf = requestAnimationFrame(renderCosmos);
     }
   }
@@ -210,10 +210,20 @@
 
   resizeCosmos();
   window.addEventListener('resize', resizeCosmos, { passive: true });
-  window.addEventListener('pointermove', e => {
-    mouseParallax.tx = (e.clientX - cW / 2);
-    mouseParallax.ty = (e.clientY - cH / 2);
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < 650) {
+      startCosmos();
+    } else {
+      stopCosmos();
+    }
   }, { passive: true });
+
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    window.addEventListener('pointermove', e => {
+      mouseParallax.tx = (e.clientX - cW / 2);
+      mouseParallax.ty = (e.clientY - cH / 2);
+    }, { passive: true });
+  }
 
   window.addEventListener('scroll', () => {
     if (window.innerWidth < 768) {

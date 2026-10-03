@@ -1576,28 +1576,91 @@ body.pearl-world {
     min-height: 260px;
   }
 
-  /* Mini Tráiler como Bottom Sheet táctil en teléfono */
+  /* Mini Tráiler centrado cinematográfico en teléfono */
   .mini-trailer {
-    padding: 0;
-    align-items: flex-end;
+    padding: 12px;
+    align-items: center;
+    justify-content: center;
   }
 
   .mini-trailer-sheet {
     width: 100%;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 28px;
-    border-top-right-radius: 28px;
-    padding: 14px 16px calc(24px + env(safe-area-inset-bottom));
-    max-height: 85dvh;
+    max-width: 480px;
+    border-radius: 24px;
+    padding: 12px 14px 14px;
+    max-height: 90dvh;
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.45) inset;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
 
   .mini-trailer-pull-indicator {
-    width: 44px;
-    height: 4.5px;
-    background: rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
-    margin: 0 auto 12px;
+    display: none;
+  }
+
+  .mini-trailer-head {
+    margin-bottom: 8px;
+    gap: 10px;
+  }
+
+  .mini-trailer h2 {
+    font-size: 19px;
+  }
+
+  .mini-trailer-close {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .mini-trailer-screen {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    margin: 4px 0 10px;
+    background: #000;
+  }
+
+  .mini-trailer-foot {
+    padding: 6px 0 0;
+    gap: 8px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mini-trailer-info-side {
+    justify-content: space-between;
+  }
+
+  .mini-trailer-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .mini-trailer-btn {
+    width: 100%;
+    padding: 9px 8px;
+    font-size: 11.5px;
+    justify-content: center;
+    border-radius: 12px;
+  }
+
+  /* OPTIMIZACIONES DE RENDIMIENTO GPU EN TELÉFONO */
+  .liquid-caustic {
+    animation: none !important;
+    filter: blur(20px) !important;
+    opacity: 0.22 !important;
+    will-change: auto !important;
+  }
+
+  .liquid-glass {
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
   }
 }

@@ -29,23 +29,22 @@ Ejemplos: Netflix $3/mes; Netflix + Disney $5/mes; ambos + Canva $9 inicialmente
 
 - `js/data.js`: contacto, plataformas, precios informativos y selección editorial.
 - `js/app.js`: reglas de combos, catálogo y pedidos.
-- `js/experience.js`: Tierra 3D, intro, transiciones y parallax.
-- `js/orbit-guide.js`: preguntas, recomendaciones y búsquedas de Orbit.
-- `js/library.js`: 26 títulos, sinopsis, alias y carátulas.
-- `js/game.js`: Flappy Space.
-- `js/game-audio.js`: sonidos del juego y preferencia de silencio.
+- `js/experience.js`: animaciones espaciales, transiciones e interacción.
+- `js/orbit-guide.js`: inteligencia artificial Orbit, recomendaciones y disponibilidad.
+- `js/hero-cosmos.js`: fondo cósmico dinámico y lienzo de estrellas en tiempo real.
+- `js/pearl.js`: carrusel orbital, animaciones de cabecera y modo Pearl.
+- `js/library.js`: catálogo de títulos, sinopsis, alias y carátulas.
 - `js/platform-colors.js`: acentos por plataforma al enfocar, pasar el ratón o seleccionar.
-- `css/styles.css` y `css/experience.css`: colores, diseño y vistas móviles.
+- `css/styles.css`, `css/experience.css` y `css/pearl.css`: diseño de cristal perla con identidad Órbita.
 - `assets/`: imágenes, tipografía y logotipos locales.
 
 Las reglas de combo están en `calculate()` dentro de `js/app.js`. Si cambias tarifas, actualiza también las frases de precios de las páginas y las respuestas de Orbit.
 
 ## Publicación
 
-Sube las páginas, las carpetas `js`, `css` y `assets` a un alojamiento estático o GitHub Pages. Para disponibilidad en tiempo real necesitas alojar también el servidor: consulta `ORBIT-CONEXION.md`. Esta entrega **no fue publicada** y no modifica tu carpeta original. No contiene scripts de extracción de credenciales ni de publicación automática al repositorio anterior.
+Sube las páginas, las carpetas `js`, `css` y `assets` a un alojamiento estático o GitHub Pages.
 
 ## Contenido
 
-La galería es una selección editorial con fichas y fuentes; no es un catálogo conectado en tiempo real. Revisa `FUENTES.md` para actualizarla. Los títulos no se presentan como estrenos de hoy. La disponibilidad varía según país y plan. Las compras se coordinan por WhatsApp: no hay pasarela de pago ni activación automática.
+La galería es una selección editorial con fichas y fuentes. La disponibilidad varía según país y plan. Las compras se coordinan por WhatsApp: no hay pasarela de pago ni activación automática.
 
-Consulta `REVISION.md` y `VALIDACION.md` para el inventario y las comprobaciones de la entrega.

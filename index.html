@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="es">
 <head>
@@ -96,14 +96,24 @@
 </header>
 <main id="main">
 <section aria-labelledby="pearl-title" class="pearl-hero">
+<canvas aria-hidden="true" class="pearl-cosmos-canvas" id="hero-cosmos-canvas"></canvas>
 <div aria-hidden="true" class="pearl-halo"></div>
-<div class="pearl-copy"><h1 id="pearl-title">Tu tiempo libre.<br/>En otra órbita.</h1><p>Historias que te atrapan. Música que te mueve.<br/>Un lugar para encontrar lo que va contigo.</p><div class="pearl-actions"><a class="button" href="catalogo.html" id="hero-main-cta">Explorar plataformas <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a><a class="pearl-link" href="#experiencias">Descubre tu próxima historia <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div></div>
-<div aria-label="Selección de historias en Órbita" class="pearl-stage">
-<a aria-label="Explorar Severance" class="pearl-screen screen-side screen-left" href="descubre.html"><img alt="Severance" height="450" src="assets/backdrops/severance.jpg" width="800"/><span>Severance</span></a>
-<a aria-label="Descubrir Dune y más historias" class="pearl-screen screen-main" href="descubre.html"><img alt="El universo de Dune" fetchpriority="high" height="720" src="assets/backdrops/dune.jpg" width="1280"/><div class="screen-caption"><div><span>Una pausa. Otro universo.</span><strong>Haz espacio para una gran historia.</strong></div><span class="glass-play"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></span></div></a>
-<a aria-label="Explorar The Last of Us" class="pearl-screen screen-side screen-right" href="descubre.html"><img alt="The Last of Us" height="450" src="assets/backdrops/lastofus.jpg" width="800"/><span>The Last of Us</span></a>
+<div aria-hidden="true" class="pearl-orbital-ring"></div>
+<div aria-hidden="true" class="pearl-satellite"></div>
+<div class="pearl-copy"><h1 id="pearl-title">Tu tiempo libre.<br/>En otra orbita.</h1><p>Historias que te atrapan. Musica que te mueve.<br/>Un lugar para encontrar lo que va contigo.</p><div class="pearl-actions"><a class="button" href="catalogo.html" id="hero-main-cta">Explorar plataformas <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a><a class="pearl-link" href="#experiencias">Descubre tu proxima historia <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div></div>
+<div aria-label="Carousel de historias en Orbita" class="pearl-filmstrip" id="pearl-filmstrip" role="region">
+<div class="pearl-filmstrip-nav"><button aria-label="Anterior" class="prev-btn" id="film-prev">&#8249;</button><button aria-label="Siguiente" class="next-btn" id="film-next">&#8250;</button></div>
+<div class="pearl-filmstrip-track" id="film-track">
+<div class="pearl-film-slide"><img alt="Dune" fetchpriority="high" height="720" src="assets/backdrops/dune.jpg" width="1280"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Max</span><h3>Dune: Parte Dos</h3><p>Pelicula &middot; Ciencia ficcion &middot; 2024</p></div></div>
+<div class="pearl-film-slide"><img alt="Severance" height="720" loading="lazy" src="assets/backdrops/severance.jpg" width="1280"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Apple TV+</span><h3>Severance</h3><p>Serie &middot; Drama &middot; Temporada 2</p></div></div>
+<div class="pearl-film-slide"><img alt="The Last of Us" height="720" loading="lazy" src="assets/backdrops/lastofus.jpg" width="1280"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Max</span><h3>The Last of Us</h3><p>Serie &middot; Drama &middot; Accion &middot; T2</p></div></div>
+<div class="pearl-film-slide"><img alt="Stranger Things" height="720" loading="lazy" src="assets/backdrops/strangerthings.jpg" width="1280"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Netflix</span><h3>Stranger Things</h3><p>Serie &middot; Ciencia ficcion &middot; Terror</p></div></div>
+<div class="pearl-film-slide"><img alt="Fallout" height="720" loading="lazy" src="assets/backdrops/fallout.jpg" width="1280"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Prime Video</span><h3>Fallout</h3><p>Serie &middot; Ciencia ficcion &middot; 2024</p></div></div>
+<div class="pearl-film-slide"><img alt="House of the Dragon" height="720" loading="lazy" src="assets/backdrops/houseofthedragon.jpg" width="1280"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Max</span><h3>House of the Dragon</h3><p>Serie &middot; Fantasia &middot; Drama</p></div></div>
 </div>
-<div class="pearl-note"><span>Entretenimiento, música y creatividad.</span><a href="catalogo.html">Conoce las 10 plataformas <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div>
+<div aria-label="Diapositivas" class="pearl-filmstrip-dots" id="film-dots" role="tablist"></div>
+</div>
+<div class="pearl-note"><span>Entretenimiento, musica y creatividad.</span><a href="catalogo.html">Conoce las 10 plataformas <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div>
 </section>
 <section class="pearl-section container" id="experiencias"><div class="pearl-section-head"><h2>Hay una órbita<br/>para cada momento.</h2><p>De ese capítulo que no puedes dejar<br/>a la idea que quieres hacer realidad.</p></div>
 <div class="experience-mosaic">
@@ -257,3 +267,4 @@
 </noscript>
 </body>
 </html>
+

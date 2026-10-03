@@ -192,15 +192,40 @@
 
   const aliasMap = {
     netflix: ['netflix', 'netflis'],
-    disneyplus: ['disney', 'disney plus', 'disneyplus'],
-    hbomax: ['hbo', 'hbo max', 'max'],
-    primevideo: ['prime', 'amazon prime', 'prime video'],
-    appletv: ['apple tv', 'apple'],
-    paramount: ['paramount'],
-    spotify: ['spotify'],
-    vix: ['vix'],
-    canva: ['canva'],
-    chatgpt: ['chatgpt', 'chat gpt', 'openai', 'gpt', 'gpt4', 'gpt 4', 'ia']
+    disneyplus: ['disney', 'disney plus', 'disneyplus', 'marvel', 'star wars', 'pixar', 'espn'],
+    hbomax: ['hbo', 'hbo max', 'max', 'warner'],
+    primevideo: ['prime', 'amazon prime', 'prime video', 'amazon'],
+    appletv: ['apple tv', 'apple', 'appletv'],
+    paramount: ['paramount', 'paramount plus', 'paramount+'],
+    spotify: ['spotify', 'musica'],
+    vix: ['vix', 'vix premium', 'telenovelas'],
+    canva: ['canva', 'canva pro', 'diseno'],
+    chatgpt: ['chatgpt', 'chat gpt', 'openai', 'gpt', 'gpt4', 'gpt 4', 'ia', 'inteligencia artificial']
+  };
+
+  const titleSynonyms = {
+    'duna': 'dune',
+    'el juego del calamar': 'squid game',
+    'intensamente': 'inside out',
+    'casa del dragon': 'house of the dragon',
+    'juego de tronos': 'game of thrones',
+    'vengadores': 'avengers',
+    'los anillos de poder': 'the rings of power',
+    'anillos de poder': 'the rings of power',
+    'senor de los anillos': 'the rings of power',
+    'el lobo de wall street': 'the wolf of wall street',
+    'caballero de la noche': 'the dark knight',
+    'batman': 'the batman',
+    'spiderman': 'spider-man: across the spider-verse',
+    'spider man': 'spider-man: across the spider-verse',
+    'hombre arana': 'spider-man: across the spider-verse',
+    'interestelar': 'interstellar',
+    'gladiador': 'gladiator',
+    'gladiador 2': 'gladiator ii',
+    'gladiator 2': 'gladiator ii',
+    'chicas pesadas': 'mean girls',
+    'el nino y la garza': 'the boy and the heron',
+    'mision imposible': 'mission: impossible'
   };
 
   function detectPlatforms(q) {
@@ -249,19 +274,27 @@
 
   async function answer(text) {
     const q = norm(text);
-    const title = extract(text);
+    let title = extract(text);
     const ids = detectPlatforms(q);
 
-    let matched = getLib().filter(m => [m.title, m.original, ...m.aliases].some(a => (' ' + q + ' ').includes(' ' + norm(a) + ' ')));
+    // Búsqueda inteligente por sinónimos de título en español
+    for (const [syn, real] of Object.entries(titleSynonyms)) {
+      if (q.includes(syn) || title.includes(syn)) {
+        title = real;
+        break;
+      }
+    }
+
+    let matched = getLib().filter(m => [m.title, m.original, ...m.aliases].some(a => (' ' + q + ' ').includes(' ' + norm(a) + ' ') || norm(a).includes(title) || (title.length > 3 && norm(a).startsWith(title))));
     if (!matched.length && title.length > 4) {
       matched = getLib().filter(m => [m.title, ...m.aliases].some(a => distance(norm(a), title) <= 1));
     }
 
     if (/^(hola|buenas|buenos dias|buenas tardes|hey|saludos|buen dia|buenas noches|hi|hello)/.test(q)) {
       const greetings = [
-        '¡Hola! Soy Orbit, tu copiloto de entretenimiento. Cuéntame: ¿buscas una película, una serie, o quieres que te arme un combo perfecto?',
-        '¡Qué bueno verte! Soy Orbit AI. Tengo todo el catálogo de Órbita Streaming en mi memoria. ¿Qué quieres ver hoy?',
-        '¡Hola! Puedo ayudarte a encontrar cualquier título, recomendarte por género, o calcular el mejor combo para ti. ¿Por dónde empezamos?'
+        '¡Hola! Soy Orbit, tu copiloto inteligente en Órbita Streaming. Puedo decirte dónde ver cualquier película o serie, recomendarte joyas ocultas o calcular el combo ideal para ti. ¿Qué te gustaría ver hoy?',
+        '¡Qué gusto saludarte! Tengo sincronizado todo el catálogo galáctico de streaming. Pregúntame por un título como "Dune", "Severance", "The Last of Us", o dime qué género tienes ganas de disfrutar.',
+        '¡Hola! Estoy listo para ayudarte a encontrar tu próxima gran historia o armarte un combo con el mejor precio. ¿Por dónde empezamos?'
       ];
       await appendBotStream(greetings[Math.floor(Math.random() * greetings.length)]);
       return;
@@ -269,9 +302,9 @@
 
     if (/^(gracias|muchas gracias|ok|perfecto|vale|genial|excelente|chevere|bacano|de nada|que bueno)/.test(q)) {
       const thanks = [
-        '¡Con gusto! Si tienes más preguntas o quieres explorar otro título, aquí estoy.',
-        '¡Me alegra haberte ayudado! ¿Hay algo más que quieras descubrir en tu órbita de entretenimiento?',
-        '¡Siempre a tu servicio! ¿Qué más quieres ver o explorar hoy?'
+        '¡Con muchísimo gusto! Si quieres explorar otro título o armar un combo, pregúntame lo que sea.',
+        '¡Me alegra haberte ayudado! Disfruta tu tiempo libre en otra órbita ✦',
+        '¡Siempre a tu servicio! Recuerda que puedes pedir tu plataforma directamente por WhatsApp cuando estés listo.'
       ];
       await appendBotStream(thanks[Math.floor(Math.random() * thanks.length)]);
       return;
@@ -286,10 +319,16 @@
       // Sincroniza la atmósfera visual con la plataforma encontrada
       window.OrbitaColors?.set(m.platform);
 
+      const respText = `✦ ${m.title} (${m.year || '2024'}) es ${m.type === 'Serie' ? 'una serie' : 'una película'} de ${m.genre.toLowerCase().replaceAll(',', ', ')}. Disponible en ${p ? p.name : 'nuestro catálogo'} ($3/mes en plan individual o $5/mes en combo de 2). ${m.esSummary || ''}`;
+
       await appendBotStream(
-        m.title + ' es ' + (m.type === 'Serie' ? 'una serie' : 'una película') + ' de ' + m.genre.toLowerCase().replaceAll(',', ', ') + '. ' + (m.esSummary || '') + ' ' + (p ? p.name : 'Nuestra selección') + ' es la plataforma oficial. Confirma disponibilidad en ' + country.selectedOptions[0].text + '.',
+        respText,
         async el => {
           titleCards(el, matched);
+
+          // Botón directo para pedir por WhatsApp
+          const waOrderUrl = 'https://wa.me/' + window.ORBITA.phone + '?text=' + encodeURIComponent(`Hola Órbita, quiero contratar ${p ? p.name : 'streaming'} para ver ${m.title}. ¿Tienen disponibilidad?`);
+          link(el, 'Pedir ' + (p ? p.name : m.title) + ' por WhatsApp ↗', waOrderUrl);
 
           if (/parecid|similar|otra como/.test(q)) {
             const other = getLib().filter(x => x.id !== m.id && x.genre.split(',').some(g => m.genre.includes(g))).slice(0, 3);
@@ -311,18 +350,31 @@
             } catch {}
           }
           availability(el, m.original);
-          link(el, 'Ver fuente del título ↗', m.source);
           combo(el, [m.platform]);
         }
       );
       return;
     }
 
+    // Consulta específica sobre precios y planes de plataformas individuales
+    if (ids.length === 1 && /precio|cuanto|cuesta|vale|info|caracteristicas|plan/.test(q)) {
+      const p = pBy(ids[0]);
+      if (p) {
+        const pMsg = `${p.name} en Órbita cuesta solo $${p.price} USD/${p.period}. Incluye ${p.tagline}. Compatible con Smart TV, celulares, tablets, consolas y computadoras. Además, si la combinas con otra plataforma de video, el par te queda en solo $5/mes y recibes 1 mes de Spotify de regalo.`;
+        await appendBotStream(pMsg, el => {
+          combo(el, [p.id]);
+          const waUrl = 'https://wa.me/' + window.ORBITA.phone + '?text=' + encodeURIComponent(`Hola Órbita, quisiera pedir ${p.name} ($${p.price}/${p.period}).`);
+          link(el, 'Pedir ' + p.name + ' por WhatsApp ↗', waUrl);
+        });
+        return;
+      }
+    }
+
     if (/precio|cuanto|cuesta|vale|costo|combo|barat|presupuesto/.test(q) || ids.length) {
       const use = ids.length ? ids : lastIds;
       const introText = use.length
         ? 'Para tu selección de ' + use.map(id => pBy(id).name).join(' + ') + ':'
-        : 'Una plataforma cuesta $3 USD/mes. Cada combo de 2 cuesta $5/mes. Con dos plataformas de video, ¡recibes Spotify de regalo por 1 mes!';
+        : 'Una plataforma individual cuesta $3 USD/mes. Cada combo de 2 cuesta $5/mes. Con dos plataformas de video, ¡recibes Spotify de regalo por 1 mes! Canva Pro ($4/año) y ChatGPT Plus ($5 / 4 meses) tienen tarifas promocionales independientes.';
       
       await appendBotStream(introText, el => {
         if (use.length) combo(el, use);
@@ -337,14 +389,14 @@
     }
 
     if (/pagar|pago|comprar|contratar|activar|activacion|entrega/.test(q)) {
-      await appendBotStream('Elige una plataforma o combo, abre WhatsApp y confirma disponibilidad. Al validar el pago, el asesor te entrega las credenciales y pasos de activación de inmediato.', el => {
+      await appendBotStream('Elige una plataforma o combo, abre WhatsApp y confirma disponibilidad. Al validar el pago, el asesor te entrega las credenciales y pasos de activación de inmediato con garantía completa.', el => {
         link(el, 'Hablar con un asesor por WhatsApp ↗', 'https://wa.me/' + window.ORBITA.phone + '?text=' + encodeURIComponent('Hola, quiero consultar formas de pago y activación.'));
       });
       return;
     }
 
     if (/soporte|problema|funciona|error|garantia|renovar|cancelar|reembolso/.test(q)) {
-      await appendBotStream('Puedo orientarte con dudas generales. Para soporte de cuenta, escríbenos directamente por WhatsApp y nuestro equipo te dará asistencia garantizada.', el => {
+      await appendBotStream('Puedo orientarte con dudas generales. Para soporte técnico de cuenta, garantía o renovaciones, escríbenos directamente por WhatsApp y nuestro equipo te dará asistencia personalizada garantizada.', el => {
         link(el, 'Contactar soporte por WhatsApp ↗', 'https://wa.me/' + window.ORBITA.phone + '?text=' + encodeURIComponent('Hola, necesito soporte: ' + text));
       });
       return;

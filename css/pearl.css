@@ -23,8 +23,8 @@ body.pearl-world{background:#f5f5f7;color:#1d1d1f;font-family:Manrope,Arial,sans
 .pearl-world .nav a:hover,.pearl-world .nav-game:hover{background:#eeeeF2;color:#111}
 .pearl-world .header-actions{gap:10px}
 .pearl-world .icon-button{color:#33333b;background:#eaeaef99;border:1px solid #fff9;box-shadow:inset 0 1px 0 #fff7;width:40px;height:40px;border-radius:50%}
-.pearl-world .button{background:#0071e3;color:#fff;border:0;box-shadow:inset 0 1px 0 #ffffff30,0 5px 14px #0071e31a;border-radius:999px;min-height:48px;padding:14px 24px;font-size:14px;font-weight:600;gap:12px;transition:transform .2s var(--ease-pearl),background .2s,box-shadow .2s;text-shadow:none}
-.pearl-world .button:hover{background:#0077ed;transform:translateY(-2px);box-shadow:0 8px 20px #0071e328}
+.pearl-world .button{background:linear-gradient(135deg,#0a9a80,#087a66);color:#fff;border:0;box-shadow:inset 0 1px 0 #ffffff30,0 5px 18px rgba(10,154,128,0.28);border-radius:999px;min-height:48px;padding:14px 24px;font-size:14px;font-weight:600;gap:12px;transition:transform .2s var(--ease-pearl),background .2s,box-shadow .2s;text-shadow:none}
+.pearl-world .button:hover{background:linear-gradient(135deg,#0bb896,#099e82);transform:translateY(-2px);box-shadow:0 10px 28px rgba(10,154,128,0.38)}
 .pearl-world .button:active{transform:scale(.97)}
 .pearl-world .button.small{font-size:12px;min-height:38px;padding:10px 17px}
 .pearl-world .button.ghost{background:#ffffff99;color:#1d1d1f;box-shadow:inset 0 1px 0 #fff,0 4px 16px #24243a10;backdrop-filter:blur(16px)}
@@ -202,3 +202,481 @@ html:has(body.pearl-world){scrollbar-color:#b4b5c2 #f5f5f7;scrollbar-width:thin}
 .pearl-world .pearl-steps li:last-child{border:0}
 .pearl-world .descubre-grid .movie-card{background:linear-gradient(140deg,#fff,#f2f4fa)!important;border:1px solid #e5e7f0!important;box-shadow:0 4px 14px #20203808!important}
 .pearl-world .descubre-grid .movie-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #20203814!important}
+
+/* ============================================================
+   HERO COSMOS CAROUSEL - Carrusel orbital con parallax
+   Mantiene el estilo Apple pero con alma espacial Orbita
+   ============================================================ */
+
+/* Canvas cósmico superpuesto sobre el hero */
+.pearl-hero{position:relative;isolation:isolate;overflow:hidden;padding:55px 0 0;background:linear-gradient(180deg,#f5f5f7,#eef0f8 70%,#f5f5f7)}
+.pearl-cosmos-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.55}
+
+/* Carrusel de películas cinematográfico */
+.pearl-filmstrip{position:relative;height:420px;max-width:1680px;margin:48px auto 0;overflow:hidden;border-radius:28px;z-index:1}
+.pearl-filmstrip-track{display:flex;transition:transform .9s cubic-bezier(.22,1,.36,1);height:100%;will-change:transform}
+.pearl-film-slide{flex:none;width:100%;height:100%;position:relative;overflow:hidden}
+.pearl-film-slide img{width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform 12s linear}
+.pearl-filmstrip-track:not(.is-transitioning) .pearl-film-slide img{transform:scale(1.06)}
+.pearl-film-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,15,20,.72) 0%,rgba(15,15,20,.18) 50%,transparent 100%),linear-gradient(0deg,rgba(15,15,20,.85) 0%,transparent 35%)}
+.pearl-film-info{position:absolute;bottom:32px;left:40px;color:white;z-index:2}
+.pearl-film-info .film-tag{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:rgba(10,154,128,.85);color:white;padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:10px;backdrop-filter:blur(8px)}
+.pearl-film-info h3{font-size:clamp(22px,3.5vw,38px);font-weight:700;line-height:1.1;margin:0 0 6px;letter-spacing:-.03em}
+.pearl-film-info p{font-size:13px;color:rgba(255,255,255,.75);margin:0;line-height:1.5}
+
+/* Órbita orbital decorativa en el hero (elemento espacial Orbita) */
+.pearl-orbital-ring{position:absolute;right:-120px;top:50%;transform:translateY(-50%);width:580px;height:580px;border-radius:50%;border:1px solid rgba(10,154,128,.15);pointer-events:none;z-index:1;animation:pearl-orbit-spin 40s linear infinite}
+.pearl-orbital-ring::before{content:'';position:absolute;inset:-18px;border-radius:50%;border:1px solid rgba(167,234,216,.1)}
+.pearl-orbital-ring::after{content:'';position:absolute;width:10px;height:10px;background:rgba(10,154,128,.7);border-radius:50%;top:18%;left:22%;box-shadow:0 0 12px rgba(10,154,128,.5);animation:pearl-orbit-dot 40s linear infinite reverse}
+.pearl-satellite{position:absolute;width:7px;height:7px;background:rgba(186,230,253,.8);border-radius:50%;bottom:20%;right:28%;box-shadow:0 0 8px rgba(186,230,253,.6);animation:pearl-satellite-drift 6s ease-in-out infinite}
+
+/* Controles del carrusel (puntos + flechas) */
+.pearl-filmstrip-dots{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;position:relative;z-index:2}
+.pearl-filmstrip-dots button{width:28px;height:5px;border-radius:3px;background:#d1d1d6;border:0;cursor:pointer;padding:0;transition:background .3s,width .3s var(--ease-pearl)}
+.pearl-filmstrip-dots button.active{background:linear-gradient(90deg,#0a9a80,#087a66);width:48px}
+.pearl-filmstrip-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;display:flex;gap:10px;left:24px}
+.pearl-filmstrip-nav button{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:white;backdrop-filter:blur(16px);cursor:pointer;display:grid;place-items:center;transition:background .2s,transform .2s;font-size:18px}
+.pearl-filmstrip-nav button:hover{background:rgba(255,255,255,.3);transform:scale(1.08)}
+.pearl-filmstrip-nav button.next-btn{left:auto;margin-left:52px}
+
+@keyframes pearl-orbit-spin{from{transform:translateY(-50%) rotate(0deg)}to{transform:translateY(-50%) rotate(360deg)}}
+@keyframes pearl-orbit-dot{from{transform:rotate(0deg) translateX(260px)}to{transform:rotate(360deg) translateX(260px)}}
+@keyframes pearl-satellite-drift{0%,100%{transform:translateY(0) translateX(0)}30%{transform:translateY(-14px) translateX(8px)}70%{transform:translateY(10px) translateX(-6px)}}
+
+/* Antiguo pearl-stage ya no se usa, ocultarlo si aparece */
+.pearl-stage{display:none}
+
+/* --- FIXES DEL READOUT EN COMBOS --- */
+/* Arreglar texto invisible (azul sobre oscuro) */
+.pearl-world #assistant .readout{
+  background:rgba(10,154,128,.12)!important;
+  border:1px solid rgba(10,154,128,.2)!important;
+  color:#d4f5ee!important;
+  font-size:12px;
+  border-radius:10px;
+  padding:9px 13px;
+  margin-top:10px;
+  display:block;
+  line-height:1.6;
+}
+/* Los links de combos en el readout deben ser legibles */
+.pearl-world #assistant .bot a,
+.pearl-world #assistant .readout a{
+  color:#0a9a80!important;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  font-weight:600;
+}
+
+/* ============================================================
+   PROMO NOTE EN COMBOS - Solución al error de texto ilegible
+   ============================================================ */
+.pearl-world .promo-note {
+  background: linear-gradient(135deg, #ffffff 0%, #f2faf7 100%) !important;
+  border: 1px solid rgba(10, 154, 128, 0.25) !important;
+  box-shadow: 0 4px 18px rgba(10, 154, 128, 0.08) !important;
+  color: #1d1d1f !important;
+  border-radius: 16px !important;
+  padding: 20px 24px !important;
+}
+.pearl-world .promo-note > span {
+  color: #0a9a80 !important;
+  font-size: 26px !important;
+}
+.pearl-world .promo-note strong {
+  color: #13221e !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  display: block;
+}
+.pearl-world .promo-note p {
+  color: #43544e !important;
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+  margin-top: 6px !important;
+}
+
+/* ============================================================
+   TARJETAS DE PELÍCULAS DESCUBRE (descubre-card & movie-card)
+   Diseño de cristal perla con contraste perfecto y estilo Órbita
+   ============================================================ */
+.pearl-world .descubre-card,
+.pearl-world .descubre-grid .movie-card,
+.pearl-world .movie-card {
+  background: linear-gradient(145deg, #ffffff, #f7f9fd) !important;
+  border: 1px solid rgba(210, 220, 235, 0.75) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06), inset 0 1px 0 #ffffff !important;
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.pearl-world .descubre-card:hover,
+.pearl-world .descubre-card:focus-visible,
+.pearl-world .descubre-grid .movie-card:hover,
+.pearl-world .movie-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: rgba(10, 154, 128, 0.5) !important;
+  box-shadow: 0 20px 42px rgba(15, 23, 42, 0.12), 0 0 24px rgba(10, 154, 128, 0.18) !important;
+  outline: none !important;
+}
+
+.pearl-world .descubre-card-poster,
+.pearl-world .poster-wrap {
+  position: relative !important;
+  aspect-ratio: 2 / 3 !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  background: #0d1624 !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+.pearl-world .descubre-card-poster img,
+.pearl-world .poster-wrap img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  display: block !important;
+}
+
+.pearl-world .descubre-card:hover .descubre-card-poster img,
+.pearl-world .movie-card:hover .poster-wrap img {
+  transform: scale(1.08) !important;
+}
+
+.pearl-world .descubre-card-body {
+  background: #ffffff !important;
+  padding: 16px 18px 20px !important;
+  flex-grow: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.pearl-world .descubre-card-title,
+.pearl-world .movie-card h3 {
+  color: #151821 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.3 !important;
+  margin: 0 0 6px !important;
+  transition: color 0.2s ease !important;
+}
+
+.pearl-world .descubre-card:hover .descubre-card-title,
+.pearl-world .movie-card:hover h3 {
+  color: #0a9a80 !important;
+}
+
+.pearl-world .descubre-card-genre,
+.pearl-world .descubre-card p,
+.pearl-world .movie-card p,
+.pearl-world .movie-info {
+  color: #64748b !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+}
+
+.pearl-world .descubre-year,
+.pearl-world .movie-year {
+  color: #64748b !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+.pearl-world .descubre-platform-badge,
+.pearl-world .movie-platform-badge,
+.pearl-world .badge {
+  background: rgba(10, 154, 128, 0.1) !important;
+  color: #087a66 !important;
+  border: 1px solid rgba(10, 154, 128, 0.22) !important;
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  border-radius: 8px !important;
+  padding: 3px 8px !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+}
+
+.pearl-world .descubre-play-btn {
+  background: linear-gradient(135deg, #0a9a80, #087a66) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 12.5px !important;
+  padding: 6px 14px !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 14px rgba(10, 154, 128, 0.4) !important;
+}
+
+/* ============================================================
+   BOTONES ÓRBITA - Verde azulado cósmico (diferente al azul Apple)
+   ============================================================ */
+.pearl-world .button,
+.pearl-world .order-button,
+.pearl-world #order,
+.pearl-world .floating-btn-orbit {
+  background: linear-gradient(135deg, #0a9a80, #087a66) !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 6px 20px rgba(10, 154, 128, 0.32) !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s, box-shadow 0.2s !important;
+}
+
+.pearl-world .button:hover,
+.pearl-world .order-button:hover,
+.pearl-world #order:hover,
+.pearl-world .floating-btn-orbit:hover {
+  background: linear-gradient(135deg, #0bb896, #099e82) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 10px 28px rgba(10, 154, 128, 0.42) !important;
+}
+
+/* ============================================================
+   HERO COSMOS CAROUSEL & ELEMENTOS ORBITALES
+   ============================================================ */
+.pearl-cosmos-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.pearl-orbital-ring {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: min(1100px, 90vw);
+  height: 440px;
+  transform: translateX(-50%) rotate(-12deg);
+  border: 1.5px dashed rgba(10, 154, 128, 0.22);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: orbitalRingSpin 90s linear infinite;
+}
+
+.pearl-orbital-ring::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 20%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #0bb896;
+  box-shadow: 0 0 16px #0bb896, 0 0 30px #0a9a80;
+}
+
+@keyframes orbitalRingSpin {
+  from { transform: translateX(-50%) rotate(-12deg); }
+  to { transform: translateX(-50%) rotate(348deg); }
+}
+
+.pearl-satellite {
+  position: absolute;
+  top: 22%;
+  right: 14%;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff, #a7ead8 60%, #0a9a80);
+  box-shadow: 0 0 20px rgba(11, 184, 150, 0.5), inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  z-index: 1;
+  animation: satelliteFloat 8s ease-in-out infinite alternate;
+}
+
+@keyframes satelliteFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-24px) rotate(15deg); }
+}
+
+.pearl-filmstrip {
+  position: relative;
+  max-width: 1240px;
+  margin: 36px auto 0;
+  padding: 0 20px;
+  z-index: 2;
+  perspective: 1200px;
+}
+
+.pearl-filmstrip-nav {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  right: 4px;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.pearl-filmstrip-nav button {
+  pointer-events: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  color: #1d1d1f;
+  font-size: 26px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pearl-filmstrip-nav button:hover {
+  background: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(10, 154, 128, 0.25);
+  color: #0a9a80;
+}
+
+.pearl-filmstrip-track {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 16px 8px 28px;
+}
+
+.pearl-filmstrip-track::-webkit-scrollbar {
+  display: none;
+}
+
+.pearl-film-slide {
+  flex: 0 0 calc(33.333% - 16px);
+  min-width: 280px;
+  height: 380px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  scroll-snap-align: center;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  background: #111827;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .pearl-film-slide {
+    flex: 0 0 calc(60% - 12px);
+    height: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pearl-film-slide {
+    flex: 0 0 calc(85% - 8px);
+    height: 290px;
+  }
+}
+
+.pearl-film-slide:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 44px rgba(10, 154, 128, 0.22), 0 0 0 2px rgba(10, 154, 128, 0.4);
+}
+
+.pearl-film-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pearl-film-slide:hover img {
+  transform: scale(1.08);
+}
+
+.pearl-film-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(7, 14, 25, 0.88) 0%, rgba(7, 14, 25, 0.4) 45%, transparent 75%);
+  pointer-events: none;
+}
+
+.pearl-film-info {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  color: #ffffff;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pearl-film-info .film-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(10, 154, 128, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.pearl-film-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 4px;
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.pearl-film-info p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.pearl-filmstrip-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.pearl-filmstrip-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+}
+
+.pearl-filmstrip-dots .dot.active {
+  width: 24px;
+  background: #0a9a80;
+}
+

@@ -257,13 +257,23 @@
       matched = getLib().filter(m => [m.title, ...m.aliases].some(a => distance(norm(a), title) <= 1));
     }
 
-    if (/^(hola|buenas|buenos dias|buenas tardes|hey|saludos)$/.test(q)) {
-      await appendBotStream('¡Hola! Soy Orbit AI, tu copiloto galáctico. Puedo buscar cualquier película o serie, recomendarte por género o armar el combo perfecto para ti. ¿Qué te gustaría ver hoy?');
+    if (/^(hola|buenas|buenos dias|buenas tardes|hey|saludos|buen dia|buenas noches|hi|hello)/.test(q)) {
+      const greetings = [
+        '¡Hola! Soy Orbit, tu copiloto de entretenimiento. Cuéntame: ¿buscas una película, una serie, o quieres que te arme un combo perfecto?',
+        '¡Qué bueno verte! Soy Orbit AI. Tengo todo el catálogo de Órbita Streaming en mi memoria. ¿Qué quieres ver hoy?',
+        '¡Hola! Puedo ayudarte a encontrar cualquier título, recomendarte por género, o calcular el mejor combo para ti. ¿Por dónde empezamos?'
+      ];
+      await appendBotStream(greetings[Math.floor(Math.random() * greetings.length)]);
       return;
     }
 
-    if (/^(gracias|muchas gracias|ok|perfecto|vale)$/.test(q)) {
-      await appendBotStream('¡Con muchísimo gusto! Cuando quieras, seguimos explorando nuevas historias en tu órbita.');
+    if (/^(gracias|muchas gracias|ok|perfecto|vale|genial|excelente|chevere|bacano|de nada|que bueno)/.test(q)) {
+      const thanks = [
+        '¡Con gusto! Si tienes más preguntas o quieres explorar otro título, aquí estoy.',
+        '¡Me alegra haberte ayudado! ¿Hay algo más que quieras descubrir en tu órbita de entretenimiento?',
+        '¡Siempre a tu servicio! ¿Qué más quieres ver o explorar hoy?'
+      ];
+      await appendBotStream(thanks[Math.floor(Math.random() * thanks.length)]);
       return;
     }
 
@@ -340,8 +350,16 @@
       return;
     }
 
-    if (/dispositivo|televisor|smart tv|pantalla|pin|4k|celular|privad/.test(q)) {
-      await appendBotStream('Nuestros planes son compatibles con Smart TV, celulares, tablets, consolas y PC/Mac. Incluyen perfiles privados con PIN y calidad Ultra HD 4K.');
+    if (/dispositivo|televisor|smart tv|pantalla|pin|4k|celular|privad|compatible/.test(q)) {
+      await appendBotStream('Los planes de Órbita son compatibles con Smart TV (Samsung, LG, TCL, Hisense), celulares Android e iOS, tablets, PlayStation, Xbox, Chromecast, Amazon Fire TV y PC/Mac. Incluyen perfiles privados con PIN y calidad Ultra HD 4K según la plataforma. Para consultar la compatibilidad exacta de tu dispositivo, confírmanos por WhatsApp.');
+      return;
+    }
+
+    if (/aburrido|aburr|que hago|no se que ver|no sabes|sin ideas|ayudame a elegir|indeciso|no encuentro/.test(q)) {
+      const moodList = getLib().filter(m => ['Severance', 'Interstellar', 'The Last of Us', 'Fallout', 'Merlina', 'Breaking Bad'].includes(m.title));
+      await appendBotStream('Te entiendo, a veces hay tanto para elegir que es difícil decidir. Aquí van los títulos que más engancha a la gente desde el primer episodio o escena:', el => {
+        titleCards(el, moodList);
+      });
       return;
     }
 
@@ -367,31 +385,34 @@
     }
 
     const genres = [
-      [/ciencia ficcion|espacio|futuro/, 'Ciencia ficción'],
-      [/terror|miedo/, 'terror'],
-      [/comedia|reir|divertid/, 'comedia'],
-      [/familia|nino|infantil|disney/, 'familia'],
-      [/anime|animacion|dibujos/, 'Animación'],
-      [/accion|superheroe/, 'acción'],
-      [/suspenso|misterio|thriller/, 'Misterio'],
-      [/aventura/, 'aventura'],
-      [/drama/, 'Drama'],
-      [/fantasia/, 'fantasía']
+      [/ciencia ficcion|sci.fi|espacio|galaxia|futuro|nave|robot|inteligencia artificial/, 'Ciencia ficción'],
+      [/terror|horror|miedo|susto|suspenso oscuro|gore/, 'terror'],
+      [/comedia|reir|divertid|gracioso|humor|chiste/, 'comedia'],
+      [/familia|nino|infantil|disney|pixar|kids/, 'familia'],
+      [/anime|animacion|dibujos|manga|cartoon/, 'Animación'],
+      [/accion|pelea|explosion|superheroe|marvel|dc|batalla/, 'acción'],
+      [/suspenso|misterio|thriller|policial|crimen|detective/, 'Misterio'],
+      [/aventura|exploracion|viaje|expedicion/, 'aventura'],
+      [/drama|emocion|llanto|sentimiento|historico/, 'Drama'],
+      [/fantasia|magia|dragon|elfo|bruja|hechizo/, 'fantasía'],
+      [/romance|amor|pareja|novela|romantico/, 'romance'],
+      [/documental|realidad|historia real|biografic/, 'documental']
     ];
     const genre = genres.find(([r]) => r.test(q));
-    if (genre || /recomiend|recomenda|que veo|que ver|peliculas buenas|series buenas/.test(q)) {
+    if (genre || /recomiend|recomenda|que veo|que ver|peliculas buenas|series buenas|sugerir|sugerencia|que hay|algo bueno/.test(q)) {
       let list = genre ? getLib().filter(m => norm(m.genre).includes(norm(genre[1]))) : getLib().filter(m => ['Severance', 'Fallout', 'Dune: Parte Dos', 'Oppenheimer', 'Interstellar', 'The Last of Us', 'Merlina', 'Breaking Bad', 'Gladiator II', 'Stranger Things'].includes(m.title));
       if (/pelicula/.test(q)) list = list.filter(m => m.type === 'Película');
       if (/serie/.test(q)) list = list.filter(m => m.type === 'Serie');
       if (!list.length) list = getLib().slice(0, 6);
-      await appendBotStream('Aquí tienes algunas recomendaciones estelares de nuestro catálogo oficial. Toca cualquiera para conocer más:', el => {
+      const genreMsg = genre ? `Para ${genre[1]}, aquí van mis recomendaciones estelares del catálogo:` : 'Aquí tienes los títulos más aclamados del momento. Toca cualquiera para saber en qué plataforma verla:';
+      await appendBotStream(genreMsg, el => {
         titleCards(el, list);
       });
       return;
     }
 
-    if (/quien eres|que puedes|ayuda|como funciona|eres una ia/.test(q)) {
-      await appendBotStream('Soy Orbit, el copiloto inteligente de Órbita Streaming. Conozco el catálogo de series y películas, la disponibilidad regional y te ayudo a conseguir los mejores combos.');
+    if (/quien eres|que puedes|ayuda|como funciona|eres una ia|que sabes|que haces|para que sirves/.test(q)) {
+      await appendBotStream('Soy Orbit, el copiloto inteligente de Órbita Streaming. Conozco el catálogo completo de series, películas y plataformas disponibles. Puedo: buscar cualquier título y decirte dónde verlo, recomendarte por género o estado de ánimo, calcular combos y precios, y ayudarte a contactar a un asesor. ¿Por dónde empezamos?');
       return;
     }
 
@@ -477,7 +498,7 @@
   const clearBtn = $('#btn-clear-chat');
   if (clearBtn) {
     clearBtn.onclick = () => {
-      log.innerHTML = '<div class="bot">¡Hola! Soy Orbit AI, tu copiloto de entretenimiento. Tengo acceso a más de 50 películas y series del catálogo oficial, información de disponibilidad en 25 países y combos desde $5 al mes. ¿Qué historia tienes ganas de disfrutar hoy?</div>';
+      log.innerHTML = '<div class="bot">¡Conversación reiniciada! Soy Orbit, el copiloto de entretenimiento de Órbita Streaming. Tengo acceso al catálogo completo de más de 50 títulos en 10 plataformas disponibles. Puedo ayudarte con: recomendaciones por género o estado de ánimo, buscar en qué plataforma está un título, calcular combos desde $5/mes, y más. ¿Por dónde empezamos?</div>';
       if (window.OrbitaAudio?.play) {
         try { window.OrbitaAudio.play('score'); } catch {}
       }

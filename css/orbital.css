@@ -7,20 +7,979 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
 .pearl-world .pearl-copy{text-align:left;padding:0;margin:0;position:relative;z-index:2}.pearl-world .pearl-copy h1{font-size:clamp(54px,5.6vw,80px);line-height:1.035;letter-spacing:-.04em;font-weight:600;color:#202b35}.pearl-copy h1 span{color:#18766d}
 .pearl-world .pearl-copy>p{color:#536371;font-size:17px;line-height:1.7;margin:24px 0}.pearl-world .pearl-actions{justify-content:flex-start;gap:23px}.pearl-world .pearl-copy .hero-small{font-size:12px;line-height:1.65;margin:24px 0 0;color:#596978}
 .hero-orbit{position:absolute;width:1000px;height:490px;right:-250px;top:85px;border:1px solid #438e8a24;border-radius:50%;transform:rotate(-27deg);z-index:-1}.hero-orbit:after{content:'';position:absolute;inset:30px -50px;border:1px solid #728fa51a;border-radius:50%}
-.orbital-scene{position:relative;padding:0 0 55px 12px;min-width:0}.orbital-feature{display:block;position:relative;height:465px;border-radius:28px;overflow:hidden;background:#142f37;box-shadow:0 28px 60px #25364c28;transform:rotate(2deg);isolation:isolate}.orbital-feature>img{width:100%;height:100%;object-fit:cover;object-position:53%;transition:transform .7s cubic-bezier(.22,1,.36,1)}.orbital-feature:hover>img{transform:scale(1.035)}.orbital-feature:after{content:'';position:absolute;inset:20% 0 0;background:linear-gradient(transparent,#07141bcc);pointer-events:none}
-.orbital-caption{position:absolute;left:22px;right:22px;bottom:22px;padding:22px;color:#fff;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-radius:18px;background:#17313a96;backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 #ffffff55;z-index:1}.orbital-caption span{font-size:11px;color:#eefaf9}.pearl-world .orbital-caption h2{font-size:32px;line-height:1.13;margin:10px 0 8px;color:#fff}.orbital-caption p{font-size:12px;color:#e7eff0;margin:0}
-.orbital-float{position:absolute;bottom:5px;left:-35px;display:flex;gap:15px;align-items:center;width:355px;padding:13px 18px 13px 13px;border-radius:19px;background:linear-gradient(130deg,#fffffff5,#ffffffce);backdrop-filter:blur(22px);box-shadow:0 15px 38px #26395024,inset 0 1px 0 #fff;transform:rotate(-4deg);color:#233a42;transition:transform .25s}.orbital-float:hover{transform:rotate(-2deg) translateY(-3px)}.orbital-float img{width:54px;height:72px;object-fit:cover;border-radius:8px}.orbital-float>span:nth-child(2){flex:1}.orbital-float strong{display:block;font-size:19px;margin:5px 0}.orbital-float small,.orbital-float span span{font-size:11px;color:#4b6069}.orbital-coordinate{position:absolute;right:3px;bottom:4px;font-size:10px;color:#596d77;writing-mode:vertical-rl;transform:translateX(30px)}
-.platform-dock{display:flex;justify-content:space-between;gap:6px;align-items:center;margin-top:38px;padding:15px 22px;border-radius:22px;background:var(--glass);box-shadow:inset 0 1px 0 white,0 8px 30px #20334c07;overflow:auto;scrollbar-width:none}.platform-dock a{min-width:86px;min-height:66px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#4c5d68;font-size:10px;transition:transform .2s}.platform-dock a:hover{transform:translateY(-3px);color:#087f70}.platform-dock img{width:69px;height:29px;object-fit:contain;background:#18262f;padding:6px;border-radius:7px}
-.pearl-world .pearl-section{padding-block:64px}.pearl-world .pearl-section h2{font-size:clamp(30px,3.4vw,46px);letter-spacing:-.035em}.pearl-world .pearl-section-head p{color:#536371}
-.pearl-filmstrip{position:relative;overflow:visible}.pearl-filmstrip-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:5px 0 12px;scroll-padding:0}.pearl-filmstrip-track::-webkit-scrollbar{display:none}.pearl-film-slide{position:relative;flex:0 0 66%;height:380px;overflow:hidden;border-radius:20px;scroll-snap-align:start;background:#17303a;color:white;text-decoration:none}.pearl-film-slide img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}.pearl-film-slide:hover img{transform:scale(1.03)}.pearl-film-overlay{position:absolute;inset:20% 0 0;background:linear-gradient(transparent,#09131be8);pointer-events:none}.pearl-film-info{position:absolute;left:28px;bottom:25px;right:70px;color:#fff}.pearl-film-info .film-tag{font-size:12px;color:#effbf9}.pearl-world .pearl-film-info h3{font-size:32px;color:#fff;margin:7px 0}.pearl-film-info p{font-size:13px;color:#e3edf2;margin:0}.film-open{position:absolute;bottom:29px;right:26px;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:#ffffff25;backdrop-filter:blur(15px);color:#fff}
-.film-controls{display:flex;align-items:center;gap:20px;justify-content:space-between;padding-top:12px;color:#546774;font-size:12px;font-variant-numeric:tabular-nums}.pearl-filmstrip-dots,.pearl-filmstrip-nav{display:flex;align-items:center;gap:8px}.pearl-filmstrip-dots button{width:32px;min-height:44px;background:transparent;border:0;padding:0 3px;cursor:pointer}.pearl-filmstrip-dots button:after{content:'';display:block;height:4px;background:#c9d5d8;border-radius:4px}.pearl-filmstrip-dots button[aria-current="true"]:after{background:#087f70}.pearl-filmstrip-nav button{min-width:44px;height:44px;padding:0 15px;border:0;border-radius:30px;background:#e3e9ee;color:#233d47;cursor:pointer;font-size:15px}.pearl-filmstrip-nav button:hover{background:#d5e4e4}#film-pause{font-size:11px;min-width:90px}
+/* ==================== 1. SCENE HERO — BARAJA CÓSMICA 3D CON FÍSICA ==================== */
+.orbital-scene {
+  position: relative;
+  min-height: 520px;
+  perspective: 1200px;
+  perspective-origin: 50% 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 65px 0;
+  isolation: isolate;
+}
+
+/* Anillos orbitales ambientales */
+.cosmic-scene-rings {
+  position: absolute;
+  inset: -15% -20%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.orbital-glow-core {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(167, 234, 216, 0.38) 0%, rgba(147, 197, 253, 0.18) 50%, transparent 75%);
+  filter: blur(55px);
+  animation: cosmic-core-pulse 10s ease-in-out infinite alternate;
+}
+
+.orbital-ellipse {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(167, 234, 216, 0.35);
+  box-shadow: 0 0 25px rgba(167, 234, 216, 0.15) inset;
+}
+
+.orbital-ellipse.ellipse-1 {
+  width: 110%;
+  height: 90%;
+  top: 5%;
+  left: -5%;
+  transform: rotate(-18deg);
+  animation: orbital-spin-slow 40s linear infinite;
+  border-color: rgba(56, 189, 248, 0.22);
+}
+
+.orbital-ellipse.ellipse-2 {
+  width: 95%;
+  height: 75%;
+  top: 15%;
+  left: 2%;
+  transform: rotate(24deg);
+  animation: orbital-spin-reverse 55s linear infinite;
+  border-color: rgba(167, 234, 216, 0.25);
+  border-style: dashed;
+}
+
+.orbital-planetoid {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff, #087f70);
+  box-shadow: 0 0 16px rgba(8, 127, 112, 0.8), 0 0 32px rgba(167, 234, 216, 0.5);
+  top: 18%;
+  right: 12%;
+  animation: planetoid-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes cosmic-core-pulse {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(1.08); opacity: 0.95; }
+}
+
+@keyframes orbital-spin-slow {
+  from { transform: rotate(-18deg); }
+  to { transform: rotate(342deg); }
+}
+
+@keyframes orbital-spin-reverse {
+  from { transform: rotate(24deg); }
+  to { transform: rotate(-336deg); }
+}
+
+@keyframes planetoid-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-18px, 15px); }
+}
+
+/* Viewport de las tarjetas 3D apiladas */
+.cosmic-cards-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  height: 460px;
+  transform-style: preserve-3d;
+  z-index: 5;
+  cursor: grab;
+}
+
+.cosmic-cards-viewport:active {
+  cursor: grabbing;
+}
+
+/* Tarjeta individual en la baraja cósmica */
+.cosmic-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #091722;
+  box-shadow: 0 25px 65px rgba(4, 18, 30, 0.32), 0 0 0 1px rgba(255, 255, 255, 0.85) inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  color: #fff;
+  user-select: none;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.35s ease, filter 0.35s ease;
+}
+
+/* Capas de profundidad física en la pila */
+.cosmic-card.depth-0 {
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  opacity: 1;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.cosmic-card.depth-1 {
+  transform: translate3d(14px, -18px, -50px) scale(0.93) rotate(2.4deg);
+  opacity: 0.86;
+  z-index: 9;
+  filter: brightness(0.92);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.cosmic-card.depth-2 {
+  transform: translate3d(-10px, -34px, -100px) scale(0.86) rotate(-2deg);
+  opacity: 0.62;
+  z-index: 8;
+  filter: brightness(0.8);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Animación física de desplazamiento hacia atrás al hacer clic o cambiar */
+.cosmic-card.anim-pushing-back {
+  transform: translate3d(0, -42px, -170px) scale(0.8) rotateX(16deg) !important;
+  opacity: 0 !important;
+  filter: blur(6px) !important;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, filter 0.35s ease !important;
+}
+
+.cosmic-card.anim-coming-forward {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease !important;
+}
+
+/* Medios y gradientes de la tarjeta */
+.cosmic-card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.cosmic-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.cosmic-card:hover .cosmic-card-img {
+  transform: scale(1.035);
+}
+
+.cosmic-card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 17, 26, 0.5) 0%, rgba(6, 17, 26, 0.15) 35%, rgba(6, 17, 26, 0.85) 70%, rgba(4, 12, 18, 0.98) 100%);
+  pointer-events: none;
+}
+
+.cosmic-card-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9) 50%, transparent);
+}
+
+/* Cabecera de la tarjeta con badges */
+.cosmic-card-head {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cosmic-brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(14, 28, 38, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.brand-orbit-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.cosmic-quality-pill {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #c9e6ef;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 100px;
+  padding: 5px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Cuerpo de la tarjeta */
+.cosmic-card-body {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  padding-bottom: 14px;
+}
+
+.cosmic-genre-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #92e0d3;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.cosmic-card-title {
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 4px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.cosmic-card-tagline {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e2eff3;
+  margin: 0 0 6px;
+  line-height: 1.35;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cosmic-card-desc {
+  font-size: 12.5px;
+  color: #a7c5ce;
+  line-height: 1.45;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Acciones de la tarjeta con botones específicos estéticos */
+.cosmic-card-actions {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cosmic-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.cosmic-action-btn .ui-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.cosmic-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.cosmic-action-btn:active {
+  transform: scale(0.96);
+}
+
+.btn-play-trailer {
+  background: linear-gradient(135deg, rgba(8, 127, 112, 0.9), rgba(5, 95, 84, 0.95));
+  color: #ffffff;
+  border-color: rgba(167, 234, 216, 0.6);
+}
+
+.btn-play-trailer:hover {
+  background: linear-gradient(135deg, #099484, #087f70);
+  box-shadow: 0 10px 26px rgba(8, 127, 112, 0.45);
+}
+
+.btn-view-payment {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff;
+}
+
+.btn-view-payment:hover {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-next-shift {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #ffffff;
+  margin-left: auto;
+}
+
+.btn-next-shift:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
+}
+
+/* Barra de control flotante de la baraja */
+.cosmic-deck-toolbar {
+  position: relative;
+  z-index: 12;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 580px;
+  padding: 8px 14px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(240, 248, 250, 0.78));
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 12px 32px rgba(10, 30, 45, 0.08), inset 0 1px 0 #fff;
+}
+
+.deck-btn-shuffle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(8, 127, 112, 0.25);
+  background: linear-gradient(135deg, rgba(8, 127, 112, 0.12), rgba(167, 234, 216, 0.22));
+  color: #086754;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.deck-btn-shuffle .ui-icon {
+  width: 15px;
+  height: 15px;
+  color: #087f70;
+}
+
+.deck-btn-shuffle:hover {
+  background: #087f70;
+  color: #fff;
+  border-color: #087f70;
+  transform: translateY(-1px);
+}
+
+.deck-btn-shuffle:hover .ui-icon {
+  color: #fff;
+}
+
+.deck-counter {
+  font-size: 12px;
+  font-weight: 700;
+  color: #4f6772;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.deck-arrows {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.deck-btn-nav {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(220, 235, 240, 0.9);
+  background: #ffffff;
+  color: #213d49;
+  font-size: 15px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.deck-btn-nav:hover {
+  background: #087f70;
+  color: #fff;
+  border-color: #087f70;
+  transform: scale(1.08);
+}
+
+/* Tarjeta complementaria flotante (Sincronizada con la tarjeta activa) */
+.orbital-float {
+  position: absolute;
+  bottom: 0px;
+  left: -28px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  width: 325px;
+  padding: 12px 16px 12px 12px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 251, 253, 0.82));
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.98);
+  box-shadow: 0 18px 45px rgba(20, 45, 65, 0.16), inset 0 1px 0 #fff;
+  transform: rotate(-3deg);
+  color: #17323e;
+  z-index: 15;
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.3s;
+}
+
+.orbital-float:hover {
+  transform: rotate(-1deg) translateY(-4px);
+  box-shadow: 0 24px 50px rgba(20, 45, 65, 0.22);
+}
+
+.orbital-float .orbital-poster {
+  width: 52px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  flex-shrink: 0;
+}
+
+.companion-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.companion-eyebrow {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #087f70;
+}
+
+.companion-name {
+  display: block;
+  font-size: 17px;
+  font-weight: 800;
+  color: #122c36;
+  margin: 3px 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.companion-meta {
+  display: block;
+  font-size: 11.5px;
+  color: #55707b;
+}
+
+.companion-play-chip {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 0;
+  background: #087f70;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(8, 127, 112, 0.35);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.companion-play-chip .ui-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.companion-play-chip:hover {
+  transform: scale(1.1);
+  background: #076d60;
+}
+
+/* ==================== 2. SECCIÓN CARRUSEL "DALE PLAY A OTRO UNIVERSO" ==================== */
+.orbital-cinema {
+  padding-block: 70px 60px;
+}
+
+.pearl-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 20px;
+}
+
+.pearl-section-head h2 {
+  font-size: clamp(30px, 3.8vw, 44px);
+  font-weight: 800;
+  color: #132a35;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  margin: 0 0 6px;
+}
+
+.pearl-section-head p {
+  color: #506772;
+  font-size: 16px;
+  margin: 0;
+}
+
+.pearl-filmstrip {
+  position: relative;
+  overflow: visible;
+}
+
+.pearl-filmstrip-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 10px 4px 20px;
+  scroll-padding: 0;
+}
+
+.pearl-filmstrip-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tarjeta Widescreen Cinema de Cristal Líquido */
+.film-card-cinema {
+  position: relative;
+  flex: 0 0 clamp(420px, 46vw, 560px);
+  height: 440px;
+  border-radius: 28px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  background: #0b1924;
+  box-shadow: 0 20px 50px rgba(8, 28, 42, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.75) inset;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  color: #fff;
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.film-card-cinema:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 70px rgba(8, 28, 42, 0.24), 0 0 0 1.5px rgba(255, 255, 255, 0.95) inset;
+}
+
+.film-card-media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.film-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.75s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.film-card-cinema:hover .film-card-media img {
+  transform: scale(1.04);
+}
+
+.film-card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 20, 29, 0.55) 0%, rgba(8, 20, 29, 0.12) 35%, rgba(8, 20, 29, 0.84) 68%, rgba(5, 14, 21, 0.98) 100%);
+  pointer-events: none;
+}
+
+.film-card-top-bar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.film-brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(13, 27, 37, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.film-brand-badge .badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #087f70;
+  box-shadow: 0 0 8px #087f70;
+}
+
+.brand-appletv .badge-dot { background: #38bdf8; box-shadow: 0 0 8px #38bdf8; }
+.brand-netflix .badge-dot { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+.brand-max .badge-dot { background: #a855f7; box-shadow: 0 0 8px #a855f7; }
+.brand-paramount .badge-dot { background: #3b82f6; box-shadow: 0 0 8px #3b82f6; }
+.brand-disneyplus .badge-dot { background: #06b6d4; box-shadow: 0 0 8px #06b6d4; }
+.brand-vix .badge-dot { background: #f97316; box-shadow: 0 0 8px #f97316; }
+
+.film-spec-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #d1e7f0;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 100px;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.film-card-content {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+}
+
+.film-card-meta {
+  margin-bottom: 14px;
+}
+
+.film-genre-tag {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #92e2d5;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.film-card-title {
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 6px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.film-card-tagline {
+  font-size: 13.5px;
+  color: #d4e5ec;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Fila de botones específicos estéticamente bonitos */
+.film-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.film-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.film-btn .ui-icon,
+.film-btn .ui-icon-play {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.film-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.film-btn:active {
+  transform: scale(0.96);
+}
+
+.film-btn-trailer {
+  background: linear-gradient(135deg, #087f70, #06675b);
+  color: #ffffff !important;
+  border-color: rgba(167, 234, 216, 0.6);
+}
+
+.film-btn-trailer:hover {
+  background: linear-gradient(135deg, #099484, #087f70);
+  box-shadow: 0 10px 26px rgba(8, 127, 112, 0.45);
+}
+
+.film-btn-payment {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #ffffff !important;
+}
+
+.film-btn-payment:hover {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.film-btn-more {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #d6eaf0 !important;
+  padding: 10px 14px;
+}
+
+.film-btn-more:hover {
+  background: rgba(255, 255, 255, 0.24);
+  color: #fff !important;
+}
+
+/* Controles de navegación y estado del carrusel */
+.film-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  padding-top: 18px;
+  color: #4b6470;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+#film-status {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(215, 230, 236, 0.8);
+  border-radius: 100px;
+  box-shadow: 0 2px 8px rgba(10, 30, 45, 0.04);
+}
+
+.pearl-filmstrip-dots,
+.pearl-filmstrip-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pearl-filmstrip-dots button {
+  width: 30px;
+  min-height: 44px;
+  background: transparent;
+  border: 0;
+  padding: 0 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.pearl-filmstrip-dots button:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 5px;
+  background: #c3d4d8;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+.pearl-filmstrip-dots button[aria-current="true"] {
+  width: 52px;
+}
+
+.pearl-filmstrip-dots button[aria-current="true"]:after {
+  background: #087f70;
+  box-shadow: 0 0 10px rgba(8, 127, 112, 0.5);
+}
+
+.pearl-filmstrip-nav button {
+  min-width: 44px;
+  height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 100px;
+  background: #ffffff;
+  color: #1a3843;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(10, 30, 45, 0.06), inset 0 1px 0 #fff;
+  transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pearl-filmstrip-nav button:hover {
+  background: #087f70;
+  color: #fff;
+  border-color: #087f70;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(8, 127, 112, 0.25);
+}
+
+#film-pause {
+  font-size: 12px;
+  min-width: 105px;
+}
 .pearl-world .descubre-card,.pearl-world .movie-card{color:#202b35;background:#fff;border:0;border-radius:16px;overflow:hidden;box-shadow:0 5px 18px #233a4a09;transition:transform .2s,box-shadow .2s}.pearl-world .descubre-card:hover,.pearl-world .movie-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #233a4a16}.pearl-world .descubre-card:focus-visible{outline:3px solid #0071e3;outline-offset:4px}.pearl-world .descubre-card-poster{aspect-ratio:2/3;background:#dfe7ed;position:relative;overflow:hidden}.pearl-world .descubre-card-poster img{height:100%;width:100%;object-fit:cover;display:block}.pearl-world .descubre-card-body{background:#fff;padding:16px 17px 20px}.pearl-world .descubre-card-title{color:#202b35;font-size:16px;line-height:1.4;margin:8px 0}.pearl-world .descubre-card-genre,.pearl-world .descubre-year{color:#536371;font-size:12px}.pearl-world .descubre-platform-badge{color:#146656;background:#e4f1ed;font-size:10px;padding:4px 7px;border:0}.pearl-world .descubre-play-btn{color:#fff;background:#134c47}.pearl-world .regional-note{max-width:75ch;color:#536371;font-size:12px;line-height:1.7;margin:-10px 0 26px}
 .pearl-world .descubre-controls,.pearl-world .pick-card,.pearl-world .order-summary,.pearl-world .platform-card{background:var(--glass);color:#202b35;backdrop-filter:blur(16px)}.pearl-world .pick-card:hover,.pearl-world .platform-card:hover,.pearl-world .presets button:hover{background:#edf4f5;color:#202b35}.pearl-world .pick-card strong,.pearl-world .presets button{color:#202b35}.pearl-world .presets button span{color:#536371}.pearl-world .promo-note{background:#e5f2ed;color:#17483e;border:0;border-radius:16px;padding:22px}.pearl-world .promo-note strong{color:#17483e}.pearl-world .promo-note p{color:#426156}.pearl-world .promo-note>span{color:#187366}.pearl-world input[type=search],.pearl-world #movie-search,.pearl-world .descubre-search-bar input{background:transparent;color:#202b35}.pearl-world .feature-card-glass,.pearl-world .feature-nav-bar{background:#f1f5f8;color:#233d47}.pearl-world .feature-card-glass p{color:#536371}.pearl-world .floating-btn-orbit{background:#087f70;color:#fff;box-shadow:0 8px 24px #123e3824}.pearl-world .floating-btn-orbit:hover{background:#076c60}
 /* Dialogs own a separate dark palette. */
 .pearl-world dialog{--text:#f1f7fa;--muted:#c2d0da;color:#f1f7fa;background:#1b2b38f5;color-scheme:dark}.pearl-world dialog .eyebrow,.pearl-world dialog p,.pearl-world dialog small,.pearl-world dialog .movie-detail-note{color:#c5d5de}.pearl-world dialog h2,.pearl-world dialog h3{color:#fff}.pearl-world dialog a.movie-detail-source,.pearl-world #assistant .bot a{color:#9be5d6;text-decoration:underline;text-underline-offset:3px}.pearl-world dialog .close{background:#ffffff15;color:white}.pearl-world dialog .close svg{color:white}
 .pearl-world #assistant .bot{background:#ffffff09;color:#eef6f8;border:1px solid #ffffff12;font-size:14px;line-height:1.65;padding:13px 15px;border-radius:14px}.pearl-world #assistant .user{background:#204e57;color:#f0fbfd;border:0;border-radius:14px;padding:12px 15px;margin-left:20px}.pearl-world #assistant .answer-titles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.pearl-world #assistant .answer-title{display:flex;align-items:center;gap:10px;padding:10px;background:#2c414e;color:#fff;text-align:left;border:0;border-radius:12px;cursor:pointer;min-width:0}.pearl-world #assistant .answer-title:hover{background:#365563}.pearl-world #assistant .answer-title img{width:44px;height:64px;object-fit:cover;border-radius:6px;flex:none}.pearl-world #assistant .answer-title strong{display:block;color:#fff;font-size:12px;line-height:1.4}.pearl-world #assistant .answer-title small,.pearl-world #assistant .answer-title em{display:block;color:#cedee4;font-size:10px;font-style:normal;margin-top:4px;line-height:1.4}.pearl-world #assistant .readout{display:block;color:#d2ede7;background:#ffffff08;padding:10px;border-radius:8px;font-size:12px;line-height:1.6;margin-top:10px}.pearl-world #assistant .answer-actions button{background:#a6eadb;color:#143b32;border:0;border-radius:24px;padding:11px 16px;margin-top:12px;cursor:pointer}.pearl-world #assistant .country-label{color:#ccdee7;font-size:12px}.pearl-world #assistant select{color:#fff;background:#2c414e;border:1px solid #68818e}.pearl-world #assistant option{color:#fff;background:#233744}.pearl-world #assistant .typing{color:#d0e9e9;font-size:12px;padding:12px}.pearl-world .pearl-companion{background:#173a42;color:#fff}.pearl-world .pearl-companion p{color:#cfdee0}
-@media(max-width:1000px){.orbital-intro{gap:24px;grid-template-columns:1fr 1fr}.pearl-world .pearl-copy h1{font-size:60px}.orbital-feature{height:415px}.orbital-caption{padding:16px;left:15px;right:15px}.pearl-world .orbital-caption h2{font-size:27px}.orbital-float{width:290px;left:-15px}.orbital-coordinate{display:none}.pearl-film-slide{height:330px;flex-basis:76%}.shelf-track{grid-auto-columns:calc((100% - 60px)/4)}.platform-dock{justify-content:flex-start;gap:18px}.pearl-world .pearl-actions{gap:10px;flex-wrap:wrap}}
-@media(max-width:700px){.pearl-world .pearl-hero{padding-top:27px}.orbital-intro{display:flex;flex-direction:column;gap:35px;align-items:stretch}.pearl-world .pearl-copy{padding:0 4px}.pearl-world .pearl-copy h1{font-size:clamp(49px,11vw,70px)}.pearl-world .pearl-copy h1 br:first-child{display:none}.pearl-world .pearl-copy>p{font-size:15px;margin:19px 0}.pearl-world .pearl-actions{flex-direction:row;align-items:center;gap:19px}.pearl-world .pearl-copy .hero-small{display:none}.orbital-scene{padding:0 7px 45px}.orbital-feature{height:370px;transform:rotate(1deg);border-radius:23px}.orbital-float{left:0;bottom:3px;width:280px;transform:rotate(-3deg);padding:10px}.orbital-float strong{font-size:17px}.orbital-float img{width:43px;height:57px}.platform-dock{margin-top:22px;padding:10px;gap:4px;border-radius:16px}.platform-dock a{min-width:81px}.pearl-world .pearl-section{padding-block:40px}.pearl-section-head .pearl-link{margin-top:12px}.pearl-film-slide{flex-basis:90%;height:300px}.pearl-film-info{left:20px;bottom:22px}.pearl-world .pearl-film-info h3{font-size:26px}.film-controls{gap:8px}.pearl-filmstrip-dots{gap:0}.pearl-filmstrip-dots button{width:18px}.pearl-filmstrip-nav{gap:5px}.pearl-filmstrip-nav button{padding:0 12px}#film-pause{min-width:75px;padding-inline:10px}.shelf-track{grid-auto-columns:43%;gap:15px}.shelf-head h2{font-size:26px}.shelf-head p{font-size:12px}.shelf-head>a{font-size:12px}.shelf{padding:24px 0}.discovery-shelves{padding-bottom:25px}.pearl-world #assistant .answer-titles{grid-template-columns:1fr}.pearl-world .descubre-card-body{padding:12px}.pearl-world .descubre-card-title{font-size:14px}.pearl-world .descubre-card-genre{font-size:11px}}
+@media(max-width:1000px){
+  .orbital-intro{gap:24px;grid-template-columns:1fr 1fr}
+  .pearl-world .pearl-copy h1{font-size:54px}
+  .cosmic-cards-viewport{max-width:100%;height:450px}
+  .film-card-cinema{flex-basis:68vw;height:410px}
+  .shelf-track{grid-auto-columns:calc((100% - 60px)/4)}
+  .platform-dock{justify-content:flex-start;gap:18px}
+  .pearl-world .pearl-actions{gap:10px;flex-wrap:wrap}
+}
+@media(max-width:700px){
+  .pearl-world .pearl-hero{padding-top:27px}
+  .orbital-intro{display:flex;flex-direction:column;gap:35px;align-items:stretch}
+  .pearl-world .pearl-copy{padding:0 4px}
+  .pearl-world .pearl-copy h1{font-size:clamp(44px,11vw,64px)}
+  .pearl-world .pearl-copy h1 br:first-child{display:none}
+  .pearl-world .pearl-copy>p{font-size:15px;margin:16px 0}
+  .pearl-world .pearl-actions{flex-direction:row;align-items:center;gap:16px}
+  .pearl-world .pearl-copy .hero-small{display:none}
+  .orbital-scene{padding:0 4px 35px;min-height:auto}
+  .cosmic-cards-viewport{height:460px;max-width:100%}
+  .cosmic-card{padding:18px 16px;border-radius:24px}
+  .cosmic-card-title{font-size:25px}
+  .cosmic-card-desc{display:none}
+  .cosmic-action-btn{padding:9px 13px;font-size:12px}
+  .orbital-float{left:4px;right:4px;width:auto;bottom:-10px;transform:none;border-radius:18px;padding:10px 14px}
+  .orbital-float:hover{transform:none}
+  .cosmic-deck-toolbar{margin-top:14px;padding:6px 12px}
+  .platform-dock{margin-top:22px;padding:10px;gap:6px;border-radius:18px}
+  .platform-dock a{min-width:76px;min-height:60px}
+  .pearl-world .pearl-section{padding-block:44px}
+  .pearl-section-head{flex-direction:column;align-items:flex-start;gap:10px}
+  .pearl-section-head .pearl-link{margin-top:4px}
+  .film-card-cinema{flex:0 0 86vw;height:390px;padding:18px 16px;border-radius:24px}
+  .film-card-title{font-size:24px}
+  .film-card-tagline{font-size:12.5px;-webkit-line-clamp:1}
+  .film-btn{padding:9px 13px;font-size:11.5px}
+  .film-controls{gap:10px;flex-wrap:wrap}
+  .pearl-filmstrip-dots{gap:2px}
+  .pearl-filmstrip-dots button{width:20px}
+  .pearl-filmstrip-dots button[aria-current="true"]{width:36px}
+  .pearl-filmstrip-nav{gap:6px}
+  .pearl-filmstrip-nav button{padding:0 12px;height:38px}
+  #film-pause{min-width:85px;padding-inline:10px;font-size:11.5px}
+  .shelf-track{grid-auto-columns:46%;gap:14px}
+  .shelf-head h2{font-size:24px}
+  .shelf-head p{font-size:12px}
+  .shelf-head>a{font-size:12px}
+  .shelf{padding:20px 0}
+  .discovery-shelves{padding-bottom:20px}
+  .pearl-world #assistant .answer-titles{grid-template-columns:1fr}
+  .pearl-world .descubre-card-body{padding:12px}
+  .pearl-world .descubre-card-title{font-size:14px}
+  .pearl-world .descubre-card-genre{font-size:11px}
+}
 @media(prefers-reduced-motion:no-preference){.orbital-feature{animation:orbital-arrive .8s cubic-bezier(.22,1,.36,1)}.orbital-float{animation:orbital-float-in 1s cubic-bezier(.22,1,.36,1)}@keyframes orbital-arrive{from{translate:0 18px;filter:blur(3px)}to{translate:0 0;filter:blur(0)}}@keyframes orbital-float-in{from{translate:0 25px}to{translate:0 0}}}
 @media(prefers-reduced-motion:reduce){.pearl-world *,.pearl-world *:before,.pearl-world *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}html.motion-paused .pearl-world *,html.motion-paused .pearl-world *:before,html.motion-paused .pearl-world *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 @supports not (backdrop-filter:blur(1px)){.orbital-caption{background:#17313a}.orbital-float,.platform-dock{background:#f8fbfd}}

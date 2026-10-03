@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="es">
 <head>
@@ -41,6 +41,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <script defer="" src="js/pearl.js"></script>
 <script defer="" src="js/liquid.js"></script>
+<script defer="" src="js/hero-cosmos.js"></script>
 </head>
 <body class="pearl-world" data-page="index">
 <!-- ==================== INTRO PORTAL CINEMÁTICO 60FPS ==================== -->
@@ -100,8 +101,192 @@
 <div class="pearl-section-head"><div><h2 id="cinema-title">Dale play a otro universo.</h2><p>Una selección para salir de lo de siempre.</p></div><a class="pearl-link" href="descubre.html">Explorar todo <span aria-hidden="true">↗</span></a></div>
 <div class="pearl-filmstrip" id="pearl-filmstrip" role="region" aria-roledescription="carrusel" aria-label="Historias destacadas">
 <div class="pearl-filmstrip-track" id="film-track">
-<div class="film-item"><a class="pearl-film-slide" href="descubre.html?q=Severance"><img alt="Severance" width="1200" height="675" loading="lazy" src="assets/backdrops/severance-scene.jpg"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Apple TV+</span><h3>Severance</h3><p>Serie · Misterio</p></div><span class="film-open" aria-hidden="true">↗</span></a><button type="button" class="film-preview" data-trailer="s44933">Ver mini tráiler</button></div><div class="film-item"><a class="pearl-film-slide" href="descubre.html?q=PLUTO"><img alt="PLUTO" width="1200" height="675" loading="lazy" src="assets/backdrops/pluto-scene.jpg"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Netflix</span><h3>PLUTO</h3><p>Anime · Ciencia ficción</p></div><span class="film-open" aria-hidden="true">↗</span></a><button type="button" class="film-preview" data-trailer="s66998">Ver mini tráiler</button></div><div class="film-item"><a class="pearl-film-slide" href="descubre.html?q=1923"><img alt="1923" width="1200" height="675" loading="lazy" src="assets/backdrops/1923-scene.jpg"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Paramount+</span><h3>1923</h3><p>Serie · Western</p></div><span class="film-open" aria-hidden="true">↗</span></a><button type="button" class="film-preview" data-trailer="s60550">Ver mini tráiler</button></div><div class="film-item"><a class="pearl-film-slide" href="descubre.html?q=El%20amor%20invencible"><img alt="El amor invencible" width="1200" height="675" loading="lazy" src="assets/backdrops/novela-scene.jpg"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">ViX</span><h3>El amor invencible</h3><p>Novela · Romance</p></div><span class="film-open" aria-hidden="true">↗</span></a><button type="button" class="film-preview" data-trailer="s74573">Ver mini tráiler</button></div><div class="film-item"><a class="pearl-film-slide" href="descubre.html?q=Andor"><img alt="Andor" width="1200" height="675" loading="lazy" src="assets/backdrops/andor-scene.jpg"/><div class="pearl-film-overlay"></div><div class="pearl-film-info"><span class="film-tag">Disney+</span><h3>Andor</h3><p>Serie · Aventura</p></div><span class="film-open" aria-hidden="true">↗</span></a><button type="button" class="film-preview" data-trailer="s52341">Ver mini tráiler</button></div>
-</div><div class="film-controls"><span id="film-status" aria-live="off">1 / 5</span><div id="film-dots" class="pearl-filmstrip-dots" aria-label="Elegir historia"></div><div class="pearl-filmstrip-nav"><button id="film-prev" aria-label="Historia anterior">←</button><button id="film-next" aria-label="Siguiente historia">→</button><button id="film-pause" aria-label="Iniciar reproducción automática" aria-pressed="false">Reproducir</button></div></div>
+<article class="film-card-cinema liquid-glass" data-title="Severance">
+  <div class="film-card-media">
+    <img alt="Severance" width="1200" height="675" loading="lazy" src="assets/backdrops/severance-scene.jpg"/>
+    <div class="film-card-gradient" aria-hidden="true"></div>
+  </div>
+  <div class="film-card-top-bar">
+    <span class="film-brand-badge brand-appletv"><span class="badge-dot"></span> Apple TV+</span>
+    <span class="film-spec-badge">4K HDR · Dolby Vision</span>
+  </div>
+  <div class="film-card-content">
+    <div class="film-card-meta">
+      <span class="film-genre-tag">Serie · Misterio & Thriller Psicológico</span>
+      <h3 class="film-card-title">Severance</h3>
+      <p class="film-card-tagline">¿Qué pasaría si pudieras dividir quirúrgicamente tu vida laboral de tus recuerdos personales?</p>
+    </div>
+    <div class="film-card-actions">
+      <button type="button" class="film-btn film-btn-trailer" data-trailer="s44933" aria-label="Ver tráiler de Severance en pantalla grande">
+        <svg class="ui-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>
+        <span>Ver Tráiler</span>
+      </button>
+      <button type="button" class="film-btn film-btn-payment" data-platform-pay="appletv" data-platform-title="Apple TV+" aria-label="Ver métodos de pago para Apple TV+">
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <span>Métodos de Pago</span>
+      </button>
+      <a class="film-btn film-btn-more" href="descubre.html?q=Severance" aria-label="Explorar detalles de Severance">
+        <span>Ficha ↗</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+<article class="film-card-cinema liquid-glass" data-title="PLUTO">
+  <div class="film-card-media">
+    <img alt="PLUTO" width="1200" height="675" loading="lazy" src="assets/backdrops/pluto-scene.jpg"/>
+    <div class="film-card-gradient" aria-hidden="true"></div>
+  </div>
+  <div class="film-card-top-bar">
+    <span class="film-brand-badge brand-netflix"><span class="badge-dot"></span> Netflix</span>
+    <span class="film-spec-badge">Anime de Culto · Full HD</span>
+  </div>
+  <div class="film-card-content">
+    <div class="film-card-meta">
+      <span class="film-genre-tag">Anime · Ciencia Ficción & Suspenso</span>
+      <h3 class="film-card-title">PLUTO</h3>
+      <p class="film-card-tagline">En un mundo donde robots y humanos conviven, un detective de la Europol persigue a un asesino implacable.</p>
+    </div>
+    <div class="film-card-actions">
+      <button type="button" class="film-btn film-btn-trailer" data-trailer="s66998" aria-label="Ver tráiler de PLUTO en pantalla grande">
+        <svg class="ui-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>
+        <span>Ver Tráiler</span>
+      </button>
+      <button type="button" class="film-btn film-btn-payment" data-platform-pay="netflix" data-platform-title="Netflix" aria-label="Ver métodos de pago para Netflix">
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <span>Métodos de Pago</span>
+      </button>
+      <a class="film-btn film-btn-more" href="descubre.html?q=PLUTO" aria-label="Explorar detalles de PLUTO">
+        <span>Ficha ↗</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+<article class="film-card-cinema liquid-glass" data-title="The Last of Us">
+  <div class="film-card-media">
+    <img alt="The Last of Us" width="1200" height="675" loading="lazy" src="assets/backdrops/lastofus.jpg"/>
+    <div class="film-card-gradient" aria-hidden="true"></div>
+  </div>
+  <div class="film-card-top-bar">
+    <span class="film-brand-badge brand-max"><span class="badge-dot"></span> Max</span>
+    <span class="film-spec-badge">4K Ultra HD · Sonido Atmos</span>
+  </div>
+  <div class="film-card-content">
+    <div class="film-card-meta">
+      <span class="film-genre-tag">Serie · Drama & Acción Postapocalíptica</span>
+      <h3 class="film-card-title">The Last of Us</h3>
+      <p class="film-card-tagline">Veinte años después de la caída de la humanidad, una promesa une los destinos de Joel y Ellie.</p>
+    </div>
+    <div class="film-card-actions">
+      <button type="button" class="film-btn film-btn-trailer" data-trailer="s46562" aria-label="Ver tráiler de The Last of Us en pantalla grande">
+        <svg class="ui-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>
+        <span>Ver Tráiler</span>
+      </button>
+      <button type="button" class="film-btn film-btn-payment" data-platform-pay="hbomax" data-platform-title="Max" aria-label="Ver métodos de pago para Max">
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <span>Métodos de Pago</span>
+      </button>
+      <a class="film-btn film-btn-more" href="descubre.html?q=The%20Last%20of%20Us" aria-label="Explorar detalles de The Last of Us">
+        <span>Ficha ↗</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+<article class="film-card-cinema liquid-glass" data-title="1923">
+  <div class="film-card-media">
+    <img alt="1923" width="1200" height="675" loading="lazy" src="assets/backdrops/1923-scene.jpg"/>
+    <div class="film-card-gradient" aria-hidden="true"></div>
+  </div>
+  <div class="film-card-top-bar">
+    <span class="film-brand-badge brand-paramount"><span class="badge-dot"></span> Paramount+</span>
+    <span class="film-spec-badge">4K Ultra HD · Western Épico</span>
+  </div>
+  <div class="film-card-content">
+    <div class="film-card-meta">
+      <span class="film-genre-tag">Serie · Western & Drama de Época</span>
+      <h3 class="film-card-title">1923</h3>
+      <p class="film-card-tagline">Harrison Ford y Helen Mirren lideran la dinastía Dutton frente a las adversidades del siglo XX en Montana.</p>
+    </div>
+    <div class="film-card-actions">
+      <button type="button" class="film-btn film-btn-trailer" data-trailer="s60550" aria-label="Ver tráiler de 1923 en pantalla grande">
+        <svg class="ui-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>
+        <span>Ver Tráiler</span>
+      </button>
+      <button type="button" class="film-btn film-btn-payment" data-platform-pay="paramount" data-platform-title="Paramount+" aria-label="Ver métodos de pago para Paramount+">
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <span>Métodos de Pago</span>
+      </button>
+      <a class="film-btn film-btn-more" href="descubre.html?q=1923" aria-label="Explorar detalles de 1923">
+        <span>Ficha ↗</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+<article class="film-card-cinema liquid-glass" data-title="Andor">
+  <div class="film-card-media">
+    <img alt="Andor" width="1200" height="675" loading="lazy" src="assets/backdrops/andor-scene.jpg"/>
+    <div class="film-card-gradient" aria-hidden="true"></div>
+  </div>
+  <div class="film-card-top-bar">
+    <span class="film-brand-badge brand-disneyplus"><span class="badge-dot"></span> Disney+</span>
+    <span class="film-spec-badge">4K Ultra HD · IMAX Enhanced</span>
+  </div>
+  <div class="film-card-content">
+    <div class="film-card-meta">
+      <span class="film-genre-tag">Serie · Ciencia Ficción & Rebelión</span>
+      <h3 class="film-card-title">Andor</h3>
+      <p class="film-card-tagline">La chispa que encendió la Rebelión. Una mirada profunda y tensa al espionaje en una galaxia oprimida.</p>
+    </div>
+    <div class="film-card-actions">
+      <button type="button" class="film-btn film-btn-trailer" data-trailer="s52341" aria-label="Ver tráiler de Andor en pantalla grande">
+        <svg class="ui-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>
+        <span>Ver Tráiler</span>
+      </button>
+      <button type="button" class="film-btn film-btn-payment" data-platform-pay="disneyplus" data-platform-title="Disney+" aria-label="Ver métodos de pago para Disney+">
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <span>Métodos de Pago</span>
+      </button>
+      <a class="film-btn film-btn-more" href="descubre.html?q=Andor" aria-label="Explorar detalles de Andor">
+        <span>Ficha ↗</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+<article class="film-card-cinema liquid-glass" data-title="El amor invencible">
+  <div class="film-card-media">
+    <img alt="El amor invencible" width="1200" height="675" loading="lazy" src="assets/backdrops/novela-scene.jpg"/>
+    <div class="film-card-gradient" aria-hidden="true"></div>
+  </div>
+  <div class="film-card-top-bar">
+    <span class="film-brand-badge brand-vix"><span class="badge-dot"></span> ViX</span>
+    <span class="film-spec-badge">Telenovela Estelar · Full HD</span>
+  </div>
+  <div class="film-card-content">
+    <div class="film-card-meta">
+      <span class="film-genre-tag">Novela · Drama & Romance Apasionado</span>
+      <h3 class="film-card-title">El amor invencible</h3>
+      <p class="film-card-tagline">Tras perderlo todo, Leona Bravo regresa con una nueva identidad para recuperar a sus hijos y hacer justicia.</p>
+    </div>
+    <div class="film-card-actions">
+      <button type="button" class="film-btn film-btn-trailer" data-trailer="s74573" aria-label="Ver tráiler de El amor invencible en pantalla grande">
+        <svg class="ui-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>
+        <span>Ver Tráiler</span>
+      </button>
+      <button type="button" class="film-btn film-btn-payment" data-platform-pay="vix" data-platform-title="ViX" aria-label="Ver métodos de pago para ViX">
+        <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <span>Métodos de Pago</span>
+      </button>
+      <a class="film-btn film-btn-more" href="descubre.html?q=El%20amor%20invencible" aria-label="Explorar detalles de El amor invencible">
+        <span>Ficha ↗</span>
+      </a>
+    </div>
+  </div>
+</article>
+</div><div class="film-controls"><span id="film-status" aria-live="off">1 / 6</span><div id="film-dots" class="pearl-filmstrip-dots" aria-label="Elegir historia"></div><div class="pearl-filmstrip-nav"><button id="film-prev" aria-label="Historia anterior">←</button><button id="film-next" aria-label="Siguiente historia">→</button><button id="film-pause" aria-label="Iniciar reproducción automática" aria-pressed="false">Reproducir</button></div></div>
 </div></section>
 
 <section class="pearl-section container" id="experiencias"><div class="pearl-section-head"><div><h2>Mucho más que darle play.</h2><p>Tu música, tus ideas y un poco de ayuda para hacerlas realidad.</p></div></div><div class="service-grid">

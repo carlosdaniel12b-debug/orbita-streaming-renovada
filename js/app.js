@@ -130,14 +130,19 @@ function details(id,story=false){
 
   const copyBtn = $('#binance-copy-btn');
   if (copyBtn) {
-    copyBtn.onclick = () => {
-      navigator.clipboard?.writeText(binanceUid).catch(() => {});
+    copyBtn.onclick = async () => {
       const txt = $('#binance-copy-txt');
-      if (txt) {
-        txt.textContent = '✓ ¡Copiado!';
-        setTimeout(() => { txt.textContent = 'Copiar UID'; }, 2500);
+      try {
+        if (!navigator.clipboard?.writeText) throw Error('clipboard');
+        await navigator.clipboard.writeText(binanceUid);
+        if(txt)txt.textContent = 'Copiado ✓';
+        toast('UID de Binance copiado: ' + binanceUid);
+      } catch {
+        const range=document.createRange(); range.selectNodeContents($('#binance-uid-num'));
+        const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);
+        toast('No se pudo copiar. Selecciona y copia el UID manualmente.');
       }
-      toast('UID de Binance copiado: ' + binanceUid);
+      setTimeout(() => { if(txt)txt.textContent='Copiar UID'; },2500);
     };
   }
 

@@ -271,14 +271,19 @@
             </label>
           </div>
 
-          <div class="hero-binance-detail" id="hero-binance-panel" style="display:none; margin-top: 14px; padding: 14px; border-radius: 14px; background: rgba(245, 158, 11, 0.09); border: 1px solid rgba(245, 158, 11, 0.35);">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-              <span style="font-size:12px; color:#f59e0b; font-weight:700;">UID Binance Oficial: <strong style="letter-spacing:1px; color:#fff;">1176541421</strong></span>
-              <button type="button" class="btn-copy-uid" id="hero-copy-binance-btn" style="background:rgba(245,158,11,0.22); border:1px solid #f59e0b; color:#fff; border-radius:8px; padding:5px 10px; font-size:11px; cursor:pointer;">Copiar UID</button>
+          <div class="hero-binance-detail binance-box" id="hero-binance-panel" style="display:none">
+            <span class="binance-badge">Binance Pay · USDT</span>
+            <div class="binance-uid-display">
+              <span class="binance-uid-label">UID del destinatario</span>
+              <div class="binance-uid-value-row">
+                <strong class="binance-uid-code" id="hero-binance-uid">1176541421</strong>
+                <button type="button" class="binance-copy-btn" id="hero-copy-binance-btn">Copiar UID</button>
+              </div>
+              <span class="binance-copy-status" id="hero-copy-status" role="status" aria-live="polite"></span>
             </div>
-            <label for="hero-binance-tx" style="font-size:11.5px; color:#cedee4; display:block; margin-bottom:5px; font-weight:500;">Ingresa tu Código / ID de Transacción Binance:</label>
-            <input type="text" id="hero-binance-tx" placeholder="Ej: 489201938 o ID de orden" style="width:100%; box-sizing:border-box; padding:9px 12px; border-radius:8px; background:#081522; border:1px solid #f59e0b; color:#fff; font-size:13px;" />
-            <small style="display:block; color:#9cb1bc; font-size:10.5px; margin-top:5px;">Envía el monto por Binance Pay a nuestro UID y pega el código para verificar tu entrega al instante.</small>
+            <label for="hero-binance-tx" class="binance-tx-label">ID de transacción (si ya pagaste)</label>
+            <input type="text" id="hero-binance-tx" class="binance-tx-input" placeholder="Pega el ID de la transacción" autocomplete="off" maxlength="120" />
+            <small class="binance-tx-hint">Confirma el importe y destinatario por WhatsApp antes de pagar. Envía el comprobante para verificar el pedido.</small>
           </div>
         </div>
 
@@ -318,9 +323,18 @@
 
     const heroCopyBtn = paymentModalEl.querySelector('#hero-copy-binance-btn');
     if (heroCopyBtn) {
-      heroCopyBtn.onclick = () => {
-        navigator.clipboard?.writeText('1176541421').catch(() => {});
-        heroCopyBtn.textContent = '✓ ¡Copiado!';
+      heroCopyBtn.onclick = async () => {
+        const status = paymentModalEl.querySelector('#hero-copy-status');
+        try {
+          if (!navigator.clipboard?.writeText) throw Error('clipboard');
+          await navigator.clipboard.writeText('1176541421');
+          status.textContent = 'UID copiado: 1176541421';
+          heroCopyBtn.textContent = 'Copiado ✓';
+        } catch {
+          const range = document.createRange(); range.selectNodeContents(paymentModalEl.querySelector('#hero-binance-uid'));
+          const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+          status.textContent = 'No se pudo copiar. Mantén presionado el UID o cópialo manualmente.';
+        }
         setTimeout(() => { heroCopyBtn.textContent = 'Copiar UID'; }, 2500);
       };
     }

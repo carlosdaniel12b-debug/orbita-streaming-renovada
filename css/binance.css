@@ -1,0 +1,16 @@
+/* Shared readable payment details for both native payment dialogs. */
+.pearl-world .binance-box{margin-top:16px;padding:18px;border:1px solid #dfc47e;border-radius:20px;background:linear-gradient(135deg,#fff9e9,#f8f2e1);color:#29303a;min-width:0}
+.pearl-world .binance-badge{display:block;font-size:13px;font-weight:700;color:#75570b;margin-bottom:12px}
+.pearl-world .binance-zero-fee{color:#75570b;background:#f4e6bc}
+.pearl-world .binance-uid-display{display:block;margin:12px 0 16px;padding:16px;background:#fffefa;border:1px solid #e1d3aa;border-radius:15px;color:#29303a}
+.pearl-world .binance-uid-label{display:block;font-size:13px;color:#62604d;margin-bottom:8px}
+.pearl-world .binance-uid-value-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;min-width:0}
+.pearl-world .binance-uid-code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:clamp(22px,5vw,30px);font-weight:700;letter-spacing:.025em;line-height:1.2;color:#263237;white-space:nowrap;user-select:text;-webkit-user-select:text}
+.pearl-world .binance-copy-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:10px 16px;border:1px solid #bba766;border-radius:12px;background:#f3e6b6;color:#463608;font-size:13px;font-weight:700;flex-shrink:0;cursor:pointer}
+.pearl-world .binance-copy-btn:hover{background:#ead796;color:#332700}.pearl-world .binance-copy-btn:focus-visible{outline:3px solid #087b73;outline-offset:3px}
+.pearl-world .binance-copy-status{display:block;min-height:20px;margin-top:10px;font-size:12px;color:#50634b;line-height:1.5}
+.pearl-world .binance-total-hint,.pearl-world .binance-total-hint strong{color:#635120;font-size:13px}
+.pearl-world .binance-tx-label{display:block;margin-bottom:8px;font-size:13px;font-weight:600;color:#343c43}
+.pearl-world .binance-tx-input{width:100%;min-height:48px;box-sizing:border-box;padding:12px;border:1px solid #b9ab83;border-radius:12px;background:#fff;color:#263237;font-size:16px}
+.pearl-world .binance-tx-hint{display:block;margin-top:8px;font-size:12px;color:#646250;line-height:1.6}
+@media(max-width:420px){.pearl-world .binance-box{padding:14px}.pearl-world .binance-uid-display{padding:13px}.pearl-world .binance-copy-btn{width:100%}.pearl-world .binance-uid-value-row{justify-content:flex-start}}

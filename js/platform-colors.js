@@ -113,9 +113,9 @@
     root.dataset.platform = id || '';
     if (id && colors[id]) {
       const c = colors[id];
-      root.style.setProperty('--coral', c.accent);
+      root.style.setProperty('--coral', document.body.classList.contains('pearl-world') ? '#087f70' : c.accent);
       root.style.setProperty('--accent2', c.second);
-      root.style.setProperty('--bg', c.bg);
+      if (!document.body.classList.contains('pearl-world')) root.style.setProperty('--bg', c.bg);
       root.style.setProperty('--blue', c.blue);
       root.style.setProperty('--platform-glow', c.glow);
       root.style.setProperty('--platform-color', c.brand);

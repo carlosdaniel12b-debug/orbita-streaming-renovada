@@ -1,116 +1,25 @@
-/* Shared chrome: immediate input, bounded motion, no dependency on animation completion. */
+/* Shared chrome, editorial shelves, accessible opt-in carousel. */
 (()=>{'use strict';
- const header=document.querySelector('.header');
- let frame=0;
+ const header=document.querySelector('.header');let frame=0;
  const update=()=>{header?.classList.toggle('scrolled',scrollY>24);frame=0;};
  addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(update);},{passive:true});update();
  const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
- const desktop=matchMedia('(min-width:901px)');
- desktop.addEventListener('change',()=>{if(desktop.matches&&nav?.classList.contains('open'))menu?.click();});
+ matchMedia('(min-width:901px)').addEventListener('change',e=>{if(e.matches&&nav?.classList.contains('open'))menu?.click();});
  document.querySelectorAll('.pearl-faq-list details').forEach(item=>item.addEventListener('toggle',()=>{if(item.open)document.querySelectorAll('.pearl-faq-list details[open]').forEach(other=>{if(other!==item)other.open=false;});}));
-
-  // Hero Filmstrip Carousel con auto-play y navegación orbital
-  const filmstrip = document.getElementById('pearl-filmstrip');
-  const track = document.getElementById('film-track');
-  const prevBtn = document.getElementById('film-prev');
-  const nextBtn = document.getElementById('film-next');
-  const dotsContainer = document.getElementById('film-dots');
-
-  if (track && filmstrip) {
-    const slides = Array.from(track.querySelectorAll('.pearl-film-slide'));
-    let currentIndex = 0;
-    let autoPlayTimer = null;
-    let isHovered = false;
-
-    // Crear puntos de navegación
-    if (dotsContainer) {
-      dotsContainer.innerHTML = '';
-      slides.forEach((_, idx) => {
-        const dot = document.createElement('button');
-        dot.className = 'dot' + (idx === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', `Ir a diapositiva ${idx + 1}`);
-        dot.addEventListener('click', () => {
-          goToSlide(idx);
-          resetAutoPlay();
-        });
-        dotsContainer.appendChild(dot);
-      });
-    }
-
-    const updateDots = (index) => {
-      if (!dotsContainer) return;
-      const dots = dotsContainer.querySelectorAll('.dot');
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
-    };
-
-    const getSlideWidth = () => {
-      const slide = slides[0];
-      if (!slide) return 320;
-      const style = window.getComputedStyle(track);
-      const gap = parseFloat(style.gap) || 22;
-      return slide.offsetWidth + gap;
-    };
-
-    const goToSlide = (index) => {
-      if (index < 0) index = slides.length - 1;
-      if (index >= slides.length) index = 0;
-      currentIndex = index;
-      const scrollPos = index * getSlideWidth();
-      track.scrollTo({ left: scrollPos, behavior: 'smooth' });
-      updateDots(currentIndex);
-    };
-
-    prevBtn?.addEventListener('click', () => {
-      goToSlide(currentIndex - 1);
-      resetAutoPlay();
-    });
-
-    nextBtn?.addEventListener('click', () => {
-      goToSlide(currentIndex + 1);
-      resetAutoPlay();
-    });
-
-    // Clicks en diapositivas llevan a descubre.html
-    slides.forEach(slide => {
-      slide.addEventListener('click', () => {
-        const title = slide.querySelector('h3')?.textContent?.trim() || '';
-        window.location.href = 'descubre.html' + (title ? '?q=' + encodeURIComponent(title) : '');
-      });
-    });
-
-    // Detectar scroll manual
-    let scrollTimeout;
-    track.addEventListener('scroll', () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const slideWidth = getSlideWidth();
-        const index = Math.round(track.scrollLeft / slideWidth);
-        if (index >= 0 && index < slides.length && index !== currentIndex) {
-          currentIndex = index;
-          updateDots(currentIndex);
-        }
-      }, 80);
-    }, { passive: true });
-
-    // Autoplay cada 4.5 segundos
-    const startAutoPlay = () => {
-      if (autoPlayTimer) clearInterval(autoPlayTimer);
-      autoPlayTimer = setInterval(() => {
-        if (!isHovered && !document.hidden) {
-          goToSlide(currentIndex + 1);
-        }
-      }, 4500);
-    };
-
-    const resetAutoPlay = () => {
-      startAutoPlay();
-    };
-
-    filmstrip.addEventListener('mouseenter', () => { isHovered = true; });
-    filmstrip.addEventListener('mouseleave', () => { isHovered = false; });
-    filmstrip.addEventListener('touchstart', () => { isHovered = true; }, { passive: true });
-    filmstrip.addEventListener('touchend', () => { setTimeout(() => { isHovered = false; }, 2000); });
-
-    startAutoPlay();
-  }
+ const platforms=window.ORBITA?.platforms||[],lib=window.ORBIT_LIBRARY||[];
+ const dock=document.querySelector('.platform-dock');
+ if(dock)platforms.forEach(p=>{const a=document.createElement('a');a.href='catalogo.html?plataforma='+p.id;const img=document.createElement('img');img.src=p.icon;img.alt='';img.width=69;img.height=29;const label=document.createElement('span');label.textContent=p.name;a.append(img,label);dock.append(a);});
+ const region=document.getElementById('pearl-filmstrip'),track=document.getElementById('film-track');if(!track)return;
+ const slides=[...track.children],dots=document.getElementById('film-dots'),status=document.getElementById('film-status'),toggle=document.getElementById('film-pause');
+ const reduced=matchMedia('(prefers-reduced-motion:reduce)');let current=0,playing=false,timer=null;
+ const paused=()=>reduced.matches||document.documentElement.classList.contains('motion-paused');
+ const sync=()=>{dots.querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-current',String(i===current)));status.textContent=(current+1)+' / '+slides.length;};
+ const go=index=>{current=(index+slides.length)%slides.length;track.scrollTo({left:slides[current].offsetLeft-slides[0].offsetLeft,behavior:paused()?'instant':'smooth'});sync();};
+ slides.forEach((slide,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ver '+slide.querySelector('h3').textContent);b.onclick=()=>go(i);dots.append(b);});
+ document.getElementById('film-prev').onclick=()=>go(current-1);document.getElementById('film-next').onclick=()=>go(current+1);
+ const stop=()=>{playing=false;clearInterval(timer);toggle.textContent='Reproducir';toggle.setAttribute('aria-pressed','false');toggle.setAttribute('aria-label','Iniciar reproducción automática');};
+ toggle.onclick=()=>{if(playing){stop();return;}if(paused())return;playing=true;toggle.textContent='Pausar';toggle.setAttribute('aria-pressed','true');toggle.setAttribute('aria-label','Pausar reproducción automática');timer=setInterval(()=>{if(!document.hidden&&!paused()&&!region.matches(':hover')&&!track.contains(document.activeElement))go(current+1);},6000);};
+ track.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();go(current+(e.key==='ArrowRight'?1:-1));(slides[current].querySelector('a') || slides[current]).focus({preventScroll:true});}});
+ let debounce;track.addEventListener('scroll',()=>{clearTimeout(debounce);debounce=setTimeout(()=>{const left=track.scrollLeft;current=slides.reduce((best,s,i)=>Math.abs(s.offsetLeft-slides[0].offsetLeft-left)<Math.abs(slides[best].offsetLeft-slides[0].offsetLeft-left)?i:best,0);sync();},120);},{passive:true});
+ const motion=()=>{if(paused())stop();toggle.disabled=paused();};reduced.addEventListener('change',motion);new MutationObserver(motion).observe(document.documentElement,{attributes:true,attributeFilter:['class']});motion();sync();
 })();

@@ -1,11 +1,11 @@
-# Órbita Pearl — 3 de octubre de 2026
+# Órbita · Cristal orbital
 
-Dirección solicitada: rediseño total inspirado en Apple y Liquid Glass, conservando la identidad Órbita, precios y funciones del sitio.
+Identidad solicitada por el usuario: inspiración Apple Liquid Glass, perla, menta y azul con temática espacial. Se conserva la marca y su planeta negro con órbita elíptica, incluida la introducción.
 
-Paleta: perla #f5f5f7, tinta #1d1d1f, secundario #626269, azul #0071e3, lavanda #e6e4f3. Manrope local para texto y titulares; títulos de hasta 78 px, tracking -0.04em. Superficies de cristal translúcido con reflejo interior y sombras difusas. Se trata de una interpretación web, no del material nativo de Apple.
+Portada despejada: composición de texto y fotografía, ficha de cristal flotante, acceso a plataformas y un único carrusel editorial. Las bibliotecas completas viven únicamente en Descubre, con filtros de películas, series, anime y novelas. No duplicar estas secciones en Inicio.
 
-Inicio: portada con imágenes cinematográficas, mosaico de experiencias, una oferta de combo, proceso de pedido, asistente, preguntas frecuentes y acceso al juego. Plataformas y precios detallados se concentran en catálogo/configurador. Evitar métricas o promesas no verificadas y repetición de ofertas.
+Manrope local; titulares hasta 80px, tracking mínimo -0.04em. Fondo #f4f6f9, tinta #202b35, secundario #536371, menta #087f70. Material translúcido sobre fotografías y navegación; tarjetas de lectura claras y paneles de detalle con paleta oscura independiente.
 
-Navegación flotante unificada en las cuatro rutas. Paneles oscuros para detalles de películas y asistente. Intro una vez por sesión con salida independiente de animaciones. Entrada breve, interacción al pulsar, desplazamiento nativo, movimiento reducido respetado. Ningún contenido depende de completar una animación.
+Movimiento: entrada breve del símbolo oficial, giro de la órbita y salida con desenfoque. Carrusel manual con reproducción voluntaria, pausa al interactuar y respeto de movimiento reducido. Nada depende de terminar una animación para funcionar.
 
-Fuentes: Apple Liquid Glass y Apple TV (Newsroom, junio 2025); Impeccable, Frontend Design, Emil Kowalski Design Engineering y Apple Design. Fotografía reutilizada del catálogo local del proyecto.
+Referencia: https://developer.apple.com/design/human-interface-guidelines/materials y https://developer.apple.com/videos/play/wwdc2025/219/ . Interpretación web del material, no una implementación nativa de Apple.

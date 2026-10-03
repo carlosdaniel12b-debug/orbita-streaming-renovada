@@ -1,50 +1,40 @@
-# Órbita Streaming · Nueva edición
+# Órbita Streaming
 
-Abre **index.html** para ver el sitio. No requiere instalación, compilación, claves ni servicios externos para mostrar el diseño. Conserva esta carpeta completa para que funcionen las imágenes y las tres páginas.
+Sitio estático para explorar plataformas y preparar pedidos por WhatsApp. Abre index.html o ejecuta `node server.cjs` y visita http://127.0.0.1:4174.
 
-## Segunda edición
+## Edición orbital
 
-Rediseño cinematográfico con Tierra 3D, atmósfera, nubes y anillos en movimiento; tres ambientes de color; logo vectorial completo sin foco automático; tipografía Syne + Manrope; intro con portal y viaje estelar; transiciones de página, revelados, inclinación de tarjetas y parallax.
+- Portada despejada con imagen de Andor, material de cristal y un carrusel editorial accesible.
+- Introducción con el mismo planeta negro y órbita del encabezado; omisión, Escape y movimiento reducido.
+- Descubre: 87 fichas únicas, filtros independientes de películas, series, anime, novelas y plataforma; enlaces profundos por título, formato o servicio.
+- 27 títulos incorporados, 32 imágenes descargadas con fuentes registradas; 11 fichas duplicadas o incorrectas retiradas.
+- Orbit: recomendaciones locales por formato, género y plataforma, exclusión de terror y continuación sin repetir opciones. No está conectado a un modelo generativo.
+- País seleccionable para consultar disponibilidad. La selección editorial no garantiza que un título esté incluido en cada país o plan.
+- Precios, contacto y cálculo de combos conservados. No se envían pedidos automáticamente.
 
-Flappy Space vuelve con seis sectores, teclado/táctil, pausa, reinicio y récord persistente.
+## Mantener el sitio
 
-Orbit incorpora una biblioteca de 26 títulos, preguntas frecuentes, recomendaciones y búsqueda externa. Consulta ORBIT-CONEXION.md para el alcance y la conexión opcional a TMDB/JustWatch.
+- js/data.js: plataformas, contacto y tarifas.
+- js/library.js: selección editorial y sinopsis.
+- js/recommendations.js: recomendaciones y resolución de títulos.
+- js/orbit-guide.js: conversación, precios y consulta regional.
+- js/pearl.js: navegación y carrusel.
+- css/pearl.css y css/orbital.css: diseño compartido y superficies.
+- assets/content-sources.json: procedencia del nuevo material visual.
 
-## Qué incluye
+Las imágenes promocionales pertenecen a sus respectivos titulares. Las fichas incluyen sus fuentes; TVmaze aporta metadatos e imágenes, no disponibilidad comercial por país.
 
-- Inicio nuevo con fondo espacial original, intro de entrada en órbita, parallax y carrusel editorial.
-- Catálogo de nueve plataformas con buscador, filtros y detalles.
-- Configurador con selección persistente, combos sugeridos y resumen de cargos mensuales/anuales.
-- Pedidos por WhatsApp al número original **+593 99 822 6756**.
-- Orbit: guía automática local de plataformas y precios. No está conectado a un modelo de IA.
-- Diseño adaptable a móvil, navegación por teclado, diálogos y control para pausar efectos. Respeta movimiento reducido del sistema.
+## Disponibilidad regional opcional
 
-## Precios
+server.cjs consulta TMDB / JustWatch únicamente si existe TMDB_READ_TOKEN en el entorno del servidor. Esa clave nunca debe incluirse en archivos públicos. En GitHub Pages se utilizan el catálogo local y enlaces regionales de consulta.
 
-Todos los precios son USD. Una plataforma mensual: $3. Cada par: $5. Canva: $4/año, separado de la renovación mensual. Al seleccionar dos plataformas de video, Spotify se incluye por un mes como regalo; si también se marca Spotify, no se duplica el cobro. La promoción se confirma por WhatsApp.
+## Verificación
 
-Ejemplos: Netflix $3/mes; Netflix + Disney $5/mes; ambos + Canva $9 inicialmente ($5/mes + $4/año); Canva sola $4/año.
+`node --test tests/*.test.cjs` cubre introducción, filtros del recomendador, seguimiento sin repeticiones y consistencia de imágenes. Las cuatro rutas se verificaron también en navegador a 1440 y 390 píxeles.
 
-## Editar
+## Referencias
 
-- `js/data.js`: contacto, plataformas, precios informativos y selección editorial.
-- `js/app.js`: reglas de combos, catálogo y pedidos.
-- `js/experience.js`: animaciones espaciales, transiciones e interacción.
-- `js/orbit-guide.js`: inteligencia artificial Orbit, recomendaciones y disponibilidad.
-- `js/hero-cosmos.js`: fondo cósmico dinámico y lienzo de estrellas en tiempo real.
-- `js/pearl.js`: carrusel orbital, animaciones de cabecera y modo Pearl.
-- `js/library.js`: catálogo de títulos, sinopsis, alias y carátulas.
-- `js/platform-colors.js`: acentos por plataforma al enfocar, pasar el ratón o seleccionar.
-- `css/styles.css`, `css/experience.css` y `css/pearl.css`: diseño de cristal perla con identidad Órbita.
-- `assets/`: imágenes, tipografía y logotipos locales.
-
-Las reglas de combo están en `calculate()` dentro de `js/app.js`. Si cambias tarifas, actualiza también las frases de precios de las páginas y las respuestas de Orbit.
-
-## Publicación
-
-Sube las páginas, las carpetas `js`, `css` y `assets` a un alojamiento estático o GitHub Pages.
-
-## Contenido
-
-La galería es una selección editorial con fichas y fuentes. La disponibilidad varía según país y plan. Las compras se coordinan por WhatsApp: no hay pasarela de pago ni activación automática.
-
+- [Materiales de Apple](https://developer.apple.com/design/human-interface-guidelines/materials) y [Meet Liquid Glass](https://developer.apple.com/videos/play/wwdc2025/219/).
+- [PLUTO](https://www.netflix.com/title/81281344), [Delicious in Dungeon](https://www.netflix.com/title/81564899), [Klaus](https://www.netflix.com/title/80183187), [Pinocho](https://www.netflix.com/title/80218455).
+- [El amor invencible](https://vix.com/es-es/detail/series-4271), [La Usurpadora](https://vix.com/es-es/detail/series-561).
+- [Fundación](https://tv.apple.com/us/show/fundacion/umc.cmc.5983fipzqbicvrve6jdfep4x3?l=es), [The Gorge](https://www.apple.com/tv-pr/originals/the-gorge/), [1923](https://www.paramountplus.com/shows/1923/).

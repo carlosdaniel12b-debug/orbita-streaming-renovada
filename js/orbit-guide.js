@@ -9,6 +9,7 @@
   const platforms = window.ORBITA?.platforms || [];
 
   let busy = false;
+  let recommendationContext = {};
   let lastIds = [];
   let lastTitle = '';
   let remoteAvailable = false;
@@ -53,50 +54,9 @@
 
   // EFECTO MÁQUINA DE ESCRIBIR / STREAMING PARA LA IA ORBIT
   async function appendBotStream(text, onComplete) {
-    const el = document.createElement('div');
-    el.className = 'bot streaming';
-    
-    const textNode = document.createElement('span');
-    const cursor = document.createElement('span');
-    cursor.className = 'orbit-cursor';
-    cursor.textContent = '▍';
-    cursor.setAttribute('aria-hidden', 'true');
-
-    el.append(textNode, cursor);
-    log.append(el);
-    while (log.children.length > 36) log.firstElementChild.remove();
+    const el = append('bot', text);
+    if (onComplete) await onComplete(el);
     log.scrollTop = log.scrollHeight;
-
-    let skipped = false;
-    currentSkipCallback = () => {
-      skipped = true;
-    };
-
-    // Streaming progresivo y natural de caracteres
-    const speed = 14; // ms por carácter
-    for (let i = 0; i < text.length; i++) {
-      if (skipped) {
-        textNode.textContent = text;
-        break;
-      }
-      textNode.textContent += text[i];
-      if (i % 3 === 0) {
-        log.scrollTop = log.scrollHeight;
-      }
-      // Pequeña pausa natural en signos de puntuación
-      const delay = ('.!?'.includes(text[i])) ? speed * 4 : speed;
-      await new Promise(r => setTimeout(r, delay));
-    }
-
-    cursor.remove();
-    el.classList.remove('streaming');
-    currentSkipCallback = null;
-    log.scrollTop = log.scrollHeight;
-
-    if (onComplete) onComplete(el);
-    if (window.OrbitaAudio?.play) {
-      try { window.OrbitaAudio.play('score'); } catch {}
-    }
     return el;
   }
 
@@ -285,31 +245,25 @@
       }
     }
 
-    let matched = getLib().filter(m => [m.title, m.original, ...m.aliases].some(a => (' ' + q + ' ').includes(' ' + norm(a) + ' ') || norm(a).includes(title) || (title.length > 3 && norm(a).startsWith(title))));
-    if (!matched.length && title.length > 4) {
-      matched = getLib().filter(m => [m.title, ...m.aliases].some(a => distance(norm(a), title) <= 1));
-    }
-
-    if (/^(hola|buenas|buenos dias|buenas tardes|hey|saludos|buen dia|buenas noches|hi|hello)/.test(q)) {
-      const greetings = [
-        '¡Hola! Soy Orbit, tu copiloto inteligente en Órbita Streaming. Puedo decirte dónde ver cualquier película o serie, recomendarte joyas ocultas o calcular el combo ideal para ti. ¿Qué te gustaría ver hoy?',
-        '¡Qué gusto saludarte! Tengo sincronizado todo el catálogo galáctico de streaming. Pregúntame por un título como "Dune", "Severance", "The Last of Us", o dime qué género tienes ganas de disfrutar.',
-        '¡Hola! Estoy listo para ayudarte a encontrar tu próxima gran historia o armarte un combo con el mejor precio. ¿Por dónde empezamos?'
-      ];
-      await appendBotStream(greetings[Math.floor(Math.random() * greetings.length)]);
+    const wantsRecommendations = /recomiend|recomenda|que veo|que ver|suger|otras?|otros?|mas opciones|anime|novelas|peliculas|series|sin terror|comedia|ciencia ficcion/.test(q) && !/donde|de que trata/.test(q);
+    if (wantsRecommendations) {
+      const selection = window.OrbitRecommendations.recommend(text, getLib(), recommendationContext);
+      recommendationContext = selection;
+      const parts = [selection.filters.type, ...selection.filters.genres, ...selection.filters.platforms.map(id => pBy(id)?.name)].filter(Boolean);
+      const message = selection.results.length
+        ? 'Para ' + (parts.join(' · ') || 'tu próximo rato libre') + ', estas son mis propuestas. Son una selección editorial; verifica la disponibilidad en tu país.'
+        : 'No encontré más títulos que cumplan esos filtros en mi selección. Prueba otro género, formato o plataforma.';
+      await appendBotStream(message, el => {
+        titleCards(el, selection.results);
+        if (selection.remaining) {
+          const actions = document.createElement('div'); actions.className = 'answer-actions';
+          const more = document.createElement('button'); more.textContent = 'Ver otras opciones'; more.onclick = () => ask('otras opciones'); actions.append(more); el.append(actions);
+        }
+      });
       return;
     }
-
-    if (/^(gracias|muchas gracias|ok|perfecto|vale|genial|excelente|chevere|bacano|de nada|que bueno)/.test(q)) {
-      const thanks = [
-        '¡Con muchísimo gusto! Si quieres explorar otro título o armar un combo, pregúntame lo que sea.',
-        '¡Me alegra haberte ayudado! Disfruta tu tiempo libre en otra órbita ✦',
-        '¡Siempre a tu servicio! Recuerda que puedes pedir tu plataforma directamente por WhatsApp cuando estés listo.'
-      ];
-      await appendBotStream(thanks[Math.floor(Math.random() * thanks.length)]);
-      return;
-    }
-
+    let matched = window.OrbitRecommendations.findTitle(extract(text), getLib());
+    if (!matched.length) matched = window.OrbitRecommendations.findTitle(title, getLib());
     if (matched.length) {
       lastTitle = matched[0].title;
       lastIds = [matched[0].platform];
@@ -319,7 +273,7 @@
       // Sincroniza la atmósfera visual con la plataforma encontrada
       window.OrbitaColors?.set(m.platform);
 
-      const respText = `✦ ${m.title} (${m.year || '2024'}) es ${m.type === 'Serie' ? 'una serie' : 'una película'} de ${m.genre.toLowerCase().replaceAll(',', ', ')}. Disponible en ${p ? p.name : 'nuestro catálogo'} ($3/mes en plan individual o $5/mes en combo de 2). ${m.esSummary || ''}`;
+      const respText = `✦ ${m.title} (${m.year || 'año por confirmar'}) es ${m.type === 'Serie' ? 'una serie' : m.type === 'Anime' ? 'un anime' : m.type === 'Novela' ? 'una novela' : 'una película'} de ${m.genre.toLowerCase().replaceAll(',', ', ')}. En la selección editorial de ${p ? p.name : 'Órbita'} ($3/mes en plan individual o $5/mes en combo de 2). ${m.esSummary || ''}`;
 
       await appendBotStream(
         respText,
@@ -430,7 +384,7 @@
     }
 
     if (/chatgpt|chat gpt|inteligencia artificial|openai|gpt/.test(q)) {
-      await appendBotStream('¡Tenemos ChatGPT Plus disponible! Acceso completo con GPT-4o, análisis avanzado de datos, navegación y DALL-E en tarifa especial de $5 USD por 4 meses.', el => {
+      await appendBotStream('El plan anunciado de ChatGPT Plus es de $5 USD por 4 meses. Confirma con Órbita las condiciones de acceso y las funciones incluidas antes de pedirlo.', el => {
         combo(el, ['chatgpt']);
       });
       return;
@@ -464,7 +418,7 @@
     }
 
     if (/quien eres|que puedes|ayuda|como funciona|eres una ia|que sabes|que haces|para que sirves/.test(q)) {
-      await appendBotStream('Soy Orbit, el copiloto inteligente de Órbita Streaming. Conozco el catálogo completo de series, películas y plataformas disponibles. Puedo: buscar cualquier título y decirte dónde verlo, recomendarte por género o estado de ánimo, calcular combos y precios, y ayudarte a contactar a un asesor. ¿Por dónde empezamos?');
+      await appendBotStream('Soy Orbit, una guía local de entretenimiento. Puedo recomendar por formato, género y plataforma, encontrar fichas y calcular combos. No soy un modelo de IA conectado. Para disponibilidad actual uso enlaces regionales y, si está configurado, TMDB / JustWatch.');
       return;
     }
 
@@ -550,7 +504,9 @@
   const clearBtn = $('#btn-clear-chat');
   if (clearBtn) {
     clearBtn.onclick = () => {
-      log.innerHTML = '<div class="bot">¡Conversación reiniciada! Soy Orbit, el copiloto de entretenimiento de Órbita Streaming. Tengo acceso al catálogo completo de más de 50 títulos en 10 plataformas disponibles. Puedo ayudarte con: recomendaciones por género o estado de ánimo, buscar en qué plataforma está un título, calcular combos desde $5/mes, y más. ¿Por dónde empezamos?</div>';
+      if (busy) return;
+      recommendationContext = {}; lastIds = []; lastTitle = "";
+      log.replaceChildren(); append("bot", "Conversación reiniciada. Dime un género, formato o plataforma y buscamos tu próxima historia.");
       if (window.OrbitaAudio?.play) {
         try { window.OrbitaAudio.play('score'); } catch {}
       }

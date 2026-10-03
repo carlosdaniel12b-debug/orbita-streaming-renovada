@@ -234,54 +234,7 @@
 
   startCosmos();
 
-  const MOVIE_TRAILERS = {
-    'm_dune2': 'Way9Dexny3w',
-    's46562': 'uLtkt8BonwM',
-    's44778': 'DotnJ7tTA34',
-    's52341': 'cKOegEuCcfw',
-    's55138': 'fXmAurh012s',
-    's2993': 'b9EkMc79ZSU',
-    's58682': 'V-mugKDQDlg',
-    's42045': 'xEQP4VVuyrY',
-    's36361': '06rueu_fh30',
-    'm_avatar2': 'd9MyW72ELq0',
-    'm_endgame': 'TcMBFSGVi1c',
-    's618': 'HN4oyhmgopA',
-    's169': 'HhesaQXLuRY',
-    'm_oppenheimer': 'uYPbbksJxIg',
-    'm_spiderverse': 'cqGjhVJWtEg',
-    's43031': 'y-cqqAJIXhk',
-    's3156': 'aOC8E8z_ifw',
-    'm_interstellar': 'zSWdZVtXT7E',
-    'm_bladerunner2049': 'gCcx85zbxz4',
-    'm4': 'o2AsIXSh26Y'
-  };
-
-  function getTrailerId(item) {
-    if (!item) return null;
-    if (MOVIE_TRAILERS[item.id]) return MOVIE_TRAILERS[item.id];
-    const key = (item.title || '').toLowerCase();
-    if (key.includes('dune')) return 'Way9Dexny3w';
-    if (key.includes('last of us')) return 'uLtkt8BonwM';
-    if (key.includes('dragón') || key.includes('dragon')) return 'DotnJ7tTA34';
-    if (key.includes('andor')) return 'cKOegEuCcfw';
-    if (key.includes('arcane')) return 'fXmAurh012s';
-    if (key.includes('stranger')) return 'b9EkMc79ZSU';
-    if (key.includes('fallout')) return 'V-mugKDQDlg';
-    if (key.includes('severance')) return 'xEQP4VVuyrY';
-    if (key.includes('boys')) return '06rueu_fh30';
-    if (key.includes('avatar')) return 'd9MyW72ELq0';
-    if (key.includes('endgame') || key.includes('avengers')) return 'TcMBFSGVi1c';
-    if (key.includes('saul')) return 'HN4oyhmgopA';
-    if (key.includes('breaking')) return 'HhesaQXLuRY';
-    if (key.includes('oppenheimer')) return 'uYPbbksJxIg';
-    if (key.includes('spider')) return 'cqGjhVJWtEg';
-    if (key.includes('bear')) return 'y-cqqAJIXhk';
-    if (key.includes('mandalorian')) return 'aOC8E8z_ifw';
-    if (key.includes('interstellar')) return 'zSWdZVtXT7E';
-    if (key.includes('blade runner')) return 'gCcx85zbxz4';
-    return null;
-  }
+  function getTrailerId(item) { return window.ORBIT_TRAILERS?.[item?.id]?.video || null; }
 
   function openMovie(id) {
     const m = lib.find(x => x.id === id);
@@ -292,20 +245,7 @@
     // Activa la atmósfera de color de la app que tiene esta película
     window.OrbitaColors?.set(m.platform);
 
-    const trailerHtml = trailerId ? `
-      <div class="movie-trailer-box">
-        <div class="movie-trailer-header">
-          <span class="trailer-badge">
-            <svg class="ui-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-            Tráiler Oficial HD
-          </span>
-          <span class="trailer-sub">${m.title}</span>
-        </div>
-        <div class="movie-trailer-aspect">
-          <iframe class="movie-trailer-frame" src="https://www.youtube-nocookie.com/embed/${trailerId}?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0" title="Tráiler de ${m.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </div>
-    ` : '';
+    const trailerHtml = '<button class="detail-trailer-button" type="button" data-trailer="'+m.id+'">'+(trailerId?'Ver mini tráiler':'Buscar tráiler')+' <span aria-hidden="true">↗</span></button>';
 
     $('#detail-body').innerHTML = `
       <div class="movie-detail-layout">
@@ -572,9 +512,10 @@
     const grid = $('#descubre-grid');
     if (!grid) return;
 
-    let activeType = 'all';
-    let activePlatform = 'all';
-    let searchQ = '';
+    const params = new URLSearchParams(location.search);
+    let activeType = ['Película','Serie','Anime','Novela'].includes(params.get('tipo')) ? params.get('tipo') : 'all';
+    let activePlatform = params.get('plataforma') || 'all';
+    let searchQ = params.get('q') || '';
 
     const searchInput = $('#descubre-search-input');
     const searchClear = $('#descubre-search-clear');
@@ -614,9 +555,9 @@
 
       grid.innerHTML = filtered.map((m, i) => {
         const platInfo = platform(m.platform);
-        const badge = m.badge || (i % 7 === 0 ? 'Recomendada' : i % 5 === 0 ? 'Top 10' : '');
+        const badge = m.badge || '';
         return `
-          <article class="liquid-glass descubre-card" data-movie="${m.id}" tabindex="0" role="button" aria-label="Ver detalles de ${m.title}">
+          <article class="liquid-glass descubre-card" data-movie="${m.id}" aria-label="${m.title}">
             <div class="descubre-card-poster">
               ${badge ? `<span class="movie-badge ${badge.includes('Top') ? 'gold' : badge.includes('Estreno') ? 'hot' : ''}">${badge}</span>` : ''}
               <img src="${m.image || 'assets/space.webp'}" alt="Póster de ${m.title}" loading="lazy">
@@ -627,17 +568,17 @@
             <div class="descubre-card-body">
               <div class="descubre-card-meta">
                 <span class="descubre-platform-badge">${platInfo.name}</span>
-                <span class="descubre-year">${m.year || '2025'}</span>
+                <span class="descubre-year">${m.year || ''}</span>
               </div>
               <h3 class="descubre-card-title">${m.title}</h3>
-              <p class="descubre-card-genre">${m.type} · ${m.genre.split(',')[0]}</p>
+              <p class="descubre-card-genre">${m.type} · ${m.genre.split(',')[0]}</p><div class="card-actions"><button type="button" data-trailer="${m.id}">${window.ORBIT_TRAILERS?.[m.id] ? 'Ver tráiler' : 'Buscar tráiler'}</button><button type="button" data-open-movie="${m.id}">Ficha <span aria-hidden="true">↗</span></button></div>
             </div>
           </article>
         `;
       }).join('');
 
       $$('#descubre-grid [data-movie]').forEach(el => {
-        el.onclick = () => openMovie(el.dataset.movie);
+        el.onclick = event => { if (!event.target.closest('[data-trailer]')) openMovie(el.dataset.movie); };
         el.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openMovie(el.dataset.movie); } };
       });
     }
@@ -694,6 +635,10 @@
     if (resetBtn) resetBtn.onclick = resetAllFilters;
     if (emptyResetBtn) emptyResetBtn.onclick = resetAllFilters;
 
+    if (searchInput) searchInput.value = searchQ;
+    if (searchClear) searchClear.style.display = searchQ ? 'inline-block' : 'none';
+    typeChips.forEach(b => { const on = b.dataset.type === activeType; b.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on)); });
+    platformChips.forEach(b => { const on = b.dataset.platform === activePlatform || platform(activePlatform).name === b.dataset.platform; b.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on)); });
     filterAndRender();
   }
 

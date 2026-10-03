@@ -1,0 +1,9 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('fs'),vm=require('vm'),path=require('path');
+const {recommend,findTitle}=require('../js/recommendations.js');const context={window:{}};vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../js/library.js'),'utf8'),context);const library=context.window.ORBIT_LIBRARY;
+test('anime and platform constraints intersect',()=>{const r=recommend('recomiéndame anime de Netflix',library);assert.ok(r.results.length);assert.ok(r.results.every(m=>m.type==='Anime'&&m.platform==='netflix'));});
+test('ViX has novelas in its own section',()=>{const r=recommend('novelas de ViX',library);assert.equal(r.results.length,4);assert.ok(r.results.every(m=>m.type==='Novela'&&m.platform==='vix'));});
+test('follow-up keeps constraints and avoids repeated recommendations',()=>{const a=recommend('anime de Netflix',library),b=recommend('otras opciones',library,a);assert.ok(b.results.length);assert.ok(b.results.every(m=>m.type==='Anime'&&!a.results.some(x=>x.id===m.id)));});
+test('does not silently discard impossible constraints',()=>{assert.equal(recommend('anime de Apple TV',library).results.length,0);});
+test('negative genre is excluded while retaining film format',()=>{const r=recommend('películas sin terror',library);assert.ok(r.results.length);assert.ok(r.results.every(m=>m.type==='Película'&&!m.genre.toLowerCase().includes('terror')));});
+test('accent-insensitive exact title beats partial titles',()=>{assert.equal(findTitle('rubi',library)[0].title,'Rubí');assert.equal(findTitle('The Boys',library)[0].title,'The Boys');});
+test('library has unique IDs and readable, existing image assets',()=>{assert.equal(new Set(library.map(x=>x.id)).size,library.length);for(const m of library){assert.ok(fs.existsSync(path.join(__dirname,'..',m.image)),m.title);assert.ok(m.esSummary,m.title);assert.ok(['Película','Serie','Anime','Novela'].includes(m.type),m.title);}});

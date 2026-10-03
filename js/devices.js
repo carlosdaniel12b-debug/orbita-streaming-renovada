@@ -1,0 +1,1 @@
+(()=>{'use strict';const stage=document.querySelector('.devices-stage');if(!stage)return;const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){stage.classList.add('devices-entered');observer.disconnect();}},{threshold:.25});observer.observe(stage);})();

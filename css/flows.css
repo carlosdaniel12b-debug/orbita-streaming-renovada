@@ -14,6 +14,19 @@ body.pearl-world{background-color:var(--orbit-surface,#f4f6f9);transition:backgr
 .orbit-moments{display:grid;grid-template-columns:1fr 1.15fr;gap:65px;align-items:center;padding-block:36px 65px}.orbit-moments h2,.platform-guide h2,.combo-assurance h2{font-size:clamp(30px,3.5vw,44px);line-height:1.14;letter-spacing:-.03em}.orbit-moments-heading>p,.platform-guide>div>p{color:#536371;font-size:14px;line-height:1.7;margin-top:20px}.moment-links a{display:flex;align-items:center;gap:18px;padding:23px 0;border-bottom:1px solid #d5e1e2}.moment-links svg{width:27px;height:27px;flex:none;color:#087f70}.moment-links a>span:last-child{margin-left:auto;color:#087f70}.moment-links strong{display:block;font-size:17px}.moment-links small{display:block;color:#536371;font-size:12px;margin-top:6px}
 .platform-guide{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;padding-block:55px 65px}.platform-guide-list>div{padding:25px 0;border-top:1px solid #d5e1e2}.platform-guide-list h3,.assurance-copy h3{font-size:20px;letter-spacing:-.02em;margin-bottom:12px}.platform-guide-list p,.assurance-copy p{font-size:14px;color:#536371;line-height:1.75;max-width:55ch}.platform-guide-list a,.platform-guide-list button,.assurance-copy a{color:#076c60;font-size:13px;font-weight:600}.platform-guide-list button{padding:9px 0;background:transparent}
 .combo-assurance{padding-top:50px}.assurance-copy{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:28px}.assurance-copy>div{border-top:1px solid #d5e1e2;padding-top:24px}
+/* Compact reading surfaces; warm and violet accents belong to Órbita. */
+.pearl-world .catalog-grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:stretch}
+.pearl-world .catalog-grid .platform-card{flex:1 1 260px;max-width:430px;min-height:0;padding:22px;border-radius:20px;gap:0;box-shadow:0 10px 24px #26354c0c}
+.pearl-world .catalog-grid .platform-top{margin-bottom:17px;gap:10px;flex-wrap:wrap}.pearl-world .catalog-grid .platform-top img{width:86px;height:45px;padding:8px;border-radius:11px}
+.pearl-world .catalog-grid .platform-card h3{font-size:23px;margin-bottom:9px}.pearl-world .catalog-grid .platform-card p{font-size:13px;line-height:1.65;margin-bottom:14px}
+.pearl-world .catalog-grid .platform-card .platform-bottom{margin-top:auto;padding-top:15px}.pearl-world .catalog-grid .platform-card .price{font-size:32px}.pearl-world .catalog-grid .platform-whatsapp{margin-top:13px;min-height:44px;padding:10px}
+.pearl-world .catalog-grid .platform-card .tag{font-size:10px;padding:5px 8px}.pearl-world .catalog-grid .service-prompt{margin:5px 0 10px!important;font-size:10px!important;padding:7px 9px!important}
+.pearl-world .catalog-grid .service-wave,.pearl-world .catalog-grid .service-colors{max-height:28px;margin:5px 0 10px!important}
+.pearl-world .page-heading{padding-bottom:25px}.pearl-world .page-heading h1{font-size:clamp(36px,4.2vw,58px)}
+.pearl-world .service-canva{--service-tint:#e8dcef}.pearl-world .service-gemini{--service-tint:#e4def1}.pearl-world .pearl-plan{background:linear-gradient(125deg,#e4eeee,#eee4db)}
+.pearl-world .pearl-copy h1 span{color:#54648a}.pearl-world .cinematic-choice[aria-pressed=true]{background:#e4e0f0;color:#39456d}
+.pearl-world .catalog-tools .filters button[aria-pressed=true]{background:#374866;color:#fff}.pearl-world .pearl-link{color:#3d557d}
+.pearl-world .pearl-section{padding-block:48px}.pearl-world .platform-guide{padding-block:38px 48px}
 @media(max-width:700px){
  .mobile-combo .combo-checkout-bar{position:fixed;z-index:1002;display:flex;align-items:center;justify-content:space-between;gap:12px;left:10px;right:10px;bottom:calc(88px + env(safe-area-inset-bottom));padding:13px 15px;border-radius:20px;background:#f8fcfbf5;box-shadow:inset 0 1px 0 #fff,0 8px 28px #19384426;backdrop-filter:blur(12px)}
  .combo-bar-count{display:block;font-size:11px;color:#4f636d}.combo-bar-total{font-size:23px;color:#203b44;line-height:1.35;font-variant-numeric:tabular-nums}.combo-bar-total small{font-size:10px;font-weight:500}
@@ -32,5 +45,6 @@ body.pearl-world{background-color:var(--orbit-surface,#f4f6f9);transition:backgr
  .pearl-world .footer-contact-col{grid-column:1/-1}.legal-links{gap:14px 22px}.pearl-world .legal-page{padding-top:110px}
  .orbit-moments,.platform-guide{grid-template-columns:1fr;gap:22px;padding-block:30px 36px}.moment-links a{padding:19px 0;gap:15px}.moment-links strong{font-size:15px}.moment-links small{font-size:12px}.assurance-copy{grid-template-columns:1fr;gap:5px;margin-top:24px}.combo-assurance{padding-top:30px}.assurance-copy>div{padding-top:20px}.platform-guide-list>div{padding-block:20px}
  .hero-playback{margin-top:4px}
+ .pearl-world .catalog-grid{gap:13px}.pearl-world .catalog-grid .platform-card{flex-basis:100%;max-width:none;padding:21px}.pearl-world .pearl-copy .pearl-actions{flex-direction:row;align-items:center;flex-wrap:wrap;gap:16px}
 }
 @media(prefers-reduced-motion:reduce){body.pearl-world{transition:none}}

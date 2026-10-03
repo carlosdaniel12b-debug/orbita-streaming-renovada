@@ -14,6 +14,8 @@ Compra móvil: selector de dos columnas, barra de resumen sobre la navegación y
 
 Disfruta en todo lugar: composición de televisor, computadora portátil, tablet y teléfono con imágenes existentes de Dune: Parte Dos, Severance, El amor invencible y PLUTO. Cada pantalla enlaza al título en Descubre. Se conserva la identidad visual actual; los marcos se construyen en CSS sin motor de animación ni descargas nuevas. El conjunto se adapta al ancho del teléfono.
 
+Refinamiento de jerarquía: hero panorámico bajo un encabezado de texto y acciones, sustituyendo la composición de tarjeta vertical. Verde para acciones, violeta azulado para titulares y selección, arena suave en el configurador. Catálogo flexible con cuatro tarjetas por fila y última fila completa, tamaño de lectura reducido y sin hueco de columna al final. La sección de dispositivos se limita a 840 px, elimina las acciones repetidas del hero y presenta una entrada breve al entrar en pantalla solo en laptop. En teléfono las imágenes y controles mantienen un cambio directo.
+
 Skills aplicadas: Frontend Design, Emil Design Engineering y Web Animation Design de Vercel (https://github.com/vercel-labs/open-agents/tree/main/.agents/skills/web-animation-design). La nueva skill se instala en Codex; la web recibe HTML, CSS y JavaScript, sin dependencias nuevas de animación.
 
 Referencia: https://developer.apple.com/design/human-interface-guidelines/materials y https://developer.apple.com/videos/play/wwdc2025/219/ . Interpretación web del material, no una implementación nativa de Apple.

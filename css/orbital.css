@@ -162,6 +162,16 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
   cursor: pointer;
 }
 
+.cosmic-card.depth-hidden {
+  transform: translate3d(0, -50px, -200px) scale(0.75) !important;
+  opacity: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  visibility: hidden;
+  filter: blur(8px) !important;
+  transition: transform 0.4s ease, opacity 0.3s ease, visibility 0.4s !important;
+}
+
 /* Animación física de desplazamiento hacia atrás al hacer clic o cambiar */
 .cosmic-card.anim-pushing-back {
   transform: translate3d(0, -42px, -170px) scale(0.8) rotateX(16deg) !important;
@@ -477,15 +487,15 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
 /* Tarjeta complementaria flotante (Sincronizada con la tarjeta activa) */
 .orbital-float {
   position: absolute;
-  bottom: 0px;
+  bottom: 85px;
   left: -28px;
   display: flex;
   gap: 14px;
   align-items: center;
-  width: 325px;
+  width: 320px;
   padding: 12px 16px 12px 12px;
   border-radius: 20px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 251, 253, 0.82));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(245, 251, 253, 0.88));
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.98);
@@ -493,7 +503,8 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
   transform: rotate(-3deg);
   color: #17323e;
   z-index: 15;
-  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.3s;
+  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.3s, opacity 0.2s ease;
+  pointer-events: auto;
 }
 
 .orbital-float:hover {
@@ -564,6 +575,109 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
 .companion-play-chip:hover {
   transform: scale(1.1);
   background: #076d60;
+}
+
+/* ==================== DOCK HORIZONTAL DE PLATAFORMAS ==================== */
+.platform-dock {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  align-items: center;
+  margin-top: 36px;
+  padding: 16px 20px;
+  border-radius: 24px;
+  background: var(--glass);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 1px 0 white, 0 10px 30px rgba(10, 30, 45, 0.05);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.platform-dock::-webkit-scrollbar {
+  display: none;
+}
+
+.platform-dock a {
+  min-width: 86px;
+  min-height: 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #4c5d68;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1), color 0.2s ease, background 0.2s ease;
+  border-radius: 14px;
+  padding: 6px 10px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.platform-dock a:hover {
+  transform: translateY(-3px);
+  color: #087f70;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.platform-dock img {
+  width: 69px;
+  height: 30px;
+  object-fit: contain;
+  background: #18262f;
+  padding: 5px 8px;
+  border-radius: 9px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* ==================== CORRECCIÓN DE CONTRASTE DEL MODAL DE PAGO ==================== */
+.pearl-world dialog#orbita-payment-modal,
+.pearl-world .payment-modal-dialog {
+  --text: #17313b !important;
+  --muted: #536e7a !important;
+  color: #17313b !important;
+  color-scheme: light !important;
+}
+
+.pearl-world #orbita-payment-modal h2,
+.pearl-world #orbita-payment-modal h3,
+.pearl-world .payment-sheet h2,
+.pearl-world .payment-sheet h3 {
+  color: #112832 !important;
+  text-shadow: none !important;
+}
+
+.pearl-world #orbita-payment-modal p,
+.pearl-world .payment-sheet p,
+.pearl-world .payment-sheet .method-desc {
+  color: #4b6672 !important;
+}
+
+.pearl-world .payment-sheet .payment-eyebrow {
+  color: #087f70 !important;
+}
+
+.pearl-world .payment-sheet .method-name {
+  color: #112832 !important;
+  font-weight: 700 !important;
+}
+
+.pearl-world .payment-sheet .payment-amount {
+  color: #087f70 !important;
+}
+
+.pearl-world .payment-sheet .payment-period {
+  color: #55707b !important;
+}
+
+.pearl-world .payment-sheet .payment-close-btn {
+  color: #27434e !important;
+  background: rgba(220, 234, 240, 0.8) !important;
 }
 
 /* ==================== 2. SECCIÓN CARRUSEL "DALE PLAY A OTRO UNIVERSO" ==================== */
@@ -1004,3 +1118,183 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
 .pearl-world .order-summary .currency-note{color:#536371}
 @media(max-width:1000px){.pearl-filmstrip-track:after{flex-basis:calc(24% - 20px)}}
 @media(max-width:700px){.pearl-filmstrip-track:after{flex-basis:calc(10% - 20px)}}
+
+/* ==================== BARRAS DE MÉTODOS DE PAGO EN TARJETAS DE PLATAFORMAS ==================== */
+.platform-payments-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0 14px;
+}
+
+.pay-method-badge {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(8, 127, 112, 0.08);
+  color: #0c6258;
+  border: 1px solid rgba(8, 127, 112, 0.16);
+  letter-spacing: 0.02em;
+}
+
+.platform-card-cta-group {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.platform-card-cta-group .platform-whatsapp {
+  flex: 1;
+  margin-top: 0;
+}
+
+.platform-pay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(8, 127, 112, 0.28);
+  color: #087f70;
+  font-weight: 700;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(8, 127, 112, 0.08);
+  white-space: nowrap;
+}
+
+.platform-pay-btn:hover {
+  background: #087f70;
+  color: #ffffff !important;
+  border-color: #087f70;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(8, 127, 112, 0.25);
+}
+
+.platform-pay-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ==================== CAJA DE MÉTODOS DE PAGO EN MODAL DETALLES ==================== */
+.detail-payments-box {
+  margin: 18px 0;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.payments-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.payments-box-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #e2f1f5;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.payments-box-badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: rgba(167, 234, 216, 0.22);
+  color: #a7ead8;
+  font-weight: 600;
+}
+
+.payments-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.payments-chips .pay-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #e2f1f5;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.payments-chips .chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn-open-payment-methods {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 10px;
+  background: rgba(167, 234, 216, 0.2);
+  color: #a7ead8;
+  border: 1px solid rgba(167, 234, 216, 0.45);
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.btn-open-payment-methods:hover {
+  background: #087f70;
+  color: #ffffff;
+  border-color: #087f70;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(8, 127, 112, 0.3);
+}
+
+/* ==================== SERVICIO GEMINI AI PRO ==================== */
+.service-gemini {
+  background: radial-gradient(circle at 85% 15%, rgba(66, 133, 244, 0.18), transparent 65%), rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(66, 133, 244, 0.28);
+}
+
+.service-gemini:hover {
+  border-color: rgba(66, 133, 244, 0.6);
+  box-shadow: 0 16px 36px rgba(66, 133, 244, 0.2);
+}
+
+.service-gemini .service-link {
+  color: #1a73e8;
+}
+
+.service-ai-glow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1a73e8;
+  background: rgba(66, 133, 244, 0.12);
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin: 12px 0 6px;
+  border: 1px solid rgba(66, 133, 244, 0.28);
+}
+

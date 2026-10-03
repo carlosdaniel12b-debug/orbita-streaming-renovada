@@ -169,6 +169,22 @@
       companionTitle: 'Aventura nuclear',
       companionBadge: 'Tendencia global',
       accentColor: '#10b981'
+    },
+    {
+      id: 'gemini',
+      title: 'Gemini AI Pro',
+      subtitle: '5 TB en la nube y la inteligencia artificial más potente.',
+      platform: 'gemini',
+      platformName: 'Google Gemini',
+      category: 'Productividad & IA · Gemini 3.8 Pro',
+      quality: '5 TB Almacenamiento · 2M Tokens',
+      backdrop: 'assets/backdrops/severance-scene.jpg',
+      poster: 'assets/icons/gemini.svg',
+      trailerId: 's44933',
+      description: '5 TB (5,000 GB) en Google One / Drive / Fotos + el modelo más inteligente Gemini 3.8 con contexto masivo de 2M tokens. Activación directa mediante link por $3 USD.',
+      companionTitle: 'Espacio masivo e Inteligencia Artificial',
+      companionBadge: '5 TB + Link Directo · $3',
+      accentColor: '#4285f4'
     }
   ];
 
@@ -219,8 +235,20 @@
             <h3>Elige tu método de pago preferido</h3>
           </div>
           <div class="payment-methods-grid">
-            <label class="payment-card-method is-selected" data-method="Transferencia Bancaria Ecuador">
-              <input type="radio" name="pay_option" value="Transferencia Bancaria Ecuador" checked class="sr-only"/>
+            <label class="payment-card-method is-selected" data-method="Bancolombia / Nequi / Daviplata">
+              <input type="radio" name="pay_option" value="Bancolombia / Nequi / Daviplata" checked class="sr-only"/>
+              <div class="method-indicator"></div>
+              <div class="method-body">
+                <div class="method-title-row">
+                  <span class="method-name">Bancolombia / Nequi / Daviplata</span>
+                  <span class="method-tag" style="background:rgba(0,210,255,0.15);color:#0099cc">🇨🇴 Nequi · Bancolombia · PSE</span>
+                </div>
+                <p class="method-desc">Transferencia directa en Colombia sin recargos. Activación al instante.</p>
+              </div>
+            </label>
+
+            <label class="payment-card-method" data-method="Transferencia Bancaria Ecuador">
+              <input type="radio" name="pay_option" value="Transferencia Bancaria Ecuador" class="sr-only"/>
               <div class="method-indicator"></div>
               <div class="method-body">
                 <div class="method-title-row">
@@ -310,7 +338,13 @@
     const price = currentPlatformState.price || 3;
     const phone = window.ORBITA?.phone || '593998226756';
 
-    const msg = `Hola Órbita Streaming, deseo activar mi suscripción de *${platName}* ($${price} USD/mes). Mi método de pago preferido es: *${method}*. ¿Tienen disponibilidad inmediata?`;
+    let msg;
+    if (currentPlatformState.id === 'gemini') {
+      msg = `Hola Órbita Streaming, deseo activar mi suscripción de *Gemini AI Pro* (5 TB de almacenamiento + IA Gemini 3.8) por $3 USD (varios meses - activación mediante link). Mi método de pago preferido es: *${method}*. ¿Tienen disponibilidad inmediata?`;
+    } else {
+      msg = `Hola Órbita Streaming, deseo activar mi suscripción de *${platName}* ($${price} USD/${currentPlatformState.period || 'mes'}). Mi método de pago preferido es: *${method}*. ¿Tienen disponibilidad inmediata?`;
+    }
+
     const waBtn = paymentModalEl.querySelector('#payment-whatsapp-btn');
     if (waBtn) {
       waBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
@@ -323,6 +357,7 @@
       id: platformKey || 'streaming',
       name: customTitle || (platformKey ? platformKey.toUpperCase() : 'Plataforma'),
       price: 3,
+      period: 'mes',
       icon: 'assets/icons/' + (platformKey || 'netflix') + '.svg',
       tagline: 'Ultra HD 4K • Perfil Privado',
       features: ['Calidad Ultra HD 4K', 'Perfil privado con PIN', 'Soporte 24/7']
@@ -334,6 +369,8 @@
     const titleEl = paymentModalEl.querySelector('#payment-modal-title');
     const tagEl = paymentModalEl.querySelector('#payment-platform-tag');
     const priceEl = paymentModalEl.querySelector('#payment-price');
+    const periodEl = paymentModalEl.querySelector('.payment-period');
+    const perksEl = paymentModalEl.querySelector('#payment-perks');
     const catLink = paymentModalEl.querySelector('#payment-catalog-btn');
 
     if (iconEl) {
@@ -343,7 +380,26 @@
     if (titleEl) titleEl.textContent = platData.name;
     if (tagEl) tagEl.textContent = platData.tagline || 'Streaming Premium';
     if (priceEl) priceEl.textContent = `$${platData.price || 3}`;
+    if (periodEl) periodEl.textContent = `USD / ${platData.period || 'mes'}`;
     if (catLink) catLink.href = `catalogo.html?plataforma=${platData.id}`;
+
+    if (platData.id === 'gemini') {
+      if (perksEl) {
+        perksEl.innerHTML = `
+          <span class="perk-chip"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Activación por Link Directo</span>
+          <span class="perk-chip"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 5 TB Google One / Drive</span>
+          <span class="perk-chip"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Mejor IA Gemini 3.8</span>
+        `;
+      }
+    } else {
+      if (perksEl) {
+        perksEl.innerHTML = `
+          <span class="perk-chip"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Perfil 100% privado</span>
+          <span class="perk-chip"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ultra HD 4K</span>
+          <span class="perk-chip"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Entrega en 5 min</span>
+        `;
+      }
+    }
 
     updateWhatsAppLink();
 
@@ -385,7 +441,7 @@
   });
 
   // =========================================================================
-  // 3. BARBERÍA Y MOTOR 3D DEL HERO COSMIC CARD STACK
+  // 3. BARBERÍA Y MOTOR 3D DEL HERO COSMIC CARD STACK (60FPS / 120FPS GPU)
   // =========================================================================
   class CosmicHeroStack {
     constructor(container) {
@@ -395,6 +451,7 @@
       this.isAnimating = false;
       this.touchStartX = 0;
       this.touchStartY = 0;
+      this.cardElements = [];
 
       this.init();
     }
@@ -444,41 +501,29 @@
       this.companion.id = 'cosmic-companion-card';
       this.container.append(this.companion);
 
-      // 5. Renderizar cartas iniciales
-      this.renderCards();
+      // 5. Pre-renderizar TODAS las cartas una sola vez en el DOM (Caché GPU)
+      this.cardElements = this.stories.map((story, idx) => {
+        const el = this.createCardElement(story, idx);
+        this.stackWrapper.append(el);
+        return el;
+      });
+
+      this.updateCardsDepth();
       this.updateCompanion();
 
       // 6. Listeners de interacción
       this.bindEvents();
     }
 
-    renderCards() {
-      this.stackWrapper.replaceChildren();
-
-      // Renderizamos hasta 3 capas de profundidad
-      const total = this.stories.length;
-
-      for (let depth = 2; depth >= 0; depth--) {
-        const storyIndex = (this.currentIndex + depth) % total;
-        const story = this.stories[storyIndex];
-        const card = this.createCardElement(story, depth);
-        this.stackWrapper.append(card);
-      }
-
-      const counter = this.controls.querySelector('#cosmic-counter');
-      if (counter) counter.textContent = `${this.currentIndex + 1} / ${total}`;
-    }
-
-    createCardElement(story, depth) {
+    createCardElement(story, index) {
       const card = document.createElement('article');
-      card.className = `cosmic-card depth-${depth} ${depth === 0 ? 'is-active' : 'is-stacked'}`;
-      card.dataset.index = (this.currentIndex + depth) % this.stories.length;
+      card.className = 'cosmic-card depth-hidden';
+      card.dataset.index = index;
       card.dataset.id = story.id;
-      card.dataset.depth = depth;
 
       card.innerHTML = `
         <div class="cosmic-card-media">
-          <img src="${story.backdrop}" alt="${story.title}" class="cosmic-card-img" loading="${depth === 0 ? 'eager' : 'lazy'}"/>
+          <img src="${story.backdrop}" alt="${story.title}" class="cosmic-card-img" loading="${index < 3 ? 'eager' : 'lazy'}"/>
           <div class="cosmic-card-gradient" aria-hidden="true"></div>
           <div class="cosmic-card-shimmer" aria-hidden="true"></div>
         </div>
@@ -516,6 +561,29 @@
       return card;
     }
 
+    updateCardsDepth() {
+      const total = this.stories.length;
+
+      this.cardElements.forEach((card, idx) => {
+        const offset = (idx - this.currentIndex + total) % total;
+
+        card.classList.remove('depth-0', 'depth-1', 'depth-2', 'depth-hidden', 'is-active', 'is-stacked', 'anim-pushing-back', 'anim-coming-forward');
+
+        if (offset === 0) {
+          card.classList.add('depth-0', 'is-active');
+        } else if (offset === 1) {
+          card.classList.add('depth-1', 'is-stacked');
+        } else if (offset === 2) {
+          card.classList.add('depth-2', 'is-stacked');
+        } else {
+          card.classList.add('depth-hidden');
+        }
+      });
+
+      const counter = this.controls.querySelector('#cosmic-counter');
+      if (counter) counter.textContent = `${this.currentIndex + 1} / ${total}`;
+    }
+
     updateCompanion() {
       const active = this.stories[this.currentIndex];
       if (!this.companion || !active) return;
@@ -534,35 +602,31 @@
     }
 
     /**
-     * Animación física de desplazamiento hacia atrás (Push Backward & Reveal)
+     * Animación física de desplazamiento hacia atrás (Push Backward & Reveal) sin trabas
      */
     pushBack(targetIndex = null) {
       if (this.isAnimating) return;
       this.isAnimating = true;
 
-      const activeCard = this.stackWrapper.querySelector('.cosmic-card.depth-0');
-      const nextCard = this.stackWrapper.querySelector('.cosmic-card.depth-1');
+      const total = this.stories.length;
+      const currentCard = this.cardElements[this.currentIndex];
+      const nextIdx = targetIndex !== null ? targetIndex : (this.currentIndex + 1) % total;
+      const nextCard = this.cardElements[nextIdx];
 
-      if (!activeCard) {
-        this.isAnimating = false;
-        return;
+      if (currentCard) {
+        currentCard.classList.add('anim-pushing-back');
+      }
+      if (nextCard) {
+        nextCard.classList.remove('depth-hidden', 'depth-1', 'depth-2');
+        nextCard.classList.add('depth-0', 'is-active', 'anim-coming-forward');
       }
 
-      // Añadimos clase de salida física 3D hacia atrás
-      activeCard.classList.add('anim-pushing-back');
-      if (nextCard) nextCard.classList.add('anim-coming-forward');
-
-      // Al completar el impulso físico, actualizamos el índice y re-renderizamos
       setTimeout(() => {
-        if (targetIndex !== null) {
-          this.currentIndex = targetIndex;
-        } else {
-          this.currentIndex = (this.currentIndex + 1) % this.stories.length;
-        }
-        this.renderCards();
+        this.currentIndex = nextIdx;
+        this.updateCardsDepth();
         this.updateCompanion();
         this.isAnimating = false;
-      }, 420);
+      }, 380);
     }
 
     shuffleRandom() {
@@ -593,7 +657,6 @@
 
       // 2. Clic directo en las tarjetas para rotar
       this.stackWrapper.addEventListener('click', e => {
-        // Si hace clic en un botón de acción (tráiler o pago), no desplazamos la tarjeta
         if (e.target.closest('[data-trailer]') || e.target.closest('[data-platform-pay]')) {
           return;
         }
@@ -601,7 +664,6 @@
         const clickedCard = e.target.closest('.cosmic-card');
         if (!clickedCard) return;
 
-        // Clic en la tarjeta activa o en botón de desplazamiento -> pasa hacia atrás
         this.pushBack();
       });
 
@@ -616,7 +678,6 @@
         const diffX = e.changedTouches[0].clientX - this.touchStartX;
         const diffY = e.changedTouches[0].clientY - this.touchStartY;
 
-        // Swipe horizontal o hacia arriba para desplazar hacia atrás
         if (Math.abs(diffX) > 45 || diffY < -45) {
           if (diffX < -45 || diffY < -45) {
             this.pushBack();

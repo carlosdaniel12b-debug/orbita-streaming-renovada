@@ -209,6 +209,29 @@ window.ORBITA = {
         "App oficial Android",
         "Aplicación de escritorio Windows & macOS"
       ]
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini AI Pro",
+      "category": "tools",
+      "price": 3,
+      "period": "varios meses",
+      "icon": "assets/icons/gemini.svg",
+      "tagline": "5 TB de Almacenamiento + Mejor IA Gemini 3.8 (Activación mediante link)",
+      "features": [
+        "Activación rápida y segura mediante link directo a tu cuenta",
+        "5 TB (5,000 GB) de almacenamiento en la nube Google One / Drive / Fotos",
+        "La mejor IA con Gemini 3.8: razonamiento avanzado, multimodal y código",
+        "Ventana de contexto ultra masiva de 2 millones de tokens para libros y videos",
+        "Integración completa con Google Docs, Gmail, Sheets y Drive",
+        "Garantía total de activación y soporte dedicado por WhatsApp"
+      ],
+      "devices": [
+        "Navegador Web PC / Mac",
+        "App Google / Gemini en Android & iOS",
+        "Google Workspace en todos tus dispositivos",
+        "Tablets & iPads"
+      ]
     }
   ],
   "editorial": [
@@ -291,6 +314,14 @@ window.ORBITA = {
       "desc": "Respuestas instantáneas, análisis de datos, visión y creatividad al máximo nivel.",
       "url": "https://chatgpt.com",
       "image": "icons/chatgpt.svg"
+    },
+    {
+      "id": "gemini",
+      "title": "5 TB de espacio e Inteligencia Artificial de vanguardia",
+      "genre": "Productividad & IA",
+      "desc": "5 TB de almacenamiento en la nube Google One / Drive / Fotos + el modelo más inteligente Gemini 3.8. Activación rápida mediante link directo.",
+      "url": "https://gemini.google.com",
+      "image": "icons/gemini.svg"
     }
   ]
 };

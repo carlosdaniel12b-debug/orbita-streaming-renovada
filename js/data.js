@@ -194,7 +194,7 @@ window.ORBITA = {
       "category": "tools",
       "price": 5,
       "period": "4 meses",
-      "icon": "assets/icons/chatgpt.svg",
+      "icon": "assets/icons/orbit-assistant.svg",
       "tagline": "Inteligencia Artificial Avanzada con GPT-4o y DALL-E",
       "features": [
         "4 Meses completos de acceso ChatGPT Plus",

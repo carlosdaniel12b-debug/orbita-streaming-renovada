@@ -33,30 +33,30 @@
 
 /* Header con efecto Liquid Glass permanente y reactivo de alta gama */
 .header {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: 100 !important;
-  height: 82px !important;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(13, 24, 40, 0.78) 28%, rgba(5, 12, 22, 0.90) 100%) !important;
-  border-bottom: 1px solid rgba(167, 234, 216, 0.22) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(167, 234, 216, 0.1), 0 14px 40px rgba(0, 3, 8, 0.65) !important;
+  position: fixed ;
+  top: 0 ;
+  left: 0 ;
+  right: 0 ;
+  z-index: 100 ;
+  height: 82px ;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(13, 24, 40, 0.78) 28%, rgba(5, 12, 22, 0.90) 100%) ;
+  border-bottom: 1px solid rgba(167, 234, 216, 0.22) ;
+  backdrop-filter: blur(28px) saturate(190%) ;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) ;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 rgba(167, 234, 216, 0.1), 0 14px 40px rgba(0, 3, 8, 0.65) ;
   transition: background 300ms cubic-bezier(0.16, 1, 0.3, 1),
               border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
-              height 300ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+              height 300ms cubic-bezier(0.16, 1, 0.3, 1) ;
 }
 
 .header.scrolled {
-  height: 72px !important;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(7, 16, 28, 0.90) 28%, rgba(3, 8, 16, 0.96) 100%) !important;
-  border-bottom: 1px solid rgba(167, 234, 216, 0.28) !important;
-  backdrop-filter: blur(32px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(210%) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 18px 45px rgba(0, 0, 0, 0.8) !important;
+  height: 72px ;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(7, 16, 28, 0.90) 28%, rgba(3, 8, 16, 0.96) 100%) ;
+  border-bottom: 1px solid rgba(167, 234, 216, 0.28) ;
+  backdrop-filter: blur(32px) saturate(210%) ;
+  -webkit-backdrop-filter: blur(32px) saturate(210%) ;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 18px 45px rgba(0, 0, 0, 0.8) ;
 }
 
 /* Contenedor del Hero: ocupa 100vh exactos con contención estricta */
@@ -179,11 +179,11 @@
 .hero-planet-canvas {
   position: absolute;
   inset: 0;
-  width: 100% !important;
-  height: 100% !important;
+  width: 100% ;
+  height: 100% ;
   display: block;
   pointer-events: none;
-  border-radius: 0 !important;
+  border-radius: 0 ;
   opacity: 0;
   transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -784,12 +784,12 @@
     height: 10px;
   }
 }
-.brand-strip{background:rgba(10,18,36,0.45)!important;backdrop-filter:blur(24px) saturate(190%)!important;-webkit-backdrop-filter:blur(24px) saturate(190%)!important;border-block:1px solid rgba(255,255,255,0.1)!important;box-shadow:inset 0 1px 1.5px rgba(255,255,255,0.15),0 12px 35px rgba(0,0,0,0.35)!important;position:relative!important;z-index:5!important;transition:background-color 650ms var(--ease),border-color 450ms var(--ease)}
+.brand-strip{background:rgba(10,18,36,0.45);backdrop-filter:blur(24px) saturate(190%);-webkit-backdrop-filter:blur(24px) saturate(190%);border-block:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 1.5px rgba(255,255,255,0.15),0 12px 35px rgba(0,0,0,0.35);position:relative;z-index:5;transition:background-color 650ms var(--ease),border-color 450ms var(--ease)}
 .brand-strip img{opacity:.8;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4));transition:opacity 250ms var(--ease),transform 250ms var(--ease)}
 .brand-strip a:hover img{opacity:1;transform:scale(1.12) translateY(-2px);filter:drop-shadow(0 0 12px rgba(167,234,216,0.5))}
 
 /* CARRUSEL Y TARJETAS DE PELÍCULAS: DESPLAZAMIENTO LATERAL Y DERIVA ESPACIAL */
-.cinema-section{padding-top:100px;background:linear-gradient(180deg, rgba(8,14,28,0.35) 0%, rgba(10,19,36,0.6) 40%, rgba(8,14,28,0.85) 100%)!important;backdrop-filter:blur(18px) saturate(190%)!important;-webkit-backdrop-filter:blur(18px) saturate(190%)!important;border-bottom:1px solid rgba(255,255,255,0.08)!important;position:relative!important;z-index:4!important}
+.cinema-section{padding-top:100px;background:linear-gradient(180deg, rgba(8,14,28,0.35) 0%, rgba(10,19,36,0.6) 40%, rgba(8,14,28,0.85) 100%);backdrop-filter:blur(18px) saturate(190%);-webkit-backdrop-filter:blur(18px) saturate(190%);border-bottom:1px solid rgba(255,255,255,0.08);position:relative;z-index:4}
 .cinema-section h2{font-size:50px;line-height:1.04}
 .cinema-section .section-head>p{font-size:13px}
 .cinema-filters{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
@@ -883,8 +883,8 @@
   display:flex;
   gap:22px;
   overflow-x:auto;
-  scroll-behavior:auto!important;
-  scroll-snap-type:none!important;
+  scroll-behavior:auto;
+  scroll-snap-type:none;
   padding:18px 8px 26px;
   -webkit-overflow-scrolling:touch;
   touch-action:pan-y;
@@ -900,9 +900,9 @@
 .movie-grid::-webkit-scrollbar-thumb{background:rgba(167,234,216,0.35);border-radius:9999px;transition:background 200ms ease}
 .movie-grid::-webkit-scrollbar-thumb:hover{background:var(--coral)}
 .movie-grid.is-dragging{
-  cursor:grabbing!important;
-  user-select:none!important;
-  -webkit-user-select:none!important;
+  cursor:grabbing;
+  user-select:none;
+  -webkit-user-select:none;
 }
 .movie-grid.is-dragging .movie-card{
   pointer-events:none;
@@ -1061,25 +1061,25 @@
 .floating-icon{width:19px;height:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 
 /* WhatsApp: Verde esmeralda sólido oficial, texto blanco nítido y halo brillante */
-.floating-btn-wa{background:#25d366!important;color:#ffffff!important;border:1.5px solid #4ade80!important;box-shadow:0 8px 24px rgba(37,211,102,0.55),0 2px 6px rgba(0,0,0,0.5)!important}
-.floating-btn-wa svg{fill:#ffffff!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))}
-.floating-btn-wa:hover{background:#1ebe5d!important;border-color:#86efac!important;box-shadow:0 14px 34px rgba(37,211,102,0.75),0 0 22px rgba(37,211,102,0.5)!important;color:#ffffff!important}
+.floating-btn-wa{background:#25d366;color:#ffffff;border:1.5px solid #4ade80;box-shadow:0 8px 24px rgba(37,211,102,0.55),0 2px 6px rgba(0,0,0,0.5)}
+.floating-btn-wa svg{fill:#ffffff;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))}
+.floating-btn-wa:hover{background:#1ebe5d;border-color:#86efac;box-shadow:0 14px 34px rgba(37,211,102,0.75),0 0 22px rgba(37,211,102,0.5);color:#ffffff}
 
 /* Arcade (Juego): Púrpura-Rosa Neón sólido con aura cyberpunk */
-.floating-btn-game{background:linear-gradient(135deg,#7c3aed 0%,#db2777 100%)!important;color:#ffffff!important;border:1.5px solid #f472b6!important;box-shadow:0 8px 24px rgba(219,39,119,0.48),0 2px 6px rgba(0,0,0,0.5)!important}
-.floating-btn-game svg{stroke:#ffffff!important;color:#ffffff!important;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))}
-.floating-btn-game:hover{background:linear-gradient(135deg,#6d28d9 0%,#ec4899 100%)!important;border-color:#fbcfe8!important;box-shadow:0 14px 34px rgba(236,72,153,0.7),0 0 22px rgba(124,58,237,0.5)!important;color:#ffffff!important}
+.floating-btn-game{background:linear-gradient(135deg,#7c3aed 0%,#db2777 100%);color:#ffffff;border:1.5px solid #f472b6;box-shadow:0 8px 24px rgba(219,39,119,0.48),0 2px 6px rgba(0,0,0,0.5)}
+.floating-btn-game svg{stroke:#ffffff;color:#ffffff;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))}
+.floating-btn-game:hover{background:linear-gradient(135deg,#6d28d9 0%,#ec4899 100%);border-color:#fbcfe8;box-shadow:0 14px 34px rgba(236,72,153,0.7),0 0 22px rgba(124,58,237,0.5);color:#ffffff}
 
 /* Orbit AI: Cian-Azul Cósmico Eléctrico sólido con chispa estelar */
-.floating-btn-orbit{background:linear-gradient(135deg,#0284c7 0%,#06b6d4 100%)!important;color:#ffffff!important;border:1.5px solid #67e8f9!important;box-shadow:0 8px 24px rgba(6,182,212,0.52),0 2px 6px rgba(0,0,0,0.5)!important}
-.floating-btn-orbit .floating-icon{color:#ffffff!important;font-size:19px!important;font-weight:900!important;filter:drop-shadow(0 0 4px rgba(255,255,255,0.8))}
-.floating-btn-orbit:hover{background:linear-gradient(135deg,#0369a1 0%,#0891b2 100%)!important;border-color:#a5f3fc!important;box-shadow:0 14px 34px rgba(6,182,212,0.75),0 0 22px rgba(2,132,199,0.5)!important;color:#ffffff!important}
+.floating-btn-orbit{background:linear-gradient(135deg,#0284c7 0%,#06b6d4 100%);color:#ffffff;border:1.5px solid #67e8f9;box-shadow:0 8px 24px rgba(6,182,212,0.52),0 2px 6px rgba(0,0,0,0.5)}
+.floating-btn-orbit .floating-icon{color:#ffffff;font-size:19px;font-weight:900;filter:drop-shadow(0 0 4px rgba(255,255,255,0.8))}
+.floating-btn-orbit:hover{background:linear-gradient(135deg,#0369a1 0%,#0891b2 100%);border-color:#a5f3fc;box-shadow:0 14px 34px rgba(6,182,212,0.75),0 0 22px rgba(2,132,199,0.5);color:#ffffff}
 
 .orbit-help{display:none}
 body[data-page="combos"] .floating-actions{right:auto;left:26px}
 
 /* MODALES Y COPILOTO CON LIQUID GLASS REFINADO */
-dialog:not([open]){display:none!important}
+dialog:not([open]){display:none}
 dialog{
   background:rgba(10,18,30,0.85);
   backdrop-filter:blur(32px) saturate(200%);
@@ -1155,7 +1155,7 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 .movie-detail-layout p{font-size:12px;color:var(--muted)}
 .movie-detail-note{font-size:11px;color:var(--muted);margin-top:20px}
 .movie-detail-source{font-size:11px;text-decoration:underline}
-.motion-paused .movie-card{transform:none!important}
+.motion-paused .movie-card{transform:none}
 
 /* ==========================================================================
    BOTONES DE NAVEGACIÓN Y HERO ELEVADOS (Más grandes, bonitos y animados)
@@ -1184,16 +1184,16 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 
 @media (min-width: 861px) {
   .menu-toggle {
-    display: none !important;
+    display: none ;
   }
   .nav {
-    display: flex !important;
-    position: static !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-    padding: 0 !important;
-    flex-direction: row !important;
+    display: flex ;
+    position: static ;
+    background: transparent ;
+    box-shadow: none ;
+    border: none ;
+    padding: 0 ;
+    flex-direction: row ;
     gap: 10px;
     font-size: 15px;
     font-weight: 700;
@@ -1301,23 +1301,23 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 
 /* BOTÓN DE WHATSAPP EN EL HEADER */
 .header-actions .contact{
-  padding:10px 22px!important;
-  font-size:14px!important;
-  font-weight:700!important;
-  border-radius:9999px!important;
-  background:linear-gradient(135deg,#10b981,#059669)!important;
-  color:#ffffff!important;
-  border:1.5px solid #34d399!important;
-  box-shadow:0 4px 18px rgba(16,185,129,0.4)!important;
-  min-height:42px!important;
-  gap:8px!important;
-  transition:all 220ms cubic-bezier(0.23,1,0.32,1)!important;
+  padding:10px 22px;
+  font-size:14px;
+  font-weight:700;
+  border-radius:9999px;
+  background:linear-gradient(135deg,#10b981,#059669);
+  color:#ffffff;
+  border:1.5px solid #34d399;
+  box-shadow:0 4px 18px rgba(16,185,129,0.4);
+  min-height:42px;
+  gap:8px;
+  transition:all 220ms cubic-bezier(0.23,1,0.32,1);
 }
 .header-actions .contact:hover{
-  transform:translateY(-2px) scale(1.04)!important;
-  background:linear-gradient(135deg,#34d399,#10b981)!important;
-  box-shadow:0 10px 30px rgba(16,185,129,0.6),0 0 20px rgba(52,211,153,0.4)!important;
-  color:#ffffff!important;
+  transform:translateY(-2px) scale(1.04);
+  background:linear-gradient(135deg,#34d399,#10b981);
+  box-shadow:0 10px 30px rgba(16,185,129,0.6),0 0 20px rgba(52,211,153,0.4);
+  color:#ffffff;
 }
 
 /* BOTONES HERO MÁS GRANDES, MEJORES Y ANIMADOS */
@@ -1333,24 +1333,24 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 /* PRIMARY LIQUID GLASS BUTTON: "✦ Explorar Universo →" */
 .hero-btn-liquid-primary,
 .hero-btn-primary{
-  min-height:60px!important;
-  padding:16px 36px!important;
-  font-size:16.5px!important;
-  font-weight:800!important;
-  border-radius:9999px!important;
+  min-height:60px;
+  padding:16px 36px;
+  font-size:16.5px;
+  font-weight:800;
+  border-radius:9999px;
   letter-spacing:0.015em;
-  background:linear-gradient(135deg,#a7ead8 0%,#38bdf8 52%,#818cf8 100%)!important;
-  background-size:200% auto!important;
-  color:#04101b!important;
-  border:1px solid rgba(255,255,255,0.75)!important;
-  box-shadow:inset 0 1.5px 2px rgba(255,255,255,0.7),inset 0 -1.5px 2px rgba(0,0,0,0.15),0 14px 40px rgba(56,189,248,0.42),0 0 24px rgba(167,234,216,0.35)!important;
+  background:linear-gradient(135deg,#a7ead8 0%,#38bdf8 52%,#818cf8 100%);
+  background-size:200% auto;
+  color:#04101b;
+  border:1px solid rgba(255,255,255,0.75);
+  box-shadow:inset 0 1.5px 2px rgba(255,255,255,0.7),inset 0 -1.5px 2px rgba(0,0,0,0.15),0 14px 40px rgba(56,189,248,0.42),0 0 24px rgba(167,234,216,0.35);
   display:inline-flex;
   align-items:center;
   gap:12px;
   position:relative;
   overflow:hidden;
   cursor:pointer;
-  transition:transform 220ms cubic-bezier(0.23,1,0.32,1),box-shadow 260ms cubic-bezier(0.23,1,0.32,1),background-position 400ms ease!important;
+  transition:transform 220ms cubic-bezier(0.23,1,0.32,1),box-shadow 260ms cubic-bezier(0.23,1,0.32,1),background-position 400ms ease;
 }
 .hero-btn-liquid-primary::after,
 .hero-btn-primary::after{
@@ -1367,14 +1367,14 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 }
 .hero-btn-liquid-primary:hover,
 .hero-btn-primary:hover{
-  transform:translateY(-3px) scale(1.025)!important;
-  box-shadow:inset 0 1.5px 2px rgba(255,255,255,0.85),0 20px 48px rgba(56,189,248,0.65),0 0 36px rgba(167,234,216,0.55)!important;
-  background-position:right center!important;
-  color:#020b13!important;
+  transform:translateY(-3px) scale(1.025);
+  box-shadow:inset 0 1.5px 2px rgba(255,255,255,0.85),0 20px 48px rgba(56,189,248,0.65),0 0 36px rgba(167,234,216,0.55);
+  background-position:right center;
+  color:#020b13;
 }
 .hero-btn-liquid-primary:active,
 .hero-btn-primary:active{
-  transform:translateY(1px) scale(0.975)!important;
+  transform:translateY(1px) scale(0.975);
 }
 .btn-sparkle{
   font-size:16px;
@@ -1400,36 +1400,36 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 /* SECONDARY FROSTED LIQUID GLASS BUTTON: "Planes & Combos [Dúo $5/mes]" */
 .hero-btn-liquid-glass,
 .hero-btn-combo{
-  min-height:60px!important;
-  padding:15px 28px!important;
-  font-size:16px!important;
-  font-weight:700!important;
-  border-radius:9999px!important;
-  background:linear-gradient(135deg,rgba(18,32,54,0.6) 0%,rgba(9,19,34,0.75) 100%)!important;
-  color:#e2f2ff!important;
-  border:1px solid rgba(167,234,216,0.35)!important;
-  backdrop-filter:blur(24px) saturate(200%)!important;
-  -webkit-backdrop-filter:blur(24px) saturate(200%)!important;
-  box-shadow:inset 0 1px 1.5px rgba(255,255,255,0.28),inset 0 -1px 1px rgba(0,0,0,0.35),0 12px 32px rgba(0,0,0,0.45),0 0 20px rgba(56,189,248,0.15)!important;
+  min-height:60px;
+  padding:15px 28px;
+  font-size:16px;
+  font-weight:700;
+  border-radius:9999px;
+  background:linear-gradient(135deg,rgba(18,32,54,0.6) 0%,rgba(9,19,34,0.75) 100%);
+  color:#e2f2ff;
+  border:1px solid rgba(167,234,216,0.35);
+  backdrop-filter:blur(24px) saturate(200%);
+  -webkit-backdrop-filter:blur(24px) saturate(200%);
+  box-shadow:inset 0 1px 1.5px rgba(255,255,255,0.28),inset 0 -1px 1px rgba(0,0,0,0.35),0 12px 32px rgba(0,0,0,0.45),0 0 20px rgba(56,189,248,0.15);
   display:inline-flex;
   align-items:center;
   gap:12px;
   position:relative;
   overflow:hidden;
   cursor:pointer;
-  transition:transform 220ms cubic-bezier(0.23,1,0.32,1),box-shadow 260ms cubic-bezier(0.23,1,0.32,1),border-color 220ms ease,background 220ms ease,color 220ms ease!important;
+  transition:transform 220ms cubic-bezier(0.23,1,0.32,1),box-shadow 260ms cubic-bezier(0.23,1,0.32,1),border-color 220ms ease,background 220ms ease,color 220ms ease;
 }
 .hero-btn-liquid-glass:hover,
 .hero-btn-combo:hover{
-  transform:translateY(-3px) scale(1.025)!important;
-  border-color:rgba(167,234,216,0.7)!important;
-  color:#ffffff!important;
-  background:linear-gradient(135deg,rgba(26,46,78,0.75) 0%,rgba(13,27,48,0.85) 100%)!important;
-  box-shadow:inset 0 1px 2px rgba(255,255,255,0.45),0 18px 44px rgba(0,0,0,0.6),0 0 28px rgba(56,189,248,0.35)!important;
+  transform:translateY(-3px) scale(1.025);
+  border-color:rgba(167,234,216,0.7);
+  color:#ffffff;
+  background:linear-gradient(135deg,rgba(26,46,78,0.75) 0%,rgba(13,27,48,0.85) 100%);
+  box-shadow:inset 0 1px 2px rgba(255,255,255,0.45),0 18px 44px rgba(0,0,0,0.6),0 0 28px rgba(56,189,248,0.35);
 }
 .hero-btn-liquid-glass:active,
 .hero-btn-combo:active{
-  transform:translateY(1px) scale(0.975)!important;
+  transform:translateY(1px) scale(0.975);
 }
 
 /* LIQUID GLASS PILL INSIDE BUTTON - HARMONIOUS FROSTED GLASS */
@@ -1440,10 +1440,10 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   font-weight:800;
   padding:4px 11px;
   border-radius:9999px;
-  background:linear-gradient(135deg,rgba(167,234,216,0.22) 0%,rgba(56,189,248,0.28) 100%)!important;
-  color:#a7ead8!important;
-  border:1px solid rgba(167,234,216,0.45)!important;
-  box-shadow:inset 0 1px 1px rgba(255,255,255,0.3),0 2px 10px rgba(56,189,248,0.25)!important;
+  background:linear-gradient(135deg,rgba(167,234,216,0.22) 0%,rgba(56,189,248,0.28) 100%);
+  color:#a7ead8;
+  border:1px solid rgba(167,234,216,0.45);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,0.3),0 2px 10px rgba(56,189,248,0.25);
   letter-spacing:0.02em;
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
@@ -1451,63 +1451,63 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 }
 .hero-btn-liquid-glass:hover .hero-liquid-tag,
 .hero-btn-combo:hover .hero-combo-pill{
-  background:linear-gradient(135deg,rgba(167,234,216,0.35) 0%,rgba(56,189,248,0.42) 100%)!important;
-  color:#ffffff!important;
-  border-color:rgba(167,234,216,0.75)!important;
-  box-shadow:0 0 16px rgba(167,234,216,0.5)!important;
+  background:linear-gradient(135deg,rgba(167,234,216,0.35) 0%,rgba(56,189,248,0.42) 100%);
+  color:#ffffff;
+  border-color:rgba(167,234,216,0.75);
+  box-shadow:0 0 16px rgba(167,234,216,0.5);
 }
 
 /* BOTONES DE BANNER DE COMBOS Y ACCIONES DE PÁGINAS */
 .combo-banner .button,
 .combo-cta-btn{
-  min-height:56px!important;
-  padding:16px 34px!important;
-  font-size:16px!important;
-  font-weight:800!important;
-  border-radius:14px!important;
-  background:#08101e!important;
-  color:#a7ead8!important;
-  border:2px solid #38bdf8!important;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5),0 0 22px rgba(56,189,248,0.3)!important;
-  transition:transform 220ms cubic-bezier(0.23,1,0.32,1),box-shadow 260ms ease,background 220ms ease!important;
+  min-height:56px;
+  padding:16px 34px;
+  font-size:16px;
+  font-weight:800;
+  border-radius:14px;
+  background:#08101e;
+  color:#a7ead8;
+  border:2px solid #38bdf8;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5),0 0 22px rgba(56,189,248,0.3);
+  transition:transform 220ms cubic-bezier(0.23,1,0.32,1),box-shadow 260ms ease,background 220ms ease;
 }
 .combo-banner .button:hover,
 .combo-cta-btn:hover{
-  transform:translateY(-3px) scale(1.04)!important;
-  background:#0f1d33!important;
-  color:#ffffff!important;
-  border-color:#a7ead8!important;
-  box-shadow:0 18px 44px rgba(0,0,0,0.65),0 0 32px rgba(167,234,216,0.5)!important;
+  transform:translateY(-3px) scale(1.04);
+  background:#0f1d33;
+  color:#ffffff;
+  border-color:#a7ead8;
+  box-shadow:0 18px 44px rgba(0,0,0,0.65),0 0 32px rgba(167,234,216,0.5);
 }
 .catalog-cta .button{
-  min-height:56px!important;
-  font-size:16px!important;
-  font-weight:800!important;
-  padding:16px 34px!important;
-  border-radius:14px!important;
-  background:linear-gradient(135deg,#a7ead8,#38bdf8)!important;
-  color:#06111a!important;
-  border:1.5px solid #a7ead8!important;
-  box-shadow:0 12px 34px rgba(56,189,248,0.4)!important;
+  min-height:56px;
+  font-size:16px;
+  font-weight:800;
+  padding:16px 34px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#a7ead8,#38bdf8);
+  color:#06111a;
+  border:1.5px solid #a7ead8;
+  box-shadow:0 12px 34px rgba(56,189,248,0.4);
 }
 .catalog-cta .button:hover{
-  transform:translateY(-3px) scale(1.04)!important;
-  box-shadow:0 18px 46px rgba(56,189,248,0.65),0 0 28px rgba(167,234,216,0.5)!important;
+  transform:translateY(-3px) scale(1.04);
+  box-shadow:0 18px 46px rgba(56,189,248,0.65),0 0 28px rgba(167,234,216,0.5);
 }
 .order-button{
-  min-height:58px!important;
-  font-size:16.5px!important;
-  font-weight:800!important;
-  border-radius:14px!important;
-  background:linear-gradient(135deg,#10b981,#059669)!important;
-  color:#ffffff!important;
-  border:1.5px solid #34d399!important;
-  box-shadow:0 12px 34px rgba(16,185,129,0.45)!important;
+  min-height:58px;
+  font-size:16.5px;
+  font-weight:800;
+  border-radius:14px;
+  background:linear-gradient(135deg,#10b981,#059669);
+  color:#ffffff;
+  border:1.5px solid #34d399;
+  box-shadow:0 12px 34px rgba(16,185,129,0.45);
 }
 .order-button:hover:not(:disabled){
-  transform:translateY(-3px) scale(1.03)!important;
-  background:linear-gradient(135deg,#34d399,#10b981)!important;
-  box-shadow:0 18px 45px rgba(16,185,129,0.65),0 0 25px rgba(52,211,153,0.4)!important;
+  transform:translateY(-3px) scale(1.03);
+  background:linear-gradient(135deg,#34d399,#10b981);
+  box-shadow:0 18px 45px rgba(16,185,129,0.65),0 0 25px rgba(52,211,153,0.4);
 }
 
 /* ==========================================================================
@@ -1810,10 +1810,10 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 .cinematic-intro.dismissed,
 #intro.dismissed,
 .intro.dismissed {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-  opacity: 0 !important;
+  display: none ;
+  visibility: hidden ;
+  pointer-events: none ;
+  opacity: 0 ;
 }
 
 .cinematic-intro canvas#warp {
@@ -1887,20 +1887,20 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 
 .cinematic-intro .intro-copy,
 .intro-copy {
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
+  position: relative ;
+  top: auto ;
+  left: auto ;
+  right: auto ;
+  bottom: auto ;
   z-index: 10;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
+  display: flex ;
+  flex-direction: column ;
+  align-items: center ;
+  justify-content: center ;
+  text-align: center ;
   width: 90vw;
   max-width: 540px;
-  margin: auto !important;
+  margin: auto ;
   padding: 0;
   pointer-events: auto;
   transform-origin: center center;
@@ -1909,14 +1909,14 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 }
 
 .intro-emblem {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
+  display: flex ;
+  flex-direction: column ;
+  align-items: center ;
+  justify-content: center ;
+  text-align: center ;
   gap: 16px;
   cursor: pointer;
-  margin: 0 auto 10px !important;
+  margin: 0 auto 10px ;
 }
 
 .intro-galaxy-logo {
@@ -2022,11 +2022,11 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 }
 
 .intro-text-block {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
+  display: flex ;
+  flex-direction: column ;
+  align-items: center ;
+  justify-content: center ;
+  text-align: center ;
   margin: 0 auto;
 }
 
@@ -2263,10 +2263,10 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 
 @media(max-width:860px){
   .header{height:72px}
-  .header .contact{display:none !important}
+  .header .contact{display:none }
   .header-actions{gap:8px}
   .menu-toggle{
-    display:inline-grid !important;
+    display:inline-grid ;
     place-items:center;
     width:42px;
     height:42px;
@@ -2288,10 +2288,10 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 
   /* Menú desplegable escondido por defecto */
   .nav{
-    display:none !important;
+    display:none ;
   }
   .nav.open{
-    display:flex !important;
+    display:flex ;
     position:absolute;
     top:calc(100% + 8px);
     left:14px;
@@ -2338,18 +2338,18 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   }
 
   /* Body padding so content isn't hidden behind sticky action bar (72px bar + 4px buffer) */
-  body{padding-bottom:80px !important}
+  body{padding-bottom:80px }
 
   /* Optimización de rendimiento móvil: ocultar efectos CSS pesados que causan trabas */
   .cosmic-shooting-stars,
   .cosmic-floating-dust{
-    display:none !important;
+    display:none ;
   }
   .cosmic-nebula-glow-1,
   .cosmic-nebula-glow-2{
-    animation:none !important;
-    opacity:0.22 !important;
-    filter:blur(50px) !important;
+    animation:none ;
+    opacity:0.22 ;
+    filter:blur(50px) ;
   }
 
   .movie-card{flex:0 0 165px}
@@ -2362,7 +2362,7 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   .cinematic-hero .hero-copy{width:100%;max-width:none;background:linear-gradient(135deg, rgba(14, 25, 48, 0.58) 0%, rgba(8, 15, 30, 0.38) 100%);backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);border:1px solid rgba(255, 255, 255, 0.12);border-radius:20px;padding:20px 16px;box-shadow:0 14px 38px rgba(0, 0, 0, 0.45);position:relative;z-index:4}
   .hero-copy>p{font-size:13px;line-height:1.6}
   .hero-buttons{margin-bottom:20px;width:100%}
-  .hero-buttons .button{font-size:14px!important;padding:14px 22px!important;min-height:50px!important;width:100%!important;justify-content:center!important}
+  .hero-buttons .button{font-size:14px;padding:14px 22px;min-height:50px;width:100%;justify-content:center}
   .cosmos:after{background:linear-gradient(180deg, rgba(8, 14, 32, 0.4) 0%, transparent 45%, rgba(8, 14, 32, 0.35) 100%)}
   .cinematic-hero #planet-scene{width:120%;height:68%;right:-12%;top:15%;opacity:0.95;filter:drop-shadow(0 0 40px rgba(56, 189, 248, 0.35))}
   .nebula{width:320px;height:320px;top:20%;right:-15%}
@@ -2436,7 +2436,7 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   .floating-btn{flex:1;max-width:33%;padding:10px 8px;font-size:11px;border-radius:16px;gap:6px;justify-content:center;touch-action:manipulation;user-select:none;-webkit-user-select:none;transition:transform 120ms cubic-bezier(0.23, 1, 0.32, 1), background 120ms ease}
   .floating-btn:active{transform:scale(0.95)}
   .floating-btn-orbit .floating-label{display:inline}
-  .floating-label{font-size:10px!important;white-space:nowrap}
+  .floating-label{font-size:10px;white-space:nowrap}
   body[data-page="combos"] .floating-actions{left:0;right:0}
 }
 
@@ -2446,12 +2446,12 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 }
 .pick-card:hover {
   transform: translateY(-5px) scale(1.02);
-  border-color: var(--coral) !important;
+  border-color: var(--coral) ;
   box-shadow: 0 14px 30px rgba(0,0,0,0.5), 0 0 20px color-mix(in srgb, var(--coral) 30%, transparent);
 }
 .pick-card:has(input:checked) {
-  border-color: var(--coral) !important;
-  background: color-mix(in srgb, var(--coral) 12%, var(--surface-2)) !important;
+  border-color: var(--coral) ;
+  background: color-mix(in srgb, var(--coral) 12%, var(--surface-2)) ;
   box-shadow: 0 0 24px color-mix(in srgb, var(--coral) 25%, transparent);
   transform: translateY(-2px);
 }
@@ -2473,9 +2473,9 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   transition: transform 300ms var(--ease), border-color 300ms var(--ease), box-shadow 300ms var(--ease), background 650ms var(--ease);
 }
 .platform-card:hover {
-  transform: translateY(-8px) scale(1.02) !important;
-  border-color: var(--coral) !important;
-  box-shadow: 0 22px 50px rgba(0,0,0,0.65), 0 0 30px var(--platform-glow, rgba(167,234,216,0.3)) !important;
+  transform: translateY(-8px) scale(1.02) ;
+  border-color: var(--coral) ;
+  box-shadow: 0 22px 50px rgba(0,0,0,0.65), 0 0 30px var(--platform-glow, rgba(167,234,216,0.3)) ;
 }
 .platform-card:hover .platform-top img {
   transform: scale(1.1);
@@ -2490,14 +2490,14 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 }
 .round-button:hover, .icon-button:hover {
   transform: translateY(-2px) scale(1.1);
-  border-color: var(--coral) !important;
-  box-shadow: 0 0 20px var(--platform-glow, rgba(167,234,216,0.4)) !important;
+  border-color: var(--coral) ;
+  box-shadow: 0 0 20px var(--platform-glow, rgba(167,234,216,0.4)) ;
 }
 .nav a {
   transition: color 220ms var(--ease), transform 200ms var(--ease);
 }
 .nav a:hover {
-  color: #fff !important;
+  color: #fff ;
   transform: translateY(-1px);
 }
 .brand-strip a img {
@@ -2505,7 +2505,7 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 }
 .brand-strip a:hover img {
   transform: scale(1.12);
-  opacity: 1 !important;
+  opacity: 1 ;
   filter: drop-shadow(0 0 12px rgba(255,255,255,0.45));
 }
 
@@ -2516,39 +2516,39 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 .game-controls #game-sound{font-size:11px;padding:11px 16px}
 
 @media(max-width:760px){
-  .cinematic-hero #planet-scene{top:15%!important;height:68%!important;width:120%!important;right:-12%!important;opacity:.95!important}
-  .planet-note{display:none!important}
-  .hero-posters{display:none!important}
+  .cinematic-hero #planet-scene{top:15%;height:68%;width:120%;right:-12%;opacity:.95}
+  .planet-note{display:none}
+  .hero-posters{display:none}
   .cinematic-hero .hero-meta{display:flex;flex-wrap:nowrap;gap:20px}
-  .hero-meta span+span{width:auto!important;border-left:1px solid var(--line)!important;padding-left:20px!important}
-  #game-dialog:not([open]){display:none!important}
-  #game-dialog[open]{position:fixed!important;inset:0!important;width:100vw!important;max-width:100vw!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:10px 10px 14px!important;border:none!important;border-radius:0!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;background:#050a14!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;overflow:hidden!important;box-sizing:border-box!important;z-index:1000!important}
-  .game-dialog-head{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 4px 4px!important;margin:0!important}
-  .game-dialog-head h2{font-size:18px!important;margin:0!important;color:#fff!important}
-  .game-dialog-head .eyebrow{font-size:10px!important;margin-bottom:2px!important;color:#38bdf8!important}
-  #game-dialog .close{top:10px!important;right:10px!important;width:38px!important;height:38px!important;font-size:24px!important;background:rgba(255,255,255,0.14)!important;border:1px solid rgba(255,255,255,0.25)!important;border-radius:50%!important;color:#fff!important;z-index:100!important;pointer-events:auto!important;cursor:pointer!important}
-  .ship-select-container{margin:2px 0 6px!important}
-  .ship-select-label{display:none!important}
-  .ship-select-bar{gap:6px!important;padding:2px 0!important;overflow-x:auto!important;scrollbar-width:none!important}
-  .ship-card{padding:5px 10px!important;border-radius:12px!important;font-size:11px!important;background:rgba(255,255,255,0.05)!important;border:1px solid rgba(255,255,255,0.1)!important;flex:0 0 auto!important}
-  .ship-card strong{font-size:11px!important}
-  .ship-card small{display:none!important}
-  .ship-card.active{background:rgba(56,189,248,0.2)!important;border-color:#38bdf8!important;box-shadow:0 0 14px rgba(56,189,248,0.4)!important}
-  .game-hud{padding:4px 8px!important;margin-bottom:4px!important;font-size:11px!important;background:rgba(0,0,0,0.4)!important;border-radius:10px!important;border:1px solid rgba(255,255,255,0.08)!important}
-  .game-hud .hud-item b{font-size:14px!important}
-  .game-stage{flex:1 1 auto!important;width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;position:relative!important;border-radius:16px!important;border:1.5px solid rgba(56,189,248,0.35)!important;background:#040914!important;box-shadow:0 10px 30px rgba(0,0,0,0.8),inset 0 0 35px rgba(56,189,248,0.1)!important;overflow:hidden!important;min-height:0!important;cursor:pointer!important}
-  #game-canvas{width:100%!important;height:100%!important;max-height:100%!important;object-fit:contain!important;display:block!important}
-  .game-controls{display:flex!important;align-items:center!important;gap:8px!important;margin-top:8px!important;width:100%!important;padding-bottom:env(safe-area-inset-bottom,4px)!important}
-  #game-flap{flex:2 1 auto!important;height:56px!important;font-size:17px!important;font-weight:700!important;letter-spacing:0.03em!important;background:linear-gradient(135deg,#38bdf8 0%,#a7ead8 100%)!important;color:#06111f!important;border-radius:14px!important;box-shadow:0 4px 24px rgba(56,189,248,0.55),inset 0 1px 1px #fff!important;border:none!important}
-  #game-flap:active{transform:scale(0.96)!important}
-  #game-pause,#game-sound{flex:1 1 auto!important;height:56px!important;font-size:12.5px!important;font-weight:600!important;padding:0 6px!important;border-radius:14px!important;background:rgba(255,255,255,0.08)!important;border:1px solid rgba(255,255,255,0.16)!important;color:#f1f5f9!important}
-  .game-controls span{display:none!important}
-  .game-overlay h3{font-size:20px!important}
-  .game-overlay p{font-size:12.5px!important}
-  .game-over-card{width:92%!important;padding:18px 14px!important}
-  .game-over-stats{gap:6px!important;margin:10px 0 14px!important}
-  .stat-box{padding:6px 4px!important}
-  .stat-box strong{font-size:16px!important}
+  .hero-meta span+span{width:auto;border-left:1px solid var(--line);padding-left:20px}
+  #game-dialog:not([open]){display:none}
+  #game-dialog[open]{position:fixed;inset:0;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;padding:10px 10px 14px;border:none;border-radius:0;display:flex;flex-direction:column;justify-content:space-between;background:#050a14;backdrop-filter:none;-webkit-backdrop-filter:none;overflow:hidden;box-sizing:border-box;z-index:1000}
+  .game-dialog-head{display:flex;align-items:center;justify-content:space-between;padding:0 4px 4px;margin:0}
+  .game-dialog-head h2{font-size:18px;margin:0;color:#fff}
+  .game-dialog-head .eyebrow{font-size:10px;margin-bottom:2px;color:#38bdf8}
+  #game-dialog .close{top:10px;right:10px;width:38px;height:38px;font-size:24px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.25);border-radius:50%;color:#fff;z-index:100;pointer-events:auto;cursor:pointer}
+  .ship-select-container{margin:2px 0 6px}
+  .ship-select-label{display:none}
+  .ship-select-bar{gap:6px;padding:2px 0;overflow-x:auto;scrollbar-width:none}
+  .ship-card{padding:5px 10px;border-radius:12px;font-size:11px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);flex:0 0 auto}
+  .ship-card strong{font-size:11px}
+  .ship-card small{display:none}
+  .ship-card.active{background:rgba(56,189,248,0.2);border-color:#38bdf8;box-shadow:0 0 14px rgba(56,189,248,0.4)}
+  .game-hud{padding:4px 8px;margin-bottom:4px;font-size:11px;background:rgba(0,0,0,0.4);border-radius:10px;border:1px solid rgba(255,255,255,0.08)}
+  .game-hud .hud-item b{font-size:14px}
+  .game-stage{flex:1 1 auto;width:100%;display:flex;align-items:center;justify-content:center;position:relative;border-radius:16px;border:1.5px solid rgba(56,189,248,0.35);background:#040914;box-shadow:0 10px 30px rgba(0,0,0,0.8),inset 0 0 35px rgba(56,189,248,0.1);overflow:hidden;min-height:0;cursor:pointer}
+  #game-canvas{width:100%;height:100%;max-height:100%;object-fit:contain;display:block}
+  .game-controls{display:flex;align-items:center;gap:8px;margin-top:8px;width:100%;padding-bottom:env(safe-area-inset-bottom,4px)}
+  #game-flap{flex:2 1 auto;height:56px;font-size:17px;font-weight:700;letter-spacing:0.03em;background:linear-gradient(135deg,#38bdf8 0%,#a7ead8 100%);color:#06111f;border-radius:14px;box-shadow:0 4px 24px rgba(56,189,248,0.55),inset 0 1px 1px #fff;border:none}
+  #game-flap:active{transform:scale(0.96)}
+  #game-pause,#game-sound{flex:1 1 auto;height:56px;font-size:12.5px;font-weight:600;padding:0 6px;border-radius:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);color:#f1f5f9}
+  .game-controls span{display:none}
+  .game-overlay h3{font-size:20px}
+  .game-overlay p{font-size:12.5px}
+  .game-over-card{width:92%;padding:18px 14px}
+  .game-over-stats{gap:6px;margin:10px 0 14px}
+  .stat-box{padding:6px 4px}
+  .stat-box strong{font-size:16px}
 
   /* Optimización extrema de fluidez en celulares */
   .liquid-glass,
@@ -2561,12 +2561,12 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
   .floating-actions,
   .floating-btn,
   dialog:not(#game-dialog) {
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) ;
+    -webkit-backdrop-filter: blur(8px) ;
   }
 
   button, a, input, select, textarea, [role="button"], .pick-card, .ship-card {
-    touch-action: manipulation !important;
+    touch-action: manipulation ;
   }
 
   .cinema-section,
@@ -2585,14 +2585,14 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
    SISTEMA DE DISEÑO LIQUID GLASS (VIDRIO LÍQUIDO APPLE VISIONOS / IOS)
    ========================================================================== */
 .liquid-glass {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(10, 19, 34, 0.76) !important;
-  backdrop-filter: blur(28px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(10, 19, 34, 0.76) ;
+  backdrop-filter: blur(28px) saturate(210%) ;
+  -webkit-backdrop-filter: blur(28px) saturate(210%) ;
+  border: 1px solid rgba(255, 255, 255, 0.15) ;
   box-shadow: 
     inset 0 1px 1.5px rgba(255, 255, 255, 0.38),
     inset 0 0 24px rgba(255, 255, 255, 0.03),
-    0 20px 48px rgba(0, 0, 0, 0.55) !important;
+    0 20px 48px rgba(0, 0, 0, 0.55) ;
   border-radius: 20px;
 }
 
@@ -2630,32 +2630,32 @@ dialog::backdrop{background:#030713cf;backdrop-filter:blur(16px);-webkit-backdro
 
 /* Modales y Diálogos con Apple Liquid Glass */
 dialog {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.015) 100%), rgba(8, 16, 28, 0.88) !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.015) 100%), rgba(8, 16, 28, 0.88) ;
+  border: 1px solid rgba(255, 255, 255, 0.16) ;
   box-shadow: 
     inset 0 1px 1.5px rgba(255, 255, 255, 0.4),
     inset 0 0 35px rgba(255, 255, 255, 0.03),
-    0 32px 85px rgba(0, 0, 0, 0.75) !important;
-  backdrop-filter: blur(30px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(30px) saturate(210%) !important;
+    0 32px 85px rgba(0, 0, 0, 0.75) ;
+  backdrop-filter: blur(30px) saturate(210%) ;
+  -webkit-backdrop-filter: blur(30px) saturate(210%) ;
 }
 
 /* Encabezado Navbar con Liquid Glass Apple en páginas secundarias */
 body:not([data-page="index"]) .header {
-  background: rgba(8, 14, 28, 0.74) !important;
-  backdrop-filter: blur(26px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(26px) saturate(200%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.06), 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+  background: rgba(8, 14, 28, 0.74) ;
+  backdrop-filter: blur(26px) saturate(200%) ;
+  -webkit-backdrop-filter: blur(26px) saturate(200%) ;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) ;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.06), 0 10px 30px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Botones Flotantes Liquid Glass */
 .floating-btn {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(11, 22, 38, 0.84) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  backdrop-filter: blur(24px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 14px 34px rgba(0, 0, 0, 0.45) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(11, 22, 38, 0.84) ;
+  border: 1px solid rgba(255, 255, 255, 0.18) ;
+  backdrop-filter: blur(24px) saturate(200%) ;
+  -webkit-backdrop-filter: blur(24px) saturate(200%) ;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), 0 14px 34px rgba(0, 0, 0, 0.45) ;
 }
 
 /* ESTILOS PARA LA PÁGINA DEDICADA DESCUBRE.HTML */
@@ -2779,10 +2779,10 @@ body:not([data-page="index"]) .header {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: rgba(12, 22, 38, 0.72) !important;
-  backdrop-filter: blur(18px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(12, 22, 38, 0.72) ;
+  backdrop-filter: blur(18px) saturate(180%) ;
+  -webkit-backdrop-filter: blur(18px) saturate(180%) ;
+  border: 1px solid rgba(255, 255, 255, 0.12) ;
   border-radius: 18px;
   overflow: hidden;
   cursor: pointer;
@@ -2794,7 +2794,7 @@ body:not([data-page="index"]) .header {
 .descubre-card:hover,
 .descubre-card:focus-visible {
   transform: translateY(-8px) scale(1.02);
-  border-color: rgba(167, 234, 216, 0.6) !important;
+  border-color: rgba(167, 234, 216, 0.6) ;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 28px rgba(167, 234, 216, 0.3);
   outline: none;
 }
@@ -2889,16 +2889,16 @@ body:not([data-page="index"]) .header {
 .combo-cta-btn {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #a7ead8 0%, #38bdf8 50%, #818cf8 100%) !important;
-  color: #040d1a !important;
-  font-weight: 800 !important;
+  background: linear-gradient(135deg, #a7ead8 0%, #38bdf8 50%, #818cf8 100%) ;
+  color: #040d1a ;
+  font-weight: 800 ;
   letter-spacing: 0.01em;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) ;
   box-shadow: 
     0 0 20px rgba(167, 234, 216, 0.4),
     0 10px 25px rgba(56, 189, 248, 0.35),
-    inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
-  transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1), background-color 240ms ease, border-color 240ms ease, box-shadow 260ms cubic-bezier(0.23, 1, 0.32, 1) !important;
+    inset 0 1px 1px rgba(255, 255, 255, 0.8) ;
+  transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1), background-color 240ms ease, border-color 240ms ease, box-shadow 260ms cubic-bezier(0.23, 1, 0.32, 1) ;
   z-index: 1;
 }
 .combo-cta-btn::before {
@@ -2914,17 +2914,17 @@ body:not([data-page="index"]) .header {
   z-index: -1;
 }
 .combo-cta-btn:hover {
-  transform: translateY(-4px) scale(1.03) !important;
+  transform: translateY(-4px) scale(1.03) ;
   box-shadow: 
     0 0 35px rgba(167, 234, 216, 0.65),
     0 14px 32px rgba(56, 189, 248, 0.5),
-    inset 0 1px 1px #ffffff !important;
+    inset 0 1px 1px #ffffff ;
 }
 .combo-cta-btn:hover::before {
   left: 200%;
 }
 .combo-cta-btn:active {
-  transform: translateY(-1px) scale(0.99) !important;
+  transform: translateY(-1px) scale(0.99) ;
 }
 
 /* Pulsación atractiva en el enlace de combo de la barra de navegación */
@@ -2949,46 +2949,46 @@ body:not([data-page="index"]) .header {
 /* Tarjetas de Selección en Arma tu Combo (combos.html) */
 .pick-card {
   position: relative;
-  background: rgba(12, 22, 38, 0.68) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 16px !important;
-  transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1), border-color 200ms ease, background-color 200ms ease, box-shadow 240ms ease !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+  background: rgba(12, 22, 38, 0.68) ;
+  backdrop-filter: blur(16px) saturate(180%) ;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) ;
+  border: 1px solid rgba(255, 255, 255, 0.1) ;
+  border-radius: 16px ;
+  transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1), border-color 200ms ease, background-color 200ms ease, box-shadow 240ms ease ;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) ;
 }
 .pick-card:hover {
-  transform: translateY(-4px) scale(1.015) !important;
-  background: rgba(16, 30, 52, 0.8) !important;
-  border-color: rgba(167, 234, 216, 0.45) !important;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 0 18px rgba(167, 234, 216, 0.22) !important;
+  transform: translateY(-4px) scale(1.015) ;
+  background: rgba(16, 30, 52, 0.8) ;
+  border-color: rgba(167, 234, 216, 0.45) ;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 0 18px rgba(167, 234, 216, 0.22) ;
 }
 .pick-card:has(input:checked) {
-  background: rgba(18, 36, 62, 0.88) !important;
-  border-color: var(--coral) !important;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(167, 234, 216, 0.35) !important;
-  transform: translateY(-3px) scale(1.02) !important;
+  background: rgba(18, 36, 62, 0.88) ;
+  border-color: var(--coral) ;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), 0 0 24px rgba(167, 234, 216, 0.35) ;
+  transform: translateY(-3px) scale(1.02) ;
 }
 .pick-card .check {
   transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1), background-color 200ms ease;
 }
 .pick-card input:checked ~ .check {
   transform: scale(1.15);
-  background: #a7ead8 !important;
-  color: #06111f !important;
+  background: #a7ead8 ;
+  color: #06111f ;
   box-shadow: 0 0 12px rgba(167, 234, 216, 0.8);
 }
 
 /* Modales con Liquid Glass */
 dialog {
-  background: rgba(9, 18, 32, 0.88) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  background: rgba(9, 18, 32, 0.88) ;
+  backdrop-filter: blur(28px) saturate(190%) ;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) ;
+  border: 1px solid rgba(255, 255, 255, 0.16) ;
   box-shadow: 
     inset 0 1px 1px rgba(255, 255, 255, 0.25),
-    0 24px 70px rgba(0, 0, 0, 0.8) !important;
-  border-radius: 24px !important;
+    0 24px 70px rgba(0, 0, 0, 0.8) ;
+  border-radius: 24px ;
 }
 
 /* ==========================================================================
@@ -2997,196 +2997,196 @@ dialog {
 
 /* Tarjetas de Plataformas en Inicio y Catálogo */
 .platform-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.015) 100%), rgba(12, 22, 40, 0.72) !important;
-  backdrop-filter: blur(24px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.13) !important;
-  border-radius: 20px !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.015) 100%), rgba(12, 22, 40, 0.72) ;
+  backdrop-filter: blur(24px) saturate(190%) ;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) ;
+  border: 1px solid rgba(255, 255, 255, 0.13) ;
+  border-radius: 20px ;
   box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.3), 
-              0 14px 38px rgba(0, 0, 0, 0.45) !important;
-  transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1), border-color 200ms ease, background-color 200ms ease, box-shadow 260ms ease !important;
+              0 14px 38px rgba(0, 0, 0, 0.45) ;
+  transition: transform 260ms cubic-bezier(0.23, 1, 0.32, 1), border-color 200ms ease, background-color 200ms ease, box-shadow 260ms ease ;
 }
 
 .platform-card:hover {
-  transform: translateY(-6px) scale(1.015) !important;
-  border-color: rgba(167, 234, 216, 0.55) !important;
+  transform: translateY(-6px) scale(1.015) ;
+  border-color: rgba(167, 234, 216, 0.55) ;
   box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5), 
               0 22px 55px rgba(0, 0, 0, 0.65), 
-              0 0 28px rgba(167, 234, 216, 0.28) !important;
+              0 0 28px rgba(167, 234, 216, 0.28) ;
 }
 
 /* Banner de Combos en Inicio (index.html) */
 .combo-banner {
-  background: linear-gradient(135deg, rgba(24, 48, 88, 0.78) 0%, rgba(10, 20, 38, 0.88) 100%) !important;
-  backdrop-filter: blur(28px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
-  border: 1px solid rgba(167, 234, 216, 0.35) !important;
+  background: linear-gradient(135deg, rgba(24, 48, 88, 0.78) 0%, rgba(10, 20, 38, 0.88) 100%) ;
+  backdrop-filter: blur(28px) saturate(200%) ;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) ;
+  border: 1px solid rgba(167, 234, 216, 0.35) ;
   box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), 
               0 24px 60px rgba(0, 0, 0, 0.6), 
-              0 0 35px rgba(56, 189, 248, 0.18) !important;
-  border-radius: 28px !important;
-  color: #f8fafc !important;
+              0 0 35px rgba(56, 189, 248, 0.18) ;
+  border-radius: 28px ;
+  color: #f8fafc ;
 }
 
 .combo-banner h2 {
-  color: #ffffff !important;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5) !important;
+  color: #ffffff ;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5) ;
 }
 
 .combo-banner p {
-  color: #cbd5e1 !important;
+  color: #cbd5e1 ;
 }
 
 .big-price {
-  color: #a7ead8 !important;
-  text-shadow: 0 0 28px rgba(167, 234, 216, 0.45) !important;
+  color: #a7ead8 ;
+  text-shadow: 0 0 28px rgba(167, 234, 216, 0.45) ;
 }
 
 /* Resumen del Pedido en Arma tu Combo (combos.html) */
 .order-summary {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(12, 23, 42, 0.85) !important;
-  backdrop-filter: blur(28px) saturate(210%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(12, 23, 42, 0.85) ;
+  backdrop-filter: blur(28px) saturate(210%) ;
+  -webkit-backdrop-filter: blur(28px) saturate(210%) ;
+  border: 1px solid rgba(255, 255, 255, 0.16) ;
   box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
-              0 24px 60px rgba(0, 0, 0, 0.6) !important;
-  border-radius: 24px !important;
-  color: #f1f5f9 !important;
+              0 24px 60px rgba(0, 0, 0, 0.6) ;
+  border-radius: 24px ;
+  color: #f1f5f9 ;
 }
 
 .order-summary h2 {
-  color: #ffffff !important;
+  color: #ffffff ;
 }
 
 .order-summary .eyebrow {
-  color: #7dd3fc !important;
+  color: #7dd3fc ;
 }
 
 .order-summary .muted {
-  color: #94a3b8 !important;
+  color: #94a3b8 ;
 }
 
 .order-summary .total-row strong {
-  color: #a7ead8 !important;
-  text-shadow: 0 0 16px rgba(167, 234, 216, 0.35) !important;
+  color: #a7ead8 ;
+  text-shadow: 0 0 16px rgba(167, 234, 216, 0.35) ;
 }
 
 .order-summary .order-button {
-  background: linear-gradient(135deg, #a7ead8 0%, #38bdf8 100%) !important;
-  color: #06111f !important;
-  font-weight: 700 !important;
-  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.45) !important;
-  border: none !important;
+  background: linear-gradient(135deg, #a7ead8 0%, #38bdf8 100%) ;
+  color: #06111f ;
+  font-weight: 700 ;
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.45) ;
+  border: none ;
 }
 
 .order-summary .order-button:hover:not(:disabled) {
-  transform: translateY(-2px) scale(1.01) !important;
-  box-shadow: 0 8px 28px rgba(56, 189, 248, 0.65) !important;
+  transform: translateY(-2px) scale(1.01) ;
+  box-shadow: 0 8px 28px rgba(56, 189, 248, 0.65) ;
 }
 
 /* Preguntas Frecuentes (FAQ) Acordeón */
 .faq-list details {
-  background: rgba(12, 22, 38, 0.52) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 16px !important;
-  margin-bottom: 12px !important;
-  padding: 8px 22px !important;
-  transition: border-color 200ms ease, background-color 200ms ease, box-shadow 220ms ease !important;
+  background: rgba(12, 22, 38, 0.52) ;
+  backdrop-filter: blur(16px) ;
+  -webkit-backdrop-filter: blur(16px) ;
+  border: 1px solid rgba(255, 255, 255, 0.08) ;
+  border-radius: 16px ;
+  margin-bottom: 12px ;
+  padding: 8px 22px ;
+  transition: border-color 200ms ease, background-color 200ms ease, box-shadow 220ms ease ;
 }
 
 .faq-list details[open] {
-  background: rgba(16, 30, 52, 0.78) !important;
-  border-color: rgba(167, 234, 216, 0.35) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+  background: rgba(16, 30, 52, 0.78) ;
+  border-color: rgba(167, 234, 216, 0.35) ;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2) ;
 }
 
 .faq-list summary {
-  color: #f1f5f9 !important;
-  font-weight: 500 !important;
+  color: #f1f5f9 ;
+  font-weight: 500 ;
 }
 
 .faq-list details p {
-  color: #cbd5e1 !important;
+  color: #cbd5e1 ;
 }
 
 /* Buscadores y Filtros Liquid Glass */
 .filters button, .cinema-filters button {
-  background: rgba(255, 255, 255, 0.05) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  color: #cbd5e1 !important;
-  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms cubic-bezier(0.23, 1, 0.32, 1) !important;
+  background: rgba(255, 255, 255, 0.05) ;
+  backdrop-filter: blur(14px) ;
+  -webkit-backdrop-filter: blur(14px) ;
+  border: 1px solid rgba(255, 255, 255, 0.12) ;
+  color: #cbd5e1 ;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms cubic-bezier(0.23, 1, 0.32, 1) ;
 }
 
 .filters button:hover, .cinema-filters button:hover {
-  background: rgba(167, 234, 216, 0.15) !important;
-  border-color: rgba(167, 234, 216, 0.4) !important;
-  color: #ffffff !important;
-  transform: translateY(-2px) !important;
+  background: rgba(167, 234, 216, 0.15) ;
+  border-color: rgba(167, 234, 216, 0.4) ;
+  color: #ffffff ;
+  transform: translateY(-2px) ;
 }
 
 .filters button[aria-pressed=true], .cinema-filters button[aria-pressed=true] {
-  background: linear-gradient(135deg, rgba(167, 234, 216, 0.9) 0%, rgba(56, 189, 248, 0.9) 100%) !important;
-  color: #06111f !important;
-  border-color: transparent !important;
-  font-weight: 700 !important;
-  box-shadow: 0 4px 16px rgba(167, 234, 216, 0.4) !important;
+  background: linear-gradient(135deg, rgba(167, 234, 216, 0.9) 0%, rgba(56, 189, 248, 0.9) 100%) ;
+  color: #06111f ;
+  border-color: transparent ;
+  font-weight: 700 ;
+  box-shadow: 0 4px 16px rgba(167, 234, 216, 0.4) ;
 }
 
 .search, .movie-search {
-  background: rgba(8, 16, 32, 0.75) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
-  border-radius: 14px !important;
+  background: rgba(8, 16, 32, 0.75) ;
+  backdrop-filter: blur(16px) ;
+  -webkit-backdrop-filter: blur(16px) ;
+  border: 1px solid rgba(255, 255, 255, 0.15) ;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15) ;
+  border-radius: 14px ;
 }
 
 /* Sección de Pasos */
 .steps {
-  background: rgba(10, 19, 36, 0.48) !important;
-  backdrop-filter: blur(18px) !important;
-  -webkit-backdrop-filter: blur(18px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  border-radius: 24px !important;
-  padding: 40px !important;
-  margin-block: 40px !important;
+  background: rgba(10, 19, 36, 0.48) ;
+  backdrop-filter: blur(18px) ;
+  -webkit-backdrop-filter: blur(18px) ;
+  border: 1px solid rgba(255, 255, 255, 0.08) ;
+  border-radius: 24px ;
+  padding: 40px ;
+  margin-block: 40px ;
 }
 
 /* Presets y Nota Promo */
 .promo-note {
-  background: linear-gradient(135deg, rgba(20, 36, 62, 0.7) 0%, rgba(10, 20, 38, 0.6) 100%) !important;
-  backdrop-filter: blur(18px) !important;
-  -webkit-backdrop-filter: blur(18px) !important;
-  border: 1px solid rgba(167, 234, 216, 0.25) !important;
-  border-radius: 18px !important;
+  background: linear-gradient(135deg, rgba(20, 36, 62, 0.7) 0%, rgba(10, 20, 38, 0.6) 100%) ;
+  backdrop-filter: blur(18px) ;
+  -webkit-backdrop-filter: blur(18px) ;
+  border: 1px solid rgba(167, 234, 216, 0.25) ;
+  border-radius: 18px ;
 }
 
 .presets button {
-  background: rgba(255, 255, 255, 0.05) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 14px !important;
-  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), border-color 180ms ease, background-color 180ms ease !important;
+  background: rgba(255, 255, 255, 0.05) ;
+  backdrop-filter: blur(14px) ;
+  -webkit-backdrop-filter: blur(14px) ;
+  border: 1px solid rgba(255, 255, 255, 0.1) ;
+  border-radius: 14px ;
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), border-color 180ms ease, background-color 180ms ease ;
 }
 
 .presets button:hover {
-  background: rgba(16, 30, 52, 0.8) !important;
-  border-color: rgba(167, 234, 216, 0.4) !important;
-  transform: translateY(-2px) !important;
+  background: rgba(16, 30, 52, 0.8) ;
+  border-color: rgba(167, 234, 216, 0.4) ;
+  transform: translateY(-2px) ;
 }
 
 
 /* Pie de Página */
 .footer {
-  background: rgba(6, 12, 24, 0.78) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(6, 12, 24, 0.78) ;
+  backdrop-filter: blur(24px) ;
+  -webkit-backdrop-filter: blur(24px) ;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) ;
 }
 
 

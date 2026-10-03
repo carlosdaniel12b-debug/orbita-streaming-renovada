@@ -47,7 +47,7 @@
     cosmosCanvas.setAttribute('aria-hidden', 'true');
     document.body.prepend(cosmosCanvas);
   }
-  const cCtx = cosmosCanvas?.getContext('2d');
+  const cCtx = document.body.classList.contains('pearl-world') ? null : cosmosCanvas?.getContext('2d');
   let cW = 0, cH = 0, cDpr = 1;
   let cosmosStars = [];
   let shootingStars = [];
@@ -234,13 +234,78 @@
 
   startCosmos();
 
+  const MOVIE_TRAILERS = {
+    'm_dune2': 'Way9Dexny3w',
+    's46562': 'uLtkt8BonwM',
+    's44778': 'DotnJ7tTA34',
+    's52341': 'cKOegEuCcfw',
+    's55138': 'fXmAurh012s',
+    's2993': 'b9EkMc79ZSU',
+    's58682': 'V-mugKDQDlg',
+    's42045': 'xEQP4VVuyrY',
+    's36361': '06rueu_fh30',
+    'm_avatar2': 'd9MyW72ELq0',
+    'm_endgame': 'TcMBFSGVi1c',
+    's618': 'HN4oyhmgopA',
+    's169': 'HhesaQXLuRY',
+    'm_oppenheimer': 'uYPbbksJxIg',
+    'm_spiderverse': 'cqGjhVJWtEg',
+    's43031': 'y-cqqAJIXhk',
+    's3156': 'aOC8E8z_ifw',
+    'm_interstellar': 'zSWdZVtXT7E',
+    'm_bladerunner2049': 'gCcx85zbxz4',
+    'm4': 'o2AsIXSh26Y'
+  };
+
+  function getTrailerId(item) {
+    if (!item) return null;
+    if (MOVIE_TRAILERS[item.id]) return MOVIE_TRAILERS[item.id];
+    const key = (item.title || '').toLowerCase();
+    if (key.includes('dune')) return 'Way9Dexny3w';
+    if (key.includes('last of us')) return 'uLtkt8BonwM';
+    if (key.includes('dragón') || key.includes('dragon')) return 'DotnJ7tTA34';
+    if (key.includes('andor')) return 'cKOegEuCcfw';
+    if (key.includes('arcane')) return 'fXmAurh012s';
+    if (key.includes('stranger')) return 'b9EkMc79ZSU';
+    if (key.includes('fallout')) return 'V-mugKDQDlg';
+    if (key.includes('severance')) return 'xEQP4VVuyrY';
+    if (key.includes('boys')) return '06rueu_fh30';
+    if (key.includes('avatar')) return 'd9MyW72ELq0';
+    if (key.includes('endgame') || key.includes('avengers')) return 'TcMBFSGVi1c';
+    if (key.includes('saul')) return 'HN4oyhmgopA';
+    if (key.includes('breaking')) return 'HhesaQXLuRY';
+    if (key.includes('oppenheimer')) return 'uYPbbksJxIg';
+    if (key.includes('spider')) return 'cqGjhVJWtEg';
+    if (key.includes('bear')) return 'y-cqqAJIXhk';
+    if (key.includes('mandalorian')) return 'aOC8E8z_ifw';
+    if (key.includes('interstellar')) return 'zSWdZVtXT7E';
+    if (key.includes('blade runner')) return 'gCcx85zbxz4';
+    return null;
+  }
+
   function openMovie(id) {
     const m = lib.find(x => x.id === id);
     if (!m) return;
     const p = platform(m.platform);
+    const trailerId = getTrailerId(m);
     
     // Activa la atmósfera de color de la app que tiene esta película
     window.OrbitaColors?.set(m.platform);
+
+    const trailerHtml = trailerId ? `
+      <div class="movie-trailer-box">
+        <div class="movie-trailer-header">
+          <span class="trailer-badge">
+            <svg class="ui-icon" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            Tráiler Oficial HD
+          </span>
+          <span class="trailer-sub">${m.title}</span>
+        </div>
+        <div class="movie-trailer-aspect">
+          <iframe class="movie-trailer-frame" src="https://www.youtube-nocookie.com/embed/${trailerId}?autoplay=1&mute=0&controls=1&modestbranding=1&rel=0" title="Tráiler de ${m.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    ` : '';
 
     $('#detail-body').innerHTML = `
       <div class="movie-detail-layout">
@@ -252,6 +317,7 @@
           <span class="pill" style="border-color:var(--coral)">${p.name}</span>
         </div>
       </div>
+      ${trailerHtml}
       <p class="movie-detail-note">${m.esSummary || ''}</p>
       <p class="movie-detail-note">${m.type === 'Serie' ? 'Plataforma de origen o selección editorial' : 'Película de la selección editorial'}: <strong>${p.name}</strong>. La disponibilidad depende del país y puede cambiar. Pregúntale a Orbit para consultar tu región.</p>
       <a class="movie-detail-source" href="${m.source}" target="_blank" rel="noopener">Consultar la fuente ↗</a>
@@ -268,6 +334,26 @@
 
     if (!$('#details').open) $('#details').showModal();
   }
+
+  const detailsDialog = $('#details');
+  if (detailsDialog) {
+    detailsDialog.addEventListener('close', () => {
+      const iframe = detailsDialog.querySelector('iframe');
+      if (iframe) iframe.src = '';
+    });
+  }
+
+  // Delegación global para botones con atributo [data-ask]
+  document.addEventListener('click', e => {
+    const askTarget = e.target.closest('[data-ask]');
+    if (askTarget) {
+      e.preventDefault();
+      const query = askTarget.dataset.ask;
+      if (query && window.OrbitGuide) {
+        window.OrbitGuide.ask(query);
+      }
+    }
+  });
 
   // PARALLAX REAL MULTI-CAPA EN TARJETAS DE PELÍCULAS
   // Interacción fluida y ligera de tarjeta (sin layout thrashing ni bloqueos)
@@ -839,6 +925,16 @@
       nextBtn.addEventListener('click', () => {
         nextSlide();
         startTimer();
+      });
+    }
+
+    const trailerBtn = $('#feature-play-trailer');
+    if (trailerBtn) {
+      trailerBtn.addEventListener('click', () => {
+        const currentSlide = slides[currentIndex];
+        if (currentSlide && currentSlide.dataset.movie) {
+          openMovie(currentSlide.dataset.movie);
+        }
       });
     }
 

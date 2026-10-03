@@ -60,12 +60,12 @@ button:disabled {
 .header {
   position: sticky;
   top: 0;
-  z-index: 9000 !important;
-  background: rgba(5, 12, 22, 0.82) !important;
-  backdrop-filter: blur(24px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
-  border-bottom: 1px solid rgba(167, 234, 216, 0.15) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  z-index: 9000 ;
+  background: rgba(5, 12, 22, 0.82) ;
+  backdrop-filter: blur(24px) saturate(160%) ;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) ;
+  border-bottom: 1px solid rgba(167, 234, 216, 0.15) ;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) ;
 }
 
 .header-inner {
@@ -105,54 +105,54 @@ button:disabled {
 /* Cajón de navegación móvil Liquid Glass */
 @media (max-width: 860px) {
   .menu-toggle {
-    display: inline-flex !important;
+    display: inline-flex ;
   }
 
   .nav {
-    display: none !important;
-    position: fixed !important;
-    top: 76px !important;
-    left: 12px !important;
-    right: 12px !important;
-    background: rgba(6, 13, 24, 0.96) !important;
-    backdrop-filter: blur(32px) saturate(210%) !important;
-    -webkit-backdrop-filter: blur(32px) saturate(210%) !important;
-    border: 1px solid rgba(167, 234, 216, 0.28) !important;
-    border-radius: 20px !important;
-    padding: 16px !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
-    z-index: 9999 !important;
-    pointer-events: auto !important;
+    display: none ;
+    position: fixed ;
+    top: 76px ;
+    left: 12px ;
+    right: 12px ;
+    background: rgba(6, 13, 24, 0.96) ;
+    backdrop-filter: blur(32px) saturate(210%) ;
+    -webkit-backdrop-filter: blur(32px) saturate(210%) ;
+    border: 1px solid rgba(167, 234, 216, 0.28) ;
+    border-radius: 20px ;
+    padding: 16px ;
+    flex-direction: column ;
+    gap: 8px ;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.2) ;
+    z-index: 9999 ;
+    pointer-events: auto ;
   }
 
   .nav.open {
-    display: flex !important;
-    animation: mobileDrawerSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    display: flex ;
+    animation: mobileDrawerSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards ;
   }
 
   .nav a, .nav button {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    padding: 14px 18px !important;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    color: #e2fbf5 !important;
-    border-radius: 12px !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    text-decoration: none !important;
-    touch-action: manipulation !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
+    display: flex ;
+    align-items: center ;
+    gap: 12px ;
+    padding: 14px 18px ;
+    font-size: 16px ;
+    font-weight: 600 ;
+    color: #e2fbf5 ;
+    border-radius: 12px ;
+    background: rgba(255, 255, 255, 0.04) ;
+    border: 1px solid rgba(255, 255, 255, 0.08) ;
+    text-decoration: none ;
+    touch-action: manipulation ;
+    width: 100% ;
+    box-sizing: border-box ;
   }
 
   .nav a:active, .nav button:active {
-    background: rgba(167, 234, 216, 0.16) !important;
-    border-color: rgba(167, 234, 216, 0.45) !important;
-    transform: scale(0.98) !important;
+    background: rgba(167, 234, 216, 0.16) ;
+    border-color: rgba(167, 234, 216, 0.45) ;
+    transform: scale(0.98) ;
   }
 }
 
@@ -400,8 +400,8 @@ button:disabled {
 }
 
 .hero-cta-pill:active {
-  transform: scale(0.97) !important;
-  transition: transform 100ms cubic-bezier(0.23, 1, 0.32, 1) !important;
+  transform: scale(0.97) ;
+  transition: transform 100ms cubic-bezier(0.23, 1, 0.32, 1) ;
 }
 
 .cta-arrow-circle {
@@ -453,8 +453,8 @@ button:disabled {
 }
 
 .hero-secondary-pill:active {
-  transform: scale(0.97) !important;
-  transition: transform 100ms cubic-bezier(0.23, 1, 0.32, 1) !important;
+  transform: scale(0.97) ;
+  transition: transform 100ms cubic-bezier(0.23, 1, 0.32, 1) ;
 }
 
 .hero-bottom-bar {
@@ -566,7 +566,7 @@ button:disabled {
 }
 
 .hero-replay-btn:active {
-  transform: scale(0.96) !important;
+  transform: scale(0.96) ;
 }
 
 /* ==========================================================================
@@ -610,21 +610,21 @@ button:disabled {
    ========================================================================== */
 
 html.intro-pending {
-  overflow: hidden !important;
+  overflow: hidden ;
 }
 
 html.intro-pending #main,
 html.intro-pending .header,
 html.intro-pending .floating-actions {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+  opacity: 0 ;
+  visibility: hidden ;
+  pointer-events: none ;
 }
 
 #intro.dismissed,
 html.returning-visit #intro,
 html.intro-dismissed #intro {
-  display: none !important;
+  display: none ;
 }
 
 #intro.portal-active {
@@ -792,8 +792,8 @@ html.intro-dismissed #intro {
 /* Revelación elegante y ligera del contenido principal al llegar */
 .arrival #main,
 .arrival .header {
-  visibility: visible !important;
-  opacity: 1 !important;
+  visibility: visible ;
+  opacity: 1 ;
   animation: universeReveal 0.48s ease-out both;
 }
 
@@ -837,10 +837,10 @@ html.intro-dismissed #intro {
 }
 
 .platform-card, .pick-card, .order-summary {
-  background: rgba(14, 26, 42, 0.72) !important;
-  border: 1px solid rgba(167, 234, 216, 0.16) !important;
-  backdrop-filter: blur(16px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  background: rgba(14, 26, 42, 0.72) ;
+  border: 1px solid rgba(167, 234, 216, 0.16) ;
+  backdrop-filter: blur(16px) saturate(140%) ;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) ;
 }
 
 /* ==========================================================================
@@ -942,4 +942,511 @@ html.intro-dismissed #intro {
   .portal-wordmark strong {
     font-size: clamp(42px, 10vw, 64px);
   }
+
+  .orbit-ask-grid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .orbit-ask-action {
+    width: 100%;
+  }
+
+  .orbit-launch-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .faq-redesigned {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .faq-support-card {
+    padding: 18px;
+  }
+}
+
+/* ==========================================================================
+   ORBIT AI DISCOVERY CALLOUT BANNER (Liquid Glass & Glow)
+   ========================================================================== */
+
+.orbit-ask-banner {
+  margin: 36px 0 24px;
+}
+
+.orbit-ask-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(16, 32, 54, 0.75) 0%, rgba(9, 18, 34, 0.85) 100%);
+  border: 1px solid rgba(167, 234, 216, 0.22);
+  border-radius: 20px;
+  padding: 24px 28px;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.orbit-ask-card::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(167, 234, 216, 0.05) 50%, transparent 75%);
+  pointer-events: none;
+}
+
+.orbit-ask-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.orbit-ask-content {
+  flex: 1;
+}
+
+.orbit-ask-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.orbit-ask-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a7ead8;
+  background: rgba(167, 234, 216, 0.12);
+  border: 1px solid rgba(167, 234, 216, 0.3);
+  border-radius: 100px;
+}
+
+.orbit-badge-sparkle {
+  color: #38bdf8;
+  font-size: 10px;
+  animation: sparkleRotate 3s linear infinite;
+}
+
+@keyframes sparkleRotate {
+  0% { transform: rotate(0deg) scale(0.9); }
+  50% { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(0.9); }
+}
+
+.orbit-ask-title {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.orbit-ask-desc {
+  font-size: 14px;
+  color: #94a3b8;
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+
+.orbit-ask-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.orbit-prompt-chip {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  padding: 7px 14px;
+  font-size: 12.5px;
+  color: #cbd5e1;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, transform 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.orbit-prompt-chip:hover {
+  background: rgba(167, 234, 216, 0.14);
+  border-color: rgba(167, 234, 216, 0.38);
+  color: #ffffff;
+  transform: translateY(-1.5px);
+}
+
+.orbit-prompt-chip:active {
+  transform: scale(0.96) ;
+}
+
+.orbit-ask-action {
+  flex-shrink: 0;
+}
+
+.orbit-launch-btn {
+  background: linear-gradient(135deg, #a7ead8 0%, #38bdf8 100%) ;
+  color: #050b14 ;
+  font-weight: 700 ;
+  padding: 12px 22px ;
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.32) ;
+}
+
+.orbit-launch-btn:hover {
+  transform: translateY(-2px) scale(1.02) ;
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.5) ;
+}
+
+/* ==========================================================================
+   CENTRO DE DUDAS & SOPORTE VIP (FAQ REDESIGN)
+   ========================================================================== */
+
+.faq-redesigned {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.faq-editorial-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faq-editorial-col h2 {
+  font: 700 clamp(36px, 4.2vw, 54px)/1.06 'Syne', sans-serif;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+.faq-lead-desc {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 38ch;
+}
+
+/* Tarjeta Asesor VIP en Línea */
+.faq-support-card {
+  margin-top: 8px;
+  background: rgba(14, 26, 44, 0.72);
+  border: 1px solid rgba(167, 234, 216, 0.2);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.support-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.support-avatar-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.2) 0%, rgba(167, 234, 216, 0.3) 100%);
+  border: 1.5px solid rgba(37, 211, 102, 0.45);
+  display: grid;
+  place-items: center;
+  color: #25d366;
+  flex-shrink: 0;
+}
+
+.support-avatar-circle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.support-rep-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.support-rep-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.rep-online-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0 8px #25d366;
+  animation: pulseGreen 2s ease-in-out infinite;
+}
+
+@keyframes pulseGreen {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.faq-whatsapp-btn {
+  width: 100%;
+  background: #25d366 ;
+  color: #05140b ;
+  font-weight: 700 ;
+  border: 0 ;
+  border-radius: 12px ;
+  padding: 13px 20px ;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.32) ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.faq-whatsapp-btn:hover {
+  background: #2ee672 ;
+  transform: translateY(-2px) scale(1.01) ;
+  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45) ;
+}
+
+.faq-whatsapp-btn:active {
+  transform: scale(0.97) ;
+}
+
+.support-guarantees {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.guarantee-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.guarantee-icon {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.guarantee-row strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.guarantee-row p {
+  font-size: 12px;
+  color: #8fa1b8;
+  margin: 2px 0 0;
+  line-height: 1.4;
+}
+
+/* Acordeón Líquido Enriquecido con Chips */
+.faq-list details {
+  background: rgba(14, 26, 44, 0.6) ;
+  border: 1px solid rgba(255, 255, 255, 0.09) ;
+  border-radius: 16px ;
+  margin-bottom: 12px ;
+  padding: 4px 20px 14px ;
+  backdrop-filter: blur(14px) ;
+  -webkit-backdrop-filter: blur(14px) ;
+  transition: border-color 200ms ease, background-color 200ms ease, box-shadow 220ms ease ;
+}
+
+.faq-list details:hover {
+  background: rgba(18, 32, 54, 0.72) ;
+  border-color: rgba(167, 234, 216, 0.25) ;
+}
+
+.faq-list details[open] {
+  background: rgba(18, 34, 58, 0.85) ;
+  border-color: rgba(167, 234, 216, 0.42) ;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.15) ;
+}
+
+.faq-list summary {
+  display: flex ;
+  align-items: center ;
+  gap: 14px ;
+  padding: 16px 0 ;
+  cursor: pointer ;
+  user-select: none ;
+}
+
+.faq-cat-chip {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(167, 234, 216, 0.12);
+  border: 1px solid rgba(167, 234, 216, 0.3);
+  color: #a7ead8;
+  flex-shrink: 0;
+}
+
+.faq-q-text {
+  flex: 1;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.faq-icon-toggle {
+  font-size: 20px;
+  color: #a7ead8;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+}
+
+details[open] .faq-icon-toggle {
+  transform: rotate(45deg);
+  color: #38bdf8;
+}
+
+.faq-list details p {
+  margin: 6px 0 6px ;
+  color: #cbd5e1 ;
+  font-size: 14.5px ;
+  line-height: 1.7 ;
+  padding-left: 2px;
+}
+
+.faq-list details p strong {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   FIRMA DE AUTOR EN FOOTER: Creada por Carlos Daniel
+   ========================================================================== */
+
+.footer-contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.developer-credit-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  background: linear-gradient(135deg, rgba(167, 234, 216, 0.1) 0%, rgba(56, 189, 248, 0.08) 100%);
+  border: 1px solid rgba(167, 234, 216, 0.28);
+  border-radius: 100px;
+  font-size: 12.5px;
+  color: #e2e8f0;
+  width: fit-content;
+  margin-top: 8px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms ease;
+}
+
+.developer-credit-tag:hover {
+  transform: translateY(-2px);
+  border-color: rgba(167, 234, 216, 0.55);
+}
+
+.credit-sparkle {
+  color: #a7ead8;
+  font-size: 14px;
+  filter: drop-shadow(0 0 5px #a7ead8);
+  animation: pulseSparkle 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulseSparkle {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.25); opacity: 1; }
+}
+
+.developer-credit-tag strong {
+  color: #a7ead8;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   MINI CLIPS DE VIDEOS / TRÁILERS EN DIALOG DETAILS
+   ========================================================================== */
+
+.movie-trailer-box {
+  margin: 18px 0 16px;
+  background: rgba(8, 16, 28, 0.85);
+  border: 1px solid rgba(167, 234, 216, 0.25);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.movie-trailer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(15, 28, 48, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.trailer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.04em;
+}
+
+.trailer-badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+.trailer-sub {
+  font-size: 11px;
+  color: #8fa1b8;
+}
+
+.movie-trailer-aspect {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #040810;
+}
+
+.movie-trailer-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }

@@ -5,11 +5,12 @@
 .pearl-world .orbital-intro{grid-template-columns:.8fr 1.2fr;gap:50px;min-height:565px}
 .pearl-world .pearl-copy h1{font-size:clamp(48px,5.1vw,74px);letter-spacing:-.035em;line-height:1.07;text-wrap:balance}
 .pearl-world .cinematic-scene{padding:0;min-height:0;display:block;perspective:none}
-.cinematic-stage{position:relative;aspect-ratio:1.12;border-radius:30px;overflow:hidden;background:#132c36;box-shadow:0 28px 60px #1a39462a}
+.cinematic-stage{position:relative;aspect-ratio:1.12;border-radius:36px 36px 95px 36px;overflow:hidden;background:#132c36;box-shadow:0 28px 60px #1a39462a}
+.hero-orbit-frame{position:absolute;inset:-55px -50px auto;width:calc(100% + 100px);height:calc(100% + 40px);z-index:-1;overflow:visible;pointer-events:none}.hero-orbit-frame ellipse{fill:none;stroke:#6f9a9e;stroke-width:1;opacity:.3}.hero-orbit-frame ellipse:nth-child(2){stroke:#879db8;opacity:.15}.hero-orbit-frame circle{fill:#087f70;stroke:#fff;stroke-width:3}
 .cinematic-panel{position:absolute;inset:0;color:#fff;isolation:isolate}
 .cinematic-panel[hidden]{display:none!important}
 .cinematic-image{width:100%;height:100%;object-fit:cover;object-position:center}
-.cinematic-panel:after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,#0d182418 15%,#071d2880 55%,#071c2aee 100%);pointer-events:none}
+.cinematic-panel:after{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,#0d182438 0%,#071d288f 55%,#071c2aee 100%);pointer-events:none}
 .cinematic-caption{position:absolute;inset:auto 30px 30px;z-index:1}
 .cinematic-caption>span{font-size:13px;color:#d5e9ec}
 .pearl-world .cinematic-caption h2{font-size:clamp(32px,3.7vw,50px);color:#fff;line-height:1.12;letter-spacing:-.03em;margin:12px 0}
@@ -37,9 +38,13 @@
 .pearl-world .button,.pearl-world .cinematic-actions button{transition:transform 160ms var(--orbit-ease),background-color 160ms ease,box-shadow 160ms ease}
 .pearl-world .button:active,.pearl-world .cinematic-actions button:active{transform:scale(.97)}
 @media(min-width:701px) and (prefers-reduced-motion:no-preference){
- .pearl-world:not(.motion-paused) .cinematic-stage{animation:orbit-arrive 600ms var(--orbit-ease) both}
+ .pearl-world.arrival:not(.motion-paused) .cinematic-stage{animation:orbit-arrive 700ms var(--orbit-ease) both}
+ .pearl-world.arrival:not(.motion-paused) .pearl-copy{animation:orbit-copy 550ms var(--orbit-ease) both}
+ .pearl-world.arrival:not(.motion-paused) .hero-orbit-frame{animation:orbit-line 900ms var(--orbit-ease) both}
  .pearl-world dialog[open]{animation:orbit-dialog 200ms var(--orbit-ease)}
- @keyframes orbit-arrive{from{opacity:.6;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+ @keyframes orbit-arrive{from{opacity:.4;transform:translateY(24px) scale(.975) rotate(1deg)}to{opacity:1;transform:none}}
+ @keyframes orbit-copy{from{opacity:.6;transform:translateY(10px)}to{opacity:1;transform:none}}
+ @keyframes orbit-line{from{opacity:0;transform:rotate(-5deg) scale(.96)}to{opacity:1;transform:none}}
  @keyframes orbit-dialog{from{opacity:.6;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 }
 @media(hover:hover) and (pointer:fine){
@@ -52,7 +57,8 @@
 @media(max-width:700px){
  .pearl-world .pearl-hero{padding-top:30px}.pearl-world .orbital-intro{display:flex;flex-direction:column;gap:30px;min-height:0;align-items:stretch}
  .pearl-world .pearl-copy h1{font-size:48px;line-height:1.06}.pearl-world .pearl-copy>p{font-size:15px;margin:18px 0}.pearl-world .pearl-copy .hero-small{display:none}
- .cinematic-stage{aspect-ratio:1.08;border-radius:23px}.cinematic-caption{inset:auto 21px 21px}.pearl-world .cinematic-caption h2{font-size:34px;margin:9px 0}.pearl-world .cinematic-caption p{font-size:13px;margin-bottom:15px}
+ .cinematic-stage{aspect-ratio:1.08;border-radius:25px 25px 58px 25px}.cinematic-caption{inset:auto 21px 24px}.pearl-world .cinematic-caption h2{font-size:34px;margin:9px 0}.pearl-world .cinematic-caption p{font-size:13px;margin-bottom:15px}
+ .hero-orbit-frame{inset:-20px -15px auto;width:calc(100% + 30px);height:calc(100% - 25px)}
  .cinematic-actions{gap:12px}.cinematic-actions button,.cinematic-actions a{font-size:12px;min-height:44px}.cinematic-selector{gap:3px;padding:6px}.cinematic-choice{padding:7px 5px}.cinematic-choice strong{font-size:10px}.cinematic-choice small{font-size:9px}
  .pearl-world .service-glass{padding:25px;min-height:320px}.pearl-world .service-grid{grid-template-columns:1fr}
  .pearl-world .pearl-section{padding-block:36px}.pearl-world .pearl-section-head{margin-bottom:24px}.pearl-world .pearl-hero{padding-bottom:16px}

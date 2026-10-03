@@ -468,10 +468,11 @@
     constructor(container) {
       const stories=COSMIC_STORIES.filter(s=>['andor','severance','pluto'].includes(s.id));
       container.classList.add('cinematic-scene');
-      container.innerHTML='<div class="cinematic-stage"></div><div class="cinematic-selector" role="group" aria-label="Elegir historia destacada"></div><p class="cinematic-status sr-only" role="status"></p>';
+      container.innerHTML='<svg class="hero-orbit-frame" aria-hidden="true" viewBox="0 0 700 600"><ellipse cx="350" cy="290" rx="330" ry="210" transform="rotate(-25 350 290)"/><ellipse cx="350" cy="290" rx="305" ry="185" transform="rotate(-25 350 290)"/><circle cx="634" cy="142" r="7"/></svg><div class="cinematic-stage"></div><div class="cinematic-selector" role="group" aria-label="Elegir historia destacada"></div><p class="cinematic-status sr-only" role="status"></p>';
       const stage=container.querySelector('.cinematic-stage'),selector=container.querySelector('.cinematic-selector');
       const reduce=matchMedia('(prefers-reduced-motion:reduce)'),desktop=matchMedia('(min-width:701px)');
       let current=0;
+      let timer=null,visible=true,hovered=false,playing=true;
       const panels=stories.map((story,index)=>{
         const panel=document.createElement('article');panel.className='cinematic-panel';panel.hidden=index!==0;
         panel.innerHTML='<img class="cinematic-image" width="1777" height="1000" alt="'+story.title+'" src="'+story.backdrop+'" '+(index===0?'fetchpriority="high"':'loading="lazy"')+'/>'+
@@ -482,10 +483,23 @@
           if(index===current)return;
           panels[current].getAnimations().forEach(a=>a.cancel());panels[current].hidden=true;panel.hidden=false;current=index;
           selector.querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
-          container.querySelector('.cinematic-status').textContent=story.title+' en '+story.platformName;
-          if(event.detail&&desktop.matches&&!reduce.matches&&!document.documentElement.classList.contains('motion-paused'))panel.animate([{opacity:.45,transform:'translateX(12px)'},{opacity:1,transform:'translateX(0)'}],{duration:240,easing:'cubic-bezier(.16,1,.3,1)'});
+          if(event.detail!==-1)container.querySelector('.cinematic-status').textContent=story.title+' en '+story.platformName;
+          window.OrbitaColors?.set(story.platform);
+          if(event.detail&&desktop.matches&&!reduce.matches&&!document.documentElement.classList.contains('motion-paused')){panel.animate([{opacity:.35},{opacity:1}],{duration:280,easing:'cubic-bezier(.16,1,.3,1)'});panel.querySelector('.cinematic-image').animate([{transform:'scale(1.035)'},{transform:'scale(1)'}],{duration:600,easing:'cubic-bezier(.16,1,.3,1)'});}
         });selector.append(button);return panel;
       });
+      const playback=document.createElement('div');playback.className='hero-playback';
+      const toggle=document.createElement('button');toggle.type='button';playback.append(toggle);container.append(playback);
+      const blocked=()=>reduce.matches||document.documentElement.classList.contains('motion-paused');
+      const schedule=()=>{clearTimeout(timer);toggle.disabled=blocked();toggle.textContent=playing&&!blocked()?'Pausar historias':'Reproducir historias';toggle.setAttribute('aria-pressed',String(playing&&!blocked()));if(!playing||blocked()||!visible||hovered||document.hidden||container.contains(document.activeElement))return;timer=setTimeout(()=>{if(!document.querySelector('dialog[open]')&&!document.documentElement.classList.contains('intro-pending'))selector.children[(current+1)%stories.length].dispatchEvent(new MouseEvent('click',{detail:-1}));schedule();},6500);};
+      toggle.addEventListener('click',()=>{playing=!playing;schedule();});
+      container.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'){hovered=true;schedule();}});
+      container.addEventListener('pointerleave',()=>{hovered=false;schedule();});
+      container.addEventListener('focusin',schedule);container.addEventListener('focusout',()=>queueMicrotask(schedule));
+      selector.addEventListener('click',schedule);reduce.addEventListener('change',schedule);document.addEventListener('visibilitychange',schedule);
+      new MutationObserver(schedule).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+      new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();},{threshold:.2}).observe(container);
+      window.addEventListener('pagehide',()=>clearTimeout(timer));schedule();
     }
   }
 

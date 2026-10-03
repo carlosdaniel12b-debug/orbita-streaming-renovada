@@ -1,0 +1,20 @@
+/* Mobile checkout keeps the existing pricing, payment and order handlers. */
+(()=>{'use strict';
+ const summary=document.querySelector('.order-summary');if(!summary)return;
+ const mobile=matchMedia('(max-width:700px)'),anchor=document.createComment('Desktop summary position');summary.before(anchor);
+ const review=document.createElement('dialog');review.id='combo-review';review.setAttribute('aria-labelledby','summary-title');
+ const order=document.getElementById('order'),orderAnchor=document.createComment('Desktop order position');order.before(orderAnchor);
+ const actions=document.createElement('div');actions.className='combo-review-actions';actions.innerHTML='<small>Consulta por WhatsApp. Aún no se realiza un cobro.</small>';
+ const close=document.createElement('button');close.type='button';close.className='combo-review-close';close.setAttribute('aria-label','Volver a elegir plataformas');close.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 6 12 12M18 6 6 18"/></svg>';
+ review.append(close);document.body.append(review);
+ const bar=document.createElement('div');bar.className='combo-checkout-bar';bar.setAttribute('aria-label','Resumen de tu combo');bar.innerHTML='<div aria-live="polite"><span class="combo-bar-count">Elige tus plataformas</span><strong class="combo-bar-total">$0.00 <small>USD</small></strong></div><button type="button" class="button" disabled>Revisar combo <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>';document.body.append(bar);
+ const trigger=bar.querySelector('button');let returnFocus;
+ const closeReview=()=>review.close();close.addEventListener('click',closeReview);
+ review.addEventListener('close',()=>{if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});});
+ review.addEventListener('click',event=>{if(event.target!==review)return;const r=review.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)review.close();});
+ trigger.addEventListener('click',()=>{returnFocus=document.activeElement;review.showModal();});
+ const syncLayout=()=>{if(review.open)review.close();if(mobile.matches){review.append(summary,actions);actions.prepend(order);document.body.classList.add('mobile-combo');}else{anchor.after(summary);orderAnchor.after(order);actions.remove();document.body.classList.remove('mobile-combo');}};
+ mobile.addEventListener('change',syncLayout);syncLayout();
+ const sync=()=>{const ids=[...document.querySelectorAll('input[name="platform"]:checked')].map(i=>i.value);const c=window.OrbitaPricing.calculate(ids);bar.querySelector('.combo-bar-count').textContent=c.list.length?`${c.list.length} ${c.list.length===1?'plataforma elegida':'plataformas elegidas'}`:'Elige tus plataformas';bar.querySelector('.combo-bar-total').firstChild.textContent='$'+c.total.toFixed(2)+' ';trigger.disabled=!c.list.length;document.body.classList.toggle('combo-has-selection',!!c.list.length);};
+ new MutationObserver(sync).observe(document.getElementById('summary-totals'),{childList:true,subtree:true});sync();
+})();

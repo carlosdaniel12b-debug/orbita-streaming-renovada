@@ -75,6 +75,7 @@
       second: '#70eaee',
       brand: '#00c4cc'
     },
+    gemini: {accent:'#7182c4',bg:'#111827',glow:'rgba(92,112,210,.2)',blue:'#dce5fa',second:'#bac7ef',brand:'#667bd0'},
     chatgpt: {
       accent: '#10a37f',
       bg: '#041712',
@@ -87,6 +88,7 @@
 
   let selected = null;
   let preview = null;
+  const surfaces={netflix:'#f8f2f4',disneyplus:'#f0f5fc',hbomax:'#f5f2fa',primevideo:'#eef7fa',paramount:'#f0f4fc',vix:'#faf4ef',appletv:'#f3f5f7',spotify:'#eff7f1',canva:'#eff8f8',chatgpt:'#eff6f4',gemini:'#f2f3fb'};
 
   function findPlatformId(el) {
     const node = el?.closest?.('[data-detail],.platform-card,.pick-card,[data-movie],.brand-strip a');
@@ -111,6 +113,8 @@
   function apply() {
     const id = preview || selected;
     root.dataset.platform = id || '';
+    root.style.setProperty('--orbit-surface',surfaces[id]||'#f4f6f9');
+    root.style.setProperty('--orbit-wash',id&&colors[id]?colors[id].brand+'18':'#d0e6eb80');
     if (id && colors[id]) {
       const c = colors[id];
       root.style.setProperty('--coral', document.body.classList.contains('pearl-world') ? '#087f70' : c.accent);

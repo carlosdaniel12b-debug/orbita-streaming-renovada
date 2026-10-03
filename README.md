@@ -11,6 +11,10 @@ Sitio estático para explorar plataformas y preparar pedidos por WhatsApp. Abre 
 - Orbit: recomendaciones locales por formato, género y plataforma, exclusión de terror y continuación sin repetir opciones. No está conectado a un modelo generativo.
 - País seleccionable para consultar disponibilidad. La selección editorial no garantiza que un título esté incluido en cada país o plan.
 - Precios, contacto y cálculo de combos conservados. No se envían pedidos automáticamente.
+- Mi combo móvil: barra fija con cantidad y total, revisión en diálogo nativo y botón de WhatsApp visible mientras se consultan los detalles. El resumen de escritorio permanece junto al selector.
+- Hero automático cada 6,5 segundos, con pausa, suspensión fuera de pantalla y respeto de movimiento reducido. Cambios discretos de superficie por plataforma.
+- Nuevas secciones de usos, orientación de planes y confirmación del pedido; términos y privacidad en legal.html, con borrado de preferencias propias del sitio.
+- Eliminados GSAP, ScrollTrigger y los motores de estrellas y galería antiguos. Las interacciones utilizan CSS, diálogos nativos y Web Animations API.
 
 ## Mantener el sitio
 
@@ -30,7 +34,7 @@ server.cjs consulta TMDB / JustWatch únicamente si existe TMDB_READ_TOKEN en el
 
 ## Verificación
 
-Orbit y el reproductor usan ventanas nativas: los diálogos cerrados no ocupan espacio en el pie de página y abrir un tráiler cierra la ficha anterior. En pantallas de hasta 700 píxeles se desactivan reflejos con el puntero, paralaje, fondo animado y avance automático de la galería; se conserva el control manual. La hoja `css/stability.css` centraliza las correcciones de posición, contraste y rendimiento móvil.
+Orbit y el reproductor usan ventanas nativas: los diálogos cerrados no ocupan espacio en el pie de página y abrir un tráiler cierra la ficha anterior. En pantallas de hasta 700 píxeles se desactivan reflejos con el puntero y paralaje; el hero cambia de imagen directamente, sin animación costosa. El avance automático del hero tiene pausa y respeta movimiento reducido. La hoja `css/stability.css` centraliza las correcciones de posición y `css/flows.css` contiene el flujo móvil de compra y los tintes por plataforma.
 
 `node --test tests/*.test.cjs` cubre introducción, filtros del recomendador, seguimiento sin repeticiones y consistencia de imágenes. Las cuatro rutas se verificaron también en navegador a 1440 y 390 píxeles.
 

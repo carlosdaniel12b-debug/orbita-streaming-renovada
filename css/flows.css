@@ -1,0 +1,36 @@
+/* Quiet brand tint preserves text and action contrast. */
+body.pearl-world{background-color:var(--orbit-surface,#f4f6f9);transition:background-color 400ms ease}
+.pearl-world .pearl-hero{background:radial-gradient(ellipse at 82% 35%,var(--orbit-wash,#d0e6eb80),transparent 60%),radial-gradient(ellipse at 35% 100%,#e4ddf450,transparent 60%)}
+.hero-playback{display:flex;justify-content:flex-start;margin-top:10px}
+.hero-playback button{background:transparent;color:#405964;padding:8px 12px;min-height:40px;font-size:12px;border-radius:20px}
+.hero-playback button:hover{background:#ffffffb0}
+.combo-checkout-bar{display:none}
+.pearl-world #combo-review:not([open]){display:none!important}
+.pearl-world .pearl-arcade{position:relative;inset:auto;transform:none;margin-top:40px;margin-bottom:40px;clear:both;isolation:isolate}
+.pearl-world .footer-contact-col{position:static;min-width:0}
+.legal-links{display:flex;flex-wrap:wrap;gap:12px 24px;padding-block:14px;grid-column:1/-1;font-size:13px;color:#40535d}
+.pearl-world[data-page=legal] .logo-type small{display:block;font-size:9px;letter-spacing:.25em;margin-top:7px}.pearl-world[data-page=legal] .header .button{white-space:nowrap}
+.pearl-world .legal-page{max-width:850px;padding:130px 0 60px}.legal-page h1{font-size:clamp(36px,5vw,60px);margin-bottom:18px}.legal-page h2{font-size:27px;margin:34px 0 16px}.legal-page h3{font-size:19px;margin:22px 0 12px}.legal-page p,.legal-page li{color:#40535d;line-height:1.8}.legal-page a{color:#076c60;text-decoration:underline;text-underline-offset:3px}.legal-page .legal-date{font-size:13px}.legal-page .legal-navigation{display:flex;gap:20px;flex-wrap:wrap;margin:25px 0 40px}.legal-page section{scroll-margin-top:110px}.legal-page button{margin:14px 0}.legal-page .policy-note{padding:20px;background:#e1ece8;border-radius:16px}
+.orbit-moments{display:grid;grid-template-columns:1fr 1.15fr;gap:65px;align-items:center;padding-block:36px 65px}.orbit-moments h2,.platform-guide h2,.combo-assurance h2{font-size:clamp(30px,3.5vw,44px);line-height:1.14;letter-spacing:-.03em}.orbit-moments-heading>p,.platform-guide>div>p{color:#536371;font-size:14px;line-height:1.7;margin-top:20px}.moment-links a{display:flex;align-items:center;gap:18px;padding:23px 0;border-bottom:1px solid #d5e1e2}.moment-links svg{width:27px;height:27px;flex:none;color:#087f70}.moment-links a>span:last-child{margin-left:auto;color:#087f70}.moment-links strong{display:block;font-size:17px}.moment-links small{display:block;color:#536371;font-size:12px;margin-top:6px}
+.platform-guide{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;padding-block:55px 65px}.platform-guide-list>div{padding:25px 0;border-top:1px solid #d5e1e2}.platform-guide-list h3,.assurance-copy h3{font-size:20px;letter-spacing:-.02em;margin-bottom:12px}.platform-guide-list p,.assurance-copy p{font-size:14px;color:#536371;line-height:1.75;max-width:55ch}.platform-guide-list a,.platform-guide-list button,.assurance-copy a{color:#076c60;font-size:13px;font-weight:600}.platform-guide-list button{padding:9px 0;background:transparent}
+.combo-assurance{padding-top:50px}.assurance-copy{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:28px}.assurance-copy>div{border-top:1px solid #d5e1e2;padding-top:24px}
+@media(max-width:700px){
+ .mobile-combo .combo-checkout-bar{position:fixed;z-index:1002;display:flex;align-items:center;justify-content:space-between;gap:12px;left:10px;right:10px;bottom:calc(88px + env(safe-area-inset-bottom));padding:13px 15px;border-radius:20px;background:#f8fcfbf5;box-shadow:inset 0 1px 0 #fff,0 8px 28px #19384426;backdrop-filter:blur(12px)}
+ .combo-bar-count{display:block;font-size:11px;color:#4f636d}.combo-bar-total{font-size:23px;color:#203b44;line-height:1.35;font-variant-numeric:tabular-nums}.combo-bar-total small{font-size:10px;font-weight:500}
+ .combo-checkout-bar .button{min-height:46px;padding:11px 15px;gap:9px;font-size:12px}.combo-checkout-bar svg{width:17px;height:17px}
+ .mobile-combo .floating-actions{display:none!important}.mobile-combo main{padding-bottom:24px!important}.mobile-combo footer.footer.container{padding-bottom:calc(215px + env(safe-area-inset-bottom))!important}
+ .pearl-world .floating-actions{display:none!important}
+ .pearl-world #combo-review[open]{position:fixed!important;inset:auto 8px max(8px,env(safe-area-inset-bottom))!important;margin:0!important;padding:0!important;width:calc(100% - 16px);max-width:none;max-height:calc(100dvh - 24px);overflow:hidden;background:#f4f9f7;color:#203b44;color-scheme:light;border:0;border-radius:25px;box-shadow:0 12px 40px #0b293a38;display:flex;flex-direction:column}
+ #combo-review::backdrop{background:#102b3c80;backdrop-filter:blur(4px)}
+ .pearl-world #combo-review .order-summary{position:static!important;inset:auto!important;margin:0!important;transform:none!important;border:0;padding:28px 22px;background:#f4f9f7;box-shadow:none;backdrop-filter:none!important;overflow:auto;min-height:0;overscroll-behavior:contain}
+ .combo-review-actions{flex:none;padding:14px 22px 18px;background:#f4f9f7;box-shadow:0 -5px 18px #143b4210}.combo-review-actions .button{width:100%;color:#fff}.pearl-world .combo-review-actions small{display:block;font-size:11px;color:#4c626c;text-align:center;margin-top:8px}
+ .pearl-world #combo-review .order-summary h2{padding-right:45px;font-size:27px;color:#203b44}.pearl-world #combo-review .order-summary small{color:#4c626c}
+ .pearl-world #combo-review p,.pearl-world #combo-review .selected-row{color:#40535d}.pearl-world #combo-review .payment-option strong{color:#203b44}.pearl-world #combo-review .button{color:#fff}
+ .combo-review-close{position:absolute;z-index:2;top:17px;right:16px;width:42px;height:42px;border-radius:50%;background:#e3eeea;color:#203b44;display:grid;place-items:center}.combo-review-close svg{width:20px;height:20px}
+ .pearl-world .combo-layout{display:block;gap:0}.pearl-world .combo-picker{grid-template-columns:1fr 1fr;gap:10px}.pearl-world .pick-card{min-height:126px;padding:15px;gap:10px}.pearl-world .pick-card>img{max-width:72px;height:30px}.pearl-world .pick-card strong{font-size:14px}
+ .pearl-world .pearl-arcade{margin-top:28px;margin-bottom:28px;padding:24px;display:block;height:auto;min-height:0}.pearl-world .pearl-arcade .button{margin-top:16px;width:100%}
+ .pearl-world .footer-contact-col{grid-column:1/-1}.legal-links{gap:14px 22px}.pearl-world .legal-page{padding-top:110px}
+ .orbit-moments,.platform-guide{grid-template-columns:1fr;gap:22px;padding-block:30px 36px}.moment-links a{padding:19px 0;gap:15px}.moment-links strong{font-size:15px}.moment-links small{font-size:12px}.assurance-copy{grid-template-columns:1fr;gap:5px;margin-top:24px}.combo-assurance{padding-top:30px}.assurance-copy>div{padding-top:20px}.platform-guide-list>div{padding-block:20px}
+ .hero-playback{margin-top:4px}
+}
+@media(prefers-reduced-motion:reduce){body.pearl-world{transition:none}}

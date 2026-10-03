@@ -193,7 +193,7 @@
   }
 
   function startCosmos() {
-    if (!cosmosRaf && !paused && !reduce.matches && !document.hidden && cCtx) {
+    if (!cosmosRaf && !paused && !reduce.matches && !matchMedia('(max-width:700px)').matches && !document.hidden && cCtx) {
       const isMobile = window.innerWidth < 768;
       const isDialogOpen = Boolean(document.querySelector('dialog[open]'));
       if (isDialogOpen || (isMobile && window.scrollY > 500)) return;
@@ -737,7 +737,7 @@
       hero.style.setProperty('--depth-y', '0px');
     };
     hero.addEventListener('pointermove', event => {
-      if (paused || reduce.matches || event.pointerType !== 'mouse') return;
+      if (paused || reduce.matches || matchMedia('(max-width:700px)').matches || event.pointerType !== 'mouse') return;
       const box = hero.getBoundingClientRect();
       pointerX = ((event.clientX - box.left) / box.width - .5) * 16;
       pointerY = ((event.clientY - box.top) / box.height - .5) * 10;
@@ -850,7 +850,7 @@
 
     function startTimer() {
       stopTimer();
-      if (!paused && !reduce.matches && !isHovered && !document.hidden && galleryVisible) {
+      if (!paused && !reduce.matches && !matchMedia('(max-width:700px)').matches && !isHovered && !document.hidden && galleryVisible) {
         autoTimer = setInterval(nextSlide, 5500);
       }
     }

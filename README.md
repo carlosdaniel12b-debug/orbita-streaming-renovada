@@ -30,6 +30,8 @@ server.cjs consulta TMDB / JustWatch únicamente si existe TMDB_READ_TOKEN en el
 
 ## Verificación
 
+Orbit y el reproductor usan ventanas nativas: los diálogos cerrados no ocupan espacio en el pie de página y abrir un tráiler cierra la ficha anterior. En pantallas de hasta 700 píxeles se desactivan reflejos con el puntero, paralaje, fondo animado y avance automático de la galería; se conserva el control manual. La hoja `css/stability.css` centraliza las correcciones de posición, contraste y rendimiento móvil.
+
 `node --test tests/*.test.cjs` cubre introducción, filtros del recomendador, seguimiento sin repeticiones y consistencia de imágenes. Las cuatro rutas se verificaron también en navegador a 1440 y 390 píxeles.
 
 ## Referencias

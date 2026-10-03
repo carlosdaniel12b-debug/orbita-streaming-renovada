@@ -49,12 +49,12 @@ syncPaymentInputs();
 // 3. Efectos de Reflejo Especular y Cristal Líquido Interactivo al mover puntero o táctil
 const fine=matchMedia('(hover:hover) and (pointer:fine)'),reduce=matchMedia('(prefers-reduced-motion:reduce)');
 function setupLiquidReflection(){
-  if(!fine.matches) return;
+  if(!fine.matches||matchMedia('(max-width:700px)').matches) return;
   const cards=$$('.platform-card,.plan-glass,.order-summary,.service-glass,.descubre-card,.pick-card,.feature-card-glass');
   cards.forEach(card=>{
     let frame=0;
     card.addEventListener('pointermove',e=>{
-      if(reduce.matches||document.documentElement.classList.contains('motion-paused')||frame)return;
+      if(reduce.matches||matchMedia('(max-width:700px)').matches||document.documentElement.classList.contains('motion-paused')||frame)return;
       const x=e.clientX,y=e.clientY;
       frame=requestAnimationFrame(()=>{
         const r=card.getBoundingClientRect();
@@ -72,7 +72,7 @@ function setupLiquidReflection(){
 setupLiquidReflection();
 
 // 4. Gran Reproductor Cinema Theater de Cristal Líquido (Tráilers en Alta Definición)
-const player=document.createElement('aside');
+const player=document.createElement('dialog');
 player.className='mini-trailer liquid-glass cinema-grand-theater';
 player.hidden=true;
 player.setAttribute('role','dialog');
@@ -125,6 +125,7 @@ let activeIframe=null;
 let currentVideoId=null;
 
 const closePlayer=()=>{
+  if(player.open) player.close();
   player.hidden=true;
   player.classList.remove('is-active');
   const screen=player.querySelector('.mini-trailer-screen');
@@ -157,8 +158,7 @@ const platformFeaturedTrailers={
 function preview(id,trigger){
   if(!id) return;
   returnFocus=trigger||document.activeElement;
-  const openDialog=document.querySelector('dialog[open]');
-  if(openDialog&&openDialog.id!=='details'&&openDialog.id!=='orbita-payment-modal') openDialog.close();
+  document.querySelectorAll('dialog[open]').forEach(dialog=>{if(dialog!==player)dialog.close();});
 
   let targetId=id;
   let customTitle='', customPlatform='', customPlatformKey='', customBadge='';
@@ -258,6 +258,7 @@ function preview(id,trigger){
   }
 
   player.hidden=false;
+  if(!player.open) player.showModal();
   requestAnimationFrame(()=>{
     player.classList.add('is-active');
   });
@@ -418,5 +419,12 @@ function updateMobileDock(){
 updateMobileDock();
 
 window.OrbitaPreview={open:preview,close:closePlayer};
+
+player.addEventListener('cancel',event=>{event.preventDefault();closePlayer();});
+player.addEventListener('close',()=>{
+  player.hidden=true;
+  player.querySelector('.mini-trailer-screen')?.replaceChildren();
+  document.body.classList.remove('preview-open');
+});
 
 })();

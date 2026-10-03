@@ -1,0 +1,9 @@
+DirectoryIndex index.html
+
+# Revalidate pages so phones receive the latest published interface.
+# Images retain normal browser caching to keep mobile visits lightweight.
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|css|js)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+</IfModule>

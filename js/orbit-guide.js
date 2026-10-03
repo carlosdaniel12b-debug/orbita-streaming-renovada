@@ -9,16 +9,12 @@
   const platforms = window.ORBITA?.platforms || [];
 
   let busy = false;
-  let aiAvailable = false;
-  let conversation = [];
-  const readiness = location.protocol === "file:" ? Promise.resolve() : fetch("/api/status").then(r => r.ok ? r.json() : null).then(s => { aiAvailable = !!s?.ai; if(aiAvailable) { $(".assistant-note").textContent = "Orbit conectado · Preguntas generales y complejas. Puede cometer errores. Ver privacidad."; const greeting=log.querySelector(".bot"); if(greeting)greeting.textContent="Soy Orbit. Puedo ayudarte a aprender, escribir, programar, resolver problemas y descubrir qué ver. ¿Qué quieres explorar?"; } }).catch(() => {});
   let recommendationContext = {};
   let lastIds = [];
   let lastTitle = '';
-  let remoteAvailable = false;
   let currentSkipCallback = null;
 
-  const cache = new Map();
+  let recentlyRecommended = [];
   const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
   const pBy = id => platforms.find(p => p.id === id);
 
@@ -197,50 +193,12 @@
     return platforms.filter(p => (aliasMap[p.id] || [p.name]).some(a => (' ' + q + ' ').includes(' ' + a + ' '))).map(p => p.id);
   }
 
-  async function fetchJSON(url) {
-    const r = await fetch(url, { signal: AbortSignal.timeout(7500) });
-    if (!r.ok) throw Error('Servicio no disponible');
-    return r.json();
-  }
-
-  async function lookup(title) {
-    const key = country.value + ':' + title;
-    if (cache.has(key)) return cache.get(key);
-    if (remoteAvailable) {
-      const data = await fetchJSON('/api/lookup?q=' + encodeURIComponent(title) + '&country=' + country.value);
-      cache.set(key, data);
-      return data;
-    }
-    const attempts = await Promise.allSettled([
-      fetchJSON('https://api.tvmaze.com/search/shows?q=' + encodeURIComponent(title)),
-      fetchJSON('https://itunes.apple.com/search?term=' + encodeURIComponent(title) + '&entity=movie&country=' + country.value.toLowerCase() + '&limit=3')
-    ]);
-    const shows = attempts[0].status === 'fulfilled' ? attempts[0].value.slice(0, 3).map(x => ({
-      title: x.show.name,
-      type: 'Serie',
-      origin: x.show.webChannel?.name || x.show.network?.name || '',
-      url: x.show.url,
-      year: x.show.premiered?.slice(0, 4) || ''
-    })) : [];
-    const movies = attempts[1].status === 'fulfilled' ? attempts[1].value.results?.slice(0, 2).map(x => ({
-      title: x.trackName,
-      type: 'Película',
-      url: x.trackViewUrl,
-      year: x.releaseDate?.slice(0, 4) || '',
-      origin: ''
-    })) : [];
-    const result = { results: [...shows, ...movies], offline: attempts.every(x => x.status === 'rejected') };
-    if (!result.offline) {
-      if (cache.size >= 30) cache.delete(cache.keys().next().value);
-      cache.set(key, result);
-    }
-    return result;
-  }
-
   async function answer(text) {
     const q = norm(text);
     let title = extract(text);
     const ids = detectPlatforms(q);
+    const prepared = window.OrbitLocal?.reply(text);
+    if (prepared) { await appendBotStream(prepared); return; }
 
     // Búsqueda inteligente por sinónimos de título en español
     for (const [syn, real] of Object.entries(titleSynonyms)) {
@@ -250,9 +208,14 @@
       }
     }
 
-    const wantsRecommendations = /recomiend|recomenda|que veo|que ver|suger|otras?|otros?|mas opciones|anime|novelas|peliculas|series|sin terror|comedia|ciencia ficcion/.test(q) && !/donde|de que trata/.test(q);
+    const wantsRecommendations = /recomiend|recomenda|que veo|que ver|al azar|sorprendeme|sin ideas|estoy aburrido|otra recomendacion|suger|otras?|otros?|mas opciones|anime|novelas|peliculas|series|sin terror|comedia|ciencia ficcion/.test(q) && !/donde|de que trata/.test(q);
     if (wantsRecommendations) {
-      const selection = window.OrbitRecommendations.recommend(text, getLib(), recommendationContext);
+      let pool=getLib().filter(m=>!recentlyRecommended.includes(m.id));
+      if(pool.length<4)pool=getLib();
+      pool=pool.slice();for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+      let selection=window.OrbitRecommendations.recommend(text,pool,recommendationContext);
+      if(!selection.results.length)selection=window.OrbitRecommendations.recommend(text,getLib().slice().sort(()=>Math.random()-.5),recommendationContext);
+      recentlyRecommended=recentlyRecommended.concat(selection.results.map(m=>m.id)).slice(-12);
       recommendationContext = selection;
       const parts = [selection.filters.type, ...selection.filters.genres, ...selection.filters.platforms.map(id => pBy(id)?.name)].filter(Boolean);
       const message = selection.results.length
@@ -294,20 +257,6 @@
             await appendBotStream('Si te gusta ese estilo, también te recomiendo:', el2 => titleCards(el2, other));
           }
 
-          if (remoteAvailable) {
-            try {
-              const live = await lookup(m.original);
-              const result = live.results?.find(x => norm(x.title) === norm(m.title) || norm(x.title) === norm(m.original)) || live.results?.[0];
-              if (result) {
-                const info = document.createElement('p');
-                info.textContent = result.providers?.length
-                  ? 'Disponibilidad de suscripción en ' + country.selectedOptions[0].text + ': ' + result.providers.map(x => x.provider_name).join(', ')
-                  : 'No hay suscripciones registradas para este título en tu región.';
-                el.append(info);
-                link(el, 'Fuente de disponibilidad: JustWatch / TMDB ↗', result.url);
-              }
-            } catch {}
-          }
           availability(el, m.original);
           combo(el, [m.platform]);
         }
@@ -423,7 +372,7 @@
     }
 
     if (/quien eres|que puedes|ayuda|como funciona|eres una ia|que sabes|que haces|para que sirves/.test(q)) {
-      await appendBotStream('Soy Orbit, una guía local de entretenimiento. Puedo recomendar por formato, género y plataforma, encontrar fichas y calcular combos. No soy un modelo de IA conectado. Para disponibilidad actual uso enlaces regionales y, si está configurado, TMDB / JustWatch.');
+      await appendBotStream('Soy Orbit, una guía local de entretenimiento. Recomiendo por formato, género y plataforma, encuentro fichas y calculo combos. No me conecto a modelos de IA.');
       return;
     }
 
@@ -432,34 +381,7 @@
       return;
     }
 
-    // Consulta de disponibilidad externa
-    const data = await lookup(title);
-    const msg = data.offline
-      ? 'No pude conectar temporalmente con los servidores de búsqueda externa, pero aquí tienes el enlace directo para consultar tu región:'
-      : data.results?.length
-        ? 'Encontré estas coincidencias para “' + title + '”:'
-        : 'No encontré una coincidencia exacta para “' + title + '”. Puedes revisar la disponibilidad directamente aquí:';
-
-    await appendBotStream(msg, el => {
-      for (const r of (data.results || []).slice(0, 4)) {
-        const line = document.createElement('p');
-        line.textContent = r.title + ' (' + (r.year || r.type) + ')' + (r.origin ? ' · Origen: ' + r.origin : '');
-        el.append(line);
-        if (r.providers) {
-          const names = r.providers.map(p => p.provider_name).join(', ');
-          const p = document.createElement('p');
-          p.textContent = names
-            ? 'Incluida en ' + country.selectedOptions[0].text + ': ' + names
-            : 'No hay proveedores de suscripción registrados para este país actualmente.';
-          el.append(p);
-          link(el, 'Disponibilidad: JustWatch / TMDB ↗', r.url);
-        } else {
-          if (r.url) link(el, 'Ver ficha oficial de ' + r.title + ' ↗', r.url);
-        }
-      }
-      if (!data.results?.length) availability(el, title);
-      lastTitle = title;
-    });
+    await appendBotStream('No encontré esa consulta en mis respuestas preparadas o en el catálogo local. Prueba «hola», «qué puedes hacer», «recomiéndame algo», «anime de Netflix», «otras opciones» o «cómo pagar con Binance».');
   }
 
   async function ask(text) {
@@ -483,20 +405,7 @@
     log.scrollTop = log.scrollHeight;
 
     try {
-      await readiness;
-      if (aiAvailable) {
-        const history = conversation.slice(-10).concat({role:'user',content:message});
-        while(history.length>1 && history.reduce((n,m)=>n+m.content.length,0)>32000)history.shift();
-        const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history}),signal:AbortSignal.timeout(55000)});
-        const result=await response.json();
-        if(!response.ok){await appendBotStream(result.error||'Orbit no está disponible. Intenta nuevamente.');return;}
-        await appendBotStream(result.reply);
-        conversation=history.concat({role:'assistant',content:result.reply.slice(0,8000)}).slice(-10);
-      } else if (/recomiend|pelicula|serie|anime|novela|combo|precio|plataforma|netflix|spotify|disney|vix|trailer|que ver|ciencia ficcion|sin ideas/i.test(message)) {
-        await answer(message);
-      } else {
-        await appendBotStream('Orbit general aún necesita activar su conexión de IA. Por ahora puedo ayudarte con el catálogo, recomendaciones y combos.');
-      }
+      await answer(message);
     } catch {
       await appendBotStream('Ocurrió un error al consultar la galaxia de contenidos. Inténtalo nuevamente o escribe el título por WhatsApp.');
       
@@ -523,7 +432,7 @@
   if (clearBtn) {
     clearBtn.onclick = () => {
       if (busy) return;
-      conversation = []; recommendationContext = {}; lastIds = []; lastTitle = "";
+      recentlyRecommended = []; recommendationContext = {}; lastIds = []; lastTitle = "";
       log.replaceChildren(); append("bot", "Conversación reiniciada. ¿Qué quieres explorar?");
       if (window.OrbitaAudio?.play) {
         try { window.OrbitaAudio.play('score'); } catch {}
@@ -533,12 +442,5 @@
 
   window.OrbitGuide = { open, ask };
 
-  if (location.protocol !== 'file:') {
-    fetch('/api/status').then(r => r.ok ? r.json() : null).then(s => {
-      remoteAvailable = !!s?.providers;
-      if (remoteAvailable) {
-        $('.assistant-note').textContent = 'Disponibilidad regional en tiempo real (JustWatch / TMDB). Confírmala antes de contratar.';
-      }
-    }).catch(() => {});
-  }
+  $('.assistant-note').textContent='Guía local · Sin conexión a modelos de IA. Tus preguntas permanecen en esta página.';
 })();

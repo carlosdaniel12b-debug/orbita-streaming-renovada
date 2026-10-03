@@ -14,3 +14,5 @@
 .pearl-world .binance-tx-input{width:100%;min-height:48px;box-sizing:border-box;padding:12px;border:1px solid #b9ab83;border-radius:12px;background:#fff;color:#263237;font-size:16px}
 .pearl-world .binance-tx-hint{display:block;margin-top:8px;font-size:12px;color:#646250;line-height:1.6}
 @media(max-width:420px){.pearl-world .binance-box{padding:14px}.pearl-world .binance-uid-display{padding:13px}.pearl-world .binance-copy-btn{width:100%}.pearl-world .binance-uid-value-row{justify-content:flex-start}}
+
+#combo-binance-panel[hidden]{display:none!important}.combo-confirm-details{display:block;color:#08796c;font-size:13px;line-height:1.55;margin:0 0 18px;text-decoration:underline;text-underline-offset:3px}.combo-paid-check{display:flex;align-items:flex-start;gap:10px;margin:15px 0;font-size:13px;line-height:1.6;color:#3e443b;cursor:pointer}.combo-paid-check input{appearance:auto;width:20px;height:20px;flex:0 0 20px;margin:1px 0;accent-color:#08796c}.pearl-world .binance-tx-input[aria-invalid=true]{border-color:#b0442a;outline:2px solid #b0442a33}

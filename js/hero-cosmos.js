@@ -270,18 +270,16 @@
                 <p class="method-desc">Pago internacional seguro con protección en dólares estadounidenses.</p>
               </div>
             </label>
+          </div>
 
-            <label class="payment-card-method" data-method="Depósito / Giro Internacional">
-              <input type="radio" name="pay_option" value="Depósito / Giro Internacional" class="sr-only"/>
-              <div class="method-indicator"></div>
-              <div class="method-body">
-                <div class="method-title-row">
-                  <span class="method-name">Depósito u Otros Métodos</span>
-                  <span class="method-tag tag-global">🌎 Western Union · Depósito</span>
-                </div>
-                <p class="method-desc">Opciones de depósito en efectivo o transferencias de otros países.</p>
-              </div>
-            </label>
+          <div class="hero-binance-detail" id="hero-binance-panel" style="display:none; margin-top: 14px; padding: 14px; border-radius: 14px; background: rgba(245, 158, 11, 0.09); border: 1px solid rgba(245, 158, 11, 0.35);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <span style="font-size:12px; color:#f59e0b; font-weight:700;">UID Binance Oficial: <strong style="letter-spacing:1px; color:#fff;">1176541421</strong></span>
+              <button type="button" class="btn-copy-uid" id="hero-copy-binance-btn" style="background:rgba(245,158,11,0.22); border:1px solid #f59e0b; color:#fff; border-radius:8px; padding:5px 10px; font-size:11px; cursor:pointer;">Copiar UID</button>
+            </div>
+            <label for="hero-binance-tx" style="font-size:11.5px; color:#cedee4; display:block; margin-bottom:5px; font-weight:500;">Ingresa tu Código / ID de Transacción Binance:</label>
+            <input type="text" id="hero-binance-tx" placeholder="Ej: 489201938 o ID de orden" style="width:100%; box-sizing:border-box; padding:9px 12px; border-radius:8px; background:#081522; border:1px solid #f59e0b; color:#fff; font-size:13px;" />
+            <small style="display:block; color:#9cb1bc; font-size:10.5px; margin-top:5px;">Envía el monto por Binance Pay a nuestro UID y pega el código para verificar tu entrega al instante.</small>
           </div>
         </div>
 
@@ -319,6 +317,20 @@
       });
     });
 
+    const heroCopyBtn = paymentModalEl.querySelector('#hero-copy-binance-btn');
+    if (heroCopyBtn) {
+      heroCopyBtn.onclick = () => {
+        navigator.clipboard?.writeText('1176541421').catch(() => {});
+        heroCopyBtn.textContent = '✓ ¡Copiado!';
+        setTimeout(() => { heroCopyBtn.textContent = 'Copiar UID'; }, 2500);
+      };
+    }
+
+    const heroTxInput = paymentModalEl.querySelector('#hero-binance-tx');
+    if (heroTxInput) {
+      heroTxInput.addEventListener('input', updateWhatsAppLink);
+    }
+
     // Cierre
     paymentModalEl.querySelectorAll('[data-close-payment]').forEach(el => {
       el.addEventListener('click', closePaymentModal);
@@ -333,13 +345,22 @@
   function updateWhatsAppLink() {
     if (!paymentModalEl || !currentPlatformState) return;
     const selectedRadio = paymentModalEl.querySelector('input[name="pay_option"]:checked');
-    const method = selectedRadio ? selectedRadio.value : 'Transferencia Bancaria (Pichincha / Deuna)';
+    const method = selectedRadio ? selectedRadio.value : 'Transferencia Bancaria (Pichincha · Guayaquil · Deuna)';
     const platName = currentPlatformState.name;
     const price = currentPlatformState.price || 3;
     const phone = window.ORBITA?.phone || '593998226756';
+    const isBinance = method.includes('Binance');
+    const heroBinancePanel = paymentModalEl.querySelector('#hero-binance-panel');
+    if (heroBinancePanel) {
+      heroBinancePanel.style.display = isBinance ? 'block' : 'none';
+    }
+
+    const txCode = (paymentModalEl.querySelector('#hero-binance-tx')?.value || '').trim();
 
     let msg;
-    if (currentPlatformState.id === 'gemini') {
+    if (isBinance && txCode) {
+      msg = `¡Hola Órbita Streaming! Acabo de realizar el pago por Binance Pay.\n\n📱 Plataforma adquirida: *${platName}*\n💰 Monto transferido: *$${price}.00 USD (USDT)*\n🔑 Mi Código / ID de Transacción Binance: *${txCode}*\n🎯 Binance UID Destino: *1176541421*\n\nAdjunto el comprobante de la transferencia para la entrega y activación inmediata de mi cuenta.`;
+    } else if (currentPlatformState.id === 'gemini') {
       msg = `Hola Órbita Streaming, deseo adquirir *Gemini AI Pro* (5 TB de almacenamiento + IA Gemini 3.8) por $3 USD (varios meses - activación directa por link). Mi forma de pago seleccionada es: *${method}*. ¿Tienen disponibilidad inmediata para proceder?`;
     } else {
       msg = `Hola Órbita Streaming, deseo adquirir la plataforma *${platName}* ($${price} USD/${currentPlatformState.period || 'mes'}). Mi forma de pago seleccionada es: *${method}*. ¿Tienen disponibilidad inmediata para proceder?`;
@@ -350,6 +371,7 @@
       waBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
     }
   }
+
 
   function openPaymentModal(platformKey, customTitle) {
     initPaymentModal();

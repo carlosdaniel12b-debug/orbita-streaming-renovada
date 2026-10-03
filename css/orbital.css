@@ -1229,12 +1229,72 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
 }
 
 /* ==================== CAJA DE MÉTODOS DE PAGO EN MODAL DETALLES ==================== */
+.detail-top-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.detail-head-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.detail-top-head .detail-logo {
+  width: 52px;
+  height: 38px;
+  object-fit: contain;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.detail-top-head h2 {
+  font-size: 22px;
+  margin: 0 0 2px 0;
+  line-height: 1.15;
+  color: #fff;
+}
+
+.detail-tagline {
+  font-size: 11.5px;
+  color: #adc4ce;
+  display: block;
+}
+
+.detail-price-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background: rgba(167, 234, 216, 0.16);
+  border: 1px solid rgba(167, 234, 216, 0.4);
+  padding: 6px 12px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.detail-price-val {
+  font-size: 22px;
+  font-weight: 700;
+  color: #a7ead8;
+  line-height: 1;
+}
+
+.detail-price-per {
+  font-size: 10px;
+  color: #d1ece5;
+  margin-top: 2px;
+}
+
 .detail-payments-box {
-  margin: 18px 0;
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 14px;
+  margin: 12px 0 16px;
+  padding: 14px;
+  background: rgba(10, 25, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -1244,76 +1304,304 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+  gap: 8px;
 }
 
 .payments-box-title {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
   color: #e2f1f5;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .payments-box-badge {
-  font-size: 10px;
-  padding: 2px 8px;
+  font-size: 9.5px;
+  padding: 3px 8px;
   border-radius: 100px;
-  background: rgba(167, 234, 216, 0.22);
+  background: rgba(167, 234, 216, 0.2);
   color: #a7ead8;
   font-weight: 600;
 }
 
 .payments-chips {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 480px) {
+  .payments-chips {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.payments-chips .pay-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #c7dde6;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: center;
+}
+
+.payments-chips .pay-chip:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.payments-chips .pay-chip.is-selected {
+  background: rgba(167, 234, 216, 0.25);
+  border-color: #a7ead8;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(167, 234, 216, 0.22);
+}
+
+.payments-chips .chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.payments-chips .chip-flag {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.pay-method-panel {
+  padding: 10px 4px 4px;
+  animation: panelFadeIn 0.22s ease-out;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pay-panel-desc {
+  font-size: 11.5px;
+  color: #b2c9d3;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.pay-banks-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 12px;
 }
 
-.payments-chips .pay-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11.5px;
-  font-weight: 500;
-  color: #e2f1f5;
+.bank-chip {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
   background: rgba(255, 255, 255, 0.12);
-  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-.payments-chips .chip-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.btn-open-payment-methods {
+.pay-cta-btn {
   width: 100%;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 14px;
+  padding: 12px 16px;
   font-size: 13px;
   font-weight: 700;
-  border-radius: 10px;
-  background: rgba(167, 234, 216, 0.2);
-  color: #a7ead8;
-  border: 1px solid rgba(167, 234, 216, 0.45);
+  border-radius: 12px;
+  text-decoration: none;
   cursor: pointer;
-  transition: all 0.22s ease;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 
-.btn-open-payment-methods:hover {
-  background: #087f70;
-  color: #ffffff;
-  border-color: #087f70;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(8, 127, 112, 0.3);
+.pay-cta-btn:active {
+  transform: scale(0.98);
 }
+
+/* Binance Box & Transaction Code Flow */
+.binance-box {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.binance-box-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.binance-badge {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.binance-zero-fee {
+  font-size: 9.5px;
+  padding: 2px 7px;
+  border-radius: 100px;
+  background: rgba(245, 158, 11, 0.22);
+  color: #fcd34d;
+  font-weight: 600;
+}
+
+.binance-uid-display {
+  background: rgba(5, 16, 26, 0.85);
+  border: 1px dashed rgba(245, 158, 11, 0.45);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.binance-uid-label {
+  font-size: 10.5px;
+  color: #cedee4;
+  margin-bottom: 4px;
+}
+
+.binance-uid-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.binance-uid-code {
+  font-family: monospace, monospace;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fcd34d;
+  letter-spacing: 1px;
+}
+
+.binance-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(245, 158, 11, 0.25);
+  border: 1px solid #f59e0b;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.binance-copy-btn:hover {
+  background: #f59e0b;
+  color: #000;
+}
+
+.binance-copy-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+.binance-total-hint {
+  display: block;
+  font-size: 10.5px;
+  color: #b2cdd8;
+  margin-top: 6px;
+}
+
+.binance-total-hint strong {
+  color: #fcd34d;
+}
+
+.binance-tx-input-wrap {
+  margin: 10px 0 12px;
+}
+
+.binance-tx-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #e5f1f6;
+  margin-bottom: 5px;
+}
+
+.binance-tx-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  background: rgba(4, 12, 20, 0.95);
+  border: 1.5px solid rgba(245, 158, 11, 0.4);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.binance-tx-input:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.35);
+}
+
+.binance-tx-hint {
+  display: block;
+  font-size: 10px;
+  color: #8faab7;
+  margin-top: 4px;
+  line-height: 1.35;
+}
+
+.button-binance {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #111827;
+  border: none;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+.button-binance:hover {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+}
+
+/* Teléfonos: modal #details compacto, centrado y con salida clara */
+@media (max-width: 768px) {
+  #details {
+    width: min(440px, calc(100% - 24px)) !important;
+    max-height: 85dvh !important;
+    padding: 16px 14px 18px !important;
+    border-radius: 24px !important;
+  }
+  #details .close {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    display: grid !important;
+    place-items: center !important;
+    z-index: 50 !important;
+  }
+}
+
 
 /* ==================== SERVICIO GEMINI AI PRO ==================== */
 .service-gemini {

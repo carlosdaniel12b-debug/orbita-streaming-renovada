@@ -25,52 +25,157 @@ function details(id,story=false){
   const p=byId(id);
   if(!p)return;
   const e=editorial.find(x=>x.id===id);
-  let activePay = 'Transferencia Ecuador (Pichincha · Guayaquil · Deuna)';
-
-  function renderWaLink() {
-    const waLink = $('#detail-wa-btn');
-    if (waLink) {
-      waLink.href = wa(orderMessage([id], activePay));
-    }
-  }
+  const binanceUid = '1176541421';
 
   $('#detail-body').innerHTML=`
-    <img class="detail-logo" src="${p.icon}" alt="${p.name}">
-    <h2 id="detail-title">${story?e.title:p.name}</h2>
-    ${story?`<img class="detail-cover" src="assets/${e.image}" alt="" onerror="this.hidden=true"><p class="muted">${e.desc}</p><a class="text-link" href="${e.url}" target="_blank" rel="noopener">Explorar en la fuente oficial ↗</a>`:`<p class="muted">${p.tagline}</p><ul class="detail-features">${p.features.map(f=>'<li>'+f+'</li>').join('')}</ul><p class="fine-print">Compatible con: ${p.devices.join(', ')}. Confirma disponibilidad al instante por WhatsApp.</p>`}
+    <div class="detail-top-head">
+      <img class="detail-logo" src="${p.icon}" alt="${p.name}">
+      <div class="detail-head-info">
+        <h2 id="detail-title">${story?e.title:p.name}</h2>
+        <span class="detail-tagline">${story?e.desc:p.tagline}</span>
+      </div>
+      <div class="detail-price-pill">
+        <span class="detail-price-val">$${p.price}</span>
+        <span class="detail-price-per">USD / ${p.period}</span>
+      </div>
+    </div>
+
     <div class="detail-payments-box">
       <div class="payments-box-header">
         <span class="payments-box-title">Selecciona tu Forma de Pago</span>
-        <span class="payments-box-badge">0% comisión</span>
+        <span class="payments-box-badge">0% comisión · Activación 5 min</span>
       </div>
       <div class="payments-chips" id="detail-pay-chips">
-        <button type="button" class="pay-chip is-selected" data-pay="Transferencia Ecuador (Pichincha · Guayaquil · Deuna)"><span class="chip-dot" style="background:#ffd700"></span> Pichincha · Guayaquil · Deuna</button>
-        <button type="button" class="pay-chip" data-pay="Binance Pay (USDT Cripto)"><span class="chip-dot" style="background:#f59e0b"></span> Binance Pay (USDT)</button>
-        <button type="button" class="pay-chip" data-pay="PayPal / Tarjetas Internacionales"><span class="chip-dot" style="background:#38bdf8"></span> PayPal · Tarjetas</button>
+        <button type="button" class="pay-chip is-selected" data-pay="ecuador"><span class="chip-flag">🇪🇨</span> Ecuador (Pichincha · Guayaquil · Deuna)</button>
+        <button type="button" class="pay-chip" data-pay="binance"><span class="chip-dot" style="background:#f59e0b"></span> Binance Pay (USDT)</button>
+        <button type="button" class="pay-chip" data-pay="paypal"><span class="chip-dot" style="background:#38bdf8"></span> PayPal · Tarjetas</button>
+      </div>
+
+      <!-- Panel Ecuador -->
+      <div class="pay-method-panel" id="panel-ecuador">
+        <p class="pay-panel-desc">Transferencias directas e interbancarias en Ecuador sin comisiones:</p>
+        <div class="pay-banks-tags">
+          <span class="bank-chip">Banco Pichincha</span>
+          <span class="bank-chip">Banco Guayaquil</span>
+          <span class="bank-chip">Deuna! (QR / Celular)</span>
+        </div>
+        <a class="button pay-cta-btn" id="btn-pay-ecuador" href="${wa(`¡Hola Órbita Streaming! Deseo adquirir ${p.name} ($${p.price} USD / ${p.period}) con Transferencia en Ecuador (Pichincha · Guayaquil · Deuna). ¿Me facilitan los datos para transferir?`)}" target="_blank" rel="noopener">
+          <span>Pedir por WhatsApp (Transferencia Ecuador) ↗</span>
+        </a>
+      </div>
+
+      <!-- Panel Binance Pay -->
+      <div class="pay-method-panel" id="panel-binance" style="display:none">
+        <div class="binance-box">
+          <div class="binance-box-header">
+            <span class="binance-badge">🟡 Binance Pay Cripto</span>
+            <span class="binance-zero-fee">0% comisión</span>
+          </div>
+          <div class="binance-uid-display">
+            <div class="binance-uid-label">UID de Binance Destino:</div>
+            <div class="binance-uid-value-row">
+              <strong class="binance-uid-code" id="binance-uid-num">${binanceUid}</strong>
+              <button type="button" class="binance-copy-btn" id="binance-copy-btn">
+                <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span id="binance-copy-txt">Copiar UID</span>
+              </button>
+            </div>
+            <small class="binance-total-hint">Monto a transferir: <strong>$${p.price}.00 USDT</strong></small>
+          </div>
+          <div class="binance-tx-input-wrap">
+            <label for="binance-tx-input" class="binance-tx-label">Ingresa tu ID / Código de Transacción Binance:</label>
+            <input type="text" id="binance-tx-input" class="binance-tx-input" placeholder="Ej: 489201938 o ID de orden" autocomplete="off" />
+            <small class="binance-tx-hint">Envía el monto a nuestro UID en Binance y escribe el código para entregar tu cuenta de inmediato.</small>
+          </div>
+          <button type="button" class="button pay-cta-btn button-binance" id="btn-confirm-binance">
+            <span>Confirmar Transferencia Binance y Enviar por WhatsApp ↗</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Panel PayPal -->
+      <div class="pay-method-panel" id="panel-paypal" style="display:none">
+        <p class="pay-panel-desc">Pago internacional con protección en dólares estadounidenses:</p>
+        <div class="pay-banks-tags">
+          <span class="bank-chip">Saldo PayPal</span>
+          <span class="bank-chip">Tarjetas de Crédito</span>
+          <span class="bank-chip">Tarjetas de Débito</span>
+        </div>
+        <a class="button pay-cta-btn" id="btn-pay-paypal" href="${wa(`¡Hola Órbita Streaming! Deseo adquirir ${p.name} ($${p.price} USD / ${p.period}) con PayPal / Tarjeta Internacional. ¿Me facilitan el enlace de pago de PayPal?`)}" target="_blank" rel="noopener">
+          <span>Pedir por WhatsApp (PayPal) ↗</span>
+        </a>
       </div>
     </div>
-    <div class="detail-price">$${p.price}<small> USD / ${p.period}</small></div>
+
+    ${story?`<img class="detail-cover" src="assets/${e.image}" alt="" onerror="this.hidden=true"><p class="muted">${e.desc}</p><a class="text-link" href="${e.url}" target="_blank" rel="noopener">Explorar en la fuente oficial ↗</a>`:`<p class="muted">${p.tagline}</p><ul class="detail-features">${p.features.map(f=>'<li>'+f+'</li>').join('')}</ul><p class="fine-print">Compatible con: ${p.devices.join(', ')}. Confirma disponibilidad al instante por WhatsApp.</p>`}
+
     <div class="detail-actions">
-      <a class="button" id="detail-wa-btn" href="${wa(orderMessage([id], activePay))}" target="_blank" rel="noopener">Pedir por WhatsApp ↗</a>
       <button class="button ghost" id="add-to-combo">Añadir a mi combo</button>
     </div>
   `;
-  $('#add-to-combo').addEventListener('click',()=>navigateCombo([...new Set([...selected,id])]));
+
+  $('#add-to-combo')?.addEventListener('click',()=>navigateCombo([...new Set([...selected,id])]));
   
   const payChips = $$('#detail-pay-chips .pay-chip');
   payChips.forEach(chip => {
     chip.addEventListener('click', () => {
       payChips.forEach(c => c.classList.remove('is-selected'));
       chip.classList.add('is-selected');
-      activePay = chip.dataset.pay;
-      renderWaLink();
+      const m = chip.dataset.pay;
+      $('#panel-ecuador').style.display = m === 'ecuador' ? 'block' : 'none';
+      $('#panel-binance').style.display = m === 'binance' ? 'block' : 'none';
+      $('#panel-paypal').style.display = m === 'paypal' ? 'block' : 'none';
     });
   });
+
+  const copyBtn = $('#binance-copy-btn');
+  if (copyBtn) {
+    copyBtn.onclick = () => {
+      navigator.clipboard?.writeText(binanceUid).catch(() => {});
+      const txt = $('#binance-copy-txt');
+      if (txt) {
+        txt.textContent = '✓ ¡Copiado!';
+        setTimeout(() => { txt.textContent = 'Copiar UID'; }, 2500);
+      }
+      toast('UID de Binance copiado: ' + binanceUid);
+    };
+  }
+
+  const binanceConfirmBtn = $('#btn-confirm-binance');
+  if (binanceConfirmBtn) {
+    binanceConfirmBtn.onclick = () => {
+      const txInput = $('#binance-tx-input');
+      const txCode = (txInput?.value || '').trim();
+      if (!txCode) {
+        if (txInput) {
+          txInput.focus();
+          txInput.style.borderColor = '#f59e0b';
+          txInput.style.boxShadow = '0 0 12px rgba(245, 158, 11, 0.4)';
+        }
+        toast('Por favor escribe el código o ID de tu transferencia Binance.');
+        return;
+      }
+      const msg = `¡Hola Órbita Streaming! Acabo de realizar el pago por Binance Pay.\n\n📱 Plataforma adquirida: *${p.name}*\n💰 Monto transferido: *$${p.price}.00 USD (USDT)*\n🔑 Código / ID de Transacción Binance: *${txCode}*\n🎯 Binance UID Destino: *${binanceUid}*\n\nAdjunto el comprobante para la entrega y activación inmediata de mi cuenta.`;
+      window.open(wa(msg), '_blank', 'noopener,noreferrer');
+    };
+  }
 
   showDialog($('#details'));
 }
 $$('[data-detail]').forEach(b=>b.addEventListener('click',()=>details(b.dataset.detail)));
 $$('[data-story]').forEach(b=>b.addEventListener('click',()=>details(b.dataset.story,true)));
+document.addEventListener('click', e => {
+  if (e.target.closest('.platform-whatsapp') || e.target.closest('[data-trailer]')) return;
+  const card = e.target.closest('.platform-card');
+  if (card && !e.target.closest('button, a')) {
+    const btn = card.querySelector('[data-detail]');
+    const cardId = btn?.dataset?.detail || card.dataset.name;
+    if (cardId && byId(cardId)) {
+      e.preventDefault();
+      details(cardId);
+    }
+  }
+});
 const menu=$('.menu-toggle'),nav=$('.nav');
 if(menu&&nav){
   function toggleNav(forceState){

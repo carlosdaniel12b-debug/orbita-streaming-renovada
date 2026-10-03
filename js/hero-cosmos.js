@@ -1,7 +1,6 @@
 /**
- * ÓRBITA STREAMING — HERO COSMOS 3D CARD STACK & SISTEMA DE MÉTODOS DE PAGO
- * Experiencia física de cartas 3D con desplazamiento hacia atrás, selección al azar
- * y modal Liquid Glass de métodos de pago para cada plataforma.
+ * ÓRBITA STREAMING — HERO CINEMATOGRÁFICO Y MÉTODOS DE PAGO
+ * Selección manual de historias con movimiento ligero y modal de pagos.
  */
 (() => {
   'use strict';
@@ -463,251 +462,30 @@
   });
 
   // =========================================================================
-  // 3. BARBERÍA Y MOTOR 3D DEL HERO COSMIC CARD STACK (60FPS / 120FPS GPU)
+  // 3. HERO CINEMATOGRÁFICO: SELECCIÓN MANUAL SIN BUCLES DE ANIMACIÓN
   // =========================================================================
-  class CosmicHeroStack {
+  class CinematicHero {
     constructor(container) {
-      this.container = container;
-      this.stories = [...COSMIC_STORIES];
-      this.currentIndex = 0;
-      this.isAnimating = false;
-      this.touchStartX = 0;
-      this.touchStartY = 0;
-      this.cardElements = [];
-
-      this.init();
-    }
-
-    init() {
-      this.container.innerHTML = '';
-      this.container.classList.add('cosmic-deck-active');
-
-      // 1. Elementos orbitales ambientales
-      const rings = document.createElement('div');
-      rings.className = 'cosmic-scene-rings';
-      rings.setAttribute('aria-hidden', 'true');
-      rings.innerHTML = `
-        <div class="orbital-glow-core"></div>
-        <div class="orbital-ellipse ellipse-1"></div>
-        <div class="orbital-ellipse ellipse-2"></div>
-        <div class="orbital-planetoid"></div>
-      `;
-      this.container.append(rings);
-
-      // 2. Contenedor de la baraja física
-      this.stackWrapper = document.createElement('div');
-      this.stackWrapper.className = 'cosmic-cards-viewport';
-      this.stackWrapper.setAttribute('role', 'region');
-      this.stackWrapper.setAttribute('aria-label', 'Baraja de historias cósmicas');
-      this.container.append(this.stackWrapper);
-
-      // 3. Barra de control Liquid Glass
-      this.controls = document.createElement('div');
-      this.controls.className = 'cosmic-deck-toolbar liquid-glass';
-      this.controls.innerHTML = `
-        <button type="button" class="deck-btn-shuffle" id="cosmic-shuffle-btn" aria-label="Cambiar historia al azar">
-          <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
-          <span>Cambiar al azar</span>
-        </button>
-        <div class="deck-counter" id="cosmic-counter" aria-live="polite">1 / ${this.stories.length}</div>
-        <div class="deck-arrows">
-          <button type="button" class="deck-btn-nav" id="cosmic-prev-btn" aria-label="Historia anterior">←</button>
-          <button type="button" class="deck-btn-nav" id="cosmic-next-btn" aria-label="Siguiente historia con animación hacia atrás">→</button>
-        </div>
-      `;
-      this.container.append(this.controls);
-
-      // 4. Tarjeta complementaria flotante (Ficha de maratón)
-      this.companion = document.createElement('div');
-      this.companion.className = 'orbital-float liquid-glass';
-      this.companion.id = 'cosmic-companion-card';
-      this.container.append(this.companion);
-
-      // 5. Pre-renderizar TODAS las cartas una sola vez en el DOM (Caché GPU)
-      this.cardElements = this.stories.map((story, idx) => {
-        const el = this.createCardElement(story, idx);
-        this.stackWrapper.append(el);
-        return el;
+      const stories=COSMIC_STORIES.filter(s=>['andor','severance','pluto'].includes(s.id));
+      container.classList.add('cinematic-scene');
+      container.innerHTML='<div class="cinematic-stage"></div><div class="cinematic-selector" role="group" aria-label="Elegir historia destacada"></div><p class="cinematic-status sr-only" role="status"></p>';
+      const stage=container.querySelector('.cinematic-stage'),selector=container.querySelector('.cinematic-selector');
+      const reduce=matchMedia('(prefers-reduced-motion:reduce)'),desktop=matchMedia('(min-width:701px)');
+      let current=0;
+      const panels=stories.map((story,index)=>{
+        const panel=document.createElement('article');panel.className='cinematic-panel';panel.hidden=index!==0;
+        panel.innerHTML='<img class="cinematic-image" width="1777" height="1000" alt="'+story.title+'" src="'+story.backdrop+'" '+(index===0?'fetchpriority="high"':'loading="lazy"')+'/>'+
+          '<div class="cinematic-caption"><span>'+story.platformName+' · '+story.category.split(' · ')[0]+'</span><h2>'+story.title+'</h2><p>'+story.subtitle+'</p><div class="cinematic-actions"><button type="button" data-trailer="'+story.trailerId+'"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7Z"/></svg>Ver tráiler</button><a href="descubre.html?q='+encodeURIComponent(story.title)+'">Explorar historia <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>';
+        stage.append(panel);
+        const button=document.createElement('button');button.type='button';button.className='cinematic-choice';button.setAttribute('aria-pressed',String(index===0));button.innerHTML='<img src="'+story.poster+'" width="40" height="54" alt=""/><span><strong>'+story.title+'</strong><small>'+story.platformName+'</small></span>';
+        button.addEventListener('click',event=>{
+          if(index===current)return;
+          panels[current].getAnimations().forEach(a=>a.cancel());panels[current].hidden=true;panel.hidden=false;current=index;
+          selector.querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
+          container.querySelector('.cinematic-status').textContent=story.title+' en '+story.platformName;
+          if(event.detail&&desktop.matches&&!reduce.matches&&!document.documentElement.classList.contains('motion-paused'))panel.animate([{opacity:.45,transform:'translateX(12px)'},{opacity:1,transform:'translateX(0)'}],{duration:240,easing:'cubic-bezier(.16,1,.3,1)'});
+        });selector.append(button);return panel;
       });
-
-      this.updateCardsDepth();
-      this.updateCompanion();
-
-      // 6. Listeners de interacción
-      this.bindEvents();
-    }
-
-    createCardElement(story, index) {
-      const card = document.createElement('article');
-      card.className = 'cosmic-card depth-hidden';
-      card.dataset.index = index;
-      card.dataset.id = story.id;
-
-      card.innerHTML = `
-        <div class="cosmic-card-media">
-          <img src="${story.backdrop}" alt="${story.title}" class="cosmic-card-img" loading="${index < 3 ? 'eager' : 'lazy'}"/>
-          <div class="cosmic-card-gradient" aria-hidden="true"></div>
-          <div class="cosmic-card-shimmer" aria-hidden="true"></div>
-        </div>
-
-        <div class="cosmic-card-head">
-          <div class="cosmic-brand-pill">
-            <span class="brand-orbit-dot" style="background:${story.accentColor};"></span>
-            <strong>${story.platformName}</strong>
-          </div>
-          <span class="cosmic-quality-pill">${story.quality}</span>
-        </div>
-
-        <div class="cosmic-card-body">
-          <span class="cosmic-genre-label">${story.category}</span>
-          <h2 class="cosmic-card-title">${story.title}</h2>
-          <p class="cosmic-card-tagline">${story.subtitle}</p>
-          <p class="cosmic-card-desc">${story.description}</p>
-        </div>
-
-        <div class="cosmic-card-actions">
-          <button type="button" class="cosmic-action-btn btn-play-trailer" data-trailer="${story.trailerId}" aria-label="Ver tráiler oficial en pantalla grande">
-            <svg class="ui-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>
-            <span>Ver Tráiler Grande</span>
-          </button>
-          <button type="button" class="cosmic-action-btn btn-view-payment" data-platform-pay="${story.platform}" data-platform-title="${story.platformName}" aria-label="Ver métodos de pago para ${story.platformName}">
-            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-            <span>Métodos de Pago</span>
-          </button>
-          <button type="button" class="cosmic-action-btn btn-next-shift" aria-label="Desplazar tarjeta hacia atrás">
-            <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </button>
-        </div>
-      `;
-
-      return card;
-    }
-
-    updateCardsDepth() {
-      const total = this.stories.length;
-
-      this.cardElements.forEach((card, idx) => {
-        const offset = (idx - this.currentIndex + total) % total;
-
-        card.classList.remove('depth-0', 'depth-1', 'depth-2', 'depth-hidden', 'is-active', 'is-stacked', 'anim-pushing-back', 'anim-coming-forward');
-
-        if (offset === 0) {
-          card.classList.add('depth-0', 'is-active');
-        } else if (offset === 1) {
-          card.classList.add('depth-1', 'is-stacked');
-        } else if (offset === 2) {
-          card.classList.add('depth-2', 'is-stacked');
-        } else {
-          card.classList.add('depth-hidden');
-        }
-      });
-
-      const counter = this.controls.querySelector('#cosmic-counter');
-      if (counter) counter.textContent = `${this.currentIndex + 1} / ${total}`;
-    }
-
-    updateCompanion() {
-      const active = this.stories[this.currentIndex];
-      if (!this.companion || !active) return;
-
-      this.companion.innerHTML = `
-        <img src="${active.poster}" alt="" width="56" height="76" loading="lazy" class="orbital-poster"/>
-        <div class="companion-details">
-          <span class="companion-eyebrow">${active.companionTitle}</span>
-          <strong class="companion-name">${active.title}</strong>
-          <span class="companion-meta">${active.platformName} · ${active.companionBadge}</span>
-        </div>
-        <button type="button" class="companion-play-chip" data-trailer="${active.trailerId}" aria-label="Reproducir tráiler de ${active.title}">
-          <svg class="ui-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-      `;
-    }
-
-    /**
-     * Animación física de desplazamiento hacia atrás (Push Backward & Reveal) sin trabas
-     */
-    pushBack(targetIndex = null) {
-      if (this.isAnimating) return;
-      this.isAnimating = true;
-
-      const total = this.stories.length;
-      const currentCard = this.cardElements[this.currentIndex];
-      const nextIdx = targetIndex !== null ? targetIndex : (this.currentIndex + 1) % total;
-      const nextCard = this.cardElements[nextIdx];
-
-      if (currentCard) {
-        currentCard.classList.add('anim-pushing-back');
-      }
-      if (nextCard) {
-        nextCard.classList.remove('depth-hidden', 'depth-1', 'depth-2');
-        nextCard.classList.add('depth-0', 'is-active', 'anim-coming-forward');
-      }
-
-      setTimeout(() => {
-        this.currentIndex = nextIdx;
-        this.updateCardsDepth();
-        this.updateCompanion();
-        this.isAnimating = false;
-      }, 380);
-    }
-
-    shuffleRandom() {
-      if (this.isAnimating) return;
-      let next;
-      do {
-        next = Math.floor(Math.random() * this.stories.length);
-      } while (next === this.currentIndex && this.stories.length > 1);
-
-      this.pushBack(next);
-    }
-
-    prevCard() {
-      if (this.isAnimating) return;
-      const prev = (this.currentIndex - 1 + this.stories.length) % this.stories.length;
-      this.pushBack(prev);
-    }
-
-    bindEvents() {
-      // 1. Botones de barra
-      const shuffleBtn = this.controls.querySelector('#cosmic-shuffle-btn');
-      const nextBtn = this.controls.querySelector('#cosmic-next-btn');
-      const prevBtn = this.controls.querySelector('#cosmic-prev-btn');
-
-      if (shuffleBtn) shuffleBtn.addEventListener('click', () => this.shuffleRandom());
-      if (nextBtn) nextBtn.addEventListener('click', () => this.pushBack());
-      if (prevBtn) prevBtn.addEventListener('click', () => this.prevCard());
-
-      // 2. Clic directo en las tarjetas para rotar
-      this.stackWrapper.addEventListener('click', e => {
-        if (e.target.closest('[data-trailer]') || e.target.closest('[data-platform-pay]')) {
-          return;
-        }
-
-        const clickedCard = e.target.closest('.cosmic-card');
-        if (!clickedCard) return;
-
-        this.pushBack();
-      });
-
-      // 3. Soporte para gestos táctiles (Swipe en smartphones)
-      this.stackWrapper.addEventListener('touchstart', e => {
-        this.touchStartX = e.touches[0].clientX;
-        this.touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-
-      this.stackWrapper.addEventListener('touchend', e => {
-        if (this.isAnimating) return;
-        const diffX = e.changedTouches[0].clientX - this.touchStartX;
-        const diffY = e.changedTouches[0].clientY - this.touchStartY;
-
-        if (Math.abs(diffX) > 45 || diffY < -45) {
-          if (diffX < -45 || diffY < -45) {
-            this.pushBack();
-          } else if (diffX > 45) {
-            this.prevCard();
-          }
-        }
-      }, { passive: true });
     }
   }
 
@@ -719,7 +497,7 @@
 
     const heroScene = document.querySelector('.orbital-scene');
     if (heroScene) {
-      new CosmicHeroStack(heroScene);
+      new CinematicHero(heroScene);
     }
 
     // Convertir el dock de plataformas en disparadores de Métodos de Pago Liquid Glass

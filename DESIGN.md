@@ -8,4 +8,8 @@ Manrope local; titulares hasta 80px, tracking mínimo -0.04em. Fondo #f4f6f9, ti
 
 Movimiento: entrada breve del símbolo oficial, giro de la órbita y salida con desenfoque. Carrusel manual con reproducción voluntaria, pausa al interactuar y respeto de movimiento reducido. Nada depende de terminar una animación para funcionar.
 
+Hero cinematográfico: fotografía única con pie legible sobre degradado oscuro y selector manual de Andor, Severance y PLUTO. Cambiar de historia usa una transición de 240 ms en laptop; el teléfono y movimiento reducido cambian directamente. Se elimina el motor de pila 3D y sus movimientos continuos. Servicios con superficies menta, lavanda y hielo; separaciones móviles de 36 px y ventanas con entrada breve de 200 ms en laptop.
+
+Skills aplicadas: Frontend Design, Emil Design Engineering y Web Animation Design de Vercel (https://github.com/vercel-labs/open-agents/tree/main/.agents/skills/web-animation-design). La nueva skill se instala en Codex; la web recibe HTML, CSS y JavaScript, sin dependencias nuevas de animación.
+
 Referencia: https://developer.apple.com/design/human-interface-guidelines/materials y https://developer.apple.com/videos/play/wwdc2025/219/ . Interpretación web del material, no una implementación nativa de Apple.

@@ -9,6 +9,9 @@
   const platforms = window.ORBITA?.platforms || [];
 
   let busy = false;
+  let aiAvailable = false;
+  let conversation = [];
+  const readiness = location.protocol === "file:" ? Promise.resolve() : fetch("/api/status").then(r => r.ok ? r.json() : null).then(s => { aiAvailable = !!s?.ai; if(aiAvailable) { $(".assistant-note").textContent = "Orbit conectado · Preguntas generales y complejas. Puede cometer errores. Ver privacidad."; const greeting=log.querySelector(".bot"); if(greeting)greeting.textContent="Soy Orbit. Puedo ayudarte a aprender, escribir, programar, resolver problemas y descubrir qué ver. ¿Qué quieres explorar?"; } }).catch(() => {});
   let recommendationContext = {};
   let lastIds = [];
   let lastTitle = '';
@@ -462,7 +465,7 @@
   async function ask(text) {
     open();
     if (busy) return;
-    const message = text.trim().slice(0, 300);
+    const message = text.trim().slice(0, 8000);
     if (!message) return;
 
     append('user', message);
@@ -480,10 +483,23 @@
     log.scrollTop = log.scrollHeight;
 
     try {
-      await answer(message);
+      await readiness;
+      if (aiAvailable) {
+        const history = conversation.slice(-10).concat({role:'user',content:message});
+        while(history.length>1 && history.reduce((n,m)=>n+m.content.length,0)>32000)history.shift();
+        const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history}),signal:AbortSignal.timeout(55000)});
+        const result=await response.json();
+        if(!response.ok){await appendBotStream(result.error||'Orbit no está disponible. Intenta nuevamente.');return;}
+        await appendBotStream(result.reply);
+        conversation=history.concat({role:'assistant',content:result.reply.slice(0,8000)}).slice(-10);
+      } else if (/recomiend|pelicula|serie|anime|novela|combo|precio|plataforma|netflix|spotify|disney|vix|trailer|que ver|ciencia ficcion|sin ideas/i.test(message)) {
+        await answer(message);
+      } else {
+        await appendBotStream('Orbit general aún necesita activar su conexión de IA. Por ahora puedo ayudarte con el catálogo, recomendaciones y combos.');
+      }
     } catch {
       await appendBotStream('Ocurrió un error al consultar la galaxia de contenidos. Inténtalo nuevamente o escribe el título por WhatsApp.');
-      availability(log.lastElementChild, extract(message));
+      
     } finally {
       typing.remove();
       busy = false;
@@ -507,8 +523,8 @@
   if (clearBtn) {
     clearBtn.onclick = () => {
       if (busy) return;
-      recommendationContext = {}; lastIds = []; lastTitle = "";
-      log.replaceChildren(); append("bot", "Conversación reiniciada. Dime un género, formato o plataforma y buscamos tu próxima historia.");
+      conversation = []; recommendationContext = {}; lastIds = []; lastTitle = "";
+      log.replaceChildren(); append("bot", "Conversación reiniciada. ¿Qué quieres explorar?");
       if (window.OrbitaAudio?.play) {
         try { window.OrbitaAudio.play('score'); } catch {}
       }

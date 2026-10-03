@@ -8,7 +8,7 @@ Sitio estático para explorar plataformas y preparar pedidos por WhatsApp. Abre 
 - Introducción con el mismo planeta negro y órbita del encabezado; omisión, Escape y movimiento reducido.
 - Descubre: 87 fichas únicas, filtros independientes de películas, series, anime, novelas y plataforma; enlaces profundos por título, formato o servicio.
 - 27 títulos incorporados, 32 imágenes descargadas con fuentes registradas; 11 fichas duplicadas o incorrectas retiradas.
-- Orbit: recomendaciones locales por formato, género y plataforma, exclusión de terror y continuación sin repetir opciones. No está conectado a un modelo generativo.
+- Orbit: recomendaciones locales por formato, género y plataforma, exclusión de terror y continuación sin repetir opciones. Conexión opcional con OpenAI para preguntas generales y complejas, contexto de conversación y razonamiento.
 - País seleccionable para consultar disponibilidad. La selección editorial no garantiza que un título esté incluido en cada país o plan.
 - Precios, contacto y cálculo de combos conservados. No se envían pedidos automáticamente.
 - Mi combo móvil: barra fija con cantidad y total, revisión en diálogo nativo y botón de WhatsApp visible mientras se consultan los detalles. El resumen de escritorio permanece junto al selector.
@@ -44,3 +44,9 @@ Orbit y el reproductor usan ventanas nativas: los diálogos cerrados no ocupan e
 - [PLUTO](https://www.netflix.com/title/81281344), [Delicious in Dungeon](https://www.netflix.com/title/81564899), [Klaus](https://www.netflix.com/title/80183187), [Pinocho](https://www.netflix.com/title/80218455).
 - [El amor invencible](https://vix.com/es-es/detail/series-4271), [La Usurpadora](https://vix.com/es-es/detail/series-561).
 - [Fundación](https://tv.apple.com/us/show/fundacion/umc.cmc.5983fipzqbicvrve6jdfep4x3?l=es), [The Gorge](https://www.apple.com/tv-pr/originals/the-gorge/), [1923](https://www.paramountplus.com/shows/1923/).
+
+## Activar Orbit general
+
+En Vercel, configura OPENAI_API_KEY en las variables de entorno del servidor y vuelve a desplegar. OPENAI_MODEL es opcional (por defecto gpt-5.2). No uses variables públicas ni añadas claves al repositorio. La API tiene coste de uso independiente de ChatGPT; configura un presupuesto en el proveedor. Para ejecución local: node --env-file=.env server.cjs. Usa .env.example como plantilla privada.
+
+POST /api/chat mantiene hasta 12 mensajes por solicitud, valida roles y tamaños y limita solicitudes por IP por instancia. En producción configura también límites globales y protección de tráfico en el alojamiento: el límite en memoria no se comparte entre instancias. Sin clave se conserva la guía del catálogo y se informa que las preguntas generales no están activadas. No hay búsqueda web ni garantía de respuestas correctas sobre cualquier tema.

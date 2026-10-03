@@ -1,0 +1,1 @@
+module.exports=(req,res)=>{res.writeHead(req.method==='GET'?200:405,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(req.method==='GET'?{ai:!!process.env.OPENAI_API_KEY,providers:false}:{error:'Método no permitido'}));};

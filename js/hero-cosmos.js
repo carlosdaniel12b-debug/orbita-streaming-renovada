@@ -466,7 +466,7 @@
   // =========================================================================
   class CinematicHero {
     constructor(container) {
-      const stories=COSMIC_STORIES.filter(s=>['andor','severance','pluto'].includes(s.id));
+      const stories=COSMIC_STORIES.filter(s=>['andor','severance','pluto','dune2'].includes(s.id)).concat([{"id":"m_oppenheimer","title":"Oppenheimer","subtitle":"La historia del físico J. Robert Oppenheimer y su rol decisivo en el desarrollo de la bomba atómica en el Proy","platform":"hbomax","platformName":"Max","category":"Película","backdrop":"assets/posters/m_oppenheimer.jpg","poster":"assets/posters/m_oppenheimer.jpg","trailerId":"m_oppenheimer","accentColor":"#cf9572"}],[{"id":"m_gladiator2","title":"Gladiador II","subtitle":"Años después de presenciar la muerte del venerado héroe Máximo, Lucio debe entrar en el Coliseo tras ser conqu","platform":"paramount","platformName":"Paramount+","category":"Película","backdrop":"assets/posters/m_gladiator2.jpg","poster":"assets/posters/m_gladiator2.jpg","trailerId":"m_gladiator2","accentColor":"#cf9572"},{"id":"m_insideout2","title":"Intensamente 2","subtitle":"El cuartel general de la mente de Riley sufre una repentina demolición para hacer sitio a nuevas emociones ine","platform":"disneyplus","platformName":"Disney+","category":"Película","backdrop":"assets/posters/m_insideout2.jpg","poster":"assets/posters/m_insideout2.jpg","trailerId":"m_insideout2","accentColor":"#cf9572"},{"id":"m_interstellar","title":"Interestelar","subtitle":"Un equipo de exploradores viaja a través de un agujero de gusano en el espacio en un intento desesperado por g","platform":"hbomax","platformName":"Max","category":"Película","backdrop":"assets/posters/m_interstellar.jpg","poster":"assets/posters/m_interstellar.jpg","trailerId":"m_interstellar","accentColor":"#9b8bd1"}]);
       container.classList.add('cinematic-scene');
       container.innerHTML='<svg class="hero-orbit-frame" aria-hidden="true" viewBox="0 0 700 600"><ellipse cx="350" cy="290" rx="330" ry="210" transform="rotate(-25 350 290)"/><ellipse cx="350" cy="290" rx="305" ry="185" transform="rotate(-25 350 290)"/><circle cx="634" cy="142" r="7"/></svg><div class="cinematic-stage"></div><div class="cinematic-selector" role="group" aria-label="Elegir historia destacada"></div><p class="cinematic-status sr-only" role="status"></p>';
       const stage=container.querySelector('.cinematic-stage'),selector=container.querySelector('.cinematic-selector');
@@ -485,6 +485,8 @@
         button.addEventListener('click',event=>{
           if(index===current)return;
           panels[current].getAnimations().forEach(a=>a.cancel());panels[current].hidden=true;panel.hidden=false;current=index;
+          container.style.setProperty("--hero-glow",story.accentColor);
+          container.querySelectorAll(".hero-depth-layer img").forEach((img,i)=>{img.src=stories[(index+i+1)%stories.length].backdrop;});
           selector.querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
           if(event.detail!==-1)container.querySelector('.cinematic-status').textContent=story.title+' en '+story.platformName;
           window.OrbitaColors?.set(story.platform);

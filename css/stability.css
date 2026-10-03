@@ -24,3 +24,5 @@ body.preview-open{overflow:hidden}
  .pearl-world .descubre-card:hover,.pearl-world .platform-card:hover,.pearl-world .pearl-film-slide:hover img{transform:none!important}
  .pearl-world .mobile-dock,.pearl-world .header{backdrop-filter:blur(16px) saturate(140%)}
 }
+
+#chat .bot,#chat .user{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}

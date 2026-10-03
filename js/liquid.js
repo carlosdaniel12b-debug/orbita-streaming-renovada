@@ -231,7 +231,7 @@ function preview(id,trigger){
 
     // Crear iframe con YouTube sin cookies y con reproducción optimizada en alta definición
     const iframe=document.createElement('iframe');
-    iframe.src=`https://www.youtube-nocookie.com/embed/${trailer.video}?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&enablejsapi=1`;
+    iframe.src=`https://www.youtube-nocookie.com/embed/${trailer.video}?autoplay=1&mute=0&playsinline=1&rel=0&modestbranding=1&enablejsapi=1`;
     iframe.title='Tráiler oficial de '+titleText;
     iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     iframe.allowFullscreen=true;
@@ -242,6 +242,7 @@ function preview(id,trigger){
 
     // Botón para recargar con sonido si el usuario lo solicita
     unmuteBtn.style.display='inline-flex';
+    unmuteBtn.textContent='Reintentar con sonido';
     unmuteBtn.onclick=()=>{
       iframe.src=`https://www.youtube-nocookie.com/embed/${trailer.video}?autoplay=1&mute=0&playsinline=1&rel=0&modestbranding=1`;
       unmuteBtn.style.display='none';

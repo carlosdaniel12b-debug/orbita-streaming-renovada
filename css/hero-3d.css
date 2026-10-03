@@ -1,0 +1,33 @@
+/* A dimensional hero, scoped to the opening section. */
+.pearl-world .hero-dimensional{padding-top:55px;padding-bottom:24px}
+.pearl-world .hero-dimensional .orbital-intro{display:grid;grid-template-columns:1fr 1.05fr;gap:52px;align-items:center;min-height:565px}
+.pearl-world .hero-dimensional .pearl-copy{display:block;margin:0;padding-bottom:30px}
+.pearl-world .hero-dimensional .pearl-copy h1{font-size:clamp(65px,6.4vw,92px);line-height:1.01;letter-spacing:-.035em;font-weight:700;text-wrap:initial;text-shadow:0 2px 0 #d5dfe7,0 10px 22px #20394c0c}
+.pearl-world .hero-dimensional .pearl-copy h1 span{color:#54648a;text-shadow:0 2px 0 #ccd3e6,0 9px 20px #45557b15}
+.pearl-world .hero-dimensional .pearl-copy>p{font-size:16px;line-height:1.7;max-width:36ch;margin:25px 0}
+.pearl-world .hero-dimensional .cinematic-scene{perspective:1300px;padding:18px 20px 0;min-width:0}
+.hero-depth-layer{position:absolute;top:28px;left:24px;right:24px;aspect-ratio:1.17;border-radius:25px;overflow:hidden;pointer-events:none;box-shadow:0 16px 30px #233d4a24;transform-origin:center;opacity:.75}
+.hero-depth-layer img{width:100%;height:100%;object-fit:cover}
+.hero-depth-layer:after{content:'';position:absolute;inset:0;background:#172f4552}
+.hero-depth-back{transform:rotate(-7deg) translate(-20px,-4px) scale(.94);z-index:0}
+.hero-depth-middle{transform:rotate(8deg) translate(23px,-9px) scale(.96);z-index:1}
+.hero-dimensional .cinematic-stage{aspect-ratio:1.17;border-radius:26px;z-index:2;transform:rotateY(-9deg) rotateX(4deg);transform-origin:center;box-shadow:7px 9px 0 #2d405366,0 26px 40px #1b354536;transition:transform 300ms cubic-bezier(.16,1,.3,1)}
+.pearl-world.arrival .hero-dimensional .cinematic-stage{animation:none}
+.hero-dimensional .cinematic-caption{display:block;inset:auto 25px 28px}.pearl-world .hero-dimensional .cinematic-caption h2{font-size:37px}.pearl-world .hero-dimensional .cinematic-caption p{font-size:13px;margin-bottom:19px;max-width:32ch}
+.hero-dimensional .cinematic-selector{margin-top:28px;max-width:none;z-index:3}.hero-dimensional .hero-playback{position:relative;z-index:3}
+.hero-dimensional .hero-orbit-frame{inset:-35px -45px auto;height:calc(100% + 10px);width:calc(100% + 90px)}
+@media(min-width:701px) and (prefers-reduced-motion:no-preference){
+ .arrival .hero-dimensional .cinematic-scene{animation:dimensional-arrival 650ms cubic-bezier(.16,1,.3,1) both}
+ @keyframes dimensional-arrival{from{opacity:.5;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+}
+@media(max-width:1000px){.pearl-world .hero-dimensional .orbital-intro{gap:25px}.pearl-world .hero-dimensional .pearl-copy h1{font-size:65px}.hero-dimensional .cinematic-actions{gap:10px}.hero-dimensional .cinematic-actions button,.hero-dimensional .cinematic-actions a{font-size:11px}}
+@media(max-width:700px){
+ .pearl-world .hero-dimensional{padding-top:25px}.pearl-world .hero-dimensional .orbital-intro{display:block;min-height:0}
+ .pearl-world .hero-dimensional .pearl-copy{padding:0;margin-bottom:34px}.pearl-world .hero-dimensional .pearl-copy h1{font-size:clamp(54px,14vw,70px);line-height:1.025}.pearl-world .hero-dimensional .pearl-copy>p{font-size:14px;margin:20px 0}
+ .pearl-world .hero-dimensional .cinematic-scene{padding:14px 12px 0;perspective:900px}.hero-dimensional .cinematic-stage{aspect-ratio:1.15;border-radius:21px;transform:rotateY(-5deg) rotateX(2deg);transition:none;box-shadow:4px 5px 0 #2d405350,0 16px 25px #1b354526}
+ .hero-depth-layer{left:14px;right:14px;top:20px;aspect-ratio:1.15;border-radius:20px}.hero-depth-back{transform:rotate(-5deg) translate(-8px,-3px) scale(.95)}.hero-depth-middle{transform:rotate(6deg) translate(9px,-5px) scale(.96)}
+ .hero-dimensional .cinematic-caption{inset:auto 18px 20px}.pearl-world .hero-dimensional .cinematic-caption h2{font-size:29px}.pearl-world .hero-dimensional .cinematic-caption p{display:block;font-size:12px;margin-bottom:13px}
+ .hero-dimensional .cinematic-selector{margin-top:22px}.hero-dimensional .hero-orbit-frame{inset:-10px -12px auto;width:calc(100% + 24px)}
+}
+@media(prefers-reduced-motion:reduce){.hero-dimensional .cinematic-stage{transition:none}.arrival .hero-dimensional .cinematic-scene{animation:none}}
+.motion-paused .hero-dimensional .cinematic-stage{transition:none}.motion-paused .hero-dimensional .cinematic-scene{animation:none}

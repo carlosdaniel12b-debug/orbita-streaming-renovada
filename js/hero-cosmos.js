@@ -470,6 +470,9 @@
       container.classList.add('cinematic-scene');
       container.innerHTML='<svg class="hero-orbit-frame" aria-hidden="true" viewBox="0 0 700 600"><ellipse cx="350" cy="290" rx="330" ry="210" transform="rotate(-25 350 290)"/><ellipse cx="350" cy="290" rx="305" ry="185" transform="rotate(-25 350 290)"/><circle cx="634" cy="142" r="7"/></svg><div class="cinematic-stage"></div><div class="cinematic-selector" role="group" aria-label="Elegir historia destacada"></div><p class="cinematic-status sr-only" role="status"></p>';
       const stage=container.querySelector('.cinematic-stage'),selector=container.querySelector('.cinematic-selector');
+      if(container.closest('.hero-dimensional')){
+        ['severance-scene.jpg','pluto-scene.jpg'].forEach((file,index)=>{const layer=document.createElement('div');layer.className='hero-depth-layer '+(index?'hero-depth-middle':'hero-depth-back');layer.setAttribute('aria-hidden','true');const image=document.createElement('img');image.src='assets/backdrops/'+file;image.alt='';layer.append(image);stage.before(layer);});
+      }
       const reduce=matchMedia('(prefers-reduced-motion:reduce)'),desktop=matchMedia('(min-width:701px)');
       let current=0;
       let timer=null,visible=true,hovered=false,playing=true;

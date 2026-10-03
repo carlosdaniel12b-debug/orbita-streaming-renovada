@@ -235,27 +235,27 @@
             <h3>Elige tu método de pago preferido</h3>
           </div>
           <div class="payment-methods-grid">
-            <label class="payment-card-method is-selected" data-method="Bancolombia / Nequi / Daviplata">
-              <input type="radio" name="pay_option" value="Bancolombia / Nequi / Daviplata" checked class="sr-only"/>
-              <div class="method-indicator"></div>
-              <div class="method-body">
-                <div class="method-title-row">
-                  <span class="method-name">Bancolombia / Nequi / Daviplata</span>
-                  <span class="method-tag" style="background:rgba(0,210,255,0.15);color:#0099cc">🇨🇴 Nequi · Bancolombia · PSE</span>
-                </div>
-                <p class="method-desc">Transferencia directa en Colombia sin recargos. Activación al instante.</p>
-              </div>
-            </label>
-
-            <label class="payment-card-method" data-method="Transferencia Bancaria Ecuador">
-              <input type="radio" name="pay_option" value="Transferencia Bancaria Ecuador" class="sr-only"/>
+            <label class="payment-card-method is-selected" data-method="Transferencia Bancaria (Pichincha · Guayaquil · Deuna)">
+              <input type="radio" name="pay_option" value="Transferencia Bancaria (Pichincha · Guayaquil · Deuna)" checked class="sr-only"/>
               <div class="method-indicator"></div>
               <div class="method-body">
                 <div class="method-title-row">
                   <span class="method-name">Transferencias en Ecuador</span>
                   <span class="method-tag tag-ecuador">🇪🇨 Pichincha · Guayaquil · Deuna!</span>
                 </div>
-                <p class="method-desc">Transferencia directa sin comisión. Verificación inmediata.</p>
+                <p class="method-desc">Transferencia directa sin recargos. Activación y verificación inmediata.</p>
+              </div>
+            </label>
+
+            <label class="payment-card-method" data-method="Binance Pay / USDT (Cripto)">
+              <input type="radio" name="pay_option" value="Binance Pay / USDT (Cripto)" class="sr-only"/>
+              <div class="method-indicator"></div>
+              <div class="method-body">
+                <div class="method-title-row">
+                  <span class="method-name">Binance Pay (Cripto)</span>
+                  <span class="method-tag tag-crypto">🟡 USDT · Binance ID</span>
+                </div>
+                <p class="method-desc">Envío directo de billetera a billetera con 0% de comisión internacional.</p>
               </div>
             </label>
 
@@ -264,22 +264,22 @@
               <div class="method-indicator"></div>
               <div class="method-body">
                 <div class="method-title-row">
-                  <span class="method-name">PayPal / Tarjeta de Crédito</span>
-                  <span class="method-tag tag-global">🌐 Visa · Mastercard · Amex</span>
+                  <span class="method-name">PayPal / Tarjeta Internacional</span>
+                  <span class="method-tag tag-global">🌐 Visa · Mastercard · Débito</span>
                 </div>
                 <p class="method-desc">Pago internacional seguro con protección en dólares estadounidenses.</p>
               </div>
             </label>
 
-            <label class="payment-card-method" data-method="Binance Pay / USDT Cripto">
-              <input type="radio" name="pay_option" value="Binance Pay / USDT Cripto" class="sr-only"/>
+            <label class="payment-card-method" data-method="Depósito / Giro Internacional">
+              <input type="radio" name="pay_option" value="Depósito / Giro Internacional" class="sr-only"/>
               <div class="method-indicator"></div>
               <div class="method-body">
                 <div class="method-title-row">
-                  <span class="method-name">Binance Pay (Cripto)</span>
-                  <span class="method-tag tag-crypto">🟡 USDT · Binance ID</span>
+                  <span class="method-name">Depósito u Otros Métodos</span>
+                  <span class="method-tag tag-global">🌎 Western Union · Depósito</span>
                 </div>
-                <p class="method-desc">Envío instantáneo de billetera a billetera con 0% de comisión de red.</p>
+                <p class="method-desc">Opciones de depósito en efectivo o transferencias de otros países.</p>
               </div>
             </label>
           </div>
@@ -333,16 +333,16 @@
   function updateWhatsAppLink() {
     if (!paymentModalEl || !currentPlatformState) return;
     const selectedRadio = paymentModalEl.querySelector('input[name="pay_option"]:checked');
-    const method = selectedRadio ? selectedRadio.value : 'Transferencia';
+    const method = selectedRadio ? selectedRadio.value : 'Transferencia Bancaria (Pichincha / Deuna)';
     const platName = currentPlatformState.name;
     const price = currentPlatformState.price || 3;
     const phone = window.ORBITA?.phone || '593998226756';
 
     let msg;
     if (currentPlatformState.id === 'gemini') {
-      msg = `Hola Órbita Streaming, deseo activar mi suscripción de *Gemini AI Pro* (5 TB de almacenamiento + IA Gemini 3.8) por $3 USD (varios meses - activación mediante link). Mi método de pago preferido es: *${method}*. ¿Tienen disponibilidad inmediata?`;
+      msg = `Hola Órbita Streaming, deseo adquirir *Gemini AI Pro* (5 TB de almacenamiento + IA Gemini 3.8) por $3 USD (varios meses - activación directa por link). Mi forma de pago seleccionada es: *${method}*. ¿Tienen disponibilidad inmediata para proceder?`;
     } else {
-      msg = `Hola Órbita Streaming, deseo activar mi suscripción de *${platName}* ($${price} USD/${currentPlatformState.period || 'mes'}). Mi método de pago preferido es: *${method}*. ¿Tienen disponibilidad inmediata?`;
+      msg = `Hola Órbita Streaming, deseo adquirir la plataforma *${platName}* ($${price} USD/${currentPlatformState.period || 'mes'}). Mi forma de pago seleccionada es: *${method}*. ¿Tienen disponibilidad inmediata para proceder?`;
     }
 
     const waBtn = paymentModalEl.querySelector('#payment-whatsapp-btn');

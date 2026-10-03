@@ -284,19 +284,26 @@ body.pearl-world {
   border-color: #147654;
 }
 
-/* 6. ESTILO ULTRA ELEGANTE: SPOTIFY, CANVA PRO Y CHATGPT */
+/* 6. ESTILO ULTRA ELEGANTE: SPOTIFY, CANVA PRO, CHATGPT Y GEMINI AI (4 COLUMNAS EN LÍNEA) */
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1100px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
 }
 
 .service-glass {
   border: 1px solid rgba(255, 255, 255, 0.95);
-  border-radius: 28px;
-  padding: 32px 28px;
+  border-radius: 26px;
+  padding: 24px 20px;
   color: #1e333a;
-  min-height: 380px;
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   box-shadow: var(--liquid-shadow), var(--liquid-specular-top);
@@ -307,6 +314,99 @@ body.pearl-world {
 
 .service-glass:hover {
   transform: translateY(-6px);
+}
+
+/* Acciones en Descubre: Botones redondos Liquid Glass separados */
+.descubre-card .card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.descubre-card .card-actions button {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 246, 0.8));
+  color: #144e45;
+  box-shadow: inset 0 1px 0 #fff, 0 3px 8px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  text-decoration: none;
+}
+
+.descubre-card .card-actions button[data-trailer] {
+  background: linear-gradient(135deg, rgba(230, 250, 245, 0.95), rgba(200, 242, 230, 0.8));
+  border-color: rgba(8, 127, 112, 0.25);
+  color: #086753;
+}
+
+.descubre-card .card-actions button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 14px rgba(8, 127, 112, 0.16), inset 0 1px 0 #fff;
+  border-color: rgba(8, 127, 112, 0.45);
+}
+
+.descubre-card .card-actions button[data-trailer]:hover {
+  background: #087f70;
+  color: #ffffff;
+  border-color: #087f70;
+}
+
+.descubre-card .card-actions button[data-open-movie]:hover {
+  background: #1e333a;
+  color: #ffffff;
+  border-color: #1e333a;
+}
+
+.descubre-card .card-actions button:active {
+  transform: scale(0.96);
+}
+
+/* Botón Ver mini tráiler en Modal Detalle */
+.detail-trailer-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 14px 0 12px 0;
+  border: 1px solid rgba(8, 127, 112, 0.3);
+  background: linear-gradient(135deg, rgba(235, 252, 248, 0.95), rgba(210, 247, 238, 0.85));
+  color: #086753;
+  box-shadow: inset 0 1px 0 #fff, 0 4px 14px rgba(8, 127, 112, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: fit-content;
+}
+
+.detail-trailer-button:hover {
+  transform: translateY(-2px);
+  background: #087f70;
+  color: #ffffff;
+  border-color: #087f70;
+  box-shadow: 0 8px 22px rgba(8, 127, 112, 0.22);
+}
+
+.detail-trailer-button:active {
+  transform: scale(0.97);
 }
 
 /* SPOTIFY: Cristal verde esmeralda con ecualizador animado */

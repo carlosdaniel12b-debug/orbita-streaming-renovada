@@ -12,7 +12,11 @@ let toastTimer;
 function toast(text){$('.toast').textContent=text;$('.toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('.toast').classList.remove('show'),2400)}
 function calculate(ids){const list=[...new Set(ids)].map(byId).filter(Boolean),videos=list.filter(p=>p.category==='cinema').length;const bonus=videos>=2;const paid=list.filter(p=>p.period==='mes'&&!(p.id==='spotify'&&bonus));const monthly=Math.floor(paid.length/2)*5+(paid.length%2)*3;const annual=list.some(p=>p.id==='canva')?4:0;const chatgpt=list.some(p=>p.id==='chatgpt')?5:0;const gemini=list.some(p=>p.id==='gemini')?3:0;return {list,bonus,monthly,annual,chatgpt,gemini,total:monthly+annual+chatgpt+gemini,savings:paid.length*3-monthly}}
 window.OrbitaPricing={calculate};
-function orderMessage(ids){const c=calculate(ids);return `Hola Órbita, quiero solicitar: ${c.list.map(p=>p.name).join(' + ')}.\n${c.monthly?`Plan mensual: ${money(c.monthly)} USD/mes.\n`:''}${c.annual?'Canva Pro: $4.00 USD/año.\n':''}${c.chatgpt?'ChatGPT Plus: $5.00 USD / 4 meses.\n':''}${c.gemini?'Gemini AI Pro (5 TB + IA 3.8): $3.00 USD (varios meses - activación por link directo).\n':''}${c.bonus?'Incluye Spotify de regalo por 1 mes (promoción por confirmar).\n':''}Total inicial: ${money(c.total)} USD.\nMétodo de pago: ${window.OrbitaPayments?.label() || 'por confirmar (Nequi, Bancolombia, Pichincha, PayPal o Binance)'}.\nQuisiera confirmar disponibilidad y recibir los datos de pago.`}
+function orderMessage(ids, selectedPaymentMethod){
+  const c=calculate(ids);
+  const pay = selectedPaymentMethod || window.OrbitaPayments?.label() || 'Transferencia (Pichincha, Guayaquil, Deuna, PayPal o Binance)';
+  return `Hola Órbita, quiero adquirir: ${c.list.map(p=>p.name).join(' + ')}.\n${c.monthly?`Plan mensual: ${money(c.monthly)} USD/mes.\n`:''}${c.annual?'Canva Pro: $4.00 USD/año.\n':''}${c.chatgpt?'ChatGPT Plus: $5.00 USD / 4 meses.\n':''}${c.gemini?'Gemini AI Pro (5 TB + IA 3.8): $3.00 USD (varios meses - activación por link directo).\n':''}${c.bonus?'Incluye Spotify de regalo por 1 mes (promoción por confirmar).\n':''}Total inicial: ${money(c.total)} USD.\nForma de pago seleccionada: ${pay}.\n¿Tienen disponibilidad inmediata para proceder?`;
+}
 function navigateCombo(ids){storage.set('orbita-selection',JSON.stringify(ids));location.href='combos.html?apps='+encodeURIComponent(ids.join(','))}
 function showDialog(dialog){if(!dialog.open)dialog.showModal()}
 $$('[data-close]').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
@@ -21,41 +25,48 @@ function details(id,story=false){
   const p=byId(id);
   if(!p)return;
   const e=editorial.find(x=>x.id===id);
+  let activePay = 'Transferencia Ecuador (Pichincha · Guayaquil · Deuna)';
+
+  function renderWaLink() {
+    const waLink = $('#detail-wa-btn');
+    if (waLink) {
+      waLink.href = wa(orderMessage([id], activePay));
+    }
+  }
+
   $('#detail-body').innerHTML=`
     <img class="detail-logo" src="${p.icon}" alt="${p.name}">
     <h2 id="detail-title">${story?e.title:p.name}</h2>
-    ${story?`<img class="detail-cover" src="assets/${e.image}" alt="" onerror="this.hidden=true"><p class="muted">${e.desc}</p><a class="text-link" href="${e.url}" target="_blank" rel="noopener">Explorar en la fuente oficial ↗</a>`:`<p class="muted">${p.tagline}</p><ul class="detail-features">${p.features.map(f=>'<li>'+f+'</li>').join('')}</ul><p class="fine-print">Compatible con: ${p.devices.join(', ')}. Confirma características y disponibilidad del plan por WhatsApp.</p>`}
+    ${story?`<img class="detail-cover" src="assets/${e.image}" alt="" onerror="this.hidden=true"><p class="muted">${e.desc}</p><a class="text-link" href="${e.url}" target="_blank" rel="noopener">Explorar en la fuente oficial ↗</a>`:`<p class="muted">${p.tagline}</p><ul class="detail-features">${p.features.map(f=>'<li>'+f+'</li>').join('')}</ul><p class="fine-print">Compatible con: ${p.devices.join(', ')}. Confirma disponibilidad al instante por WhatsApp.</p>`}
     <div class="detail-payments-box">
       <div class="payments-box-header">
-        <span class="payments-box-title">Plataformas y Métodos de Pago Aceptados</span>
+        <span class="payments-box-title">Selecciona tu Forma de Pago</span>
         <span class="payments-box-badge">0% comisión</span>
       </div>
-      <div class="payments-chips">
-        <span class="pay-chip"><span class="chip-dot" style="background:#00d2ff"></span> Bancolombia · Nequi · Daviplata</span>
-        <span class="pay-chip"><span class="chip-dot" style="background:#ffd700"></span> Pichincha · Guayaquil · Deuna</span>
-        <span class="pay-chip"><span class="chip-dot" style="background:#f59e0b"></span> Binance Pay (USDT)</span>
-        <span class="pay-chip"><span class="chip-dot" style="background:#38bdf8"></span> PayPal · Tarjetas · PSE</span>
+      <div class="payments-chips" id="detail-pay-chips">
+        <button type="button" class="pay-chip is-selected" data-pay="Transferencia Ecuador (Pichincha · Guayaquil · Deuna)"><span class="chip-dot" style="background:#ffd700"></span> Pichincha · Guayaquil · Deuna</button>
+        <button type="button" class="pay-chip" data-pay="Binance Pay (USDT Cripto)"><span class="chip-dot" style="background:#f59e0b"></span> Binance Pay (USDT)</button>
+        <button type="button" class="pay-chip" data-pay="PayPal / Tarjetas Internacionales"><span class="chip-dot" style="background:#38bdf8"></span> PayPal · Tarjetas</button>
       </div>
-      <button type="button" class="btn-open-payment-methods" id="btn-show-payment-details">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ui-icon"><rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-        Ver datos bancarios y formas de pago ↗
-      </button>
     </div>
     <div class="detail-price">$${p.price}<small> USD / ${p.period}</small></div>
     <div class="detail-actions">
-      <a class="button" href="${wa(orderMessage([id]))}" target="_blank" rel="noopener">Pedir por WhatsApp ↗</a>
+      <a class="button" id="detail-wa-btn" href="${wa(orderMessage([id], activePay))}" target="_blank" rel="noopener">Pedir por WhatsApp ↗</a>
       <button class="button ghost" id="add-to-combo">Añadir a mi combo</button>
     </div>
   `;
   $('#add-to-combo').addEventListener('click',()=>navigateCombo([...new Set([...selected,id])]));
-  const payBtn=$('#btn-show-payment-details');
-  if(payBtn){
-    payBtn.addEventListener('click',()=>{
-      if(typeof window.openPaymentModal==='function'){
-        window.openPaymentModal(p.id, p.name);
-      }
+  
+  const payChips = $$('#detail-pay-chips .pay-chip');
+  payChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      payChips.forEach(c => c.classList.remove('is-selected'));
+      chip.classList.add('is-selected');
+      activePay = chip.dataset.pay;
+      renderWaLink();
     });
-  }
+  });
+
   showDialog($('#details'));
 }
 $$('[data-detail]').forEach(b=>b.addEventListener('click',()=>details(b.dataset.detail)));

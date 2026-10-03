@@ -727,20 +727,20 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
   display: none;
 }
 
-/* Tarjeta Widescreen Cinema de Cristal Líquido */
+/* Tarjeta Cinema Compacta de Cristal Líquido (sección de foto reducida para entrar en línea sin espacio vacío) */
 .film-card-cinema {
   position: relative;
-  flex: 0 0 clamp(420px, 46vw, 560px);
-  height: 440px;
-  border-radius: 28px;
+  flex: 0 0 clamp(240px, 20vw, 300px);
+  height: 330px;
+  border-radius: 22px;
   overflow: hidden;
   scroll-snap-align: start;
   background: #0b1924;
-  box-shadow: 0 20px 50px rgba(8, 28, 42, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.75) inset;
+  box-shadow: 0 16px 40px rgba(8, 28, 42, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.75) inset;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px;
+  padding: 16px;
   color: #fff;
   transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.35s ease;
 }
@@ -849,19 +849,19 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
 }
 
 .film-card-title {
-  font-size: clamp(26px, 2.6vw, 34px);
+  font-size: clamp(17px, 1.4vw, 21px);
   font-weight: 800;
   color: #ffffff;
-  margin: 0 0 6px;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  margin: 0 0 4px;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .film-card-tagline {
-  font-size: 13.5px;
+  font-size: 11.5px;
   color: #d4e5ec;
-  line-height: 1.4;
+  line-height: 1.35;
   margin: 0;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   display: -webkit-box;
@@ -870,80 +870,101 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
   overflow: hidden;
 }
 
-/* Fila de botones específicos estéticamente bonitos */
+/* Fila de botones redondos Liquid Glass separados con estética premium */
 .film-card-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 14px; /* Botones bien separados según lo pedido */
+  margin-top: 10px;
 }
 
+.film-btn-round {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.24s cubic-bezier(0.2, 0.9, 0.3, 1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28), inset 0 1px 1.5px rgba(255, 255, 255, 0.65);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.film-btn-round .ui-icon,
+.film-btn-round .ui-icon-play {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.film-btn-round:hover {
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.film-btn-round:active {
+  transform: scale(0.93);
+}
+
+.film-btn-round.film-btn-trailer {
+  background: linear-gradient(135deg, rgba(8, 127, 112, 0.92), rgba(5, 95, 84, 0.96));
+  color: #ffffff !important;
+  border-color: rgba(167, 234, 216, 0.7);
+  box-shadow: 0 6px 18px rgba(8, 127, 112, 0.42), inset 0 1px 1.5px rgba(255, 255, 255, 0.7);
+}
+
+.film-btn-round.film-btn-trailer:hover {
+  background: linear-gradient(135deg, #09a392, #087f70);
+  box-shadow: 0 12px 28px rgba(8, 127, 112, 0.65);
+}
+
+.film-btn-round.film-btn-payment {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.film-btn-round.film-btn-payment:hover {
+  background: rgba(255, 255, 255, 0.32);
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.film-btn-round.film-btn-more {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #d6eaf0 !important;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.film-btn-round.film-btn-more:hover {
+  background: rgba(255, 255, 255, 0.28);
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Compatibilidad con clase antigua film-btn */
 .film-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
-  padding: 10px 18px;
+  padding: 8px 14px;
   border-radius: 100px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-
-.film-btn .ui-icon,
-.film-btn .ui-icon-play {
-  width: 15px;
-  height: 15px;
-  flex-shrink: 0;
-}
-
-.film-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-}
-
-.film-btn:active {
-  transform: scale(0.96);
-}
-
-.film-btn-trailer {
-  background: linear-gradient(135deg, #087f70, #06675b);
-  color: #ffffff !important;
-  border-color: rgba(167, 234, 216, 0.6);
-}
-
-.film-btn-trailer:hover {
-  background: linear-gradient(135deg, #099484, #087f70);
-  box-shadow: 0 10px 26px rgba(8, 127, 112, 0.45);
-}
-
-.film-btn-payment {
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  color: #ffffff !important;
-}
-
-.film-btn-payment:hover {
-  background: rgba(255, 255, 255, 0.32);
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-.film-btn-more {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  color: #d6eaf0 !important;
-  padding: 10px 14px;
-}
-
-.film-btn-more:hover {
-  background: rgba(255, 255, 255, 0.24);
-  color: #fff !important;
 }
 
 /* Controles de navegación y estado del carrusel */
@@ -1044,7 +1065,7 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
   .orbital-intro{gap:24px;grid-template-columns:1fr 1fr}
   .pearl-world .pearl-copy h1{font-size:54px}
   .cosmic-cards-viewport{max-width:100%;height:450px}
-  .film-card-cinema{flex-basis:68vw;height:410px}
+  .film-card-cinema{flex:0 0 clamp(230px, 30vw, 280px);height:320px;padding:15px;border-radius:20px}
   .shelf-track{grid-auto-columns:calc((100% - 60px)/4)}
   .platform-dock{justify-content:flex-start;gap:18px}
   .pearl-world .pearl-actions{gap:10px;flex-wrap:wrap}
@@ -1072,10 +1093,11 @@ body.pearl-world{--ink:#202b35;--secondary:#536371;--mint:#087f70;--glass:linear
   .pearl-world .pearl-section{padding-block:44px}
   .pearl-section-head{flex-direction:column;align-items:flex-start;gap:10px}
   .pearl-section-head .pearl-link{margin-top:4px}
-  .film-card-cinema{flex:0 0 86vw;height:390px;padding:18px 16px;border-radius:24px}
-  .film-card-title{font-size:24px}
-  .film-card-tagline{font-size:12.5px;-webkit-line-clamp:1}
-  .film-btn{padding:9px 13px;font-size:11.5px}
+  .film-card-cinema{flex:0 0 clamp(200px, 68vw, 250px);height:300px;padding:14px;border-radius:18px}
+  .film-card-title{font-size:17px}
+  .film-card-tagline{font-size:11px;-webkit-line-clamp:2}
+  .film-btn-round{width:38px;height:38px}
+  .film-card-actions{gap:12px}
   .film-controls{gap:10px;flex-wrap:wrap}
   .pearl-filmstrip-dots{gap:2px}
   .pearl-filmstrip-dots button{width:20px}

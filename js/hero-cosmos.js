@@ -488,9 +488,6 @@
       container.classList.add('cinematic-scene');
       container.innerHTML='<svg class="hero-orbit-frame" aria-hidden="true" viewBox="0 0 700 600"><ellipse cx="350" cy="290" rx="330" ry="210" transform="rotate(-25 350 290)"/><ellipse cx="350" cy="290" rx="305" ry="185" transform="rotate(-25 350 290)"/><circle cx="634" cy="142" r="7"/></svg><div class="cinematic-stage"></div><div class="cinematic-selector" role="group" aria-label="Elegir historia destacada"></div><p class="cinematic-status sr-only" role="status"></p>';
       const stage=container.querySelector('.cinematic-stage'),selector=container.querySelector('.cinematic-selector');
-      if(container.closest('.hero-dimensional')){
-        ['severance-scene.jpg','pluto-scene.jpg'].forEach((file,index)=>{const layer=document.createElement('div');layer.className='hero-depth-layer '+(index?'hero-depth-middle':'hero-depth-back');layer.setAttribute('aria-hidden','true');const image=document.createElement('img');image.src='assets/backdrops/'+file;image.alt='';layer.append(image);stage.before(layer);});
-      }
       const reduce=matchMedia('(prefers-reduced-motion:reduce)'),desktop=matchMedia('(min-width:701px)');
       let current=0;
       let timer=null,visible=true,hovered=false,playing=desktop.matches;
@@ -504,8 +501,10 @@
           if(index===current)return;
           panels[current].getAnimations().forEach(a=>a.cancel());panels[current].hidden=true;panel.hidden=false;current=index;
           container.style.setProperty("--hero-glow",story.accentColor);
+          position.textContent=String(index+1).padStart(2,"0")+" / "+stories.length;
           container.querySelectorAll(".hero-depth-layer img").forEach((img,i)=>{img.src=stories[(index+i+1)%stories.length].backdrop;});
           selector.querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
+          selector.scrollTo({left:Math.max(0,selector.children[index].offsetLeft-selector.clientWidth/2+selector.children[index].clientWidth/2),behavior:'instant'});
           if(event.detail!==-1)container.querySelector('.cinematic-status').textContent=story.title+' en '+story.platformName;
           window.OrbitaColors?.set(story.platform);
           if(event.detail&&desktop.matches&&!reduce.matches&&!document.documentElement.classList.contains('motion-paused')){panel.animate([{opacity:.35},{opacity:1}],{duration:280,easing:'cubic-bezier(.16,1,.3,1)'});panel.querySelector('.cinematic-image').animate([{transform:'scale(1.035)'},{transform:'scale(1)'}],{duration:600,easing:'cubic-bezier(.16,1,.3,1)'});}
@@ -513,6 +512,10 @@
       });
       const playback=document.createElement('div');playback.className='hero-playback';
       const toggle=document.createElement('button');toggle.type='button';playback.append(toggle);container.append(playback);
+      const steps=document.createElement('div');steps.className='hero-step-controls';
+      const position=document.createElement('span');position.className='hero-position';position.textContent='01 / '+stories.length;position.setAttribute('aria-hidden','true');
+      const makeStep=(label,direction)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',label);b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="'+(direction<0?'m14 6-6 6 6 6':'m10 6 6 6-6 6')+'"/></svg>';b.addEventListener('click',()=>{selector.children[(current+direction+stories.length)%stories.length].click();});return b;};
+      steps.append(makeStep('Historia anterior',-1),position,makeStep('Siguiente historia',1));playback.append(steps);
       const blocked=()=>reduce.matches||document.documentElement.classList.contains('motion-paused');
       const schedule=()=>{clearTimeout(timer);toggle.disabled=blocked();toggle.textContent=playing&&!blocked()?'Pausar historias':'Reproducir historias';toggle.setAttribute('aria-pressed',String(playing&&!blocked()));if(!playing||blocked()||!visible||hovered||document.hidden||container.contains(document.activeElement))return;timer=setTimeout(()=>{if(!document.querySelector('dialog[open]')&&!document.documentElement.classList.contains('intro-pending'))selector.children[(current+1)%stories.length].dispatchEvent(new MouseEvent('click',{detail:-1}));schedule();},6500);};
       toggle.addEventListener('click',()=>{playing=!playing;schedule();});

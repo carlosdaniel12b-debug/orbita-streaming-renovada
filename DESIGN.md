@@ -1,5 +1,7 @@
 # Órbita · Cristal orbital
 
+Actualización del 4 de octubre: se conserva perla y menta y se añaden violeta #66518d y coral #a35339. Outfit 600 local aporta titulares redondeados. La portada usa once historias en capas fotográficas, anillos elípticos y perspectiva que responde al cursor en escritorio; el móvil inicia el carrusel pausado, sin inclinación interactiva. Las recomendaciones sustituyen al carrusel editorial repetido: tres títulos, selección por formato y botón para variar las opciones sin servicios externos. Una franja de ciencia ficción conduce a Descubre, que añade una selección compacta de incorporaciones. Los textos permanecen visibles sin depender del desplazamiento.
+
 Identidad solicitada por el usuario: inspiración Apple Liquid Glass, perla, menta y azul con temática espacial. Se conserva la marca y su planeta negro con órbita elíptica, incluida la introducción.
 
 Portada despejada: composición de texto y fotografía, ficha de cristal flotante, acceso a plataformas y un único carrusel editorial. Las bibliotecas completas viven únicamente en Descubre, con filtros de películas, series, anime y novelas. No duplicar estas secciones en Inicio.

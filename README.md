@@ -1,5 +1,7 @@
 # Órbita Streaming
 
+Actualización 2026-10-04: catálogo de 99 títulos, 12 incorporaciones con imágenes locales optimizadas, recomendaciones variables por formato en Inicio, colección de ciencia ficción y nuevas incorporaciones en Descubre. Hero con 11 historias, tipografía Outfit local y paleta perla/menta/violeta/coral. El avance automático inicia desactivado en teléfono y la perspectiva interactiva solo funciona con ratón y movimiento habilitado.
+
 Sitio estático para explorar plataformas y preparar pedidos por WhatsApp. Abre index.html o ejecuta `node server.cjs` y visita http://127.0.0.1:4174.
 
 ## Edición orbital

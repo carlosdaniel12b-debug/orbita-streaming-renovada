@@ -65,7 +65,7 @@
       platformName: 'Max',
       category: 'Película · Ciencia ficción épica',
       quality: '4K Ultra HD · Dolby Vision',
-      backdrop: 'assets/backdrops/dune.jpg',
+      backdrop: 'assets/posters/m_dune2.jpg',
       poster: 'assets/posters/m_dune2.jpg',
       trailerId: 'm_dune2',
       description: 'Paul Atreides se une a Chani y a los Fremen mientras busca venganza contra los conspiradores que destruyeron a su familia.',
@@ -480,7 +480,11 @@
   // =========================================================================
   class CinematicHero {
     constructor(container) {
-      const stories=COSMIC_STORIES.filter(s=>['andor','severance','pluto','dune2'].includes(s.id)).concat([{"id":"m_oppenheimer","title":"Oppenheimer","subtitle":"La historia del físico J. Robert Oppenheimer y su rol decisivo en el desarrollo de la bomba atómica en el Proy","platform":"hbomax","platformName":"Max","category":"Película","backdrop":"assets/posters/m_oppenheimer.jpg","poster":"assets/posters/m_oppenheimer.jpg","trailerId":"m_oppenheimer","accentColor":"#cf9572"}],[{"id":"m_gladiator2","title":"Gladiador II","subtitle":"Años después de presenciar la muerte del venerado héroe Máximo, Lucio debe entrar en el Coliseo tras ser conqu","platform":"paramount","platformName":"Paramount+","category":"Película","backdrop":"assets/posters/m_gladiator2.jpg","poster":"assets/posters/m_gladiator2.jpg","trailerId":"m_gladiator2","accentColor":"#cf9572"},{"id":"m_insideout2","title":"Intensamente 2","subtitle":"El cuartel general de la mente de Riley sufre una repentina demolición para hacer sitio a nuevas emociones ine","platform":"disneyplus","platformName":"Disney+","category":"Película","backdrop":"assets/posters/m_insideout2.jpg","poster":"assets/posters/m_insideout2.jpg","trailerId":"m_insideout2","accentColor":"#cf9572"},{"id":"m_interstellar","title":"Interestelar","subtitle":"Un equipo de exploradores viaja a través de un agujero de gusano en el espacio en un intento desesperado por g","platform":"hbomax","platformName":"Max","category":"Película","backdrop":"assets/posters/m_interstellar.jpg","poster":"assets/posters/m_interstellar.jpg","trailerId":"m_interstellar","accentColor":"#9b8bd1"}]);
+      const stories=COSMIC_STORIES.filter(s=>['andor','severance','pluto','dune2','fallout','arcane','1923','novela'].includes(s.id)).concat([
+        {id:'m_oppenheimer',title:'Oppenheimer',subtitle:'El hombre detrás de una decisión que cambió el mundo.',platform:'hbomax',platformName:'Max',category:'Película',backdrop:'assets/posters/m_oppenheimer.jpg',poster:'assets/posters/m_oppenheimer.jpg',trailerId:'m_oppenheimer',accentColor:'#bf8b71'},
+        {id:'m_insideout2',title:'Intensamente 2',subtitle:'Crecer es hacer espacio para nuevas emociones.',platform:'disneyplus',platformName:'Disney+',category:'Película',backdrop:'assets/posters/m_insideout2.jpg',poster:'assets/posters/m_insideout2.jpg',trailerId:'m_insideout2',accentColor:'#ab86bd'},
+        {id:'m_interstellar',title:'Interestelar',subtitle:'Más allá del tiempo. Más cerca de lo que nos une.',platform:'hbomax',platformName:'Max',category:'Película',backdrop:'assets/posters/m_interstellar.jpg',poster:'assets/posters/m_interstellar.jpg',trailerId:'m_interstellar',accentColor:'#8c91b8'}
+      ]);
       container.classList.add('cinematic-scene');
       container.innerHTML='<svg class="hero-orbit-frame" aria-hidden="true" viewBox="0 0 700 600"><ellipse cx="350" cy="290" rx="330" ry="210" transform="rotate(-25 350 290)"/><ellipse cx="350" cy="290" rx="305" ry="185" transform="rotate(-25 350 290)"/><circle cx="634" cy="142" r="7"/></svg><div class="cinematic-stage"></div><div class="cinematic-selector" role="group" aria-label="Elegir historia destacada"></div><p class="cinematic-status sr-only" role="status"></p>';
       const stage=container.querySelector('.cinematic-stage'),selector=container.querySelector('.cinematic-selector');
@@ -489,13 +493,13 @@
       }
       const reduce=matchMedia('(prefers-reduced-motion:reduce)'),desktop=matchMedia('(min-width:701px)');
       let current=0;
-      let timer=null,visible=true,hovered=false,playing=true;
+      let timer=null,visible=true,hovered=false,playing=desktop.matches;
       const panels=stories.map((story,index)=>{
         const panel=document.createElement('article');panel.className='cinematic-panel';panel.hidden=index!==0;
         panel.innerHTML='<img class="cinematic-image" width="1777" height="1000" alt="'+story.title+'" src="'+story.backdrop+'" '+(index===0?'fetchpriority="high"':'loading="lazy"')+'/>'+
           '<div class="cinematic-caption"><span>'+story.platformName+' · '+story.category.split(' · ')[0]+'</span><h2>'+story.title+'</h2><p>'+story.subtitle+'</p><div class="cinematic-actions"><button type="button" data-trailer="'+story.trailerId+'"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7Z"/></svg>Ver tráiler</button><a href="descubre.html?q='+encodeURIComponent(story.title)+'">Explorar historia <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>';
         stage.append(panel);
-        const button=document.createElement('button');button.type='button';button.className='cinematic-choice';button.setAttribute('aria-pressed',String(index===0));button.innerHTML='<img src="'+story.poster+'" width="40" height="54" alt=""/><span><strong>'+story.title+'</strong><small>'+story.platformName+'</small></span>';
+        const button=document.createElement('button');button.type='button';button.className='cinematic-choice';button.setAttribute('aria-label',story.title+' · '+story.platformName);button.setAttribute('aria-pressed',String(index===0));button.innerHTML='<img src="'+story.poster+'" width="40" height="54" alt="" loading="lazy"/><span><strong>'+story.title+'</strong><small>'+story.platformName+'</small></span>';
         button.addEventListener('click',event=>{
           if(index===current)return;
           panels[current].getAnimations().forEach(a=>a.cancel());panels[current].hidden=true;panel.hidden=false;current=index;

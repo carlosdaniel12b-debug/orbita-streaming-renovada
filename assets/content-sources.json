@@ -1,5 +1,5 @@
 {
-  "checked": "2026-10-03",
+  "checked": "2026-10-04",
   "note": "Material promocional de sus respectivos titulares. TVmaze aporta metadatos e imágenes; no acredita disponibilidad regional ni derechos de redistribución.",
   "images": [
     {
@@ -132,6 +132,54 @@
       "file": "assets/posters/m_the-gorge.jpg",
       "source": "https://www.apple.com/tv-pr/shows-and-films/t/the-gorge/images/show-home-graphic-header/key-art-02/4x1/Apple_TV_The_Gorge_key_art_graphic_header_4_1_show_home.jpg.og.jpg?1734042791678",
       "page": "https://www.apple.com/tv-pr/originals/the-gorge/"
+    },
+    {
+      "file": "assets/posters/s41414.jpg",
+      "source": "https://static.tvmaze.com/uploads/images/original_untouched/616/1541416.jpg"
+    },
+    {
+      "file": "assets/posters/s58323.jpg",
+      "source": "https://static.tvmaze.com/uploads/images/original_untouched/610/1527402.jpg"
+    },
+    {
+      "file": "assets/posters/s61315.jpg",
+      "source": "https://static.tvmaze.com/uploads/images/original_untouched/633/1584721.jpg"
+    },
+    {
+      "file": "assets/posters/s60090.jpg",
+      "source": "https://static.tvmaze.com/uploads/images/original_untouched/612/1530034.jpg"
+    },
+    {
+      "file": "assets/posters/s73023.jpg",
+      "source": "https://static.tvmaze.com/uploads/images/original_untouched/537/1344868.jpg"
+    },
+    {
+      "file": "assets/posters/s24562.jpg",
+      "source": "https://static.tvmaze.com/uploads/images/original_untouched/93/234502.jpg"
+    },
+    {
+      "file": "assets/posters/s48830.jpg",
+      "source": "https://static.tvmaze.com/uploads/images/original_untouched/586/1466415.jpg"
+    },
+    {
+      "file": "assets/posters/s2790.jpg",
+      "source": "https://static.tvmaze.com/uploads/images/original_untouched/395/989291.jpg"
+    },
+    {
+      "file": "assets/posters/m_nimona.jpg",
+      "source": "https://occ-0-4896-3933.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABcSc06jNrYgFjdvdmu3wdyQsfhTxAZq7IcdB56pfCvUxZq048Ig3P5RuFqhmOCJTbuHAMAReFRiBWZ3E6yVATUao6njzlai-uiwz.jpg?r=8fa"
+    },
+    {
+      "file": "assets/posters/m_seabeast.jpg",
+      "source": "https://occ-0-4896-3933.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABUIDx6ypW_LZX6T-n8RIoiJVmGtWg725fH6RtorOJ0n7F2DIlVAyfJNIvxOxnU_JU6y96yz0p5ej1t7ii62BRvdjDB8RYHsIvfpd.jpg?r=e4c"
+    },
+    {
+      "file": "assets/posters/m_luck.jpg",
+      "source": "https://www.apple.com/tv-pr/shows-and-films/l/luck/images/show-home-graphic-header/key-art-02/4x1/Apple_TV_Luck_key_art_graphic_header_4_1_show_home.jpg.og.jpg?1668040957534"
+    },
+    {
+      "file": "assets/posters/m_wolfwalkers.jpg",
+      "source": "https://www.apple.com/tv-pr/shows-and-films/w/wolfwalkers/images/show-home-graphic-header/4x1/Apple_TV_Wolfwalkers_key_art_graphic_header_4_1_show_home.jpg.og.jpg?1669670474382"
     }
   ]
 }

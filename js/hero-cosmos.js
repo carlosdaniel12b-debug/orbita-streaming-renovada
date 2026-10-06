@@ -493,11 +493,27 @@
       let timer=null,visible=true,hovered=false,playing=desktop.matches;
       const panels=stories.map((story,index)=>{
         const panel=document.createElement('article');panel.className='cinematic-panel';panel.hidden=index!==0;
-        panel.innerHTML='<img class="cinematic-image" width="1777" height="1000" alt="'+story.title+'" src="'+story.backdrop+'" '+(index===0?'fetchpriority="high"':'loading="lazy"')+'/>'+
-          '<div class="cinematic-caption"><span>'+story.platformName+' · '+story.category.split(' · ')[0]+'</span><h2>'+story.title+'</h2><p>'+story.subtitle+'</p><div class="cinematic-actions"><button type="button" data-trailer="'+story.trailerId+'"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7Z"/></svg>Ver tráiler</button><a href="descubre.html?q='+encodeURIComponent(story.title)+'">Explorar historia <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div></div>';
+        panel.innerHTML=
+          '<img class="cinematic-image" width="1777" height="1000" alt="'+story.title+'" src="'+story.backdrop+'" '+(index===0?'fetchpriority="high"':'loading="lazy"')+'/>' +
+          '<div class="cinematic-accent-glow" style="background:radial-gradient(ellipse at 20% 80%,'+story.accentColor+'26,transparent 55%),radial-gradient(ellipse at 80% 20%,'+story.accentColor+'12,transparent 50%)"></div>' +
+          '<div class="cinematic-caption">' +
+            '<div class="cinematic-caption-meta">' +
+              '<span class="cinematic-platform-badge"><img src="assets/icons/'+story.platform+'.svg" alt="'+story.platformName+'" width="52" height="20" onerror="this.style.display=\'none\'"/></span>' +
+              '<span class="cinematic-type-chip">'+story.category.split(' · ')[0]+'</span>' +
+              (story.quality?'<span class="cinematic-quality-chip">'+story.quality.split(' · ')[0]+'</span>':'')+
+            '</div>' +
+            '<h2>'+story.title+'</h2>' +
+            '<p>'+story.subtitle+'</p>' +
+            '<div class="cinematic-actions">' +
+              '<button type="button" data-trailer="'+story.trailerId+'" class="cinematic-btn-play"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7Z"/></svg>Ver tráiler</button>' +
+              '<a href="descubre.html?q='+encodeURIComponent(story.title)+'" class="cinematic-btn-explore">Explorar historia <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>' +
+            '</div>' +
+          '</div>';
         stage.append(panel);
-        const button=document.createElement('button');button.type='button';button.className='cinematic-choice';button.setAttribute('aria-label',story.title+' · '+story.platformName);button.setAttribute('aria-pressed',String(index===0));button.innerHTML='<img src="'+story.poster+'" width="40" height="54" alt="" loading="lazy"/><span><strong>'+story.title+'</strong><small>'+story.platformName+'</small></span>';
+
+        const button=document.createElement('button');button.type='button';button.className='cinematic-choice';button.setAttribute('aria-label',story.title+' · '+story.platformName);button.setAttribute('aria-pressed',String(index===0));button.innerHTML='<img src="'+story.poster+'" width="40" height="54" alt="" loading="lazy"/><div class="cinematic-choice-progress"></div><span><strong>'+story.title+'</strong><small>'+story.platformName+'</small></span>';
         button.addEventListener('click',event=>{
+
           if(index===current)return;
           panels[current].getAnimations().forEach(a=>a.cancel());panels[current].hidden=true;panel.hidden=false;current=index;
           container.style.setProperty("--hero-glow",story.accentColor);

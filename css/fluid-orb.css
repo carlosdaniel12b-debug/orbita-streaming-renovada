@@ -1,0 +1,306 @@
+/* ============================================================
+   ÓRBITA STREAMING — Fluid Orb + Hero Redesign
+   Powered by rare-ui concept (rareui.com)
+   ============================================================ */
+
+/* ── Canvas base ─────────────────────────────────────────────────────────── */
+canvas.fluid-orb {
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── Hero ambient orb (desktop decorative background) ────────────────────── */
+.hero-ambient-orb {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 520px !important;
+  height: 520px !important;
+  opacity: .13;
+  filter: blur(2px) saturate(1.4);
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity .6s ease;
+}
+@media (max-width: 700px) {
+  .hero-ambient-orb { display: none; }
+}
+
+/* ── Mobile hero orb (featured between text and carousel) ────────────────── */
+.hero-mobile-orb-wrap {
+  display: none; /* hidden on desktop */
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  padding: 8px 0 4px;
+  /* orbit ring decoration */
+}
+.hero-mobile-orb-wrap canvas {
+  filter: drop-shadow(0 0 28px rgba(10,154,128,.35)) drop-shadow(0 0 56px rgba(102,81,141,.2));
+  animation: orb-breathe 4s ease-in-out infinite;
+}
+.hero-mobile-orb-ring {
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(10,154,128,.18);
+  animation: orb-ring-spin 14s linear infinite;
+  pointer-events: none;
+}
+.hero-mobile-orb-ring::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #0a9a80;
+  border-radius: 50%;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px #0a9a80;
+}
+@media (max-width: 700px) {
+  .hero-mobile-orb-wrap {
+    display: flex;
+    margin: 12px auto 16px;
+    width: 200px;
+    height: 200px;
+  }
+  .hero-mobile-orb-wrap canvas {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+/* ── Companion section orb (replaces CSS gradient circle) ────────────────── */
+.pearl-companion canvas.fluid-orb {
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  opacity: .55;
+  filter: saturate(1.3);
+  z-index: 0;
+}
+@media (max-width: 700px) {
+  .pearl-companion canvas.fluid-orb {
+    right: -120px;
+    top: -100px;
+    opacity: .35;
+  }
+}
+
+/* ── Orb keyframes ───────────────────────────────────────────────────────── */
+@keyframes orb-breathe {
+  0%,100%  { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+@keyframes orb-ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orb-float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-10px); }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   HERO REDESIGN — Mobile-first improvements
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Better mobile hero background */
+@media (max-width: 700px) {
+  .pearl-world .hero-dimensional {
+    background: linear-gradient(180deg,
+      #f0eef8 0%,
+      #e8e5f5 30%,
+      #edf0f8 65%,
+      #f5f5f7 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Subtle gradient orbs in background */
+  .pearl-world .hero-dimensional::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 45% at 80% 10%, rgba(10,154,128,.09), transparent),
+      radial-gradient(ellipse 50% 40% at 15% 70%, rgba(102,81,141,.08), transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .pearl-world .hero-dimensional .container {
+    position: relative;
+    z-index: 1;
+  }
+  /* h1 text improvement on mobile */
+  .pearl-world .hero-dimensional .pearl-copy h1 {
+    font-size: clamp(40px, 11.5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -.038em;
+  }
+  .pearl-world .hero-dimensional .pearl-copy h1 span {
+    background: linear-gradient(135deg, #66518d, #8b6fc0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Better CTA buttons on mobile */
+  .pearl-world .hero-dimensional .pearl-actions .button {
+    min-height: 50px;
+    padding: 14px 22px;
+    font-size: 14px;
+    box-shadow: 0 8px 24px rgba(10,154,128,.3), inset 0 1px 0 rgba(255,255,255,.3);
+  }
+}
+
+/* Desktop hero: add glow behind cinematic scene */
+@media (min-width: 701px) {
+  .pearl-world .hero-dimensional {
+    position: relative;
+    overflow: hidden;
+  }
+  .pearl-world .hero-dimensional .cinematic-stage {
+    box-shadow: 0 28px 60px rgba(45,49,66,.18), 0 0 0 1px rgba(255,255,255,.08);
+  }
+  /* h1 gradient on desktop */
+  .pearl-world .hero-dimensional .pearl-copy h1 span {
+    background: linear-gradient(135deg, #66518d 0%, #9370d8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────────────
+   IMPROVED ANIMATIONS
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Hero panel crossfade — smoother transition */
+.hero-dimensional .cinematic-panel {
+  transition: opacity 280ms cubic-bezier(.16,1,.3,1);
+}
+
+/* Cinematic choice tabs — better hover + active */
+@media (hover: hover) and (pointer: fine) {
+  .hero-dimensional .cinematic-choice:hover {
+    background: rgba(233,227,241,.5);
+    color: #322444;
+    border-bottom-color: rgba(118,96,146,.45);
+  }
+  .hero-dimensional .cinematic-choice:hover img {
+    opacity: .9;
+  }
+  .hero-step-controls button:hover {
+    background: #fff;
+    border-color: #b5a8c6;
+    transform: scale(1.06);
+  }
+  .hero-dimensional .cinematic-actions button:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  }
+  .hero-dimensional .cinematic-actions a:hover {
+    opacity: .8;
+    transform: translateX(2px);
+  }
+}
+.hero-step-controls button {
+  transition: transform 140ms cubic-bezier(.16,1,.3,1), background 140ms ease, border-color 140ms ease;
+}
+.hero-dimensional .cinematic-actions button,
+.hero-dimensional .cinematic-actions a {
+  transition: transform 160ms cubic-bezier(.16,1,.3,1), box-shadow 160ms ease, opacity 160ms ease, background 160ms ease;
+}
+
+/* Platform dock items — staggered reveal */
+@supports (animation-timeline: view()) {
+  .platform-dock a,
+  .platform-dock button {
+    animation: orb-dock-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+@keyframes orb-dock-in {
+  from { opacity: 0; transform: translateY(16px) scale(.96); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Service cards — better hover depth */
+@media (hover: hover) and (pointer: fine) {
+  .service-glass {
+    transition: transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s ease;
+  }
+  .service-glass:hover {
+    transform: translateY(-6px) scale(1.015);
+    box-shadow: 0 20px 48px rgba(0,0,0,.12);
+  }
+}
+
+/* Plan card — enhanced hover */
+@media (hover: hover) and (pointer: fine) {
+  .plan-glass {
+    transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease;
+  }
+  .plan-glass:hover {
+    transform: rotate(3deg) translateY(-4px);
+    box-shadow: inset 0 1px 0 white, 0 28px 50px rgba(81,81,108,.16);
+  }
+}
+
+/* Steps — better entrance */
+@supports (animation-timeline: view()) {
+  .pearl-steps li:nth-child(1) { animation-delay: 0ms; }
+  .pearl-steps li:nth-child(2) { animation-delay: 60ms; }
+  .pearl-steps li:nth-child(3) { animation-delay: 120ms; }
+}
+
+/* Orbit picks mood buttons */
+.orbit-moods button {
+  transition: background .18s ease, color .18s ease, transform .14s cubic-bezier(.16,1,.3,1);
+}
+.orbit-moods button:active { transform: scale(.96); }
+
+/* FAQ open/close animation */
+.pearl-faq-list details summary {
+  transition: color .2s ease;
+}
+.pearl-faq-list details[open] summary {
+  color: #322444;
+}
+
+/* ── Companion orb float ─────────────────────────────────────────────────── */
+.pearl-companion canvas.fluid-orb {
+  animation: orb-float 7s ease-in-out infinite;
+}
+
+/* ── Reduced-motion: disable all orb animations ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-mobile-orb-wrap canvas,
+  .hero-mobile-orb-ring,
+  .pearl-companion canvas.fluid-orb {
+    animation: none !important;
+  }
+}
+html.motion-paused .hero-mobile-orb-wrap canvas,
+html.motion-paused .hero-mobile-orb-ring,
+html.motion-paused .pearl-companion canvas.fluid-orb {
+  animation: none !important;
+}
+
+/* ── Touch tap highlight fix ─────────────────────────────────────────────── */
+html { -webkit-tap-highlight-color: transparent; }
+.pearl-world button, .pearl-world a { touch-action: manipulation; }
+
+/* ── Active press feedback for all interactive elements ──────────────────── */
+.pearl-world .cinematic-choice:active { transform: scale(.97); }
+.pearl-world .orbit-moods button:active { transform: scale(.95); }
+.pearl-world .floating-btn:active { transform: scale(.94) !important; }

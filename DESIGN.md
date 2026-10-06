@@ -1,46 +1,29 @@
-# Órbita Streaming · Edición Cinemática Dark (Behance Edition)
+# Órbita · Cristal orbital
 
-Actualizada el 5 de octubre de 2026. Armonización total de color entre la intro y la página, restauración del logotipo con planeta negro y órbita elíptica menta luminosa, y nuevo diseño editorial cinematográfico inspirado en las mejores interfaces de streaming y cine en Behance.
+Portada vigente tras la revisión del usuario: composición panorámica. Titular en dos líneas y acciones alineadas sobre una fotografía horizontal protagonista; selector editorial con subrayado activo, anterior/siguiente y posición. Se retiran las capas inclinadas. La profundidad se reduce a una inclinación máxima de un grado con ratón, con sombras suaves. En móvil la tarjeta queda recta, con avance voluntario. Esta composición sustituye las notas anteriores sobre la pila 3D.
 
-## 1. Dirección Visual & Paleta
-- **Canvas Principal**: Obsidian Profundo `#050813` con gradientes de atmósfera estelar y nebulosa sutil (Índigo `#6366f1` y Menta `#a7ead8`).
-- **Superficies Glassmórficas**: Frosted Glass oscuro `rgba(11, 19, 39, 0.75)` con desenfoque de 24px, bordes de luz tenue `rgba(167, 234, 216, 0.15)` y sombras volumétricas.
-- **Identidad de Marca**: Se restaura el planeta negro central (`#060a14`) con borde y órbita elíptica en menta luminoso (`#a7ead8`), tanto en cabecera como en la intro y pie de página.
-- **Tipografía**: Outfit en titulares e interacciones, y Manrope para textos de lectura. Legibilidad óptima con alto contraste blanco sobre negro.
+Actualización del 4 de octubre: se conserva perla y menta y se añaden violeta #66518d y coral #a35339. Outfit 600 local aporta titulares redondeados. La portada usa once historias en capas fotográficas, anillos elípticos y perspectiva que responde al cursor en escritorio; el móvil inicia el carrusel pausado, sin inclinación interactiva. Las recomendaciones sustituyen al carrusel editorial repetido: tres títulos, selección por formato y botón para variar las opciones sin servicios externos. Una franja de ciencia ficción conduce a Descubre, que añade una selección compacta de incorporaciones. Los textos permanecen visibles sin depender del desplazamiento.
 
-## 2. Intro Cinemática Armonizada
-- La intro comparte la misma paleta `#050813` y espacio cósmico que la portada.
-- Transición suave de 60fps sin cortes bruscos ni cambios de fondo (eliminado el contraste anterior de pantalla blanca/clara).
+Identidad solicitada por el usuario: inspiración Apple Liquid Glass, perla, menta y azul con temática espacial. Se conserva la marca y su planeta negro con órbita elíptica, incluida la introducción.
 
-## 3. Composición & Secciones
-1. **Hero Spotlight Panorámico**:
-   - Badge exclusivo con pulso neón: `✦ ESTRENO DESTACADO EN ÓRBITA`.
-   - Titular de impacto: `Universos Infinitos. En Tu Propia Órbita.`
-   - Badges de calidad: `4K Ultra HD`, `Dolby Atmos`, `Perfiles Privados`.
-   - Buscador rápido frosted glass con botón de búsqueda hacia `descubre.html`.
-   - Botones principales de acción: Explorar Plataformas ($3) y Armar Mi Combo (2x$5).
-   - Escenario cinemático interactivo (`hero-cosmos.js`) con reproductor de tráileres y selector de historias (Andor, Dune, Severance, Arcane).
-2. **Plataformas Destacadas (Catálogo Core)**:
-   - Tarjetas oscuras con los 10 servicios oficiales: Netflix, Disney+, Max, Prime Video, Apple TV+, Spotify, Canva, ChatGPT Plus, Gemini AI Pro.
-   - Botón directo de detalles y consulta por WhatsApp.
-3. **Colecciones y Universos Cinematográficos**:
-   - Tarjetas editoriales envolventes: Ciencia Ficción & Futuro, Anime & Animación de Culto, Misterio & Suspenso.
-4. **Combo Estelar 2 por $5**:
-   - Banner destacado con la promoción estrella (2 plataformas por $5 + 1 mes de Spotify de regalo) y botón hacia el configurador.
-5. **Orbit AI - Selector Interactivo por Mood**:
-   - "¿Qué te apetece ver hoy?" con estados de ánimo interactivos (Película, Serie, Anime, Novela, Sorpréndeme) y actualización instantánea de recomendaciones.
-   - Eliminadas listas redundantes y estantes duplicados de pósteres para mantener la portada ágil y limpia.
-6. **Dispositivos & Experiencia Multipantalla**:
-   - Matriz moderna de compatibilidad (Smart TV 4K, PC/Laptops, Móviles & Tablets, Consolas & TV Box) sin repetición innecesaria de imágenes.
-7. **Cómo Funciona (3 Pasos Claros)**:
-   - 01 Elige tus favoritas, 02 Confirma por WhatsApp y paga seguro, 03 Recibe y disfruta al instante.
-8. **Preguntas Frecuentes (FAQ)**:
-   - Acordeón interactivo estilizado en dark glass.
-9. **Pie de Página & Métodos de Pago**:
-   - Transferencias directas en Ecuador (Pichincha, Guayaquil, Deuna!), Binance Pay (UID 1176541421) y PayPal.
-   - Crédito oficial: Creada por Carlos Daniel.
+Portada despejada: composición de texto y fotografía, ficha de cristal flotante, acceso a plataformas y un único carrusel editorial. Las bibliotecas completas viven únicamente en Descubre, con filtros de películas, series, anime y novelas. No duplicar estas secciones en Inicio.
 
-## 4. Referencias Behance
-- *Cinema Website UI/UX Design*, Nazar Buchkovskyi (Behance)
-- *KINO — Streaming & Cinema Platform*, Julia Strechen (Behance)
-- *StreamWave Dark Editorial Experience*, Creative Agency Showcase (Behance)
+Manrope local; titulares hasta 80px, tracking mínimo -0.04em. Fondo #f4f6f9, tinta #202b35, secundario #536371, menta #087f70. Material translúcido sobre fotografías y navegación; tarjetas de lectura claras y paneles de detalle con paleta oscura independiente.
+
+Movimiento: entrada breve del símbolo oficial, giro de la órbita y salida con desenfoque. Carrusel manual con reproducción voluntaria, pausa al interactuar y respeto de movimiento reducido. Nada depende de terminar una animación para funcionar.
+
+Hero cinematográfico: fotografía única con pie legible sobre degradado oscuro, avance automático cada 6,5 segundos y selector de Andor, Severance y PLUTO. La reproducción se pausa al interactuar, salir de pantalla, ocultar la pestaña o reducir el movimiento. Cambiar de historia usa una transición de 240 ms en laptop; el teléfono cambia directamente. Se elimina el motor de pila 3D, las estrellas en canvas y la galería anterior. Servicios con superficies menta, lavanda y hielo; separaciones móviles de 36 px y ventanas con entrada breve de 200 ms en laptop.
+
+Compra móvil: selector de dos columnas, barra de resumen sobre la navegación y revisión en diálogo con acción de WhatsApp fija. El asesor y la ayuda no compiten con esa barra. Las superficies responden a cada plataforma con tintes muy claros; la tinta y los botones conservan su contraste. Las secciones adicionales explican usos, planes y confirmación; no duplican colecciones de títulos en Inicio.
+
+Disfruta en todo lugar: composición de televisor, computadora portátil, tablet y teléfono con imágenes existentes de Dune: Parte Dos, Severance, El amor invencible y PLUTO. Cada pantalla enlaza al título en Descubre. Se conserva la identidad visual actual; los marcos se construyen en CSS sin motor de animación ni descargas nuevas. El conjunto se adapta al ancho del teléfono.
+
+Refinamiento de jerarquía: hero panorámico bajo un encabezado de texto y acciones, sustituyendo la composición de tarjeta vertical. Verde para acciones, violeta azulado para titulares y selección, arena suave en el configurador. Catálogo flexible con cuatro tarjetas por fila y última fila completa, tamaño de lectura reducido y sin hueco de columna al final. La sección de dispositivos se limita a 840 px, elimina las acciones repetidas del hero y presenta una entrada breve al entrar en pantalla solo en laptop. En teléfono las imágenes y controles mantienen un cambio directo.
+
+Skills aplicadas: Frontend Design, Emil Design Engineering y Web Animation Design de Vercel (https://github.com/vercel-labs/open-agents/tree/main/.agents/skills/web-animation-design). La nueva skill se instala en Codex; la web recibe HTML, CSS y JavaScript, sin dependencias nuevas de animación.
+
+Hero vigente: composición dimensional con titular de hasta 92 px, fotografía principal y dos capas de historias detrás. La perspectiva y la inclinación responden al cursor solo en laptop con movimiento habilitado. En móvil se usa una perspectiva fija sin seguimiento táctil. `css/hero-3d.css` y `js/hero-3d.js` están limitados a la portada; las secciones y el catálogo conservan su diseño.
+
+Referencia: https://developer.apple.com/design/human-interface-guidelines/materials y https://developer.apple.com/videos/play/wwdc2025/219/ . Interpretación web del material, no una implementación nativa de Apple.
+
+Entrada de la portada: secuencia única de título, acciones e imagen; 300–340 ms en teléfono y 420–550 ms en escritorio. Solo opacidad y desplazamiento breve, sin bucles ni desenfoque animado. Desactivada con movimiento reducido o pausa. Navegación táctil horizontal sobre la fotografía, controles de 44 px y desplazamiento vertical disponible.

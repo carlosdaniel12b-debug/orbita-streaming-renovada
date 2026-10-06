@@ -1,13 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content" name="viewport"/>
-<meta content="#050813" name="theme-color"/>
-<meta content="#050813" media="(prefers-color-scheme: dark)" name="theme-color"/>
-<meta content="#050813" media="(prefers-color-scheme: light)" name="theme-color"/>
-<meta content="Explora 10 plataformas de entretenimiento y productividad en Órbita Streaming. Planes individuales desde $3 al mes, combos de 2 por $5 y ChatGPT Plus $5 por 4 meses. Elige y consulta por WhatsApp." name="description"/>
-<title>Órbita Streaming | Tu mundo en otra órbita</title>
+<meta content="#f5f5f7" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<meta content="#f5f5f7" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="Explora 10 plataformas de entretenimiento y productividad. Planes desde $3 al mes, combos de 2 por $5 y ChatGPT Plus $5 por 4 meses. Elige y consulta por WhatsApp." name="description"/>
+<title>Tu mundo en otra órbita | Órbita Streaming</title>
 <script>
     try {
       if (sessionStorage.getItem('orbita-intro-seen') === '1' || window.location.hash) {
@@ -16,670 +16,254 @@
         document.documentElement.classList.add('intro-pending');
       }
     } catch(e) {}
-</script>
+  </script>
 <link as="image" href="assets/backdrops/andor-scene.jpg" rel="preload"/>
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="css/styles.css" rel="stylesheet"/>
-<link href="css/experience.css" rel="stylesheet"/>
-<link href="css/portal-glass.css" rel="stylesheet"/>
-<link href="css/sections.css" rel="stylesheet"/>
-<link href="css/cinematic.css" rel="stylesheet"/>
-<link href="css/flows.css" rel="stylesheet"/>
-<link href="css/hero-3d.css?v=20261004-premiere-mobile" rel="stylesheet"/>
-<link href="css/binance.css?v=20261003-combo-payment" rel="stylesheet"/>
-<link href="css/orbit-editorial.css?v=20261004" rel="stylesheet"/>
-<link href="css/modern.css?v=20261005-behance" rel="stylesheet"/>
-
+<link href="css/experience.css" rel="stylesheet"/><link href="css/portal-glass.css" rel="stylesheet"/><link href="css/sections.css" rel="stylesheet"/>
 <script defer="" src="js/portal.js"></script>
 <script defer="" src="js/data.js?v=9bdd5bb"></script>
 <script defer="" src="js/app.js?v=20261003-combo-payment"></script>
 <script defer="" src="js/library.js?v=20261004"></script>
+
 <script defer="" src="js/platform-colors.js"></script>
 <script defer="" src="js/trailer-data.js"></script>
 <script defer="" src="js/experience.js"></script>
 <script defer="" src="js/recommendations.js"></script>
-<script defer="" src="js/orbit-local.js?v=20261003"></script>
-<script defer="" src="js/orbit-guide.js?v=local-20261003"></script>
-<script defer="" src="js/hero-cosmos.js?v=20261004-premiere-mobile"></script>
-<script defer="" src="js/hero-3d.js?v=20261004-premiere-mobile"></script>
-<script defer="" src="js/orbit-editorial.js?v=20261004"></script>
-<script defer="" src="js/modern.js?v=20261005-behance"></script>
+<script defer src="js/orbit-local.js?v=20261003"></script><script defer="" src="js/orbit-guide.js?v=local-20261003"></script>
+
+<link href="css/pearl.css" rel="stylesheet"/>
+<link href="css/orbital.css" rel="stylesheet"/>
+<link href="css/liquid.css" rel="stylesheet"/><link href="css/stability.css" rel="stylesheet"/><link href="css/cinematic.css" rel="stylesheet"/><link href="css/flows.css" rel="stylesheet"/><link href="css/devices.css" rel="stylesheet"/><link href="css/hero-3d.css?v=20261004-premiere-mobile" rel="stylesheet"/><script defer src="js/devices.js"></script>
+<meta name="theme-color" content="#e6f1f0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<script defer="" src="js/pearl.js"></script>
+<script defer="" src="js/liquid.js"></script>
+<script defer="" src="js/hero-cosmos.js?v=20261004-premiere-mobile"></script><script defer src="js/hero-3d.js?v=20261004-premiere-mobile"></script>
 <script defer="" src="js/security.js"></script>
-</head>
-<body class="orbita-dark-universe" data-page="index">
-
+<link rel="stylesheet" href="css/binance.css?v=20261003-combo-payment"/><script defer src="js/orbit-editorial.js?v=20261004"></script><link rel="stylesheet" href="css/orbit-editorial.css?v=20261004"/>
+<link href="css/fluid-orb.css" rel="stylesheet"/>
+<script defer src="js/fluid-orb.js"></script></head>
+<body class="pearl-world" data-page="index">
 <!-- ==================== INTRO PORTAL CINEMÁTICO 60FPS ==================== -->
-<div aria-label="Bienvenido a Órbita" aria-modal="true" class="intro cinematic-intro portal-active" id="intro" role="dialog">
-  <div aria-hidden="true" class="intro-aperture"><i></i><i></i><i></i></div>
-  <div class="intro-brand">
-    <svg aria-hidden="true" class="intro-brand-symbol" viewbox="0 0 70 60">
-      <circle cx="35" cy="30" r="16"></circle>
-      <g class="intro-brand-orbit">
-        <ellipse cx="35" cy="30" fill="none" rx="31" ry="11" stroke-width="2" transform="rotate(-32 35 30)"></ellipse>
-        <circle cx="59" cy="13" r="3"></circle>
-      </g>
-    </svg>
-    <div class="intro-brand-name">órbita<span>streaming</span></div>
-    <p>Dale espacio a otra historia.</p>
-  </div>
-  <button class="intro-skip button ghost" id="btn-skip-intro" type="button">
-    Entrar ahora 
-    <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
-      <path d="M5 12h14"></path>
-      <path d="m12 5 7 7-7 7"></path>
-    </svg>
-  </button>
+<div aria-label="Viaje de entrada en órbita galáctica" aria-modal="true" class="intro cinematic-intro portal-active" id="intro" role="dialog">
+<div class="intro-brand">
+<svg class="intro-brand-symbol" viewBox="0 0 70 60" aria-hidden="true"><circle cx="35" cy="30" r="16" fill="currentColor"/><g class="intro-brand-orbit"><ellipse cx="35" cy="30" rx="31" ry="11" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(-32 35 30)"/><circle cx="59" cy="13" r="3" fill="currentColor"/></g></svg>
+<div class="intro-brand-name">órbita<span>streaming</span></div>
+<p>Tu próximo universo empieza aquí.</p>
 </div>
-
+<button class="intro-skip button ghost" id="btn-skip-intro" type="button">Entrar ahora <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M5 12h14"></path>
+<path d="m12 5 7 7-7 7"></path>
+</svg></button>
+</div>
 <a class="skip" href="#main">Saltar al contenido</a>
-
-<!-- ==================== CABECERA PRINCIPAL ==================== -->
 <header class="header" id="main-header">
-  <div class="header-inner">
-    <a aria-label="Órbita Streaming, inicio" class="brand" href="index.html">
-      <svg aria-hidden="true" class="logo-symbol" viewbox="0 0 70 60">
-        <circle cx="35" cy="30" r="16"></circle>
-        <ellipse cx="35" cy="30" fill="none" rx="31" ry="11" stroke-width="2" transform="rotate(-32 35 30)"></ellipse>
-        <circle cx="59" cy="13" r="3"></circle>
-      </svg>
-      <span class="logo-type">órbita<small>streaming</small></span>
-    </a>
-    
-    <nav aria-label="Navegación principal" class="nav" id="navigation">
-      <a aria-current="page" class="nav-link" href="index.html">Inicio</a>
-      <a class="nav-link" href="catalogo.html">Plataformas</a>
-      <a class="nav-link" href="combos.html">Combos</a>
-      <a class="nav-link" href="descubre.html">Descubre</a>
-    </nav>
-    
-    <div class="header-actions">
-      <button aria-label="Pausar efectos" class="motion-toggle icon-button" title="Pausar efectos">
-        <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
-          <rect height="18" rx="1" width="5" x="14" y="3"></rect>
-          <rect height="18" rx="1" width="5" x="5" y="3"></rect>
-        </svg>
-      </button>
-      <a class="button small contact" href="https://wa.me/593998226756" rel="noopener" target="_blank">
-        Contacto 
-        <span aria-hidden="true">
-          <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
-            <path d="M7 7h10v10"></path>
-            <path d="M7 17 17 7"></path>
-          </svg>
-        </span>
-      </a>
-      <button aria-controls="navigation" aria-expanded="false" aria-label="Abrir menú" class="menu-toggle icon-button">
-        <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
-          <path d="M4 5h16"></path>
-          <path d="M4 12h16"></path>
-          <path d="M4 19h16"></path>
-        </svg>
-      </button>
-    </div>
-  </div>
-</header>
-
-<main id="main">
-  <!-- ==================== HERO CINEMÁTICO BEHANCE SPOTLIGHT ==================== -->
-  <section aria-labelledby="hero-title" class="hero-dimensional modern-hero container">
-    <div class="hero-spotlight-wrap">
-      <div class="hero-badge-row">
-        <span class="hero-pill-badge">✦ Estreno Destacado en Órbita</span>
-        <span class="hero-spec-tag">4K Ultra HD</span>
-        <span class="hero-spec-tag">Dolby Atmos</span>
-        <span class="hero-spec-tag">Perfiles Privados</span>
-        <span class="hero-spec-tag">Activación Inmediata</span>
-      </div>
-      
-      <h1 class="hero-main-title" id="hero-title">
-        Universos Infinitos.<br/>
-        <span class="accent-mint">En Tu Propia Órbita.</span>
-      </h1>
-      
-      <p class="hero-main-desc">
-        Las historias que te marcan y las series que no quieres terminar. Disfruta de Netflix, Disney+, Max, Prime Video y más desde $3 al mes con soporte y entrega inmediata por WhatsApp.
-      </p>
-
-      <form action="descubre.html" class="hero-search-glass" role="search">
-        <label class="sr-only" for="hero-query">Buscar películas, series o géneros</label>
-        <input id="hero-query" maxlength="120" name="q" placeholder="¿Qué quieres ver hoy? (Andor, Dune, Severance...)" required="" type="search"/>
-        <button aria-label="Buscar historias" type="submit">
-          <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="m21 21-4.35-4.35"></path>
-          </svg>
-        </button>
-      </form>
-
-      <div class="hero-actions-group">
-        <a class="btn-primary-orbital" href="#plataformas">
-          ✦ Explorar Plataformas ($3)
-        </a>
-        <a class="btn-glass-orbital" href="combos.html">
-          Armar Mi Combo (2 por $5)
-        </a>
-        <a class="btn-glass-orbital" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quisiera%20consultar%20sobre%20los%20planes" rel="noopener" target="_blank">
-          Pedir por WhatsApp ↗
-        </a>
-      </div>
-    </div>
-
-    <!-- Escenario 3D Interactivo controlado por hero-cosmos.js -->
-    <div class="orbital-scene"></div>
-
-    <!-- Barra de logos de plataformas -->
-    <div aria-label="Explorar plataformas" class="platform-dock"></div>
-  </section>
-
-  <!-- ==================== PLATAFORMAS DESTACADAS (CATÁLOGO CORE) ==================== -->
-  <section class="container section" id="plataformas">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Elige tu entretenimiento</span>
-        <h2>10 Plataformas Premium.<br/>Al mejor precio del mercado.</h2>
-        <p class="section-intro">Cuentas 100% privadas, perfiles personales con PIN y entrega en 5 minutos.</p>
-      </div>
-      <a class="btn-glass-orbital" href="catalogo.html">Ver catálogo completo ↗</a>
-    </div>
-
-    <div class="platform-grid">
-      <!-- Netflix -->
-      <article class="platform-card" data-category="cinema" data-name="netflix">
-        <div class="platform-top">
-          <img alt="Netflix" height="36" loading="lazy" src="assets/icons/netflix.svg" width="90"/>
-          <span class="tag">Cine &amp; Series</span>
-        </div>
-        <h3>Netflix</h3>
-        <p>Ultra HD 4K • Perfil 100% Privado con PIN personal y descargas offline.</p>
-        <div class="platform-bottom">
-          <span class="price">$3<small> / mes</small></span>
-          <button aria-label="Ver planes de Netflix" class="round-button" data-detail="netflix">↗</button>
-        </div>
-        <a aria-label="Consultar Netflix por WhatsApp" class="platform-whatsapp" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quiero%20consultar%20el%20plan%20de%20Netflix." rel="noopener" target="_blank">Pedir por WhatsApp</a>
-      </article>
-
-      <!-- Disney+ -->
-      <article class="platform-card" data-category="cinema" data-name="disneyplus">
-        <div class="platform-top">
-          <img alt="Disney+" height="36" loading="lazy" src="assets/icons/disneyplus.svg" width="90"/>
-          <span class="tag">Cine &amp; Deportes</span>
-        </div>
-        <h3>Disney+</h3>
-        <p>Disney, Pixar, Marvel, Star Wars y todos los deportes en vivo con ESPN.</p>
-        <div class="platform-bottom">
-          <span class="price">$3<small> / mes</small></span>
-          <button aria-label="Ver planes de Disney+" class="round-button" data-detail="disneyplus">↗</button>
-        </div>
-        <a aria-label="Consultar Disney+ por WhatsApp" class="platform-whatsapp" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quiero%20consultar%20el%20plan%20de%20Disney%2B." rel="noopener" target="_blank">Pedir por WhatsApp</a>
-      </article>
-
-      <!-- Max -->
-      <article class="platform-card" data-category="cinema" data-name="hbomax">
-        <div class="platform-top">
-          <img alt="Max" height="36" loading="lazy" src="assets/icons/max.svg" width="90"/>
-          <span class="tag">HBO &amp; Warner</span>
-        </div>
-        <h3>Max</h3>
-        <p>HBO Originals, Warner Bros, cine taquillero y transmisiones en 4K HDR.</p>
-        <div class="platform-bottom">
-          <span class="price">$3<small> / mes</small></span>
-          <button aria-label="Ver planes de Max" class="round-button" data-detail="hbomax">↗</button>
-        </div>
-        <a aria-label="Consultar Max por WhatsApp" class="platform-whatsapp" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quiero%20consultar%20el%20plan%20de%20Max." rel="noopener" target="_blank">Pedir por WhatsApp</a>
-      </article>
-
-      <!-- Prime Video -->
-      <article class="platform-card" data-category="cinema" data-name="primevideo">
-        <div class="platform-top">
-          <img alt="Prime Video" height="36" loading="lazy" src="assets/icons/primevideo.svg" width="90"/>
-          <span class="tag">Originals</span>
-        </div>
-        <h3>Prime Video</h3>
-        <p>Amazon Originals, The Boys, Fallout, películas de estreno y audio envolvente.</p>
-        <div class="platform-bottom">
-          <span class="price">$3<small> / mes</small></span>
-          <button aria-label="Ver planes de Prime Video" class="round-button" data-detail="primevideo">↗</button>
-        </div>
-        <a aria-label="Consultar Prime Video por WhatsApp" class="platform-whatsapp" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quiero%20consultar%20el%20plan%20de%20Prime%20Video." rel="noopener" target="_blank">Pedir por WhatsApp</a>
-      </article>
-
-      <!-- Apple TV+ -->
-      <article class="platform-card" data-category="cinema" data-name="appletv">
-        <div class="platform-top">
-          <img alt="Apple TV+" height="36" loading="lazy" src="assets/icons/appletv.svg" width="90"/>
-          <span class="tag">Apple Originals</span>
-        </div>
-        <h3>Apple TV+</h3>
-        <p>Producciones galardonadas, Severance, Ted Lasso en la más alta tasa de bits 4K.</p>
-        <div class="platform-bottom">
-          <span class="price">$3<small> / mes</small></span>
-          <button aria-label="Ver planes de Apple TV+" class="round-button" data-detail="appletv">↗</button>
-        </div>
-        <a aria-label="Consultar Apple TV+ por WhatsApp" class="platform-whatsapp" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quiero%20consultar%20el%20plan%20de%20Apple%20TV%2B." rel="noopener" target="_blank">Pedir por WhatsApp</a>
-      </article>
-
-      <!-- Spotify -->
-      <article class="platform-card" data-category="music" data-name="spotify">
-        <div class="platform-top">
-          <img alt="Spotify" height="36" loading="lazy" src="assets/icons/spotify.svg" width="90"/>
-          <span class="tag">Música &amp; Podcasts</span>
-        </div>
-        <h3>Spotify Premium</h3>
-        <p>Más de 100M de pistas, cero publicidad, descargas y calidad de audio máxima.</p>
-        <div class="platform-bottom">
-          <span class="price">$3<small> / mes</small></span>
-          <button aria-label="Ver planes de Spotify" class="round-button" data-detail="spotify">↗</button>
-        </div>
-        <a aria-label="Consultar Spotify por WhatsApp" class="platform-whatsapp" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quiero%20consultar%20el%20plan%20de%20Spotify." rel="noopener" target="_blank">Pedir por WhatsApp</a>
-      </article>
-
-      <!-- ChatGPT Plus -->
-      <article class="platform-card" data-category="tools" data-name="chatgpt">
-        <div class="platform-top">
-          <img alt="ChatGPT Plus" height="36" loading="lazy" src="assets/icons/orbit-assistant.svg" width="90"/>
-          <span class="tag">Inteligencia Artificial</span>
-        </div>
-        <h3>ChatGPT Plus</h3>
-        <p>Acceso a GPT-4o, análisis avanzado de datos, generación de imágenes por 4 meses.</p>
-        <div class="platform-bottom">
-          <span class="price">$5<small> / 4 meses</small></span>
-          <button aria-label="Ver planes de ChatGPT Plus" class="round-button" data-detail="chatgpt">↗</button>
-        </div>
-        <a aria-label="Consultar ChatGPT Plus por WhatsApp" class="platform-whatsapp" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quiero%20consultar%20ChatGPT%20Plus." rel="noopener" target="_blank">Pedir por WhatsApp</a>
-      </article>
-
-      <!-- Gemini AI Pro -->
-      <article class="platform-card" data-category="tools" data-name="gemini">
-        <div class="platform-top">
-          <img alt="Gemini AI Pro" height="36" loading="lazy" src="assets/icons/gemini.svg" width="90"/>
-          <span class="tag">5 TB Nube + IA</span>
-        </div>
-        <h3>Gemini AI Pro</h3>
-        <p>5 TB en Google One/Drive + IA Gemini 3.8 con 2M tokens. Activación por link directo.</p>
-        <div class="platform-bottom">
-          <span class="price">$3<small> / varios meses</small></span>
-          <button aria-label="Ver planes de Gemini AI Pro" class="round-button" data-detail="gemini">↗</button>
-        </div>
-        <a aria-label="Consultar Gemini AI Pro por WhatsApp" class="platform-whatsapp" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quiero%20consultar%20Gemini%20AI%20Pro." rel="noopener" target="_blank">Pedir por WhatsApp</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- ==================== UNIVERSOS CINEMATOGRÁFICOS (CURADURÍA BEHANCE) ==================== -->
-  <section aria-labelledby="collections-title" class="modern-collections container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Explora por Universos</span>
-        <h2 id="collections-title">¿A dónde te lleva<br/>tu curiosidad?</h2>
-        <p class="section-intro">Colecciones cinematográficas seleccionadas para sumergirte en historias inolvidables.</p>
-      </div>
-      <a class="btn-glass-orbital" href="descubre.html">Explorar biblioteca ↗</a>
-    </div>
-
-    <div class="collection-grid">
-      <a class="collection-wide" href="descubre.html?q=ciencia%20ficcion">
-        <img alt="El desierto de Dune" height="900" loading="lazy" src="assets/backdrops/dune.jpg" width="1600"/>
-        <div>
-          <span>Ciencia ficción</span>
-          <h3>Más allá<br/>de lo posible.</h3>
-          <span class="collection-action">Explorar mundos <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></span>
-        </div>
-      </a>
-      <a href="descubre.html?tipo=Anime">
-        <img alt="El mundo animado de Arcane" height="900" loading="lazy" src="assets/backdrops/arcane.jpg" width="1600"/>
-        <div>
-          <span>Anime y animación</span>
-          <h3>Otra forma<br/>de imaginar.</h3>
-          <span class="collection-action">Ver historias <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></span>
-        </div>
-      </a>
-      <a href="descubre.html?q=misterio">
-        <img alt="Una escena de Severance" height="900" loading="lazy" src="assets/backdrops/severance-scene.jpg" width="1600"/>
-        <div>
-          <span>Misterio y suspenso</span>
-          <h3>Solo un<br/>episodio más.</h3>
-          <span class="collection-action">Seguir la pista <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- ==================== COMBO ESTELAR 2X$5 (BANNER DESTACADO) ==================== -->
-  <section class="container" id="combos-promo">
-    <div class="combo-banner-stellar">
-      <div class="combo-stellar-content">
-        <span class="hero-pill-badge">✦ Oferta Más Popular</span>
-        <h2>Dos plataformas.<br/>Una gran decisión.</h2>
-        <p>Combina 2 plataformas mensuales de video por solo $5/mes y recibe <strong>1 mes de Spotify Premium de obsequio</strong>. El configurador calcula tu total en tiempo real antes de pedir por WhatsApp.</p>
-        <div class="hero-actions-group">
-          <a class="btn-primary-orbital" href="combos.html">
-            Armar Mi Combo ↗
-          </a>
-          <a class="btn-glass-orbital" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quiero%20el%20combo%20de%202%20por%20%245" rel="noopener" target="_blank">
-            Pedir Combo por WhatsApp
-          </a>
-        </div>
-      </div>
-      <div class="combo-stellar-pricebox">
-        <span class="tag">Combo 2 Plataformas</span>
-        <div class="stellar-big-price">$5 <span>USD / mes</span></div>
-        <p style="font-size:13px; color:var(--text-muted); margin-top:12px;">+ Spotify Premium de regalo</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== ORBIT AI: SELECTOR POR MOOD ==================== -->
-  <section aria-labelledby="orbit-picks-title" class="container orbit-picks">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Asistente Inteligente</span>
-        <h2 id="orbit-picks-title">¿Qué te apetece ver hoy?</h2>
-        <p class="section-intro">Elige tu estado de ánimo y deja que las recomendaciones hagan su magia.</p>
-      </div>
-      <button class="orbit-refresh" id="orbit-refresh" type="button">
-        <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-          <path d="M20 7v5h-5M4 17v-5h5M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1"></path>
-        </svg>
-        Otras sugerencias
-      </button>
-    </div>
-
-    <div class="orbit-moods" role="group" aria-label="Qué te apetece ver">
-      <button aria-pressed="true" data-orbit-mood="all" type="button">Sorpréndeme</button>
-      <button aria-pressed="false" data-orbit-mood="movie" type="button">Una película</button>
-      <button aria-pressed="false" data-orbit-mood="series" type="button">Una serie</button>
-      <button aria-pressed="false" data-orbit-mood="anime" type="button">Anime</button>
-      <button aria-pressed="false" data-orbit-mood="novela" type="button">Una novela</button>
-    </div>
-
-    <div class="orbit-pick-grid" id="orbit-pick-grid" style="margin-top:25px;"></div>
-    <p class="sr-only" id="orbit-pick-status" role="status"></p>
-  </section>
-
-  <!-- ==================== COMPATIBILIDAD MULTIPANTALLA ==================== -->
-  <section aria-labelledby="devices-title" class="container section">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">En todas partes</span>
-        <h2 id="devices-title">Disfruta en cualquier pantalla.</h2>
-        <p class="section-intro">Tus historias sincronizadas en la televisión del salón o en tu móvil en el camino.</p>
-      </div>
-    </div>
-
-    <div class="devices-modern-grid">
-      <div class="device-modern-card">
-        <div class="device-icon-wrap">📺</div>
-        <h3>Smart TV 4K</h3>
-        <p>Samsung, LG, Android TV, Google TV, Apple TV, Roku y Fire TV Stick con resolución 4K HDR.</p>
-      </div>
-      <div class="device-modern-card">
-        <div class="device-icon-wrap">💻</div>
-        <h3>Computadoras &amp; PC</h3>
-        <p>Windows, Mac, Linux y cualquier navegador moderno sin instalaciones adicionales.</p>
-      </div>
-      <div class="device-modern-card">
-        <div class="device-icon-wrap">📱</div>
-        <h3>Móviles &amp; Tablets</h3>
-        <p>iOS y Android con soporte oficial para descargas y reproducción sin conexión a internet.</p>
-      </div>
-      <div class="device-modern-card">
-        <div class="device-icon-wrap">🎮</div>
-        <h3>Consolas &amp; TV Box</h3>
-        <p>PlayStation 4/5, Xbox Series X/S, Chromecast y cajas de TV para una experiencia inmersiva.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== CÓMO FUNCIONA (3 PASOS) ==================== -->
-  <section class="container section" id="como-funciona">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Transparente y Rápido</span>
-        <h2>Tres pasos para empezar.</h2>
-        <p class="section-intro">Sin suscripciones automáticas forzadas ni cargos sorpresa.</p>
-      </div>
-    </div>
-
-    <div class="steps-modern">
-      <div class="step-card">
-        <div class="step-number">01</div>
-        <h3>Elige tus favoritas</h3>
-        <p>Explora nuestras 10 plataformas o crea un combo personalizado a tu gusto.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">02</div>
-        <h3>Confirma por WhatsApp</h3>
-        <p>Te enviamos los datos de pago seguro (Ecuador, PayPal o Binance) con 0% recargo.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">03</div>
-        <h3>Recibe y disfruta</h3>
-        <p>Te entregamos tus accesos privados y te acompañamos paso a paso en la activación.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== PREGUNTAS FRECUENTES ==================== -->
-  <section class="container section" id="faq">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Dudas frecuentes</span>
-        <h2>Todo claro antes de empezar.</h2>
-        <p class="section-intro">Si tienes alguna pregunta adicional, estamos a un mensaje de distancia.</p>
-      </div>
-      <a class="btn-glass-orbital" href="https://wa.me/593998226756" rel="noopener" target="_blank">Consultar por WhatsApp ↗</a>
-    </div>
-
-    <div class="pearl-faq-list">
-      <details>
-        <summary>¿Cómo hago mi pedido? <span>+</span></summary>
-        <p>Elige una plataforma o crea tu combo en la web. El botón de pedido abre WhatsApp con tu selección y el total para confirmar disponibilidad y pago con un asesor humano en minutos.</p>
-      </details>
-      <details>
-        <summary>¿Qué medios de pago aceptan? <span>+</span></summary>
-        <p>Aceptamos transferencias bancarias en Ecuador (Banco Pichincha, Banco Guayaquil, Deuna!), PayPal y Binance Pay (USDT al UID 1176541421). Al confirmar por WhatsApp te enviamos los datos correspondientes.</p>
-      </details>
-      <details>
-        <summary>¿Los perfiles son privados? <span>+</span></summary>
-        <p>Sí. Cada cuenta cuenta con perfil privado y PIN personal exclusivo para que tu historial, favoritos y recomendaciones permanezcan 100% tuyos.</p>
-      </details>
-      <details>
-        <summary>¿Cómo funciona la promoción de Spotify de regalo? <span>+</span></summary>
-        <p>Al adquirir un combo de 2 o más plataformas de video por $5, puedes recibir un mes de Spotify Premium de cortesía. Consulta las condiciones de activación al momento de pedir.</p>
-      </details>
-      <details>
-        <summary>¿Y si necesito soporte con mi acceso? <span>+</span></summary>
-        <p>Escríbenos directamente al mismo número de WhatsApp donde realizaste tu pedido. Nuestro equipo te brinda soporte garantizado durante todo el tiempo de tu plan.</p>
-      </details>
-    </div>
-  </section>
-</main>
-
-<!-- ==================== FOOTER ==================== -->
-<footer class="footer">
-  <div class="container">
-    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap;">
-      <div>
-        <a class="brand" href="index.html">
-          <svg aria-hidden="true" class="logo-symbol" viewbox="0 0 70 60">
-            <circle cx="35" cy="30" r="16"></circle>
-            <ellipse cx="35" cy="30" fill="none" rx="31" ry="11" stroke-width="2" transform="rotate(-32 35 30)"></ellipse>
-            <circle cx="59" cy="13" r="3"></circle>
-          </svg>
-          <span class="logo-type">órbita<small>streaming</small></span>
-        </a>
-        <p style="color:var(--text-muted); margin-top:14px; max-width:32ch;">
-          Todo lo que te mueve.<br/>En una misma órbita.
-        </p>
-      </div>
-
-      <div class="footer-links" style="display:flex; flex-direction:column; gap:10px;">
-        <strong style="color:#fff;">Navegación</strong>
-        <a href="catalogo.html" style="color:var(--text-muted);">Plataformas</a>
-        <a href="combos.html" style="color:var(--text-muted);">Combos 2x$5</a>
-        <a href="descubre.html" style="color:var(--text-muted);">Descubre Catálogo</a>
-        <a href="index.html#faq" style="color:var(--text-muted);">Preguntas Frecuentes</a>
-        <button class="text-button" data-replay="" style="color:var(--orbital-mint); margin-top:6px;">Volver a ver la intro</button>
-      </div>
-
-      <div>
-        <strong style="color:#fff;">Atención &amp; Contacto</strong>
-        <p style="margin:10px 0;"><a href="https://wa.me/593998226756" rel="noopener" target="_blank" style="color:var(--orbital-mint);">Chatear por WhatsApp ↗</a></p>
-        <div class="developer-credit-tag">
-          <span>✦</span>
-          <span>Creada por <strong>Carlos Daniel</strong></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="payment-footer">
-      <span>Medios de pago oficiales:</span>
-      <strong>Transferencias Ecuador (Pichincha · Guayaquil · Deuna!)</strong>
-      <strong>Binance Pay (UID 1176541421)</strong>
-      <strong>PayPal</strong>
-      <small style="display:block; margin-top:6px;">Los datos de pago se coordinan de forma segura por WhatsApp.</small>
-    </div>
-
-    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; border-top:1px solid var(--border-subtle); padding-top:20px; font-size:12px; color:var(--text-muted);">
-      <div>
-        © 2026 Órbita Streaming. Servicio independiente. Las marcas pertenecen a sus respectivos titulares. Creada por Carlos Daniel.
-      </div>
-      <nav aria-label="Información legal" class="legal-links" style="display:flex; gap:18px;">
-        <a href="legal.html#terminos" style="color:inherit;">Términos del servicio</a>
-        <a href="legal.html#privacidad" style="color:inherit;">Política de privacidad</a>
-      </nav>
-    </div>
-  </div>
-</footer>
-
-<!-- ==================== BOTONES FLOTANTES ==================== -->
-<div aria-label="Accesos rápidos flotantes" class="floating-actions" role="region">
-  <a aria-label="Hablar por WhatsApp" class="floating-btn floating-btn-wa" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quisiera%20consultar%20sobre%20los%20planes" rel="noopener" target="_blank">
-    <svg aria-hidden="true" class="floating-icon" fill="currentColor" viewbox="0 0 24 24">
-      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.18 8.18 0 01-5.82 2.41h-.01c-1.44 0-2.85-.38-4.09-1.11l-.29-.17-3.12.82.83-3.04-.19-.3a8.214 8.214 0 01-1.26-4.43c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.62.13.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"></path>
-    </svg>
-    <span class="floating-label">WhatsApp</span>
-  </a>
-  <button aria-label="Pregúntale a Orbit" class="floating-btn floating-btn-orbit" data-assistant="">
-    <span aria-hidden="true" class="floating-icon">
-      <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
-        <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
-        <path d="M20 2v4"></path>
-        <path d="M22 4h-4"></path>
-        <circle cx="4" cy="20" r="2"></circle>
-      </svg>
-    </span>
-    <span class="floating-label">Orbit</span>
-  </button>
+<div class="container header-inner">
+<a aria-label="Órbita Streaming, inicio" class="brand" href="index.html">
+<svg aria-hidden="true" class="logo-symbol" viewbox="0 0 70 60">
+<circle cx="35" cy="30" fill="currentColor" r="16"></circle>
+<ellipse cx="35" cy="30" fill="none" rx="31" ry="11" stroke="currentColor" stroke-width="2" transform="rotate(-32 35 30)"></ellipse>
+<circle cx="59" cy="13" fill="currentColor" r="3"></circle>
+</svg>
+<span class="logo-type">órbita<small>streaming</small></span>
+</a>
+<nav aria-label="Navegación principal" class="nav" id="navigation"><a aria-current="page" class="nav-link" href="index.html">Inicio</a><a class="nav-link" href="catalogo.html">Plataformas</a><a class="nav-link" href="combos.html">Combos</a><a class="nav-link" href="descubre.html">Descubre</a></nav>
+<div class="header-actions">
+<button aria-label="Pausar efectos" class="motion-toggle icon-button" title="Pausar efectos"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="18" rx="1" width="5" x="14" y="3"></rect>
+<rect height="18" rx="1" width="5" x="5" y="3"></rect>
+</svg></button>
+<a class="button small contact" href="https://wa.me/593998226756" rel="noopener" target="_blank">Contacto <span aria-hidden="true"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></span></a>
+<button aria-controls="navigation" aria-expanded="false" aria-label="Abrir menú" class="menu-toggle icon-button"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M4 5h16"></path>
+<path d="M4 12h16"></path>
+<path d="M4 19h16"></path>
+</svg></button>
 </div>
+</div>
+</header>
+<main id="main">
+<section aria-labelledby="pearl-title" class="pearl-hero hero-dimensional">
+<div class="hero-orbit" aria-hidden="true"></div>
+<div class="container orbital-intro">
+<div class="pearl-copy"><h1 id="pearl-title">Tu próxima<br/><span>gran historia.</span></h1><div class="hero-copy-aside"><p>Todo un universo de películas, series y novelas.<br/>Encuentra algo que te mueva. Ponlo en órbita.</p><div class="pearl-actions"><a class="button" href="descubre.html" id="hero-main-cta">Explorar historias <span aria-hidden="true">↗</span></a><a class="pearl-link" href="combos.html">Crear mi combo <span aria-hidden="true">→</span></a></div></div></div>
+<div class="orbital-scene">
+<a class="orbital-feature" href="descubre.html?q=Andor"><img src="assets/backdrops/andor-scene.jpg" width="1777" height="1000" alt="El universo de Andor" fetchpriority="high"/><div class="orbital-caption"><div><span>Disney+ · Ciencia ficción</span><h2>Una galaxia.<br/>Miles de historias.</h2><p>Explora el universo de Andor</p></div><span class="glass-play" aria-hidden="true">↗</span></div></a>
+<a class="orbital-float" href="descubre.html?q=Severance"><img src="assets/posters/s44933.jpg" alt="" width="70" height="96"/><span><small>Para tu próxima maratón</small><strong>Severance</strong><span>Apple TV+ · Misterio</span></span><span aria-hidden="true">↗</span></a>
+<div class="orbital-coordinate" aria-hidden="true">Un pequeño escape de lo cotidiano.</div>
+</div></div>
+<div class="container platform-dock" aria-label="Explorar plataformas"></div>
+</section>
+<section class="container orbit-picks" aria-labelledby="orbit-picks-title">
+<div class="pearl-section-head"><div><h2 id="orbit-picks-title">Algo bueno está por encontrarte.</h2><p>Elige lo que te apetece. Orbit pone las ideas.</p></div><a class="pearl-link" href="descubre.html">Ver todas las historias <span aria-hidden="true">↗</span></a></div>
+<div class="orbit-pick-controls"><div class="orbit-moods" role="group" aria-label="Qué te apetece ver"><button type="button" data-orbit-mood="all" aria-pressed="true">Sorpréndeme</button><button type="button" data-orbit-mood="movie" aria-pressed="false">Una película</button><button type="button" data-orbit-mood="series" aria-pressed="false">Una serie</button><button type="button" data-orbit-mood="anime" aria-pressed="false">Anime</button><button type="button" data-orbit-mood="novela" aria-pressed="false">Una novela</button></div><button type="button" class="orbit-refresh" id="orbit-refresh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1"/></svg>Otras recomendaciones</button></div>
+<div class="orbit-pick-grid" id="orbit-pick-grid"></div><p class="sr-only" id="orbit-pick-status" role="status"></p><p class="orbit-picks-note">Una selección para explorar. La disponibilidad cambia según tu país y la plataforma.</p>
+<noscript><p><a href="descubre.html">Explora la selección de historias.</a></p></noscript>
+</section>
+<section class="container orbit-voyage" aria-labelledby="orbit-voyage-title"><img src="assets/backdrops/dune.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async"/><div class="orbit-voyage-copy"><h2 id="orbit-voyage-title">Próxima parada:<br/>otra galaxia.</h2><p>Futuros posibles, mundos lejanos y preguntas que se quedan contigo.</p><a href="descubre.html?q=ciencia%20ficcion" class="button">Explorar ciencia ficción <span aria-hidden="true">↗</span></a></div><div class="orbit-voyage-path" aria-hidden="true"><svg viewBox="0 0 500 340"><ellipse cx="250" cy="170" rx="220" ry="85" transform="rotate(-25 250 170)"/><ellipse cx="250" cy="170" rx="170" ry="65" transform="rotate(-25 250 170)"/><circle cx="438" cy="76" r="8"/><circle cx="111" cy="233" r="5"/></svg></div></section>
+<section class="pearl-section container" id="experiencias"><div class="pearl-section-head"><div><h2>Mucho más que darle play.</h2><p>Tu música, tus ideas y un poco de ayuda para hacerlas realidad.</p></div></div><div class="service-grid">
+<a class="service-glass service-spotify" href="catalogo.html?plataforma=spotify"><img src="assets/icons/spotify.svg" alt="Spotify" width="100" height="40"/><div class="service-art service-wave" aria-hidden="true"><i style="--bar:22px"></i><i style="--bar:35px"></i><i style="--bar:54px"></i><i style="--bar:42px"></i><i style="--bar:66px"></i><i style="--bar:48px"></i><i style="--bar:28px"></i><i style="--bar:55px"></i><i style="--bar:38px"></i><i style="--bar:61px"></i><i style="--bar:43px"></i><i style="--bar:26px"></i><i style="--bar:50px"></i><i style="--bar:35px"></i></div><h3>Tu mundo.<br/>Con otra banda sonora.</h3><p>Música y podcasts para acompañar cada parte de tu día.</p><span class="service-link">Explorar Spotify <span aria-hidden="true">↗</span></span></a>
+<a class="service-glass service-canva" href="catalogo.html?plataforma=canva"><img src="assets/icons/canva.svg" alt="Canva Pro" width="100" height="40"/><div class="service-art service-colors" aria-hidden="true"><span></span><span></span><span></span></div><h3>De una idea<br/>a algo increíble.</h3><p>Diseños, presentaciones y contenido con tu propio estilo.</p><span class="service-link">Explorar Canva Pro <span aria-hidden="true">↗</span></span></a>
+<a class="service-glass service-chatgpt" href="catalogo.html?plataforma=chatgpt"><img src="assets/icons/orbit-assistant.svg" alt="ChatGPT Plus" width="100" height="40"/><div class="service-art service-prompt">¿Y si le damos forma a esa idea?</div><h3>Más posibilidades.<br/>Una conversación.</h3><p>Un espacio para escribir, aprender y desarrollar tus ideas.</p><span class="service-link">Explorar ChatGPT Plus <span aria-hidden="true">↗</span></span></a>
+<a class="service-glass service-gemini" href="catalogo.html?plataforma=gemini"><img src="assets/icons/gemini.svg" alt="Gemini AI Pro" width="100" height="40"/><div class="service-art service-ai-glow">5 TB Nube + IA Gemini 3.8</div><h3>5 TB en la Nube.<br/>La IA más potente.</h3><p>Gemini 3.8 Pro/Ultra con 2M tokens y 5 TB en Google One / Drive. $3 USD por varios meses (activación por link).</p><span class="service-link">Explorar Gemini AI Pro <span aria-hidden="true">↗</span></span></a>
+</div></section>
+<section class="container orbit-devices" aria-labelledby="devices-title">
+<div class="devices-heading"><h2 id="devices-title">Disfruta en todo lugar.</h2><p>Una gran historia, en la pantalla que va contigo.<br>Películas, series, anime y novelas para descubrir a tu manera.</p></div>
+<div class="devices-stage" aria-label="Historias destacadas en televisor, computadora, tablet y teléfono">
+<a class="device-showcase device-tv" href="descubre.html?q=Dune%3A%20Parte%20Dos" aria-label="Explorar Dune: Parte Dos, mostrada en un televisor"><div class="device-display"><img src="assets/posters/m_dune2.jpg" width="500" height="750" loading="lazy" alt="Dune: Parte Dos en un televisor"/><div class="device-film-caption"><small>Una película para tu próxima noche de cine</small><strong>Dune: Parte Dos</strong><span>Explorar historia <span aria-hidden="true">↗</span></span></div><span class="device-screen-brand">órbita</span></div><span class="tv-foot" aria-hidden="true"></span></a>
+<a class="device-showcase device-laptop" href="descubre.html?q=Severance" aria-label="Explorar Severance, mostrada en una computadora"><div class="device-display"><img src="assets/backdrops/severance-scene.jpg" width="1200" height="675" loading="lazy" alt="Severance en una computadora portátil"/><div class="device-film-caption"><small>Una serie que te deja pensando</small><strong>Severance</strong></div></div><span class="laptop-base" aria-hidden="true"></span></a>
+<a class="device-showcase device-tablet" href="descubre.html?q=El%20amor%20invencible" aria-label="Explorar El amor invencible, mostrada en una tablet"><div class="device-display"><img src="assets/backdrops/novela-scene.jpg" width="1200" height="675" loading="lazy" alt="El amor invencible en una tablet"/><div class="device-film-caption"><small>Una novela para seguir de cerca</small><strong>El amor invencible</strong></div></div></a>
+<a class="device-showcase device-phone" href="descubre.html?q=PLUTO" aria-label="Explorar PLUTO, mostrado en un teléfono"><div class="device-display"><img src="assets/backdrops/pluto-scene.jpg" width="1200" height="675" loading="lazy" alt="PLUTO en un teléfono"/><div class="device-film-caption"><small>Anime</small><strong>PLUTO</strong></div></div></a>
+</div>
+<p class="devices-list">Televisor <span aria-hidden="true">·</span> Computadora <span aria-hidden="true">·</span> Tablet <span aria-hidden="true">·</span> Teléfono</p>
+<p class="devices-interaction">Cada pantalla tiene una historia. Tócala para descubrirla.</p><p class="devices-note">La compatibilidad depende de cada plataforma y del plan.</p>
+</section><section class="container orbit-moments" aria-labelledby="moments-title"><div class="orbit-moments-heading"><h2 id="moments-title">Una órbita.<br>Muchos momentos.</h2><p>Del último episodio a tu próxima idea.<br>Encuentra un lugar para cada parte de tu día.</p></div><div class="moment-links"><a href="descubre.html"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="3"/><path d="M8 21h8m-4-4v4"/></svg><span><strong>Cuando quieres desconectar</strong><small>Explora historias y mira sus tráileres.</small></span><span aria-hidden="true">↗</span></a><a href="catalogo.html?plataforma=spotify"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13M9 9l12-2"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span><strong>Cuando el día pide música</strong><small>Conoce el plan de Spotify.</small></span><span aria-hidden="true">↗</span></a><a href="catalogo.html?categoria=tools"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 4 5 5-11 11H4v-5L15 4Zm-8 8 5 5M14 5l5 5"/></svg><span><strong>Cuando una idea toma forma</strong><small>Compara las herramientas de creatividad e IA.</small></span><span aria-hidden="true">↗</span></a></div></section><section class="pearl-plan container" id="planes"><div class="plan-copy"><h2>Mejor juntos.<br/>A tu manera.</h2><p>Arma una combinación con tus favoritas. El configurador te muestra el total antes de abrir tu pedido en WhatsApp.</p><a class="button" href="combos.html">Crear mi combo <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a><a class="pearl-link" href="catalogo.html">Prefiero una sola plataforma <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div><div class="plan-glass"><div aria-hidden="true" class="plan-apps"><img alt="" src="assets/icons/netflix.svg"/><span>+</span><img alt="" src="assets/icons/disneyplus.svg"/></div><p>Dos plataformas mensuales</p><div class="plan-price">$5<span>USD / mes</span></div><div class="plan-divider"></div><p class="plan-fine">Tú eliges la combinación.<br/>Confirma disponibilidad y condiciones al pedir.</p></div></section>
+<section class="pearl-section container pearl-help" id="como-funciona"><div><h2>Elegir. Escribir.<br/>Empezar a disfrutar.</h2><p>Un proceso sencillo, con ayuda cuando la necesitas.</p><a class="pearl-link" href="https://wa.me/593998226756" rel="noopener" target="_blank">Hablar con Órbita <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div><ol class="pearl-steps"><li><span>1</span><div><h3>Encuentra tus favoritas</h3><p>Explora las plataformas o arma tu combinación.</p></div></li><li><span>2</span><div><h3>Confirma por WhatsApp</h3><p>Revisa disponibilidad, condiciones y forma de pago.</p></div></li><li><span>3</span><div><h3>Recibe los pasos de acceso</h3><p>Te acompañamos con la activación de tu selección.</p></div></li></ol></section>
+<section class="pearl-companion container"><canvas class="fluid-orb" aria-hidden="true" data-color1="#5b4d9e" data-color2="#7c5cc4" data-color3="#c4b5fd" data-size="460" data-alpha="0.9"></canvas><div><h2>Tu próxima favorita<br/>empieza con una pregunta.</h2><p>Orbit te ayuda a explorar películas, series y plataformas.</p><button class="button" data-assistant="">Preguntarle a Orbit <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button></div><button class="companion-example" data-assistant=""><span>¿Qué vemos hoy?</span><strong>Una serie de ciencia ficción<br/>que me atrape desde el inicio.</strong><span class="glass-play"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></span></button></section>
+<section class="pearl-section container pearl-faq" id="faq"><div><h2>Todo claro.<br/>Antes de empezar.</h2><p>Si te queda una duda, estamos a un mensaje.</p><a class="pearl-link" href="https://wa.me/593998226756" rel="noopener" target="_blank">Consultar por WhatsApp <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div><div class="pearl-faq-list">
+<details><summary>¿Cómo hago mi pedido?</summary><p>Elige una plataforma o crea tu combo. El botón de pedido abre WhatsApp con tu selección y el total para confirmar disponibilidad y pago.</p></details>
+<details><summary>¿Qué medios de pago aceptan?</summary><p>Aceptamos transferencias bancarias en Ecuador, PayPal y Binance. Después de confirmar tu selección por WhatsApp, te enviamos los datos para realizar el pago.</p></details><details><summary>¿Dónde consulto los precios?</summary><p>En Plataformas encontrarás el precio y la duración de cada plan. En Combos puedes calcular el total de tu selección.</p></details>
+<details><summary>¿En qué dispositivos puedo usarlo?</summary><p>La compatibilidad depende de cada plataforma y del plan. Consulta los detalles en el catálogo y confirma los dispositivos antes de contratar.</p></details>
+<details><summary>¿Cómo funciona la promoción de Spotify?</summary><p>Al combinar dos plataformas de video puedes recibir un mes de Spotify. Confirma la vigencia y las condiciones de la promoción por WhatsApp.</p></details>
+<details><summary>¿Y si necesito ayuda con el acceso?</summary><p>Escríbenos al mismo WhatsApp donde hiciste tu pedido e indica la plataforma y el problema para recibir ayuda.</p></details>
+</div></section>
 
-<!-- ==================== MODALES (DETALLES Y ASISTENTE) ==================== -->
+</main>
+<footer class="container footer">
+<div>
+<a class="brand" href="index.html">
+<svg aria-hidden="true" class="logo-symbol" viewbox="0 0 70 60">
+<circle cx="35" cy="30" fill="currentColor" r="16"></circle>
+<ellipse cx="35" cy="30" fill="none" rx="31" ry="11" stroke="currentColor" stroke-width="2" transform="rotate(-32 35 30)"></ellipse>
+<circle cx="59" cy="13" fill="currentColor" r="3"></circle>
+</svg>
+<span class="logo-type">órbita<small>streaming</small></span>
+</a>
+<p>Todo lo que te mueve.<br/>En una misma órbita.</p>
+</div>
+<div class="footer-links">
+<a href="catalogo.html">Plataformas</a>
+<a href="combos.html">Combos</a>
+<a href="descubre.html">Descubre</a>
+<a href="index.html#faq">Preguntas frecuentes</a>
+<button class="text-button" data-assistant="">Asistente Orbit</button>
+<button class="text-button" data-replay="">Volver a ver la intro</button>
+</div>
+<div class="footer-contact-col">
+<span class="muted">¿Te ayudamos a elegir?</span>
+<p><a href="https://wa.me/593998226756" rel="noopener" target="_blank">Chatear por WhatsApp <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></a></p>
+<!-- Firma de Autor Solicitada por el Usuario -->
+<div class="developer-credit-tag">
+<span class="credit-sparkle">✦</span>
+<span>Creada por <strong>Carlos Daniel</strong></span>
+</div>
+</div>
+<div class="payment-footer"><span>Pagos aceptados</span><strong>Transferencias en Ecuador</strong><strong>PayPal</strong><strong>Binance</strong><small>Coordinamos los datos por WhatsApp.</small></div><nav class="legal-links" aria-label="Información legal"><a href="legal.html#terminos">Términos del servicio</a><a href="legal.html#privacidad">Política de privacidad</a></nav><div class="legal">
+      © 2026 Órbita Streaming. Servicio independiente. Las marcas pertenecen a sus titulares. Creada por Carlos Daniel.
+    </div>
+</footer>
+<!-- ==================== BOTONES FLOTANTES DE ACCIÓN RÁPIDA ==================== -->
+<div aria-label="Accesos rápidos flotantes" class="floating-actions" role="region">
+<a aria-label="Hablar por WhatsApp" class="floating-btn floating-btn-wa" href="https://wa.me/593998226756?text=Hola%20%C3%93rbita%2C%20quisiera%20consultar%20sobre%20los%20planes" rel="noopener" target="_blank">
+<svg aria-hidden="true" class="floating-icon" fill="currentColor" viewbox="0 0 24 24">
+<path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm.01 1.67c4.54 0 8.24 3.7 8.24 8.24 0 2.2-.86 4.27-2.42 5.82a8.18 8.18 0 01-5.82 2.41h-.01c-1.44 0-2.85-.38-4.09-1.11l-.29-.17-3.12.82.83-3.04-.19-.3a8.214 8.214 0 01-1.26-4.43c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.5-1.4-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.45 1.03 2.62.13.17 1.78 2.71 4.3 3.8.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"></path>
+</svg>
+<span class="floating-label">WhatsApp</span>
+</a>
+
+<button aria-label="Pregúntale a Orbit" class="floating-btn floating-btn-orbit" data-assistant="">
+<span aria-hidden="true" class="floating-icon"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
+<path d="M20 2v4"></path>
+<path d="M22 4h-4"></path>
+<circle cx="4" cy="20" r="2"></circle>
+</svg></span>
+<span class="floating-label">Orbit</span>
+</button>
+</div>
 <dialog aria-labelledby="detail-title" id="details">
-  <button aria-label="Cerrar detalles" class="close icon-button" data-close="">
-    <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
-      <path d="M18 6 6 18"></path>
-      <path d="m6 6 12 12"></path>
-    </svg>
-  </button>
-  <div id="detail-body"></div>
+<button aria-label="Cerrar detalles" class="close icon-button" data-close=""><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M18 6 6 18"></path>
+<path d="m6 6 12 12"></path>
+</svg></button>
+<div id="detail-body"></div>
 </dialog>
-
 <dialog aria-labelledby="assistant-title" id="assistant">
-  <button aria-label="Cerrar asistente" class="close icon-button" data-close="">
-    <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
-      <path d="M18 6 6 18"></path>
-      <path d="m6 6 12 12"></path>
-    </svg>
-  </button>
-  <div class="copilot-head">
-    <div aria-hidden="true" class="assistant-orb">
-      <span class="orb-core">
-        <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
-          <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
-          <path d="M20 2v4"></path>
-          <path d="M22 4h-4"></path>
-          <circle cx="4" cy="20" r="2"></circle>
-        </svg>
-      </span>
-      <span class="orb-ring"></span>
-    </div>
-    <div>
-      <h2 id="assistant-title">Orbit</h2>
-      <p>Ideas para encontrar tu próxima historia.</p>
-    </div>
-    <button aria-label="Limpiar chat" class="btn-clear-chat icon-button" id="btn-clear-chat" title="Limpiar conversación" type="button">↺</button>
-  </div>
-  
-  <label class="country-label">Buscar disponibilidad en
-    <select id="orbit-country">
-      <option value="EC">Ecuador</option>
-      <option value="CO">Colombia</option>
-      <option value="MX">México</option>
-      <option value="AR">Argentina</option>
-      <option value="CL">Chile</option>
-      <option value="PE">Perú</option>
-      <option value="BR">Brasil</option>
-      <option value="UY">Uruguay</option>
-      <option value="VE">Venezuela</option>
-      <option value="BO">Bolivia</option>
-      <option value="PY">Paraguay</option>
-      <option value="CR">Costa Rica</option>
-      <option value="PA">Panamá</option>
-      <option value="GT">Guatemala</option>
-      <option value="ES">España</option>
-      <option value="US">Estados Unidos</option>
-      <option value="GB">Reino Unido</option>
-      <option value="CA">Canadá</option>
-      <option value="FR">Francia</option>
-      <option value="IT">Italia</option>
-      <option value="DE">Alemania</option>
-    </select>
-  </label>
-  
-  <div class="quick-prompts">
-    <button type="button">Una serie de misterio adictiva</button>
-    <button type="button">Película de ciencia ficción para hoy</button>
-    <button type="button">¿Qué incluye el combo de 2 por $5?</button>
-  </div>
-  
-  <div aria-live="polite" id="chat"></div>
-  
-  <form id="chat-form">
-    <label class="sr-only" for="chat-input">Pregunta a Orbit</label>
-    <input autocomplete="off" id="chat-input" maxlength="200" placeholder="¿Qué te gustaría ver hoy?" required="" type="text"/>
-    <button class="button small" type="submit">Enviar</button>
-  </form>
-  <small class="assistant-note">Guía local, sin conexión a modelos de IA externos. Tus preguntas permanecen en esta página.</small>
-</dialog>
+<button aria-label="Cerrar asistente" class="close icon-button" data-close=""><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M18 6 6 18"></path>
+<path d="m6 6 12 12"></path>
+</svg></button>
+<div class="copilot-head">
+<div aria-hidden="true" class="assistant-orb">
+<span class="orb-core"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
+<path d="M20 2v4"></path>
+<path d="M22 4h-4"></path>
+<circle cx="4" cy="20" r="2"></circle>
+</svg></span>
+<span class="orb-ring"></span>
+</div>
+<div>
+<h2 id="assistant-title">Orbit</h2>
+<p>Ideas para encontrar tu próxima historia.</p>
+</div>
+<button aria-label="Limpiar chat" class="btn-clear-chat icon-button" id="btn-clear-chat" title="Limpiar conversación" type="button">↺</button>
+</div>
+<label class="country-label">Buscar disponibilidad en
+      <select id="orbit-country">
+<option value="EC">Ecuador</option>
+<option value="CO">Colombia</option>
+<option value="MX">México</option><option value="AR">Argentina</option><option value="CL">Chile</option><option value="PE">Perú</option><option value="BR">Brasil</option>
 
+
+
+<option value="UY">Uruguay</option>
+<option value="VE">Venezuela</option>
+<option value="BO">Bolivia</option>
+<option value="CR">Costa Rica</option>
+<option value="PA">Panamá</option>
+<option value="DO">República Dominicana</option>
+<option value="GT">Guatemala</option>
+<option value="ES">España</option>
+<option value="US">Estados Unidos</option>
+
+<option value="GB">Reino Unido</option>
+<option value="CA">Canadá</option>
+<option value="FR">Francia</option>
+<option value="DE">Alemania</option>
+<option value="IT">Italia</option>
+<option value="PT">Portugal</option>
+<option value="AU">Australia</option>
+<option value="JP">Japón</option>
+<option value="IN">India</option>
+</select>
+</label>
+<div class="quick-prompts"><button data-ask="Recomiéndame una serie de ciencia ficción que me atrape">Ciencia ficción</button><button data-ask="Recomiéndame las mejores películas del momento">Qué ver hoy</button><button data-ask="Ayúdame a elegir un combo para dos plataformas">Elegir combo</button><button data-ask="Estoy aburrido, no sé qué ver">Sin ideas</button></div>
+<div aria-live="polite" id="chat" role="log">
+<div class="bot">Soy Orbit, tu guía de entretenimiento. Prueba «anime de Netflix», «novelas de ViX» o «películas sin terror». También calculo tu combo. Mi selección es editorial: confirma la disponibilidad en tu país.</div>
+</div>
+<form id="chat-form">
+<label class="sr-only" for="chat-input">Pregunta a Orbit</label>
+<input autocomplete="off" id="chat-input" maxlength="8000" placeholder="Escribe tu pregunta a Orbit…" required=""/>
+<button aria-label="Enviar consulta" class="button" type="submit"><svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></button>
+</form>
+<small class="assistant-note">Guía local, sin conexión a modelos de IA. Tus preguntas permanecen en esta página.</small>
+</dialog>
 <div class="toast" role="status"></div>
 
 <noscript>
-  <div class="noscript">Para usar el sitio activa JavaScript. También puedes <a href="https://wa.me/593998226756">pedir por WhatsApp</a>.</div>
+<div class="noscript">Para usar el configurador activa JavaScript. También puedes <a href="https://wa.me/593998226756">pedir por WhatsApp</a>.</div>
 </noscript>
-
-<nav aria-label="Navegación principal móvil" class="mobile-dock">
-  <a aria-current="page" href="index.html">
-    <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3Z"></path><path d="M9 20v-7h6v7"></path></svg>
-    <span>Inicio</span>
-  </a>
-  <a href="descubre.html">
-    <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m16 8-2 6-6 2 2-6Z"></path></svg>
-    <span>Descubre</span>
-  </a>
-  <a href="catalogo.html">
-    <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><rect height="7" rx="2" width="7" x="3" y="3"></rect><rect height="7" rx="2" width="7" x="14" y="3"></rect><rect height="7" rx="2" width="7" x="3" y="14"></rect><rect height="7" rx="2" width="7" x="14" y="14"></rect></svg>
-    <span>Plataformas</span>
-  </a>
-  <a href="combos.html">
-    <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="M3 7h18l-2 13H5Z"></path><path d="M8 7a4 4 0 0 1 8 0M9 13h6m-3-3v6"></path></svg>
-    <span>Mi combo</span>
-  </a>
-  <button aria-label="Abrir Orbit" data-assistant="" type="button">
-    <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewbox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"></path></svg>
-    <span>Orbit</span>
-  </button>
-</nav>
-
-</body>
+<nav class="mobile-dock" aria-label="Navegación principal móvil"><a href="index.html" aria-current="page"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10H3Z"/><path d="M9 20v-7h6v7"/></svg><span>Inicio</span></a><a href="descubre.html" ><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m16 8-2 6-6 2 2-6Z"/></svg><span>Descubre</span></a><a href="catalogo.html" ><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg><span>Plataformas</span></a><a href="combos.html" ><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18l-2 13H5Z"/><path d="M8 7a4 4 0 0 1 8 0M9 13h6m-3-3v6"/></svg><span>Mi combo</span></a><button type="button" data-assistant aria-label="Abrir Orbit"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></svg><span>Orbit</span></button></nav></body>
 </html>
+

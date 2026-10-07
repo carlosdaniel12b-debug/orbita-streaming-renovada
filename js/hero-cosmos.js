@@ -498,7 +498,7 @@
           '<div class="cinematic-accent-glow" style="background:radial-gradient(ellipse at 20% 80%,'+story.accentColor+'26,transparent 55%),radial-gradient(ellipse at 80% 20%,'+story.accentColor+'12,transparent 50%)"></div>' +
           '<div class="cinematic-caption">' +
             '<div class="cinematic-caption-meta">' +
-              '<span class="cinematic-platform-badge"><img src="assets/icons/'+(story.platform==='hbomax'?'max':story.platform)+'.svg" alt="'+story.platformName+'" width="52" height="20" onerror="this.style.display=\'none\'"/></span>' +
+              '<span class="cinematic-platform-badge"><img src="assets/icons/'+story.platform+'.svg" alt="'+story.platformName+'" width="52" height="20" onerror="this.style.display=\'none\'"/></span>' +
               '<span class="cinematic-type-chip">'+story.category.split(' · ')[0]+'</span>' +
               (story.quality?'<span class="cinematic-quality-chip">'+story.quality.split(' · ')[0]+'</span>':'')+
             '</div>' +

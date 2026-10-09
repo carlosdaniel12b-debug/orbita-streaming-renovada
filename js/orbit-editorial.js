@@ -28,7 +28,7 @@
 
   setTimeout(() => {
    grid.replaceChildren(...selected.map((m, idx)=>{
-    const a=document.createElement('a');a.className='orbit-pick-card liquid-glass';a.href='descubre.html?q='+encodeURIComponent(m.title);
+    const a=document.createElement('a');a.className='orbit-pick-card';a.href='descubre.html?q='+encodeURIComponent(m.title);
     a.style.animation = `orbit-card-pop 320ms cubic-bezier(0.16, 1, 0.3, 1) ${idx * 60}ms both`;
     const cover=document.createElement('div');cover.className='orbit-pick-cover';
     const img=document.createElement('img');img.src=m.image;img.alt=m.title;img.width=400;img.height=280;img.loading='lazy';img.decoding='async';

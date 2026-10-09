@@ -1,91 +1,19 @@
 /* ==========================================================================
-   ÓRBITA STREAMING — LIGHTWEIGHT PERFORMANCE & LAYOUT SYSTEM
-   Ultra-clean, zero lag, smooth 60fps scrolling, instant responsive layouts
+   ÓRBITA STREAMING — CLEAN LAYOUT BALANCING SYSTEM
+   Lightweight layout styles for balanced columns and assurance sections.
+   Zero animation overhead, zero GPU bloat, 100% native 60fps performance.
    ========================================================================== */
 
-/* 1. RECOMENDACIONES (ORBIT PICKS) — RÁPIDAS Y LIGERAS */
-.orbit-pick-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  min-height: 360px;
+/* Previene cualquier precarga o cortina negra en navegación */
+.page-transition,
+.orbit-page-veil {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
-.orbit-pick-card {
-  display: flex;
-  flex-direction: column;
-  padding: 14px;
-  background: rgba(17, 24, 39, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  color: #f2f5f7;
-  text-decoration: none;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .orbit-pick-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(196, 255, 98, 0.4);
-  }
-}
-
-.orbit-pick-cover {
-  height: 240px;
-  overflow: hidden;
-  border-radius: 14px;
-  background: #111822;
-  position: relative;
-}
-
-.orbit-pick-cover > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  transition: transform 0.3s ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .orbit-pick-card:hover .orbit-pick-cover > img {
-    transform: scale(1.03);
-  }
-}
-
-.orbit-pick-cover > span {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #ffffff;
-  background: rgba(0, 0, 0, 0.65);
-  padding: 4px 9px;
-  border-radius: 6px;
-}
-
-.orbit-pick-card h3 {
-  font-size: 17px;
-  color: #ffffff;
-  margin: 12px 0 6px;
-  line-height: 1.25;
-}
-
-.orbit-pick-card p {
-  font-size: 12.5px;
-  color: #94a3b8;
-  line-height: 1.5;
-  margin: 0 0 10px;
-  flex: 1;
-}
-
-.orbit-pick-card small {
-  font-size: 11.5px;
-  color: #a7ead8;
-  font-weight: 500;
-}
-
-/* 2. COMBOS.HTML: EQUILIBRIO DE 2 COLUMNAS Y BLOQUE DE GARANTÍAS */
+/* COMBOS.HTML: EQUILIBRIO DE 2 COLUMNAS Y BLOQUE DE GARANTÍAS */
 .combo-layout {
   display: grid;
   grid-template-columns: 1.45fr 1fr;
@@ -217,7 +145,7 @@
   margin-top: 10px;
 }
 
-/* 3. CATALOGO.HTML: TARJETA PERSONALIZADA CONCIERGE (12 SLOTS) */
+/* CATALOGO.HTML: TARJETA PERSONALIZADA CONCIERGE (12 SLOTS) */
 .platform-custom-card {
   border: 1px dashed rgba(196, 255, 98, 0.35) !important;
   background: rgba(196, 255, 98, 0.04) !important;
@@ -247,7 +175,7 @@
   margin-bottom: 14px;
 }
 
-/* 4. RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN */
 @media (max-width: 900px) {
   .combo-layout {
     grid-template-columns: 1fr;
@@ -260,21 +188,7 @@
   }
 }
 
-@media (max-width: 768px) {
-  .orbit-pick-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    min-height: auto;
-  }
-
-  .orbit-pick-cover {
-    height: 220px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .orbit-pick-card,
-  .orbit-pick-cover > img,
   .pick-custom-card,
   .platform-custom-card {
     transition: none !important;

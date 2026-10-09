@@ -1,0 +1,21 @@
+/* Lightweight focus transition: no moving full-screen glass, no page-wide blur. */
+.orbit-fixed-world:before{opacity:.25;filter:blur(9px) saturate(.4)}
+.pearl-world #intro{background:linear-gradient(135deg,#091018dd,#090c10e6),url('../assets/hero-space.jpg') center/cover no-repeat!important;clip-path:none!important;filter:none!important;transform:none!important;opacity:1;transition:opacity 300ms ease!important;}
+.pearl-world #intro.leaving{opacity:0!important;clip-path:none!important;filter:none!important;transform:none!important;}
+.pearl-world #intro .intro-brand{transition:filter 280ms ease,opacity 280ms ease!important;}
+.pearl-world #intro.leaving .intro-brand{filter:blur(5px);opacity:0;}
+html.intro-revealing #main,html.intro-revealing .header,html.intro-revealing .floating-actions{visibility:visible!important;opacity:1!important;}
+.orbit-page-veil{display:none!important;}
+body.pearl-world #main{filter:none!important;transition:opacity 140ms ease!important;}
+html.orbit-page-leaving body.pearl-world #main{opacity:.25!important;animation:none!important;pointer-events:none;}
+@keyframes orbit-soft-enter{from{opacity:.45}to{opacity:1}}
+@keyframes orbit-title-focus{from{filter:blur(3px);opacity:.5}to{filter:blur(0);opacity:1}}
+@media(prefers-reduced-motion:no-preference){
+ html:not(.motion-paused):not(.intro-pending):not(.orbit-page-leaving) body.orbit-page-enter #main,html:not(.motion-paused):not(.orbit-page-leaving) body.arrival #main{animation:orbit-soft-enter 300ms ease-out both!important;}
+ html:not(.motion-paused):not(.intro-pending) body.orbit-page-enter h1,html:not(.motion-paused) body.arrival h1{animation:orbit-title-focus 320ms ease-out both!important;}
+ html:not(.motion-paused) body.arrival .pearl-copy,html:not(.motion-paused) body.arrival .cinematic-scene{animation:none!important;}
+}
+@media(prefers-reduced-motion:reduce){.pearl-world #intro,.pearl-world #intro .intro-brand,body.pearl-world #main{transition:none!important;animation:none!important;filter:none!important}}
+
+/* Intro-only background darkening. */
+.pearl-world #intro{background:linear-gradient(135deg,#080d13ef,#080b10f2),url("../assets/hero-space.jpg") center/cover no-repeat!important;}

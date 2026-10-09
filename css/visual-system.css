@@ -1,0 +1,42 @@
+/* One optical system, shared across every page. */
+:root{--orbit-glass:linear-gradient(125deg,#ffffff18,#18212a65 44%,#ffffff07);--orbit-rim:#ffffff2c;--orbit-shine:inset 0 1px 0 #ffffff38,inset 0 -1px 0 #ffffff09,0 16px 36px #0003;--orbit-radius:24px}
+.pearl-world .hero-dimensional .orbital-feature,.pearl-world .hero-dimensional .cinematic-stage{display:block;position:relative;width:100%;height:auto!important;min-height:0!important;aspect-ratio:2.15;overflow:hidden;border-radius:28px!important;border:1px solid var(--orbit-rim)!important;box-shadow:var(--orbit-shine)!important;background:#131b22}
+.pearl-world .hero-dimensional .orbital-feature>img,.pearl-world .hero-dimensional .cinematic-image{position:absolute!important;inset:0!important;display:block;width:100%!important;height:100%!important;max-height:none!important;object-fit:cover!important;object-position:60% 35%;filter:none!important;}
+.pearl-world .hero-dimensional .orbital-scene{min-width:0;align-self:start}
+.pearl-world .hero-dimensional .pearl-copy{padding:12px 0 6px;margin-bottom:32px;gap:42px}
+.pearl-world .hero-dimensional .pearl-copy h1{font-size:clamp(48px,5.6vw,78px);line-height:1.08;letter-spacing:-.035em;color:#f2f5f6!important;opacity:1!important;filter:none!important}
+.pearl-world .hero-dimensional .pearl-copy h1 span{color:#c4ff62!important;-webkit-text-fill-color:#c4ff62!important;background:none!important}
+.pearl-world .hero-copy-aside p{color:#b6c0c9!important;font-size:15px!important;line-height:1.8!important}
+.pearl-world .hero-dimensional .cinematic-caption,.pearl-world .orbital-caption{background:linear-gradient(125deg,#ffffff15,#1118208c)!important;backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border:1px solid #ffffff30;border-radius:22px;padding:22px!important;left:26px!important;bottom:26px!important;width:min(470px,calc(100% - 52px))!important;box-shadow:inset 0 1px 0 #ffffff26,0 8px 25px #0003}
+.pearl-world .hero-dimensional .cinematic-caption h2{font-size:clamp(28px,3.6vw,48px)!important;line-height:1.08;margin:8px 0 10px}
+.pearl-world .hero-dimensional .cinematic-caption p{color:#e1e8ed!important;font-size:14px!important}
+.pearl-world .hero-dimensional .cinematic-actions{gap:12px!important;flex-wrap:wrap}
+.pearl-world .hero-dimensional .cinematic-actions button,.pearl-world .hero-dimensional .cinematic-actions a{border-radius:30px;padding:12px 18px;min-height:44px;font-size:13px!important}
+.pearl-world .hero-dimensional .cinematic-selector{padding:8px!important;gap:8px!important;border:1px solid var(--orbit-rim)!important;border-radius:22px!important;background:var(--orbit-glass)!important;backdrop-filter:blur(16px);box-shadow:var(--orbit-shine)!important;margin-top:18px!important;scrollbar-width:none}
+.pearl-world .hero-dimensional .cinematic-choice{border-radius:16px!important;border:1px solid transparent!important;background:transparent!important;flex-basis:185px!important;padding:10px!important}
+.pearl-world .hero-dimensional .cinematic-choice[aria-pressed=true]{background:#c4ff6211!important;border-color:#c4ff6240!important;color:#d8ff9f!important}
+.pearl-world .cinematic-choice-progress{background:#c4ff62!important}.pearl-world .cinematic-choice:after{background:#c4ff62!important}
+.pearl-world .platform-card,.pearl-world .pick-card,.pearl-world .service-glass,.pearl-world .plan-glass,.pearl-world .order-summary,.pearl-world .pearl-companion,.pearl-world .pearl-faq-list details,.pearl-world .pearl-steps article,.pearl-world .orbit-pick-card,.pearl-world .orbit-latest-list a,.pearl-world .assurance-copy{background:var(--orbit-glass)!important;border:1px solid var(--orbit-rim)!important;box-shadow:var(--orbit-shine)!important;border-radius:var(--orbit-radius)!important;backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);}
+.pearl-world .orbit-pick-card{padding:12px!important}.pearl-world .orbit-pick-card h3,.pearl-world .orbit-pick-card p{margin-left:10px;margin-right:10px}.pearl-world .orbit-pick-card p{padding-bottom:12px}.pearl-world .orbit-pick-cover{border-radius:16px!important}
+.pearl-world .pearl-faq-list details{padding:20px 24px;margin-bottom:12px}.pearl-world .assurance-copy{padding:26px}.pearl-world .pearl-steps article{padding:24px}
+.pearl-world .pearl-section-head h2,.pearl-world .orbit-moments h2,.pearl-world .pearl-plan h2,.pearl-world .page-heading h1{color:#f1f4f6!important;line-height:1.12;letter-spacing:-.03em}
+.pearl-world .service-grid,.pearl-world .platform-grid,.pearl-world .orbit-pick-grid{gap:22px!important}
+.pearl-world .orbit-picks,.pearl-world .pearl-section,.pearl-world .orbit-devices,.pearl-world .orbit-moments{padding-top:56px;padding-bottom:56px}
+.pearl-world .pearl-plan,.pearl-world .pearl-help{border-radius:28px!important;padding:40px!important;margin-top:24px;margin-bottom:32px}
+@media(hover:hover) and (pointer:fine){.pearl-world .platform-card,.pearl-world .orbit-pick-card,.pearl-world .service-glass{transition:transform 240ms cubic-bezier(.2,.7,.2,1),border-color 240ms,box-shadow 240ms!important}.pearl-world .platform-card:hover,.pearl-world .orbit-pick-card:hover,.pearl-world .service-glass:hover{transform:translateY(-5px)!important;border-color:#c4ff6255!important;box-shadow:inset 0 1px 0 #ffffff45,0 24px 45px #0005!important}}
+@keyframes orbit-section-arrive{from{opacity:.6;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:no-preference){html:not(.motion-paused) .orbit-enter{animation:orbit-section-arrive 550ms cubic-bezier(.2,.7,.2,1) both}}
+@media(max-width:700px){
+ .pearl-world .hero-dimensional{padding-top:24px!important}
+ .pearl-world .hero-dimensional .orbital-feature,.pearl-world .hero-dimensional .cinematic-stage{aspect-ratio:4/5!important;border-radius:24px!important;}
+ .pearl-world .hero-dimensional .pearl-copy{margin-bottom:24px!important;padding-top:8px}
+ .pearl-world .hero-dimensional .pearl-copy h1{font-size:clamp(42px,11.5vw,60px)!important;line-height:1.08!important;max-width:16ch}
+ .pearl-world .hero-copy-aside p{font-size:14px!important;margin-top:18px!important}
+ .pearl-world .hero-dimensional .cinematic-caption,.pearl-world .orbital-caption{left:14px!important;right:14px!important;bottom:14px!important;width:auto!important;padding:18px!important;border-radius:19px;}
+ .pearl-world .hero-dimensional .cinematic-caption h2{font-size:32px!important}.pearl-world .hero-dimensional .cinematic-caption p{font-size:13px!important;line-height:1.5}
+ .pearl-world .hero-dimensional .cinematic-caption>span{font-size:11px!important}.pearl-world .hero-dimensional .cinematic-actions button,.pearl-world .hero-dimensional .cinematic-actions a{font-size:12px!important;padding:10px 14px!important}
+ .pearl-world .hero-dimensional .cinematic-choice{flex-basis:155px!important}.pearl-world .hero-dimensional .platform-dock{margin-top:20px!important}
+ .pearl-world .orbit-picks,.pearl-world .pearl-section,.pearl-world .orbit-devices,.pearl-world .orbit-moments{padding-top:36px;padding-bottom:36px}
+ .pearl-world .pearl-plan,.pearl-world .pearl-help{padding:24px!important;border-radius:24px!important}.pearl-world .service-grid,.pearl-world .platform-grid,.pearl-world .orbit-pick-grid{gap:16px!important}
+}
+@media(prefers-reduced-motion:reduce){.orbit-enter{animation:none!important}}

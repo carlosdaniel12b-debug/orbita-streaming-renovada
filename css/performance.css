@@ -1,0 +1,6 @@
+/* Keep glass on navigation; reduce stacked filters on small screens. */
+@media(max-width:700px){
+ .pearl-world .platform-card,.pearl-world .pick-card,.pearl-world .service-glass,.pearl-world .plan-glass,.pearl-world .orbit-pick-card,.pearl-world .pearl-faq-list details,.pearl-world .hero-dimensional .orbital-intro{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;}
+ .pearl-world .header,.pearl-world .mobile-dock{backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important;}
+}
+@keyframes orbit-title-focus{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}

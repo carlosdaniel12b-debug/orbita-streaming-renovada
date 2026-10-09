@@ -1,0 +1,37 @@
+/* Fixed photographic world, behind all translucent content. */
+html{background:#090c10!important}body.pearl-world{isolation:isolate;background:transparent!important;}
+.orbit-fixed-world{position:fixed;inset:0;z-index:-1;pointer-events:none;background:#090c10;overflow:hidden;}
+.pearl-world main,.pearl-world .footer,.pearl-world .catalog-section,.pearl-world .page-heading,.pearl-world .hero-dimensional,.pearl-world .pearl-section,.pearl-world .orbit-picks,.pearl-world .orbit-devices,.pearl-world .orbit-moments{background:transparent!important}
+.pearl-world .liquid-atmosphere,.pearl-world .cosmic-nebula-glow-1,.pearl-world .cosmic-nebula-glow-2{display:none!important}
+.pearl-world .platform-card,.pearl-world .service-glass,.pearl-world .pick-card,.pearl-world .plan-glass,.pearl-world .orbit-pick-card{background:linear-gradient(130deg,#ffffff17,#111a2460)!important;backdrop-filter:blur(20px) saturate(155%);-webkit-backdrop-filter:blur(20px) saturate(155%);}
+.pearl-world .hero-dimensional{padding-top:24px!important;padding-bottom:22px!important}
+.pearl-world .hero-dimensional .orbital-intro{padding:30px;border:1px solid #ffffff2e;border-radius:34px;background:linear-gradient(125deg,#ffffff14,#07101844);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);box-shadow:inset 0 1px 0 #ffffff40,0 22px 70px #0004;}
+.pearl-world .hero-dimensional .pearl-copy{grid-template-columns:1.1fr 1fr;margin:0 0 26px!important;padding:4px 6px 0!important;align-items:end}
+.hero-kicker{display:block;color:#d3ff98;font-size:11px;letter-spacing:2.4px;font-family:Manrope,sans-serif;font-weight:600;margin-bottom:14px;text-transform:uppercase;}
+.pearl-world .hero-dimensional .pearl-copy h1{font-size:clamp(42px,4.6vw,67px)!important;line-height:1.06!important;letter-spacing:-.04em!important}
+.pearl-world .hero-dimensional .hero-copy-aside p{max-width:37ch;margin-bottom:19px!important}
+.pearl-world .hero-dimensional .pearl-actions{gap:16px!important}.pearl-world .hero-dimensional .pearl-actions .button{padding:13px 20px!important}
+.pearl-world .hero-dimensional .cinematic-stage,.pearl-world .hero-dimensional .orbital-feature{aspect-ratio:2.25;border-radius:24px!important}
+.pearl-world .hero-dimensional .cinematic-panel:after{background:linear-gradient(90deg,#03091099,transparent 72%),linear-gradient(0deg,#0309109e,transparent 65%)!important}
+.pearl-world .hero-dimensional .cinematic-caption{backdrop-filter:blur(12px) saturate(145%);-webkit-backdrop-filter:blur(12px) saturate(145%);background:linear-gradient(125deg,#ffffff13,#08101877)!important;}
+.pearl-world .hero-dimensional .cinematic-selector{margin-top:14px!important}.pearl-world .hero-playback{margin-top:8px}.pearl-world .hero-dimensional .platform-dock{margin-top:22px!important}
+@media(max-width:700px){
+ .orbit-fixed-world{background-position:center,70% center;}
+ .pearl-world .hero-dimensional{padding-top:14px!important}
+ .pearl-world .hero-dimensional .orbital-intro{width:calc(100% - 24px)!important;padding:18px 12px 12px;border-radius:27px}
+ .pearl-world .hero-dimensional .pearl-copy{padding:4px 8px 0!important;margin-bottom:20px!important;}
+ .hero-kicker{font-size:10px;letter-spacing:1.8px;margin-bottom:12px}
+ .pearl-world .hero-dimensional .pearl-copy h1{font-size:clamp(38px,10.3vw,54px)!important;line-height:1.07!important}
+ .pearl-world .hero-dimensional .hero-copy-aside{margin-top:14px!important}
+ .pearl-world .hero-dimensional .hero-copy-aside p{font-size:13px!important;line-height:1.65!important;margin:0 0 16px!important}
+ .pearl-world .hero-dimensional .pearl-actions{gap:14px!important;flex-wrap:wrap}
+ .pearl-world .hero-dimensional .pearl-actions .button{padding:12px 17px!important;font-size:12px!important;min-height:44px}.pearl-world .hero-dimensional .pearl-link{font-size:12px}
+ .pearl-world .hero-dimensional .orbital-feature,.pearl-world .hero-dimensional .cinematic-stage{aspect-ratio:4/4.7!important;border-radius:21px!important}
+ .pearl-world .hero-dimensional .cinematic-caption{left:10px!important;right:10px!important;bottom:10px!important;padding:15px!important;border-radius:17px}
+ .pearl-world .hero-dimensional .cinematic-caption h2{font-size:29px!important}.pearl-world .hero-dimensional .cinematic-actions{gap:8px!important}.pearl-world .hero-dimensional .cinematic-actions a,.pearl-world .hero-dimensional .cinematic-actions button{padding:10px 12px!important;font-size:11px!important}
+ .pearl-world .hero-dimensional .cinematic-choice{flex-basis:145px!important;min-height:65px!important}.pearl-world .hero-dimensional .cinematic-choice img{height:42px!important;width:31px!important}
+}
+
+/* Soft, barely visible nebula; fixed photographic texture. */
+.orbit-fixed-world:before{content:"";position:absolute;inset:-20px;background:url("../assets/hero-space.jpg") center/cover no-repeat;opacity:.15;filter:blur(9px) saturate(.3);pointer-events:none}
+.orbit-fixed-world:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#090c1020,#090c1060);pointer-events:none}

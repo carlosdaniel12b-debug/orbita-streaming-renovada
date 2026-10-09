@@ -1,0 +1,43 @@
+/* Optical glass: translucent bodies, fine double rims and directional light. */
+.pearl-world .header,.pearl-world .header.scrolled,.pearl-world .mobile-dock,.pearl-world .platform-dock{
+ background:linear-gradient(120deg,#ffffff19 0%,#ffffff06 28%,#11182055 60%,#c4ff6209 100%)!important;
+ border:1px solid #ffffff38!important;
+ backdrop-filter:blur(28px) saturate(175%);-webkit-backdrop-filter:blur(28px) saturate(175%);
+ box-shadow:inset 0 1px 0 #ffffff50,inset 0 -1px 0 #ffffff10,inset 1px 0 0 #ffffff22,0 16px 42px #0005,0 2px 8px #0003!important;
+}
+.pearl-world .platform-dock{position:relative;isolation:isolate;padding:18px 20px!important;border-radius:28px!important;background:radial-gradient(ellipse at 15% 0%,#c4ff621c,transparent 55%),linear-gradient(115deg,#ffffff1a,#ffffff05 45%,#bcecff0a)!important;scroll-behavior:auto!important;scroll-snap-type:none!important;gap:18px!important;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+.pearl-world .platform-dock a{min-width:100px;padding:10px 12px;border:1px solid transparent;color:#dcffa6!important;transition:background .2s,border-color .2s,transform .2s;}
+.pearl-world .platform-dock a:hover,.pearl-world .platform-dock a:focus-visible{background:#ffffff0c!important;border-color:#ffffff30;transform:translateY(-3px)}
+.pearl-world .platform-dock img{width:76px;height:38px;background:linear-gradient(135deg,#ffffff13,#ffffff04)!important;border:1px solid #ffffff20;box-shadow:inset 0 1px 0 #ffffff20,0 6px 15px #0003;border-radius:12px;padding:7px 9px}
+.pearl-world .platform-dock.dock-static .dock-copy{display:none}
+.pearl-world .header .icon-button,.pearl-world .mobile-dock a{box-shadow:inset 0 1px 0 #ffffff28,0 3px 9px #0002!important}
+.pearl-world .button.ghost{background:linear-gradient(135deg,#ffffff13,#ffffff05)!important;border:1px solid #ffffff35!important;box-shadow:inset 0 1px 0 #ffffff30,0 8px 25px #0002!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+@supports not (backdrop-filter:blur(1px)){.pearl-world .header,.pearl-world .mobile-dock,.pearl-world .platform-dock{background:#1c2229f5!important}}
+@media(max-width:600px){.pearl-world .platform-dock{padding:12px 14px!important;border-radius:24px!important;gap:12px!important}.pearl-world .platform-dock a{min-width:90px;min-height:82px}.pearl-world .platform-dock img{width:70px;height:35px}}
+/* V2: airy navigation, page-wide optical material, transform-based app loop. */
+body.pearl-world{background:radial-gradient(ellipse at 5% 25%,#586a391a,transparent 40%),radial-gradient(ellipse at 95% 65%,#37596e1c,transparent 45%),#090a0c!important}
+.pearl-world .platform-card,.pearl-world .pick-card,.pearl-world .order-summary,.pearl-world .plan-glass,.pearl-world .service-glass,.pearl-world .pearl-companion,.pearl-world .pearl-faq-list details,.pearl-world .pearl-plan,.pearl-world .pearl-help,.pearl-world dialog,.pearl-world .combo-checkout-bar{
+ background:radial-gradient(ellipse at 5% 0%,#d7faff0c,transparent 65%),linear-gradient(125deg,#ffffff15,#161d2466 45%,#ffffff06)!important;
+ border:1px solid #ffffff2d!important;
+ backdrop-filter:blur(20px) saturate(155%);-webkit-backdrop-filter:blur(20px) saturate(155%);
+ box-shadow:inset 0 1px 0 #ffffff30,inset 0 -1px 0 #ffffff08,0 12px 30px #0003!important;
+}
+.pearl-world dialog{background:linear-gradient(130deg,#283039ed,#141a21eb)!important}
+.pearl-world .platform-card:hover,.pearl-world .pick-card.selected{background:linear-gradient(125deg,#c4ff6220,#131b16a8)!important;border-color:#c4ff6260!important}
+.pearl-world .search,.pearl-world .descubre-search-bar,.pearl-world .orbit-moods button,.pearl-world .filters button,.pearl-world .chip-btn{background:linear-gradient(135deg,#ffffff10,#ffffff04)!important;border:1px solid #ffffff20!important;box-shadow:inset 0 1px 0 #ffffff15!important}
+.pearl-world .filters button.active,.pearl-world .chip-btn.active,.pearl-world .orbit-moods button[aria-pressed=true]{background:#c4ff621c!important;border-color:#c4ff6260!important}
+.pearl-world .platform-dock.belt-ready{display:block!important;overflow:hidden!important;padding-left:0!important;padding-right:0!important;}
+.apps-belt{display:flex;width:max-content;max-width:none;animation:orbita-apps-loop 32s linear infinite!important;will-change:transform;}
+.apps-belt-group{display:flex;align-items:center;gap:20px;padding-right:20px;flex:none;}
+.pearl-world .platform-dock .apps-belt a{flex:0 0 108px;min-width:108px;}
+@keyframes orbita-apps-loop{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.pearl-world .platform-dock.belt-static{overflow-x:auto!important}.belt-static .apps-belt{animation:none!important;transform:none!important}.belt-static .apps-belt-copy{display:none}
+@media(max-width:900px){
+ .pearl-world .mobile-dock{left:10px!important;right:10px!important;padding:9px 8px!important;gap:7px!important;height:76px!important;grid-template-columns:repeat(5,minmax(0,1fr));border-radius:27px!important;}
+ .pearl-world .mobile-dock a,.pearl-world .mobile-dock button{padding:5px 1px!important;gap:5px!important;border:1px solid transparent!important;box-shadow:none!important;border-radius:17px!important;background:transparent!important;font-size:10px!important;letter-spacing:-.15px;line-height:1.2;min-width:0;color:#c4ccbe!important;}
+ .pearl-world .mobile-dock [aria-current=page]{background:linear-gradient(135deg,#c4ff621e,#ffffff08)!important;border-color:#c4ff6250!important;color:#d8ff9b!important;box-shadow:inset 0 1px 0 #ffffff24!important;}
+ .pearl-world .mobile-dock svg{width:23px!important;height:23px!important;flex-shrink:0;}
+ .pearl-world .footer{padding-bottom:120px}.apps-belt-group{gap:18px;padding-right:18px}.pearl-world .platform-dock .apps-belt a{flex-basis:100px;min-width:100px;}
+}
+@media(prefers-reduced-motion:reduce){.apps-belt{animation:none!important}}
+@supports not (backdrop-filter:blur(1px)){.pearl-world .platform-card,.pearl-world .pick-card,.pearl-world .service-glass,.pearl-world .plan-glass,.pearl-world .order-summary{background:#1c2229!important}}

@@ -56,39 +56,12 @@
 <body class="pearl-world" data-page="index"><div class="orbit-fixed-world" aria-hidden="true"></div>
 <!-- ==================== INTRO PORTAL CINEMÁTICO 60FPS ==================== -->
 <div aria-label="Viaje de entrada en órbita galáctica" aria-modal="true" class="intro cinematic-intro portal-active" id="intro" role="dialog">
-<canvas id="warp" aria-hidden="true"></canvas>
-<div class="portal-rings" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="intro-brand">
-<div class="intro-galaxy-glow" aria-hidden="true"></div>
-<svg class="intro-brand-symbol" viewBox="0 0 70 60" aria-hidden="true">
-<defs>
-<radialGradient id="portalPlanetGlow" cx="50%" cy="50%" r="50%">
-<stop offset="0%" stop-color="#c4ff62" stop-opacity="1"/>
-<stop offset="70%" stop-color="#087f70" stop-opacity="0.9"/>
-<stop offset="100%" stop-color="#031a25" stop-opacity="0.2"/>
-</radialGradient>
-<linearGradient id="portalRingGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stop-color="#c4ff62"/>
-<stop offset="50%" stop-color="#a7ead8"/>
-<stop offset="100%" stop-color="#38bdf8"/>
-</linearGradient>
-</defs>
-<circle cx="35" cy="30" r="16" fill="url(#portalPlanetGlow)"/>
-<g class="intro-brand-orbit">
-<ellipse cx="35" cy="30" rx="31" ry="11" fill="none" stroke="url(#portalRingGlow)" stroke-width="2.2" transform="rotate(-32 35 30)"/>
-<circle cx="59" cy="13" r="3.5" fill="#c4ff62"/>
-</g>
-</svg>
+<svg class="intro-brand-symbol" viewBox="0 0 70 60" aria-hidden="true"><circle cx="35" cy="30" r="16" fill="currentColor"/><g class="intro-brand-orbit"><ellipse cx="35" cy="30" rx="31" ry="11" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(-32 35 30)"/><circle cx="59" cy="13" r="3" fill="currentColor"/></g></svg>
 <div class="intro-brand-name">órbita<span>streaming</span></div>
-<p class="intro-brand-tagline">Tu próximo universo empieza aquí.</p>
-<div class="intro-badges" aria-hidden="true">
-<span>✦ Cine</span>
-<span>✦ Series</span>
-<span>✦ Música</span>
-<span>✦ IA</span>
+<p>Tu próximo universo empieza aquí.</p>
 </div>
-</div>
-<button class="intro-skip button ghost" id="btn-skip-intro" type="button"><span>Entrar ahora</span> <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<button class="intro-skip button ghost" id="btn-skip-intro" type="button">Entrar ahora <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
 <path d="M5 12h14"></path>
 <path d="m12 5 7 7-7 7"></path>
 </svg></button>

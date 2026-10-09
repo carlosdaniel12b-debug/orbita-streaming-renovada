@@ -577,4 +577,12 @@
 
   motionSync();
 
+  // Clic en Inicio mientras ya se está en Inicio: scroll suave al inicio sin recargas ni fallos
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href="index.html"]');
+    if (a && (location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname.endsWith('/'))) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+  });
 })();

@@ -11,6 +11,7 @@
     active = false;
     intro.hidden = true;
     intro.className = 'intro cinematic-intro dismissed';
+    if (intro.style) intro.style.display = 'none';
     root.classList.remove('intro-pending');
     root.classList.remove('intro-revealing');
     locked.forEach(el => { el.inert = false; }); locked.clear();
@@ -50,6 +51,7 @@
     active = true;
     try { sessionStorage.setItem('orbita-intro-seen', '1'); } catch {}
     intro.hidden = false;
+    if (intro.style) intro.style.display = '';
     intro.className = 'intro cinematic-intro portal-active';
     document.body.classList.remove('arrival');
     root.classList.add('intro-pending');

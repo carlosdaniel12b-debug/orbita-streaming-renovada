@@ -6,11 +6,16 @@
 
 /* Previene cualquier precarga o cortina negra en navegación */
 .page-transition,
-.orbit-page-veil {
+.orbit-page-veil,
+html.returning-visit #intro,
+#intro.dismissed,
+#intro[hidden],
+.intro.dismissed {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+  z-index: -9999 !important;
 }
 
 /* COMBOS.HTML: EQUILIBRIO DE 2 COLUMNAS Y BLOQUE DE GARANTÍAS */

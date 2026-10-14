@@ -30,26 +30,26 @@ html.returning-visit #intro,
   display: flex;
   align-items: center;
   gap: 14px;
-  border: 1px dashed rgba(196, 255, 98, 0.35);
+  border: 1px dashed rgba(0, 101, 202, 0.35);
   border-radius: 16px;
   padding: 16px;
-  background: rgba(196, 255, 98, 0.04);
+  background: rgba(0, 101, 202, 0.04);
   cursor: pointer;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .pick-custom-card:hover {
-  border-color: rgba(196, 255, 98, 0.6);
-  background: rgba(196, 255, 98, 0.08);
+  border-color: rgba(0, 101, 202, 0.6);
+  background: rgba(0, 101, 202, 0.08);
 }
 
 .pick-custom-icon {
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: rgba(196, 255, 98, 0.15);
-  border: 1px solid rgba(196, 255, 98, 0.3);
-  color: #c4ff62;
+  background: rgba(0, 101, 202, 0.15);
+  border: 1px solid rgba(0, 101, 202, 0.3);
+  color: #0065ca;
   display: grid;
   place-items: center;
   font-size: 18px;
@@ -58,7 +58,7 @@ html.returning-visit #intro,
 
 .pick-custom-card strong {
   display: block;
-  color: #f2f5f7;
+  color: #1d1d1f;
   font-size: 14px;
 }
 
@@ -70,7 +70,7 @@ html.returning-visit #intro,
 
 .check-custom {
   margin-left: auto;
-  color: #c4ff62;
+  color: #0065ca;
   font-size: 16px;
   font-weight: 700;
 }
@@ -87,7 +87,7 @@ html.returning-visit #intro,
 
 .assurance-heading h2 {
   font-size: clamp(22px, 2.5vw, 30px);
-  color: #f2f5f7;
+  color: #1d1d1f;
   line-height: 1.2;
   margin: 0 0 6px;
 }
@@ -117,7 +117,7 @@ html.returning-visit #intro,
   display: inline-block;
   font-size: 11px;
   font-weight: 700;
-  color: #c4ff62;
+  color: #0065ca;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-bottom: 8px;
@@ -142,7 +142,7 @@ html.returning-visit #intro,
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: #c4ff62;
+  color: #0065ca;
   font-size: 12px;
   font-weight: 600;
   text-decoration: underline;
@@ -152,8 +152,8 @@ html.returning-visit #intro,
 
 /* CATALOGO.HTML: TARJETA PERSONALIZADA CONCIERGE (12 SLOTS) */
 .platform-custom-card {
-  border: 1px dashed rgba(196, 255, 98, 0.35) !important;
-  background: rgba(196, 255, 98, 0.04) !important;
+  border: 1px dashed rgba(0, 101, 202, 0.35) !important;
+  background: rgba(0, 101, 202, 0.04) !important;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -163,17 +163,17 @@ html.returning-visit #intro,
 }
 
 .platform-custom-card:hover {
-  border-color: rgba(196, 255, 98, 0.6) !important;
-  background: rgba(196, 255, 98, 0.08) !important;
+  border-color: rgba(0, 101, 202, 0.6) !important;
+  background: rgba(0, 101, 202, 0.08) !important;
 }
 
 .custom-card-symbol {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(196, 255, 98, 0.15);
-  border: 1px solid rgba(196, 255, 98, 0.3);
-  color: #c4ff62;
+  background: rgba(0, 101, 202, 0.15);
+  border: 1px solid rgba(0, 101, 202, 0.3);
+  color: #0065ca;
   display: grid;
   place-items: center;
   font-size: 20px;

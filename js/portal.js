@@ -11,9 +11,7 @@
     active = false;
     intro.hidden = true;
     intro.className = 'intro cinematic-intro dismissed';
-    if (intro.style) intro.style.display = 'none';
     root.classList.remove('intro-pending');
-    root.classList.remove('intro-revealing');
     locked.forEach(el => { el.inert = false; }); locked.clear();
     document.body.classList.add('arrival');
     if (intro.contains(document.activeElement)) {
@@ -27,7 +25,6 @@
     if (immediate || reduce.matches) return finish();
     if (intro.classList.contains('leaving')) return;
     intro.classList.add('leaving');
-    root.classList.add('intro-revealing');
     // Start main arrival smoothly without blocking frames
     hideTimer = setTimeout(finish, 420);
   }
@@ -51,7 +48,6 @@
     active = true;
     try { sessionStorage.setItem('orbita-intro-seen', '1'); } catch {}
     intro.hidden = false;
-    if (intro.style) intro.style.display = '';
     intro.className = 'intro cinematic-intro portal-active';
     document.body.classList.remove('arrival');
     root.classList.add('intro-pending');

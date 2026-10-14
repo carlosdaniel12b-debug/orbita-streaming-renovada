@@ -1,31 +1,51 @@
 # Órbita Streaming
 
-Sitio estático para explorar plataformas, descubrir títulos y preparar un pedido por WhatsApp.
+Actualización 2026-10-04: catálogo de 99 títulos, 12 incorporaciones con imágenes locales optimizadas, recomendaciones variables por formato en Inicio, colección de ciencia ficción y nuevas incorporaciones en Descubre. Hero con 11 historias, tipografía Outfit local y paleta perla/menta/violeta/coral. El avance automático inicia desactivado en teléfono y la perspectiva interactiva solo funciona con ratón y movimiento habilitado.
 
-## Desarrollo
+Sitio estático para explorar plataformas y preparar pedidos por WhatsApp. Abre index.html o ejecuta `node server.cjs` y visita http://127.0.0.1:4174.
 
-Ejecuta `node server.cjs` y abre http://127.0.0.1:4174.
+## Edición orbital
 
-- `index.html`: portada y recomendaciones.
-- `catalogo.html`: plataformas y búsqueda.
-- `combos.html`: selección, cálculo y preparación del pedido.
-- `descubre.html`: biblioteca editorial y filtros.
-- `legal.html`: términos y privacidad.
+- Portada despejada con imagen de Andor, material de cristal y un carrusel editorial accesible.
+- Introducción con el mismo planeta negro y órbita del encabezado; omisión, Escape y movimiento reducido.
+- Descubre: 87 fichas únicas, filtros independientes de películas, series, anime, novelas y plataforma; enlaces profundos por título, formato o servicio.
+- 27 títulos incorporados, 32 imágenes descargadas con fuentes registradas; 11 fichas duplicadas o incorrectas retiradas.
+- Orbit: recomendaciones locales por formato, género y plataforma, exclusión de terror y continuación sin repetir opciones. Respuestas locales para saludos y preguntas frecuentes; recomendaciones variadas sin conexión a modelos de IA.
+- País seleccionable para consultar disponibilidad. La selección editorial no garantiza que un título esté incluido en cada país o plan.
+- Precios, contacto y cálculo de combos conservados. No se envían pedidos automáticamente.
+- Mi combo móvil: barra fija con cantidad y total, revisión en diálogo nativo y botón de WhatsApp visible mientras se consultan los detalles. El resumen de escritorio permanece junto al selector.
+- Hero automático cada 6,5 segundos, con pausa, suspensión fuera de pantalla y respeto de movimiento reducido. Cambios discretos de superficie por plataforma.
+- Nuevas secciones de usos, orientación de planes y confirmación del pedido; términos y privacidad en legal.html, con borrado de preferencias propias del sitio.
+- Eliminados GSAP, ScrollTrigger y los motores de estrellas y galería antiguos. Las interacciones utilizan CSS, diálogos nativos y Web Animations API.
 
-## Estilos
+## Mantener el sitio
 
-`css/renewal.css` define la edición perla, azul y cristal translúcido para las cinco páginas. `home.css`, `pages.css` y `legal.css` contienen los estilos base de cada grupo de páginas. `liquid-glass-motion.css` organiza las tarjetas adicionales del catálogo y los combos. Las hojas individuales antiguas, ya integradas en los estilos base, se retiraron para evitar duplicados.
+- js/data.js: plataformas, contacto y tarifas.
+- js/library.js: selección editorial y sinopsis.
+- js/recommendations.js: recomendaciones y resolución de títulos.
+- js/orbit-guide.js: conversación, precios y consulta regional.
+- js/pearl.js: navegación y carrusel.
+- css/pearl.css y css/orbital.css: diseño compartido y superficies.
+- assets/content-sources.json: procedencia del nuevo material visual.
 
-## Datos y comportamiento
+Las imágenes promocionales pertenecen a sus respectivos titulares. Las fichas incluyen sus fuentes; TVmaze aporta metadatos e imágenes, no disponibilidad comercial por país.
 
-`js/data.js` contiene tarifas y contacto; `js/library.js`, la biblioteca editorial; `js/recommendations.js` y `js/orbit-guide.js`, las recomendaciones locales. Los pedidos requieren una acción del visitante y no se envían automáticamente.
+## Disponibilidad regional opcional
 
-La selección editorial no garantiza disponibilidad comercial en cada país. Las imágenes pertenecen a sus titulares; se conservan las fuentes en `assets/content-sources.json`.
+server.cjs consulta TMDB / JustWatch únicamente si existe TMDB_READ_TOKEN en el entorno del servidor. Esa clave nunca debe incluirse en archivos públicos. En GitHub Pages se utilizan el catálogo local y enlaces regionales de consulta.
 
 ## Verificación
 
-`node --test tests/portal.test.cjs tests/recommendations.test.cjs tests/orbit-local.test.cjs`
+Orbit y el reproductor usan ventanas nativas: los diálogos cerrados no ocupan espacio en el pie de página y abrir un tráiler cierra la ficha anterior. En pantallas de hasta 700 píxeles se desactivan reflejos con el puntero y paralaje; el hero cambia de imagen directamente, sin animación costosa. El avance automático del hero tiene pausa y respeta movimiento reducido. La hoja `css/stability.css` centraliza las correcciones de posición y `css/flows.css` contiene el flujo móvil de compra y los tintes por plataforma.
 
-## Publicación
+`node --test tests/*.test.cjs` cubre introducción, filtros del recomendador, seguimiento sin repeticiones y consistencia de imágenes. Las cuatro rutas se verificaron también en navegador a 1440 y 390 píxeles.
 
-GitHub Pages publica la raíz de la rama `main`. El servidor opcional consulta disponibilidad regional únicamente si existe `TMDB_READ_TOKEN` en el entorno. No se deben incluir credenciales en archivos públicos.
+## Referencias
+
+- [Materiales de Apple](https://developer.apple.com/design/human-interface-guidelines/materials) y [Meet Liquid Glass](https://developer.apple.com/videos/play/wwdc2025/219/).
+- [PLUTO](https://www.netflix.com/title/81281344), [Delicious in Dungeon](https://www.netflix.com/title/81564899), [Klaus](https://www.netflix.com/title/80183187), [Pinocho](https://www.netflix.com/title/80218455).
+- [El amor invencible](https://vix.com/es-es/detail/series-4271), [La Usurpadora](https://vix.com/es-es/detail/series-561).
+- [Fundación](https://tv.apple.com/us/show/fundacion/umc.cmc.5983fipzqbicvrve6jdfep4x3?l=es), [The Gorge](https://www.apple.com/tv-pr/originals/the-gorge/), [1923](https://www.paramountplus.com/shows/1923/).
+
+
+Orbit local: js/orbit-local.js contiene 32 reglas de conversación y preguntas frecuentes. js/orbit-guide.js combina esas respuestas con el catálogo y el recomendador; no realiza solicitudes de red ni necesita claves.

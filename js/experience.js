@@ -577,12 +577,21 @@
 
   motionSync();
 
-  // Clic en Inicio mientras ya se está en Inicio: scroll suave al inicio sin recargas ni fallos
+  // Transiciones de navegación suaves entre páginas
+  const transition = document.createElement('div');
+  transition.className = 'page-transition';
+  document.body.append(transition);
+
   document.addEventListener('click', e => {
-    const a = e.target.closest('a[href="index.html"]');
-    if (a && (location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname.endsWith('/'))) {
+    const a = e.target.closest('a');
+    if (document.startViewTransition || !a || a.target || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button || reduce.matches || paused) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin === location.origin && url.pathname !== location.pathname && url.pathname.endsWith('.html')) {
       e.preventDefault();
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      transition.classList.add('active');
+      setTimeout(() => location.href = url.href, 180);
     }
   });
+
+  addEventListener('pageshow', () => transition.classList.remove('active'));
 })();

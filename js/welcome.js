@@ -1,14 +1,16 @@
-/* A short, optional welcome; native dialog handles focus and Escape. */
+/* Native dialog retains keyboard focus; timers bound both entrance and exit. */
 (()=>{'use strict';
 const dialog=document.getElementById('welcome');if(!dialog)return;
-const reduce=matchMedia('(prefers-reduced-motion:reduce)');let timer,previous;
-function close(){clearTimeout(timer);if(dialog.open)dialog.close();}
-function open(){if(dialog.open)return;previous=document.activeElement;dialog.showModal();timer=setTimeout(close,1100);}
-dialog.addEventListener('close',()=>{clearTimeout(timer);(previous&&previous!==document.body?previous:document.getElementById('hero-main-cta'))?.focus({preventScroll:true});});
-document.getElementById('welcome-skip').addEventListener('click',close);
+const reduce=matchMedia('(prefers-reduced-motion:reduce)');let timer,exitTimer,previous;
+function finish(){clearTimeout(timer);clearTimeout(exitTimer);if(dialog.open)dialog.close();dialog.classList.remove('welcome-leaving');}
+function close(){clearTimeout(timer);if(!dialog.open||dialog.classList.contains('welcome-leaving'))return;if(reduce.matches)return finish();dialog.classList.add('welcome-leaving');exitTimer=setTimeout(finish,260);}
+function open(){if(dialog.open)return;previous=document.activeElement;dialog.classList.remove('welcome-leaving');dialog.showModal();timer=setTimeout(close,1800);}
+dialog.addEventListener('close',()=>{clearTimeout(timer);clearTimeout(exitTimer);(previous&&previous!==document.body?previous:document.getElementById('hero-main-cta'))?.focus({preventScroll:true});});
+dialog.addEventListener('cancel',event=>{event.preventDefault();finish();});
+document.getElementById('welcome-skip').addEventListener('click',finish);
 document.getElementById('welcome-replay')?.addEventListener('click',open);
-document.addEventListener('visibilitychange',()=>{if(document.hidden)close();});
-addEventListener('pagehide',close);reduce.addEventListener('change',()=>{if(reduce.matches)close();});
-let seen=false;try{seen=sessionStorage.getItem('orbita-welcome-seen')==='1';sessionStorage.setItem('orbita-welcome-seen','1');}catch{seen=true;}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)finish();});
+addEventListener('pagehide',finish);reduce.addEventListener('change',()=>{if(reduce.matches)finish();});
+let seen=false;try{seen=sessionStorage.getItem('orbita-brand-intro-seen')==='1';sessionStorage.setItem('orbita-brand-intro-seen','1');}catch{seen=true;}
 if(!seen&&!reduce.matches&&!location.hash)open();
 })();

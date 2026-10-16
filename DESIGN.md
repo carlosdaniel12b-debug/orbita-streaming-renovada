@@ -30,3 +30,6 @@ Entrada de la portada: secuencia única de título, acciones e imagen; 300–340
 
 ## Compact editorial refresh — October 2026
 The user's density and performance preferences override the Stitch guide's perpetual motion suggestions. Use a calm slate canvas (#eef4f7), ink (#182d40), and one muted blue accent (#24597c). Preserve the existing bundled fonts. Section titles are 26–38px; section padding is 26–36px. Recommendations fill four columns on desktop and two on phones; missing editorial IDs must be filled from available titles. Orbit is a compact 157px help strip instead of a tall canvas scene. Remove repeated discovery pitches and oversized device mockups. The welcome is optional, dismissible, once per session, at most 1.1 seconds, and respects reduced motion. No rendering loops or navigation delays.
+
+## Brand intro and color update
+Restore the original full-screen Orbita symbol, wordmark and tagline. A single 1.4-second orbit sweep replaces repeated movement; exit completes after about 2.1 seconds, with immediate skip and Escape. Native dialog manages focus; reduced-motion users skip automatic playback. Static mint, lavender and peach washes tint translucent cards without continuous animation or full-page backdrop blur.

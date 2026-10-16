@@ -48,3 +48,23 @@ a,button{touch-action:manipulation}a:focus-visible,button:focus-visible,input:fo
 @media(max-width:900px){.pearl-world .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.pearl-world .glass-hero{min-height:0;padding-block:28px}.pearl-world .glass-showcase{height:320px}.pearl-world .service-grid{grid-template-columns:1fr}.pearl-world .service-glass{padding:22px!important}.pearl-world .service-glass h3 br{display:none}.pearl-world .service-glass>img{height:28px;object-fit:contain;object-position:left}}
 [id]{scroll-margin-top:110px}
+
+/* Soft color washes stay static; translucent surfaces need no animation loop. */
+body.pearl-world{background:radial-gradient(ellipse 80% 700px at 0 0,#dcefe9 0,transparent 75%),radial-gradient(ellipse 65% 650px at 100% 450px,#eae2f3 0,transparent 75%),#eef4f7!important}
+.pearl-world .quick-discovery{background:linear-gradient(120deg,#ffffffb8,#e9f4f0bf);border-color:#fff;box-shadow:inset 0 1px 0 #fff,0 10px 30px #25486108}
+.pearl-world .glass-ticket{background:linear-gradient(135deg,#fff4e9ee,#ffffffdb);border-color:#fff6ed}
+.pearl-world .glass-feature{background:linear-gradient(120deg,#ffffffd9,#e8f0f5cf)}
+.pearl-world .service-spotify{background:linear-gradient(135deg,#ffffffba,#dff1e8e6)!important}.pearl-world .service-canva{background:linear-gradient(135deg,#ffffffc9,#eee5f5e6)!important}.pearl-world .service-chatgpt{background:linear-gradient(135deg,#ffffffc9,#f8e9dce6)!important}.pearl-world .service-gemini{background:linear-gradient(135deg,#ffffffc9,#e1eaf7e6)!important}
+.pearl-world .service-glass,.pearl-world .platform-card{border:1px solid #ffffffdf!important;box-shadow:inset 0 1px 0 #fff,0 8px 24px #233c4e08!important}
+.pearl-world .pearl-plan{background:linear-gradient(120deg,#e2eee9bf,#ede6f2bf)!important;border:1px solid #fff;border-radius:26px}.pearl-world .plan-glass{background:#ffffffa8!important;border:1px solid white;box-shadow:inset 0 1px 0 white,0 14px 32px #35485c0d!important}
+.pearl-world .orbit-concierge{background:linear-gradient(115deg,#193e46,#294d58 65%,#414c69);border-color:#ffffff38}.pearl-world .concierge-mark{background:#d8eee922;border:1px solid #ffffff26}.pearl-world .orbit-moods button[aria-pressed=true]{background:#315b60;border-color:#315b60}.pearl-world .platform-card{background:#ffffffa8!important}
+/* Original full-screen brand scene, with a new one-shot orbital sweep. */
+.pearl-world #welcome{inset:0;margin:0;width:100vw;max-width:none;height:100dvh;max-height:none;border:0;border-radius:0;padding:24px;background:radial-gradient(ellipse at 25% 25%,#ddefe9,transparent 55%),radial-gradient(ellipse at 80% 75%,#e9e1f2,transparent 55%),#f1f6f8;box-shadow:none;overflow:hidden;color:#202024}
+.pearl-world #welcome[open]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;animation:none!important}.pearl-world #welcome::backdrop{background:#eef4f7}
+.pearl-world #welcome .intro-brand-symbol{width:150px;height:130px;color:#243c48}.pearl-world #welcome .intro-brand-name{font-size:64px;color:#243c48}.pearl-world #welcome .intro-brand-name span{font-size:12px;letter-spacing:.3em}.pearl-world #welcome .intro-brand p{font-size:13px;letter-spacing:0;color:#536371;margin:32px 0 0}.pearl-world #welcome #welcome-skip{background:#ffffff9c;color:#243c48;border:1px solid white;border-radius:40px;min-height:44px;box-shadow:0 6px 18px #253f4910}
+@media(prefers-reduced-motion:no-preference){.pearl-world #welcome[open] .intro-brand-symbol{animation:orbital-emerge 650ms cubic-bezier(.16,1,.3,1) both!important}.pearl-world #welcome[open] .intro-brand-orbit{transform-origin:35px 30px;animation:orbital-sweep 1400ms cubic-bezier(.16,1,.3,1) both!important}.pearl-world #welcome[open] .intro-brand-name{animation:orbital-word 600ms 120ms both!important}.pearl-world #welcome[open] .intro-brand p{animation:orbital-word 600ms 240ms both!important}.pearl-world #welcome[open].welcome-leaving{animation:orbital-exit 260ms ease-in both!important}
+@keyframes orbital-emerge{from{opacity:0;transform:translateY(20px) scale(.8)}to{opacity:1;transform:none}}
+@keyframes orbital-sweep{from{transform:rotate(-150deg) scale(.75)}to{transform:rotate(0) scale(1)}}
+@keyframes orbital-word{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes orbital-exit{to{opacity:0;transform:scale(1.025)}}}
+@media(max-width:650px){.pearl-world #welcome .intro-brand-symbol{width:120px;height:104px}.pearl-world #welcome .intro-brand-name{font-size:52px}.pearl-world .glass-feature{background:#f3f7f7f2}}

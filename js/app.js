@@ -42,13 +42,13 @@ function details(id,story=false){
 
     <div class="detail-payments-box">
       <div class="payments-box-header">
-        <span class="payments-box-title">Selecciona tu Forma de Pago</span>
-        <span class="payments-box-badge">0% comisión · Activación 5 min</span>
+        <span class="payments-box-title">¿Cómo prefieres pagar?</span>
+        <span class="payments-box-badge">Coordina tu pedido</span>
       </div>
-      <div class="payments-chips" id="detail-pay-chips">
-        <button type="button" class="pay-chip is-selected" data-pay="ecuador"><span class="chip-flag">🇪🇨</span> Ecuador (Pichincha · Guayaquil · Deuna)</button>
-        <button type="button" class="pay-chip" data-pay="binance"><span class="chip-dot" style="background:#f59e0b"></span> Binance Pay (USDT)</button>
-        <button type="button" class="pay-chip" data-pay="paypal"><span class="chip-dot" style="background:#38bdf8"></span> PayPal · Tarjetas</button>
+      <div class="payments-chips" id="detail-pay-chips" role="group" aria-label="Forma de pago">
+        <button type="button" class="pay-chip is-selected" data-pay="ecuador" aria-pressed="true" aria-controls="panel-ecuador"><span class="pay-symbol" aria-hidden="true">↔</span><span><strong>Transferencia</strong><small>Bancos de Ecuador</small></span><span class="pay-check" aria-hidden="true">✓</span></button>
+        <button type="button" class="pay-chip" data-pay="binance" aria-pressed="false" aria-controls="panel-binance"><span class="pay-symbol" aria-hidden="true">◇</span><span><strong>Binance Pay</strong><small>USDT</small></span><span class="pay-check" aria-hidden="true">✓</span></button>
+        <button type="button" class="pay-chip" data-pay="paypal" aria-pressed="false" aria-controls="panel-paypal"><span class="pay-symbol" aria-hidden="true">P</span><span><strong>PayPal</strong><small>Saldo o tarjeta</small></span><span class="pay-check" aria-hidden="true">✓</span></button>
       </div>
 
       <!-- Panel Ecuador -->
@@ -60,7 +60,7 @@ function details(id,story=false){
           <span class="bank-chip">Deuna! (QR / Celular)</span>
         </div>
         <a class="button pay-cta-btn" id="btn-pay-ecuador" href="${wa(`¡Hola Órbita Streaming! Deseo adquirir ${p.name} ($${p.price} USD / ${p.period}) con Transferencia en Ecuador (Pichincha · Guayaquil · Deuna). ¿Me facilitan los datos para transferir?`)}" target="_blank" rel="noopener">
-          <span>Pedir por WhatsApp (Transferencia Ecuador) ↗</span>
+          <span>Continuar por WhatsApp ↗</span>
         </a>
       </div>
 
@@ -88,7 +88,7 @@ function details(id,story=false){
             <small class="binance-tx-hint">Envía el monto a nuestro UID en Binance y escribe el código para entregar tu cuenta de inmediato.</small>
           </div>
           <button type="button" class="button pay-cta-btn button-binance" id="btn-confirm-binance">
-            <span>Confirmar Transferencia Binance y Enviar por WhatsApp ↗</span>
+            <span>Enviar comprobante por WhatsApp ↗</span>
           </button>
         </div>
       </div>
@@ -102,12 +102,12 @@ function details(id,story=false){
           <span class="bank-chip">Tarjetas de Débito</span>
         </div>
         <a class="button pay-cta-btn" id="btn-pay-paypal" href="${wa(`¡Hola Órbita Streaming! Deseo adquirir ${p.name} ($${p.price} USD / ${p.period}) con PayPal / Tarjeta Internacional. ¿Me facilitan el enlace de pago de PayPal?`)}" target="_blank" rel="noopener">
-          <span>Pedir por WhatsApp (PayPal) ↗</span>
+          <span>Continuar por WhatsApp ↗</span>
         </a>
       </div>
     </div>
 
-    ${story?`<img class="detail-cover" src="assets/${e.image}" alt="" onerror="this.hidden=true"><p class="muted">${e.desc}</p><a class="text-link" href="${e.url}" target="_blank" rel="noopener">Explorar en la fuente oficial ↗</a>`:`<p class="muted">${p.tagline}</p><ul class="detail-features">${p.features.map(f=>'<li>'+f+'</li>').join('')}</ul><p class="fine-print">Compatible con: ${p.devices.join(', ')}. Confirma disponibilidad al instante por WhatsApp.</p>`}
+    ${story?`<img class="detail-cover" src="assets/${e.image}" alt="" onerror="this.hidden=true"><p class="muted">${e.desc}</p><a class="text-link" href="${e.url}" target="_blank" rel="noopener">Explorar en la fuente oficial ↗</a>`:`<h3 class="detail-includes">Tu plan incluye</h3><ul class="detail-features">${p.features.map(f=>'<li>'+f+'</li>').join('')}</ul><p class="fine-print">Compatible con: ${p.devices.join(', ')}. Confirma disponibilidad al instante por WhatsApp.</p>`}
 
     <div class="detail-actions">
       <button class="button ghost" id="add-to-combo">Añadir a mi combo</button>
@@ -119,8 +119,8 @@ function details(id,story=false){
   const payChips = $$('#detail-pay-chips .pay-chip');
   payChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      payChips.forEach(c => c.classList.remove('is-selected'));
-      chip.classList.add('is-selected');
+      payChips.forEach(c => {c.classList.remove('is-selected');c.setAttribute('aria-pressed','false');});
+      chip.classList.add('is-selected');chip.setAttribute('aria-pressed','true');
       const m = chip.dataset.pay;
       $('#panel-ecuador').style.display = m === 'ecuador' ? 'block' : 'none';
       $('#panel-binance').style.display = m === 'binance' ? 'block' : 'none';

@@ -460,8 +460,9 @@ html.motion-paused .orbit-arrived{animation:none}html.motion-paused .orbit-colle
 }
 
 @media (max-width: 768px) {
-  /* Plataformas en UNA SOLA LÍNEA con scroll horizontal */
-  .pearl-world .platform-dock {
+  /* Plataformas en UNA SOLA LÍNEA con scroll horizontal perfectamente centrado */
+  .pearl-world .platform-dock,
+  .platform-dock {
     display: flex !important;
     flex-wrap: nowrap !important;
     justify-content: flex-start !important;
@@ -469,21 +470,52 @@ html.motion-paused .orbit-arrived{animation:none}html.motion-paused .orbit-colle
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch !important;
-    scroll-snap-type: x mandatory !important;
+    scroll-snap-type: x proximity !important;
     scrollbar-width: none !important;
-    gap: 8px !important;
-    padding: 8px 16px 16px !important;
-    margin-inline: -16px !important;
-    padding-inline: 16px !important;
+    gap: 10px !important;
+    padding: 12px 14px !important;
+    margin: 12px auto 26px !important;
+    margin-inline: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: calc(100% - 36px) !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 22px !important;
+    background: rgba(255, 255, 255, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 0 4px 20px rgba(24, 45, 64, 0.05) !important;
   }
-  .pearl-world .platform-dock::-webkit-scrollbar {
+  .pearl-world .platform-dock::-webkit-scrollbar,
+  .platform-dock::-webkit-scrollbar {
     display: none !important;
   }
-  .pearl-world .platform-dock a {
+  .pearl-world .platform-dock a,
+  .platform-dock a {
     flex: 0 0 auto !important;
-    min-width: 68px !important;
+    min-width: 70px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 6px 8px !important;
     scroll-snap-align: start !important;
-    padding: 6px 4px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+  }
+  .pearl-world .platform-dock img,
+  .platform-dock img {
+    width: 54px !important;
+    height: 25px !important;
+    object-fit: contain !important;
+  }
+  .pearl-world .platform-dock span,
+  .platform-dock span {
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    color: #405869 !important;
+    white-space: nowrap !important;
   }
 
   /* Calculadora de ahorro compacta: cuadrícula de 2 columnas (no 1 columna larga) */

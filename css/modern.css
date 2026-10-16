@@ -68,3 +68,8 @@ body.pearl-world{background:radial-gradient(ellipse 80% 700px at 0 0,#dcefe9 0,t
 @keyframes orbital-word{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @keyframes orbital-exit{to{opacity:0;transform:scale(1.025)}}}
 @media(max-width:650px){.pearl-world #welcome .intro-brand-symbol{width:120px;height:104px}.pearl-world #welcome .intro-brand-name{font-size:52px}.pearl-world .glass-feature{background:#f3f7f7f2}}
+
+/* Keep logos still; the surface communicates hover and keyboard focus. */
+.pearl-world .platform-card .platform-top img,.pearl-world .platform-card:hover .platform-top img,.pearl-world .platform-card:focus-within .platform-top img{transform:none!important;translate:none!important;scale:none!important;filter:none!important;box-shadow:0 4px 12px #142b3810!important;transition:none!important}
+.pearl-world .platform-card:focus-within{border-color:#7eaba9!important;box-shadow:0 8px 24px #25485114!important}
+@media(hover:hover) and (pointer:fine){.pearl-world .platform-card:hover{background:#f3faf9e6!important;border-color:#a3c6c2!important;box-shadow:0 8px 24px #25485114!important;transform:none!important}.pearl-world .platform-card:hover::before,.pearl-world .platform-card:hover::after{opacity:0!important}}

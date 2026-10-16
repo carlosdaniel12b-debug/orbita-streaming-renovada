@@ -11,9 +11,10 @@
  function render(first=false){
   const pool=library.filter(m=>!types[mood]||m.type===types[mood]);
   let available=pool.filter(m=>!seen.includes(m.id));
-  if(available.length<3)available=pool;
+  if(available.length<4)available=pool;
   for(let i=available.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[available[i],available[j]]=[available[j],available[i]];}
-  const selected=first?initial.map(id=>library.find(m=>m.id===id)).filter(Boolean):available.slice(0,3);
+  const preferred=initial.map(id=>library.find(m=>m.id===id)).filter(Boolean);
+  const selected=first?[...preferred,...available.filter(m=>!preferred.some(p=>p.id===m.id))].slice(0,4):available.slice(0,4);
   seen=[...seen,...selected.map(m=>m.id)].slice(-9);
   grid.replaceChildren(...selected.map(m=>{
    const a=document.createElement('a');a.className='orbit-pick-card';a.href='descubre.html?q='+encodeURIComponent(m.title);
@@ -25,7 +26,7 @@
    const meta=document.createElement('small');meta.textContent=m.genre.split(',').join(' · ')+' · '+m.year;
    a.append(cover,title,text,meta);return a;
   }));
-  if(!first)document.querySelector('#orbit-pick-status').textContent='Tres recomendaciones: '+selected.map(m=>m.title).join(', ')+'.';
+  if(!first)document.querySelector('#orbit-pick-status').textContent=selected.length+' recomendaciones: '+selected.map(m=>m.title).join(', ')+'.';
  }
  document.querySelectorAll('[data-orbit-mood]').forEach(button=>button.addEventListener('click',()=>{
   mood=button.dataset.orbitMood;seen=[];

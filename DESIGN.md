@@ -27,3 +27,6 @@ Hero vigente: composición dimensional con titular de hasta 92 px, fotografía p
 Referencia: https://developer.apple.com/design/human-interface-guidelines/materials y https://developer.apple.com/videos/play/wwdc2025/219/ . Interpretación web del material, no una implementación nativa de Apple.
 
 Entrada de la portada: secuencia única de título, acciones e imagen; 300–340 ms en teléfono y 420–550 ms en escritorio. Solo opacidad y desplazamiento breve, sin bucles ni desenfoque animado. Desactivada con movimiento reducido o pausa. Navegación táctil horizontal sobre la fotografía, controles de 44 px y desplazamiento vertical disponible.
+
+## Compact editorial refresh — October 2026
+The user's density and performance preferences override the Stitch guide's perpetual motion suggestions. Use a calm slate canvas (#eef4f7), ink (#182d40), and one muted blue accent (#24597c). Preserve the existing bundled fonts. Section titles are 26–38px; section padding is 26–36px. Recommendations fill four columns on desktop and two on phones; missing editorial IDs must be filled from available titles. Orbit is a compact 157px help strip instead of a tall canvas scene. Remove repeated discovery pitches and oversized device mockups. The welcome is optional, dismissible, once per session, at most 1.1 seconds, and respects reduced motion. No rendering loops or navigation delays.

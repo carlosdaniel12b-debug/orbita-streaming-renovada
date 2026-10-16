@@ -1,11 +1,11 @@
 /* ================================================================
-   INTRO CINEMATOGRAFICA — Orbita Streaming
-   Particulas orbitales, nebulosa de fondo y sweep dramatico.
-   Disenio inspirado por Stitch (labs.google/stitch).
-   Compatible con modern.css (animation:none bloqueado via override)
+   INTRO CINEMATOGRICA — Órbita Streaming
+   Paleta perlada original (mint, lavanda, blanco, navy #243c48).
+   Coreografía orbital fluida con desaceleración natural.
+   Mismo logo y mismos colores originales con animación renovada.
    ================================================================ */
 
-/* Fondo cinematografico del dialog de bienvenida */
+/* Fondo del dialog de bienvenida — paleta perlada original */
 .pearl-world #welcome {
   inset: 0;
   margin: 0;
@@ -17,11 +17,12 @@
   border-radius: 0;
   padding: 24px;
   background:
-    radial-gradient(ellipse 70% 60% at 50% 45%, #0d2535 0%, transparent 70%),
-    radial-gradient(ellipse 100% 100% at 50% 50%, #061220 0%, #040d14 100%);
+    radial-gradient(ellipse at 25% 25%, #ddefe9 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 75%, #e9e1f2 0%, transparent 55%),
+    #f1f6f8;
   box-shadow: none;
   overflow: hidden;
-  color: #ffffff;
+  color: #243c48;
 }
 
 .pearl-world #welcome[open] {
@@ -29,274 +30,313 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 44px;
+  gap: 40px;
   animation: none !important;
 }
 
 .pearl-world #welcome::backdrop {
-  background: #040d14;
+  background: #eef4f7;
 }
 
-/* Contenedor central del brand */
+/* Contenedor central de marca */
 .pearl-world #welcome .intro-brand {
   position: relative;
-  color: #ffffff;
+  color: #243c48;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-/* Nebulosa radial detras del logo */
+/* Aura de luz perlada ambiental detrás del logo (mint y lavanda suaves) */
 .pearl-world #welcome .intro-brand::before {
   content: '';
   position: absolute;
-  width: 440px;
-  height: 440px;
+  width: 380px;
+  height: 380px;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -58%);
+  transform: translate(-50%, -56%);
   border-radius: 50%;
-  background: radial-gradient(ellipse at center,
-    rgba(13, 74, 62, 0.55) 0%,
-    rgba(8, 127, 112, 0.22) 40%,
+  background: radial-gradient(circle,
+    rgba(200, 235, 226, 0.6) 0%,
+    rgba(224, 216, 239, 0.4) 42%,
     transparent 70%);
   pointer-events: none;
   z-index: 0;
+  filter: blur(24px);
 }
 
-/* Estrellas CSS con gradientes radiales */
-.pearl-world #welcome::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    radial-gradient(circle, rgba(120, 215, 197, 0.55) 1px, transparent 1px),
-    radial-gradient(circle, rgba(94, 227, 208, 0.38) 1px, transparent 1px),
-    radial-gradient(circle, rgba(143, 168, 184, 0.28) 1.5px, transparent 1.5px),
-    radial-gradient(circle, rgba(120, 215, 197, 0.45) 1px, transparent 1px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
-    radial-gradient(circle, rgba(8, 127, 112, 0.4) 2px, transparent 2px),
-    radial-gradient(circle, rgba(143, 168, 184, 0.22) 1px, transparent 1px),
-    radial-gradient(circle, rgba(120, 215, 197, 0.32) 1.5px, transparent 1.5px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
-    radial-gradient(circle, rgba(8, 127, 112, 0.28) 1px, transparent 1px),
-    radial-gradient(circle, rgba(143, 168, 184, 0.35) 2px, transparent 2px),
-    radial-gradient(circle, rgba(120, 215, 197, 0.25) 1px, transparent 1px);
-  background-size:
-    600px 600px, 450px 450px, 700px 700px, 350px 350px,
-    500px 500px, 800px 800px, 300px 300px, 550px 550px,
-    650px 650px, 420px 420px, 480px 480px, 380px 380px;
-  background-position:
-    12% 18%, 76% 12%, 34% 82%, 88% 65%,
-    55% 35%, 22% 70%, 68% 88%, 45% 50%,
-    8% 92%, 92% 30%, 60% 20%, 15% 55%;
-}
-
-/* Simbolo / logo del planeta */
+/* Símbolo / logo vectorial original */
 .pearl-world #welcome .intro-brand-symbol {
   width: 150px;
   height: 130px;
-  color: #ffffff;
+  color: #243c48;
   position: relative;
   z-index: 2;
   overflow: visible;
-  filter: drop-shadow(0 0 22px rgba(8, 127, 112, 0.55));
+  filter: drop-shadow(0 10px 22px rgba(36, 60, 72, 0.08));
 }
 
-/* Nombre / wordmark */
+/* Tipografía de marca "órbita" */
 .pearl-world #welcome .intro-brand-name {
   font-size: 64px;
-  color: #ffffff;
+  color: #243c48;
   letter-spacing: -0.04em;
   line-height: 1;
   position: relative;
   z-index: 2;
-  margin-top: 12px;
-  font-family: Manrope, Arial, sans-serif;
+  margin-top: 14px;
+  font-family: Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
 }
 
+/* Subtítulo "streaming" con tracking editorial */
 .pearl-world #welcome .intro-brand-name span {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.3em;
-  color: #78d7c5;
+  color: #3f606e;
   display: block;
-  margin-top: 12px;
+  margin-top: 10px;
+  text-transform: uppercase;
 }
 
-/* Tagline */
+/* Tagline original */
 .pearl-world #welcome .intro-brand p {
   font-size: 13px;
   letter-spacing: 0;
-  color: #8fa8b8;
-  margin: 34px 0 0;
+  color: #536371;
+  margin: 30px 0 0;
   position: relative;
   z-index: 2;
 }
 
-/* Boton entrar — frosted glass pill */
+/* Botón entrar — vidrio satinado claro original con microinteracción */
 .pearl-world #welcome #welcome-skip {
-  background: rgba(255, 255, 255, 0.08) !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  border-radius: 100px !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  color: #243c48 !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  border-radius: 40px !important;
   min-height: 44px !important;
   padding: 0 28px !important;
   font-size: 13px !important;
   font-weight: 600 !important;
-  letter-spacing: 0.03em !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  box-shadow: 0 6px 24px rgba(4, 13, 20, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+  letter-spacing: 0.02em !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  box-shadow: 0 6px 20px rgba(37, 63, 73, 0.08), inset 0 1px 0 #ffffff !important;
   cursor: pointer;
-  text-shadow: none !important;
   position: relative;
   z-index: 2;
+  transition: background 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .pearl-world #welcome #welcome-skip:hover {
+    background: #ffffff !important;
+    transform: translateY(-1px) scale(1.02) !important;
+    box-shadow: 0 10px 26px rgba(37, 63, 73, 0.12), inset 0 1px 0 #ffffff !important;
+  }
 }
 
 /* ================================================================
-   ANIMACIONES CINEMATOGRAFICAS
+   COREOGRAFÍA DE ANIMACIÓN RENOVADA
+   Apple-grade spring curves y escalonamiento de capas
    ================================================================ */
 @media (prefers-reduced-motion: no-preference) {
 
-  /* 1. Planeta emerge con escala, traslacion y desenfoque */
+  /* 1. Planeta central emerge con suave descenso gravitacional */
   .pearl-world #welcome[open] .intro-brand-symbol {
-    animation: orbita-planet-emerge 750ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+    animation: pearl-planet-arrive 720ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
   }
 
-  /* 2. Anillo orbital — sweep dramatico 160deg con spring */
+  /* 2. Anillo orbital — sweep rotacional amplio con asentamiento físico */
   .pearl-world #welcome[open] .intro-brand-orbit {
     transform-origin: 35px 30px;
-    animation: orbita-ring-sweep 1550ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+    animation: pearl-orbit-sweep 1350ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
   }
 
-  /* 3. Nombre / wordmark — fade-up escalonado */
-  .pearl-world #welcome[open] .intro-brand-name {
-    animation: orbita-text-rise 700ms 150ms cubic-bezier(0.22, 1, 0.36, 1) both !important;
-  }
-
-  /* 4. Tagline — delay mayor */
-  .pearl-world #welcome[open] .intro-brand p {
-    animation: orbita-text-rise 650ms 320ms cubic-bezier(0.22, 1, 0.36, 1) both !important;
-  }
-
-  /* 5. Boton — aparece al final */
-  .pearl-world #welcome[open] #welcome-skip {
-    animation: orbita-btn-fade 550ms 540ms cubic-bezier(0.22, 1, 0.36, 1) both !important;
-  }
-
-  /* 6. Nebulosa — pulso de entrada */
+  /* 3. Aura ambiental perlada — expansión suave y etérea */
   .pearl-world #welcome[open] .intro-brand::before {
-    animation: orbita-nebula-pulse 2400ms 100ms ease-out both !important;
+    animation: pearl-aura-bloom 1800ms ease-out both !important;
   }
 
-  /* 7. Salida del dialog completo */
+  /* 4. Nombre "órbita" — elevación con enfoque de nitidez */
+  .pearl-world #welcome[open] .intro-brand-name {
+    animation: pearl-wordmark-reveal 650ms 160ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  }
+
+  /* 5. Subtítulo "streaming" — tracking editorial refinado */
+  .pearl-world #welcome[open] .intro-brand-name span {
+    animation: pearl-tracking-reveal 550ms 300ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  }
+
+  /* 6. Tagline — revelación suave */
+  .pearl-world #welcome[open] .intro-brand p {
+    animation: pearl-fade-up 550ms 440ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  }
+
+  /* 7. Botón "Entrar ahora ↗" — aparición escalonada */
+  .pearl-world #welcome[open] #welcome-skip {
+    animation: pearl-btn-appear 500ms 560ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  }
+
+  /* 8. Salida del diálogo — transición limpia hacia el contenido principal */
   .pearl-world #welcome[open].welcome-leaving {
-    animation: orbita-dialog-exit 350ms ease-in both !important;
+    animation: pearl-dialog-exit 360ms ease-in both !important;
   }
 
   .pearl-world #welcome[open].welcome-leaving .intro-brand {
-    animation: orbita-brand-exit 300ms ease-in both !important;
+    animation: pearl-brand-exit 320ms ease-in both !important;
   }
 
-  /* Keyframes */
+  /* ---------------- Keyframes ---------------- */
 
-  @keyframes orbita-planet-emerge {
-    from {
-      opacity: 0;
-      transform: scale(0.7) translateY(18px);
-      filter: blur(10px) drop-shadow(0 0 0px rgba(8, 127, 112, 0));
-    }
-    55% {
-      filter: blur(1px) drop-shadow(0 0 36px rgba(8, 127, 112, 0.75));
-    }
-    to {
-      opacity: 1;
-      transform: scale(1) translateY(0);
-      filter: blur(0px) drop-shadow(0 0 22px rgba(8, 127, 112, 0.55));
-    }
-  }
-
-  @keyframes orbita-ring-sweep {
-    from {
-      transform: rotate(-160deg) scale(0.6);
-      opacity: 0;
-    }
-    20% {
-      opacity: 1;
-    }
-    to {
-      transform: rotate(0deg) scale(1);
-      opacity: 1;
-    }
-  }
-
-  @keyframes orbita-text-rise {
-    from {
-      opacity: 0;
-      transform: translateY(14px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes orbita-btn-fade {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes orbita-nebula-pulse {
+  /* Descenso gravitacional del planeta */
+  @keyframes pearl-planet-arrive {
     0% {
       opacity: 0;
-      transform: translate(-50%, -58%) scale(0.35);
+      transform: translateY(-16px) scale(0.85);
+      filter: blur(6px) drop-shadow(0 4px 10px rgba(36, 60, 72, 0));
     }
-    45% {
+    60% {
+      filter: blur(0px) drop-shadow(0 14px 28px rgba(36, 60, 72, 0.12));
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0px) drop-shadow(0 10px 22px rgba(36, 60, 72, 0.08));
+    }
+  }
+
+  /* Giro orbital de -185° hacia 0° con asentamiento suave (+3° de amortiguación) */
+  @keyframes pearl-orbit-sweep {
+    0% {
+      opacity: 0;
+      transform: rotate(-185deg) scale(0.55);
+    }
+    25% {
+      opacity: 0.85;
+    }
+    75% {
+      transform: rotate(3deg) scale(1.02);
       opacity: 1;
     }
     100% {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
+  /* Expansión del aura perlada */
+  @keyframes pearl-aura-bloom {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -56%) scale(0.4);
+    }
+    45% {
       opacity: 0.85;
-      transform: translate(-50%, -58%) scale(1);
+      transform: translate(-50%, -56%) scale(1.06);
+    }
+    100% {
+      opacity: 0.65;
+      transform: translate(-50%, -56%) scale(1);
     }
   }
 
-  @keyframes orbita-dialog-exit {
-    to {
+  /* Revelación de "órbita" */
+  @keyframes pearl-wordmark-reveal {
+    0% {
       opacity: 0;
+      transform: translateY(16px);
+      letter-spacing: -0.01em;
+      filter: blur(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      letter-spacing: -0.04em;
+      filter: blur(0px);
     }
   }
 
-  @keyframes orbita-brand-exit {
-    to {
+  /* Revelación con tracking del subtítulo "streaming" */
+  @keyframes pearl-tracking-reveal {
+    0% {
       opacity: 0;
-      transform: translateY(-22px) scale(1.05);
-      filter: blur(7px);
+      transform: translateY(8px);
+      letter-spacing: 0.42em;
+    }
+    100% {
+      opacity: 0.9;
+      transform: translateY(0);
+      letter-spacing: 0.3em;
+    }
+  }
+
+  /* Revelación estándar hacia arriba */
+  @keyframes pearl-fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Aparición del botón */
+  @keyframes pearl-btn-appear {
+    0% {
+      opacity: 0;
+      transform: translateY(12px) scale(0.96);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Salida del diálogo hacia la página */
+  @keyframes pearl-dialog-exit {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      filter: blur(2px);
+    }
+  }
+
+  /* Salida de la marca */
+  @keyframes pearl-brand-exit {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-16px) scale(1.02);
+      filter: blur(5px);
     }
   }
 }
 
-/* Version estatica para movimiento reducido */
+/* Modo accesibilidad / movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
   .pearl-world #welcome .intro-brand-symbol {
-    filter: drop-shadow(0 0 16px rgba(8, 127, 112, 0.4));
+    filter: drop-shadow(0 6px 14px rgba(36, 60, 72, 0.08));
   }
   .pearl-world #welcome .intro-brand-name span {
-    color: #78d7c5;
+    color: #3f606e;
   }
 }
 
-/* Responsive movil */
+/* Responsivo para móviles */
 @media (max-width: 650px) {
   .pearl-world #welcome .intro-brand-symbol {
     width: 120px;
@@ -306,8 +346,8 @@
     font-size: 52px;
   }
   .pearl-world #welcome .intro-brand::before {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
   }
   .pearl-world #welcome[open] {
     gap: 32px;

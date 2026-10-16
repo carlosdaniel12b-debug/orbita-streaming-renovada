@@ -62,13 +62,13 @@ body.pearl-world{background:radial-gradient(ellipse 80% 700px at 0 0,#dcefe9 0,t
 /* Original full-screen brand scene, with a new one-shot orbital sweep. */
 .pearl-world #welcome{inset:0;margin:0;width:100vw;max-width:none;height:100dvh;max-height:none;border:0;border-radius:0;padding:24px;background:radial-gradient(ellipse at 25% 25%,#ddefe9,transparent 55%),radial-gradient(ellipse at 80% 75%,#e9e1f2,transparent 55%),#f1f6f8;box-shadow:none;overflow:hidden;color:#202024}
 .pearl-world #welcome[open]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;animation:none!important}.pearl-world #welcome::backdrop{background:#eef4f7}
-.pearl-world #welcome .intro-brand-symbol{width:150px;height:130px;color:#243c48}.pearl-world #welcome .intro-brand-name{font-size:64px;color:#243c48}.pearl-world #welcome .intro-brand-name span{font-size:12px;letter-spacing:.3em}.pearl-world #welcome .intro-brand p{font-size:13px;letter-spacing:0;color:#536371;margin:32px 0 0}.pearl-world #welcome #welcome-skip{background:#ffffff9c;color:#243c48;border:1px solid white;border-radius:40px;min-height:44px;box-shadow:0 6px 18px #253f4910}
+.pearl-world #welcome .intro-brand-symbol{width:176px;height:151px;color:#243c48}.pearl-world #welcome .intro-brand-name{font-size:76px;color:#243c48}.pearl-world #welcome .intro-brand-name span{font-size:14px;letter-spacing:.34em}.pearl-world #welcome .intro-brand p{font-size:13px;letter-spacing:0;color:#536371;margin:32px 0 0}.pearl-world #welcome #welcome-skip{background:#ffffff9c;color:#243c48;border:1px solid white;border-radius:40px;min-height:44px;box-shadow:0 6px 18px #253f4910}
 @media(prefers-reduced-motion:no-preference){.pearl-world #welcome[open] .intro-brand-symbol{animation:orbital-emerge 650ms cubic-bezier(.16,1,.3,1) both!important}.pearl-world #welcome[open] .intro-brand-orbit{transform-origin:35px 30px;animation:orbital-sweep 1400ms cubic-bezier(.16,1,.3,1) both!important}.pearl-world #welcome[open] .intro-brand-name{animation:orbital-word 600ms 120ms both!important}.pearl-world #welcome[open] .intro-brand p{animation:orbital-word 600ms 240ms both!important}.pearl-world #welcome[open].welcome-leaving{animation:orbital-exit 260ms ease-in both!important}
 @keyframes orbital-emerge{from{opacity:0;transform:translateY(20px) scale(.8)}to{opacity:1;transform:none}}
 @keyframes orbital-sweep{from{transform:rotate(-150deg) scale(.75)}to{transform:rotate(0) scale(1)}}
 @keyframes orbital-word{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @keyframes orbital-exit{to{opacity:0;transform:scale(1.025)}}}
-@media(max-width:650px){.pearl-world #welcome .intro-brand-symbol{width:120px;height:104px}.pearl-world #welcome .intro-brand-name{font-size:52px}.pearl-world .glass-feature{background:#f3f7f7f2}}
+@media(max-width:650px){.pearl-world #welcome .intro-brand-symbol{width:140px;height:120px}.pearl-world #welcome .intro-brand-name{font-size:60px}.pearl-world .glass-feature{background:#f3f7f7f2}}
 
 /* Keep logos still; the surface communicates hover and keyboard focus. */
 .pearl-world .platform-card .platform-top img,.pearl-world .platform-card:hover .platform-top img,.pearl-world .platform-card:focus-within .platform-top img{transform:none!important;translate:none!important;scale:none!important;filter:none!important;box-shadow:0 4px 12px #142b3810!important;transition:none!important}
@@ -91,3 +91,156 @@ body.pearl-world{background:radial-gradient(ellipse 80% 700px at 0 0,#dcefe9 0,t
 .pearl-world #details .detail-logo{box-sizing:border-box;background:#152832;border:1px solid #314956;border-radius:14px;padding:9px;width:64px;height:64px;object-fit:contain;filter:none!important;box-shadow:0 4px 12px #18374614}
 .pearl-world #details .detail-top-head{grid-template-columns:64px minmax(0,1fr) auto}
 @media(max-width:480px){.pearl-world #details .detail-logo{width:52px;height:52px;padding:7px;border-radius:12px}.pearl-world #details .detail-top-head{grid-template-columns:52px minmax(0,1fr)}}
+
+/* ==========================================================================
+   AGRANDAR Y REFINAR LOGOTIPO PRINCIPAL (ÓRBITA STREAMING)
+   ========================================================================== */
+.pearl-world .header {
+  height: 78px !important;
+  min-height: 78px !important;
+}
+
+.pearl-world .header-inner {
+  height: 100% !important;
+  padding-inline: 26px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.pearl-world .brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  text-decoration: none !important;
+  color: #172f3e !important;
+  flex-shrink: 0 !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease !important;
+}
+
+.pearl-world .brand:hover {
+  transform: translateY(-1px) scale(1.02) !important;
+}
+
+.pearl-world .brand:active {
+  transform: scale(0.98) !important;
+}
+
+.pearl-world .logo-symbol {
+  width: 58px !important;
+  height: 50px !important;
+  filter: drop-shadow(0 2px 8px rgba(23, 47, 62, 0.1)) !important;
+  flex-shrink: 0 !important;
+  overflow: visible !important;
+  color: #172f3e !important;
+}
+
+.pearl-world .logo-symbol * {
+  animation: none !important;
+  stroke: currentColor !important;
+}
+
+.pearl-world .logo-type {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 35px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em !important;
+  line-height: 0.92 !important;
+  color: #172f3e !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.pearl-world .logo-type small {
+  display: block !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.32em !important;
+  text-transform: uppercase !important;
+  color: #3b5f6e !important;
+  margin-top: 4px !important;
+  line-height: 1 !important;
+}
+
+/* Footer brand logo */
+.pearl-world footer.footer .brand,
+.pearl-world .footer .brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  color: #172f3e !important;
+}
+
+.pearl-world footer.footer .logo-symbol,
+.pearl-world .footer .logo-symbol {
+  width: 54px !important;
+  height: 46px !important;
+}
+
+.pearl-world footer.footer .logo-type,
+.pearl-world .footer .logo-type {
+  font-size: 33px !important;
+}
+
+.pearl-world footer.footer .logo-type small,
+.pearl-world .footer .logo-type small {
+  font-size: 11px !important;
+  letter-spacing: 0.3em !important;
+}
+
+/* Responsive mobile adjustments */
+@media (max-width: 768px) {
+  .pearl-world .header {
+    height: 68px !important;
+    min-height: 68px !important;
+    top: 10px !important;
+    border-radius: 22px !important;
+  }
+
+  .pearl-world .header-inner {
+    padding-inline: 15px !important;
+  }
+
+  .pearl-world .brand {
+    gap: 11px !important;
+  }
+
+  .pearl-world .logo-symbol {
+    width: 46px !important;
+    height: 40px !important;
+  }
+
+  .pearl-world .logo-type {
+    font-size: 29px !important;
+    line-height: 0.92 !important;
+  }
+
+  .pearl-world .logo-type small {
+    font-size: 9.5px !important;
+    letter-spacing: 0.25em !important;
+    margin-top: 3px !important;
+  }
+
+  .pearl-world main {
+    padding-top: 90px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .pearl-world .logo-symbol {
+    width: 40px !important;
+    height: 35px !important;
+  }
+
+  .pearl-world .logo-type {
+    font-size: 26px !important;
+  }
+
+  .pearl-world .logo-type small {
+    font-size: 8.5px !important;
+    letter-spacing: 0.22em !important;
+  }
+}
+

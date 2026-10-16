@@ -7,7 +7,7 @@
 <script>
 try { if (!location.hash && !matchMedia('(prefers-reduced-motion:reduce)').matches && sessionStorage.getItem('orbita-brand-intro-seen') !== '1') {
  document.documentElement.classList.add('welcome-pending');
- window.orbitaWelcomeFallback = setTimeout(function(){document.documentElement.classList.remove('welcome-pending');},4000);
+ window.orbitaWelcomeFallback = setTimeout(function(){document.documentElement.classList.remove('welcome-pending');},3000);
 } } catch(e) {}
 </script>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content" name="viewport"/>
@@ -45,6 +45,7 @@ try { if (!location.hash && !matchMedia('(prefers-reduced-motion:reduce)').match
 <link rel="stylesheet" href="css/home-additions.css?v=1"/>
 <script defer src="js/home-additions.js?v=1"></script>
 <link rel="stylesheet" href="css/modern.css?v=20261015f"/>
+<link rel="stylesheet" href="css/intro-cinematic.css?v=20261015"/>
 </head>
 <body class="pearl-world" data-page="index">
 <dialog id="welcome" aria-label="Bienvenido a Órbita Streaming"><div class="intro-brand">

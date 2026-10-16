@@ -1,24 +1,5 @@
-// Selección editorial: confirma disponibilidad regional antes de contratar.
+// Selección editorial; confirma disponibilidad regional.
 window.ORBIT_LIBRARY = [
-  {
-    "id": "s52341",
-    "title": "Andor",
-    "original": "Andor",
-    "platform": "disneyplus",
-    "aliases": [
-      "andor",
-      "andor"
-    ],
-    "genre": "Ciencia ficción,aventura",
-    "type": "Serie",
-    "year": "2022",
-    "image": "assets/posters/s52341.jpg",
-    "source": "https://www.tvmaze.com/shows/52341/andor",
-    "official": "https://www.disneyplus.com/series/andor/3xsQKWG00GL5",
-    "origin": "disneyplus",
-    "summary": "Cassian Andor se ve arrastrado a la resistencia contra el Imperio. Una historia de espionaje y rebelión dentro de Star Wars.",
-    "esSummary": "Cassian Andor se ve arrastrado a la resistencia contra el Imperio. Una historia de espionaje y rebelión dentro de Star Wars."
-  },
   {
     "id": "s55138",
     "title": "Arcane",
@@ -37,44 +18,6 @@ window.ORBIT_LIBRARY = [
     "origin": "netflix",
     "summary": "En medio del conflicto entre las ciudades de Piltóver y Zaun, dos hermanas luchan en bandos opuestos por tecnologías mágicas y convicciones.",
     "esSummary": "En medio del conflicto entre las ciudades de Piltóver y Zaun, dos hermanas luchan en bandos opuestos por tecnologías mágicas y convicciones."
-  },
-  {
-    "id": "m_avatar2",
-    "title": "Avatar: El camino del agua",
-    "original": "Avatar: The Way of Water",
-    "platform": "disneyplus",
-    "aliases": [
-      "avatar: el camino del agua",
-      "avatar: the way of water"
-    ],
-    "genre": "Ciencia ficción,Aventura,Acción",
-    "type": "Película",
-    "year": "2022",
-    "image": "assets/posters/m_avatar2.jpg",
-    "source": "https://www.themoviedb.org",
-    "official": "",
-    "origin": "disneyplus",
-    "summary": "Jake Sully vive con su nueva familia en Pandora. Cuando una amenaza conocida regresa, deberán explorar y refugiarse en los océanos de Pandora.",
-    "esSummary": "Jake Sully vive con su nueva familia en Pandora. Cuando una amenaza conocida regresa, deberán explorar y refugiarse en los océanos de Pandora."
-  },
-  {
-    "id": "m_endgame",
-    "title": "Avengers: Endgame",
-    "original": "Avengers: Endgame",
-    "platform": "disneyplus",
-    "aliases": [
-      "avengers: endgame",
-      "avengers: endgame"
-    ],
-    "genre": "Acción,Aventura,Ciencia ficción",
-    "type": "Película",
-    "year": "2019",
-    "image": "assets/posters/m_endgame.jpg",
-    "source": "https://www.themoviedb.org",
-    "official": "",
-    "origin": "disneyplus",
-    "summary": "Tras los eventos devastadores provocados por Thanos, los Vengadores sobrevivientes deben reunirse una última vez para revertir el chasquido.",
-    "esSummary": "Tras los eventos devastadores provocados por Thanos, los Vengadores sobrevivientes deben reunirse una última vez para revertir el chasquido."
   },
   {
     "id": "s618",
@@ -153,25 +96,6 @@ window.ORBIT_LIBRARY = [
     "esSummary": "Un profesor de química con cáncer terminal se asocia con un exalumno para fabricar metanfetamina y asegurar el futuro de su familia."
   },
   {
-    "id": "m0",
-    "title": "Coco",
-    "original": "Coco",
-    "platform": "disneyplus",
-    "aliases": [
-      "coco",
-      "coco"
-    ],
-    "genre": "Animación,familia",
-    "type": "Película",
-    "year": "2017",
-    "image": "assets/posters/m0.jpg",
-    "source": "https://www.pixar.com/coco",
-    "official": "",
-    "origin": "disneyplus",
-    "summary": "Miguel sueña con ser músico y termina en la Tierra de los Muertos, donde descubre la historia de su familia.",
-    "esSummary": "Miguel sueña con ser músico y termina en la Tierra de los Muertos, donde descubre la historia de su familia."
-  },
-  {
     "id": "s48945",
     "title": "Cyberpunk: Edgerunners",
     "original": "Cyberpunk: Edgerunners",
@@ -208,25 +132,6 @@ window.ORBIT_LIBRARY = [
     "origin": "netflix",
     "summary": "La desaparición de varios niños revela conexiones entre cuatro familias, distintas épocas y los secretos de un pueblo alemán.",
     "esSummary": "La desaparición de varios niños revela conexiones entre cuatro familias, distintas épocas y los secretos de un pueblo alemán."
-  },
-  {
-    "id": "m_deadpool3",
-    "title": "Deadpool & Wolverine",
-    "original": "Deadpool & Wolverine",
-    "platform": "disneyplus",
-    "aliases": [
-      "deadpool & wolverine",
-      "deadpool & wolverine"
-    ],
-    "genre": "Acción,Comedia,Ciencia ficción",
-    "type": "Película",
-    "year": "2024",
-    "image": "assets/posters/m_deadpool3.jpg",
-    "source": "https://www.themoviedb.org",
-    "official": "",
-    "origin": "disneyplus",
-    "summary": "Un apático Wade Wilson se ve obligado a volver a la acción reclutando a un reticente Wolverine para salvar su universo de la extinción.",
-    "esSummary": "Un apático Wade Wilson se ve obligado a volver a la acción reclutando a un reticente Wolverine para salvar su universo de la extinción."
   },
   {
     "id": "m_dune2",
@@ -286,25 +191,6 @@ window.ORBIT_LIBRARY = [
     "esSummary": "A un hábil ladrón de secretos corporativos mediante tecnología de sueños compartidos se le ofrece borrar su historial criminal si logra implantar una idea."
   },
   {
-    "id": "s54198",
-    "title": "El Oso (The Bear)",
-    "original": "The Bear",
-    "platform": "disneyplus",
-    "aliases": [
-      "el oso (the bear)",
-      "the bear"
-    ],
-    "genre": "Drama,Comedia,Food",
-    "type": "Serie",
-    "year": "2022",
-    "image": "assets/posters/s54198.jpg",
-    "source": "https://www.tvmaze.com/shows/54198/the-bear",
-    "official": "https://www.hulu.com/series/the-bear-05eb6a8e-90ed-4947-8c0b-e6536cbddd5f",
-    "origin": "disneyplus",
-    "summary": "Un joven chef de alta cocina regresa a Chicago para administrar la tienda de sándwiches de su familia tras una tragedia.",
-    "esSummary": "Un joven chef de alta cocina regresa a Chicago para administrar la tienda de sándwiches de su familia tras una tragedia."
-  },
-  {
     "id": "m5",
     "title": "El proyecto Adam",
     "original": "The Adam Project",
@@ -322,25 +208,6 @@ window.ORBIT_LIBRARY = [
     "origin": "netflix",
     "summary": "Un piloto viaja en el tiempo y se encuentra con su versión de doce años para intentar resolver una misión ligada a su familia.",
     "esSummary": "Un piloto viaja en el tiempo y se encuentra con su versión de doce años para intentar resolver una misión ligada a su familia."
-  },
-  {
-    "id": "m2",
-    "title": "Encanto",
-    "original": "Encanto",
-    "platform": "disneyplus",
-    "aliases": [
-      "encanto",
-      "encanto"
-    ],
-    "genre": "Animación,familia",
-    "type": "Película",
-    "year": "2021",
-    "image": "assets/posters/m2.jpg",
-    "source": "https://movies.disney.com/encanto",
-    "official": "",
-    "origin": "disneyplus",
-    "summary": "Mirabel es la única integrante sin un don mágico en una familia extraordinaria de Colombia y busca entender por qué su hogar está en peligro.",
-    "esSummary": "Mirabel es la única integrante sin un don mágico en una familia extraordinaria de Colombia y busca entender por qué su hogar está en peligro."
   },
   {
     "id": "m3",
@@ -438,25 +305,6 @@ window.ORBIT_LIBRARY = [
     "esSummary": "Años después de presenciar la muerte del venerado héroe Máximo, Lucio debe entrar en el Coliseo tras ser conquistado su hogar por emperadores tiranos."
   },
   {
-    "id": "m_insideout2",
-    "title": "Intensamente 2",
-    "original": "Inside Out 2",
-    "platform": "disneyplus",
-    "aliases": [
-      "intensamente 2",
-      "inside out 2"
-    ],
-    "genre": "Animación,Comedia,Familia",
-    "type": "Película",
-    "year": "2024",
-    "image": "assets/posters/m_insideout2.jpg",
-    "source": "https://www.themoviedb.org",
-    "official": "",
-    "origin": "disneyplus",
-    "summary": "El cuartel general de la mente de Riley sufre una repentina demolición para hacer sitio a nuevas emociones inesperadas: Ansiedad, Envidia, Ennui y Vergüenza.",
-    "esSummary": "El cuartel general de la mente de Riley sufre una repentina demolición para hacer sitio a nuevas emociones inesperadas: Ansiedad, Envidia, Ennui y Vergüenza."
-  },
-  {
     "id": "m_interstellar",
     "title": "Interestelar",
     "original": "Interstellar",
@@ -550,25 +398,6 @@ window.ORBIT_LIBRARY = [
     "origin": "paramount",
     "summary": "Un intermediario del negocio petrolero en Texas intenta resolver conflictos entre trabajadores, empresarios y su propia familia.",
     "esSummary": "Un intermediario del negocio petrolero en Texas intenta resolver conflictos entre trabajadores, empresarios y su propia familia."
-  },
-  {
-    "id": "s41007",
-    "title": "Loki",
-    "original": "Loki",
-    "platform": "disneyplus",
-    "aliases": [
-      "loki",
-      "loki"
-    ],
-    "genre": "Acción,Aventura,Science-Fiction",
-    "type": "Serie",
-    "year": "2021",
-    "image": "assets/posters/s41007.jpg",
-    "source": "https://www.tvmaze.com/shows/41007/loki",
-    "official": "https://disneyplus.com/series/loki/6pARMvILBGzF",
-    "origin": "disneyplus",
-    "summary": "El Dios del Engaño se encuentra fuera del tiempo al ser capturado por la misteriosa Autoridad de Variación Temporal.",
-    "esSummary": "El Dios del Engaño se encuentra fuera del tiempo al ser capturado por la misteriosa Autoridad de Variación Temporal."
   },
   {
     "id": "m_madmax",
@@ -704,25 +533,6 @@ window.ORBIT_LIBRARY = [
     "esSummary": "Empleados de una corporación se someten a un procedimiento quirúrgico que separa quirúrgicamente sus recuerdos laborales de sus vidas personales."
   },
   {
-    "id": "s37336",
-    "title": "Shōgun",
-    "original": "Shogun",
-    "platform": "disneyplus",
-    "aliases": [
-      "shōgun",
-      "shogun"
-    ],
-    "genre": "Drama,Aventura,History",
-    "type": "Serie",
-    "year": "2024",
-    "image": "assets/posters/s37336.jpg",
-    "source": "https://www.tvmaze.com/shows/37336/shogun",
-    "official": "https://www.hulu.com/series/shogun-5422a5f9-e4f1-475e-9217-65e8249388d0",
-    "origin": "disneyplus",
-    "summary": "En el Japón feudal de 1600, un astuto señor feudal y un navegante inglés cruzan sus destinos en medio de conspiraciones políticas.",
-    "esSummary": "En el Japón feudal de 1600, un astuto señor feudal y un navegante inglés cruzan sus destinos en medio de conspiraciones políticas."
-  },
-  {
     "id": "s38052",
     "title": "Silo",
     "original": "Silo",
@@ -740,25 +550,6 @@ window.ORBIT_LIBRARY = [
     "origin": "appletv",
     "summary": "En un futuro postapocalíptico, diez mil personas viven en un silo subterráneo gigante lleno de secretos mortales sobre el exterior.",
     "esSummary": "En un futuro postapocalíptico, diez mil personas viven en un silo subterráneo gigante lleno de secretos mortales sobre el exterior."
-  },
-  {
-    "id": "m1",
-    "title": "Soul",
-    "original": "Soul",
-    "platform": "disneyplus",
-    "aliases": [
-      "soul",
-      "soul"
-    ],
-    "genre": "Animación,música",
-    "type": "Película",
-    "year": "2020",
-    "image": "assets/posters/m1.jpg",
-    "source": "https://www.pixar.com/soul",
-    "official": "",
-    "origin": "disneyplus",
-    "summary": "Un músico de jazz vive una experiencia inesperada que lo lleva a replantearse qué hace valiosa una vida.",
-    "esSummary": "Un músico de jazz vive una experiencia inesperada que lo lleva a replantearse qué hace valiosa una vida."
   },
   {
     "id": "m_spiderverse",
@@ -894,25 +685,6 @@ window.ORBIT_LIBRARY = [
     "esSummary": "Joel debe acompañar a Ellie por un mundo devastado por una infección. Su relación es el centro de un viaje peligroso."
   },
   {
-    "id": "s38963",
-    "title": "The Mandalorian",
-    "original": "The Mandalorian",
-    "platform": "disneyplus",
-    "aliases": [
-      "the mandalorian",
-      "the mandalorian"
-    ],
-    "genre": "Acción,Aventura,Science-Fiction",
-    "type": "Serie",
-    "year": "2019",
-    "image": "assets/posters/s38963.jpg",
-    "source": "https://www.tvmaze.com/shows/38963/the-mandalorian",
-    "official": "https://www.disneyplus.com/series/the-mandalorian/3jLIGMDYINqD/",
-    "origin": "disneyplus",
-    "summary": "Tras la caída del Imperio Galáctico, un cazarrecompensas mandaloriano solitario protege a un misterioso niño sensible a la Fuerza.",
-    "esSummary": "Tras la caída del Imperio Galáctico, un cazarrecompensas mandaloriano solitario protege a un misterioso niño sensible a la Fuerza."
-  },
-  {
     "id": "s51394",
     "title": "The White Lotus",
     "original": "The White Lotus",
@@ -1006,25 +778,6 @@ window.ORBIT_LIBRARY = [
     "origin": "hbomax",
     "summary": "Vivir en Barbie Land es ser un ser perfecto en un lugar perfecto. A menos que tengas una crisis existencial total o seas Ken.",
     "esSummary": "Vivir en Barbie Land es ser un ser perfecto en un lugar perfecto. A menos que tengas una crisis existencial total o seas Ken."
-  },
-  {
-    "id": "m_alienromulus",
-    "title": "Alien: Romulus",
-    "original": "Alien: Romulus",
-    "platform": "disneyplus",
-    "aliases": [
-      "alien: romulus",
-      "alien: romulus"
-    ],
-    "genre": "Terror,Ciencia ficción,Suspenso",
-    "type": "Película",
-    "year": "2024",
-    "image": "assets/posters/m_alienromulus.jpg",
-    "source": "https://www.themoviedb.org",
-    "official": "",
-    "origin": "disneyplus",
-    "summary": "Mientras exploran una estación espacial abandonada, un grupo de jóvenes colonizadores se enfrenta a la forma de vida más aterradora del universo.",
-    "esSummary": "Mientras exploran una estación espacial abandonada, un grupo de jóvenes colonizadores se enfrenta a la forma de vida más aterradora del universo."
   },
   {
     "id": "m_matrix",
@@ -1482,66 +1235,6 @@ window.ORBIT_LIBRARY = [
     "collection": "series"
   },
   {
-    "id": "s52343",
-    "title": "Ahsoka",
-    "original": "Ahsoka",
-    "platform": "disneyplus",
-    "type": "Serie",
-    "genre": "Ciencia ficción,Aventura",
-    "year": "2023",
-    "aliases": [
-      "Ahsoka",
-      "Ahsoka"
-    ],
-    "image": "assets/posters/s52343.jpg",
-    "source": "https://www.tvmaze.com/shows/52343/ahsoka",
-    "official": "https://www.disneyplus.com/series/ahsoka/pdpjs2TO4zJ4",
-    "origin": "disneyplus",
-    "esSummary": "Ahsoka Tano sigue las señales de una amenaza que puede alterar el equilibrio de la galaxia.",
-    "summary": "Ahsoka Tano sigue las señales de una amenaza que puede alterar el equilibrio de la galaxia.",
-    "collection": "series"
-  },
-  {
-    "id": "s58951",
-    "title": "X-Men 97",
-    "original": "X-Men '97",
-    "platform": "disneyplus",
-    "type": "Serie",
-    "genre": "Animación,Acción",
-    "year": "2024",
-    "aliases": [
-      "X-Men '97",
-      "X-Men 97"
-    ],
-    "image": "assets/posters/s58951.jpg",
-    "source": "https://www.tvmaze.com/shows/58951/x-men-97",
-    "official": "https://www.disneyplus.com/browse/entity-8dc91ed4-cdca-4fab-9723-d3d42f382d34",
-    "origin": "disneyplus",
-    "esSummary": "Los X-Men continúan defendiendo a un mundo que teme sus poderes mientras afrontan nuevos desafíos.",
-    "summary": "Los X-Men continúan defendiendo a un mundo que teme sus poderes mientras afrontan nuevos desafíos.",
-    "collection": "series"
-  },
-  {
-    "id": "s48108",
-    "title": "Percy Jackson and the Olympians",
-    "original": "Percy Jackson and the Olympians",
-    "platform": "disneyplus",
-    "type": "Serie",
-    "genre": "Fantasía,Aventura",
-    "year": "2023",
-    "aliases": [
-      "Percy Jackson and the Olympians",
-      "Percy Jackson and the Olympians"
-    ],
-    "image": "assets/posters/s48108.jpg",
-    "source": "https://www.tvmaze.com/shows/48108/percy-jackson-and-the-olympians",
-    "official": "https://www.disneyplus.com/series/percy-jackson-and-the-olympians/ql33aq42HBdr",
-    "origin": "disneyplus",
-    "esSummary": "Percy descubre su vínculo con los dioses griegos y emprende una misión para evitar una guerra.",
-    "summary": "Percy descubre su vínculo con los dioses griegos y emprende una misión para evitar una guerra.",
-    "collection": "series"
-  },
-  {
     "id": "s60920",
     "title": "The Penguin",
     "original": "The Penguin",
@@ -1757,21 +1450,6 @@ window.ORBIT_LIBRARY = [
     "official": "https://vix.com/es-es/video/series-526",
     "source": "https://www.tvmaze.com/shows/24562/la-fea-mas-bella",
     "image": "assets/posters/s24562.jpg",
-    "aliases": []
-  },
-  {
-    "id": "s48830",
-    "title": "Only Murders in the Building",
-    "original": "Only Murders in the Building",
-    "platform": "disneyplus",
-    "type": "Serie",
-    "genre": "Misterio,Comedia",
-    "year": "2021",
-    "summary": "Tres vecinos apasionados por los crímenes reales investigan una muerte en su edificio de Nueva York.",
-    "esSummary": "Tres vecinos apasionados por los crímenes reales investigan una muerte en su edificio de Nueva York.",
-    "official": "https://www.disneyplus.com/browse/entity-ef31c7e1-cd0f-4e07-848d-1cbfedb50ddf",
-    "source": "https://www.tvmaze.com/shows/48830/only-murders-in-the-building",
-    "image": "assets/posters/s48830.jpg",
     "aliases": []
   },
   {

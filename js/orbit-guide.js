@@ -286,7 +286,7 @@
       
       await appendBotStream(introText, el => {
         if (use.length) combo(el, use);
-        else combo(el, ['netflix', 'disneyplus']);
+        else combo(el, ['netflix', 'primevideo']);
         if (/barat|presupuesto/.test(q)) {
           const note = document.createElement('p');
           note.textContent = 'Si solo quieres una app, el plan de $3 USD es la opción más económica. No necesitas combo obligatorio.';
@@ -324,8 +324,8 @@
     }
 
     if (/futbol|deporte|espn|formula|liga/.test(q)) {
-      await appendBotStream('Para deportes en vivo, te recomiendo Disney+ (señal ESPN completa con Champions, F1 y Tenis) y ViX.', el => {
-        combo(el, ['disneyplus', 'vix']);
+      await appendBotStream('Para deportes, consulta la programación y disponibilidad regional de ViX antes de contratar.', el => {
+        combo(el, ['primevideo', 'vix']);
       });
       return;
     }

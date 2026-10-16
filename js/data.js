@@ -23,27 +23,6 @@ window.ORBITA = {
       ]
     },
     {
-      "id": "disneyplus",
-      "name": "Disney+",
-      "category": "cinema",
-      "price": 3,
-      "period": "mes",
-      "icon": "assets/icons/disneyplus.svg",
-      "tagline": "Disney, Pixar, Marvel, Star Wars & ESPN",
-      "features": [
-        "Todo Disney, Pixar, Marvel y Star Wars",
-        "Deportes en vivo con señal ESPN (Fútbol, F1, Tenis)",
-        "Resolución hasta 4K Ultra HD"
-      ],
-      "devices": [
-        "Smart TV",
-        "Celulares",
-        "Tablets",
-        "Consolas",
-        "PC / Mac"
-      ]
-    },
-    {
       "id": "hbomax",
       "name": "Max",
       "category": "cinema",
@@ -244,14 +223,6 @@ window.ORBITA = {
       "image": "netflix.jpg"
     },
     {
-      "id": "disneyplus",
-      "title": "Andor",
-      "genre": "Ciencia ficción",
-      "desc": "Una rebelión. Muchas historias por descubrir.",
-      "url": "https://www.lucasfilm.com/productions/andor/",
-      "image": "andor.jpg"
-    },
-    {
       "id": "hbomax",
       "title": "The Last of Us",
       "genre": "Drama y aventura",
@@ -325,4 +296,3 @@ window.ORBITA = {
     }
   ]
 };
-

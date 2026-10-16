@@ -449,32 +449,144 @@ html.motion-paused .orbit-arrived{animation:none}html.motion-paused .orbit-colle
 }
 
 /* ==========================================================================
-   RESPONSIVO PARA LAS NUEVAS ADICIONES
+   RESPONSIVO COMPACTO PARA MÓVILES (NO APILADO, VISTA HORIZONTAL EN 1 LÍNEA)
    ========================================================================== */
 @media (max-width: 900px) {
   .savings-calc-box {
     grid-template-columns: 1fr;
     padding: 28px 20px;
-    gap: 28px;
-  }
-  .devices-grid,
-  .trust-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 }
 
-@media (max-width: 600px) {
-  .savings-selector-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  /* Plataformas en UNA SOLA LÍNEA con scroll horizontal */
+  .pearl-world .platform-dock {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    gap: 8px !important;
+    padding: 8px 16px 16px !important;
+    margin-inline: -16px !important;
+    padding-inline: 16px !important;
   }
-  .devices-grid,
-  .trust-grid {
-    grid-template-columns: 1fr;
+  .pearl-world .platform-dock::-webkit-scrollbar {
+    display: none !important;
+  }
+  .pearl-world .platform-dock a {
+    flex: 0 0 auto !important;
+    min-width: 68px !important;
+    scroll-snap-align: start !important;
+    padding: 6px 4px !important;
+  }
+
+  /* Calculadora de ahorro compacta: cuadrícula de 2 columnas (no 1 columna larga) */
+  .savings-calc-box {
+    padding: 20px 16px !important;
+    border-radius: 22px !important;
+    gap: 18px !important;
+  }
+  .savings-selector-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+  }
+  .savings-chip-label {
+    padding: 8px 10px !important;
+    border-radius: 12px !important;
+  }
+  .savings-chip-icon {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  .savings-chip-text strong {
+    font-size: 11.5px !important;
+  }
+  .savings-chip-text small {
+    font-size: 9.5px !important;
+  }
+  .savings-chip-check {
+    width: 17px !important;
+    height: 17px !important;
+    font-size: 9px !important;
+  }
+  .savings-result-card {
+    padding: 18px 16px !important;
+    border-radius: 18px !important;
+    gap: 14px !important;
+  }
+  .savings-badge-box {
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+  .savings-badge-box strong {
+    font-size: 26px !important;
+  }
+
+  /* Dispositivos en UNA SOLA LÍNEA deslizable (sin apilar 4 bloques verticales) */
+  .devices-ecosystem-section {
+    padding-block: 40px 24px !important;
+  }
+  .devices-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    gap: 12px !important;
+    padding: 4px 16px 14px !important;
+    margin-inline: -16px !important;
+    padding-inline: 16px !important;
+  }
+  .devices-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .device-card {
+    flex: 0 0 230px !important;
+    scroll-snap-align: start !important;
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
   }
   .devices-spec-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px;
-    gap: 10px;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    padding: 14px 16px !important;
+    gap: 8px 12px !important;
+    font-size: 11px !important;
+  }
+
+  /* Pilares de confianza en cuadrícula compacta 2x2 */
+  .trust-pillars-section {
+    padding-block: 36px 24px !important;
+  }
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .trust-card {
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+  }
+  .trust-icon-box {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+    border-radius: 10px !important;
+  }
+  .trust-card h3 {
+    font-size: 13.5px !important;
+  }
+  .trust-card p {
+    font-size: 11px !important;
+    line-height: 1.45 !important;
   }
 }
+

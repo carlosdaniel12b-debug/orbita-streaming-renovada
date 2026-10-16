@@ -22,7 +22,7 @@ Refinamiento de jerarquía: hero panorámico bajo un encabezado de texto y accio
 
 Skills aplicadas: Frontend Design, Emil Design Engineering y Web Animation Design de Vercel (https://github.com/vercel-labs/open-agents/tree/main/.agents/skills/web-animation-design). La nueva skill se instala en Codex; la web recibe HTML, CSS y JavaScript, sin dependencias nuevas de animación.
 
-Hero vigente: composición dimensional con titular de hasta 92 px, fotografía principal y dos capas de historias detrás. La perspectiva y la inclinación responden al cursor solo en laptop con movimiento habilitado. En móvil se usa una perspectiva fija sin seguimiento táctil. `css/hero-3d.css` y `js/hero-3d.js` están limitados a la portada; las secciones y el catálogo conservan su diseño.
+Hero vigente: composición editorial de alta densidad con titular claro, fotografía panorámica y acceso directo sin bucles de renderizado ni scripts 3D pesados. En móvil se adapta a una cuadrícula vertical fluida. Las secciones y el catálogo conservan su diseño.
 
 Referencia: https://developer.apple.com/design/human-interface-guidelines/materials y https://developer.apple.com/videos/play/wwdc2025/219/ . Interpretación web del material, no una implementación nativa de Apple.
 

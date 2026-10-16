@@ -1,5 +1,6 @@
 # Archivos temporales y de desarrollo
 scratch/
+work/
 .agents/
 *.log
 .DS_Store

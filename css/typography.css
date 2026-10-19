@@ -1,0 +1,76 @@
+/* One local variable family, optical sizing and a consistent editorial scale. */
+@font-face{font-family:OrbitInter;src:url('../assets/fonts/InterVariable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+:root{--font-ui:OrbitInter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--ink:#20252b;--muted:#626c76}
+body.pearl-world,body.pearl-world *{font-family:var(--font-ui)!important}
+body.pearl-world{font-size:16px;font-weight:400;line-height:1.6;letter-spacing:-.012em;font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
+.pearl-world .logo-type,.pearl-world .logo-type small{font-family:var(--font-ui)!important}
+.pearl-world h1,.pearl-world h2,.pearl-world h3{font-weight:620;letter-spacing:-.045em;line-height:1.12;text-wrap:balance}
+.pearl-world p{font-weight:400;text-wrap:pretty}
+.pearl-world strong{font-weight:620}
+.pearl-world .premiere-stage{height:570px}
+.pearl-world .premiere-copy{max-width:800px;padding-top:60px}
+.pearl-world .premiere h1{font-size:clamp(48px,5.3vw,76px);font-weight:630;letter-spacing:-.06em;line-height:1.04;margin:20px 0 24px}
+.pearl-world .premiere-copy>p{font-size:17px;line-height:1.65;letter-spacing:-.015em;max-width:43ch}
+.pearl-world .premiere-actions .button,.pearl-world .premiere-actions>a:last-child{font-size:13px}
+.pearl-world .page-heading h1,.pearl-world .descubre-title{font-size:clamp(40px,4.7vw,64px)!important;letter-spacing:-.055em!important;font-weight:630;line-height:1.08}
+.pearl-world .page-heading p,.pearl-world .descubre-subtitle{font-size:16px;line-height:1.7;max-width:62ch}
+.pearl-world .pearl-section-head h2{font-size:clamp(30px,3.3vw,44px)!important;font-weight:620;letter-spacing:-.045em!important;line-height:1.12}
+.pearl-world .pearl-section-head p{font-size:15px;line-height:1.65;margin-top:12px}
+.pearl-world .orbit-pick-card h3{font-size:20px;line-height:1.22;font-weight:600;letter-spacing:-.03em}
+.pearl-world .orbit-pick-card p{font-size:14px;line-height:1.6;color:#5d6b75}
+.pearl-world .orbit-pick-card small,.pearl-world .orbit-picks-note{font-size:11px;line-height:1.5}
+.pearl-world .orbit-moods button,.pearl-world .orbit-refresh{font-size:12px}
+.pearl-world .orbit-pick-cover>span{font-size:11px;font-weight:550}
+.pearl-world .service-glass h3{font-size:24px!important;letter-spacing:-.04em!important;line-height:1.16!important;font-weight:610}
+.pearl-world .service-glass p,.pearl-world .platform-card>p{font-size:14px;line-height:1.65}
+.pearl-world .service-link{font-size:12px}
+.pearl-world .platform-card h3{font-size:28px;font-weight:610;letter-spacing:-.04em}
+.pearl-world .platform-card .price{font-size:34px;font-weight:580;letter-spacing:-.055em}
+.pearl-world .price small,.pearl-world .platform-top .tag{font-size:11px;letter-spacing:0}
+.pearl-world .button,.pearl-world .platform-whatsapp{font-size:13px;font-weight:560;letter-spacing:-.012em}
+.pearl-world .nav .nav-link{font-size:13px;font-weight:530;letter-spacing:-.015em}
+.pearl-world .quick-search input,.pearl-world .search input,.pearl-world #descubre-search-input{font-size:15px}
+.pearl-world .quick-discovery label{font-size:14px;font-weight:550}
+.pearl-world .quick-links a{font-size:12px}
+.pearl-world .descubre-card h2{font-size:19px;line-height:1.2;font-weight:600}
+.pearl-world .descubre-card p,.pearl-world .descubre-card-meta,.pearl-world .descubre-trailer{font-size:12px}
+.pearl-world .pick-card strong{font-size:15px;font-weight:600}.pearl-world .pick-card small{font-size:12px}
+.pearl-world .payment-option strong,.pearl-world #details .pay-chip strong{font-size:13px}
+.pearl-world .payment-option small,.pearl-world #details .pay-chip small{font-size:11px}
+.pearl-world #details .detail-features,.pearl-world #details .detail-tagline{font-size:14px;line-height:1.65}
+.pearl-world .pearl-faq-list summary{font-size:15px;font-weight:550;letter-spacing:-.02em}.pearl-world .pearl-faq-list p{font-size:14px;line-height:1.7}
+.pearl-world .footer p,.pearl-world .footer-links a,.pearl-world .footer-links button{font-size:13px;line-height:1.6}
+.pearl-world .eyebrow,.pearl-world .premiere-kicker{font-size:11px;font-weight:650;letter-spacing:.13em}
+/* Vertical editorial panels: native scrolling and sticky overlap, never scroll hijacking. */
+.pearl-world .orbit-collections{padding-block:40px!important}
+.pearl-world .orbit-collection-grid{display:flex;flex-direction:column;gap:24px;position:relative;isolation:isolate}
+.pearl-world .orbit-collection{--panel-step:0;position:sticky;top:calc(110px + var(--panel-step)*12px);height:390px;min-height:390px;border-radius:28px;border:1px solid #ffffff4d;box-shadow:0 -8px 32px #142b3512;transform:none!important;overflow:hidden;background:#172b36}
+.pearl-world .orbit-collection:nth-child(2){--panel-step:1}.pearl-world .orbit-collection:nth-child(3){--panel-step:2}
+.pearl-world .orbit-collection>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.pearl-world .orbit-collection:after{background:linear-gradient(90deg,#0b1f2be8,#0b1f2b60 58%,#0b1f2b12),linear-gradient(0deg,#0b1f2b4d,transparent)}
+.pearl-world .orbit-collection-copy{inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:44px 52px;max-width:610px;z-index:1}
+.pearl-world .orbit-collection-copy>span{font-size:11px;letter-spacing:.16em;font-weight:600;color:#d2e2e8}
+.pearl-world .orbit-collection h3{font-size:clamp(38px,4vw,56px);letter-spacing:-.05em;line-height:1.03;font-weight:620;margin:18px 0;color:#fff}
+.pearl-world .orbit-collection-copy p{display:block;font-size:15px;line-height:1.6;color:#dbe6eb;max-width:33ch;margin:0 0 24px}
+.pearl-world .orbit-collection-copy strong{display:inline-flex;padding:11px 17px;border:1px solid #ffffff50;border-radius:100px;background:#ffffff17;color:#fff;font-size:12px;font-weight:550}
+.pearl-world .orbit-collection:focus-visible{z-index:4;scroll-margin-top:150px}
+@media(max-width:700px){
+ .pearl-world .premiere-stage{height:545px}.pearl-world .premiere-copy{padding:32px 24px 116px}.pearl-world .premiere h1{font-size:clamp(38px,10.6vw,51px);letter-spacing:-.055em;line-height:1.04;margin:20px 0}.pearl-world .premiere-copy>p{font-size:15px;line-height:1.6;max-width:28ch}.pearl-world .premiere-actions .button,.pearl-world .premiere-actions>a:last-child{font-size:12px}
+ .pearl-world .page-heading h1,.pearl-world .descubre-title{font-size:39px!important}.pearl-world .page-heading p,.pearl-world .descubre-subtitle{font-size:15px}
+ .pearl-world .pearl-section-head h2{font-size:31px!important}.pearl-world .pearl-section-head p{font-size:14px}
+ .pearl-world .orbit-pick-card h3{font-size:18px}.pearl-world .orbit-pick-card p{font-size:12px;line-height:1.6}.pearl-world .orbit-pick-cover>span{font-size:10px}.pearl-world .orbit-moods button{font-size:11px}
+ .pearl-world .service-glass h3{font-size:21px!important}.pearl-world .service-glass p{font-size:13px}.pearl-world .service-glass{min-height:255px!important}
+ .pearl-world .quick-search input,.pearl-world .search input,.pearl-world #descubre-search-input,.pearl-world #chat-input{font-size:16px!important}
+ .pearl-world .orbit-collection{top:calc(86px + var(--panel-step)*9px);height:310px;min-height:310px;border-radius:22px}.pearl-world .orbit-collection-grid{gap:18px}.pearl-world .orbit-collection-copy{padding:26px;max-width:100%}.pearl-world .orbit-collection h3{font-size:38px}.pearl-world .orbit-collection-copy p{font-size:13px;max-width:27ch;margin-bottom:16px}.pearl-world .orbit-collection-copy>span{font-size:10px}.pearl-world .orbit-collection-copy strong{font-size:11px;padding:9px 14px}
+ .pearl-world .descubre-card h2{font-size:16px}.pearl-world .descubre-card-meta{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce),(max-height:600px){.pearl-world .orbit-collection{position:relative;top:auto}}
+@media(prefers-contrast:more){.pearl-world p,.pearl-world .orbit-pick-card p{color:#36434c}.pearl-world .premiere-copy>p,.pearl-world .orbit-collection-copy p{color:#fff}}
+@media(max-width:700px){
+ .pearl-world .premiere-heading .eyebrow{font-size:9px;letter-spacing:.12em}.pearl-world .premiere-heading>p{display:none}
+ .pearl-world .footer{grid-template-columns:minmax(0,1fr)!important;padding-inline:0!important}.pearl-world .footer>*{min-width:0;max-width:100%}.pearl-world .footer-links{grid-template-columns:repeat(2,minmax(0,1fr))}.pearl-world .footer-contact-col{grid-column:1/-1}
+}
+/* Override the former mobile horizontal shelf so sticky cards follow the page. */
+.pearl-world .orbit-collection-grid{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;overflow:visible!important;scroll-snap-type:none!important;margin-inline:0!important;padding-inline:0!important;gap:24px!important}
+.pearl-world .orbit-collection{flex:0 0 auto!important;width:100%!important;max-width:none!important;height:390px!important;min-height:390px!important;max-height:none!important;scroll-snap-align:none!important}
+@media(max-width:700px){.pearl-world .orbit-collection-grid{gap:18px!important}.pearl-world .orbit-collection{height:310px!important;min-height:310px!important}}

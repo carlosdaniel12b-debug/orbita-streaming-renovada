@@ -8,7 +8,7 @@ La portada usa una imagen panorámica de Severance, navegación compacta, superf
 - El calculador usa la misma función de precios que Combos, conserva la selección al navegar y separa las duraciones mensuales y anuales.
 - Descubre permite combinar búsqueda, formato y plataforma, abrir detalles y reproducir tráileres bajo demanda. Cerrar el reproductor, incluso con Escape, destruye el iframe.
 - Orbit carga el catálogo completo al abrirse. La portada solo carga una selección pequeña inicialmente.
-- No se carga Disney ni se añaden bibliotecas de animación. La tipografía utiliza fuentes del sistema. Las imágenes secundarias usan carga diferida.
+- No se carga Disney ni se añaden bibliotecas de animación. La tipografía inicial utilizaba fuentes del sistema; la revisión del 19 de octubre incorpora Inter local. Las imágenes secundarias usan carga diferida.
 
 ## Verificación
 
@@ -22,10 +22,18 @@ Revisión en navegador a 390 × 844 y 1440 × 900: portada, catálogo, fichas/pa
 
 El sitio se puede publicar como archivos estáticos; no requiere npm en producción. `css/site.min.css` ya está compilado y es compartido por las cinco páginas.
 
-Para editar estilos: modificar `css/renewal.css` (o la fuente base pertinente), ejecutar `npm ci` y `npm run build:css`, y guardar también `css/site.min.css`. El compilador combina los estilos usados y elimina declaraciones de fuentes descargadas. `npm start` inicia la vista previa local en http://127.0.0.1:4174.
+Para editar estilos: modificar `css/renewal.css` (o la fuente base pertinente), ejecutar `npm ci` y `npm run build:css`, y guardar también `css/site.min.css`. El compilador combina los estilos usados, elimina las fuentes antiguas y conserva la declaración local de Inter en typography.css. `npm start` inicia la vista previa local en http://127.0.0.1:4174.
 
 Los precios y duraciones permanecen definidos en `js/data.js` y la lógica común de `js/app.js`. Los originales de las imágenes permanecen disponibles para futuras ediciones.
 
 ## Ajuste del 19 de octubre de 2026
 
 Se retira el calculador repetido de la portada. Los accesos de la portada llevan directamente a Combos y ya no cargan el script del calculador. Se añade respuesta visual breve (160–180 ms) a tarjetas completas, botones, ventanas y preguntas frecuentes; las animaciones respetan movimiento reducido y no desplazan los logos por separado.
+
+## Tipografía y desplazamiento vertical — 19 de octubre de 2026
+
+Familia variable Inter 4.1 alojada localmente (352.240 bytes, WOFF2, font-display: swap), con su licencia SIL incluida. Fuente oficial: https://rsms.me/inter/. Se revisan títulos, párrafos, precios, formularios y etiquetas con tamaños adaptables, pesos coherentes y mayor legibilidad.
+
+Referencia visual del usuario: https://www.pinterest.com/pin/907334656169529758/. Su transición entre paneles se adapta a tres tarjetas editoriales superpuestas con position: sticky y desplazamiento vertical nativo. Las apariciones son de una sola ejecución mediante IntersectionObserver y Web Animations; no hay escucha continua de scroll, animaciones infinitas ni dependencias nuevas. Se desactivan con movimiento reducido; las tarjetas dejan de apilarse también en ventanas de poca altura. Sin JavaScript, el contenido permanece visible.
+
+Revisión en escritorio y móvil: recursos locales, ancho sin desbordamiento y tarjetas verticales (eliminadas las reglas del antiguo carrusel móvil).

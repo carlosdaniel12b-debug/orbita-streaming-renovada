@@ -14,7 +14,7 @@ function calculate(ids){const list=[...new Set(ids)].map(byId).filter(Boolean),v
 window.OrbitaPricing={calculate};
 function orderMessage(ids, selectedPaymentMethod){
   const c=calculate(ids);
-  const pay = selectedPaymentMethod || window.OrbitaPayments?.label() || 'Transferencia (Pichincha, Guayaquil, Deuna, PayPal o Binance)';
+  const pay = selectedPaymentMethod || window.OrbitaPayments?.label() || ({ecuador:'Transferencia en Ecuador',paypal:'PayPal / Tarjeta',binance:'Binance Pay (USDT)'}[document.querySelector('input[name="payment"]:checked')?.value] || 'Transferencia en Ecuador');
   return `Hola Órbita, quiero adquirir: ${c.list.map(p=>p.name).join(' + ')}.\n${c.monthly?`Plan mensual: ${money(c.monthly)} USD/mes.\n`:''}${c.annual?'Canva Pro: $4.00 USD/año.\n':''}${c.chatgpt?'ChatGPT Plus: $5.00 USD / 4 meses.\n':''}${c.gemini?'Gemini AI Pro (5 TB + IA 3.8): $3.00 USD (varios meses - activación por link directo).\n':''}${c.bonus?'Incluye Spotify de regalo por 1 mes (promoción por confirmar).\n':''}Total inicial: ${money(c.total)} USD.\nForma de pago seleccionada: ${pay}.\n¿Tienen disponibilidad inmediata para proceder?`;
 }
 function navigateCombo(ids){storage.set('orbita-selection',JSON.stringify(ids));location.href='combos.html?apps='+encodeURIComponent(ids.join(','))}

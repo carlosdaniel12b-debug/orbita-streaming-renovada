@@ -3,8 +3,8 @@
 const dialog=document.getElementById('welcome');if(!dialog)return;
 const reduce=matchMedia('(prefers-reduced-motion:reduce)');let timer,exitTimer,previous;
 function finish(){clearTimeout(timer);clearTimeout(exitTimer);if(dialog.open)dialog.close();dialog.classList.remove('welcome-leaving');}
-function close(){clearTimeout(timer);if(!dialog.open||dialog.classList.contains('welcome-leaving'))return;if(reduce.matches)return finish();dialog.classList.add('welcome-leaving');exitTimer=setTimeout(finish,380);}
-function open(){if(dialog.open)return;previous=document.activeElement;dialog.classList.remove('welcome-leaving');dialog.showModal();document.documentElement.classList.remove('welcome-pending');clearTimeout(window.orbitaWelcomeFallback);timer=setTimeout(close,2200);}
+function close(){clearTimeout(timer);if(!dialog.open||dialog.classList.contains('welcome-leaving'))return;if(reduce.matches)return finish();dialog.classList.add('welcome-leaving');exitTimer=setTimeout(finish,260);}
+function open(){if(dialog.open)return;previous=document.activeElement;dialog.classList.remove('welcome-leaving');dialog.showModal();document.documentElement.classList.remove('welcome-pending');clearTimeout(window.orbitaWelcomeFallback);timer=setTimeout(close,1800);}
 dialog.addEventListener('close',()=>{clearTimeout(timer);clearTimeout(exitTimer);(previous&&previous!==document.body?previous:document.getElementById('hero-main-cta'))?.focus({preventScroll:true});});
 dialog.addEventListener('cancel',event=>{event.preventDefault();finish();});
 document.getElementById('welcome-skip').addEventListener('click',finish);

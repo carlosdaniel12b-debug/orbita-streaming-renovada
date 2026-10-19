@@ -3,56 +3,33 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
-<style>
-:root{color-scheme:light}
-html,html.welcome-pending{background:#eef4f7 !important;color-scheme:light !important}
-body,html.welcome-pending body{background:#eef4f7 !important;color:#243c48 !important}
-html.welcome-pending body{visibility:hidden !important}
-#welcome,html.welcome-pending #welcome{visibility:visible !important;inset:0 !important;margin:0 !important;width:100vw !important;max-width:none !important;height:100dvh !important;max-height:none !important;border:0 !important;border-radius:0 !important;padding:24px !important;background:radial-gradient(ellipse at 25% 25%,#ddefe9 0%,transparent 55%),radial-gradient(ellipse at 80% 75%,#e9e1f2 0%,transparent 55%),#f1f6f8 !important;box-shadow:none !important;color:#243c48 !important}
-#welcome::backdrop{background:#eef4f7 !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
-</style>
-<script>
-try { if (!location.hash && !matchMedia('(prefers-reduced-motion:reduce)').matches && sessionStorage.getItem('orbita-brand-intro-seen') !== '1') {
- document.documentElement.classList.add('welcome-pending');
- window.orbitaWelcomeFallback = setTimeout(function(){document.documentElement.classList.remove('welcome-pending');},3000);
-} } catch(e) {}
-</script>
+<style>html.welcome-pending{background:#f4f6f8}html.welcome-pending body{visibility:hidden}html.welcome-pending #welcome{visibility:visible}</style><script>try{if(!location.hash&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&sessionStorage.getItem('orbita-brand-intro-seen')!=='1'){document.documentElement.classList.add('welcome-pending');window.orbitaWelcomeFallback=setTimeout(function(){document.documentElement.classList.remove('welcome-pending')},4000)}}catch(e){}</script>
+
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content" name="viewport"/>
 <meta content="#f5f5f7" media="(prefers-color-scheme: dark)" name="theme-color"/>
 <meta content="#f5f5f7" media="(prefers-color-scheme: light)" name="theme-color"/>
 <meta content="Explora 10 plataformas de entretenimiento y productividad. Planes desde $3 al mes, combos de 2 por $5 y ChatGPT Plus $5 por 4 meses. Elige y consulta por WhatsApp." name="description"/>
 <title>Tu mundo en otra órbita | Órbita Streaming</title>
-
-
 <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="css/styles.css" rel="stylesheet"/>
-<link href="css/experience.css" rel="stylesheet"/><link href="css/portal-glass.css" rel="stylesheet"/><link href="css/sections.css" rel="stylesheet"/>
 
-<script defer="" src="js/data.js?v=9bdd5bb"></script>
-<script defer="" src="js/app.js?v=20261015-payment"></script>
-<script defer="" src="js/library.js?v=20261004"></script>
 
-<script defer="" src="js/platform-colors.js"></script>
-<script defer="" src="js/trailer-data.js"></script>
-<script defer="" src="js/experience.js"></script>
-<script defer="" src="js/recommendations.js"></script>
-<script defer src="js/orbit-local.js?v=20261003"></script><script defer="" src="js/orbit-guide.js?v=local-20261003"></script>
 
-<link href="css/pearl.css" rel="stylesheet"/>
-<link href="css/orbital.css" rel="stylesheet"/>
-<link href="css/liquid.css" rel="stylesheet"/><link href="css/stability.css" rel="stylesheet"/><link href="css/flows.css" rel="stylesheet"/><link href="css/devices.css" rel="stylesheet"/><script defer src="js/devices.js"></script>
-<meta name="theme-color" content="#e6f1f0"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<script defer="" src="js/pearl.js"></script>
-<script defer="" src="js/liquid.js"></script>
 
-<script defer="" src="js/security.js"></script>
-<link rel="stylesheet" href="css/binance.css?v=20261003-combo-payment"/><script defer src="js/orbit-editorial.js?v=20261015b"></script><link rel="stylesheet" href="css/orbit-editorial.css?v=20261004"/>
 
-<link rel="stylesheet" href="css/home-additions.css?v=3"/>
-<script defer src="js/home-additions.js?v=2"></script>
-<link rel="stylesheet" href="css/modern.css?v=20261015-dock"/>
-<link rel="stylesheet" href="css/intro-cinematic.css?v=20261015-logo"/>
+
+
+
+<!-- High performance deferred scripts -->
+<script defer src="js/data.js?v=20261018"></script>
+<script defer src="js/app.js?v=20261018"></script>
+<script defer src="js/pearl.js?v=20261018"></script>
+<script defer src="js/home-additions.js?v=20261018"></script>
+<script defer src="js/orbit-editorial.js?v=20261018"></script>
+<script defer src="js/orbit-local.js?v=20261018"></script>
+<script defer src="js/recommendations.js?v=20261018"></script>
+<script defer src="js/orbit-guide.js?v=20261018"></script>
+
+<link rel="stylesheet" href="css/site.min.css?v=20261018"/>
 </head>
 <body class="pearl-world" data-page="index">
 <dialog id="welcome" aria-label="Bienvenido a Órbita Streaming"><div class="intro-brand">
@@ -60,8 +37,8 @@ try { if (!location.hash && !matchMedia('(prefers-reduced-motion:reduce)').match
 <div class="intro-brand-name">órbita<span>streaming</span></div>
 <p>Tu próximo universo empieza aquí.</p>
 </div><button type="button" class="button" id="welcome-skip">Entrar ahora ↗</button></dialog>
-<script src="js/welcome.js?v=20261015e"></script>
-<!-- ==================== INTRO PORTAL CINEMÁTICO 60FPS ==================== -->
+<script src="js/welcome.js?v=20261018"></script>
+
 
 <a class="skip" href="#main">Saltar al contenido</a>
 <header class="header" id="main-header">
@@ -90,12 +67,13 @@ try { if (!location.hash && !matchMedia('(prefers-reduced-motion:reduce)').match
 </div>
 </header>
 <main id="main">
-<section class="glass-hero container" aria-labelledby="glass-title">
-<div class="glass-hero-copy"><span class="glass-eyebrow">TU TIEMPO. TU UNIVERSO.</span><h1 id="glass-title">Fuera de la rutina.<br><em>En tu órbita.</em></h1><p>Historias que atrapan. Música que acompaña.<br>Encuentra tu próximo favorito, todo en un solo lugar.</p><div class="glass-actions"><a class="button" href="catalogo.html" id="hero-main-cta">Explorar plataformas <span aria-hidden="true">↗</span></a><a class="glass-secondary" href="combos.html">Armar mi combo →</a></div><div class="glass-facts"><span><strong>Desde $3</strong> / mes</span><span><strong>2 por $5</strong> en planes mensuales</span></div></div>
-<div class="glass-showcase"><img class="glass-cover" src="assets/backdrops/severance-scene.jpg" alt="Escena de Severance" width="1600" height="900" fetchpriority="high"><div class="glass-topline"><span>EN EL RADAR</span><span>Apple TV+</span></div><a class="glass-feature" href="descubre.html?q=Severance"><div><span>PARA TU PRÓXIMA MARATÓN</span><h2>Severance</h2><p>Una vida. Dos realidades.</p></div><span class="glass-arrow" aria-hidden="true">↗</span></a><div class="glass-ticket"><span>Tu próximo plan</span><strong>Una más y ya.</strong><span>Descubre historias que se quedan contigo.</span></div></div>
-</section><section class="container quick-discovery" aria-label="Encuentra tu próxima historia"><form action="descubre.html" role="search"><label for="home-search">¿Qué te gustaría ver?</label><div class="quick-search"><input id="home-search" name="q" type="search" placeholder="Busca una serie, película o género…" maxlength="120" required><button class="button" type="submit">Buscar <span aria-hidden="true">↗</span></button></div></form><div class="quick-links"><span>O sigue tu curiosidad</span><a href="descubre.html?tipo=Pel%C3%ADcula">Películas ↗</a><a href="descubre.html?tipo=Serie">Series ↗</a><a href="descubre.html?tipo=Anime">Anime ↗</a></div><div class="orbit-trending-bar" aria-label="Tendencias populares de streaming"><span class="trending-label"><span>🔥</span> Tendencias hoy</span><a class="trending-chip" href="descubre.html?q=Severance"><strong>Severance</strong> <small>Apple TV+</small></a><a class="trending-chip" href="descubre.html?q=Fallout"><strong>Fallout</strong> <small>Prime Video</small></a><a class="trending-chip" href="descubre.html?q=Oppenheimer"><strong>Oppenheimer</strong> <small>Max</small></a><a class="trending-chip" href="descubre.html?q=Arcane"><strong>Arcane</strong> <small>Netflix</small></a><a class="trending-chip" href="descubre.html?q=PLUTO"><strong>PLUTO</strong> <small>Anime</small></a><a class="trending-chip" href="catalogo.html?plataforma=spotify"><strong>Top 50</strong> <small>Spotify</small></a></div></section><div class="container platform-dock" aria-label="Explorar plataformas"></div>
+<section class="premiere container" aria-labelledby="premiere-title">
+<div class="premiere-heading"><span class="eyebrow">TU UNIVERSO DE ENTRETENIMIENTO</span><p>Elige lo que te mueve.</p></div>
+<div class="premiere-stage"><picture><source media="(max-width:650px)" srcset="assets/optimized/hero-severance-mobile.webp"><img class="premiere-image" src="assets/optimized/hero-severance.webp" width="1440" height="810" alt="Severance, una historia de Apple TV+" fetchpriority="high"></picture><div class="premiere-shade" aria-hidden="true"></div>
+<div class="premiere-copy"><span class="premiere-kicker"><i></i> BIENVENIDO A ÓRBITA</span><h1 id="premiere-title">Una pausa.<br>Todo un universo.</h1><p>Películas, series y música para tu momento.<br>Las plataformas que te gustan, a tu manera.</p><div class="premiere-actions"><a class="button" href="catalogo.html" id="hero-main-cta">Encuentra tu plataforma <span aria-hidden="true">↗</span></a><a href="#calculadora-ahorro">Arma tu combo <span aria-hidden="true">→</span></a></div></div>
+<div class="premiere-foot"><div class="premiere-price"><span>PLANES DESDE</span><strong>$3 <small>USD / mes</small></strong></div><a class="premiere-story" href="descubre.html?q=Severance"><span class="premiere-play" aria-hidden="true">↗</span><span><small>EN NUESTRA SELECCIÓN · APPLE TV+</small><strong>Severance</strong></span></a><span class="premiere-index">01 <span>/ TU PRÓXIMA HISTORIA</span></span></div></div></section><section class="container quick-discovery" aria-label="Encuentra tu próxima historia"><form action="descubre.html" role="search"><label for="home-search">Tu próxima historia empieza aquí.</label><div class="quick-search"><input id="home-search" name="q" type="search" placeholder="Película, serie o género…" maxlength="120" required><button class="button" type="submit">Buscar ↗</button></div></form><div class="quick-links"><span>EXPLORA POR FORMATO</span><a href="descubre.html?tipo=Pel%C3%ADcula">Películas</a><a href="descubre.html?tipo=Serie">Series</a><a href="descubre.html?tipo=Anime">Anime</a><a href="descubre.html?tipo=Novela">Novelas</a></div></section><div class="container platform-dock" aria-label="Explorar plataformas"></div>
 <section class="container orbit-picks" aria-labelledby="orbit-picks-title">
-<div class="pearl-section-head"><div><h2 id="orbit-picks-title">Tu próxima obsesión.</h2><p>Una selección para darle play.</p></div><a class="pearl-link" href="descubre.html">Ver todas las historias <span aria-hidden="true">↗</span></a></div>
+<div class="pearl-section-head"><div><h2 id="orbit-picks-title">Vale la pena darle play.</h2><p>Una selección para darle play.</p></div><a class="pearl-link" href="descubre.html">Ver todas las historias <span aria-hidden="true">↗</span></a></div>
 <div class="orbit-pick-controls"><div class="orbit-moods" role="group" aria-label="Qué te apetece ver"><button type="button" data-orbit-mood="all" aria-pressed="true">Sorpréndeme</button><button type="button" data-orbit-mood="movie" aria-pressed="false">Una película</button><button type="button" data-orbit-mood="series" aria-pressed="false">Una serie</button><button type="button" data-orbit-mood="anime" aria-pressed="false">Anime</button><button type="button" data-orbit-mood="novela" aria-pressed="false">Una novela</button></div><button type="button" class="orbit-refresh" id="orbit-refresh"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1"/></svg>Otras recomendaciones</button></div>
 <div class="orbit-pick-grid" id="orbit-pick-grid"></div><p class="sr-only" id="orbit-pick-status" role="status"></p><p class="orbit-picks-note">Una selección para explorar. La disponibilidad cambia según tu país y la plataforma.</p>
 <noscript><p><a href="descubre.html">Explora la selección de historias.</a></p></noscript>
@@ -103,245 +81,28 @@ try { if (!location.hash && !matchMedia('(prefers-reduced-motion:reduce)').match
 
 
 <section class="container orbit-collections" aria-labelledby="collections-title"><span class="collection-eyebrow">SIGUE TU CURIOSIDAD</span><div class="pearl-section-head"><div><h2 id="collections-title">Explora a tu manera.</h2><p>Tres caminos para encontrar tu próxima historia.</p></div></div><div class="orbit-collection-grid">
-<a class="orbit-collection" href="descubre.html?tipo=Anime"><img src="assets/backdrops/pluto-scene.jpg" alt="Escena de PLUTO" loading="lazy" width="800" height="500"><div class="orbit-collection-copy"><span>01 · ANIME</span><h3>Imagina<br>sin límites.</h3><p>Universos extraordinarios. Historias que se quedan contigo.</p><strong>Explorar anime ↗</strong></div></a>
-<a class="orbit-collection" href="descubre.html?tipo=Novela"><img src="assets/backdrops/novela-scene.jpg" alt="Escena de una novela de la selección" loading="lazy" width="800" height="500"><div class="orbit-collection-copy"><span>02 · NOVELAS</span><h3>Siente<br>cada capítulo.</h3><p>Amores, secretos y un giro que no esperabas.</p><strong>Descubrir novelas ↗</strong></div></a>
-<a class="orbit-collection" href="descubre.html?tipo=Pel%C3%ADcula"><img src="assets/backdrops/dune.jpg" alt="El universo de Dune" loading="lazy" width="800" height="500"><div class="orbit-collection-copy"><span>03 · CINE</span><h3>Haz de hoy<br>una gran noche.</h3><p>Apaga las luces. La siguiente aventura te espera.</p><strong>Encontrar una película ↗</strong></div></a>
+<a class="orbit-collection" href="descubre.html?tipo=Anime"><img src="assets/optimized/pluto-scene.webp" alt="Escena de PLUTO" loading="lazy" width="800" height="500"><div class="orbit-collection-copy"><span>01 · ANIME</span><h3>Imagina<br>sin límites.</h3><p>Universos extraordinarios. Historias que se quedan contigo.</p><strong>Explorar anime ↗</strong></div></a>
+<a class="orbit-collection" href="descubre.html?tipo=Novela"><img src="assets/optimized/novela-scene.webp" alt="Escena de una novela de la selección" loading="lazy" width="800" height="500"><div class="orbit-collection-copy"><span>02 · NOVELAS</span><h3>Siente<br>cada capítulo.</h3><p>Amores, secretos y un giro que no esperabas.</p><strong>Descubrir novelas ↗</strong></div></a>
+<a class="orbit-collection" href="descubre.html?tipo=Pel%C3%ADcula"><img src="assets/optimized/m_dune2.webp" alt="Dune: Parte Dos" loading="lazy" width="800" height="500"><div class="orbit-collection-copy"><span>03 · CINE</span><h3>Haz de hoy<br>una gran noche.</h3><p>Apaga las luces. La siguiente aventura te espera.</p><strong>Encontrar una película ↗</strong></div></a>
 </div></section>
 
 <section class="pearl-section container" id="experiencias"><div class="pearl-section-head"><div><h2>Música, creatividad e IA.</h2><p>Tu música, tus ideas y un poco de ayuda para hacerlas realidad.</p></div></div><div class="service-grid">
-<a class="service-glass service-spotify" href="catalogo.html?plataforma=spotify"><img src="assets/icons/spotify.svg" alt="Spotify" width="100" height="40"/><div class="service-art service-wave" aria-hidden="true"><i style="--bar:22px"></i><i style="--bar:35px"></i><i style="--bar:54px"></i><i style="--bar:42px"></i><i style="--bar:66px"></i><i style="--bar:48px"></i><i style="--bar:28px"></i><i style="--bar:55px"></i><i style="--bar:38px"></i><i style="--bar:61px"></i><i style="--bar:43px"></i><i style="--bar:26px"></i><i style="--bar:50px"></i><i style="--bar:35px"></i></div><h3>Tu mundo.<br/>Con otra banda sonora.</h3><p>Música y podcasts para acompañar cada parte de tu día.</p><span class="service-link">Explorar Spotify <span aria-hidden="true">↗</span></span></a>
-<a class="service-glass service-canva" href="catalogo.html?plataforma=canva"><img src="assets/icons/canva.svg" alt="Canva Pro" width="100" height="40"/><div class="service-art service-colors" aria-hidden="true"><span></span><span></span><span></span></div><h3>De una idea<br/>a algo increíble.</h3><p>Diseños, presentaciones y contenido con tu propio estilo.</p><span class="service-link">Explorar Canva Pro <span aria-hidden="true">↗</span></span></a>
-<a class="service-glass service-chatgpt" href="catalogo.html?plataforma=chatgpt"><img src="assets/icons/orbit-assistant.svg" alt="ChatGPT Plus" width="100" height="40"/><div class="service-art service-prompt">¿Y si le damos forma a esa idea?</div><h3>Más posibilidades.<br/>Una conversación.</h3><p>Un espacio para escribir, aprender y desarrollar tus ideas.</p><span class="service-link">Explorar ChatGPT Plus <span aria-hidden="true">↗</span></span></a>
-<a class="service-glass service-gemini" href="catalogo.html?plataforma=gemini"><img src="assets/icons/gemini.svg" alt="Gemini AI Pro" width="100" height="40"/><div class="service-art service-ai-glow">5 TB Nube + IA Gemini 3.8</div><h3>5 TB en la Nube.<br/>La IA más potente.</h3><p>Gemini 3.8 Pro/Ultra con 2M tokens y 5 TB en Google One / Drive. $3 USD por varios meses (activación por link).</p><span class="service-link">Explorar Gemini AI Pro <span aria-hidden="true">↗</span></span></a>
+<a class="service-glass service-spotify" href="catalogo.html?plataforma=spotify"><img loading="lazy" decoding="async" src="assets/icons/spotify.svg" alt="Spotify" width="100" height="40"/><div class="service-art service-wave" aria-hidden="true"><i style="--bar:22px"></i><i style="--bar:35px"></i><i style="--bar:54px"></i><i style="--bar:42px"></i><i style="--bar:66px"></i><i style="--bar:48px"></i><i style="--bar:28px"></i><i style="--bar:55px"></i><i style="--bar:38px"></i><i style="--bar:61px"></i><i style="--bar:43px"></i><i style="--bar:26px"></i><i style="--bar:50px"></i><i style="--bar:35px"></i></div><h3>Tu mundo.<br/>Con otra banda sonora.</h3><p>Música y podcasts para acompañar cada parte de tu día.</p><span class="service-link">Explorar Spotify <span aria-hidden="true">↗</span></span></a>
+<a class="service-glass service-canva" href="catalogo.html?plataforma=canva"><img loading="lazy" decoding="async" src="assets/icons/canva.svg" alt="Canva Pro" width="100" height="40"/><div class="service-art service-colors" aria-hidden="true"><span></span><span></span><span></span></div><h3>De una idea<br/>a algo increíble.</h3><p>Diseños, presentaciones y contenido con tu propio estilo.</p><span class="service-link">Explorar Canva Pro <span aria-hidden="true">↗</span></span></a>
+<a class="service-glass service-chatgpt" href="catalogo.html?plataforma=chatgpt"><img loading="lazy" decoding="async" src="assets/icons/orbit-assistant.svg" alt="ChatGPT Plus" width="100" height="40"/><div class="service-art service-prompt">¿Y si le damos forma a esa idea?</div><h3>Más posibilidades.<br/>Una conversación.</h3><p>Un espacio para escribir, aprender y desarrollar tus ideas.</p><span class="service-link">Explorar ChatGPT Plus <span aria-hidden="true">↗</span></span></a>
+<a class="service-glass service-gemini" href="catalogo.html?plataforma=gemini"><img loading="lazy" decoding="async" src="assets/icons/gemini.svg" alt="Gemini AI Pro" width="100" height="40"/><div class="service-art service-ai-glow">5 TB Nube + IA Gemini 3.8</div><h3>Más espacio.<br/>Más posibilidades.</h3><p>Herramientas de IA y almacenamiento para tus proyectos. Consulta el plan y la duración disponibles.</p><span class="service-link">Explorar Gemini AI Pro <span aria-hidden="true">↗</span></span></a>
 </div></section>
 
-<section class="container savings-calculator-section" id="calculadora-ahorro" aria-labelledby="calc-heading">
-  <div class="savings-calc-box">
-    <div class="savings-calc-left">
-      <div class="savings-calc-header">
-        <span class="glass-eyebrow">TU BOLSILLO EN OTRA ÓRBITA</span>
-        <h2 id="calc-heading">Calcula cuánto ahorras al mes.</h2>
-        <p>Selecciona los servicios que usas o quieres tener y compara el costo de los planes oficiales versus Órbita Streaming.</p>
-      </div>
-      <div class="savings-selector-grid">
-        <label class="savings-chip-label">
-          <input type="checkbox" value="netflix" checked>
-          <div class="savings-chip-info">
-            <img class="savings-chip-icon" src="assets/icons/netflix.svg" alt="" width="26" height="26">
-            <div class="savings-chip-text">
-              <strong>Netflix</strong>
-              <small>Oficial: ~$15.49/m</small>
-            </div>
-          </div>
-          <span class="savings-chip-check">✓</span>
-        </label>
-        <label class="savings-chip-label">
-          <input type="checkbox" value="disneyplus" checked>
-          <div class="savings-chip-info">
-            <img class="savings-chip-icon" src="assets/icons/disneyplus.svg" alt="" width="26" height="26">
-            <div class="savings-chip-text">
-              <strong>Disney+</strong>
-              <small>Oficial: ~$13.99/m</small>
-            </div>
-          </div>
-          <span class="savings-chip-check">✓</span>
-        </label>
-        <label class="savings-chip-label">
-          <input type="checkbox" value="max" checked>
-          <div class="savings-chip-info">
-            <img class="savings-chip-icon" src="assets/icons/max.svg" alt="" width="26" height="26">
-            <div class="savings-chip-text">
-              <strong>Max (HBO)</strong>
-              <small>Oficial: ~$15.99/m</small>
-            </div>
-          </div>
-          <span class="savings-chip-check">✓</span>
-        </label>
-        <label class="savings-chip-label">
-          <input type="checkbox" value="primevideo">
-          <div class="savings-chip-info">
-            <img class="savings-chip-icon" src="assets/icons/primevideo.svg" alt="" width="26" height="26">
-            <div class="savings-chip-text">
-              <strong>Prime Video</strong>
-              <small>Oficial: ~$8.99/m</small>
-            </div>
-          </div>
-          <span class="savings-chip-check">✓</span>
-        </label>
-        <label class="savings-chip-label">
-          <input type="checkbox" value="spotify" checked>
-          <div class="savings-chip-info">
-            <img class="savings-chip-icon" src="assets/icons/spotify.svg" alt="" width="26" height="26">
-            <div class="savings-chip-text">
-              <strong>Spotify</strong>
-              <small>Oficial: ~$10.99/m</small>
-            </div>
-          </div>
-          <span class="savings-chip-check">✓</span>
-        </label>
-        <label class="savings-chip-label">
-          <input type="checkbox" value="appletv">
-          <div class="savings-chip-info">
-            <img class="savings-chip-icon" src="assets/icons/appletv.svg" alt="" width="26" height="26">
-            <div class="savings-chip-text">
-              <strong>Apple TV+</strong>
-              <small>Oficial: ~$9.99/m</small>
-            </div>
-          </div>
-          <span class="savings-chip-check">✓</span>
-        </label>
-        <label class="savings-chip-label">
-          <input type="checkbox" value="paramount">
-          <div class="savings-chip-info">
-            <img class="savings-chip-icon" src="assets/icons/paramount.svg" alt="" width="26" height="26">
-            <div class="savings-chip-text">
-              <strong>Paramount+</strong>
-              <small>Oficial: ~$7.99/m</small>
-            </div>
-          </div>
-          <span class="savings-chip-check">✓</span>
-        </label>
-        <label class="savings-chip-label">
-          <input type="checkbox" value="canva">
-          <div class="savings-chip-info">
-            <img class="savings-chip-icon" src="assets/icons/canva.svg" alt="" width="26" height="26">
-            <div class="savings-chip-text">
-              <strong>Canva Pro</strong>
-              <small>Oficial: ~$12.99/m</small>
-            </div>
-          </div>
-          <span class="savings-chip-check">✓</span>
-        </label>
-      </div>
-    </div>
-    <div class="savings-result-card">
-      <div class="savings-result-top">
-        <span>Resumen comparativo</span>
-        <div class="savings-comparison-row">
-          <span class="retail-label">Páginas oficiales:</span>
-          <span class="retail-val" id="calc-retail-val">$56.46</span>
-        </div>
-        <div class="savings-comparison-row">
-          <span class="orbita-label">Con Órbita Streaming:</span>
-          <span class="orbita-val" id="calc-orbita-val">$10.00</span>
-        </div>
-      </div>
-      <div class="savings-badge-box">
-        <span>Tu ahorro mensual</span>
-        <strong id="calc-savings-monthly">$46.46</strong>
-        <small id="calc-savings-yearly">¡Ahorras aprox. $558 USD al año!</small>
-      </div>
-      <a class="savings-cta-btn" id="calc-whatsapp-cta" href="https://wa.me/593998226756" rel="noopener" target="_blank">
-        <span>Pedir este combo por WhatsApp</span>
-        <span aria-hidden="true">↗</span>
-      </a>
-    </div>
-  </div>
-</section>
+<section class="container quote-builder" id="calculadora-ahorro" aria-labelledby="calc-heading"><div class="quote-intro"><span class="eyebrow">MEJOR JUNTOS</span><h2 id="calc-heading">Tu combo.<br>Tu elección.</h2><p>Combina tus favoritas y conoce el total antes de pedir. Dos plataformas mensuales por $5.</p><a href="combos.html">Ver todos los planes ↗</a></div><div class="quote-options"><div class="savings-selector-grid"><label class="quote-choice"><input type="checkbox" value="netflix" checked><img src="assets/icons/netflix.svg" alt="" width="58" height="30" loading="lazy"><span><strong>Netflix</strong><small>$3 / mes</small></span><span class="quote-check" aria-hidden="true">✓</span></label><label class="quote-choice"><input type="checkbox" value="hbomax" checked><img src="assets/icons/max.svg" alt="" width="58" height="30" loading="lazy"><span><strong>Max</strong><small>$3 / mes</small></span><span class="quote-check" aria-hidden="true">✓</span></label><label class="quote-choice"><input type="checkbox" value="primevideo" ><img src="assets/icons/primevideo.svg" alt="" width="58" height="30" loading="lazy"><span><strong>Prime Video</strong><small>$3 / mes</small></span><span class="quote-check" aria-hidden="true">✓</span></label><label class="quote-choice"><input type="checkbox" value="appletv" ><img src="assets/icons/appletv.svg" alt="" width="58" height="30" loading="lazy"><span><strong>Apple TV+</strong><small>$3 / mes</small></span><span class="quote-check" aria-hidden="true">✓</span></label><label class="quote-choice"><input type="checkbox" value="spotify" ><img src="assets/icons/spotify.svg" alt="" width="58" height="30" loading="lazy"><span><strong>Spotify</strong><small>$3 / mes</small></span><span class="quote-check" aria-hidden="true">✓</span></label><label class="quote-choice"><input type="checkbox" value="canva" ><img src="assets/icons/canva.svg" alt="" width="58" height="30" loading="lazy"><span><strong>Canva Pro</strong><small>$4 / año</small></span><span class="quote-check" aria-hidden="true">✓</span></label></div><div class="quote-result" aria-live="polite"><div><span id="calc-selection-count">2 plataformas</span><span class="quote-monthly">Mensual <strong id="calc-monthly-val">$5.00</strong></span></div><div class="quote-total"><span>Total inicial</span><strong id="calc-initial-val">$5.00</strong></div><p id="calc-plan-note">Confirma disponibilidad y condiciones antes de pagar.</p><a class="button" id="calc-whatsapp-cta" href="combos.html?apps=netflix,hbomax">Personalizar mi combo ↗</a></div></div></section>
 
-<section class="pearl-plan container" id="planes"><div class="plan-copy"><h2>Mejor juntos.<br/>A tu manera.</h2><p>Arma una combinación con tus favoritas. El configurador te muestra el total antes de abrir tu pedido en WhatsApp.</p><a class="button" href="combos.html">Crear mi combo <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a><a class="pearl-link" href="catalogo.html">Prefiero una sola plataforma <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div><div class="plan-glass"><div aria-hidden="true" class="plan-apps"><img alt="" src="assets/icons/netflix.svg"/><span>+</span><img alt="" src="assets/icons/primevideo.svg"/></div><p>Dos plataformas mensuales</p><div class="plan-price">$5<span>USD / mes</span></div><div class="plan-divider"></div><p class="plan-fine">Tú eliges la combinación.<br/>Confirma disponibilidad y condiciones al pedir.</p></div></section>
+
 <section class="pearl-section container pearl-help" id="como-funciona"><div><h2>Elegir. Escribir.<br/>Empezar a disfrutar.</h2><p>Un proceso sencillo, con ayuda cuando la necesitas.</p><a class="pearl-link" href="https://wa.me/593998226756" rel="noopener" target="_blank">Hablar con Órbita <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div><ol class="pearl-steps"><li><span>1</span><div><h3>Encuentra tus favoritas</h3><p>Explora las plataformas o arma tu combinación.</p></div></li><li><span>2</span><div><h3>Confirma por WhatsApp</h3><p>Revisa disponibilidad, condiciones y forma de pago.</p></div></li><li><span>3</span><div><h3>Recibe los pasos de acceso</h3><p>Te acompañamos con la activación de tu selección.</p></div></li></ol></section>
 
-<section class="container devices-ecosystem-section" id="dispositivos" aria-labelledby="devices-heading">
-  <div class="pearl-section-head">
-    <div>
-      <span class="glass-eyebrow">EN TODAS PARTES</span>
-      <h2 id="devices-heading">En todas tus pantallas. Sin límites.</h2>
-      <p>Disfruta en 4K Ultra HD y sonido envolvente en tu Smart TV, móvil, tablet o computadora.</p>
-    </div>
-  </div>
-  <div class="devices-grid">
-    <div class="device-card">
-      <div class="device-icon-bubble">📺</div>
-      <h3>Smart TV & TV Boxes</h3>
-      <p>La mejor experiencia de cine en tu sala con resolución 4K HDR y sonido envolvente.</p>
-      <div class="device-tags-list">
-        <span>Samsung Tizen</span>
-        <span>LG webOS</span>
-        <span>Google TV</span>
-        <span>Fire TV Stick</span>
-        <span>Apple TV 4K</span>
-        <span>Roku</span>
-      </div>
-    </div>
-    <div class="device-card">
-      <div class="device-icon-bubble">📱</div>
-      <h3>Celulares & Tablets</h3>
-      <p>Lleva tus series y películas favoritas a donde vayas. Compatible con modo offline.</p>
-      <div class="device-tags-list">
-        <span>iPhone</span>
-        <span>iPad</span>
-        <span>Samsung Galaxy</span>
-        <span>Xiaomi</span>
-        <span>Motorola</span>
-        <span>Android</span>
-      </div>
-    </div>
-    <div class="device-card">
-      <div class="device-icon-bubble">💻</div>
-      <h3>Computadoras & Laptops</h3>
-      <p>Streaming fluido y directo desde tu navegador web preferido sin instalar nada adicional.</p>
-      <div class="device-tags-list">
-        <span>MacBook</span>
-        <span>Windows 11 / 10</span>
-        <span>Google Chrome</span>
-        <span>Safari</span>
-        <span>Edge</span>
-      </div>
-    </div>
-    <div class="device-card">
-      <div class="device-icon-bubble">🎮</div>
-      <h3>Consolas de Juegos</h3>
-      <p>Convierte tu consola en el centro multimedia de tu habitación con tus apps listas.</p>
-      <div class="device-tags-list">
-        <span>PlayStation 5</span>
-        <span>PlayStation 4</span>
-        <span>Xbox Series X/S</span>
-        <span>Xbox One</span>
-      </div>
-    </div>
-  </div>
-  <div class="devices-spec-banner">
-    <div><span class="spec-dot">✦</span> Calidad 4K Ultra HD & HDR</div>
-    <div><span class="spec-dot">✦</span> Perfiles independientes con PIN</div>
-    <div><span class="spec-dot">✦</span> Audio envolvente Dolby 5.1 / Atmos</div>
-    <div><span class="spec-dot">✦</span> Soporte técnico garantizado</div>
-  </div>
-</section>
+<section class="container device-note" id="dispositivos"><span class="device-glyph" aria-hidden="true">▱</span><div><h2>Tu momento, en tu pantalla.</h2><p>TV, computadora, tablet o teléfono. Consulta los dispositivos disponibles para tu plan.</p></div><a href="catalogo.html">Explorar planes ↗</a></section>
 
 <section class="orbit-concierge container" aria-labelledby="concierge-title"><div class="concierge-mark" aria-hidden="true">✦</div><div><span class="glass-eyebrow">TU GUÍA DE PELÍCULAS Y SERIES</span><h2 id="concierge-title">¿No sabes qué ver?</h2><p>Cuéntale a Orbit qué te gusta y encuentra por dónde empezar.</p></div><button class="button" data-assistant>Encontrar mi próxima historia ↗</button></section>
 
-<section class="container trust-pillars-section" id="garantias" aria-labelledby="trust-heading">
-  <div class="pearl-section-head">
-    <div>
-      <span class="glass-eyebrow">TRANQUILIDAD GARANTIZADA</span>
-      <h2 id="trust-heading">Tu tranquilidad es lo primero.</h2>
-      <p>Un servicio seguro, transparente y con respaldo humano los 7 días de la semana.</p>
-    </div>
-  </div>
-  <div class="trust-grid">
-    <div class="trust-card">
-      <div class="trust-icon-box">⚡</div>
-      <h3>Activación en minutos</h3>
-      <p>Recibe tus accesos y guía de uso en menos de 10 minutos tras confirmar tu pedido por WhatsApp.</p>
-    </div>
-    <div class="trust-card">
-      <div class="trust-icon-box">🛡️</div>
-      <h3>Garantía de reposición</h3>
-      <p>Cuentas 100% estables con garantía activa todo el periodo contratado. Si algo pasa, se resuelve de inmediato.</p>
-    </div>
-    <div class="trust-card">
-      <div class="trust-icon-box">🔒</div>
-      <h3>Perfiles con PIN propio</h3>
-      <p>Tu propio espacio privado con tu historial, tus favoritos y tus recomendaciones sin interferencias.</p>
-    </div>
-    <div class="trust-card">
-      <div class="trust-icon-box">💳</div>
-      <h3>Pagos locales y globales</h3>
-      <p>Transferencias sin comisiones en Ecuador (Pichincha, Guayaquil, Deuna), PayPal internacional y Binance Pay (USDT).</p>
-    </div>
-  </div>
-</section>
+
 
 <section class="pearl-section container pearl-faq" id="faq"><div><h2>Todo claro.<br/>Antes de empezar.</h2><p>Si te queda una duda, estamos a un mensaje.</p><a class="pearl-link" href="https://wa.me/593998226756" rel="noopener" target="_blank">Consultar por WhatsApp <svg aria-hidden="true" class="ui-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div><div class="pearl-faq-list">
 <details><summary>¿Cómo hago mi pedido?</summary><p>Elige una plataforma o crea tu combo. El botón de pedido abre WhatsApp con tu selección y el total para confirmar disponibilidad y pago.</p></details>
@@ -368,9 +129,9 @@ try { if (!location.hash && !matchMedia('(prefers-reduced-motion:reduce)').match
 <a href="catalogo.html">Plataformas</a>
 <a href="combos.html">Combos</a>
 <a href="descubre.html">Descubre</a>
-<a href="index.html#calculadora-ahorro">Calculadora de ahorro</a>
+<a href="index.html#calculadora-ahorro">Calcula tu combo</a>
 <a href="index.html#dispositivos">Dispositivos</a>
-<a href="index.html#garantias">Garantías</a>
+<a href="legal.html#terminos">Condiciones del servicio</a>
 <a href="index.html#faq">Preguntas frecuentes</a>
 <button class="text-button" data-assistant="">Asistente Orbit</button><button class="text-button" type="button" id="welcome-replay">Repetir bienvenida</button>
 

@@ -1,37 +1,277 @@
-/* Recommendations stay in this browser. No model, account or network request. */
 (() => {
- 'use strict';
- const library=window.ORBIT_LIBRARY||[],platforms=window.ORBITA?.platforms||[];
- const displayPlatform=id=>platforms.find(p=>p.id===id)?.name||id;
- const grid=document.querySelector('#orbit-pick-grid');
- if(!grid)return;
- const types={all:null,movie:'Película',series:'Serie',anime:'Anime',novela:'Novela'};
- let mood='all',seen=[];
- const initial=['s41414','m_nimona','s48830'];
- function render(first=false){
-  const pool=library.filter(m=>!types[mood]||m.type===types[mood]);
-  let available=pool.filter(m=>!seen.includes(m.id));
-  if(available.length<4)available=pool;
-  for(let i=available.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[available[i],available[j]]=[available[j],available[i]];}
-  const preferred=initial.map(id=>library.find(m=>m.id===id)).filter(Boolean);
-  const selected=first?[...preferred,...available.filter(m=>!preferred.some(p=>p.id===m.id))].slice(0,4):available.slice(0,4);
-  seen=[...seen,...selected.map(m=>m.id)].slice(-9);
-  grid.replaceChildren(...selected.map(m=>{
-   const a=document.createElement('a');a.className='orbit-pick-card';a.href='descubre.html?q='+encodeURIComponent(m.title);
-   const cover=document.createElement('div');cover.className='orbit-pick-cover';
-   const img=document.createElement('img');img.src=m.image;img.alt='';img.width=400;img.height=280;img.loading='lazy';img.decoding='async';
-   const label=document.createElement('span');label.textContent=displayPlatform(m.platform)+' · '+m.type;cover.append(img,label);
-   const title=document.createElement('h3');title.textContent=m.title;
-   const text=document.createElement('p');text.textContent=m.esSummary||m.summary;
-   const meta=document.createElement('small');meta.textContent=m.genre.split(',').join(' · ')+' · '+m.year;
-   a.append(cover,title,text,meta);return a;
+  'use strict';
+  const grid = document.querySelector('#orbit-pick-grid');
+  if (!grid) return;
+
+  // Small selection from library.js; the full discovery catalogue is not loaded here.
+  const curatedPicks = [
+    {
+      "id": "s44933",
+      "title": "Severance",
+      "platform": "appletv",
+      "type": "Serie",
+      "genre": "Drama,Science-Fiction,Misterio",
+      "year": "2022",
+      "image": "assets/optimized/s44933.webp",
+      "summary": "Empleados de una corporación se someten a un procedimiento quirúrgico que separa quirúrgicamente sus recuerdos laborales de sus vidas personales."
+    },
+    {
+      "id": "m_dune2",
+      "title": "Dune: Parte Dos",
+      "platform": "hbomax",
+      "type": "Película",
+      "genre": "Ciencia ficción,Aventura",
+      "year": "2024",
+      "image": "assets/optimized/m_dune2.webp",
+      "summary": "Paul Atreides se une a Chani y a los Fremen mientras busca venganza contra los conspiradores que destruyeron a su familia."
+    },
+    {
+      "id": "s66998",
+      "title": "PLUTO",
+      "platform": "netflix",
+      "type": "Anime",
+      "genre": "Ciencia ficción,Misterio",
+      "year": "2023",
+      "image": "assets/optimized/s66998.webp",
+      "summary": "Un detective robot investiga una serie de crímenes que amenaza la convivencia entre humanos y máquinas."
+    },
+    {
+      "id": "s49041",
+      "title": "Fallout",
+      "platform": "primevideo",
+      "type": "Serie",
+      "genre": "Ciencia ficción,aventura",
+      "year": "2024",
+      "image": "assets/optimized/s49041.webp",
+      "summary": "Una joven abandona un refugio subterráneo y descubre el peligroso mundo que quedó después de una guerra nuclear."
+    },
+    {
+      "id": "s53777",
+      "title": "Landman",
+      "platform": "paramount",
+      "type": "Serie",
+      "genre": "Drama",
+      "year": "2024",
+      "image": "assets/optimized/s53777.webp",
+      "summary": "Un intermediario del negocio petrolero en Texas intenta resolver conflictos entre trabajadores, empresarios y su propia familia."
+    },
+    {
+      "id": "s46562",
+      "title": "The Last of Us",
+      "platform": "hbomax",
+      "type": "Serie",
+      "genre": "Drama,aventura",
+      "year": "2023",
+      "image": "assets/optimized/s46562.webp",
+      "summary": "Joel debe acompañar a Ellie por un mundo devastado por una infección. Su relación es el centro de un viaje peligroso."
+    },
+    {
+      "id": "s44458",
+      "title": "Ted Lasso",
+      "platform": "appletv",
+      "type": "Serie",
+      "genre": "Drama,Comedia,Sports",
+      "year": "2020",
+      "image": "assets/optimized/s44458.webp",
+      "summary": "Un carismático entrenador de fútbol americano es contratado para dirigir un equipo de la Premier League británica con optimismo inquebrantable."
+    },
+    {
+      "id": "m_nimona",
+      "title": "Nimona",
+      "platform": "netflix",
+      "type": "Película",
+      "genre": "Animación,Aventura,Fantasía",
+      "year": "2023",
+      "image": "assets/optimized/m_nimona.webp",
+      "summary": "Un caballero acusado de un crimen encuentra una aliada inesperada: una adolescente capaz de cambiar de forma."
+    },
+    {
+      "id": "m_topgun",
+      "title": "Top Gun: Maverick",
+      "platform": "paramount",
+      "type": "Película",
+      "genre": "Acción,Drama",
+      "year": "2022",
+      "image": "assets/optimized/m_topgun.webp",
+      "summary": "Después de treinta años de servicio como uno de los mejores aviadores de la Armada, Maverick entrena a un destacamento de graduados para una misión especializada."
+    },
+    {
+      "id": "m7",
+      "title": "Finch",
+      "platform": "appletv",
+      "type": "Película",
+      "genre": "Ciencia ficción,drama",
+      "year": "2021",
+      "image": "assets/optimized/m7.webp",
+      "summary": "Un hombre construye un robot para cuidar de su perro en una Tierra devastada y emprende un viaje con ambos."
+    },
+    {
+      "id": "m_klaus",
+      "title": "Klaus",
+      "platform": "netflix",
+      "type": "Película",
+      "genre": "Animación,Familia",
+      "year": "2019",
+      "image": "assets/optimized/m_klaus.webp",
+      "summary": "Un cartero y un fabricante de juguetes transforman una ciudad dividida a través de pequeños actos de generosidad."
+    },
+    {
+      "id": "s25242",
+      "title": "Castlevania",
+      "platform": "netflix",
+      "type": "Anime",
+      "genre": "Fantasía,Acción",
+      "year": "2017",
+      "image": "assets/optimized/s25242.webp",
+      "summary": "Un cazador, una hechicera y el hijo de Drácula se unen contra un ejército de criaturas nocturnas."
+    },
+    {
+      "id": "s77383",
+      "title": "Sakamoto Days",
+      "platform": "netflix",
+      "type": "Anime",
+      "genre": "Acción,Comedia",
+      "year": "2025",
+      "image": "assets/optimized/s77383.webp",
+      "summary": "Un legendario asesino retirado protege su nueva vida familiar mientras su pasado vuelve a buscarlo."
+    },
+    {
+      "id": "s69046",
+      "title": "Delicious in Dungeon",
+      "platform": "netflix",
+      "type": "Anime",
+      "genre": "Fantasía,Aventura",
+      "year": "2024",
+      "image": "assets/optimized/s69046.webp",
+      "summary": "Un grupo de aventureros explora una mazmorra y cocina monstruos para sobrevivir a su misión de rescate."
+    },
+    {
+      "id": "s73023",
+      "title": "Dandadan",
+      "platform": "netflix",
+      "type": "Anime",
+      "genre": "Acción,Comedia,Ciencia ficción",
+      "year": "2024",
+      "image": "assets/optimized/s73023.webp",
+      "summary": "Momo y Okarun descubren que fantasmas y extraterrestres existen y se lanzan a una aventura impredecible."
+    },
+    {
+      "id": "s44267",
+      "title": "Teresa",
+      "platform": "vix",
+      "type": "Novela",
+      "genre": "Drama,Romance",
+      "year": "2010",
+      "image": "assets/optimized/s44267.webp",
+      "summary": "Una joven ambiciosa intenta escapar de la pobreza y debe elegir entre sus sentimientos y el mundo que desea."
+    },
+    {
+      "id": "s16276",
+      "title": "Rubí",
+      "platform": "vix",
+      "type": "Novela",
+      "genre": "Drama,Romance",
+      "year": "2004",
+      "image": "assets/optimized/s16276.webp",
+      "summary": "La ambición de Rubí transforma las vidas de quienes confían en ella y pone a prueba sus afectos."
+    },
+    {
+      "id": "s74573",
+      "title": "El amor invencible",
+      "platform": "vix",
+      "type": "Novela",
+      "genre": "Drama,Romance",
+      "year": "2023",
+      "image": "assets/optimized/s74573.webp",
+      "summary": "Leona reconstruye su vida mientras busca a sus hijos y la verdad sobre quienes destruyeron a su familia."
+    },
+    {
+      "id": "s16277",
+      "title": "La usurpadora",
+      "platform": "vix",
+      "type": "Novela",
+      "genre": "Drama,Romance",
+      "year": "1998",
+      "image": "assets/optimized/s16277.webp",
+      "summary": "Dos mujeres idénticas intercambian sus lugares y desatan secretos en una familia marcada por las apariencias."
+    },
+    {
+      "id": "s24562",
+      "title": "La fea más bella",
+      "platform": "vix",
+      "type": "Novela",
+      "genre": "Romance,Comedia",
+      "year": "2006",
+      "image": "assets/optimized/s24562.webp",
+      "summary": "Leticia llega a una productora donde su talento y su historia de amor desafían las apariencias."
+    }
+  ];
+  window.ORBIT_LIBRARY = window.ORBIT_LIBRARY || curatedPicks;
+ const platforms = window.ORBITA?.platforms || [];
+  const library = curatedPicks.filter(item => platforms.some(platform => platform.id === item.platform));
+  const displayPlatform = id => platforms.find(platform => platform.id === id)?.name || '';
+  const types = { all: null, movie: 'Película', series: 'Serie', anime: 'Anime', novela: 'Novela' };
+  const initial = ['s44933', 'm_dune2', 's66998', 's49041'];
+  const status = document.querySelector('#orbit-pick-status');
+  const moodButtons = [...document.querySelectorAll('[data-orbit-mood]')];
+  let mood = 'all';
+  let previous = [];
+
+  function shuffled(items) {
+    const result = [...items];
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+    return result;
+  }
+
+  function render(first = false) {
+    const pool = library.filter(item => !types[mood] || item.type === types[mood]);
+    // Prioritize unseen titles, then fill the row without creating duplicates.
+    const fresh = shuffled(pool.filter(item => !previous.includes(item.id)));
+    const repeated = shuffled(pool.filter(item => previous.includes(item.id)));
+    const preferred = first ? initial.map(id => library.find(item => item.id === id)).filter(Boolean) : [];
+    const selected = [...preferred, ...fresh, ...repeated]
+      .filter((item, index, all) => all.findIndex(other => other.id === item.id) === index)
+      .slice(0, 4);
+    previous = selected.map(item => item.id);
+
+    grid.replaceChildren(...selected.map(item => {
+      const card = document.createElement('a');
+      card.className = 'orbit-pick-card';
+      card.href = 'descubre.html?q=' + encodeURIComponent(item.title);
+      const cover = document.createElement('div');
+      cover.className = 'orbit-pick-cover';
+      const image = document.createElement('img');
+      image.src = item.image;
+      image.alt = '';
+      image.width = 400;
+      image.height = 280;
+      image.loading = 'lazy';
+      image.decoding = 'async';
+      const label = document.createElement('span');
+      label.textContent = displayPlatform(item.platform) + ' · ' + item.type;
+      cover.append(image, label);
+      const title = document.createElement('h3');
+      title.textContent = item.title;
+      const description = document.createElement('p');
+      description.textContent = item.summary;
+      const meta = document.createElement('small');
+      meta.textContent = item.genre.split(',').join(' · ') + ' · ' + item.year;
+      card.append(cover, title, description, meta);
+      return card;
+    }));
+    if (!first && status) status.textContent = selected.length + ' recomendaciones: ' + selected.map(item => item.title).join(', ') + '.';
+  }
+
+  moodButtons.forEach(button => button.addEventListener('click', () => {
+    if (!Object.hasOwn(types, button.dataset.orbitMood)) return;
+    mood = button.dataset.orbitMood;
+    previous = [];
+    moodButtons.forEach(other => other.setAttribute('aria-pressed', String(other === button)));
+    render();
   }));
-  if(!first)document.querySelector('#orbit-pick-status').textContent=selected.length+' recomendaciones: '+selected.map(m=>m.title).join(', ')+'.';
- }
- document.querySelectorAll('[data-orbit-mood]').forEach(button=>button.addEventListener('click',()=>{
-  mood=button.dataset.orbitMood;seen=[];
-  document.querySelectorAll('[data-orbit-mood]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));render();
- }));
- document.querySelector('#orbit-refresh').addEventListener('click',()=>render());
- render(true);
+  document.querySelector('#orbit-refresh')?.addEventListener('click', () => render());
+  render(true);
 })();

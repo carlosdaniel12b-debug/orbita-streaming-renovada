@@ -1,0 +1,12 @@
+{
+  "name": "orbita-streaming",
+  "private": true,
+  "scripts": {
+    "build:css": "node scripts/build-css.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "start": "node server.cjs"
+  },
+  "devDependencies": {
+    "clean-css": "5.3.3"
+  }
+}

@@ -35,7 +35,20 @@
     };
   }
 
+  let libraryReady;
+  function ensureLibrary() {
+    if (window.ORBIT_LIBRARY?.length >= 80) return Promise.resolve();
+    if (!libraryReady) libraryReady = new Promise(resolve => {
+      const script = document.createElement('script');
+      script.src = 'js/library.js?v=20261018';
+      script.onload = resolve;
+      script.onerror = () => {libraryReady = null; resolve();};
+      document.head.append(script);
+    });
+    return libraryReady;
+  }
   function open() {
+    ensureLibrary();
     if (!dialog.open) dialog.showModal();
     if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
       input.focus();
@@ -194,6 +207,7 @@
   }
 
   async function answer(text) {
+    await ensureLibrary();
     const q = norm(text);
     let title = extract(text);
     const ids = detectPlatforms(q);

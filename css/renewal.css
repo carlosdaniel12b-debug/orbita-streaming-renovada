@@ -51,3 +51,25 @@ body.pearl-world{background:var(--surface)!important;color:var(--ink);font-famil
   .pearl-world .platform-card:hover,.pearl-world .service-glass:hover{box-shadow:0 10px 24px #203e4910!important}
   .pearl-world .button:hover,.pearl-world .floating-btn:hover{transform:translateY(-1px)}
 }
+
+/* Compact segmented navigation, with a distinct current-page surface. */
+.pearl-world .nav .nav-link{display:flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;font-size:12px;font-weight:550;letter-spacing:-.01em;position:relative}
+.pearl-world .nav .nav-symbol{display:block;width:16px;height:16px;flex:none;opacity:.75}
+.pearl-world .nav .nav-link[aria-current=page] .nav-symbol{opacity:1}
+@media(min-width:901px){
+ .pearl-world .header-inner{min-height:70px}
+ .pearl-world .nav{display:flex;align-items:center;gap:3px;padding:5px;border:1px solid #ffffff;background:linear-gradient(120deg,#e9f0efc9,#eef0f6b0);border-radius:100px;box-shadow:inset 0 1px 1px #ffffff,0 2px 8px #233e4905}
+ .pearl-world .nav .nav-link{padding:11px 17px;min-height:40px;border:1px solid transparent;border-radius:100px;color:#596d78;background:transparent}
+ .pearl-world .nav .nav-link:hover{color:#254b50;background:#ffffffb8;border-color:#fff}
+ .pearl-world .nav .nav-link[aria-current=page]{color:#fff!important;background:linear-gradient(135deg,#385e63,#263f4b)!important;border-color:#34535c;box-shadow:inset 0 1px 0 #ffffff26,0 3px 8px #203d4920}
+ .pearl-world .nav .nav-link:after{display:none!important}
+}
+@media(max-width:900px){
+ .pearl-world .nav.open .nav-link{justify-content:flex-start;gap:12px;border-radius:13px;font-size:14px}
+ .pearl-world .nav.open .nav-symbol{width:19px;height:19px}
+ .pearl-world .nav.open .nav-link[aria-current=page]{background:linear-gradient(120deg,#e1eeea,#e6edf4);color:#294f53}
+}
+@media(prefers-reduced-motion:no-preference){
+ .pearl-world .nav .nav-link{transition:background-color 160ms ease,color 160ms ease,box-shadow 160ms ease,transform 160ms ease!important}
+ .pearl-world .nav .nav-link:active{transform:scale(.97)}
+}

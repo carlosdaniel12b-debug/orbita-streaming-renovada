@@ -34,3 +34,20 @@ body.pearl-world{background:var(--surface)!important;color:var(--ink);font-famil
 @media(max-width:600px){.pearl-world #assistant{padding:18px}.country-label{font-size:10px}.pearl-world #chat{height:290px}.pearl-world .footer-links{grid-template-columns:1fr 1fr}}
 /* Blue brand marks need a light tile, while white marks retain a dark tile. */
 .pearl-world img[src$="primevideo.svg"],.pearl-world img[src$="paramount.svg"]{background:#e5edf6!important;border-color:#d6e3ef!important}
+
+/* Short interaction feedback; no render loops, no independent logo motion. */
+@media (prefers-reduced-motion:no-preference) {
+  .pearl-world .button,.pearl-world .round-button,.pearl-world .floating-btn{transition:transform 160ms ease,background-color 160ms ease,box-shadow 160ms ease!important}
+  .pearl-world .button:active,.pearl-world .round-button:active,.pearl-world .floating-btn:active{transform:scale(.97)!important}
+  .pearl-world .nav-link,.pearl-world .mobile-dock>a,.pearl-world .mobile-dock>button{transition:background-color 160ms ease,color 160ms ease!important}
+  .pearl-world .platform-card,.pearl-world .service-glass,.pearl-world .orbit-pick-card,.pearl-world .orbit-collection,.pearl-world .descubre-card{transition:transform 180ms cubic-bezier(.2,.7,.3,1),box-shadow 180ms ease,border-color 180ms ease!important}
+  .pearl-world dialog[open]:not(#welcome){animation:orbit-dialog-arrive 180ms cubic-bezier(.2,.7,.3,1) both!important}
+  .pearl-world .pearl-faq-list details[open]>p{animation:orbit-answer-arrive 160ms ease-out both}
+  @keyframes orbit-dialog-arrive{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes orbit-answer-arrive{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+}
+@media (prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine) {
+  .pearl-world .platform-card:hover,.pearl-world .service-glass:hover,.pearl-world .orbit-pick-card:hover,.pearl-world .orbit-collection:hover,.pearl-world .descubre-card:hover{transform:translateY(-3px)!important}
+  .pearl-world .platform-card:hover,.pearl-world .service-glass:hover{box-shadow:0 10px 24px #203e4910!important}
+  .pearl-world .button:hover,.pearl-world .floating-btn:hover{transform:translateY(-1px)}
+}

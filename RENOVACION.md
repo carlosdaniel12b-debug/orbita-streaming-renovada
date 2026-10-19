@@ -25,3 +25,7 @@ El sitio se puede publicar como archivos estáticos; no requiere npm en producci
 Para editar estilos: modificar `css/renewal.css` (o la fuente base pertinente), ejecutar `npm ci` y `npm run build:css`, y guardar también `css/site.min.css`. El compilador combina los estilos usados y elimina declaraciones de fuentes descargadas. `npm start` inicia la vista previa local en http://127.0.0.1:4174.
 
 Los precios y duraciones permanecen definidos en `js/data.js` y la lógica común de `js/app.js`. Los originales de las imágenes permanecen disponibles para futuras ediciones.
+
+## Ajuste del 19 de octubre de 2026
+
+Se retira el calculador repetido de la portada. Los accesos de la portada llevan directamente a Combos y ya no cargan el script del calculador. Se añade respuesta visual breve (160–180 ms) a tarjetas completas, botones, ventanas y preguntas frecuentes; las animaciones respetan movimiento reducido y no desplazan los logos por separado.

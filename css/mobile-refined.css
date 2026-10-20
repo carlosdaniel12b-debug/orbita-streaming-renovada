@@ -18,3 +18,9 @@
 
 /* Keep native page scrolling; only a real open modal locks the backdrop. */
 @media(max-width:900px){html:has(dialog[open]){overflow-y:hidden!important}.pearl-world.mobile-nav-active:not(:has(dialog[open])){overflow:visible!important}dialog[open]{touch-action:pan-y pinch-zoom}.pearl-world #chat{touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch}.pearl-world .nav.open{touch-action:pan-y pinch-zoom}}
+
+/* One scrolling document on desktop and mobile; never a second body scroller. */
+html{height:auto!important;min-height:100%;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior-y:auto}
+body.pearl-world{height:auto!important;max-height:none!important;overflow:visible!important;overscroll-behavior-y:auto}
+html:has(dialog[open]){overflow-y:hidden!important}
+body.pearl-world:not(:has(dialog[open])){overflow:visible!important}

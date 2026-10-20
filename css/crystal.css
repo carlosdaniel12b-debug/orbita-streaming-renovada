@@ -1,0 +1,94 @@
+/* Shared optical finish. Blur is reserved for floating chrome and dialogs. */
+body.pearl-world {
+ --crystal-ink:#23364c; --crystal-muted:#51647b;
+ --crystal-surface:linear-gradient(135deg,#ffffffec 0%,#ffffffa8 48%,#e9effcb8 100%);
+ --crystal-edge:#ffffffed;
+ --crystal-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 #91aaca25,0 8px 28px #334d7110;
+ --crystal-accent:linear-gradient(135deg,#246a78,#4c5d99);
+ background:radial-gradient(ellipse 75% 680px at 0 0,#d1efe8a6,transparent),radial-gradient(ellipse 65% 900px at 100% 520px,#ddd8f9b0,transparent),radial-gradient(ellipse 75% 900px at 0 1800px,#dce9fca8,transparent),#f4f6fb!important;
+ color:var(--crystal-ink);
+}
+/* Static color replaces the old full-screen animated blur layers. */
+.pearl-world .liquid-atmosphere{display:none!important}
+.pearl-world .header-inner,.pearl-world .mobile-dock,.pearl-world .floating-btn,.pearl-world .combo-checkout-bar{
+ background:linear-gradient(125deg,#ffffffbd,#edf3ffc2)!important;
+ border:1px solid var(--crystal-edge)!important;
+ box-shadow:var(--crystal-shadow),0 12px 34px #263c6010!important;
+ backdrop-filter:blur(16px) saturate(145%)!important;
+ -webkit-backdrop-filter:blur(16px) saturate(145%)!important;
+}
+.pearl-world .nav{background:#cbd7ec35!important;border:1px solid #ffffffa6!important;box-shadow:inset 0 1px 3px #39597909!important}
+.pearl-world .nav .nav-link{color:#425774!important;transition:background-color .18s ease,color .18s ease!important}
+.pearl-world .nav .nav-link[aria-current=page],.pearl-world .mobile-dock [aria-current=page]{background:var(--crystal-accent)!important;color:#fff!important;border:1px solid #ffffff80!important;box-shadow:inset 0 1px 0 #ffffff70,0 4px 12px #344f7c24!important}
+.pearl-world .quick-discovery,.pearl-world .catalog-tools,.pearl-world .descubre-controls,.pearl-world .plan-notes,.pearl-world .pearl-help,.pearl-world .device-note,.pearl-world .catalog-cta{
+ background:var(--crystal-surface)!important;border:1px solid var(--crystal-edge)!important;box-shadow:var(--crystal-shadow)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+.pearl-world .platform-card,.pearl-world .service-glass,.pearl-world .pick-card,.pearl-world .plan-glass,.pearl-world .order-summary{
+ --card-tint:#e5edfa;
+ background:linear-gradient(140deg,#ffffffed,#ffffffb5 55%,var(--card-tint))!important;
+ border:1px solid var(--crystal-edge)!important;box-shadow:var(--crystal-shadow)!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease!important;
+}
+.pearl-world .service-spotify,.pearl-world .platform-card[data-category=music]{--card-tint:#d4eee4}
+.pearl-world .service-canva,.pearl-world .platform-card[data-category=tools]{--card-tint:#e6dcf8}
+.pearl-world .service-chatgpt{--card-tint:#d7e9f9}
+.pearl-world .service-gemini{--card-tint:#f4e1d9}
+.pearl-world .pick-card:has(input:checked){background:linear-gradient(135deg,#e3f6f0,#dce6fc)!important;border-color:#7b9eb8!important;box-shadow:inset 0 1px 0 #fff,0 0 0 1px #7b9eb84d,0 8px 20px #34577512!important}
+.pearl-world .platform-card h3,.pearl-world .service-glass h3{color:#25364c!important}
+.pearl-world .platform-card>p,.pearl-world .service-glass p{color:var(--crystal-muted)!important}
+.pearl-world .button:not(.ghost):not(:disabled),.pearl-world .floating-btn-orbit,.pearl-world #order:not(:disabled){
+ background:var(--crystal-accent)!important;color:#fff!important;border:1px solid #ffffff73!important;
+ box-shadow:inset 0 1px 0 #ffffff61,inset 0 -1px 0 #192f6633,0 5px 14px #31507c20!important;
+ text-shadow:none!important;transition:transform .16s ease,box-shadow .16s ease!important;
+}
+.pearl-world .premiere .premiere-actions .button:not(:disabled),.pearl-world .orbit-concierge>.button{
+ background:linear-gradient(135deg,#fffffffa,#e5f0f8e6)!important;color:#28495e!important;border:1px solid #fff!important;box-shadow:inset 0 1px 0 #fff,0 6px 18px #0c243824!important;
+}
+.pearl-world .platform-whatsapp{background:linear-gradient(120deg,#eaf9f3e6,#d6efe9cc)!important;color:#15594e!important;border:1px solid #9ccac080!important;box-shadow:inset 0 1px 0 #fff!important}
+.pearl-world .button.ghost,.pearl-world .icon-button,.pearl-world .quick-links a,.pearl-world .quick-prompts button,.pearl-world .orbit-moods button,.pearl-world .presets button{
+ background:linear-gradient(135deg,#ffffffed,#e8eef8cc)!important;color:#344f70!important;border:1px solid #c4d3e8!important;box-shadow:inset 0 1px 0 #fff,0 3px 9px #34547508!important;
+}
+.pearl-world .orbit-moods button[aria-pressed=true]{background:var(--crystal-accent)!important;color:#fff!important;border-color:#587a9b!important}
+.pearl-world .premiere-foot{background:linear-gradient(110deg,#153847db,#3e5279b8)!important;border-top:1px solid #ffffff50!important;box-shadow:inset 0 1px 0 #ffffff12}
+.pearl-world .pearl-faq-list details{background:var(--crystal-surface)!important;border:1px solid #fff!important;box-shadow:inset 0 1px 0 #fff,0 4px 14px #334d7108!important}
+.pearl-world .pearl-faq-list details[open]{border-color:#a9bdd9!important;background:#f8fbff!important}
+.pearl-world input:not([type=checkbox]):not([type=radio]),.pearl-world select,.pearl-world textarea{background:#ffffffdc!important;color:#253b55!important;border:1px solid #b9cbe1!important;box-shadow:inset 0 2px 4px #2e4d7306!important}
+.pearl-world input::placeholder,.pearl-world textarea::placeholder{color:#627389!important;opacity:1}
+.pearl-world :is(a,button,input,select,textarea,summary):focus-visible{outline:3px solid #4c77b5!important;outline-offset:3px!important}
+.pearl-world :is(.button,button):disabled{background:#e0e6ef!important;color:#637184!important;border-color:#cbd5e3!important;box-shadow:none!important;opacity:1!important}
+.pearl-world #details,.pearl-world #assistant,.pearl-world #combo-review,.pearl-world #story-dialog{
+ background:linear-gradient(140deg,#fcfefff5,#eef2fcf0 60%,#e8f4eff2)!important;color:#263b53!important;border:1px solid #fff!important;
+ box-shadow:inset 0 1px 0 #fff,0 24px 80px #182e5840!important;backdrop-filter:blur(16px)!important;-webkit-backdrop-filter:blur(16px)!important;
+}
+.pearl-world dialog:not(#welcome)::backdrop{background:#182c4b66;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.pearl-world .pay-chip,.pearl-world .payment-option{background:#ffffffbc!important;color:#344e68!important;border:1px solid #c5d3e4!important;box-shadow:inset 0 1px 0 #fff!important}
+.pearl-world .pay-chip.is-selected,.pearl-world .payment-option.is-selected{background:linear-gradient(135deg,#dcefe9,#e1e9fa)!important;border-color:#7099b4!important;color:#204f60!important}
+.pearl-world #assistant .bot{background:#ffffffdb!important;color:#2b425b!important;border:1px solid #fff!important;box-shadow:0 3px 12px #35516f08!important}
+.pearl-world #assistant .user{background:var(--crystal-accent)!important;color:#fff!important}
+@media(hover:hover) and (pointer:fine){
+ .pearl-world .platform-card:hover,.pearl-world .service-glass:hover,.pearl-world .pick-card:hover{transform:translateY(-3px)!important;box-shadow:inset 0 1px 0 #fff,0 12px 28px #3554771c!important;border-color:#b9cce5!important}
+ .pearl-world .button:hover:not(:disabled),.pearl-world .floating-btn:hover{transform:translateY(-2px)!important}
+ .pearl-world .platform-card:hover img{transform:none!important;filter:none!important}
+}
+@media(max-width:700px){
+ .pearl-world .header-inner,.pearl-world .mobile-dock,.pearl-world .floating-btn{backdrop-filter:blur(12px) saturate(130%)!important;-webkit-backdrop-filter:blur(12px) saturate(130%)!important}
+ .pearl-world .nav.open{background:#f3f7fff5!important;border:1px solid #fff!important}
+ .pearl-world #details,.pearl-world #assistant,.pearl-world #combo-review,.pearl-world #story-dialog{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+ .pearl-world .platform-card,.pearl-world .service-glass,.pearl-world .pick-card{box-shadow:inset 0 1px 0 #fff,0 5px 16px #334d710b!important}
+}
+@supports not (backdrop-filter:blur(1px)){
+ .pearl-world .header-inner,.pearl-world .mobile-dock,.pearl-world .floating-btn,.pearl-world .combo-checkout-bar{background:#f3f7ff!important}
+}
+@media(prefers-reduced-transparency:reduce){
+ .pearl-world{--crystal-surface:#f5f8fd}
+ .pearl-world .header-inner,.pearl-world .mobile-dock,.pearl-world .floating-btn{background:#f5f8fd!important;backdrop-filter:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .pearl-world .platform-card,.pearl-world .service-glass,.pearl-world .pick-card,.pearl-world .button,.pearl-world .floating-btn{transition:none!important;transform:none!important}
+}
+html.motion-paused .pearl-world :is(.platform-card,.service-glass,.pick-card,.button,.floating-btn){transition:none!important;transform:none!important}
+
+/* Content cards keep the optical finish without a blur layer per poster. */
+.pearl-world .descubre-card{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+@media(prefers-reduced-motion:reduce){html .pearl-world :is(.platform-card,.service-glass,.pick-card,.button,.floating-btn):is(:hover,:active){transform:none!important}}

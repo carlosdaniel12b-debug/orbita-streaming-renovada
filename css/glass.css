@@ -40,3 +40,6 @@ body.pearl-world{background:radial-gradient(ellipse 80% 650px at 0 0,#c8e8e299,t
 .pearl-world .story-actions .button.ghost,.pearl-world .descubre-trailer{background:#e1eafa!important;color:#29466d!important;border:1px solid #9db3d2!important;opacity:1;font-weight:600;min-height:44px}
 .pearl-world .story-actions .button.ghost:hover,.pearl-world .descubre-trailer:hover{background:#ceddf4!important;color:#1e3656!important;border-color:#7897c0!important}
 .pearl-world .story-actions .button.ghost:focus-visible,.pearl-world .descubre-trailer:focus-visible{outline:3px solid #376ca8!important;outline-offset:3px}
+
+.pearl-world #chat-log .bot,.pearl-world .chat-log .bot{white-space:pre-wrap;line-height:1.65}
+.is-writing::after{content:'▍';display:inline;color:#54749b;animation:orbit-caret .8s steps(2,end) infinite}.typing{display:flex;align-items:center;gap:5px}.typing-label{font-size:12px;color:#49617a}.typing i{width:5px;height:5px;border-radius:50%;background:#6284a9;animation:orbit-dot .9s ease-in-out infinite}.typing i:nth-last-child(2){animation-delay:.12s}.typing i:last-child{animation-delay:.24s}@keyframes orbit-caret{50%{opacity:0}}@keyframes orbit-dot{50%{transform:translateY(-3px);opacity:.45}}@media(prefers-reduced-motion:reduce){.typing i,.is-writing::after{animation:none}}

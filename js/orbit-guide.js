@@ -68,11 +68,43 @@
 
   // EFECTO MÁQUINA DE ESCRIBIR / STREAMING PARA LA IA ORBIT
   async function appendBotStream(text, onComplete) {
-    const el = append('bot', text);
+    log.querySelector('.typing')?.remove();
+    const el = append('bot', '');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const characters = Array.from(text);
+    const node = document.createTextNode('');
+    el.append(node);
+    if (!reduced && dialog.open) {
+      el.classList.add('is-writing');
+      el.setAttribute('aria-busy', 'true');
+      await new Promise(resolve => {
+        let position = 0, timer;
+        const chunk = Math.max(2, Math.ceil(characters.length / 75));
+        const finish = () => {
+          clearTimeout(timer);
+          node.textContent = text;
+          el.classList.remove('is-writing');
+          el.removeAttribute('aria-busy');
+          if (currentSkipCallback === finish) currentSkipCallback = null;
+          resolve();
+        };
+        currentSkipCallback = finish;
+        const tick = () => {
+          if (!dialog.open || !el.isConnected) return finish();
+          const nearBottom = log.scrollHeight - log.scrollTop - log.clientHeight < 100;
+          position = Math.min(position + chunk, characters.length);
+          node.textContent = characters.slice(0, position).join('');
+          if (nearBottom) log.scrollTop = log.scrollHeight;
+          if (position >= characters.length) finish();
+          else timer = setTimeout(tick, 24);
+        };
+        tick();
+      });
+    } else node.textContent = text;
     if (onComplete) await onComplete(el);
-    log.scrollTop = log.scrollHeight;
     return el;
   }
+  dialog.addEventListener('close', () => currentSkipCallback?.());
 
   // Si el usuario hace click en el chat mientras se escribe, salta al texto completo de inmediato
   log.addEventListener('click', () => {
@@ -311,14 +343,14 @@
     }
 
     if (/pagar|pago|comprar|contratar|activar|activacion|entrega/.test(q)) {
-      await appendBotStream('Elige una plataforma o combo, abre WhatsApp y confirma disponibilidad. Al validar el pago, el asesor te entrega las credenciales y pasos de activación de inmediato con garantía completa.', el => {
+      await appendBotStream('Elige una plataforma o combo, abre WhatsApp y confirma disponibilidad. Al validar el pago, el asesor te indica los pasos de acceso. Confirma antes la disponibilidad, el plazo de activación y las condiciones del plan.', el => {
         link(el, 'Hablar con un asesor por WhatsApp ↗', 'https://wa.me/' + window.ORBITA.phone + '?text=' + encodeURIComponent('Hola, quiero consultar formas de pago y activación.'));
       });
       return;
     }
 
     if (/soporte|problema|funciona|error|garantia|renovar|cancelar|reembolso/.test(q)) {
-      await appendBotStream('Puedo orientarte con dudas generales. Para soporte técnico de cuenta, garantía o renovaciones, escríbenos directamente por WhatsApp y nuestro equipo te dará asistencia personalizada garantizada.', el => {
+      await appendBotStream('Puedo orientarte con dudas generales. Para soporte técnico de cuenta, garantía o renovaciones, escríbenos directamente por WhatsApp y nuestro equipo te dará ayuda con tu caso. Indica la plataforma y el mensaje de error, sin compartir contraseñas ni códigos.', el => {
         link(el, 'Contactar soporte por WhatsApp ↗', 'https://wa.me/' + window.ORBITA.phone + '?text=' + encodeURIComponent('Hola, necesito soporte: ' + text));
       });
       return;
@@ -395,7 +427,7 @@
       return;
     }
 
-    await appendBotStream('No encontré esa consulta en mis respuestas preparadas o en el catálogo local. Prueba «hola», «qué puedes hacer», «recomiéndame algo», «anime de Netflix», «otras opciones» o «cómo pagar con Binance».');
+    await appendBotStream('No tengo una respuesta precisa para eso todavía. ¿Quieres encontrar algo para ver o necesitas ayuda con un plan? Puedes darme un género, una plataforma o un título que te guste. Por ejemplo: «una serie corta de misterio» o «precio de Netflix».');
   }
 
   async function ask(text) {
@@ -413,12 +445,13 @@
     // Indicador futurista mientras Orbit procesa
     const typing = document.createElement('div');
     typing.className = 'typing';
-    typing.setAttribute('aria-label', 'Orbit está consultando la galaxia...');
-    typing.innerHTML = '<span class="typing-label">✦ Orbit está pensando</span><i></i><i></i><i></i>';
+    typing.setAttribute('aria-label', 'Orbit está preparando una respuesta');
+    typing.innerHTML = '<span class="typing-label">Orbit está preparando tu respuesta</span><i></i><i></i><i></i>';
     log.append(typing);
     log.scrollTop = log.scrollHeight;
 
     try {
+      await new Promise(resolve => setTimeout(resolve, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 280));
       await answer(message);
     } catch {
       await appendBotStream('Ocurrió un error al consultar la galaxia de contenidos. Inténtalo nuevamente o escribe el título por WhatsApp.');

@@ -92,3 +92,12 @@ body.pearl-world{font-size:16px;font-weight:400;line-height:1.6;letter-spacing:-
 .plan-notes-list{list-style:none;padding:0;margin:0}.plan-notes-list li{display:grid;grid-template-columns:28px 1fr 28px;gap:14px;align-items:start;padding:18px 0;border-bottom:1px solid #34576320}.plan-notes-list li:first-child{padding-top:4px}.plan-notes-list li:last-child{border:0;padding-bottom:4px}
 .plan-note-number{font-size:11px;color:#63827d;padding-top:3px;font-variant-numeric:tabular-nums}.pearl-world .plan-notes-list h3{font-size:16px;font-weight:600;letter-spacing:-.025em;margin:0 0 6px}.pearl-world .plan-notes-list p{font-size:13px;line-height:1.55;color:#52636e;margin:0;max-width:48ch}.plan-notes-list svg{width:24px;height:24px;color:#52766f}
 @media(max-width:700px){.pearl-world .plan-notes{grid-template-columns:1fr;gap:24px;padding:24px!important;margin-block:18px}.pearl-world .plan-notes h2 br{display:none}.pearl-world .plan-notes h2{font-size:30px}.pearl-world .plan-notes-intro p{max-width:100%;margin-bottom:14px}.plan-notes-list li{gap:10px}}
+
+/* Balance incomplete catalog rows, including filtered results. */
+.pearl-world .catalog-grid{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+.pearl-world .catalog-grid>.platform-card{grid-column:span 2;min-width:0}
+.pearl-world .catalog-grid>.balanced-pair{grid-column:span 3}
+.pearl-world .catalog-grid>.single-result{grid-column:1/-1}
+.platform-payments-bar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}.pay-method-badge{padding:5px 9px;border-radius:8px;background:#edf3f4;color:#45636a;font-size:11px;line-height:1.3}
+@media(min-width:701px) and (max-width:950px){.pearl-world .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pearl-world .catalog-grid>.platform-card{grid-column:span 1}.pearl-world .catalog-grid>.platform-card:last-child:nth-child(odd of :not([hidden])){grid-column:1/-1}}
+@media(max-width:700px){.pearl-world .catalog-grid{grid-template-columns:minmax(0,1fr)!important}.pearl-world .catalog-grid>.platform-card{grid-column:1/-1}}

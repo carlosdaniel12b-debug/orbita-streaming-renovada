@@ -102,3 +102,11 @@ body.pearl-world{font-size:16px;font-weight:400;line-height:1.6;letter-spacing:-
 @media(min-width:701px) and (max-width:950px){.pearl-world .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pearl-world .catalog-grid>.platform-card{grid-column:span 1}.pearl-world .catalog-grid>.platform-card:last-child:nth-child(odd of :not([hidden])){grid-column:1/-1}}
 @media(max-width:700px){.pearl-world .catalog-grid{grid-template-columns:minmax(0,1fr)!important}.pearl-world .catalog-grid>.platform-card{grid-column:1/-1}}
 .pearl-world .catalog-grid>.platform-card{max-width:none!important;width:100%;box-sizing:border-box}
+
+/* Give the welcome wordmark priority over the orbital symbol. */
+.pearl-world #welcome .intro-brand-name{font-size:clamp(80px,10vw,112px);font-weight:750;letter-spacing:-.055em;line-height:1.02;margin-top:10px;text-align:center;color:#243c48}
+.pearl-world #welcome .intro-brand-name span{display:block;font-size:20px;font-weight:650;line-height:1.4;letter-spacing:.26em;text-indent:.26em;margin-top:14px;text-transform:uppercase;color:#3f606e}
+.pearl-world #welcome .intro-brand-symbol{width:150px;height:129px}
+.pearl-world #welcome .intro-brand p{font-size:16px;line-height:1.5;margin-top:26px;padding-inline:20px}
+@media(max-width:650px){.pearl-world #welcome .intro-brand-name{font-size:clamp(70px,20vw,94px)}.pearl-world #welcome .intro-brand-name span{font-size:17px;letter-spacing:.23em;text-indent:.23em;margin-top:10px}.pearl-world #welcome .intro-brand-symbol{width:118px;height:101px}.pearl-world #welcome .intro-brand p{font-size:14px;margin-top:22px}}
+@media(max-height:500px){.pearl-world #welcome .intro-brand-symbol{width:84px;height:72px}.pearl-world #welcome .intro-brand-name{font-size:68px}.pearl-world #welcome .intro-brand p{margin-top:14px}}

@@ -1,24 +1,986 @@
+/* Órbita Streaming — Optimización nativa y fluida para dispositivos móviles (teléfonos inteligentes / cell) */
 
-/* A complete narrow-screen layout, loaded after desktop layers. */
-@media(max-width:700px){
- .pearl-world .container{width:calc(100% - 32px)!important;min-width:0;box-sizing:border-box}
- .pearl-world main{padding-bottom:24px}.pearl-world main>*{min-width:0}
- .pearl-world .premiere-shade{background:linear-gradient(90deg,#102a32e8,#102a3290),linear-gradient(0deg,#102a32c0,transparent)}
- .pearl-world .premiere-stage{height:auto;min-height:410px}.pearl-world .premiere-copy{padding:28px 22px 110px}.pearl-world .premiere h1{font-size:clamp(30px,8.2vw,40px)}
- .pearl-world .premiere-foot{gap:12px;padding:14px 18px}.pearl-world .premiere-story{min-width:0;padding-left:12px}.pearl-world .premiere-story small{font-size:7px;letter-spacing:.04em}.pearl-world .premiere-price{flex-shrink:0}
- .pearl-world .quick-discovery{grid-template-columns:minmax(0,1fr);margin-block:16px}.pearl-world .quick-search{display:flex;min-width:0}.pearl-world .quick-search input{width:0;flex:1;min-width:0}.pearl-world .quick-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.pearl-world .quick-links a{font-size:12px;min-height:40px}
- .pearl-world .platform-dock{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible!important;gap:10px 4px!important}.pearl-world .platform-dock a{min-width:0!important;padding:4px 0!important}.pearl-world .platform-dock img{width:50px!important;height:32px!important}.pearl-world .platform-dock span{font-size:8px!important;text-align:center}
- .pearl-world .orbit-pick-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px!important;overflow:visible!important;margin:0!important;padding:0!important;scroll-snap-type:none!important}.pearl-world .orbit-pick-card{min-width:0;flex:none!important}.pearl-world .orbit-pick-cover{height:190px!important}.pearl-world .orbit-pick-card p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.pearl-world .orbit-pick-card h3{font-size:17px}.pearl-world .orbit-moods{gap:6px}.pearl-world .orbit-moods button{min-height:40px;font-size:12px}
- .pearl-world .pearl-section-head{display:block;margin-bottom:20px!important}.pearl-world .pearl-section-head h2{font-size:28px!important;line-height:1.15!important}.pearl-world .pearl-section-head p{font-size:14px}.pearl-world .pearl-section-head .pearl-link{display:inline-block;margin-top:10px}
- .pearl-world .plan-notes{padding:22px!important;gap:18px}.pearl-world .plan-notes h2 span{display:block}.pearl-world .plan-notes-list li{grid-template-columns:22px minmax(0,1fr);gap:8px;padding-block:16px}.pearl-world .plan-notes-list svg{display:none}.pearl-world .plan-notes-intro p{font-size:14px}
- .pearl-world .service-grid{grid-template-columns:minmax(0,1fr)!important;gap:12px}.pearl-world .service-glass{min-height:0!important;padding:20px!important;display:grid!important;grid-template-columns:64px minmax(0,1fr);gap:8px 16px;align-items:start}.pearl-world .service-glass>img{width:64px!important;height:42px!important;grid-row:1/4;margin:0}.pearl-world .service-glass h3{font-size:21px!important;margin:0}.pearl-world .service-glass h3 br{display:none}.pearl-world .service-glass p{font-size:13px;grid-column:2;margin:0}.pearl-world .service-link{grid-column:2;padding-top:6px;font-size:12px;min-height:36px}
- .pearl-world .pearl-help,.pearl-world .pearl-faq{grid-template-columns:minmax(0,1fr)!important;gap:24px}.pearl-world .pearl-steps{min-width:0}.pearl-world .device-note{align-items:flex-start;padding:20px!important}.pearl-world .device-note>div{min-width:0}.pearl-world .device-note>a{white-space:normal;margin-left:0}.pearl-world .orbit-concierge{grid-template-columns:minmax(0,1fr)!important;gap:14px}.pearl-world .orbit-concierge>.button{grid-column:1;white-space:normal;width:100%}
- .pearl-world .page-heading h1,.pearl-world .descubre-title{font-size:34px!important}.pearl-world .catalog-tools,.pearl-world .descubre-controls{padding:14px!important}.pearl-world .filters{display:flex;flex-wrap:wrap;gap:6px}.pearl-world .filters button{min-height:42px;font-size:12px}.pearl-world .search{min-width:0;width:100%}.pearl-world .search input{width:100%;min-width:0}
- .pearl-world .catalog-grid{grid-template-columns:minmax(0,1fr)!important}.pearl-world .platform-card{min-height:0!important;padding:22px!important}.pearl-world .platform-top{gap:12px}.pearl-world .platform-top .tag{white-space:normal;text-align:right}.pearl-world .platform-card h3{font-size:26px}.pearl-world .platform-card>p{font-size:14px}.pearl-world .platform-bottom{padding-top:18px}
- .pearl-world .combo-layout{display:grid;grid-template-columns:minmax(0,1fr)!important;gap:24px}.pearl-world .combo-layout>div{min-width:0}.pearl-world .combo-picker{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.pearl-world .pick-card{min-width:0;padding:14px;min-height:122px}.pearl-world .presets{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.pearl-world .presets button{min-width:0;width:100%;text-align:left;padding:14px}.pearl-world .order-summary{position:static;width:100%;min-width:0;padding:22px!important}.pearl-world .payment-option{min-width:0;padding:12px;gap:10px}.pearl-world .payment-option>span{min-width:0}.pearl-world .payment-option small{overflow-wrap:anywhere}.pearl-world .order-button{width:100%;white-space:normal;min-height:48px}
- .pearl-world .descubre-filters-row{grid-template-columns:minmax(0,1fr);gap:16px}.pearl-world .chips-scroll{flex-wrap:wrap;overflow:visible}.pearl-world .descubre-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}.pearl-world .descubre-status-bar{flex-wrap:wrap;gap:10px}.pearl-world .chip-btn{min-height:40px}.pearl-world .story-detail{grid-template-columns:minmax(0,1fr);gap:16px}.pearl-world .story-detail>img{width:110px}.pearl-world .story-actions>*{flex:1;white-space:normal;text-align:center}
- .pearl-world dialog:not(#welcome){width:calc(100% - 24px)!important;max-width:calc(100% - 24px)!important;max-height:calc(100dvh - 24px)!important;box-sizing:border-box;padding:20px!important;overflow-y:auto}.pearl-world #assistant{padding:16px!important}.pearl-world #assistant .copilot-head h2{font-size:23px}.pearl-world #assistant .quick-prompts button{min-height:40px;font-size:11px}.pearl-world #chat{height:32dvh;max-height:300px;min-height:140px}.pearl-world #chat .bot,.pearl-world #chat .user{font-size:14px;overflow-wrap:anywhere;white-space:pre-wrap}.pearl-world #chat-input{font-size:16px!important;width:0;flex:1}.pearl-world .typing{flex-wrap:wrap}.pearl-world .answer-title>span{min-width:0}
- .pearl-world .mobile-dock{bottom:max(8px,env(safe-area-inset-bottom));width:calc(100% - 20px);left:10px;right:10px;box-sizing:border-box}.pearl-world .footer{padding-bottom:calc(100px + env(safe-area-inset-bottom))!important}.pearl-world .payment-footer{flex-wrap:wrap}.pearl-world .legal-links{flex-wrap:wrap}
+/* Prevención global de desbordamiento horizontal y artefactos táctiles */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-text-size-adjust: 100% !important;
 }
-@media(max-width:360px){.pearl-world .orbit-pick-cover{height:165px!important}.pearl-world .premiere-copy{padding-inline:18px}.pearl-world .service-glass{grid-template-columns:52px minmax(0,1fr);gap:8px 12px}.pearl-world .service-glass>img{width:52px!important}.pearl-world .service-glass h3{font-size:19px!important}.pearl-world .platform-dock{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:700px){.pearl-world .service-glass h3 br{display:initial}}
+
+@media (pointer: coarse), (max-width: 700px) {
+  /* Regla de oro iOS: inputs >= 16px previenen el auto-zoom agresivo de Safari */
+  input, textarea, select,
+  .pearl-world .search input,
+  .pearl-world #search,
+  .pearl-world #home-search,
+  .pearl-world #movie-search,
+  .pearl-world #descubre-search-input,
+  .pearl-world #chat-input,
+  .pearl-world .quick-search input {
+    font-size: 16px !important;
+  }
+
+  /* Microinteracciones táctiles nativas sin retraso de 300ms */
+  button, a, [role="button"],
+  .pearl-world .button,
+  .pearl-world .platform-card,
+  .pearl-world .pick-card,
+  .pearl-world .chip-btn,
+  .pearl-world .orbit-pick-card,
+  .pearl-world .mobile-dock a,
+  .pearl-world .mobile-dock button {
+    touch-action: manipulation !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+  }
+
+  /* Feedback táctil instantáneo al presionar */
+  .pearl-world .button:active,
+  .pearl-world .chip-btn:active,
+  .pearl-world .pick-card:active,
+  .pearl-world .platform-dock a:active,
+  .pearl-world .mobile-dock a:active,
+  .pearl-world .mobile-dock button:active {
+    transform: scale(0.96) !important;
+    transition: transform 90ms ease-out !important;
+  }
+}
+
+/* Layout responsivo completo para pantallas de celulares (<= 700px) */
+@media (max-width: 700px) {
+  .pearl-world .container {
+    width: calc(100% - 28px) !important;
+    max-width: calc(100% - 28px) !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .pearl-world main {
+    padding-bottom: 24px !important;
+  }
+
+  .pearl-world main > * {
+    min-width: 0 !important;
+  }
+
+  /* Header y navegación móvil */
+  .pearl-world .header {
+    padding: max(8px, env(safe-area-inset-top)) 0 8px !important;
+  }
+
+  .pearl-world .header-inner {
+    min-height: 54px !important;
+    border-radius: 20px !important;
+    padding: 0 16px !important;
+  }
+
+  .pearl-world .logo-symbol {
+    width: 38px !important;
+    height: 32px !important;
+  }
+
+  .pearl-world .logo-type {
+    font-size: 22px !important;
+  }
+
+  .pearl-world .nav.open {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 14px !important;
+    right: 14px !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(220, 229, 232, 0.9) !important;
+    border-radius: 20px !important;
+    padding: 12px !important;
+    box-shadow: 0 16px 40px rgba(18, 38, 58, 0.15) !important;
+    z-index: 100 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .pearl-world .nav.open .nav-link {
+    min-height: 46px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    font-weight: 550 !important;
+    border-radius: 12px !important;
+  }
+
+  /* Hero / Premiere Stage */
+  .pearl-world .premiere {
+    padding-top: 10px !important;
+  }
+
+  .pearl-world .premiere-shade {
+    background: linear-gradient(90deg, #102a32f0 0%, #102a32c0 60%, #102a3270 100%), linear-gradient(0deg, #102a32e8 20%, transparent 80%) !important;
+  }
+
+  .pearl-world .premiere-stage {
+    height: auto !important;
+    min-height: 480px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 22px !important;
+  }
+
+  .pearl-world .premiere-image {
+    object-position: 65% center !important;
+  }
+
+  .pearl-world .premiere-copy {
+    padding: 30px 20px 125px !important;
+    max-width: 100% !important;
+  }
+
+  .pearl-world .premiere h1 {
+    font-size: clamp(30px, 8.5vw, 42px) !important;
+    line-height: 1.06 !important;
+    margin: 16px 0 !important;
+  }
+
+  .pearl-world .premiere-copy > p {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .pearl-world .premiere-actions {
+    gap: 12px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .pearl-world .premiere-actions .button {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: 46px !important;
+    font-size: 12.5px !important;
+  }
+
+  .pearl-world .premiere-foot {
+    gap: 12px !important;
+    padding: 14px 18px !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(18, 38, 48, 0.65) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  }
+
+  .pearl-world .premiere-price strong {
+    font-size: 22px !important;
+  }
+
+  .pearl-world .premiere-price small {
+    font-size: 8.5px !important;
+  }
+
+  .pearl-world .premiere-story {
+    min-width: 0 !important;
+    padding-left: 12px !important;
+    gap: 8px !important;
+  }
+
+  .pearl-world .premiere-story small {
+    font-size: 7px !important;
+    letter-spacing: .04em !important;
+  }
+
+  .pearl-world .premiere-story strong {
+    font-size: 13px !important;
+  }
+
+  .pearl-world .premiere-play {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 16px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .pearl-world .premiere-index {
+    display: none !important;
+  }
+
+  /* Quick Discovery */
+  .pearl-world .quick-discovery {
+    grid-template-columns: minmax(0, 1fr) !important;
+    margin-block: 16px !important;
+    gap: 14px !important;
+    padding: 16px 0 !important;
+  }
+
+  .pearl-world .quick-search {
+    display: flex !important;
+    min-width: 0 !important;
+    gap: 8px !important;
+  }
+
+  .pearl-world .quick-search input {
+    width: 0 !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    height: 44px !important;
+  }
+
+  .pearl-world .quick-search .button {
+    min-height: 44px !important;
+    padding: 10px 16px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .pearl-world .quick-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .pearl-world .quick-links > span {
+    display: none !important;
+  }
+
+  .pearl-world .quick-links a {
+    font-size: 12px !important;
+    min-height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important;
+    text-align: center !important;
+    border-radius: 12px !important;
+  }
+
+  /* MARQUEE INFINITO DE PLATAFORMAS EN CELL — Preserva el track y evita desbordamiento */
+  .pearl-world .platform-dock {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    position: relative !important;
+    padding: 12px 0 !important;
+    margin: 0 auto 18px !important;
+    border-block: 1px solid #e2e7eb !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24px, #000 calc(100% - 24px), transparent 100%) !important;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 24px, #000 calc(100% - 24px), transparent 100%) !important;
+    touch-action: pan-y !important;
+  }
+
+  .pearl-world .platform-dock-track {
+    display: flex !important;
+    width: max-content !important;
+    will-change: transform !important;
+    animation: dock-infinite-marquee 28s linear infinite !important;
+    touch-action: pan-y !important;
+  }
+
+  .pearl-world .platform-dock-group {
+    display: flex !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .pearl-world .platform-dock a,
+  .pearl-world .platform-dock .platform-dock-item {
+    min-width: 66px !important;
+    padding: 6px 4px !important;
+    margin: 0 4px !important;
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-decoration: none !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+  }
+
+  .pearl-world .platform-dock img {
+    width: 54px !important;
+    height: 30px !important;
+    border-radius: 9px !important;
+    background: #ffffff !important;
+    border: 1px solid #e1e7ec !important;
+    box-shadow: 0 2px 6px rgba(18, 38, 58, 0.05) !important;
+    padding: 5px !important;
+    box-sizing: border-box !important;
+    object-fit: contain !important;
+  }
+
+  .pearl-world .platform-dock span {
+    font-size: 8.5px !important;
+    font-weight: 550 !important;
+    color: #4b606d !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* Cuadrícula de recomendaciones editoriales (Orbit Picks) */
+  .pearl-world .orbit-pick-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px 10px !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    scroll-snap-type: none !important;
+  }
+
+  .pearl-world .orbit-pick-card {
+    min-width: 0 !important;
+    flex: none !important;
+  }
+
+  .pearl-world .orbit-pick-cover {
+    height: 180px !important;
+    border-radius: 15px !important;
+  }
+
+  .pearl-world .orbit-pick-card h3 {
+    font-size: 15px !important;
+    margin-top: 8px !important;
+  }
+
+  .pearl-world .orbit-pick-card p {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .pearl-world .orbit-moods {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .pearl-world .orbit-moods button {
+    min-height: 38px !important;
+    font-size: 11.5px !important;
+    padding: 8px 12px !important;
+    border-radius: 20px !important;
+  }
+
+  .pearl-world .orbit-refresh {
+    min-height: 38px !important;
+    font-size: 11.5px !important;
+  }
+
+  /* Encabezados de sección */
+  .pearl-world .pearl-section-head {
+    display: block !important;
+    margin-bottom: 18px !important;
+  }
+
+  .pearl-world .pearl-section-head h2 {
+    font-size: 26px !important;
+    line-height: 1.15 !important;
+  }
+
+  .pearl-world .pearl-section-head p {
+    font-size: 13px !important;
+  }
+
+  .pearl-world .pearl-section-head .pearl-link {
+    display: inline-block !important;
+    margin-top: 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* Plan notes */
+  .pearl-world .plan-notes {
+    padding: 20px 16px !important;
+    gap: 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .pearl-world .plan-notes h2 span {
+    display: block !important;
+  }
+
+  .pearl-world .plan-notes-list li {
+    grid-template-columns: 22px minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding-block: 14px !important;
+  }
+
+  .pearl-world .plan-notes-list svg {
+    display: none !important;
+  }
+
+  .pearl-world .plan-notes-intro p {
+    font-size: 13.5px !important;
+  }
+
+  /* Servicios (Música, Creatividad e IA) */
+  .pearl-world .service-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .pearl-world .service-glass {
+    min-height: 0 !important;
+    padding: 16px !important;
+    display: grid !important;
+    grid-template-columns: 58px minmax(0, 1fr) !important;
+    gap: 6px 14px !important;
+    align-items: start !important;
+    border-radius: 18px !important;
+  }
+
+  .pearl-world .service-glass > img {
+    width: 58px !important;
+    height: 38px !important;
+    grid-row: 1/4 !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    border-radius: 8px !important;
+  }
+
+  .pearl-world .service-glass h3 {
+    font-size: 18px !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  .pearl-world .service-glass h3 br {
+    display: none !important;
+  }
+
+  .pearl-world .service-glass p {
+    font-size: 12px !important;
+    grid-column: 2 !important;
+    margin: 4px 0 0 !important;
+    line-height: 1.5 !important;
+  }
+
+  .pearl-world .service-link {
+    grid-column: 2 !important;
+    padding-top: 6px !important;
+    font-size: 11.5px !important;
+    min-height: 32px !important;
+  }
+
+  /* Asistente Orbit y FAQ */
+  .pearl-world .pearl-help,
+  .pearl-world .pearl-faq {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .pearl-world .pearl-steps {
+    min-width: 0 !important;
+  }
+
+  .pearl-world .device-note {
+    align-items: flex-start !important;
+    padding: 18px !important;
+    border-radius: 18px !important;
+    gap: 12px !important;
+  }
+
+  .pearl-world .device-note > div {
+    min-width: 0 !important;
+  }
+
+  .pearl-world .device-note > a {
+    white-space: normal !important;
+    margin-left: 0 !important;
+    margin-top: 8px !important;
+  }
+
+  .pearl-world .orbit-concierge {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px !important;
+    padding: 22px 18px !important;
+    border-radius: 20px !important;
+  }
+
+  .pearl-world .orbit-concierge > .button {
+    grid-column: 1 !important;
+    white-space: normal !important;
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+  }
+
+  /* Catálogo (catalogo.html) */
+  .pearl-world .page-heading h1,
+  .pearl-world .descubre-title {
+    font-size: clamp(28px, 7vw, 36px) !important;
+    line-height: 1.1 !important;
+  }
+
+  .pearl-world .catalog-tools,
+  .pearl-world .descubre-controls {
+    padding: 14px !important;
+    border-radius: 18px !important;
+  }
+
+  .pearl-world .filters {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .pearl-world .filters button {
+    min-height: 40px !important;
+    font-size: 12px !important;
+    padding: 8px 14px !important;
+    border-radius: 20px !important;
+  }
+
+  .pearl-world .search {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .pearl-world .search input {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .pearl-world .catalog-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+
+  .pearl-world .platform-card {
+    min-height: 0 !important;
+    padding: 20px 18px !important;
+    border-radius: 20px !important;
+  }
+
+  .pearl-world .platform-top {
+    gap: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .pearl-world .platform-top img {
+    width: 80px !important;
+    height: 36px !important;
+  }
+
+  .pearl-world .platform-top .tag {
+    white-space: normal !important;
+    text-align: right !important;
+    font-size: 9px !important;
+    padding: 5px 8px !important;
+  }
+
+  .pearl-world .platform-card h3 {
+    font-size: 23px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .pearl-world .platform-card > p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+
+  .pearl-world .platform-bottom {
+    padding-top: 16px !important;
+  }
+
+  .pearl-world .platform-whatsapp {
+    min-height: 44px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: 12px !important;
+  }
+
+  /* Combos (combos.html) */
+  .pearl-world .combo-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 22px !important;
+  }
+
+  .pearl-world .combo-layout > div {
+    min-width: 0 !important;
+  }
+
+  .pearl-world .combo-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .pearl-world .pick-card {
+    min-width: 0 !important;
+    padding: 12px 10px !important;
+    min-height: 108px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    border-radius: 14px !important;
+  }
+
+  .pearl-world .pick-card img {
+    width: 52px !important;
+    height: 30px !important;
+    object-fit: contain !important;
+  }
+
+  .pearl-world .pick-card .check {
+    position: absolute !important;
+    top: 9px !important;
+    right: 9px !important;
+    width: 18px !important;
+    height: 18px !important;
+    font-size: 11px !important;
+    border-radius: 50% !important;
+  }
+
+  .pearl-world .pick-card strong {
+    font-size: 12.5px !important;
+    line-height: 1.3 !important;
+  }
+
+  .pearl-world .pick-card small {
+    font-size: 10.5px !important;
+    color: #627782 !important;
+  }
+
+  .pearl-world .presets {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .pearl-world .presets button {
+    min-width: 0 !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 12px 14px !important;
+    border-radius: 12px !important;
+  }
+
+  .pearl-world .order-summary {
+    position: static !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 20px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .pearl-world .payment-option {
+    min-width: 0 !important;
+    padding: 11px !important;
+    gap: 10px !important;
+    border-radius: 12px !important;
+  }
+
+  .pearl-world .payment-option > span {
+    min-width: 0 !important;
+  }
+
+  .pearl-world .payment-option small {
+    overflow-wrap: anywhere !important;
+  }
+
+  .pearl-world .order-button {
+    width: 100% !important;
+    white-space: normal !important;
+    min-height: 50px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 14px !important;
+  }
+
+  /* Descubre (descubre.html) */
+  .pearl-world .descubre-filters-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+
+  /* Filtros horizontales fluidos (estilo nativo iOS/Android App Store) */
+  .pearl-world .chips-scroll {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 8px !important;
+    padding: 4px 2px 8px !important;
+  }
+
+  .pearl-world .chips-scroll::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .pearl-world .chips-scroll .chip-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    min-height: 38px !important;
+    font-size: 12px !important;
+    padding: 8px 14px !important;
+    border-radius: 20px !important;
+  }
+
+  .pearl-world .descubre-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px 10px !important;
+  }
+
+  .pearl-world .descubre-status-bar {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  .pearl-world .story-detail {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .pearl-world .story-detail > img {
+    width: 110px !important;
+  }
+
+  .pearl-world .story-actions > * {
+    flex: 1 !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+
+  /* Nuevas en selección (orbit-latest) */
+  .orbit-latest {
+    padding-block: 16px 20px !important;
+  }
+
+  .orbit-latest h2 {
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .orbit-latest-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .orbit-latest-list a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: #ffffff !important;
+    border: 1px solid #dde5e9 !important;
+    border-radius: 12px !important;
+    padding: 6px 8px !important;
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+
+  .orbit-latest-list img {
+    width: 38px !important;
+    height: 52px !important;
+    object-fit: cover !important;
+    border-radius: 7px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .orbit-latest-list span {
+    min-width: 0 !important;
+    display: block !important;
+  }
+
+  .orbit-latest-list strong {
+    font-size: 11px !important;
+    display: block !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  .orbit-latest-list small {
+    font-size: 9.5px !important;
+    color: #627782 !important;
+    display: block !important;
+  }
+
+  /* Modales y Diálogos en Pantallas Móviles */
+  .pearl-world dialog:not(#welcome) {
+    width: calc(100% - 20px) !important;
+    max-width: calc(100% - 20px) !important;
+    max-height: calc(100dvh - 36px) !important;
+    box-sizing: border-box !important;
+    padding: 20px 16px !important;
+    border-radius: 22px !important;
+    overflow-y: auto !important;
+  }
+
+  .pearl-world #assistant {
+    padding: 18px 14px !important;
+  }
+
+  .pearl-world #assistant .copilot-head h2 {
+    font-size: 22px !important;
+  }
+
+  .pearl-world #assistant .quick-prompts button {
+    min-height: 38px !important;
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+  }
+
+  .pearl-world #chat {
+    height: 34dvh !important;
+    max-height: 280px !important;
+    min-height: 140px !important;
+  }
+
+  .pearl-world #chat .bot,
+  .pearl-world #chat .user {
+    font-size: 13.5px !important;
+    overflow-wrap: anywhere !important;
+    white-space: pre-wrap !important;
+  }
+
+  .pearl-world #chat-form {
+    display: flex !important;
+    gap: 8px !important;
+  }
+
+  .pearl-world #chat-input {
+    font-size: 16px !important;
+    width: 0 !important;
+    flex: 1 !important;
+  }
+
+  .pearl-world .typing {
+    flex-wrap: wrap !important;
+  }
+
+  .pearl-world .answer-title > span {
+    min-width: 0 !important;
+  }
+
+  /* BARRA DE NAVEGACIÓN INFERIOR (Mobile Dock) — Transparencia Glassmorphism nativa */
+  .pearl-world .mobile-dock {
+    position: fixed !important;
+    z-index: 90 !important;
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: calc(100% - 24px) !important;
+    box-sizing: border-box !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    padding: 6px 4px !important;
+    border-radius: 24px !important;
+    min-height: 60px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    box-shadow: 0 8px 30px rgba(18, 38, 58, 0.12) !important;
+  }
+
+  .pearl-world .mobile-dock > a,
+  .pearl-world .mobile-dock > button {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    border: 0 !important;
+    border-radius: 14px !important;
+    background: transparent !important;
+    color: #556c78 !important;
+    text-decoration: none !important;
+    font: 550 9.5px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    min-height: 48px !important;
+    padding: 4px 2px !important;
+    min-width: 0 !important;
+  }
+
+  .pearl-world .mobile-dock svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .pearl-world .mobile-dock [aria-current=page] {
+    background: #e3eeeb !important;
+    color: #244e49 !important;
+    font-weight: 650 !important;
+  }
+
+  /* Footer con resguardo de espacio para que el dock fijo no tape el contenido */
+  .pearl-world .footer {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .pearl-world .payment-footer {
+    flex-wrap: wrap !important;
+  }
+
+  .pearl-world .legal-links {
+    flex-wrap: wrap !important;
+  }
+}
+
+/* Ajustes especiales para pantallas ultra compactas (<= 360px como iPhone SE de 1ra gen o Android compactos) */
+@media (max-width: 360px) {
+  .pearl-world .premiere h1 {
+    font-size: 30px !important;
+  }
+
+  .pearl-world .premiere-copy {
+    padding-inline: 14px !important;
+  }
+
+  .pearl-world .orbit-pick-cover {
+    height: 150px !important;
+  }
+
+  .pearl-world .service-glass {
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    gap: 6px 10px !important;
+    padding: 14px !important;
+  }
+
+  .pearl-world .service-glass > img {
+    width: 48px !important;
+    height: 32px !important;
+  }
+
+  .pearl-world .service-glass h3 {
+    font-size: 16px !important;
+  }
+
+  .pearl-world .combo-picker {
+    gap: 6px !important;
+  }
+
+  .pearl-world .pick-card {
+    padding: 10px 8px !important;
+    min-height: 100px !important;
+  }
+
+  .pearl-world .platform-dock a,
+  .pearl-world .platform-dock .platform-dock-item {
+    min-width: 58px !important;
+  }
+
+  .pearl-world .platform-dock img {
+    width: 48px !important;
+    height: 26px !important;
+  }
+}

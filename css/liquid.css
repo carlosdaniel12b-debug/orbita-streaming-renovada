@@ -1866,4 +1866,106 @@ body:not(.welcome-pending) #main {
     filter: none !important;
   }
 }
+/* Infinite loop marquee for platform dock */
+.pearl-world .platform-dock {
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 18px 0 !important;
+  margin: 0 auto 24px !important;
+  border-block: 1px solid rgba(226, 231, 235, 0.8) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 48px, #000 calc(100% - 48px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 48px, #000 calc(100% - 48px), transparent 100%);
+}
 
+.pearl-world .platform-dock-track {
+  display: flex !important;
+  width: max-content !important;
+  will-change: transform;
+  animation: dock-infinite-marquee 36s linear infinite !important;
+}
+
+.pearl-world .platform-dock:hover .platform-dock-track,
+.pearl-world .platform-dock:focus-within .platform-dock-track {
+  animation-play-state: paused !important;
+}
+
+.pearl-world .platform-dock-group {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+}
+
+.pearl-world .platform-dock a,
+.pearl-world .platform-dock .platform-dock-item {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  padding: 8px 10px !important;
+  margin: 0 6px !important;
+  min-width: 84px !important;
+  text-decoration: none !important;
+  border-radius: 14px !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+}
+
+.pearl-world .platform-dock a:hover,
+.pearl-world .platform-dock .platform-dock-item:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+}
+
+.pearl-world .platform-dock img {
+  width: 70px !important;
+  height: 36px !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+  border: 1px solid #e1e7ec !important;
+  box-shadow: 0 2px 8px rgba(18, 38, 58, 0.05) !important;
+  padding: 6px !important;
+  box-sizing: border-box !important;
+  object-fit: contain !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
+}
+
+.pearl-world .platform-dock a:hover img {
+  border-color: #cbd8e1 !important;
+  box-shadow: 0 6px 18px rgba(18, 38, 58, 0.1) !important;
+}
+
+.pearl-world .platform-dock span {
+  font-size: 10px !important;
+  font-weight: 550 !important;
+  color: #4b606d !important;
+  white-space: nowrap !important;
+  letter-spacing: -0.01em !important;
+}
+
+@keyframes dock-infinite-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pearl-world .platform-dock {
+    overflow-x: auto !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  .pearl-world .platform-dock-track {
+    animation: none !important;
+  }
+}
+
+html.motion-paused .pearl-world .platform-dock-track {
+  animation-play-state: paused !important;
+}

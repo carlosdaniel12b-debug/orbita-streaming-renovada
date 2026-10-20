@@ -41,6 +41,7 @@ body.pearl-world{font-size:16px;font-weight:400;line-height:1.6;letter-spacing:-
 .pearl-world .pearl-faq-list summary{font-size:15px;font-weight:550;letter-spacing:-.02em}.pearl-world .pearl-faq-list p{font-size:14px;line-height:1.7}
 .pearl-world .footer p,.pearl-world .footer-links a,.pearl-world .footer-links button{font-size:13px;line-height:1.6}
 .pearl-world .eyebrow,.pearl-world .premiere-kicker{font-size:11px;font-weight:650;letter-spacing:.13em}
+.pearl-world .eyebrow{color:#1e434e!important}
 @media(max-width:700px){
  .pearl-world .premiere-stage{height:545px}.pearl-world .premiere-copy{padding:32px 24px 116px}.pearl-world .premiere h1{font-size:clamp(38px,10.6vw,51px);letter-spacing:-.055em;line-height:1.04;margin:20px 0}.pearl-world .premiere-copy>p{font-size:15px;line-height:1.6;max-width:28ch}.pearl-world .premiere-actions .button,.pearl-world .premiere-actions>a:last-child{font-size:12px}
  .pearl-world .page-heading h1,.pearl-world .descubre-title{font-size:39px!important}.pearl-world .page-heading p,.pearl-world .descubre-subtitle{font-size:15px}

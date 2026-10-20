@@ -419,6 +419,108 @@ function updateMobileDock(){
 }
 updateMobileDock();
 
+// 8. Transiciones Fluidas Entre Páginas y Secciones (Liquid Transitions)
+function setupLiquidTransitions(){
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)');
+
+  window.addEventListener('pageshow', ()=>{
+    document.body.classList.remove('page-navigating-out');
+  });
+
+  document.addEventListener('click', e=>{
+    if(reduce.matches) return;
+    const link = e.target.closest('a[href]');
+    if(!link) return;
+    const href = link.getAttribute('href');
+    if(!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('https://wa.me')) return;
+    if(link.target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+
+    if(href.startsWith('#')){
+      const targetEl = document.querySelector(href);
+      if(targetEl){
+        e.preventDefault();
+        targetEl.scrollIntoView({behavior: 'smooth', block: 'start'});
+        try { history.pushState(null, '', href); } catch{}
+        targetEl.classList.remove('section-pulse-active');
+        void targetEl.offsetWidth;
+        targetEl.classList.add('section-pulse-active');
+        setTimeout(()=>targetEl.classList.remove('section-pulse-active'), 1400);
+      }
+      return;
+    }
+
+    try {
+      const url = new URL(link.href, window.location.href);
+      if(url.origin !== window.location.origin) return;
+
+      if(url.pathname === window.location.pathname && url.hash){
+        const targetEl = document.querySelector(url.hash);
+        if(targetEl){
+          e.preventDefault();
+          targetEl.scrollIntoView({behavior: 'smooth', block: 'start'});
+          try { history.pushState(null, '', url.hash); } catch{}
+          targetEl.classList.remove('section-pulse-active');
+          void targetEl.offsetWidth;
+          targetEl.classList.add('section-pulse-active');
+          setTimeout(()=>targetEl.classList.remove('section-pulse-active'), 1400);
+        }
+        return;
+      }
+
+      if(url.pathname.endsWith('.html') || url.pathname.endsWith('/') || url.search){
+        if(document.startViewTransition){
+          e.preventDefault();
+          document.startViewTransition(()=>{
+            window.location.href = link.href;
+          });
+          return;
+        }
+        e.preventDefault();
+        document.body.classList.add('page-navigating-out');
+        setTimeout(()=>{
+          window.location.href = link.href;
+        }, 160);
+      }
+    }catch{}
+  });
+}
+setupLiquidTransitions();
+
+// 9. Ondas y Animaciones al Cambiar Filtros o Secciones
+function setupFilterAnimations(){
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)');
+  if(reduce.matches) return;
+
+  document.querySelectorAll('[data-filter], #search, #reset-filters').forEach(trigger=>{
+    trigger.addEventListener('click', ()=>{
+      requestAnimationFrame(()=>{
+        const visible = $$('.catalog-grid .platform-card:not([hidden]):not(.is-hidden)');
+        visible.forEach((card, i)=>{
+          card.style.setProperty('--stagger', i);
+          card.classList.remove('card-entering');
+          void card.offsetWidth;
+          card.classList.add('card-entering');
+        });
+      });
+    });
+  });
+
+  const orbitPicks = document.querySelector('#orbit-pick-grid');
+  if(orbitPicks){
+    const observer = new MutationObserver(()=>{
+      const cards = orbitPicks.querySelectorAll('.orbit-pick-card, .pick-card');
+      cards.forEach((card, i)=>{
+        card.style.setProperty('--stagger', i);
+        card.classList.remove('pick-entering');
+        void card.offsetWidth;
+        card.classList.add('pick-entering');
+      });
+    });
+    observer.observe(orbitPicks, {childList: true});
+  }
+}
+setupFilterAnimations();
+
 window.OrbitaPreview={open:preview,close:closePlayer};
 
 player.addEventListener('cancel',event=>{event.preventDefault();closePlayer();});

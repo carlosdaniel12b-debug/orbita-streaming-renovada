@@ -17,7 +17,7 @@ body.pearl-world{background-color:var(--orbit-surface,#f4f6f9);transition:backgr
 /* Compact reading surfaces; warm and violet accents belong to Órbita. */
 .pearl-world .catalog-grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:stretch}
 .pearl-world .catalog-grid .platform-card{flex:1 1 260px;max-width:430px;min-height:0;padding:22px;border-radius:20px;gap:0;box-shadow:0 10px 24px #26354c0c}
-.pearl-world .catalog-grid .platform-top{margin-bottom:17px;gap:10px;flex-wrap:wrap}.pearl-world .catalog-grid .platform-top img{width:86px;height:45px;padding:8px;border-radius:11px}
+.pearl-world .catalog-grid .platform-top{margin-bottom:17px;gap:10px;flex-wrap:wrap}.pearl-world .catalog-grid .platform-top img{width:90px;height:38px;padding:0;border-radius:0;background:transparent;border:none;box-shadow:none}
 .pearl-world .catalog-grid .platform-card h3{font-size:23px;margin-bottom:9px}.pearl-world .catalog-grid .platform-card p{font-size:13px;line-height:1.65;margin-bottom:14px}
 .pearl-world .catalog-grid .platform-card .platform-bottom{margin-top:auto;padding-top:15px}.pearl-world .catalog-grid .platform-card .price{font-size:32px}.pearl-world .catalog-grid .platform-whatsapp{margin-top:13px;min-height:44px;padding:10px}
 .pearl-world .catalog-grid .platform-card .tag{font-size:10px;padding:5px 8px}.pearl-world .catalog-grid .service-prompt{margin:5px 0 10px!important;font-size:10px!important;padding:7px 9px!important}

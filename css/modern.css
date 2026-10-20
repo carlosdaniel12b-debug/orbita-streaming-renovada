@@ -5,7 +5,7 @@ html{scroll-behavior:auto!important}body.pearl-world{background:var(--ice)!impor
 a,button{touch-action:manipulation}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--blue)!important;outline-offset:5px}
 .intro,.liquid-atmosphere,.page-transition,.hero-orbit,.orbit-voyage-path,.orbit-marquee-tools{display:none!important}
 .orbit-collections,.orbit-evening,[data-reveal],.reveal{opacity:1!important;transform:none!important}
-.header{background:rgba(244,248,250,.96)!important;backdrop-filter:none!important;box-shadow:none!important;border-bottom:1px solid #dce5eb!important}
+.header{background:transparent!important;backdrop-filter:none!important;box-shadow:none!important;border:none!important}
 .glass-hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding-top:76px;padding-bottom:76px;min-height:650px}
 .glass-eyebrow{font-size:11px;font-weight:700;letter-spacing:.19em;color:var(--muted)}
 .glass-hero h1{font-size:clamp(44px,5.1vw,76px);line-height:1.04;letter-spacing:-.065em;margin:26px 0;color:var(--ink);font-weight:650}
@@ -70,8 +70,7 @@ body.pearl-world{background:radial-gradient(ellipse 80% 700px at 0 0,#dcefe9 0,t
 @keyframes orbital-exit{to{opacity:0;transform:scale(1.025)}}}
 @media(max-width:650px){.pearl-world #welcome .intro-brand-symbol{width:140px;height:120px}.pearl-world #welcome .intro-brand-name{font-size:60px}.pearl-world .glass-feature{background:#f3f7f7f2}}
 
-/* Keep logos still; the surface communicates hover and keyboard focus. */
-.pearl-world .platform-card .platform-top img,.pearl-world .platform-card:hover .platform-top img,.pearl-world .platform-card:focus-within .platform-top img{transform:none!important;translate:none!important;scale:none!important;filter:none!important;box-shadow:0 4px 12px #142b3810!important;transition:none!important}
+.pearl-world .platform-card .platform-top img,.pearl-world .platform-card:hover .platform-top img,.pearl-world .platform-card:focus-within .platform-top img{transform:none!important;translate:none!important;scale:none!important;filter:none!important;box-shadow:none!important;background:transparent!important;border:none!important;transition:none!important}
 .pearl-world .platform-card:focus-within{border-color:#7eaba9!important;box-shadow:0 8px 24px #25485114!important}
 @media(hover:hover) and (pointer:fine){.pearl-world .platform-card:hover{background:#f3faf9e6!important;border-color:#a3c6c2!important;box-shadow:0 8px 24px #25485114!important;transform:none!important}.pearl-world .platform-card:hover::before,.pearl-world .platform-card:hover::after{opacity:0!important}}
 

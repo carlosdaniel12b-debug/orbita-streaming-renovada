@@ -93,6 +93,25 @@ body.pearl-world {
 
 /* 4. SUPERFICIES GENERALES DE CRISTAL LÍQUIDO */
 .pearl-world .header,
+#main-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: 0 !important;
+}
+
+.pearl-world .header-inner {
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  box-shadow: 0 10px 30px rgba(18, 48, 62, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+  border-radius: 100px !important;
+}
+
 .pearl-world .catalog-tools,
 .pearl-world .descubre-controls,
 .pearl-world .order-summary,
@@ -146,19 +165,20 @@ body.pearl-world {
 }
 
 .pearl-world .platform-top img {
-  background: linear-gradient(135deg, #1c2630, #101924);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 14px;
-  padding: 10px;
-  width: 105px;
-  height: 52px;
-  object-fit: contain;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  width: 90px !important;
+  height: 38px !important;
+  object-fit: contain !important;
+  object-position: left !important;
+  transition: transform 0.25s ease !important;
 }
 
 .pearl-world .platform-card:hover .platform-top img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .pearl-world .platform-card .tag {
@@ -1460,19 +1480,27 @@ body.pearl-world {
   /* Cabecera compacta estilo iOS App Bar */
   .pearl-world .header {
     top: 8px;
-    height: 60px;
-    width: calc(100% - 20px);
-    margin-inline: auto;
-    border-radius: 22px;
-    background: linear-gradient(125deg, rgba(255, 255, 255, 0.92), rgba(240, 248, 250, 0.78)) !important;
-    backdrop-filter: blur(28px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.9) !important;
-    box-shadow: 0 10px 30px rgba(18, 48, 62, 0.1), var(--liquid-specular-top) !important;
+    height: auto !important;
+    width: 100% !important;
+    margin-inline: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .pearl-world .header-inner {
     padding-inline: 14px;
+    height: 56px !important;
+    min-height: 56px !important;
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.88) !important;
+    box-shadow: 0 8px 24px rgba(18, 48, 62, 0.08), var(--liquid-specular-top) !important;
   }
 
   .pearl-world .logo-type {
@@ -1664,3 +1692,178 @@ body.pearl-world {
     -webkit-backdrop-filter: blur(12px) !important;
   }
 }
+
+/* ==========================================================================
+   7. TRANSICIONES FLUIDAS ENTRE PÁGINAS Y SECCIONES (LIQUID TRANSITIONS)
+   ========================================================================== */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 160ms cubic-bezier(0.4, 0, 1, 1) both liquid-page-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 260ms cubic-bezier(0, 0, 0.2, 1) both liquid-page-fade-in;
+}
+
+@keyframes liquid-page-fade-out {
+  from { opacity: 1; transform: scale(1); filter: blur(0px); }
+  to { opacity: 0; transform: scale(0.992); filter: blur(2px); }
+}
+
+@keyframes liquid-page-fade-in {
+  from { opacity: 0; transform: scale(1.008); filter: blur(2px); }
+  to { opacity: 1; transform: scale(1); filter: blur(0px); }
+}
+
+body.page-navigating-out {
+  opacity: 0 !important;
+  transform: translateY(-8px) scale(0.995) !important;
+  filter: blur(2px) !important;
+  transition: opacity 160ms cubic-bezier(0.4, 0, 0.2, 1), transform 160ms cubic-bezier(0.4, 0, 0.2, 1), filter 160ms ease !important;
+  pointer-events: none !important;
+}
+
+body:not(.welcome-pending) #main {
+  animation: liquid-main-arrive 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes liquid-main-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-pulse-active {
+  animation: liquid-section-pulse 1.4s cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+@keyframes liquid-section-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(8, 127, 112, 0.45), var(--liquid-shadow);
+    border-color: rgba(8, 127, 112, 0.6) !important;
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(8, 127, 112, 0), var(--liquid-shadow);
+    border-color: rgba(8, 127, 112, 0.3) !important;
+  }
+  100% {
+    box-shadow: var(--liquid-shadow);
+  }
+}
+
+.catalog-grid .platform-card.card-entering {
+  animation: liquid-card-wave 360ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  animation-delay: calc(var(--stagger, 0) * 32ms) !important;
+}
+
+.orbit-pick-grid .orbit-pick-card.pick-entering {
+  animation: liquid-card-wave 360ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  animation-delay: calc(var(--stagger, 0) * 40ms) !important;
+}
+
+@keyframes liquid-card-wave {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   8. REALCE Y ALTA FIDELIDAD DE IMÁGENES & LOGOS
+   ========================================================================== */
+.pearl-world .premiere-stage {
+  position: relative;
+  border-radius: 28px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 16px 40px rgba(18, 48, 66, 0.1) !important;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.pearl-world .premiere-image {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease !important;
+  will-change: transform;
+}
+
+.pearl-world .premiere-stage:hover .premiere-image {
+  transform: scale(1.035);
+  filter: contrast(1.04) brightness(1.02);
+}
+
+.pearl-world .platform-top img,
+.pearl-world .pick-card img {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  object-fit: contain !important;
+  transition: transform 0.25s ease !important;
+}
+
+.pearl-world .platform-card:hover .platform-top img,
+.pearl-world .pick-card:hover img {
+  transform: scale(1.04) !important;
+}
+
+.pearl-world .orbit-pick-cover {
+  border-radius: 18px !important;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 12px 30px rgba(22, 45, 65, 0.1) !important;
+}
+
+.pearl-world .orbit-pick-cover img {
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.pearl-world .orbit-pick-card:hover .orbit-pick-cover img,
+.pearl-world .story:hover img {
+  transform: scale(1.06) !important;
+}
+
+.pearl-world .orbit-pick-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 45%, rgba(8, 20, 30, 0.45) 100%);
+  pointer-events: none;
+}
+
+.button:active,
+.round-button:active,
+.icon-button:active,
+.floating-btn:active,
+.platform-trailer-btn:active {
+  transform: scale(0.96) !important;
+  transition: transform 80ms ease-out !important;
+}
+
+/* Modo accesibilidad / reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  body.page-navigating-out,
+  body:not(.welcome-pending) #main,
+  .catalog-grid .platform-card.card-entering,
+  .orbit-pick-grid .orbit-pick-card.pick-entering,
+  .section-pulse-active {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+

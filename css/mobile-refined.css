@@ -24,3 +24,12 @@ html{height:auto!important;min-height:100%;overflow-x:hidden!important;overflow-
 body.pearl-world{height:auto!important;max-height:none!important;overflow:visible!important;overscroll-behavior-y:auto}
 html:has(dialog[open]){overflow-y:hidden!important}
 body.pearl-world:not(:has(dialog[open])){overflow:visible!important}
+
+/* Two equal groups: the seam is exactly half the track, with no flex gap. */
+@media(min-width:701px){
+ .pearl-world .platform-dock-track{display:flex!important;gap:0!important;padding:0!important;margin:0!important;width:max-content!important;animation:dock-infinite-marquee 32s linear infinite!important}
+ .pearl-world .platform-dock-group{display:flex!important;flex:0 0 auto!important;min-width:100vw!important;gap:0!important;padding:0!important;margin:0!important;justify-content:space-around!important}
+ .pearl-world .platform-dock-group .platform-dock-item{flex:0 0 96px!important;min-width:96px!important;box-sizing:border-box!important;margin:0!important}
+ .pearl-world .platform-dock:hover .platform-dock-track,.pearl-world .platform-dock:focus-within .platform-dock-track{animation-play-state:paused!important}
+}
+@media(prefers-reduced-motion:reduce){.pearl-world .platform-dock-track{animation:none!important;transform:none!important;will-change:auto}.pearl-world .platform-dock-group[aria-hidden=true]{display:none!important}}

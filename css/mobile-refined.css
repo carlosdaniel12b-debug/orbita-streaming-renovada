@@ -1,6 +1,6 @@
 
 @media(max-width:700px){
- html,body.pearl-world{overflow-x:clip!important}
+ html{overflow-x:hidden!important;overflow-y:auto!important;height:auto!important;overscroll-behavior-y:auto;touch-action:pan-y pinch-zoom}body.pearl-world{overflow:visible!important;height:auto!important;min-height:100vh;overscroll-behavior-y:auto;touch-action:pan-y pinch-zoom}
  body.pearl-world{font-size:15px;line-height:1.6;letter-spacing:-.015em;background:linear-gradient(160deg,#e7f3ef,#f1edfc 50%,#eaf1fc)!important}
  .pearl-world .header{background:transparent!important}.pearl-world .header-inner,.pearl-world .mobile-dock{background:linear-gradient(125deg,#ffffffee,#eef4ffd9)!important;border:1px solid #fff!important;box-shadow:inset 0 1px 0 #fff,0 8px 26px #344c6e18!important;backdrop-filter:blur(12px) saturate(1.25)!important;-webkit-backdrop-filter:blur(12px) saturate(1.25)!important}
  .pearl-world .nav.open{background:#f7f9fffa!important;border:1px solid #fff!important;box-shadow:0 14px 30px #25364e26!important;backdrop-filter:blur(12px)!important;padding:10px!important}.pearl-world .nav.open .nav-link{color:#263e59!important;min-height:48px!important;font-size:15px!important}.pearl-world .nav.open .nav-link[aria-current=page]{background:linear-gradient(120deg,#2e6b72,#4d568c)!important;color:#fff!important}
@@ -15,3 +15,6 @@
 }
 @media(max-width:360px){.pearl-world .platform-dock-group{grid-template-columns:repeat(4,minmax(0,1fr))!important}.pearl-world .premiere h1{font-size:32px!important}}
 @media(max-width:700px){.pearl-world #assistant .assistant-note{color:#53667e!important;opacity:1!important}.pearl-world #assistant select{background:#fff!important;color:#294652!important;border:1px solid #bdcce1!important}.pearl-world .premiere .premiere-actions .button:not(:disabled){background:#f5fbff!important;color:#254b60!important}.pearl-world #combo-review #order:disabled{opacity:.55!important}}
+
+/* Keep native page scrolling; only a real open modal locks the backdrop. */
+@media(max-width:900px){html:has(dialog[open]){overflow-y:hidden!important}.pearl-world.mobile-nav-active:not(:has(dialog[open])){overflow:visible!important}dialog[open]{touch-action:pan-y pinch-zoom}.pearl-world #chat{touch-action:pan-y pinch-zoom;-webkit-overflow-scrolling:touch}.pearl-world .nav.open{touch-action:pan-y pinch-zoom}}

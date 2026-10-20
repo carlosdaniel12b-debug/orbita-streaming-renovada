@@ -419,72 +419,26 @@ function updateMobileDock(){
 }
 updateMobileDock();
 
-// 8. Transiciones Fluidas Entre Páginas y Secciones (Liquid Transitions)
-function setupLiquidTransitions(){
-  const reduce=matchMedia('(prefers-reduced-motion:reduce)');
-
-  window.addEventListener('pageshow', ()=>{
-    document.body.classList.remove('page-navigating-out');
-  });
-
+// 8. Enlaces internos (#hash) suaves y limpios sin interceptar navegación de páginas
+function setupInternalHashLinks(){
   document.addEventListener('click', e=>{
-    if(reduce.matches) return;
-    const link = e.target.closest('a[href]');
+    const link = e.target.closest('a[href^="#"]');
     if(!link) return;
     const href = link.getAttribute('href');
-    if(!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('https://wa.me')) return;
-    if(link.target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
-
-    if(href.startsWith('#')){
-      const targetEl = document.querySelector(href);
-      if(targetEl){
-        e.preventDefault();
-        targetEl.scrollIntoView({behavior: 'smooth', block: 'start'});
-        try { history.pushState(null, '', href); } catch{}
-        targetEl.classList.remove('section-pulse-active');
-        void targetEl.offsetWidth;
-        targetEl.classList.add('section-pulse-active');
-        setTimeout(()=>targetEl.classList.remove('section-pulse-active'), 1400);
-      }
-      return;
+    if(!href || href === '#' || href.length <= 1) return;
+    const targetEl = document.querySelector(href);
+    if(targetEl){
+      e.preventDefault();
+      targetEl.scrollIntoView({behavior: 'smooth', block: 'start'});
+      try { history.pushState(null, '', href); } catch{}
+      targetEl.classList.remove('section-pulse-active');
+      void targetEl.offsetWidth;
+      targetEl.classList.add('section-pulse-active');
+      setTimeout(()=>targetEl.classList.remove('section-pulse-active'), 1400);
     }
-
-    try {
-      const url = new URL(link.href, window.location.href);
-      if(url.origin !== window.location.origin) return;
-
-      if(url.pathname === window.location.pathname && url.hash){
-        const targetEl = document.querySelector(url.hash);
-        if(targetEl){
-          e.preventDefault();
-          targetEl.scrollIntoView({behavior: 'smooth', block: 'start'});
-          try { history.pushState(null, '', url.hash); } catch{}
-          targetEl.classList.remove('section-pulse-active');
-          void targetEl.offsetWidth;
-          targetEl.classList.add('section-pulse-active');
-          setTimeout(()=>targetEl.classList.remove('section-pulse-active'), 1400);
-        }
-        return;
-      }
-
-      if(url.pathname.endsWith('.html') || url.pathname.endsWith('/') || url.search){
-        if(document.startViewTransition){
-          e.preventDefault();
-          document.startViewTransition(()=>{
-            window.location.href = link.href;
-          });
-          return;
-        }
-        e.preventDefault();
-        document.body.classList.add('page-navigating-out');
-        setTimeout(()=>{
-          window.location.href = link.href;
-        }, 160);
-      }
-    }catch{}
   });
 }
-setupLiquidTransitions();
+setupInternalHashLinks();
 
 // 9. Ondas y Animaciones al Cambiar Filtros o Secciones
 function setupFilterAnimations(){

@@ -33,3 +33,6 @@ body.pearl-world:not(:has(dialog[open])){overflow:visible!important}
  .pearl-world .platform-dock:hover .platform-dock-track,.pearl-world .platform-dock:focus-within .platform-dock-track{animation-play-state:paused!important}
 }
 @media(prefers-reduced-motion:reduce){.pearl-world .platform-dock-track{animation:none!important;transform:none!important;will-change:auto}.pearl-world .platform-dock-group[aria-hidden=true]{display:none!important}}
+
+/* Anchor the double-width track to the left; centering it exposes an empty tail. */
+@media(min-width:701px){.pearl-world .platform-dock{display:block!important;justify-content:flex-start!important}.pearl-world .platform-dock-track{flex:none!important}}

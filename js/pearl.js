@@ -25,7 +25,7 @@
     const img=document.createElement('img');
     img.src=p.icon;
     img.alt=p.name;
-    img.loading='lazy';
+    img.loading='eager';
     img.width=70;
     img.height=36;
     const label=document.createElement('span');

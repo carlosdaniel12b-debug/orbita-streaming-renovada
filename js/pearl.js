@@ -16,7 +16,7 @@
    const grp=document.createElement('div');
    grp.className='platform-dock-group';
    if(clone)grp.setAttribute('aria-hidden','true');
-   const list=[...platforms,...platforms];
+   const list=platforms;
    list.forEach(p=>{
     const a=document.createElement('a');
     a.href='catalogo.html?plataforma='+p.id;

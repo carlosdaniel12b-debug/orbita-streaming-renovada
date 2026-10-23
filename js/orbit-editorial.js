@@ -5,207 +5,137 @@
 
   // Small selection from library.js; the full discovery catalogue is not loaded here.
   const curatedPicks = [
-    {
-      "id": "s44933",
-      "title": "Severance",
-      "platform": "appletv",
-      "type": "Serie",
-      "genre": "Drama,Science-Fiction,Misterio",
-      "year": "2022",
-      "image": "assets/optimized/s44933.webp",
-      "summary": "Empleados de una corporación se someten a un procedimiento quirúrgico que separa quirúrgicamente sus recuerdos laborales de sus vidas personales."
-    },
-    {
-      "id": "m_dune2",
-      "title": "Dune: Parte Dos",
-      "platform": "hbomax",
-      "type": "Película",
-      "genre": "Ciencia ficción,Aventura",
-      "year": "2024",
-      "image": "assets/optimized/m_dune2.webp",
-      "summary": "Paul Atreides se une a Chani y a los Fremen mientras busca venganza contra los conspiradores que destruyeron a su familia."
-    },
-    {
-      "id": "s66998",
-      "title": "PLUTO",
-      "platform": "netflix",
-      "type": "Anime",
-      "genre": "Ciencia ficción,Misterio",
-      "year": "2023",
-      "image": "assets/optimized/s66998.webp",
-      "summary": "Un detective robot investiga una serie de crímenes que amenaza la convivencia entre humanos y máquinas."
-    },
-    {
-      "id": "s49041",
-      "title": "Fallout",
-      "platform": "primevideo",
-      "type": "Serie",
-      "genre": "Ciencia ficción,aventura",
-      "year": "2024",
-      "image": "assets/optimized/s49041.webp",
-      "summary": "Una joven abandona un refugio subterráneo y descubre el peligroso mundo que quedó después de una guerra nuclear."
-    },
-    {
-      "id": "s53777",
-      "title": "Landman",
-      "platform": "paramount",
-      "type": "Serie",
-      "genre": "Drama",
-      "year": "2024",
-      "image": "assets/optimized/s53777.webp",
-      "summary": "Un intermediario del negocio petrolero en Texas intenta resolver conflictos entre trabajadores, empresarios y su propia familia."
-    },
-    {
-      "id": "s46562",
-      "title": "The Last of Us",
-      "platform": "hbomax",
-      "type": "Serie",
-      "genre": "Drama,aventura",
-      "year": "2023",
-      "image": "assets/optimized/s46562.webp",
-      "summary": "Joel debe acompañar a Ellie por un mundo devastado por una infección. Su relación es el centro de un viaje peligroso."
-    },
-    {
-      "id": "s44458",
-      "title": "Ted Lasso",
-      "platform": "appletv",
-      "type": "Serie",
-      "genre": "Drama,Comedia,Sports",
-      "year": "2020",
-      "image": "assets/optimized/s44458.webp",
-      "summary": "Un carismático entrenador de fútbol americano es contratado para dirigir un equipo de la Premier League británica con optimismo inquebrantable."
-    },
-    {
-      "id": "m_nimona",
-      "title": "Nimona",
-      "platform": "netflix",
-      "type": "Película",
-      "genre": "Animación,Aventura,Fantasía",
-      "year": "2023",
-      "image": "assets/optimized/m_nimona.webp",
-      "summary": "Un caballero acusado de un crimen encuentra una aliada inesperada: una adolescente capaz de cambiar de forma."
-    },
-    {
-      "id": "m_topgun",
-      "title": "Top Gun: Maverick",
-      "platform": "paramount",
-      "type": "Película",
-      "genre": "Acción,Drama",
-      "year": "2022",
-      "image": "assets/optimized/m_topgun.webp",
-      "summary": "Después de treinta años de servicio como uno de los mejores aviadores de la Armada, Maverick entrena a un destacamento de graduados para una misión especializada."
-    },
-    {
-      "id": "m7",
-      "title": "Finch",
-      "platform": "appletv",
-      "type": "Película",
-      "genre": "Ciencia ficción,drama",
-      "year": "2021",
-      "image": "assets/optimized/m7.webp",
-      "summary": "Un hombre construye un robot para cuidar de su perro en una Tierra devastada y emprende un viaje con ambos."
-    },
-    {
-      "id": "m_klaus",
-      "title": "Klaus",
-      "platform": "netflix",
-      "type": "Película",
-      "genre": "Animación,Familia",
-      "year": "2019",
-      "image": "assets/optimized/m_klaus.webp",
-      "summary": "Un cartero y un fabricante de juguetes transforman una ciudad dividida a través de pequeños actos de generosidad."
-    },
-    {
-      "id": "s25242",
-      "title": "Castlevania",
-      "platform": "netflix",
-      "type": "Anime",
-      "genre": "Fantasía,Acción",
-      "year": "2017",
-      "image": "assets/optimized/s25242.webp",
-      "summary": "Un cazador, una hechicera y el hijo de Drácula se unen contra un ejército de criaturas nocturnas."
-    },
-    {
-      "id": "s77383",
-      "title": "Sakamoto Days",
-      "platform": "netflix",
-      "type": "Anime",
-      "genre": "Acción,Comedia",
-      "year": "2025",
-      "image": "assets/optimized/s77383.webp",
-      "summary": "Un legendario asesino retirado protege su nueva vida familiar mientras su pasado vuelve a buscarlo."
-    },
-    {
-      "id": "s69046",
-      "title": "Delicious in Dungeon",
-      "platform": "netflix",
-      "type": "Anime",
-      "genre": "Fantasía,Aventura",
-      "year": "2024",
-      "image": "assets/optimized/s69046.webp",
-      "summary": "Un grupo de aventureros explora una mazmorra y cocina monstruos para sobrevivir a su misión de rescate."
-    },
-    {
-      "id": "s73023",
-      "title": "Dandadan",
-      "platform": "netflix",
-      "type": "Anime",
-      "genre": "Acción,Comedia,Ciencia ficción",
-      "year": "2024",
-      "image": "assets/optimized/s73023.webp",
-      "summary": "Momo y Okarun descubren que fantasmas y extraterrestres existen y se lanzan a una aventura impredecible."
-    },
-    {
-      "id": "s44267",
-      "title": "Teresa",
-      "platform": "vix",
-      "type": "Novela",
-      "genre": "Drama,Romance",
-      "year": "2010",
-      "image": "assets/optimized/s44267.webp",
-      "summary": "Una joven ambiciosa intenta escapar de la pobreza y debe elegir entre sus sentimientos y el mundo que desea."
-    },
-    {
-      "id": "s16276",
-      "title": "Rubí",
-      "platform": "vix",
-      "type": "Novela",
-      "genre": "Drama,Romance",
-      "year": "2004",
-      "image": "assets/optimized/s16276.webp",
-      "summary": "La ambición de Rubí transforma las vidas de quienes confían en ella y pone a prueba sus afectos."
-    },
-    {
-      "id": "s74573",
-      "title": "El amor invencible",
-      "platform": "vix",
-      "type": "Novela",
-      "genre": "Drama,Romance",
-      "year": "2023",
-      "image": "assets/optimized/s74573.webp",
-      "summary": "Leona reconstruye su vida mientras busca a sus hijos y la verdad sobre quienes destruyeron a su familia."
-    },
-    {
-      "id": "s16277",
-      "title": "La usurpadora",
-      "platform": "vix",
-      "type": "Novela",
-      "genre": "Drama,Romance",
-      "year": "1998",
-      "image": "assets/optimized/s16277.webp",
-      "summary": "Dos mujeres idénticas intercambian sus lugares y desatan secretos en una familia marcada por las apariencias."
-    },
-    {
-      "id": "s24562",
-      "title": "La fea más bella",
-      "platform": "vix",
-      "type": "Novela",
-      "genre": "Romance,Comedia",
-      "year": "2006",
-      "image": "assets/optimized/s24562.webp",
-      "summary": "Leticia llega a una productora donde su talento y su historia de amor desafían las apariencias."
-    }
-  ];
+  {
+    "id": "s44933",
+    "title": "Severance",
+    "platform": "appletv",
+    "type": "Serie",
+    "genre": "Drama,Science-Fiction,Misterio",
+    "year": "2022",
+    "image": "assets/optimized/s44933.webp",
+    "summary": "Empleados de una corporación se someten a un procedimiento quirúrgico que separa quirúrgicamente sus recuerdos laborales de sus vidas personales."
+  },
+  {
+    "id": "m_dune2",
+    "title": "Dune: Parte Dos",
+    "platform": "hbomax",
+    "type": "Película",
+    "genre": "Ciencia ficción,Aventura",
+    "year": "2024",
+    "image": "assets/optimized/m_dune2.webp",
+    "summary": "Paul Atreides se une a Chani y a los Fremen mientras busca venganza contra los conspiradores que destruyeron a su familia."
+  },
+  {
+    "id": "s49041",
+    "title": "Fallout",
+    "platform": "primevideo",
+    "type": "Serie",
+    "genre": "Ciencia ficción,aventura",
+    "year": "2024",
+    "image": "assets/optimized/s49041.webp",
+    "summary": "Una joven abandona un refugio subterráneo y descubre el peligroso mundo que quedó después de una guerra nuclear."
+  },
+  {
+    "id": "s53777",
+    "title": "Landman",
+    "platform": "paramount",
+    "type": "Serie",
+    "genre": "Drama",
+    "year": "2024",
+    "image": "assets/optimized/s53777.webp",
+    "summary": "Un intermediario del negocio petrolero en Texas intenta resolver conflictos entre trabajadores, empresarios y su propia familia."
+  },
+  {
+    "id": "s46562",
+    "title": "The Last of Us",
+    "platform": "hbomax",
+    "type": "Serie",
+    "genre": "Drama,aventura",
+    "year": "2023",
+    "image": "assets/optimized/s46562.webp",
+    "summary": "Joel debe acompañar a Ellie por un mundo devastado por una infección. Su relación es el centro de un viaje peligroso."
+  },
+  {
+    "id": "s44458",
+    "title": "Ted Lasso",
+    "platform": "appletv",
+    "type": "Serie",
+    "genre": "Drama,Comedia,Sports",
+    "year": "2020",
+    "image": "assets/optimized/s44458.webp",
+    "summary": "Un carismático entrenador de fútbol americano es contratado para dirigir un equipo de la Premier League británica con optimismo inquebrantable."
+  },
+  {
+    "id": "m_topgun",
+    "title": "Top Gun: Maverick",
+    "platform": "paramount",
+    "type": "Película",
+    "genre": "Acción,Drama",
+    "year": "2022",
+    "image": "assets/optimized/m_topgun.webp",
+    "summary": "Después de treinta años de servicio como uno de los mejores aviadores de la Armada, Maverick entrena a un destacamento de graduados para una misión especializada."
+  },
+  {
+    "id": "m7",
+    "title": "Finch",
+    "platform": "appletv",
+    "type": "Película",
+    "genre": "Ciencia ficción,drama",
+    "year": "2021",
+    "image": "assets/optimized/m7.webp",
+    "summary": "Un hombre construye un robot para cuidar de su perro en una Tierra devastada y emprende un viaje con ambos."
+  },
+  {
+    "id": "s44267",
+    "title": "Teresa",
+    "platform": "vix",
+    "type": "Novela",
+    "genre": "Drama,Romance",
+    "year": "2010",
+    "image": "assets/optimized/s44267.webp",
+    "summary": "Una joven ambiciosa intenta escapar de la pobreza y debe elegir entre sus sentimientos y el mundo que desea."
+  },
+  {
+    "id": "s16276",
+    "title": "Rubí",
+    "platform": "vix",
+    "type": "Novela",
+    "genre": "Drama,Romance",
+    "year": "2004",
+    "image": "assets/optimized/s16276.webp",
+    "summary": "La ambición de Rubí transforma las vidas de quienes confían en ella y pone a prueba sus afectos."
+  },
+  {
+    "id": "s74573",
+    "title": "El amor invencible",
+    "platform": "vix",
+    "type": "Novela",
+    "genre": "Drama,Romance",
+    "year": "2023",
+    "image": "assets/optimized/s74573.webp",
+    "summary": "Leona reconstruye su vida mientras busca a sus hijos y la verdad sobre quienes destruyeron a su familia."
+  },
+  {
+    "id": "s16277",
+    "title": "La usurpadora",
+    "platform": "vix",
+    "type": "Novela",
+    "genre": "Drama,Romance",
+    "year": "1998",
+    "image": "assets/optimized/s16277.webp",
+    "summary": "Dos mujeres idénticas intercambian sus lugares y desatan secretos en una familia marcada por las apariencias."
+  },
+  {
+    "id": "s24562",
+    "title": "La fea más bella",
+    "platform": "vix",
+    "type": "Novela",
+    "genre": "Romance,Comedia",
+    "year": "2006",
+    "image": "assets/optimized/s24562.webp",
+    "summary": "Leticia llega a una productora donde su talento y su historia de amor desafían las apariencias."
+  }
+];
   window.ORBIT_LIBRARY = window.ORBIT_LIBRARY || curatedPicks;
  const platforms = window.ORBITA?.platforms || [];
   const library = curatedPicks.filter(item => platforms.some(platform => platform.id === item.platform));

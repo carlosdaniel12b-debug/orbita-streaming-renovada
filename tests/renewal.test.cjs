@@ -25,7 +25,7 @@ test('all 64 home selections agree with the checkout pricing and link',()=>{
   const base={window:{},document:{querySelector(){},querySelectorAll(){return [];}},localStorage:{getItem(){return null;}}};
   vm.runInNewContext(read('js/data.js'),base);
   vm.runInNewContext(read('js/app.js').split('function orderMessage(')[0]+'})();',base);
-  const values=['netflix','hbomax','primevideo','appletv','spotify','canva'];
+  const values=['paramount','hbomax','primevideo','appletv','spotify','canva'];
   const inputs=values.map(value=>({value,checked:false,addEventListener(_,fn){this.change=fn;}}));
   const nodes=Object.fromEntries(['calc-selection-count','calc-monthly-val','calc-initial-val','calc-plan-note','calc-whatsapp-cta'].map(id=>[id,{textContent:'',removeAttribute(){}}]));
   const box={querySelectorAll(){return inputs;},querySelector(s){return nodes[s.slice(1)];}};
@@ -40,8 +40,8 @@ test('all 64 home selections agree with the checkout pricing and link',()=>{
     assert.equal(url.searchParams.get('apps')||'',ids.join(','));
     if(ids.includes('canva'))assert.match(nodes['calc-plan-note'].textContent,/año/);
   }
-  assert.equal(base.window.OrbitaPricing.calculate(['netflix','hbomax','spotify']).total,5);
-  assert.equal(base.window.OrbitaPricing.calculate(['netflix','hbomax','canva']).total,9);
+  assert.equal(base.window.OrbitaPricing.calculate(['paramount','hbomax','spotify']).total,5);
+  assert.equal(base.window.OrbitaPricing.calculate(['paramount','hbomax','canva']).total,9);
 });
 
 function welcome({seen=false,reduced=false}={}){

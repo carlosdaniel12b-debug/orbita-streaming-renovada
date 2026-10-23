@@ -1,138 +1,5 @@
 window.ORBIT_LIBRARY = [
   {
-    "id": "s55138",
-    "title": "Arcane",
-    "original": "Arcane: League of Legends",
-    "platform": "netflix",
-    "aliases": [
-      "arcane",
-      "arcane: league of legends"
-    ],
-    "genre": "Acción,Aventura,Fantasía",
-    "type": "Serie",
-    "year": "2021",
-    "image": "assets/optimized/s55138.webp",
-    "source": "https://www.tvmaze.com/shows/55138/arcane-league-of-legends",
-    "official": "https://www.netflix.com/title/81435684",
-    "origin": "netflix",
-    "summary": "En medio del conflicto entre las ciudades de Piltóver y Zaun, dos hermanas luchan en bandos opuestos por tecnologías mágicas y convicciones.",
-    "esSummary": "En medio del conflicto entre las ciudades de Piltóver y Zaun, dos hermanas luchan en bandos opuestos por tecnologías mágicas y convicciones."
-  },
-  {
-    "id": "s618",
-    "title": "Better Call Saul",
-    "original": "Better Call Saul",
-    "platform": "netflix",
-    "aliases": [
-      "better call saul",
-      "better call saul"
-    ],
-    "genre": "Drama,Crime,Legal",
-    "type": "Serie",
-    "year": "2015",
-    "image": "assets/optimized/s618.webp",
-    "source": "https://www.tvmaze.com/shows/618/better-call-saul",
-    "official": "https://www.amc.com/shows/better-call-saul--1002228",
-    "origin": "netflix",
-    "summary": "La transformación del abogado de poca monta Jimmy McGill en el pintoresco y moralmente cuestionable Saul Goodman.",
-    "esSummary": "La transformación del abogado de poca monta Jimmy McGill en el pintoresco y moralmente cuestionable Saul Goodman."
-  },
-  {
-    "id": "m4",
-    "title": "Bird Box",
-    "original": "Bird Box",
-    "platform": "netflix",
-    "aliases": [
-      "bird box",
-      "bird box"
-    ],
-    "genre": "Suspenso,terror",
-    "type": "Película",
-    "year": "2018",
-    "image": "assets/optimized/m4.webp",
-    "source": "https://www.netflix.com/title/80196789",
-    "official": "",
-    "origin": "netflix",
-    "summary": "Una mujer intenta proteger a dos niños en un mundo donde mirar a una presencia desconocida puede ser mortal.",
-    "esSummary": "Una mujer intenta proteger a dos niños en un mundo donde mirar a una presencia desconocida puede ser mortal."
-  },
-  {
-    "id": "m_bladerunner2049",
-    "title": "Blade Runner 2049",
-    "original": "Blade Runner 2049",
-    "platform": "netflix",
-    "aliases": [
-      "blade runner 2049",
-      "blade runner 2049"
-    ],
-    "genre": "Ciencia ficción,Misterio,Drama",
-    "type": "Película",
-    "year": "2017",
-    "image": "assets/optimized/m_bladerunner2049.webp",
-    "source": "https://www.themoviedb.org",
-    "official": "",
-    "origin": "netflix",
-    "summary": "El oficial K, un blade runner del LAPD, descubre un secreto enterrado que lo lleva a buscar al ex blade runner Rick Deckard, desaparecido por treinta años.",
-    "esSummary": "El oficial K, un blade runner del LAPD, descubre un secreto enterrado que lo lleva a buscar al ex blade runner Rick Deckard, desaparecido por treinta años."
-  },
-  {
-    "id": "s169",
-    "title": "Breaking Bad",
-    "original": "Breaking Bad",
-    "platform": "netflix",
-    "aliases": [
-      "breaking bad",
-      "breaking bad"
-    ],
-    "genre": "Drama,Crime,Thriller",
-    "type": "Serie",
-    "year": "2008",
-    "image": "assets/optimized/s169.webp",
-    "source": "https://www.tvmaze.com/shows/169/breaking-bad",
-    "official": "http://www.amc.com/shows/breaking-bad",
-    "origin": "netflix",
-    "summary": "Un profesor de química con cáncer terminal se asocia con un exalumno para fabricar metanfetamina y asegurar el futuro de su familia.",
-    "esSummary": "Un profesor de química con cáncer terminal se asocia con un exalumno para fabricar metanfetamina y asegurar el futuro de su familia."
-  },
-  {
-    "id": "s48945",
-    "title": "Cyberpunk: Edgerunners",
-    "original": "Cyberpunk: Edgerunners",
-    "platform": "netflix",
-    "aliases": [
-      "cyberpunk: edgerunners",
-      "cyberpunk: edgerunners"
-    ],
-    "genre": "Acción,Anime,Science-Fiction",
-    "type": "Anime",
-    "year": "2022",
-    "image": "assets/optimized/s48945.webp",
-    "source": "https://www.tvmaze.com/shows/48945/cyberpunk-edgerunners",
-    "official": "https://www.netflix.com/title/81054853",
-    "origin": "netflix",
-    "summary": "En una distopía obsesionada con la tecnología y la modificación corporal, un chico callejero lucha por sobrevivir como mercenario edgerunner.",
-    "esSummary": "En una distopía obsesionada con la tecnología y la modificación corporal, un chico callejero lucha por sobrevivir como mercenario edgerunner."
-  },
-  {
-    "id": "s17861",
-    "title": "Dark",
-    "original": "Dark",
-    "platform": "netflix",
-    "aliases": [
-      "dark",
-      "dark"
-    ],
-    "genre": "Misterio,ciencia ficción,suspenso",
-    "type": "Serie",
-    "year": "2017",
-    "image": "assets/optimized/s17861.webp",
-    "source": "https://www.tvmaze.com/shows/17861/dark",
-    "official": "https://www.netflix.com/title/80100172",
-    "origin": "netflix",
-    "summary": "La desaparición de varios niños revela conexiones entre cuatro familias, distintas épocas y los secretos de un pueblo alemán.",
-    "esSummary": "La desaparición de varios niños revela conexiones entre cuatro familias, distintas épocas y los secretos de un pueblo alemán."
-  },
-  {
     "id": "m_dune2",
     "title": "Dune: Parte Dos",
     "original": "Dune: Part Two",
@@ -152,25 +19,6 @@ window.ORBIT_LIBRARY = [
     "esSummary": "Paul Atreides se une a Chani y a los Fremen mientras busca venganza contra los conspiradores que destruyeron a su familia."
   },
   {
-    "id": "s43687",
-    "title": "El juego del calamar",
-    "original": "Squid Game",
-    "platform": "netflix",
-    "aliases": [
-      "el juego del calamar",
-      "squid game"
-    ],
-    "genre": "Suspenso,drama",
-    "type": "Serie",
-    "year": "2021",
-    "image": "assets/optimized/s43687.webp",
-    "source": "https://www.tvmaze.com/shows/43687/squid-game",
-    "official": "https://www.netflix.com/title/81040344",
-    "origin": "netflix",
-    "summary": "Personas endeudadas aceptan participar en juegos infantiles por un premio enorme, sin conocer el precio de perder.",
-    "esSummary": "Personas endeudadas aceptan participar en juegos infantiles por un premio enorme, sin conocer el precio de perder."
-  },
-  {
     "id": "m_inception",
     "title": "El Origen (Inception)",
     "original": "Inception",
@@ -188,44 +36,6 @@ window.ORBIT_LIBRARY = [
     "origin": "hbomax",
     "summary": "A un hábil ladrón de secretos corporativos mediante tecnología de sueños compartidos se le ofrece borrar su historial criminal si logra implantar una idea.",
     "esSummary": "A un hábil ladrón de secretos corporativos mediante tecnología de sueños compartidos se le ofrece borrar su historial criminal si logra implantar una idea."
-  },
-  {
-    "id": "m5",
-    "title": "El proyecto Adam",
-    "original": "The Adam Project",
-    "platform": "netflix",
-    "aliases": [
-      "el proyecto adam",
-      "the adam project"
-    ],
-    "genre": "Ciencia ficción,aventura",
-    "type": "Película",
-    "year": "2022",
-    "image": "assets/optimized/m5.webp",
-    "source": "https://www.netflix.com/title/81309354",
-    "official": "",
-    "origin": "netflix",
-    "summary": "Un piloto viaja en el tiempo y se encuentra con su versión de doce años para intentar resolver una misión ligada a su familia.",
-    "esSummary": "Un piloto viaja en el tiempo y se encuentra con su versión de doce años para intentar resolver una misión ligada a su familia."
-  },
-  {
-    "id": "m3",
-    "title": "Enola Holmes",
-    "original": "Enola Holmes",
-    "platform": "netflix",
-    "aliases": [
-      "enola holmes",
-      "enola holmes"
-    ],
-    "genre": "Misterio,aventura",
-    "type": "Película",
-    "year": "2020",
-    "image": "assets/optimized/m3.webp",
-    "source": "https://www.netflix.com/title/81277950",
-    "official": "",
-    "origin": "netflix",
-    "summary": "La hermana menor de Sherlock Holmes busca a su madre desaparecida y demuestra su propio talento para resolver misterios.",
-    "esSummary": "La hermana menor de Sherlock Holmes busca a su madre desaparecida y demuestra su propio talento para resolver misterios."
   },
   {
     "id": "s28826",
@@ -418,44 +228,6 @@ window.ORBIT_LIBRARY = [
     "esSummary": "En un páramo postapocalíptico, Max se une a Imperator Furiosa para escapar del tirano Immortan Joe a bordo de un camión blindado a toda velocidad."
   },
   {
-    "id": "s53647",
-    "title": "Merlina",
-    "original": "Wednesday",
-    "platform": "netflix",
-    "aliases": [
-      "merlina",
-      "wednesday"
-    ],
-    "genre": "Misterio,humor,terror",
-    "type": "Serie",
-    "year": "2022",
-    "image": "assets/optimized/s53647.webp",
-    "source": "https://www.tvmaze.com/shows/53647/wednesday",
-    "official": "https://www.netflix.com/title/81231974",
-    "origin": "netflix",
-    "summary": "Merlina Addams llega a la academia Nunca Más y se involucra en un misterio mientras aprende a manejar sus habilidades psíquicas.",
-    "esSummary": "Merlina Addams llega a la academia Nunca Más y se involucra en un misterio mientras aprende a manejar sus habilidades psíquicas."
-  },
-  {
-    "id": "s46065",
-    "title": "One Piece",
-    "original": "One Piece",
-    "platform": "netflix",
-    "aliases": [
-      "one piece",
-      "one piece"
-    ],
-    "genre": "Aventura,acción,fantasía",
-    "type": "Serie",
-    "year": "2023",
-    "image": "assets/optimized/s46065.webp",
-    "source": "https://www.tvmaze.com/shows/46065/one-piece",
-    "official": "https://www.netflix.com/title/80217863",
-    "origin": "netflix",
-    "summary": "Luffy reúne una tripulación de piratas y parte en busca de un tesoro legendario para convertirse en el rey de los piratas.",
-    "esSummary": "Luffy reúne una tripulación de piratas y parte en busca de un tesoro legendario para convertirse en el rey de los piratas."
-  },
-  {
     "id": "m_oppenheimer",
     "title": "Oppenheimer",
     "original": "Oppenheimer",
@@ -473,25 +245,6 @@ window.ORBIT_LIBRARY = [
     "origin": "hbomax",
     "summary": "La historia del físico J. Robert Oppenheimer y su rol decisivo en el desarrollo de la bomba atómica en el Proyecto Manhattan.",
     "esSummary": "La historia del físico J. Robert Oppenheimer y su rol decisivo en el desarrollo de la bomba atómica en el Proyecto Manhattan."
-  },
-  {
-    "id": "s269",
-    "title": "Peaky Blinders",
-    "original": "Peaky Blinders",
-    "platform": "netflix",
-    "aliases": [
-      "peaky blinders",
-      "peaky blinders"
-    ],
-    "genre": "Drama,Crime,History",
-    "type": "Serie",
-    "year": "2013",
-    "image": "assets/optimized/s269.webp",
-    "source": "https://www.tvmaze.com/shows/269/peaky-blinders",
-    "official": "http://www.bbc.co.uk/programmes/b045fz8r",
-    "origin": "netflix",
-    "summary": "En la Inglaterra de posguerra, Thomas Shelby lidera a una temible pandilla criminal dispuesta a dominar el hampa británica.",
-    "esSummary": "En la Inglaterra de posguerra, Thomas Shelby lidera a una temible pandilla criminal dispuesta a dominar el hampa británica."
   },
   {
     "id": "s43031",
@@ -568,25 +321,6 @@ window.ORBIT_LIBRARY = [
     "origin": "hbomax",
     "summary": "Miles Morales es catapultado a través del Multiverso, donde se encuentra con un equipo de Spider-People encargados de proteger su existencia.",
     "esSummary": "Miles Morales es catapultado a través del Multiverso, donde se encuentra con un equipo de Spider-People encargados de proteger su existencia."
-  },
-  {
-    "id": "s2993",
-    "title": "Stranger Things",
-    "original": "Stranger Things",
-    "platform": "netflix",
-    "aliases": [
-      "stranger things",
-      "stranger things"
-    ],
-    "genre": "Misterio,amistad,ciencia ficción",
-    "type": "Serie",
-    "year": "2016",
-    "image": "assets/optimized/s2993.webp",
-    "source": "https://www.tvmaze.com/shows/2993/stranger-things",
-    "official": "https://www.netflix.com/title/80057281",
-    "origin": "netflix",
-    "summary": "La desaparición de un niño lleva a sus amigos a descubrir experimentos secretos y una dimensión que amenaza su pequeño pueblo.",
-    "esSummary": "La desaparición de un niño lleva a sus amigos a descubrir experimentos secretos y una dimensión que amenaza su pequeño pueblo."
   },
   {
     "id": "s23470",
@@ -891,86 +625,6 @@ window.ORBIT_LIBRARY = [
     "origin": "hbomax",
     "summary": "Based on the bestselling book series A Song of Ice and Fire by George R.R. Martin, this sprawling new HBO drama is set in a world where summers span decades and winters can last a lifetime. From the scheming south and the savage eastern lands, to the frozen north and ancient Wall that protects the realm from the mysterious darkness beyond, the powerful families of the Seven Kingdoms are locked in a battle for the Iron Throne. This is a story of duplicity and treachery, nobility and honor, conquest and triumph. In the Game of Thrones, you either win or you die.",
     "esSummary": "Based on the bestselling book series A Song of Ice and Fire by George R.R. Martin, this sprawling new HBO drama is set in a world where summers span decades and winters can last a lifetime. From the scheming south and the savage eastern lands, to the frozen north and ancient Wall that protects the realm from the mysterious darkness beyond, the powerful families of the Seven Kingdoms are locked in a battle for the Iron Throne. This is a story of duplicity and treachery, nobility and honor, conquest and triumph. In the Game of Thrones, you either win or you die."
-  },
-  {
-    "id": "s66998",
-    "title": "PLUTO",
-    "original": "Pluto",
-    "platform": "netflix",
-    "type": "Anime",
-    "genre": "Ciencia ficción,Misterio",
-    "year": "2023",
-    "aliases": [
-      "Pluto",
-      "PLUTO"
-    ],
-    "image": "assets/optimized/s66998.webp",
-    "source": "https://www.tvmaze.com/shows/66998/pluto",
-    "official": "https://www.netflix.com/title/81281344",
-    "origin": "netflix",
-    "esSummary": "Un detective robot investiga una serie de crímenes que amenaza la convivencia entre humanos y máquinas.",
-    "summary": "Un detective robot investiga una serie de crímenes que amenaza la convivencia entre humanos y máquinas.",
-    "collection": "anime"
-  },
-  {
-    "id": "s77383",
-    "title": "Sakamoto Days",
-    "original": "Sakamoto Days",
-    "platform": "netflix",
-    "type": "Anime",
-    "genre": "Acción,Comedia",
-    "year": "2025",
-    "aliases": [
-      "Sakamoto Days",
-      "Sakamoto Days"
-    ],
-    "image": "assets/optimized/s77383.webp",
-    "source": "https://www.tvmaze.com/shows/77383/sakamoto-days",
-    "official": "https://sakamotodays.jp/",
-    "origin": "netflix",
-    "esSummary": "Un legendario asesino retirado protege su nueva vida familiar mientras su pasado vuelve a buscarlo.",
-    "summary": "Un legendario asesino retirado protege su nueva vida familiar mientras su pasado vuelve a buscarlo.",
-    "collection": "anime"
-  },
-  {
-    "id": "s25242",
-    "title": "Castlevania",
-    "original": "Castlevania",
-    "platform": "netflix",
-    "type": "Anime",
-    "genre": "Fantasía,Acción",
-    "year": "2017",
-    "aliases": [
-      "Castlevania",
-      "Castlevania"
-    ],
-    "image": "assets/optimized/s25242.webp",
-    "source": "https://www.tvmaze.com/shows/25242/castlevania",
-    "official": "https://www.netflix.com/title/80095241",
-    "origin": "netflix",
-    "esSummary": "Un cazador, una hechicera y el hijo de Drácula se unen contra un ejército de criaturas nocturnas.",
-    "summary": "Un cazador, una hechicera y el hijo de Drácula se unen contra un ejército de criaturas nocturnas.",
-    "collection": "anime"
-  },
-  {
-    "id": "s69046",
-    "title": "Delicious in Dungeon",
-    "original": "Delicious in Dungeon",
-    "platform": "netflix",
-    "type": "Anime",
-    "genre": "Fantasía,Aventura",
-    "year": "2024",
-    "aliases": [
-      "Delicious in Dungeon",
-      "Delicious in Dungeon"
-    ],
-    "image": "assets/optimized/s69046.webp",
-    "source": "https://www.tvmaze.com/shows/69046/delicious-in-dungeon",
-    "official": "https://delicious-in-dungeon.com",
-    "origin": "netflix",
-    "esSummary": "Un grupo de aventureros explora una mazmorra y cocina monstruos para sobrevivir a su misión de rescate.",
-    "summary": "Un grupo de aventureros explora una mazmorra y cocina monstruos para sobrevivir a su misión de rescate.",
-    "collection": "anime"
   },
   {
     "id": "s44267",
@@ -1294,56 +948,6 @@ window.ORBIT_LIBRARY = [
     "collection": "series"
   },
   {
-    "id": "s51112",
-    "title": "Blue Eye Samurai",
-    "original": "Blue Eye Samurai",
-    "platform": "netflix",
-    "type": "Serie",
-    "genre": "Animación,Acción",
-    "year": "2023",
-    "aliases": [
-      "Blue Eye Samurai",
-      "Blue Eye Samurai"
-    ],
-    "image": "assets/optimized/s51112.webp",
-    "source": "https://www.tvmaze.com/shows/51112/blue-eye-samurai",
-    "official": "https://www.netflix.com/title/81144203",
-    "origin": "netflix",
-    "esSummary": "Una espadachina busca venganza en el Japón del período Edo mientras oculta su identidad.",
-    "summary": "Una espadachina busca venganza en el Japón del período Edo mientras oculta su identidad.",
-    "collection": "series"
-  },
-  {
-    "id": "m_klaus",
-    "title": "Klaus",
-    "original": "Klaus",
-    "year": "2019",
-    "platform": "netflix",
-    "genre": "Animación,Familia",
-    "type": "Película",
-    "source": "https://www.netflix.com/title/80183187",
-    "official": "https://www.netflix.com/title/80183187",
-    "aliases": [],
-    "image": "assets/optimized/m_klaus.webp",
-    "esSummary": "Un cartero y un fabricante de juguetes transforman una ciudad dividida a través de pequeños actos de generosidad.",
-    "summary": "Un cartero y un fabricante de juguetes transforman una ciudad dividida a través de pequeños actos de generosidad."
-  },
-  {
-    "id": "m_pinocchio",
-    "title": "Pinocho de Guillermo del Toro",
-    "original": "Pinocho de Guillermo del Toro",
-    "year": "2022",
-    "platform": "netflix",
-    "genre": "Animación,Fantasía",
-    "type": "Película",
-    "source": "https://www.netflix.com/title/80218455",
-    "official": "https://www.netflix.com/title/80218455",
-    "aliases": [],
-    "image": "assets/optimized/m_pinocchio.webp",
-    "esSummary": "Un niño de madera descubre el amor, la pérdida y lo que significa vivir en esta reinterpretación animada de Pinocho.",
-    "summary": "Un niño de madera descubre el amor, la pérdida y lo que significa vivir en esta reinterpretación animada de Pinocho."
-  },
-  {
     "id": "m_the-gorge",
     "title": "El abismo secreto",
     "original": "The Gorge",
@@ -1422,21 +1026,6 @@ window.ORBIT_LIBRARY = [
     "aliases": []
   },
   {
-    "id": "s73023",
-    "title": "Dandadan",
-    "original": "Dandadan",
-    "platform": "netflix",
-    "type": "Anime",
-    "genre": "Acción,Comedia,Ciencia ficción",
-    "year": "2024",
-    "summary": "Momo y Okarun descubren que fantasmas y extraterrestres existen y se lanzan a una aventura impredecible.",
-    "esSummary": "Momo y Okarun descubren que fantasmas y extraterrestres existen y se lanzan a una aventura impredecible.",
-    "official": "https://www.netflix.com/title/81736884",
-    "source": "https://www.tvmaze.com/shows/73023/dandadan",
-    "image": "assets/optimized/s73023.webp",
-    "aliases": []
-  },
-  {
     "id": "s24562",
     "title": "La fea más bella",
     "original": "La fea más bella",
@@ -1450,55 +1039,6 @@ window.ORBIT_LIBRARY = [
     "source": "https://www.tvmaze.com/shows/24562/la-fea-mas-bella",
     "image": "assets/optimized/s24562.webp",
     "aliases": []
-  },
-  {
-    "id": "s2790",
-    "title": "The Good Place",
-    "original": "The Good Place",
-    "platform": "netflix",
-    "type": "Serie",
-    "genre": "Comedia,Fantasía",
-    "year": "2016",
-    "summary": "Eleanor llega por error a un paraíso diseñado para buenas personas y decide intentar merecer su lugar.",
-    "esSummary": "Eleanor llega por error a un paraíso diseñado para buenas personas y decide intentar merecer su lugar.",
-    "official": "https://www.netflix.com/title/80113701",
-    "source": "https://www.tvmaze.com/shows/2790/the-good-place",
-    "image": "assets/optimized/s2790.webp",
-    "aliases": []
-  },
-  {
-    "id": "m_nimona",
-    "title": "Nimona",
-    "original": "Nimona",
-    "year": "2023",
-    "platform": "netflix",
-    "genre": "Animación,Aventura,Fantasía",
-    "type": "Película",
-    "summary": "Un caballero acusado de un crimen encuentra una aliada inesperada: una adolescente capaz de cambiar de forma.",
-    "esSummary": "Un caballero acusado de un crimen encuentra una aliada inesperada: una adolescente capaz de cambiar de forma.",
-    "official": "https://www.netflix.com/title/81444554",
-    "source": "https://www.netflix.com/title/81444554",
-    "image": "assets/optimized/m_nimona.webp",
-    "aliases": [
-      "Nimona"
-    ]
-  },
-  {
-    "id": "m_seabeast",
-    "title": "El monstruo marino",
-    "original": "The Sea Beast",
-    "year": "2022",
-    "platform": "netflix",
-    "genre": "Animación,Aventura,Familia",
-    "type": "Película",
-    "summary": "Una niña viaja a escondidas en el barco de un cazador de monstruos y pone en duda antiguas leyendas.",
-    "esSummary": "Una niña viaja a escondidas en el barco de un cazador de monstruos y pone en duda antiguas leyendas.",
-    "official": "https://www.netflix.com/title/81018682",
-    "source": "https://www.netflix.com/title/81018682",
-    "image": "assets/optimized/m_seabeast.webp",
-    "aliases": [
-      "The Sea Beast"
-    ]
   },
   {
     "id": "m_luck",

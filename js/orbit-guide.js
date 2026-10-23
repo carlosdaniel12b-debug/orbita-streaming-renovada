@@ -332,7 +332,7 @@
       
       await appendBotStream(introText, el => {
         if (use.length) combo(el, use);
-        else combo(el, ['netflix', 'primevideo']);
+        else combo(el, ['hbomax', 'primevideo']);
         if (/barat|presupuesto/.test(q)) {
           const note = document.createElement('p');
           note.textContent = 'Si solo quieres una app, el plan de $3 USD es la opción más económica. No necesitas combo obligatorio.';
@@ -427,7 +427,7 @@
       return;
     }
 
-    await appendBotStream('No tengo una respuesta precisa para eso todavía. ¿Quieres encontrar algo para ver o necesitas ayuda con un plan? Puedes darme un género, una plataforma o un título que te guste. Por ejemplo: «una serie corta de misterio» o «precio de Netflix».');
+    await appendBotStream('No tengo una respuesta precisa para eso todavía. ¿Quieres encontrar algo para ver o necesitas ayuda con un plan? Puedes darme un género, una plataforma o un título que te guste. Por ejemplo: «una serie corta de misterio» o «precio de Max».');
   }
 
   async function ask(text) {

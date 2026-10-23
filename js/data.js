@@ -2,27 +2,6 @@ window.ORBITA = {
   "phone": "593998226756",
   "platforms": [
     {
-      "id": "netflix",
-      "name": "Netflix",
-      "category": "cinema",
-      "price": 3,
-      "period": "mes",
-      "icon": "assets/icons/netflix.svg",
-      "tagline": "Ultra HD 4K • Perfil Privado con PIN",
-      "features": [
-        "Calidad Ultra HD 4K + HDR",
-        "Perfil 100% privado con PIN personal",
-        "Descargas sin conexión disponibles"
-      ],
-      "devices": [
-        "Smart TV",
-        "Celulares iOS & Android",
-        "PC / Mac",
-        "Tablets",
-        "Consolas & TV Box"
-      ]
-    },
-    {
       "id": "hbomax",
       "name": "Max",
       "category": "cinema",
@@ -214,14 +193,6 @@ window.ORBITA = {
     }
   ],
   "editorial": [
-    {
-      "id": "netflix",
-      "title": "Historias que se quedan contigo",
-      "genre": "Cine y series",
-      "desc": "Un nuevo favorito te espera. Explora las novedades de Netflix.",
-      "url": "https://www.netflix.com/tudum/next-on-netflix",
-      "image": "netflix.jpg"
-    },
     {
       "id": "hbomax",
       "title": "The Last of Us",

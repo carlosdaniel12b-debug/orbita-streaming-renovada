@@ -45,12 +45,12 @@ test('all 64 home selections agree with the checkout pricing and link',()=>{
 });
 
 function welcome({seen=false,reduced=false}={}){
-  const timers=new Map(),listeners={},docListeners={},rootClasses=new Set(['welcome-pending']);let id=0;
+  const timers=new Map(),delays=new Map(),listeners={},docListeners={},rootClasses=new Set(['welcome-pending']);let id=0;
   const dialog={open:false,classList:{contains(){return false;},add(){},remove(){}},addEventListener(k,fn){listeners[k]=fn;},showModal(){this.open=true;},close(){this.open=false;listeners.close?.();}};
   const skip={addEventListener(_,fn){this.click=fn;}};
-  const context={window:{},location:{hash:''},matchMedia(){return {matches:reduced,addEventListener(){}};},sessionStorage:{getItem(){return seen?'1':null;},setItem(){}},setTimeout(fn){timers.set(++id,fn);return id;},clearTimeout(id){timers.delete(id);},addEventListener(){},document:{activeElement:null,body:{},hidden:false,documentElement:{classList:{remove(k){rootClasses.delete(k);}}},getElementById(k){return k==='welcome'?dialog:k==='welcome-skip'?skip:null;},addEventListener(k,fn){docListeners[k]=fn;}}};
+  const context={window:{},location:{hash:''},matchMedia(){return {matches:reduced,addEventListener(){}};},sessionStorage:{getItem(){return seen?'1':null;},setItem(){}},setTimeout(fn,ms){timers.set(++id,fn);delays.set(id,ms);return id;},clearTimeout(id){timers.delete(id);},addEventListener(){},document:{activeElement:null,body:{},hidden:false,documentElement:{classList:{remove(k){rootClasses.delete(k);}}},getElementById(k){return k==='welcome'?dialog:k==='welcome-skip'?skip:null;},addEventListener(k,fn){docListeners[k]=fn;}}};
   vm.runInNewContext(read('js/welcome.js'),context);
-  return {dialog,timers,rootClasses,skip,listeners};
+  return {dialog,timers,rootClasses,skip,listeners,run(ms){const key=[...timers.keys()].find(k=>delays.get(k)===ms);assert.ok(key,`Missing timer ${ms}`);const fn=timers.get(key);timers.delete(key);fn();}};
 }
 test('welcome opens synchronously before page content and always releases the guard',()=>{
   const html=read('index.html');
@@ -63,6 +63,8 @@ test('welcome opens synchronously before page content and always releases the gu
 });
 test('welcome Escape closes immediately and automatic deadline is bounded',()=>{
   const x=welcome();x.listeners.cancel({preventDefault(){}});assert.equal(x.dialog.open,false);
-  const auto=welcome();const enter=auto.timers.values().next().value;enter();
-  const exit=[...auto.timers.values()].at(-1);exit();assert.equal(auto.dialog.open,false);
+  const auto=welcome();auto.run(1400);auto.run(180);assert.equal(auto.dialog.open,false);
 });
+
+test('welcome safety deadline releases the page even if the normal close callback never runs',()=>{const x=welcome();x.run(2400);assert.equal(x.dialog.open,false);assert.equal(x.rootClasses.size,0);assert.equal(x.timers.size,0);});
+

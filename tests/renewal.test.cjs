@@ -57,14 +57,16 @@ test('welcome opens synchronously before page content and always releases the gu
   assert.ok(html.indexOf('welcome-pending')<html.indexOf('<body'));
   assert.ok(html.indexOf('<script src="js/welcome.js')<html.indexOf('<main'));
   const first=welcome();assert.equal(first.dialog.open,true);assert.equal(first.rootClasses.size,0);
-  first.skip.click();assert.equal(first.dialog.open,false);assert.equal(first.timers.size,0);
+  first.skip.click();assert.equal(first.dialog.open,true);first.run(420);assert.equal(first.dialog.open,false);assert.equal(first.timers.size,0);
   const returning=welcome({seen:true});assert.equal(returning.dialog.open,false);assert.equal(returning.rootClasses.size,0);
   const reduced=welcome({reduced:true});assert.equal(reduced.dialog.open,false);assert.equal(reduced.rootClasses.size,0);
 });
 test('welcome Escape closes immediately and automatic deadline is bounded',()=>{
   const x=welcome();x.listeners.cancel({preventDefault(){}});assert.equal(x.dialog.open,false);
-  const auto=welcome();auto.run(1400);auto.run(180);assert.equal(auto.dialog.open,false);
+  const auto=welcome();auto.run(1400);auto.run(420);assert.equal(auto.dialog.open,false);
 });
 
 test('welcome safety deadline releases the page even if the normal close callback never runs',()=>{const x=welcome();x.run(2400);assert.equal(x.dialog.open,false);assert.equal(x.rootClasses.size,0);assert.equal(x.timers.size,0);});
 
+
+test('repeated entry clicks do not extend the crossfade deadline',()=>{const x=welcome();x.skip.click();x.skip.click();x.run(420);assert.equal(x.dialog.open,false);assert.equal(x.timers.size,0);});

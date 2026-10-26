@@ -42,3 +42,12 @@ html body.pearl-world .footer .legal{grid-column:1/-1!important;padding:0!import
 @media(max-width:600px){html body.pearl-world .footer{grid-template-columns:1fr!important;padding:24px 18px 100px!important;gap:18px!important;margin-top:20px!important}.pearl-world .footer .footer-links{grid-column:1/-1!important}.pearl-world .footer>div:first-child{display:flex;align-items:center;justify-content:space-between;gap:12px}.pearl-world .footer>div:first-child p{margin:0!important;font-size:11px!important}.pearl-world .footer-links :is(a,button){min-height:36px!important}.pearl-world .footer .payment-footer small{flex-basis:100%!important;text-align:left}.pearl-world .footer .legal{margin-top:-6px!important}}
 /* Full-width footer with compact, responsive inner spacing. */
 html body.pearl-world footer.container.footer{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;border-radius:0!important;padding-left:clamp(20px,4vw,72px)!important;padding-right:clamp(20px,4vw,72px)!important}
+
+/* Crossfade directly onto the already painted home; no opaque backdrop gap. */
+html body.pearl-world #welcome::backdrop{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html body.pearl-world #welcome[open]{transition:opacity 400ms cubic-bezier(.22,.61,.36,1)!important}
+html body.pearl-world #welcome[open].welcome-leaving{opacity:0!important;pointer-events:none!important}
+html body.pearl-world #welcome[open] .intro-brand{transition:filter 400ms ease,transform 400ms ease!important}
+html body.pearl-world #welcome[open].welcome-leaving .intro-brand{filter:blur(8px)!important;transform:translateY(-6px)!important}
+html body.pearl-world[data-page=index] #main,html body.pearl-world[data-page=index] .premiere-copy{animation:none!important;opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){html body.pearl-world #welcome[open],html body.pearl-world #welcome[open] .intro-brand{transition:none!important}html body.pearl-world #welcome[open].welcome-leaving .intro-brand{filter:none!important;transform:none!important}}

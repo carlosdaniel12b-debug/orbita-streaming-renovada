@@ -1,14 +1,3 @@
-/* Midnight surrounds the readable crystal panels. */
-body.pearl-world{background:radial-gradient(ellipse 80% 750px at 20% 0,#20445a,transparent),radial-gradient(ellipse 70% 1000px at 100% 900px,#243c5f80,transparent),#101c32!important}
-.pearl-world .premiere-heading,.pearl-world .premiere-heading p,.pearl-world .premiere-heading .eyebrow,.pearl-world .page-heading h1,.pearl-world .page-heading>p,.pearl-world .pearl-section-head h2,.pearl-world .pearl-section-head p,.pearl-world .tech-lab-head h2,.pearl-world .tech-lab-head .eyebrow,.pearl-world .tech-lab-head p,.pearl-world .picker-heading h2,.pearl-world .combo-layout>div>h3,.pearl-world .orbit-latest h2{color:#e2eefb!important}
-.pearl-world .tech-lab-head h2 span{color:#adcfcc!important}.pearl-world .orbit-picks>p,.pearl-world #result-count,.pearl-world .catalog-section>.muted{color:#b2c7df!important}
-.pearl-world .pearl-section-head>a,.pearl-world .picker-heading .text-button{color:#bfddfa!important}
-.pearl-world .platform-dock{background:linear-gradient(120deg,#b3d8ff0d,#bce9d10a)!important;border-color:#b6d4f52b!important;box-shadow:inset 0 1px 0 #ffffff12!important}.pearl-world .platform-dock span{color:#d6e6f6!important}
-.pearl-world .header-inner,.pearl-world .mobile-dock{background:linear-gradient(125deg,#193149e6,#243b5ad9)!important;border-color:#d5eaff4d!important;box-shadow:inset 0 1px 0 #ffffff38,0 12px 35px #020b2233!important;color:#e4f1ff!important}
-.pearl-world .header-inner .brand,.pearl-world .header-inner .logo-type,.pearl-world .header-inner .logo-type small,.pearl-world .header-inner .logo-symbol,.pearl-world .nav .nav-link,.pearl-world .mobile-dock a,.pearl-world .mobile-dock button{color:#e4f1ff!important}
-.pearl-world .nav{background:#ffffff0b!important;border-color:#ffffff1f!important}
-.pearl-world .nav .nav-link[aria-current=page],.pearl-world .mobile-dock [aria-current=page]{background:linear-gradient(125deg,#d1eae7,#bcd3f6)!important;color:#20374d!important;box-shadow:inset 0 1px 0 #fff,0 4px 15px #07142633!important}
-.pearl-world .footer{background:#0c1729!important;border-top:1px solid #d4e8ff24!important;color:#c5d7ea!important}.pearl-world .footer :is(h2,h3,p,a,small,strong,span),.pearl-world .footer .logo-type{color:#c5d7ea!important}
 /* Explicit closed state prevents legacy dialog display rules from showing a dead overlay. */
 html .pearl-world #welcome:not([open]){display:none!important;visibility:hidden!important;pointer-events:none!important}
 html .pearl-world #welcome[open]{opacity:1!important;transform:none!important;animation:none!important}
@@ -20,8 +9,4 @@ html .pearl-world #welcome[open] #welcome-skip{min-height:46px!important;positio
 html .pearl-world #welcome[open] .intro-signal i{animation:signal-arrive 900ms ease-out both!important}
 html .pearl-world #welcome[open].welcome-leaving{opacity:0!important;transition:opacity 160ms ease-out!important;pointer-events:none!important}
 @keyframes signal-arrive{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
-@media(max-width:700px){.pearl-world .nav.open{background:#1d344e!important}.pearl-world .nav.open .nav-link{color:#e4f1ff!important}.pearl-world .nav.open .nav-link[aria-current=page]{color:#20374d!important}}
 @media(prefers-reduced-motion:reduce){html .pearl-world #welcome[open] .intro-signal i{animation:none!important}html .pearl-world #welcome[open].welcome-leaving{transition:none!important}}
-@media(prefers-reduced-transparency:reduce){.pearl-world .header-inner,.pearl-world .mobile-dock{background:#1c3048!important}}
-.pearl-world .orbit-pick-card h3,.pearl-world .orbit-pick-card>p,.pearl-world .orbit-refresh{color:#dbeafa!important}.pearl-world .orbit-picks-note{color:#afc5dc!important}
-.pearl-world .legal-page{background:#f0f5fb;border:1px solid #ffffff91;border-radius:26px;padding:28px!important;color:#243a51}

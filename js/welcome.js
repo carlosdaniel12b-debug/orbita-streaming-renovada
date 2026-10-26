@@ -12,9 +12,9 @@ function close(){if(!dialog.open)return finish();if(leaving)return;clearTimeout(
 function open(){
  if(dialog.open)return;previous=document.activeElement;dialog.classList.remove('welcome-leaving');
  // Arm recovery before attempting any dialog or animation work.
- safetyTimer=setTimeout(finish,2400);
+ safetyTimer=setTimeout(finish,3200);
  try{dialog.showModal();}catch(e){finish();return;}
- releaseGuard();timer=setTimeout(close,1400);
+ releaseGuard();timer=setTimeout(close,2100);
 }
 dialog.addEventListener('close',()=>{clearTimeout(timer);clearTimeout(exitTimer);clearTimeout(safetyTimer);clearTimeout(window.orbitaWelcomeFallback);releaseGuard();(previous&&previous!==document.body?previous:document.getElementById('hero-main-cta'))?.focus({preventScroll:true});});
 dialog.addEventListener('cancel',event=>{event.preventDefault();finish();});

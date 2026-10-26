@@ -76,3 +76,16 @@ html body.pearl-world[data-page=index] #main,html body.pearl-world[data-page=ind
 
 /* Paint the fixed tabs behind the intro so its crossfade reveals them immediately. */
 @media(max-width:700px){html body.pearl-world .mobile-dock{animation:none!important;transition:none!important;content-visibility:visible!important}html body.pearl-world:not(:has(dialog[open]:not(#welcome))) .mobile-dock{visibility:visible!important}}
+
+/* Mobile logo loop uses two equal groups; translate avoids legacy transform resets. */
+@media(max-width:700px) and (prefers-reduced-motion:no-preference){
+ html body.pearl-world .platform-dock{display:block!important;overflow:hidden!important;padding:20px 0!important;touch-action:pan-y pinch-zoom}
+ html body.pearl-world .platform-dock-track{display:flex!important;flex:none!important;width:max-content!important;gap:0!important;padding:0!important;margin:0!important;animation:mobile-logo-loop 28s linear infinite!important;will-change:translate}
+ html body.pearl-world .platform-dock-group,html body.pearl-world .platform-dock-group[aria-hidden=true]{display:flex!important;flex:0 0 auto!important;width:auto!important;min-width:0!important;gap:0!important;margin:0!important;padding:0!important}
+ html body.pearl-world .platform-dock-group .platform-dock-item{flex:0 0 108px!important;width:108px!important;min-width:108px!important;box-sizing:border-box!important;margin:0!important;padding:0 10px!important}
+ html body.pearl-world .platform-dock img{width:70px!important;height:40px!important}
+ html body.pearl-world .platform-dock span{font-size:10px!important;white-space:nowrap!important}
+ html body.pearl-world .platform-dock:active .platform-dock-track,html body.pearl-world .platform-dock:focus-within .platform-dock-track{animation-play-state:paused!important}
+ html.motion-paused body.pearl-world .platform-dock-track{animation-play-state:paused!important}
+}
+@keyframes mobile-logo-loop{from{translate:0 0}to{translate:-50% 0}}

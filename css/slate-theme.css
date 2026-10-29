@@ -209,3 +209,7 @@ html body.pearl-world .footer { margin-top: 48px !important; }
   html body.pearl-world .tech-stage .premiere-story strong { font-size: 11px !important; }
   html body.pearl-world .tech-stage .premiere-story small { font-size: 8px; }
 }
+
+/* Three remaining services form one balanced desktop row. */
+@media (min-width:1001px) { html body.pearl-world .service-grid { grid-template-columns:repeat(3,minmax(0,1fr)) !important; } }
+@media (min-width:701px) and (max-width:1000px) { html body.pearl-world .service-grid > :last-child { grid-column:1 / -1; } }

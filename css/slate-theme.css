@@ -194,3 +194,18 @@ html body.pearl-world .footer { margin-top: 48px !important; }
   html body.pearl-world .tech-mode :is(h3,p,strong) { grid-column: 1; }
   html body.pearl-world .premiere-foot .premiere-story { flex-basis: 100%; }
 }
+
+/* A compact mobile introduction leaves the next section within reach. */
+@media (max-width:700px) {
+  html body.pearl-world .tech-stage .tech-sculpture { display: none !important; }
+  html body.pearl-world .tech-stage .premiere-copy { padding: 24px 22px 20px !important; }
+  html body.pearl-world .tech-stage h1 { font-size: clamp(27px,7.5vw,36px) !important; margin: 14px 0 !important; }
+  html body.pearl-world .tech-stage .premiere-copy > p { font-size: 14px !important; line-height: 1.6 !important; margin: 14px 0 20px !important; }
+  html body.pearl-world .tech-stage .premiere-actions { gap: 12px !important; }
+  html body.pearl-world .tech-stage .tech-tags { margin-top: 16px; }
+  html body.pearl-world .tech-stage .premiere-foot { min-height: 0 !important; padding: 14px 22px !important; gap: 10px 16px; }
+  html body.pearl-world .tech-stage .premiere-price strong { font-size: 24px !important; }
+  html body.pearl-world .tech-stage .premiere-story { flex: 1 1 120px; }
+  html body.pearl-world .tech-stage .premiere-story strong { font-size: 11px !important; }
+  html body.pearl-world .tech-stage .premiere-story small { font-size: 8px; }
+}

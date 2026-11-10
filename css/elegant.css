@@ -1743,7 +1743,7 @@ html body.pearl-world dialog#welcome[open] {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 0 !important;
+  gap: 28px !important;
 }
 
 html body.pearl-world dialog#welcome::backdrop {
@@ -1777,24 +1777,24 @@ html body.pearl-world dialog#welcome .intro-brand {
   -webkit-backdrop-filter: none !important;
 }
 
-/* Lockup horizontal exacto al logo de la página en formato gigante */
+/* Lockup horizontal exacto al logo de la página en tamaño equilibrado */
 html body.pearl-world dialog#welcome .intro-logo-lockup {
   display: inline-flex !important;
   flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: clamp(22px, 3.6vw, 44px) !important;
+  gap: clamp(16px, 2.2vw, 24px) !important;
 }
 
-/* Símbolo del planeta + anillo orbital + satélite a gran escala */
+/* Símbolo del planeta + anillo orbital + satélite */
 html body.pearl-world dialog#welcome .intro-brand-symbol {
   display: block !important;
-  width: clamp(120px, 21vw, 236px) !important;
-  height: clamp(103px, 18vw, 202px) !important;
+  width: clamp(82px, 11.5vw, 118px) !important;
+  height: clamp(70px, 9.8vw, 101px) !important;
   color: #142a3e !important;
   flex-shrink: 0 !important;
   overflow: visible !important;
-  filter: drop-shadow(0 14px 32px rgba(20, 42, 62, 0.1)) !important;
+  filter: drop-shadow(0 10px 24px rgba(20, 42, 62, 0.1)) !important;
 }
 
 html body.pearl-world dialog#welcome .intro-brand-symbol > circle {
@@ -1809,7 +1809,7 @@ html body.pearl-world dialog#welcome .intro-brand-orbit circle {
   transform-origin: 59px 13px !important;
 }
 
-/* Tipografía exacta del logo a gran escala: "órbita" arriba + "STREAMING" abajo */
+/* Tipografía exacta del logo en proporción limpia: "órbita" arriba + "STREAMING" abajo */
 html body.pearl-world dialog#welcome .intro-brand-name {
   display: flex !important;
   flex-direction: column !important;
@@ -1817,7 +1817,7 @@ html body.pearl-world dialog#welcome .intro-brand-name {
   justify-content: center !important;
   text-align: left !important;
   font-family: var(--font-ui) !important;
-  font-size: clamp(68px, 12.2vw, 138px) !important;
+  font-size: clamp(48px, 6.8vw, 70px) !important;
   font-weight: 800 !important;
   letter-spacing: -0.045em !important;
   line-height: 0.9 !important;
@@ -1829,43 +1829,43 @@ html body.pearl-world dialog#welcome .intro-brand-name {
 html body.pearl-world dialog#welcome .intro-brand-name span {
   display: block !important;
   font-family: var(--font-ui) !important;
-  font-size: clamp(22px, 3.95vw, 45px) !important;
+  font-size: clamp(15.5px, 2.2vw, 22.8px) !important;
   font-weight: 700 !important;
   letter-spacing: 0.28em !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   color: #3b5f6e !important;
-  margin-top: clamp(8px, 1.4vw, 16px) !important;
+  margin-top: clamp(6px, 0.8vw, 8px) !important;
   margin-right: -0.28em !important;
 }
 
-/* Botón discreto en la parte inferior para no ensuciar el logo central */
+/* Botón "Entrar ahora ↗" centrado justo debajo del logo */
 html body.pearl-world dialog#welcome #welcome-skip {
-  position: fixed !important;
-  bottom: 34px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
   z-index: 4 !important;
-  min-height: 40px !important;
-  padding: 8px 22px !important;
+  min-height: 42px !important;
+  padding: 9px 24px !important;
   border-radius: 100px !important;
-  background: rgba(255, 255, 255, 0.72) !important;
-  color: #3b5f6e !important;
-  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  color: #142a3e !important;
+  border: 1px solid rgba(255, 255, 255, 0.96) !important;
   box-shadow:
-    inset 0 1px 0 #ffffff,
-    0 6px 18px -4px rgba(20, 42, 62, 0.08) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  font-size: 12.5px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.01em !important;
+    inset 0 1.5px 0 #ffffff,
+    0 8px 20px -4px rgba(20, 42, 62, 0.09) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  font-size: 13px !important;
+  font-weight: 620 !important;
+  letter-spacing: -0.01em !important;
 }
 
 html body.pearl-world dialog#welcome #welcome-skip:hover {
   background: #ffffff !important;
   color: #142a3e !important;
-  transform: translateX(-50%) translateY(-2px) !important;
+  transform: translateY(-2px) !important;
 }
 
 /* Coreografía de animación desde cero para el logo gigante */
@@ -2015,11 +2015,11 @@ html body.pearl-world dialog#welcome #welcome-skip:hover {
 @keyframes orbita-hero-skip {
   0% {
     opacity: 0;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateY(10px);
   }
   100% {
-    opacity: 0.82;
-    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -2031,28 +2031,32 @@ html body.pearl-world dialog#welcome #welcome-skip:hover {
   }
   100% {
     opacity: 0;
-    transform: scale(1.07);
-    filter: blur(10px);
+    transform: scale(1.05);
+    filter: blur(8px);
   }
 }
 
 @media (max-width: 640px) {
+  html body.pearl-world dialog#welcome[open] {
+    gap: 24px !important;
+  }
+
   html body.pearl-world dialog#welcome .intro-logo-lockup {
-    gap: 16px !important;
+    gap: 14px !important;
   }
 
   html body.pearl-world dialog#welcome .intro-brand-symbol {
-    width: clamp(88px, 26vw, 118px) !important;
-    height: clamp(75px, 22.3vw, 101px) !important;
+    width: 74px !important;
+    height: 64px !important;
   }
 
   html body.pearl-world dialog#welcome .intro-brand-name {
-    font-size: clamp(52px, 15.5vw, 70px) !important;
+    font-size: 44px !important;
   }
 
   html body.pearl-world dialog#welcome .intro-brand-name span {
-    font-size: clamp(16.8px, 5vw, 22.8px) !important;
+    font-size: 14.3px !important;
     letter-spacing: 0.28em !important;
-    margin-top: 6px !important;
+    margin-top: 5px !important;
   }
 }

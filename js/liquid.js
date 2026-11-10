@@ -48,28 +48,65 @@ syncPaymentInputs();
 
 // 3. Efectos de Reflejo Especular y Cristal Líquido Interactivo al mover puntero o táctil
 const fine=matchMedia('(hover:hover) and (pointer:fine)'),reduce=matchMedia('(prefers-reduced-motion:reduce)');
-function setupLiquidReflection(){
-  if(!fine.matches||matchMedia('(max-width:700px)').matches) return;
-  const cards=$$('.platform-card,.plan-glass,.order-summary,.service-glass,.descubre-card,.pick-card,.feature-card-glass');
-  cards.forEach(card=>{
-    let frame=0;
-    card.addEventListener('pointermove',e=>{
-      if(reduce.matches||matchMedia('(max-width:700px)').matches||document.documentElement.classList.contains('motion-paused')||frame)return;
-      const x=e.clientX,y=e.clientY;
-      frame=requestAnimationFrame(()=>{
-        const r=card.getBoundingClientRect();
-        card.style.setProperty('--light-x',((x-r.left)/r.width*100)+'%');
-        card.style.setProperty('--light-y',((y-r.top)/r.height*100)+'%');
-        frame=0;
-      });
-    },{passive:true});
-    card.addEventListener('pointerleave',()=>{
-      card.style.removeProperty('--light-x');
-      card.style.removeProperty('--light-y');
+function bindCardReflection(card){
+  if(card.dataset.liquidBound==='1') return;
+  card.dataset.liquidBound='1';
+  let frame=0;
+  card.addEventListener('pointermove',e=>{
+    if(reduce.matches||!fine.matches||matchMedia('(max-width:700px)').matches||document.documentElement.classList.contains('motion-paused')||frame)return;
+    const x=e.clientX,y=e.clientY;
+    frame=requestAnimationFrame(()=>{
+      const r=card.getBoundingClientRect();
+      if(r.width>0&&r.height>0){
+        const px=((x-r.left)/r.width*100).toFixed(1);
+        const py=((y-r.top)/r.height*100).toFixed(1);
+        card.style.setProperty('--light-x',px+'%');
+        card.style.setProperty('--light-y',py+'%');
+      }
+      frame=0;
     });
+  },{passive:true});
+  card.addEventListener('pointerleave',()=>{
+    card.style.removeProperty('--light-x');
+    card.style.removeProperty('--light-y');
   });
 }
+
+function setupLiquidReflection(){
+  const selector='.platform-card,.plan-glass,.order-summary,.service-glass,.descubre-card,.pick-card,.orbit-pick-card,.home-extras nav a,.orbit-latest-list a,.pearl-arcade,.catalog-cta,.descubre-controls,.catalog-tools';
+  $$(selector).forEach(bindCardReflection);
+}
 setupLiquidReflection();
+
+// Paralaje espacial en el escenario Hero (estilo Apple Vision / tvOS)
+const techStage=document.querySelector('.premiere .tech-stage');
+if(techStage){
+  let stageFrame=0;
+  techStage.addEventListener('pointermove',e=>{
+    if(reduce.matches||!fine.matches||matchMedia('(max-width:700px)').matches||stageFrame)return;
+    const x=e.clientX,y=e.clientY;
+    stageFrame=requestAnimationFrame(()=>{
+      const r=techStage.getBoundingClientRect();
+      if(r.width>0&&r.height>0){
+        const nx=((x-r.left)/r.width-0.5)*2;
+        const ny=((y-r.top)/r.height-0.5)*2;
+        techStage.style.setProperty('--stage-rx',(-ny*5).toFixed(2)+'deg');
+        techStage.style.setProperty('--stage-ry',(nx*7).toFixed(2)+'deg');
+        techStage.style.setProperty('--stage-tx',(nx*10).toFixed(1)+'px');
+        techStage.style.setProperty('--stage-ty',(ny*8).toFixed(1)+'px');
+        techStage.style.setProperty('--light-x',((x-r.left)/r.width*100).toFixed(1)+'%');
+        techStage.style.setProperty('--light-y',((y-r.top)/r.height*100).toFixed(1)+'%');
+      }
+      stageFrame=0;
+    });
+  },{passive:true});
+  techStage.addEventListener('pointerleave',()=>{
+    techStage.style.removeProperty('--stage-rx');
+    techStage.style.removeProperty('--stage-ry');
+    techStage.style.removeProperty('--stage-tx');
+    techStage.style.removeProperty('--stage-ty');
+  });
+}
 
 // 4. Gran Reproductor Cinema Theater de Cristal Líquido (Tráilers en Alta Definición)
 const player=document.createElement('dialog');
@@ -468,6 +505,7 @@ function setupFilterAnimations(){
         card.classList.remove('pick-entering');
         void card.offsetWidth;
         card.classList.add('pick-entering');
+        bindCardReflection(card);
       });
     });
     observer.observe(orbitPicks, {childList: true});
@@ -475,6 +513,36 @@ function setupFilterAnimations(){
 }
 setupFilterAnimations();
 
+// 10. Aparición Fluida en Scroll estilo Apple (IntersectionObserver de una sola ejecución)
+let revealObserver=null;
+function setupScrollReveal(){
+  if(reduce.matches||typeof IntersectionObserver==='undefined') return;
+  if(!revealObserver){
+    revealObserver=new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-inview');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },{rootMargin:'0px 0px -32px 0px',threshold:0.06});
+  }
+  const targets=$$('.premiere-stage,.orbit-picks,.home-extras,.pearl-faq,.catalog-section,.platform-guide,.combo-layout,.combo-assurance,.pearl-arcade,.orbit-latest,.descubre-controls');
+  targets.forEach(el=>{
+    if(!el.classList.contains('reveal-ready')){
+      el.classList.add('reveal-ready');
+      revealObserver.observe(el);
+    }
+  });
+}
+setupScrollReveal();
+
+window.OrbitaLiquid={
+  refreshCards:()=>{
+    setupLiquidReflection();
+    setupScrollReveal();
+  }
+};
 window.OrbitaPreview={open:preview,close:closePlayer};
 
 player.addEventListener('cancel',event=>{event.preventDefault();closePlayer();});

@@ -1,80 +1,1109 @@
-/* Quiet surfaces, restrained accents, and a shared visual hierarchy. */
-html body.pearl-world {
-  --ink: #203b3e;
-  --muted: #617172;
-  --crystal-ink: #203b3e;
-  --crystal-muted: #617172;
-  --crystal-accent: linear-gradient(120deg,#245d5a,#34716b);
-  background: radial-gradient(ellipse 65% 600px at 0 0,#e2eee7,transparent),#f7f8f5 !important;
-  color: var(--ink);
-}
-html body.pearl-world .header-inner,
-html body.pearl-world .mobile-dock {
-  background: #fffffff0 !important;
-  border: 1px solid #e3e9e4 !important;
-  box-shadow: 0 6px 24px #203b3e09 !important;
-}
-html body.pearl-world .button:not(.ghost):not(:disabled),
-html body.pearl-world .floating-btn-orbit {
-  background: #285f5b !important;
-  box-shadow: none !important;
-  color: #fff !important;
-}
-html body.pearl-world .nav .nav-link[aria-current=page],
-html body.pearl-world .mobile-dock [aria-current=page] {
-  background: #e5eee9 !important;
-  color: #245650 !important;
-  box-shadow: none !important;
-}
-html body.pearl-world .premiere .tech-stage {
-  background: radial-gradient(ellipse at 90% 20%,#315f5e80,transparent 65%),#142e33 !important;
-  border-color: #2b484b !important;
-  box-shadow: 0 16px 40px #1a353411 !important;
-}
-html body.pearl-world .tech-stage h1 span { background: none !important; color: #c9dfca !important; }
-html body.pearl-world .tech-stage .premiere-actions .button:not(:disabled) {
-  background: #e5eedc !important; color: #244b41 !important; border-color: #e5eedc !important; box-shadow: none !important;
-}
-html body.pearl-world .tech-stage .premiere-foot { background: #ffffff04 !important; }
-html body.pearl-world .tech-float { box-shadow:none; background:#254748cc; border-color:#91b2a633; }
-html body.pearl-world :is(.quick-discovery,.catalog-tools,.descubre-controls,.pearl-help,.device-note) {
-  background: #fff !important; border: 1px solid #e1e7e2 !important; box-shadow: none !important;
-}
-html body.pearl-world :is(.platform-card,.pick-card,.service-glass,.order-summary) {
-  background: #fff !important; border: 1px solid #dfe7e1 !important; box-shadow: 0 5px 18px #284e4304 !important;
-}
-html body.pearl-world .service-glass { border-top: 3px solid #b8cbbf !important; }
-html body.pearl-world .service-canva { border-top-color: #c8bfd6 !important; }
-html body.pearl-world .service-chatgpt { border-top-color: #b9cbd3 !important; }
-html body.pearl-world .service-glass .service-link { background: #eef3ef !important; box-shadow: none !important; color: #285b51 !important; }
-html body.pearl-world .platform-dock { background: #edf2ed !important; border: 1px solid #e0e8e1 !important; border-radius: 18px !important; }
-html body.pearl-world .orbit-pick-cover { border-radius: 16px !important; }
-html body.pearl-world .orbit-pick-card h3 { margin-top: 14px; }
-html body.pearl-world .orbit-moods button[aria-pressed=true] { background: #285f5b !important; color: #fff !important; box-shadow: none !important; }
-html body.pearl-world .orbit-concierge { background: #1f4446 !important; box-shadow: none !important; }
-html body.pearl-world .orbit-concierge .button { background: #e5eedc !important; color: #244b41 !important; }
-html body.pearl-world .pearl-faq-list details { background: #fff !important; border: 1px solid #e0e7e2 !important; box-shadow: none !important; border-radius: 16px !important; }
-html body.pearl-world .footer { background: #edf1eb !important; border-color: #dce4dc !important; }
-html body.pearl-world .pearl-link { text-underline-offset: 5px; }
-.section-label { display: block; margin-bottom: 14px; color:#57796a; font-size:10px; font-weight:650; letter-spacing:.15em; }
-/* A short home page: discover, explore, then resolve questions. */
-html body.pearl-world[data-page=index] .premiere .tech-stage { min-height:420px !important; }
-html body.pearl-world[data-page=index] .platform-dock { margin-top:24px !important; }
-html body.pearl-world .orbit-picks .quick-discovery { width:100%; margin:0 0 24px !important; padding:18px 0 !important; border:0 !important; border-block:1px solid #e1e7e2 !important; border-radius:0 !important; background:transparent !important; }
-.home-extras { display:grid; grid-template-columns:1fr 1.2fr; align-items:center; gap:48px; padding-block:40px; border-block:1px solid #dfe7e0; }
-html body.pearl-world .home-extras h2 { font-size:clamp(26px,3vw,38px); line-height:1.2; margin:0 0 12px; }
-.home-extras p { margin:0; color:#61736a; font-size:14px; line-height:1.6; }
-.home-extras nav { display:grid; }
-.home-extras a { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 20px; padding:16px 0; border-bottom:1px solid #dfe7e0; color:#244c44; text-decoration:none; }
-.home-extras a:last-child { border-bottom:0; }
-.home-extras a>span { font-size:17px; font-weight:600; }
-.home-extras small { grid-column:1; color:#63756c; font-size:12px; }
-.home-extras b { grid-column:2; grid-row:1 / 3; align-self:center; font-size:21px; font-weight:400; }
-.home-extras a:hover>span { text-decoration:underline; text-underline-offset:5px; }
-@media (max-width:700px) {
-  html body.pearl-world[data-page=index] .premiere .tech-stage { min-height:0 !important; }
-  .home-extras { grid-template-columns:minmax(0,1fr); gap:20px; padding-block:28px; }
-  html body.pearl-world .orbit-picks .quick-discovery { padding:16px 0 !important; }
+/* ==========================================================================
+   ÓRBITA STREAMING — APPLE LIQUID GLASS & FLUID MOTION DESIGN SYSTEM (2026)
+   Inspirado en Apple WWDC Liquid Glass (visionOS / iOS 26 / tvOS)
+   ========================================================================== */
+
+:root {
+  --lg-ink: #142638;
+  --lg-ink-soft: #485e74;
+  --lg-accent: linear-gradient(135deg, #0d747c 0%, #24588e 55%, #47529e 100%);
+  --lg-accent-solid: #156874;
+  --lg-surface: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.54) 55%, rgba(238, 246, 255, 0.68) 100%);
+  --lg-surface-strong: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(244, 249, 255, 0.74) 100%);
+  --lg-border: rgba(255, 255, 255, 0.88);
+  --lg-border-subtle: rgba(255, 255, 255, 0.72);
+  --lg-specular: inset 0 1.5px 0 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 0 rgba(255, 255, 255, 0.48), inset 1px 0 0 0 rgba(255, 255, 255, 0.65);
+  --lg-shadow: 0 14px 36px -8px rgba(14, 34, 58, 0.085), 0 4px 12px -2px rgba(14, 34, 58, 0.04);
+  --lg-shadow-hover: 0 22px 48px -10px rgba(14, 36, 64, 0.16), 0 8px 20px -4px rgba(14, 36, 64, 0.06);
+  --lg-blur: blur(26px) saturate(190%);
+  --lg-blur-heavy: blur(34px) saturate(200%);
+  --spring-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --spring-snappy: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-html body.pearl-world .orbit-picks .quick-discovery { grid-template-columns:minmax(0,1fr) !important; }
+/* 1. LIENZO ESPACIAL LUMINOSO Y CAÚSTICAS ORGÁNICAS */
+html body.pearl-world {
+  --ink: var(--lg-ink);
+  --muted: var(--lg-ink-soft);
+  --crystal-ink: var(--lg-ink);
+  --crystal-muted: var(--lg-ink-soft);
+  --crystal-accent: var(--lg-accent);
+  color: var(--lg-ink) !important;
+  background:
+    radial-gradient(ellipse 75% 650px at 8% -5%, rgba(164, 238, 222, 0.58), transparent 68%),
+    radial-gradient(ellipse 65% 800px at 95% 18%, rgba(186, 212, 255, 0.56), transparent 68%),
+    radial-gradient(ellipse 70% 780px at 15% 58%, rgba(218, 202, 255, 0.42), transparent 70%),
+    radial-gradient(ellipse 75% 700px at 88% 92%, rgba(172, 232, 248, 0.48), transparent 70%),
+    #edf3fa !important;
+  background-attachment: fixed;
+}
+
+html body.pearl-world .liquid-atmosphere {
+  display: block !important;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+html body.pearl-world .liquid-caustic {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+html body.pearl-world .liquid-caustic.caustic-1 {
+  width: min(56vw, 680px);
+  height: min(56vw, 680px);
+  top: -12%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(132, 235, 212, 0.55), rgba(168, 222, 255, 0.15) 70%, transparent);
+  animation: lg-caustic-1 22s ease-in-out infinite alternate;
+}
+
+html body.pearl-world .liquid-caustic.caustic-2 {
+  width: min(58vw, 720px);
+  height: min(58vw, 720px);
+  top: 26%;
+  right: -14%;
+  background: radial-gradient(circle, rgba(178, 198, 255, 0.52), rgba(214, 192, 255, 0.16) 70%, transparent);
+  animation: lg-caustic-2 26s ease-in-out infinite alternate;
+}
+
+html body.pearl-world .liquid-caustic.caustic-3 {
+  width: min(50vw, 620px);
+  height: min(50vw, 620px);
+  bottom: -14%;
+  left: 22%;
+  background: radial-gradient(circle, rgba(156, 228, 246, 0.48), rgba(190, 240, 220, 0.14) 70%, transparent);
+  animation: lg-caustic-3 20s ease-in-out infinite alternate;
+}
+
+@keyframes lg-caustic-1 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(4vw, 3vw, 0) scale(1.08); }
+}
+@keyframes lg-caustic-2 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-4vw, 4vw, 0) scale(1.06); }
+}
+@keyframes lg-caustic-3 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(3vw, -3vw, 0) scale(1.07); }
+}
+
+/* 2. HEADER CÁPSULA LIQUID GLASS Y DOCK MÓVIL ESTILO iOS 26 / visionOS */
+html body.pearl-world .header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 80 !important;
+  padding: 12px 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html body.pearl-world .header-inner {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(242, 248, 255, 0.56) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow:
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.45),
+    0 12px 34px -6px rgba(15, 36, 62, 0.1) !important;
+  backdrop-filter: var(--lg-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--lg-blur-heavy) !important;
+  border-radius: 100px !important;
+  transition: background 260ms var(--spring-apple), box-shadow 260ms var(--spring-apple), transform 260ms var(--spring-apple) !important;
+}
+
+html body.pearl-world .header.scrolled .header-inner {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.84) 0%, rgba(240, 247, 255, 0.72) 100%) !important;
+  box-shadow:
+    inset 0 1.5px 0 0 #ffffff,
+    0 16px 40px -6px rgba(12, 32, 56, 0.15) !important;
+}
+
+@media (min-width: 901px) {
+  html body.pearl-world .nav {
+    background: rgba(215, 228, 244, 0.36) !important;
+    border: 1px solid rgba(255, 255, 255, 0.82) !important;
+    box-shadow: inset 0 1px 2px rgba(18, 40, 66, 0.06), 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    border-radius: 100px !important;
+    padding: 4px !important;
+  }
+
+  html body.pearl-world .nav .nav-link {
+    border-radius: 100px !important;
+    color: #2f4760 !important;
+    font-weight: 560 !important;
+    transition: transform 200ms var(--spring-apple), background-color 200ms ease, color 200ms ease, box-shadow 200ms ease !important;
+  }
+
+  html body.pearl-world .nav .nav-link:hover:not([aria-current="page"]) {
+    background: rgba(255, 255, 255, 0.72) !important;
+    color: #12283c !important;
+    box-shadow: inset 0 1px 0 #fff, 0 2px 8px rgba(15, 36, 62, 0.06) !important;
+  }
+}
+
+html body.pearl-world .nav .nav-link[aria-current="page"],
+html body.pearl-world .mobile-dock [aria-current="page"] {
+  background: var(--lg-accent) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 6px 16px -3px rgba(20, 74, 108, 0.32) !important;
+}
+
+/* 3. BOTONES Y CONTROLES TÁCTILES LIQUID GLASS */
+html body.pearl-world .button:not(.ghost):not(:disabled),
+html body.pearl-world .floating-btn-orbit,
+html body.pearl-world #order:not(:disabled) {
+  background: var(--lg-accent) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.52),
+    inset 0 -1px 0 rgba(10, 26, 48, 0.25),
+    0 8px 22px -4px rgba(17, 74, 102, 0.28) !important;
+  border-radius: 100px !important;
+  font-weight: 600 !important;
+  transition: transform 220ms var(--spring-apple), box-shadow 220ms var(--spring-apple), filter 220ms ease !important;
+}
+
+html body.pearl-world .button.ghost,
+html body.pearl-world .orbit-refresh,
+html body.pearl-world .orbit-moods button,
+html body.pearl-world .chip-btn,
+html body.pearl-world .filters button,
+html body.pearl-world .presets button {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(238, 245, 255, 0.62)) !important;
+  color: #243d56 !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 4px 12px rgba(16, 38, 64, 0.05) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  border-radius: 100px !important;
+  transition: transform 200ms var(--spring-apple), box-shadow 200ms var(--spring-apple), background 200ms ease, border-color 200ms ease !important;
+}
+
+html body.pearl-world .orbit-moods button[aria-pressed="true"],
+html body.pearl-world .chip-btn.active,
+html body.pearl-world .chip-btn[aria-pressed="true"],
+html body.pearl-world .filters button[aria-pressed="true"],
+html body.pearl-world .filters button.active {
+  background: var(--lg-accent) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 6px 16px -3px rgba(18, 76, 108, 0.3) !important;
+}
+
+/* 4. HERO ESCENARIO CINEMÁTICO (ESTILO APPLE VISION PRO / APPLE TV+) */
+html body.pearl-world .premiere .tech-stage {
+  position: relative !important;
+  background:
+    radial-gradient(circle 480px at var(--light-x, 78%) var(--light-y, 28%), rgba(72, 188, 210, 0.24), transparent 70%),
+    radial-gradient(ellipse 75% 70% at 88% 18%, rgba(44, 118, 168, 0.48), transparent 65%),
+    radial-gradient(ellipse 65% 65% at 62% 100%, rgba(76, 148, 114, 0.34), transparent 62%),
+    linear-gradient(135deg, #0b192c 0%, #10253a 52%, #132c3d 100%) !important;
+  border: 1px solid rgba(190, 224, 255, 0.42) !important;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.38),
+    inset 0 -1px 0 rgba(140, 200, 255, 0.16),
+    0 26px 60px -12px rgba(10, 28, 52, 0.28) !important;
+  border-radius: 32px !important;
+  overflow: hidden !important;
+}
+
+html body.pearl-world .tech-stage h1 {
+  color: #f6fbff !important;
+  text-shadow: 0 2px 24px rgba(8, 20, 38, 0.35);
+}
+
+html body.pearl-world .tech-stage h1 span {
+  background: linear-gradient(105deg, #a8e6ff 0%, #b8f5d4 52%, #d8d4ff 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+html body.pearl-world .tech-stage .premiere-actions .button:not(:disabled) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(226, 245, 255, 0.9) 100%) !important;
+  color: #0e283b !important;
+  border: 1px solid #ffffff !important;
+  box-shadow:
+    inset 0 1.5px 0 #ffffff,
+    0 10px 28px rgba(0, 0, 0, 0.22) !important;
+}
+
+html body.pearl-world .tech-stage .premiere-actions > a:not(.button) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 18px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  color: #eef7ff !important;
+  font-weight: 560;
+  transition: transform 200ms var(--spring-apple), background 200ms ease, border-color 200ms ease;
+}
+
+html body.pearl-world .tech-stage .tech-tags span {
+  background: rgba(255, 255, 255, 0.09) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  color: #d4e8f9 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Escultura 3D de Cristal Líquido en el Hero */
+html body.pearl-world .tech-core {
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.26) 0%, rgba(190, 230, 255, 0.08) 52%, rgba(154, 240, 210, 0.2) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.58) !important;
+  backdrop-filter: blur(22px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+  box-shadow:
+    inset 0 2px 1px rgba(255, 255, 255, 0.78),
+    inset 0 -2px 1px rgba(150, 210, 255, 0.32),
+    0 28px 56px rgba(4, 12, 26, 0.45),
+    0 0 60px rgba(110, 210, 245, 0.16) !important;
+  transform: perspective(900px) rotateY(calc(-16deg + var(--stage-ry, 0deg))) rotateX(calc(8deg + var(--stage-rx, 0deg))) rotateZ(-6deg) translate3d(var(--stage-tx, 0px), var(--stage-ty, 0px), 0);
+  transition: transform 240ms var(--spring-apple);
+  animation: lg-core-float 6.5s ease-in-out infinite alternate;
+}
+
+html body.pearl-world .tech-float {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(28, 56, 82, 0.72) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  backdrop-filter: blur(18px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    0 14px 32px rgba(4, 14, 28, 0.35) !important;
+  border-radius: 18px !important;
+}
+
+html body.pearl-world .tech-float.float-top {
+  animation: lg-pill-float-a 5.5s ease-in-out infinite alternate;
+}
+
+html body.pearl-world .tech-float.float-bottom {
+  animation: lg-pill-float-b 6.2s ease-in-out infinite alternate;
+}
+
+html body.pearl-world .tech-bars i {
+  animation: lg-eq-pulse 1.6s ease-in-out infinite alternate;
+}
+html body.pearl-world .tech-bars i:nth-child(2n) { animation-delay: 0.25s; }
+html body.pearl-world .tech-bars i:nth-child(3n) { animation-delay: 0.5s; }
+
+@keyframes lg-core-float {
+  0% { translate: 0 0; }
+  100% { translate: 0 -8px; }
+}
+@keyframes lg-pill-float-a {
+  0% { translate: 0 0; }
+  100% { translate: 0 -6px; }
+}
+@keyframes lg-pill-float-b {
+  0% { translate: 0 0; }
+  100% { translate: 0 6px; }
+}
+@keyframes lg-eq-pulse {
+  0% { transform: scaleY(0.65); opacity: 0.75; }
+  100% { transform: scaleY(1.08); opacity: 1; }
+}
+
+/* 5. CARRUSEL / DOCK DE PLATAFORMAS EN CRISTAL LÍQUIDO */
+html body.pearl-world .platform-dock {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.72) 0%, rgba(238, 246, 255, 0.56) 50%, rgba(242, 238, 255, 0.66) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.92) !important;
+  box-shadow: var(--lg-specular), var(--lg-shadow) !important;
+  backdrop-filter: var(--lg-blur) !important;
+  -webkit-backdrop-filter: var(--lg-blur) !important;
+  border-radius: 26px !important;
+  padding: 16px 0 !important;
+}
+
+html body.pearl-world .platform-dock img {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.98) !important;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 4px 12px rgba(16, 38, 62, 0.06) !important;
+  border-radius: 12px !important;
+  transition: transform 220ms var(--spring-apple), box-shadow 220ms var(--spring-apple) !important;
+}
+
+/* 6. PANELES Y CONTROLES DE BÚSQUEDA / FILTROS LIQUID GLASS */
+html body.pearl-world :is(.quick-discovery, .catalog-tools, .descubre-controls, .pearl-help, .device-note, .pearl-arcade, .catalog-cta) {
+  background:
+    radial-gradient(circle 360px at var(--light-x, 25%) var(--light-y, 0%), rgba(255, 255, 255, 0.85), transparent 72%),
+    var(--lg-surface) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-specular), var(--lg-shadow) !important;
+  backdrop-filter: var(--lg-blur) !important;
+  -webkit-backdrop-filter: var(--lg-blur) !important;
+  border-radius: 26px !important;
+}
+
+html body.pearl-world .orbit-picks .quick-discovery {
+  padding: 20px 24px !important;
+  margin: 0 0 24px !important;
+  border-radius: 24px !important;
+  border: 1px solid var(--lg-border) !important;
+}
+
+html body.pearl-world .descubre-search-bar {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: inset 0 2px 5px rgba(16, 38, 62, 0.04), 0 2px 8px rgba(16, 38, 62, 0.03) !important;
+  border-radius: 16px !important;
+  padding: 2px 14px !important;
+}
+
+html body.pearl-world .descubre-search-bar input {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 7. TARJETAS LIQUID GLASS CON REFLEJO ESPECULAR INTERACTIVO */
+html body.pearl-world :is(.platform-card, .pick-card, .service-glass, .order-summary, .descubre-card, .orbit-pick-card) {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle 380px at var(--light-x, 30%) var(--light-y, 0%), rgba(255, 255, 255, 0.92), transparent 70%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.56) 58%, var(--card-tint, rgba(226, 238, 255, 0.62)) 100%) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-specular), var(--lg-shadow) !important;
+  backdrop-filter: var(--lg-blur) !important;
+  -webkit-backdrop-filter: var(--lg-blur) !important;
+  border-radius: 24px !important;
+  transition:
+    transform 320ms var(--spring-apple),
+    box-shadow 320ms var(--spring-apple),
+    border-color 240ms ease !important;
+}
+
+/* Tintes cromáticos sutiles por plataforma */
+html body.pearl-world .platform-card[data-name*="max"],
+html body.pearl-world .descubre-card[data-platform-id="hbomax"] {
+  --card-tint: rgba(210, 224, 255, 0.65);
+}
+html body.pearl-world .platform-card[data-name*="prime"],
+html body.pearl-world .descubre-card[data-platform-id="primevideo"] {
+  --card-tint: rgba(204, 236, 255, 0.65);
+}
+html body.pearl-world .platform-card[data-name*="apple"],
+html body.pearl-world .descubre-card[data-platform-id="appletv"] {
+  --card-tint: rgba(224, 232, 245, 0.68);
+}
+html body.pearl-world .platform-card[data-name*="paramount"],
+html body.pearl-world .descubre-card[data-platform-id="paramount"] {
+  --card-tint: rgba(208, 228, 255, 0.65);
+}
+html body.pearl-world .platform-card[data-name*="vix"],
+html body.pearl-world .descubre-card[data-platform-id="vix"] {
+  --card-tint: rgba(255, 228, 210, 0.62);
+}
+html body.pearl-world .platform-card[data-category="music"],
+html body.pearl-world .service-spotify {
+  --card-tint: rgba(196, 242, 220, 0.68);
+}
+html body.pearl-world .platform-card[data-category="tools"],
+html body.pearl-world .service-canva {
+  --card-tint: rgba(228, 214, 252, 0.68);
+}
+html body.pearl-world .platform-card[data-name*="chatgpt"],
+html body.pearl-world .service-chatgpt {
+  --card-tint: rgba(198, 238, 236, 0.68);
+}
+
+/* Tarjetas de Recomendaciones Editoriales en Inicio (Orbit Picks) */
+html body.pearl-world .orbit-pick-card {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 12px !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+html body.pearl-world .orbit-pick-cover {
+  position: relative !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  box-shadow: 0 8px 20px rgba(14, 34, 58, 0.1) !important;
+}
+
+html body.pearl-world .orbit-pick-cover img {
+  transition: transform 520ms var(--spring-apple) !important;
+}
+
+html body.pearl-world .orbit-pick-cover > span {
+  background: rgba(10, 24, 40, 0.68) !important;
+  backdrop-filter: blur(14px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  color: #f4f9ff !important;
+  border-radius: 100px !important;
+  padding: 5px 11px !important;
+}
+
+html body.pearl-world .orbit-pick-card h3 {
+  margin: 14px 4px 6px !important;
+  color: #14283c !important;
+}
+
+html body.pearl-world .orbit-pick-card p {
+  margin: 0 4px 10px !important;
+  color: #4a6076 !important;
+}
+
+html body.pearl-world .orbit-pick-card small {
+  margin: auto 4px 2px !important;
+  padding-top: 8px !important;
+  border-top: 1px solid rgba(180, 202, 224, 0.35);
+  color: #5b7288 !important;
+}
+
+/* 8. SECCIÓN "MÁS ALLÁ DE LA PANTALLA" (BENTO LIQUID GLASS EN INICIO) */
+html body.pearl-world .home-extras {
+  display: grid;
+  grid-template-columns: 0.9fr 1.3fr;
+  align-items: center;
+  gap: 36px;
+  padding-block: 36px;
+  border-block: 0 !important;
+}
+
+html body.pearl-world .home-extras nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+html body.pearl-world .home-extras nav a {
+  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 138px;
+  padding: 20px !important;
+  border-radius: 22px !important;
+  background:
+    radial-gradient(circle 240px at var(--light-x, 20%) var(--light-y, 0%), rgba(255, 255, 255, 0.92), transparent 72%),
+    var(--lg-surface) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-specular), var(--lg-shadow) !important;
+  backdrop-filter: var(--lg-blur) !important;
+  -webkit-backdrop-filter: var(--lg-blur) !important;
+  text-decoration: none !important;
+  color: #162c40 !important;
+  transition: transform 280ms var(--spring-apple), box-shadow 280ms var(--spring-apple), border-color 220ms ease !important;
+}
+
+html body.pearl-world .home-extras nav a:nth-child(1) {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(206, 245, 224, 0.62)) !important;
+}
+html body.pearl-world .home-extras nav a:nth-child(2) {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(230, 216, 254, 0.64)) !important;
+}
+html body.pearl-world .home-extras nav a:nth-child(3) {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.86), rgba(206, 236, 252, 0.66)) !important;
+}
+
+html body.pearl-world .home-extras nav a > span {
+  font-size: 19px !important;
+  font-weight: 640 !important;
+  letter-spacing: -0.03em;
+  color: #13283c !important;
+  text-decoration: none !important;
+}
+
+html body.pearl-world .home-extras nav a small {
+  font-size: 12.5px !important;
+  color: #4d647a !important;
+  margin-top: 4px;
+}
+
+html body.pearl-world .home-extras nav a b {
+  align-self: flex-end !important;
+  margin-top: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 1px 0 #fff, 0 4px 10px rgba(15, 36, 62, 0.07);
+  font-size: 15px !important;
+  color: #184e60;
+  transition: transform 240ms var(--spring-apple), background 200ms ease, color 200ms ease;
+}
+
+/* 9. PÁGINA DESCUBRE: TARJETAS DE PÓSTER & "NUEVAS EN SELECCIÓN" */
+html body.pearl-world .orbit-latest-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+html body.pearl-world .orbit-latest-list a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 18px;
+  background: var(--lg-surface) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-specular), 0 8px 22px -6px rgba(14, 34, 58, 0.08) !important;
+  backdrop-filter: blur(18px) saturate(175%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(175%) !important;
+  text-decoration: none;
+  color: var(--lg-ink);
+  transition: transform 240ms var(--spring-apple), box-shadow 240ms var(--spring-apple) !important;
+}
+
+html body.pearl-world .orbit-latest-list img {
+  width: 46px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(12, 28, 48, 0.14);
+  flex-shrink: 0;
+}
+
+html body.pearl-world .orbit-latest-list strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #14283c;
+}
+
+html body.pearl-world .orbit-latest-list small {
+  display: block;
+  font-size: 11.5px;
+  color: #52687e;
+  margin-top: 3px;
+}
+
+html body.pearl-world .descubre-card {
+  padding: 10px !important;
+  border-radius: 24px !important;
+}
+
+html body.pearl-world .descubre-cover {
+  position: relative !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  aspect-ratio: 2 / 3;
+  box-shadow: 0 8px 22px rgba(12, 30, 52, 0.12) !important;
+}
+
+html body.pearl-world .descubre-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 520ms var(--spring-apple) !important;
+}
+
+html body.pearl-world .descubre-cover-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: #f5faff;
+  background: rgba(10, 24, 42, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 4px 10px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+html body.pearl-world .descubre-cover-hover {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 14px;
+  background: linear-gradient(0deg, rgba(8, 20, 36, 0.65) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 260ms var(--spring-apple);
+  pointer-events: none;
+}
+
+html body.pearl-world .descubre-cover-hover span {
+  padding: 7px 14px;
+  border-radius: 100px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transform: translateY(6px);
+  transition: transform 260ms var(--spring-apple);
+}
+
+html body.pearl-world .descubre-card-body {
+  padding: 12px 6px 4px !important;
+}
+
+html body.pearl-world .descubre-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+html body.pearl-world .descubre-trailer {
+  margin-top: 0 !important;
+  min-height: 36px !important;
+  padding: 6px 12px !important;
+  font-size: 11.5px !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, rgba(16, 118, 126, 0.14), rgba(44, 88, 152, 0.16)) !important;
+  color: #144964 !important;
+  border: 1px solid rgba(110, 165, 200, 0.45) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+  border-radius: 100px !important;
+  transition: transform 180ms var(--spring-apple), background 180ms ease !important;
+}
+
+html body.pearl-world .descubre-detail-pill {
+  min-height: 36px;
+  padding: 6px 11px;
+  font-size: 11.5px;
+  font-weight: 560;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.68);
+  color: #365068;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 0 #fff;
+  cursor: pointer;
+  margin-left: auto;
+  transition: transform 180ms var(--spring-apple), background 180ms ease;
+}
+
+/* 10. FAQ Y MODALES LIQUID GLASS (visionOS SHEETS) */
+html body.pearl-world .pearl-faq-list details {
+  background: var(--lg-surface) !important;
+  border: 1px solid var(--lg-border) !important;
+  box-shadow: var(--lg-specular), 0 6px 20px -4px rgba(14, 34, 58, 0.06) !important;
+  backdrop-filter: blur(20px) saturate(175%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(175%) !important;
+  border-radius: 20px !important;
+  transition: transform 220ms var(--spring-apple), box-shadow 220ms var(--spring-apple), background 220ms ease !important;
+}
+
+html body.pearl-world .pearl-faq-list details[open] {
+  background: var(--lg-surface-strong) !important;
+  box-shadow: var(--lg-specular), 0 14px 32px -6px rgba(14, 34, 58, 0.1) !important;
+}
+
+html body.pearl-world :is(#details, #assistant, #combo-review, #orbit-trailer-modal) {
+  background: linear-gradient(145deg, rgba(252, 254, 255, 0.9) 0%, rgba(236, 244, 255, 0.86) 60%, rgba(228, 245, 240, 0.88) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow:
+    inset 0 1.5px 0 #ffffff,
+    0 32px 90px -12px rgba(10, 26, 52, 0.36) !important;
+  backdrop-filter: var(--lg-blur-heavy) !important;
+  -webkit-backdrop-filter: var(--lg-blur-heavy) !important;
+  border-radius: 28px !important;
+}
+
+html body.pearl-world dialog:not(#welcome)::backdrop {
+  background: rgba(10, 24, 44, 0.48) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
+}
+
+/* Ficha de Película / Serie en Modal (#details .story-detail) */
+html body.pearl-world .story-detail {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding-top: 12px;
+}
+
+html body.pearl-world .story-detail-poster img,
+html body.pearl-world .story-detail > img {
+  width: 100%;
+  max-width: 170px;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 14px 32px rgba(12, 30, 54, 0.18);
+  display: block;
+}
+
+html body.pearl-world .story-detail-genres {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  font-size: 12px !important;
+  color: #2c4a64 !important;
+  margin: 8px 0 !important;
+}
+
+/* 11. ANIMACIONES DE ENTRADA Y MICRO-INTERACCIONES CON FÍSICA DE RESORTE (SPRING) */
+@media (prefers-reduced-motion: no-preference) {
+  .card-entering,
+  .pick-entering {
+    animation: lg-card-spring 420ms var(--spring-apple) both;
+    animation-delay: calc(var(--stagger, 0) * 32ms);
+  }
+
+  .reveal-ready {
+    opacity: 0;
+    transform: translateY(18px) scale(0.99);
+    transition: opacity 520ms var(--spring-apple), transform 520ms var(--spring-apple);
+  }
+
+  .reveal-ready.is-inview {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  @keyframes lg-card-spring {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+/* Hover states exclusivos para punteros precisos (Mouse / Trackpad) */
+@media (hover: hover) and (pointer: fine) {
+  html body.pearl-world :is(.platform-card, .descubre-card, .orbit-pick-card, .pick-card, .home-extras nav a, .orbit-latest-list a):hover {
+    transform: translateY(-6px) scale(1.012) !important;
+    box-shadow: var(--lg-specular), var(--lg-shadow-hover) !important;
+    border-color: #ffffff !important;
+  }
+
+  html body.pearl-world .descubre-card:hover .descubre-cover img,
+  html body.pearl-world .orbit-pick-card:hover .orbit-pick-cover img {
+    transform: scale(1.06) !important;
+  }
+
+  html body.pearl-world .descubre-card:hover .descubre-cover-hover {
+    opacity: 1;
+  }
+
+  html body.pearl-world .descubre-card:hover .descubre-cover-hover span {
+    transform: translateY(0);
+  }
+
+  html body.pearl-world .home-extras nav a:hover b {
+    transform: translate(2px, -2px) scale(1.08);
+    background: var(--lg-accent);
+    color: #ffffff;
+  }
+
+  html body.pearl-world .button:hover:not(:disabled),
+  html body.pearl-world .floating-btn:hover,
+  html body.pearl-world .chip-btn:hover,
+  html body.pearl-world .orbit-moods button:hover,
+  html body.pearl-world .filters button:hover {
+    transform: translateY(-2px) !important;
+  }
+
+  html body.pearl-world .tech-stage .premiere-actions > a:not(.button):hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: translateY(-2px);
+  }
+}
+
+/* Respuesta táctil instantánea al presionar (:active) en todos los dispositivos */
+html body.pearl-world :is(.button, .chip-btn, .orbit-moods button, .filters button, .pick-card, .descubre-trailer, .descubre-detail-pill, .mobile-dock a, .mobile-dock button):active {
+  transform: scale(0.96) !important;
+  transition: transform 90ms ease-out !important;
+}
+
+/* 12. ADAPTABILIDAD MULTIDISPOSITIVO (TABLETS, TELÉFONOS Y PANTALLAS COMPACTAS) */
+@media (max-width: 1024px) {
+  html body.pearl-world .home-extras {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  html body.pearl-world .orbit-latest-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  html body.pearl-world .descubre-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  /* Header y Muelle Móvil con verdadero Liquid Glass translúcido en celular */
+  html body.pearl-world .header-inner {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(240, 247, 255, 0.72) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.95) !important;
+    box-shadow:
+      inset 0 1.5px 0 #ffffff,
+      0 10px 28px rgba(15, 36, 62, 0.12) !important;
+    backdrop-filter: blur(24px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+    border-radius: 24px !important;
+  }
+
+  html body.pearl-world .mobile-dock {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.84) 0%, rgba(238, 246, 255, 0.76) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.96) !important;
+    box-shadow:
+      inset 0 1.5px 0 #ffffff,
+      0 14px 36px rgba(12, 32, 56, 0.18) !important;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    border-radius: 26px !important;
+  }
+
+  html body.pearl-world .nav.open {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(240, 247, 255, 0.88)) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    border: 1px solid #ffffff !important;
+    border-radius: 24px !important;
+  }
+
+  /* Escultura 3D orbital visible y proporcionada en móvil */
+  html body.pearl-world .tech-stage .tech-sculpture {
+    display: grid !important;
+    min-height: 185px !important;
+    margin: 4px 16px 18px !important;
+  }
+
+  html body.pearl-world .tech-stage .tech-core {
+    width: 128px !important;
+    height: 142px !important;
+    border-radius: 28px !important;
+  }
+
+  html body.pearl-world .tech-stage .tech-core svg {
+    width: 54px !important;
+    height: 46px !important;
+  }
+
+  html body.pearl-world .tech-stage .tech-core > span {
+    font-size: 25px !important;
+  }
+
+  html body.pearl-world .tech-stage .tech-orbit {
+    width: 220px !important;
+    height: 112px !important;
+  }
+
+  html body.pearl-world .tech-stage .orbit-b {
+    width: 170px !important;
+    height: 170px !important;
+  }
+
+  /* Marquee de plataformas fluido en móvil */
+  html body.pearl-world .platform-dock {
+    overflow: hidden !important;
+    padding: 14px 0 !important;
+    border-radius: 22px !important;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 20px, #000 calc(100% - 20px), transparent 100%) !important;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 20px, #000 calc(100% - 20px), transparent 100%) !important;
+  }
+
+  html body.pearl-world .platform-dock-track {
+    display: flex !important;
+    width: max-content !important;
+    animation: mobile-logo-loop 26s linear infinite !important;
+  }
+
+  html body.pearl-world .platform-dock-group,
+  html body.pearl-world .platform-dock-group[aria-hidden="true"] {
+    display: flex !important;
+    width: auto !important;
+    gap: 0 !important;
+  }
+
+  html body.pearl-world .platform-dock-group .platform-dock-item {
+    flex: 0 0 92px !important;
+    width: 92px !important;
+    min-width: 92px !important;
+    padding: 4px 6px !important;
+  }
+
+  html body.pearl-world .platform-dock img {
+    width: 62px !important;
+    height: 36px !important;
+  }
+
+  /* Chips de filtro deslizables con un pulgar en móvil (sin muro de botones) */
+  html body.pearl-world .orbit-moods,
+  html body.pearl-world .chips-scroll,
+  html body.pearl-world .catalog-tools .filters {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 8px !important;
+    padding: 2px 2px 6px !important;
+    max-width: 100% !important;
+  }
+
+  html body.pearl-world .orbit-moods::-webkit-scrollbar,
+  html body.pearl-world .chips-scroll::-webkit-scrollbar,
+  html body.pearl-world .catalog-tools .filters::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  html body.pearl-world .orbit-moods button,
+  html body.pearl-world .chips-scroll .chip-btn,
+  html body.pearl-world .catalog-tools .filters button {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Tarjetas Bento de Más allá de la pantalla en móvil */
+  html body.pearl-world .home-extras nav {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  html body.pearl-world .home-extras nav a {
+    min-height: 0;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 16px 18px !important;
+  }
+
+  html body.pearl-world .home-extras nav a b {
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+
+  /* Cuadrícula Descubre en móvil */
+  html body.pearl-world .descubre-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px 10px !important;
+  }
+
+  html body.pearl-world .descubre-card {
+    padding: 8px !important;
+    border-radius: 20px !important;
+  }
+
+  html body.pearl-world .descubre-cover {
+    border-radius: 14px !important;
+  }
+
+  html body.pearl-world .descubre-detail-pill {
+    display: none;
+  }
+
+  html body.pearl-world .descubre-trailer {
+    width: 100%;
+    justify-content: center;
+  }
+
+  html body.pearl-world .orbit-latest-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  html body.pearl-world .orbit-latest-list a {
+    padding: 8px !important;
+    border-radius: 15px !important;
+  }
+
+  html body.pearl-world .story-detail {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  html body.pearl-world .story-detail-poster img,
+  html body.pearl-world .story-detail > img {
+    max-width: 130px;
+    border-radius: 14px;
+  }
+
+  /* Barra de checkout flotante en Combos con Liquid Glass */
+  html body.pearl-world .combo-checkout-bar {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(236, 246, 255, 0.82)) !important;
+    border: 1px solid #ffffff !important;
+    box-shadow: inset 0 1.5px 0 #fff, 0 12px 32px rgba(12, 32, 56, 0.16) !important;
+    backdrop-filter: blur(22px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(22px) saturate(190%) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  html body.pearl-world .orbit-latest-list {
+    grid-template-columns: 1fr !important;
+  }
+  html body.pearl-world .combo-picker {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Accesibilidad: Respeto absoluto a reducción de movimiento y transparencia */
+@media (prefers-reduced-motion: reduce) {
+  html body.pearl-world .liquid-caustic,
+  html body.pearl-world .tech-core,
+  html body.pearl-world .tech-float,
+  html body.pearl-world .tech-bars i,
+  html body.pearl-world .platform-dock-track,
+  .card-entering,
+  .pick-entering {
+    animation: none !important;
+  }
+  .reveal-ready {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html body.pearl-world :is(.header-inner, .mobile-dock, .platform-card, .descubre-card, .orbit-pick-card, .pick-card, .order-summary, .quick-discovery, .catalog-tools, .descubre-controls) {
+    background: #f6f9fd !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}

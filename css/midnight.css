@@ -1,12 +1,5 @@
 /* Explicit closed state prevents legacy dialog display rules from showing a dead overlay. */
 html .pearl-world #welcome:not([open]){display:none!important;visibility:hidden!important;pointer-events:none!important}
-html .pearl-world #welcome[open]{opacity:1!important;transform:none!important;animation:none!important}
-html .pearl-world #welcome[open] .intro-brand,html .pearl-world #welcome[open] .intro-brand-name,html .pearl-world #welcome[open] .intro-brand-name span,html .pearl-world #welcome[open] .intro-brand p,html .pearl-world #welcome[open] #welcome-skip{animation:none!important;opacity:1!important;filter:none!important;transform:none!important}
-html .pearl-world #welcome[open] .intro-brand-name{font-size:clamp(84px,14vw,140px)!important;text-shadow:0 3px 26px #98cbff24!important}
-html .pearl-world #welcome[open] .intro-brand-name span{font-size:11px!important;margin-top:12px!important;letter-spacing:.4em!important}
-html .pearl-world #welcome[open] .intro-brand p{margin-top:24px!important;letter-spacing:.02em!important}
 html .pearl-world #welcome[open] #welcome-skip{min-height:46px!important;position:relative!important;z-index:4!important;pointer-events:auto!important}
-html .pearl-world #welcome[open] .intro-signal i{animation:signal-arrive 900ms ease-out both!important}
-html .pearl-world #welcome[open].welcome-leaving{opacity:0!important;transition:opacity 160ms ease-out!important;pointer-events:none!important}
-@keyframes signal-arrive{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+html .pearl-world #welcome[open].welcome-leaving{opacity:0!important;transition:opacity 320ms ease-out!important;pointer-events:none!important}
 @media(prefers-reduced-motion:reduce){html .pearl-world #welcome[open] .intro-signal i{animation:none!important}html .pearl-world #welcome[open].welcome-leaving{transition:none!important}}

@@ -1711,7 +1711,7 @@ html body.pearl-world :is(.button, .chip-btn, .orbit-moods button, .filters butt
 }
 
 /* ==========================================================================
-   14. INTRO DE BIENVENIDA CON EL LOGO OFICIAL DE ÓRBITA ANIMADO (LIQUID GLASS)
+   14. INTRO DE BIENVENIDA DESDE CERO: LOGO OFICIAL GIGANTE SIN CUADRO
    ========================================================================== */
 html body.pearl-world dialog#welcome {
   position: fixed !important;
@@ -1725,10 +1725,7 @@ html body.pearl-world dialog#welcome {
   border-radius: 0 !important;
   padding: 24px !important;
   background:
-    radial-gradient(ellipse 65% 60% at 22% 24%, rgba(188, 240, 228, 0.72) 0%, transparent 65%),
-    radial-gradient(ellipse 65% 60% at 82% 76%, rgba(202, 224, 252, 0.68) 0%, transparent 65%),
-    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.92) 0%, rgba(238, 246, 250, 0.96) 68%),
-    #eef5f8 !important;
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.95) 0%, rgba(238, 246, 250, 0.96) 58%, #e8f2f7 100%) !important;
   box-shadow: none !important;
   overflow: hidden !important;
   color: #142a3e !important;
@@ -1746,7 +1743,7 @@ html body.pearl-world dialog#welcome[open] {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 28px !important;
+  gap: 0 !important;
 }
 
 html body.pearl-world dialog#welcome::backdrop {
@@ -1755,49 +1752,14 @@ html body.pearl-world dialog#welcome::backdrop {
   -webkit-backdrop-filter: none !important;
 }
 
-/* Anillos de señal Liquid Glass sutiles en el fondo de la intro */
-html body.pearl-world dialog#welcome .intro-signal {
-  position: absolute !important;
-  inset: 0 !important;
-  display: grid !important;
-  place-items: center !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
+/* Ocultamos anillos y cuadros extra para dejar el logo limpio como único protagonista */
+html body.pearl-world dialog#welcome .intro-signal,
+html body.pearl-world dialog#welcome .intro-brand::before,
+html body.pearl-world dialog#welcome .intro-brand p {
+  display: none !important;
 }
 
-html body.pearl-world dialog#welcome .intro-signal i {
-  position: absolute !important;
-  width: min(68vw, 480px) !important;
-  aspect-ratio: 1 !important;
-  border-radius: 50% !important;
-  border: 1px solid rgba(25, 112, 132, 0.12) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-}
-
-html body.pearl-world dialog#welcome .intro-signal i:nth-child(2) {
-  width: min(86vw, 650px) !important;
-  border-color: rgba(45, 98, 150, 0.09) !important;
-}
-
-html body.pearl-world dialog#welcome .intro-signal i:nth-child(3) {
-  width: min(104vw, 820px) !important;
-  border-color: rgba(25, 112, 132, 0.06) !important;
-}
-
-html body.pearl-world dialog#welcome .intro-signal i::after {
-  content: "" !important;
-  position: absolute !important;
-  left: 14% !important;
-  top: 14% !important;
-  width: 7px !important;
-  height: 7px !important;
-  border-radius: 50% !important;
-  background: #142a3e !important;
-  opacity: 0.22 !important;
-  box-shadow: 0 0 14px rgba(20, 42, 62, 0.25) !important;
-}
-
-/* Contenedor principal de la marca en la intro */
+/* Sin cuadro ni bordes alrededor del logo: flota libre en pantalla completa */
 html body.pearl-world dialog#welcome .intro-brand {
   position: relative !important;
   z-index: 2 !important;
@@ -1805,50 +1767,34 @@ html body.pearl-world dialog#welcome .intro-brand {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  text-align: center !important;
-  padding: clamp(28px, 4.5vw, 44px) clamp(32px, 5.5vw, 60px) !important;
-  border-radius: 36px !important;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(240, 248, 252, 0.68) 100%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
-  box-shadow:
-    inset 0 2px 0 0 #ffffff,
-    inset 0 -1px 0 0 rgba(255, 255, 255, 0.65),
-    0 24px 60px -14px rgba(18, 42, 66, 0.1),
-    0 6px 20px -4px rgba(18, 42, 66, 0.05) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-html body.pearl-world dialog#welcome .intro-brand::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: -24px !important;
-  border-radius: 52px !important;
-  background: radial-gradient(circle at 35% 45%, rgba(164, 235, 220, 0.45), rgba(190, 220, 252, 0.28) 55%, transparent 75%) !important;
-  filter: blur(24px) !important;
-  z-index: -1 !important;
-  pointer-events: none !important;
-  display: block !important;
-}
-
-/* Lockup horizontal exacto al logo del header: Planeta a la izquierda + órbita / STREAMING a la derecha */
+/* Lockup horizontal exacto al logo de la página en formato gigante */
 html body.pearl-world dialog#welcome .intro-logo-lockup {
   display: inline-flex !important;
   flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: clamp(16px, 2.6vw, 26px) !important;
+  gap: clamp(22px, 3.6vw, 44px) !important;
 }
 
-/* Símbolo del planeta + anillo orbital + satélite (mismo SVG y color #142a3e del header) */
+/* Símbolo del planeta + anillo orbital + satélite a gran escala */
 html body.pearl-world dialog#welcome .intro-brand-symbol {
   display: block !important;
-  width: clamp(86px, 13.2vw, 122px) !important;
-  height: clamp(74px, 11.3vw, 105px) !important;
+  width: clamp(120px, 21vw, 236px) !important;
+  height: clamp(103px, 18vw, 202px) !important;
   color: #142a3e !important;
   flex-shrink: 0 !important;
   overflow: visible !important;
-  filter: drop-shadow(0 8px 20px rgba(20, 42, 62, 0.12)) !important;
+  filter: drop-shadow(0 14px 32px rgba(20, 42, 62, 0.1)) !important;
 }
 
 html body.pearl-world dialog#welcome .intro-brand-symbol > circle {
@@ -1863,7 +1809,7 @@ html body.pearl-world dialog#welcome .intro-brand-orbit circle {
   transform-origin: 59px 13px !important;
 }
 
-/* Tipografía idéntica al logo del header: "órbita" arriba + "STREAMING" abajo alineado */
+/* Tipografía exacta del logo a gran escala: "órbita" arriba + "STREAMING" abajo */
 html body.pearl-world dialog#welcome .intro-brand-name {
   display: flex !important;
   flex-direction: column !important;
@@ -1871,10 +1817,10 @@ html body.pearl-world dialog#welcome .intro-brand-name {
   justify-content: center !important;
   text-align: left !important;
   font-family: var(--font-ui) !important;
-  font-size: clamp(50px, 7.8vw, 72px) !important;
+  font-size: clamp(68px, 12.2vw, 138px) !important;
   font-weight: 800 !important;
   letter-spacing: -0.045em !important;
-  line-height: 0.92 !important;
+  line-height: 0.9 !important;
   color: #142a3e !important;
   margin: 0 !important;
   text-shadow: none !important;
@@ -1883,123 +1829,91 @@ html body.pearl-world dialog#welcome .intro-brand-name {
 html body.pearl-world dialog#welcome .intro-brand-name span {
   display: block !important;
   font-family: var(--font-ui) !important;
-  font-size: clamp(16px, 2.5vw, 23px) !important;
+  font-size: clamp(22px, 3.95vw, 45px) !important;
   font-weight: 700 !important;
   letter-spacing: 0.28em !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
-  color: #3d5f72 !important;
-  margin-top: clamp(6px, 0.9vw, 9px) !important;
+  color: #3b5f6e !important;
+  margin-top: clamp(8px, 1.4vw, 16px) !important;
   margin-right: -0.28em !important;
 }
 
-/* Subtítulo debajo del logo */
-html body.pearl-world dialog#welcome .intro-brand p {
-  margin: 22px 0 0 !important;
-  padding-top: 16px !important;
-  border-top: 1px solid rgba(20, 42, 62, 0.08) !important;
-  width: 100% !important;
-  font-size: clamp(13px, 1.5vw, 15px) !important;
-  font-weight: 520 !important;
-  letter-spacing: 0.01em !important;
-  color: #4a6478 !important;
-}
-
-/* Botón "Entrar ahora ↗" en cápsula Liquid Glass */
+/* Botón discreto en la parte inferior para no ensuciar el logo central */
 html body.pearl-world dialog#welcome #welcome-skip {
-  position: relative !important;
+  position: fixed !important;
+  bottom: 34px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   z-index: 4 !important;
-  min-height: 44px !important;
-  padding: 10px 26px !important;
+  min-height: 40px !important;
+  padding: 8px 22px !important;
   border-radius: 100px !important;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(236, 246, 252, 0.78) 100%) !important;
-  color: #142a3e !important;
-  border: 1px solid #ffffff !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  color: #3b5f6e !important;
+  border: 1px solid rgba(255, 255, 255, 0.95) !important;
   box-shadow:
-    inset 0 1.5px 0 #ffffff,
-    0 10px 24px -6px rgba(20, 42, 62, 0.12) !important;
-  backdrop-filter: blur(18px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
-  font-size: 13px !important;
-  font-weight: 650 !important;
-  letter-spacing: -0.01em !important;
+    inset 0 1px 0 #ffffff,
+    0 6px 18px -4px rgba(20, 42, 62, 0.08) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
 }
 
 html body.pearl-world dialog#welcome #welcome-skip:hover {
   background: #ffffff !important;
-  transform: translateY(-2px) scale(1.02) !important;
-  box-shadow:
-    inset 0 1.5px 0 #ffffff,
-    0 14px 30px -6px rgba(20, 42, 62, 0.18) !important;
+  color: #142a3e !important;
+  transform: translateX(-50%) translateY(-2px) !important;
 }
 
-/* Coreografía de animación oficial del logo en la intro */
+/* Coreografía de animación desde cero para el logo gigante */
 @media (prefers-reduced-motion: no-preference) {
-  /* Tarjeta Liquid Glass contenedora */
-  html body.pearl-world dialog#welcome[open] .intro-brand {
-    animation: orbita-intro-card-in 680ms var(--spring-apple) both !important;
-  }
-
-  /* Planeta central: escala con física de resorte Apple */
+  /* 1. Planeta central: nace desde el centro con impulso elástico */
   html body.pearl-world dialog#welcome[open] .intro-brand-symbol > circle {
-    animation: orbita-planet-pop 640ms 60ms var(--spring-apple) both !important;
+    animation: orbita-hero-planet 720ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
   }
 
-  /* Anillo orbital: gira y envuelve al planeta hasta encajar en su ángulo de -32° */
+  /* 2. Anillo orbital: gira 180° envolviendo al planeta hasta encajar en -32° */
   html body.pearl-world dialog#welcome[open] .intro-brand-orbit {
-    animation: orbita-orbit-sweep 1180ms 80ms var(--spring-apple) both !important;
+    animation: orbita-hero-orbit-rotate 1280ms 80ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
   }
 
-  /* Trazo progresivo de la elipse orbital */
+  /* 3. Elipse: se dibuja con trazo continuo alrededor del planeta */
   html body.pearl-world dialog#welcome[open] .intro-brand-orbit ellipse {
-    stroke-dasharray: 200 !important;
-    animation: orbita-orbit-draw 1080ms 80ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+    stroke-dasharray: 210 !important;
+    animation: orbita-hero-orbit-draw 1150ms 80ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
   }
 
-  /* Satélite: destella y se ancla en el vértice superior derecho */
+  /* 4. Satélite: destella y se ancla en la órbita superior derecha */
   html body.pearl-world dialog#welcome[open] .intro-brand-orbit circle {
-    animation: orbita-satellite-snap 1220ms 120ms var(--spring-apple) both !important;
+    animation: orbita-hero-satellite 1320ms 140ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
   }
 
-  /* Palabra "órbita": emerge con enfoque óptico junto al planeta */
+  /* 5. Palabra "órbita": emerge desde el planeta con enfoque óptico */
   html body.pearl-world dialog#welcome[open] .intro-brand-name {
-    animation: orbita-wordmark-in 720ms 160ms var(--spring-apple) both !important;
+    animation: orbita-hero-wordmark 820ms 180ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
   }
 
-  /* Subtítulo "STREAMING": ajusta su tracking debajo de "órbita" */
+  /* 6. Palabra "STREAMING": despliega su espaciado justo debajo de "órbita" */
   html body.pearl-world dialog#welcome[open] .intro-brand-name span {
-    animation: orbita-subword-in 680ms 290ms var(--spring-apple) both !important;
+    animation: orbita-hero-subword 800ms 340ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
   }
 
-  /* Frase descriptiva */
-  html body.pearl-world dialog#welcome[open] .intro-brand p {
-    animation: orbita-tagline-in 620ms 400ms var(--spring-apple) both !important;
-  }
-
-  /* Botón de entrada */
+  /* 7. Botón inferior discreto */
   html body.pearl-world dialog#welcome[open] #welcome-skip {
-    animation: orbita-skip-in 600ms 480ms var(--spring-apple) both !important;
+    animation: orbita-hero-skip 600ms 520ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
   }
 
-  /* Anillos concéntricos de fondo */
-  html body.pearl-world dialog#welcome[open] .intro-signal i {
-    animation: orbita-ring-pulse 1500ms var(--spring-apple) both !important;
-  }
-  html body.pearl-world dialog#welcome[open] .intro-signal i:nth-child(2) {
-    animation-delay: 110ms !important;
-  }
-  html body.pearl-world dialog#welcome[open] .intro-signal i:nth-child(3) {
-    animation-delay: 220ms !important;
-  }
-
-  /* Transición de salida suave hacia la página */
+  /* 8. Salida cinematográfica: el logo crece suavemente y se funde con la página */
   html body.pearl-world dialog#welcome[open].welcome-leaving {
     opacity: 0 !important;
-    transition: opacity 380ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+    transition: opacity 400ms cubic-bezier(0.22, 1, 0.36, 1) !important;
   }
 
-  html body.pearl-world dialog#welcome[open].welcome-leaving .intro-brand {
-    animation: orbita-intro-card-out 380ms cubic-bezier(0.22, 1, 0.36, 1) both !important;
+  html body.pearl-world dialog#welcome[open].welcome-leaving .intro-logo-lockup {
+    animation: orbita-hero-exit 400ms cubic-bezier(0.22, 1, 0.36, 1) both !important;
   }
 
   /* Microinteracción del logo en el header al pasar el cursor */
@@ -2009,38 +1923,14 @@ html body.pearl-world dialog#welcome #welcome-skip:hover {
   }
 }
 
-@keyframes orbita-intro-card-in {
+@keyframes orbita-hero-planet {
   0% {
     opacity: 0;
-    transform: translateY(14px) scale(0.95);
+    transform: scale(0);
   }
-  100% {
+  68% {
     opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes orbita-intro-card-out {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.04);
-    filter: blur(8px);
-  }
-}
-
-@keyframes orbita-planet-pop {
-  0% {
-    opacity: 0;
-    transform: scale(0.35);
-  }
-  70% {
-    opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.08);
   }
   100% {
     opacity: 1;
@@ -2048,16 +1938,16 @@ html body.pearl-world dialog#welcome #welcome-skip:hover {
   }
 }
 
-@keyframes orbita-orbit-sweep {
+@keyframes orbita-hero-orbit-rotate {
   0% {
     opacity: 0;
-    transform: rotate(-150deg) scale(0.72);
+    transform: rotate(-185deg) scale(0.62);
   }
-  30% {
+  28% {
     opacity: 1;
   }
-  82% {
-    transform: rotate(3deg) scale(1.01);
+  84% {
+    transform: rotate(3.5deg) scale(1.02);
   }
   100% {
     opacity: 1;
@@ -2065,12 +1955,12 @@ html body.pearl-world dialog#welcome #welcome-skip:hover {
   }
 }
 
-@keyframes orbita-orbit-draw {
+@keyframes orbita-hero-orbit-draw {
   0% {
-    stroke-dashoffset: 200;
-    opacity: 0.25;
+    stroke-dashoffset: 210;
+    opacity: 0.2;
   }
-  35% {
+  30% {
     opacity: 1;
   }
   100% {
@@ -2079,14 +1969,14 @@ html body.pearl-world dialog#welcome #welcome-skip:hover {
   }
 }
 
-@keyframes orbita-satellite-snap {
-  0%, 30% {
+@keyframes orbita-hero-satellite {
+  0%, 32% {
     opacity: 0;
     transform: scale(0);
   }
-  72% {
+  74% {
     opacity: 1;
-    transform: scale(1.42);
+    transform: scale(1.55);
   }
   100% {
     opacity: 1;
@@ -2094,11 +1984,11 @@ html body.pearl-world dialog#welcome #welcome-skip:hover {
   }
 }
 
-@keyframes orbita-wordmark-in {
+@keyframes orbita-hero-wordmark {
   0% {
     opacity: 0;
-    transform: translateX(-18px) scale(0.96);
-    filter: blur(6px);
+    transform: translateX(-40px) scale(0.94);
+    filter: blur(10px);
   }
   100% {
     opacity: 1;
@@ -2107,75 +1997,62 @@ html body.pearl-world dialog#welcome #welcome-skip:hover {
   }
 }
 
-@keyframes orbita-subword-in {
+@keyframes orbita-hero-subword {
   0% {
     opacity: 0;
-    transform: translateY(6px);
-    letter-spacing: 0.42em;
+    transform: translateY(-8px);
+    letter-spacing: 0.06em;
+    filter: blur(4px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
     letter-spacing: 0.28em;
+    filter: blur(0);
   }
 }
 
-@keyframes orbita-tagline-in {
+@keyframes orbita-hero-skip {
   0% {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateX(-50%) translateY(10px);
   }
   100% {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0.82;
+    transform: translateX(-50%) translateY(0);
   }
 }
 
-@keyframes orbita-skip-in {
+@keyframes orbita-hero-exit {
   0% {
-    opacity: 0;
-    transform: translateY(10px) scale(0.95);
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
   }
   100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    opacity: 0;
+    transform: scale(1.07);
+    filter: blur(10px);
   }
 }
 
-@keyframes orbita-ring-pulse {
-  0% {
-    opacity: 0;
-    transform: scale(0.82) rotate(-25deg);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-@media (max-width: 560px) {
-  html body.pearl-world dialog#welcome .intro-brand {
-    padding: 26px 24px !important;
-    border-radius: 28px !important;
-    width: min(100%, 350px) !important;
-  }
-
+@media (max-width: 640px) {
   html body.pearl-world dialog#welcome .intro-logo-lockup {
-    gap: 14px !important;
+    gap: 16px !important;
   }
 
   html body.pearl-world dialog#welcome .intro-brand-symbol {
-    width: 76px !important;
-    height: 65px !important;
+    width: clamp(88px, 26vw, 118px) !important;
+    height: clamp(75px, 22.3vw, 101px) !important;
   }
 
   html body.pearl-world dialog#welcome .intro-brand-name {
-    font-size: 44px !important;
+    font-size: clamp(52px, 15.5vw, 70px) !important;
   }
 
   html body.pearl-world dialog#welcome .intro-brand-name span {
-    font-size: 14.5px !important;
+    font-size: clamp(16.8px, 5vw, 22.8px) !important;
     letter-spacing: 0.28em !important;
-    margin-top: 5px !important;
+    margin-top: 6px !important;
   }
 }

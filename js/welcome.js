@@ -22,6 +22,6 @@ document.getElementById('welcome-skip')?.addEventListener('click',close);
 document.addEventListener('DOMContentLoaded',()=>{document.getElementById('welcome-replay')?.addEventListener('click',open);},{once:true});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)finish();});
 addEventListener('pagehide',finish);addEventListener('pageshow',()=>{if(!dialog.open)releaseGuard();});reduce.addEventListener?.('change',()=>{if(reduce.matches)finish();});
-let seen=false;try{seen=sessionStorage.getItem('orbita-brand-intro-seen')==='1';sessionStorage.setItem('orbita-brand-intro-seen','1');}catch{seen=true;}
+let seen=false;try{const nav=typeof performance!=='undefined'&&performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];seen=!(nav&&nav.type==='reload')&&sessionStorage.getItem('orbita-brand-intro-v3')==='1';sessionStorage.setItem('orbita-brand-intro-v3','1');}catch{seen=true;}
 if(!seen&&!reduce.matches&&!location.hash)open();else finish();
 })();

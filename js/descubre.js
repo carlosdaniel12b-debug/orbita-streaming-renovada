@@ -35,12 +35,12 @@
         <span class="descubre-cover-hover" aria-hidden="true"><span>Explorar ficha ↗</span></span>
       </button>
       <div class="descubre-card-body">
-        <div class="descubre-card-meta"><span>${platName}</span><span>${escape(item.year)}</span></div>
+        <div class="descubre-card-meta"><span>${escape(item.type)}</span><span>${escape(item.year)}</span></div>
         <h2><button type="button" data-movie="${escape(item.id)}">${escape(item.title)}</button></h2>
-        <p>${escape(item.type)} · ${escape(item.genre.split(',')[0])}</p>
+        <p>${escape(item.genre.split(',').slice(0, 2).join(' · '))}</p>
         <div class="descubre-card-actions">
           ${hasTrailer ? `<button class="descubre-trailer" type="button" data-trailer-id="${escape(item.id)}"><span aria-hidden="true">▶</span> Tráiler</button>` : ''}
-          <button class="descubre-detail-pill" type="button" data-movie="${escape(item.id)}">Ficha <span aria-hidden="true">↗</span></button>
+          <button class="descubre-detail-pill" type="button" data-movie="${escape(item.id)}">Ver ficha <span aria-hidden="true">↗</span></button>
         </div>
       </div></article>`;
     }).join('');

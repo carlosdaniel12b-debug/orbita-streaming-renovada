@@ -327,7 +327,7 @@ document.addEventListener('click',e=>{
   }
 });
 
-// 6. Enriquecimiento de Tarjetas de Catálogo (Botón Corto, Spotify Hi-Fi, Canva Pro, ChatGPT Plus)
+// 6. Enriquecimiento limpio y uniforme de Tarjetas de Catálogo
 function enhanceCatalogCards(){
   const cards=$$('.catalog-grid .platform-card');
   if(!cards.length) return;
@@ -354,7 +354,7 @@ function enhanceCatalogCards(){
                      platKey==='max'?'hbomax':
                      platKey==='paramountplus'?'paramount':
                      platKey==='vix'?'vix':
-                     platKey==='appletvplus'?'appletv':'netflix';
+                     platKey==='appletvplus'?'appletv':'hbomax';
 
       if(actions&&!actions.querySelector('.platform-trailer-btn')){
         const btn=document.createElement('button');
@@ -369,69 +369,20 @@ function enhanceCatalogCards(){
 
     if(name.includes('spotify')){
       card.classList.add('service-spotify');
-      if(!card.querySelector('.service-wave')){
-        const wave=document.createElement('div');
-        wave.className='service-wave';
-        wave.setAttribute('aria-hidden','true');
-        wave.style.cssText='height:36px;margin:10px 0 14px;gap:4px;display:flex;align-items:flex-end;';
-        wave.innerHTML=`
-          <i style="--bar:14px"></i><i style="--bar:24px"></i><i style="--bar:34px"></i>
-          <i style="--bar:20px"></i><i style="--bar:38px"></i><i style="--bar:28px"></i>
-          <i style="--bar:18px"></i><i style="--bar:32px"></i><i style="--bar:22px"></i>
-        `;
-        const p=card.querySelector('p');
-        if(p) p.after(wave);
-      }
       const tag=card.querySelector('.tag');
-      if(tag&&!tag.textContent.includes('Hi-Fi')){
-        tag.textContent='Música · Hi-Fi Lossless';
-        tag.style.background='rgba(29, 185, 84, 0.18)';
-        tag.style.color='#0e7033';
-        tag.style.borderColor='rgba(29, 185, 84, 0.35)';
-      }
+      if(tag) tag.textContent='Música · Hi-Fi';
     }
 
     if(name.includes('canva')){
       card.classList.add('service-canva');
-      if(!card.querySelector('.service-colors')){
-        const colors=document.createElement('div');
-        colors.className='service-colors';
-        colors.setAttribute('aria-hidden','true');
-        colors.style.cssText='height:36px;margin:10px 0 14px;display:flex;align-items:center;';
-        colors.innerHTML=`
-          <span style="width:32px;height:32px;border-radius:10px;display:inline-block;"></span>
-          <span style="width:32px;height:32px;border-radius:10px;margin-left:-10px;display:inline-block;"></span>
-          <span style="width:32px;height:32px;border-radius:10px;margin-left:-10px;display:inline-block;"></span>
-        `;
-        const p=card.querySelector('p');
-        if(p) p.after(colors);
-      }
       const tag=card.querySelector('.tag');
-      if(tag&&!tag.textContent.includes('Pro VIP')){
-        tag.textContent='Diseño & Kit Pro';
-        tag.style.background='rgba(125, 42, 232, 0.18)';
-        tag.style.color='#6119b3';
-        tag.style.borderColor='rgba(125, 42, 232, 0.35)';
-      }
+      if(tag) tag.textContent='Diseño Pro';
     }
 
     if(name.includes('chatgpt')){
       card.classList.add('service-chatgpt');
-      if(!card.querySelector('.service-prompt')){
-        const prompt=document.createElement('div');
-        prompt.className='service-prompt';
-        prompt.style.cssText='margin:10px 0 14px;padding:8px 12px;font-size:11.5px;border-radius:14px;display:flex;align-items:center;gap:8px;';
-        prompt.innerHTML='<span class="service-prompt-orb"></span> GPT-4o, DALL·E 3 & Canvas';
-        const p=card.querySelector('p');
-        if(p) p.after(prompt);
-      }
       const tag=card.querySelector('.tag');
-      if(tag&&!tag.textContent.includes('GPT-4o')){
-        tag.textContent='IA Avanzada · GPT-4o';
-        tag.style.background='rgba(16, 163, 127, 0.18)';
-        tag.style.color='#0b785d';
-        tag.style.borderColor='rgba(16, 163, 127, 0.35)';
-      }
+      if(tag) tag.textContent='IA · GPT-4o';
     }
   });
 }
@@ -513,26 +464,11 @@ function setupFilterAnimations(){
 }
 setupFilterAnimations();
 
-// 10. Aparición Fluida en Scroll estilo Apple (IntersectionObserver de una sola ejecución)
-let revealObserver=null;
+// 10. Visibilidad garantizada sin saltos de opacidad
 function setupScrollReveal(){
-  if(reduce.matches||typeof IntersectionObserver==='undefined') return;
-  if(!revealObserver){
-    revealObserver=new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('is-inview');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },{rootMargin:'0px 0px -32px 0px',threshold:0.06});
-  }
-  const targets=$$('.premiere-stage,.orbit-picks,.home-extras,.pearl-faq,.catalog-section,.platform-guide,.combo-layout,.combo-assurance,.pearl-arcade,.orbit-latest,.descubre-controls');
-  targets.forEach(el=>{
-    if(!el.classList.contains('reveal-ready')){
-      el.classList.add('reveal-ready');
-      revealObserver.observe(el);
-    }
+  $$('.reveal-ready').forEach(el=>{
+    el.classList.remove('reveal-ready');
+    el.classList.add('is-inview');
   });
 }
 setupScrollReveal();

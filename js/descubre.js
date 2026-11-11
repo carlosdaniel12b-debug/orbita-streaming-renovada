@@ -28,9 +28,10 @@
       const platName = escape(platform(item.platform)?.name);
       const hasTrailer = Boolean(window.ORBIT_TRAILERS?.[item.id]);
       const stagger = Math.min(idx, 14);
+      const loadingMode = idx < 8 ? 'eager' : 'lazy';
       return `<article class="descubre-card card-entering" style="--stagger:${stagger}" data-platform-id="${escape(item.platform)}">
       <button class="descubre-cover" type="button" data-movie="${escape(item.id)}" aria-label="Ver detalles de ${escape(item.title)}">
-        <img src="${escape(item.image)}" alt="" loading="lazy" decoding="async" width="300" height="450"/>
+        <img src="${escape(item.image)}" alt="" loading="${loadingMode}" decoding="async" width="300" height="450"/>
         <span class="descubre-cover-badge">${platName}</span>
         <span class="descubre-cover-hover" aria-hidden="true"><span>Explorar ficha ↗</span></span>
       </button>

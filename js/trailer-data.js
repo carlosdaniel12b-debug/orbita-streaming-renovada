@@ -92,8 +92,8 @@ window.ORBIT_TRAILERS = {
   },
   "s77383": {
     "video": "9TbmxbckSjE",
-    "title": "Sakamoto Days | Official Trailer | Netflix",
-    "channel": "Netflix",
+    "title": "Sakamoto Days | Tráiler Oficial",
+    "channel": "Anime Official",
     "url": "https://www.youtube.com/watch?v=9TbmxbckSjE"
   },
   "m_the-gorge": {
@@ -110,8 +110,8 @@ window.ORBIT_TRAILERS = {
   },
   "s69046": {
     "video": "n5JEoD7keVo",
-    "title": "Delicious in Dungeon | Official Trailer #1 | Netflix",
-    "channel": "Netflix Anime",
+    "title": "Tragones y Mazmorras (Delicious in Dungeon) | Tráiler Oficial",
+    "channel": "Trigger / Kadokawa",
     "url": "https://www.youtube.com/watch?v=n5JEoD7keVo"
   },
   "s74573": {
@@ -152,8 +152,8 @@ window.ORBIT_TRAILERS = {
   },
   "s48945": {
     "video": "JtqIas3bYhg",
-    "title": "Cyberpunk: Edgerunners | Official NSFW Trailer | Netflix",
-    "channel": "Netflix",
+    "title": "Cyberpunk: Edgerunners | Tráiler Oficial",
+    "channel": "CD PROJEKT RED / Trigger",
     "url": "https://www.youtube.com/watch?v=JtqIas3bYhg"
   },
   "s17861": {
@@ -326,8 +326,62 @@ window.ORBIT_TRAILERS = {
   },
   "m_pinocchio": {
     "video": "-WgZ_IQU0Ks",
-    "title": "Pinocho de Guillermo del Toro | Tráiler oficial | Netflix",
-    "channel": "Netflix Latinoamérica",
+    "title": "Pinocho de Guillermo del Toro | Tráiler oficial",
+    "channel": "Cine Animación",
     "url": "https://www.youtube.com/watch?v=-WgZ_IQU0Ks"
+  },
+  "m_topgun": {
+    "video": "giXco2jaZ_4",
+    "title": "Top Gun: Maverick | Official Trailer | Paramount Pictures",
+    "channel": "Paramount Pictures",
+    "url": "https://www.youtube.com/watch?v=giXco2jaZ_4"
+  },
+  "m_thebatman": {
+    "video": "mqqft2x_Aa4",
+    "title": "The Batman - Main Trailer | Warner Bros.",
+    "channel": "Warner Bros. Pictures",
+    "url": "https://www.youtube.com/watch?v=mqqft2x_Aa4"
+  },
+  "s15299": {
+    "video": "M1bhOaLV4FU",
+    "title": "The Boys – Official Trailer | Prime Video",
+    "channel": "Prime Video",
+    "url": "https://www.youtube.com/watch?v=M1bhOaLV4FU"
+  },
+  "s38052": {
+    "video": "8ZYhuvIv1pA",
+    "title": "Silo — Official Trailer | Apple TV",
+    "channel": "Apple TV",
+    "url": "https://www.youtube.com/watch?v=8ZYhuvIv1pA"
+  },
+  "s44458": {
+    "video": "3u7EIiohs6U",
+    "title": "Ted Lasso — Official Trailer | Apple TV",
+    "channel": "Apple TV",
+    "url": "https://www.youtube.com/watch?v=3u7EIiohs6U"
+  },
+  "s60920": {
+    "video": "sfJG6IiA_s8",
+    "title": "The Penguin | Official Trailer | Max",
+    "channel": "Max",
+    "url": "https://www.youtube.com/watch?v=sfJG6IiA_s8"
+  },
+  "s75632": {
+    "video": "ufR_08V38sQ",
+    "title": "The Pitt | Official Trailer | Max",
+    "channel": "Max",
+    "url": "https://www.youtube.com/watch?v=ufR_08V38sQ"
+  },
+  "s61315": {
+    "video": "j6ucGt_Xp14",
+    "title": "Dark Matter — Official Trailer | Apple TV",
+    "channel": "Apple TV",
+    "url": "https://www.youtube.com/watch?v=j6ucGt_Xp14"
+  },
+  "s73023": {
+    "video": "0XJxfbN36Uw",
+    "title": "DAN DA DAN | Official Trailer",
+    "channel": "Science SARU / MBS",
+    "url": "https://www.youtube.com/watch?v=0XJxfbN36Uw"
   }
 };

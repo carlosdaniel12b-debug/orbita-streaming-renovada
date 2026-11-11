@@ -614,7 +614,7 @@ window.ORBIT_LIBRARY = [
     "platform": "hbomax",
     "aliases": [
       "game of thrones",
-      "game of thrones"
+      "juego de tronos"
     ],
     "genre": "Fantasía,Aventura,Drama",
     "type": "Serie",
@@ -623,8 +623,8 @@ window.ORBIT_LIBRARY = [
     "source": "https://www.tvmaze.com/shows/82/game-of-thrones",
     "official": "http://www.hbo.com/game-of-thrones",
     "origin": "hbomax",
-    "summary": "Based on the bestselling book series A Song of Ice and Fire by George R.R. Martin, this sprawling new HBO drama is set in a world where summers span decades and winters can last a lifetime. From the scheming south and the savage eastern lands, to the frozen north and ancient Wall that protects the realm from the mysterious darkness beyond, the powerful families of the Seven Kingdoms are locked in a battle for the Iron Throne. This is a story of duplicity and treachery, nobility and honor, conquest and triumph. In the Game of Thrones, you either win or you die.",
-    "esSummary": "Based on the bestselling book series A Song of Ice and Fire by George R.R. Martin, this sprawling new HBO drama is set in a world where summers span decades and winters can last a lifetime. From the scheming south and the savage eastern lands, to the frozen north and ancient Wall that protects the realm from the mysterious darkness beyond, the powerful families of the Seven Kingdoms are locked in a battle for the Iron Throne. This is a story of duplicity and treachery, nobility and honor, conquest and triumph. In the Game of Thrones, you either win or you die."
+    "summary": "Nueve familias nobles luchan por el control de los Siete Reinos de Poniente mientras una antigua amenaza regresa tras milenios más allá del Muro.",
+    "esSummary": "Nueve familias nobles luchan por el control de los Siete Reinos de Poniente mientras una antigua amenaza regresa tras milenios más allá del Muro."
   },
   {
     "id": "s44267",
@@ -1072,6 +1072,98 @@ window.ORBIT_LIBRARY = [
     "image": "assets/optimized/m_wolfwalkers.webp",
     "aliases": [
       "Wolfwalkers"
+    ]
+  },
+  {
+    "id": "m_bladerunner2049",
+    "title": "Blade Runner 2049",
+    "original": "Blade Runner 2049",
+    "year": "2017",
+    "platform": "primevideo",
+    "genre": "Ciencia ficción,Misterio,Drama",
+    "type": "Película",
+    "summary": "Treinta años después de los eventos de la primera película, un nuevo blade runner descubre un secreto enterrado que podría sumergir lo que queda de la sociedad en el caos.",
+    "esSummary": "Treinta años después de los eventos de la primera película, un nuevo blade runner descubre un secreto enterrado que podría sumergir lo que queda de la sociedad en el caos.",
+    "official": "https://www.primevideo.com",
+    "source": "https://www.themoviedb.org",
+    "image": "assets/optimized/m_bladerunner2049.webp",
+    "aliases": [
+      "blade runner 2049",
+      "blade runner 2"
+    ]
+  },
+  {
+    "id": "s73023",
+    "title": "Dandadan",
+    "original": "Dandadan",
+    "year": "2024",
+    "platform": "primevideo",
+    "genre": "Anime,Acción,Sobrenatural,Comedia",
+    "type": "Anime",
+    "summary": "Una estudiante que cree en fantasmas y un compañero obsesionado con los extraterrestres descubren que ambos fenómenos son peligrosamente reales.",
+    "esSummary": "Una estudiante que cree en fantasmas y un compañero obsesionado con los extraterrestres descubren que ambos fenómenos son peligrosamente reales.",
+    "official": "https://www.tvmaze.com/shows/73023/dandadan",
+    "source": "https://www.tvmaze.com/shows/73023/dandadan",
+    "image": "assets/optimized/s73023.webp",
+    "aliases": [
+      "dandadan",
+      "dan da dan"
+    ]
+  },
+  {
+    "id": "s77383",
+    "title": "Sakamoto Days",
+    "original": "Sakamoto Days",
+    "year": "2025",
+    "platform": "hbomax",
+    "genre": "Anime,Acción,Comedia",
+    "type": "Anime",
+    "summary": "El sicario más legendario del mundo se retira por amor y abre una tienda de barrio, pero su pasado regresa para poner a prueba su promesa de no matar.",
+    "esSummary": "El sicario más legendario del mundo se retira por amor y abre una tienda de barrio, pero su pasado regresa para poner a prueba su promesa de no matar.",
+    "official": "https://www.tvmaze.com/shows/77383/sakamoto-days",
+    "source": "https://www.tvmaze.com/shows/77383/sakamoto-days",
+    "image": "assets/optimized/s77383.webp",
+    "aliases": [
+      "sakamoto days",
+      "sakamoto"
+    ]
+  },
+  {
+    "id": "s69046",
+    "title": "Tragones y Mazmorras",
+    "original": "Delicious in Dungeon",
+    "year": "2024",
+    "platform": "primevideo",
+    "genre": "Anime,Fantasía,Aventura,Comedia",
+    "type": "Anime",
+    "summary": "Un grupo de aventureros sin dinero se adentra en un calabozo peligroso cocinando a las criaturas que derrotan para rescatar a una compañera.",
+    "esSummary": "Un grupo de aventureros sin dinero se adentra en un calabozo peligroso cocinando a las criaturas que derrotan para rescatar a una compañera.",
+    "official": "https://www.tvmaze.com/shows/69046/delicious-in-dungeon",
+    "source": "https://www.tvmaze.com/shows/69046/delicious-in-dungeon",
+    "image": "assets/optimized/s69046.webp",
+    "aliases": [
+      "delicious in dungeon",
+      "tragones y mazmorras",
+      "dungeon meshi"
+    ]
+  },
+  {
+    "id": "s48945",
+    "title": "Cyberpunk: Edgerunners",
+    "original": "Cyberpunk: Edgerunners",
+    "year": "2022",
+    "platform": "hbomax",
+    "genre": "Anime,Ciencia ficción,Acción",
+    "type": "Anime",
+    "summary": "En una metrópolis obsesionada con la tecnología y las modificaciones corporales, un joven callejero arriesga todo como mercenario fuera de la ley.",
+    "esSummary": "En una metrópolis obsesionada con la tecnología y las modificaciones corporales, un joven callejero arriesga todo como mercenario fuera de la ley.",
+    "official": "https://www.tvmaze.com/shows/48945/cyberpunk-edgerunners",
+    "source": "https://www.tvmaze.com/shows/48945/cyberpunk-edgerunners",
+    "image": "assets/optimized/s48945.webp",
+    "aliases": [
+      "cyberpunk edgerunners",
+      "edgerunners",
+      "cyberpunk"
     ]
   }
 ];

@@ -36,6 +36,7 @@
   }
 
   let libraryReady;
+  let trailersReady;
   function ensureLibrary() {
     if (window.ORBIT_LIBRARY?.length >= 80) return Promise.resolve();
     if (!libraryReady) libraryReady = new Promise(resolve => {
@@ -47,8 +48,20 @@
     });
     return libraryReady;
   }
+  function ensureTrailers() {
+    if (window.ORBIT_TRAILERS) return Promise.resolve();
+    if (!trailersReady) trailersReady = new Promise(resolve => {
+      const script = document.createElement('script');
+      script.src = 'js/trailer-data.js?v=20261018';
+      script.onload = resolve;
+      script.onerror = () => {trailersReady = null; resolve();};
+      document.head.append(script);
+    });
+    return trailersReady;
+  }
   function open() {
     ensureLibrary();
+    ensureTrailers();
     if (!dialog.open) dialog.showModal();
     if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
       input.focus();
@@ -96,7 +109,7 @@
           node.textContent = characters.slice(0, position).join('');
           if (nearBottom) log.scrollTop = log.scrollHeight;
           if (position >= characters.length) finish();
-          else timer = setTimeout(tick, 24);
+          else timer = setTimeout(tick, 22);
         };
         tick();
       });
@@ -139,6 +152,7 @@
     const actions = document.createElement('div');
     actions.className = 'answer-actions';
     const b = document.createElement('button');
+    b.type = 'button';
     b.textContent = 'Personalizar ' + (ids.length === 1 ? pBy(ids[0]).name : 'este combo');
     b.onclick = () => location.href = 'combos.html?apps=' + encodeURIComponent(ids.join(','));
     actions.append(b);
@@ -154,7 +168,11 @@
     const wrap = document.createElement('div');
     wrap.className = 'answer-titles';
     list.slice(0, 4).forEach(m => {
+      const card = document.createElement('div');
+      card.className = 'answer-title-card';
+
       const b = document.createElement('button');
+      b.type = 'button';
       b.className = 'answer-title';
       if (m.image) {
         const img = document.createElement('img');
@@ -168,37 +186,42 @@
       const small = document.createElement('small');
       const em = document.createElement('em');
       strong.textContent = m.title;
-      small.textContent = m.type + ' · ' + m.genre;
+      small.textContent = m.type + (m.year ? ' · ' + m.year : '') + ' · ' + m.genre.split(',').slice(0, 2).join(', ');
       em.textContent = pBy(m.platform)?.name || m.origin || 'Consultar disponibilidad';
       text.append(strong, small, em);
       b.append(text);
       b.onclick = () => ask('¿Dónde puedo ver ' + m.title + '?');
-      wrap.append(b);
+      card.append(b);
+
+      const tools = document.createElement('div');
+      tools.className = 'answer-title-tools';
+      if (window.ORBIT_TRAILERS?.[m.id]) {
+        const trBtn = document.createElement('button');
+        trBtn.type = 'button';
+        trBtn.className = 'answer-mini-btn answer-trailer-trigger';
+        trBtn.dataset.trailer = m.id;
+        trBtn.innerHTML = '<span aria-hidden="true">▶</span> Tráiler';
+        tools.append(trBtn);
+      }
+      const descLink = document.createElement('a');
+      descLink.className = 'answer-mini-btn answer-explore-link';
+      descLink.href = 'descubre.html?q=' + encodeURIComponent(m.title);
+      descLink.textContent = 'Ficha ↗';
+      tools.append(descLink);
+      card.append(tools);
+
+      wrap.append(card);
     });
     el.append(wrap);
-  }
-
-  function distance(a, b) {
-    let row = Array.from({ length: b.length + 1 }, (_, i) => i);
-    for (let i = 0; i < a.length; i++) {
-      const next = [i + 1];
-      for (let j = 0; j < b.length; j++) {
-        next.push(Math.min(next[j] + 1, row[j + 1] + 1, row[j] + (a[i] === b[j] ? 0 : 1)));
-      }
-      row = next;
-    }
-    return row[b.length];
   }
 
   function extract(text) {
     const quoted = text.match(/["“](.+?)["”]/);
     if (quoted) return quoted[1].trim();
-    return norm(text).replace(/^(hola\s+)?(en que (app|aplicacion|plataforma) (esta|veo|puedo ver)|donde (puedo |se puede )?(ver|veo|esta|encuentro)|quiero ver|busca(me)?|tienes|tienen|que (es|tal es)|de que trata|hablame de|ver)\s+/, '').replace(/^(la |el )?(pelicula|serie)\s+/, '').replace(/\s+(en netflix|en disney|en colombia|en ecuador|en mexico|por favor)$/, '').trim();
+    return norm(text).replace(/^(hola\s+)?(en que (app|aplicacion|plataforma) (esta|veo|puedo ver)|donde (puedo |se puede )?(ver|veo|esta|encuentro)|quiero ver|busca(me)?|tienes|tienen|que (es|tal es)|de que trata|hablame de|ver)\s+/, '').replace(/^(la |el )?(pelicula|serie|anime|novela)\s+/, '').replace(/\s+(en max|en prime|en apple tv|en colombia|en ecuador|en mexico|por favor)$/, '').trim();
   }
 
   const aliasMap = {
-    netflix: ['netflix', 'netflis'],
-    disneyplus: ['disney', 'disney plus', 'disneyplus', 'marvel', 'star wars', 'pixar', 'espn'],
     hbomax: ['hbo', 'hbo max', 'max', 'warner'],
     primevideo: ['prime', 'amazon prime', 'prime video', 'amazon'],
     appletv: ['apple tv', 'apple', 'appletv'],
@@ -231,7 +254,15 @@
     'gladiator 2': 'gladiator ii',
     'chicas pesadas': 'mean girls',
     'el nino y la garza': 'the boy and the heron',
-    'mision imposible': 'mission: impossible'
+    'mision imposible': 'mission: impossible',
+    'el pinguino': 'the penguin',
+    'pinguino': 'the penguin',
+    'separacion': 'severance',
+    'fundacion': 'foundation',
+    'tragones y mazmorras': 'delicious in dungeon',
+    'el abismo': 'the gorge',
+    'abismo secreto': 'the gorge',
+    'materia oscura': 'dark matter'
   };
 
   function detectPlatforms(q) {
@@ -239,7 +270,7 @@
   }
 
   async function answer(text) {
-    await ensureLibrary();
+    await Promise.all([ensureLibrary(), ensureTrailers()]);
     const q = norm(text);
     let title = extract(text);
     const ids = detectPlatforms(q);
@@ -254,28 +285,39 @@
       }
     }
 
-    const wantsRecommendations = /recomiend|recomenda|que veo|que ver|al azar|sorprendeme|sin ideas|estoy aburrido|otra recomendacion|suger|otras?|otros?|mas opciones|anime|novelas|peliculas|series|sin terror|comedia|ciencia ficcion/.test(q) && !/donde|de que trata/.test(q);
+    const wantsRecommendations = /recomiend|recomenda|que veo|que ver|al azar|sorprendeme|sin ideas|estoy aburrido|otra recomendacion|suger|otras?|otros?|mas opciones|anime|novelas|peliculas|series|sin terror|comedia|ciencia ficcion|fin de semana|pareja|estreno|mejor|mejores|maraton/.test(q) && !/donde|de que trata/.test(q);
     if (wantsRecommendations) {
-      let pool=getLib().filter(m=>!recentlyRecommended.includes(m.id));
-      if(pool.length<4)pool=getLib();
-      pool=pool.slice();for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
-      let selection=window.OrbitRecommendations.recommend(text,pool,recommendationContext);
-      if(!selection.results.length)selection=window.OrbitRecommendations.recommend(text,getLib().slice().sort(()=>Math.random()-.5),recommendationContext);
-      recentlyRecommended=recentlyRecommended.concat(selection.results.map(m=>m.id)).slice(-12);
+      let pool = getLib().filter(m => !recentlyRecommended.includes(m.id));
+      if (pool.length < 4) pool = getLib();
+      pool = pool.slice();
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      let selection = window.OrbitRecommendations.recommend(text, pool, recommendationContext);
+      if (!selection.results.length) selection = window.OrbitRecommendations.recommend(text, getLib().slice().sort(() => Math.random() - .5), recommendationContext);
+      recentlyRecommended = recentlyRecommended.concat(selection.results.map(m => m.id)).slice(-12);
       recommendationContext = selection;
       const parts = [selection.filters.type, ...selection.filters.genres, ...selection.filters.platforms.map(id => pBy(id)?.name)].filter(Boolean);
       const message = selection.results.length
-        ? 'Para ' + (parts.join(' · ') || 'tu próximo rato libre') + ', estas son mis propuestas. Son una selección editorial; verifica la disponibilidad en tu país.'
+        ? 'Para ' + (parts.join(' · ') || 'tu próximo rato libre') + ', estas son mis propuestas. Toca cualquiera para ver su ficha o reproducir el tráiler:'
         : 'No encontré más títulos que cumplan esos filtros en mi selección. Prueba otro género, formato o plataforma.';
       await appendBotStream(message, el => {
         titleCards(el, selection.results);
         if (selection.remaining) {
-          const actions = document.createElement('div'); actions.className = 'answer-actions';
-          const more = document.createElement('button'); more.textContent = 'Ver otras opciones'; more.onclick = () => ask('otras opciones'); actions.append(more); el.append(actions);
+          const actions = document.createElement('div');
+          actions.className = 'answer-actions';
+          const more = document.createElement('button');
+          more.type = 'button';
+          more.textContent = '✦ Ver otras opciones';
+          more.onclick = () => ask('otras opciones');
+          actions.append(more);
+          el.append(actions);
         }
       });
       return;
     }
+
     let matched = window.OrbitRecommendations.findTitle(extract(text), getLib());
     if (!matched.length) matched = window.OrbitRecommendations.findTitle(title, getLib());
     if (matched.length) {
@@ -284,17 +326,15 @@
       const m = matched[0];
       const p = pBy(m.platform);
 
-      // Sincroniza la atmósfera visual con la plataforma encontrada
       window.OrbitaColors?.set(m.platform);
 
-      const respText = `✦ ${m.title} (${m.year || 'año por confirmar'}) es ${m.type === 'Serie' ? 'una serie' : m.type === 'Anime' ? 'un anime' : m.type === 'Novela' ? 'una novela' : 'una película'} de ${m.genre.toLowerCase().replaceAll(',', ', ')}. En la selección editorial de ${p ? p.name : 'Órbita'} ($3/mes en plan individual o $5/mes en combo de 2). ${m.esSummary || ''}`;
+      const respText = `✦ ${m.title} (${m.year || 'año por confirmar'}) es ${m.type === 'Serie' ? 'una serie' : m.type === 'Anime' ? 'un anime' : m.type === 'Novela' ? 'una novela' : 'una película'} de ${m.genre.toLowerCase().replaceAll(',', ', ')}. Disponible en el catálogo de ${p ? p.name : 'Órbita'} ($3/mes individual o $5/mes en combo de 2). ${m.esSummary || ''}`;
 
       await appendBotStream(
         respText,
         async el => {
           titleCards(el, matched);
 
-          // Botón directo para pedir por WhatsApp
           const waOrderUrl = 'https://wa.me/' + window.ORBITA.phone + '?text=' + encodeURIComponent(`Hola Órbita, quiero contratar ${p ? p.name : 'streaming'} para ver ${m.title}. ¿Tienen disponibilidad?`);
           link(el, 'Pedir ' + (p ? p.name : m.title) + ' por WhatsApp ↗', waOrderUrl);
 
@@ -329,7 +369,7 @@
       const introText = use.length
         ? 'Para tu selección de ' + use.map(id => pBy(id).name).join(' + ') + ':'
         : 'Una plataforma individual cuesta $3 USD/mes. Cada combo de 2 cuesta $5/mes. Con dos plataformas de video, ¡recibes Spotify de regalo por 1 mes! Canva Pro ($4/año) y ChatGPT Plus ($5 / 4 meses) tienen tarifas promocionales independientes.';
-      
+
       await appendBotStream(introText, el => {
         if (use.length) combo(el, use);
         else combo(el, ['hbomax', 'primevideo']);
@@ -362,8 +402,8 @@
     }
 
     if (/aburrido|aburr|que hago|no se que ver|no sabes|sin ideas|ayudame a elegir|indeciso|no encuentro/.test(q)) {
-      const moodList = getLib().filter(m => ['Severance', 'Interstellar', 'The Last of Us', 'Fallout', 'Merlina', 'Breaking Bad'].includes(m.title));
-      await appendBotStream('Te entiendo, a veces hay tanto para elegir que es difícil decidir. Aquí van los títulos que más engancha a la gente desde el primer episodio o escena:', el => {
+      const moodList = getLib().filter(m => ['Severance', 'Interestelar', 'The Last of Us', 'Fallout', 'The Penguin', 'Dandadan'].includes(m.title));
+      await appendBotStream('Te entiendo, a veces hay tanto para elegir que es difícil decidir. Aquí van los títulos que más enganchan desde el primer episodio o escena:', el => {
         titleCards(el, moodList);
       });
       return;
@@ -394,9 +434,9 @@
       [/ciencia ficcion|sci.fi|espacio|galaxia|futuro|nave|robot|inteligencia artificial/, 'Ciencia ficción'],
       [/terror|horror|miedo|susto|suspenso oscuro|gore/, 'terror'],
       [/comedia|reir|divertid|gracioso|humor|chiste/, 'comedia'],
-      [/familia|nino|infantil|disney|pixar|kids/, 'familia'],
+      [/familia|nino|infantil|pixar|kids/, 'familia'],
       [/anime|animacion|dibujos|manga|cartoon/, 'Animación'],
-      [/accion|pelea|explosion|superheroe|marvel|dc|batalla/, 'acción'],
+      [/accion|pelea|explosion|superheroe|dc|batalla/, 'acción'],
       [/suspenso|misterio|thriller|policial|crimen|detective/, 'Misterio'],
       [/aventura|exploracion|viaje|expedicion/, 'aventura'],
       [/drama|emocion|llanto|sentimiento|historico/, 'Drama'],
@@ -406,7 +446,7 @@
     ];
     const genre = genres.find(([r]) => r.test(q));
     if (genre || /recomiend|recomenda|que veo|que ver|peliculas buenas|series buenas|sugerir|sugerencia|que hay|algo bueno/.test(q)) {
-      let list = genre ? getLib().filter(m => norm(m.genre).includes(norm(genre[1]))) : getLib().filter(m => ['Severance', 'Fallout', 'Dune: Parte Dos', 'Oppenheimer', 'Interstellar', 'The Last of Us', 'Merlina', 'Breaking Bad', 'Gladiator II', 'Stranger Things'].includes(m.title));
+      let list = genre ? getLib().filter(m => norm(m.genre).includes(norm(genre[1]))) : getLib().filter(m => ['Severance', 'Fallout', 'Dune: Parte Dos', 'Oppenheimer', 'Interestelar', 'The Last of Us', 'The Penguin', 'Gladiador II'].includes(m.title));
       if (/pelicula/.test(q)) list = list.filter(m => m.type === 'Película');
       if (/serie/.test(q)) list = list.filter(m => m.type === 'Serie');
       if (!list.length) list = getLib().slice(0, 6);
@@ -423,7 +463,7 @@
     }
 
     if (title.length < 2) {
-      await appendBotStream('Dime el título de una película o serie que tengas en mente, por ejemplo “The Last of Us”, “Interstellar” o “Merlina”.');
+      await appendBotStream('Dime el título de una película, serie o anime que tengas en mente, por ejemplo “The Last of Us”, “Severance” o “Dandadan”.');
       return;
     }
 
@@ -451,11 +491,10 @@
     log.scrollTop = log.scrollHeight;
 
     try {
-      await new Promise(resolve => setTimeout(resolve, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 280));
+      await new Promise(resolve => setTimeout(resolve, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 240));
       await answer(message);
     } catch {
       await appendBotStream('Ocurrió un error al consultar la galaxia de contenidos. Inténtalo nuevamente o escribe el título por WhatsApp.');
-      
     } finally {
       typing.remove();
       busy = false;
@@ -480,7 +519,7 @@
     clearBtn.onclick = () => {
       if (busy) return;
       recentlyRecommended = []; recommendationContext = {}; lastIds = []; lastTitle = "";
-      log.replaceChildren(); append("bot", "Conversación reiniciada. ¿Qué quieres explorar?");
+      log.replaceChildren(); append("bot", "Conversación reiniciada. ¿Qué quieres explorar hoy?");
       if (window.OrbitaAudio?.play) {
         try { window.OrbitaAudio.play('score'); } catch {}
       }
@@ -489,5 +528,5 @@
 
   window.OrbitGuide = { open, ask };
 
-  $('.assistant-note').textContent='Guía local · Sin conexión a modelos de IA. Tus preguntas permanecen en esta página.';
+  $('.assistant-note').textContent = 'Guía local · Sin conexión a modelos de IA. Tus preguntas permanecen en esta página.';
 })();

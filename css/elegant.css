@@ -3128,3 +3128,663 @@ html body.pearl-world .toast {
     right: 14px !important;
   }
 }
+
+/* ==========================================================================
+   24. REDISEÑO TOTAL: APPLE OLED DARK CINEMA + PINTEREST BENTO LIQUID GLASS
+   ========================================================================== */
+:root {
+  --oled-bg: #05070c;
+  --oled-surface: linear-gradient(155deg, rgba(255, 255, 255, 0.085) 0%, rgba(255, 255, 255, 0.03) 100%);
+  --oled-surface-hover: linear-gradient(155deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+  --oled-border: rgba(255, 255, 255, 0.13);
+  --oled-border-strong: rgba(255, 255, 255, 0.24);
+  --oled-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 0 rgba(255, 255, 255, 0.04);
+  --oled-shadow: 0 20px 50px -16px rgba(0, 0, 0, 0.72);
+  --oled-ink: #f5f5f7;
+  --oled-muted: #9aa6b8;
+  --oled-accent: linear-gradient(135deg, #00e5be 0%, #38bdf8 55%, #818cf8 100%);
+}
+
+html,
+html body.pearl-world {
+  color-scheme: dark !important;
+  background:
+    radial-gradient(ellipse 80% 520px at 50% -6%, rgba(36, 98, 148, 0.28), transparent 68%),
+    radial-gradient(ellipse 55% 500px at 12% 28%, rgba(0, 229, 190, 0.09), transparent 65%),
+    radial-gradient(ellipse 55% 500px at 88% 58%, rgba(99, 102, 241, 0.11), transparent 65%),
+    #05070c !important;
+  color: var(--oled-ink) !important;
+}
+
+html body.pearl-world h1,
+html body.pearl-world h2,
+html body.pearl-world h3,
+html body.pearl-world h4,
+html body.pearl-world strong {
+  color: var(--oled-ink) !important;
+}
+
+html body.pearl-world p,
+html body.pearl-world .muted,
+html body.pearl-world .fine-print,
+html body.pearl-world .pearl-section-head p,
+html body.pearl-world .page-heading p,
+html body.pearl-world .descubre-subtitle {
+  color: var(--oled-muted) !important;
+}
+
+html body.pearl-world .eyebrow,
+html body.pearl-world .section-label,
+html body.pearl-world .bento-eyebrow,
+html body.pearl-world .bento-metric-label {
+  color: #5eead4 !important;
+}
+
+html body.pearl-world .pearl-link {
+  color: #7dd3fc !important;
+}
+
+/* 24.1 HEADER Y LOGO EN MODO OLED DARK LIQUID GLASS */
+html body.pearl-world .header-inner {
+  background: rgba(14, 18, 28, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: var(--oled-specular), 0 14px 36px rgba(0, 0, 0, 0.55) !important;
+}
+
+html body.pearl-world .header.scrolled .header-inner {
+  background: rgba(10, 14, 22, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+html body.pearl-world .brand,
+html body.pearl-world .header .logo-symbol,
+html body.pearl-world .header .logo-type,
+html body.pearl-world .footer .brand,
+html body.pearl-world .footer .logo-symbol,
+html body.pearl-world .footer .logo-type {
+  color: #f5f5f7 !important;
+}
+
+html body.pearl-world .header .logo-type small,
+html body.pearl-world .footer .logo-type small {
+  color: #93a6bc !important;
+}
+
+@media (min-width: 901px) {
+  html body.pearl-world .nav {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  }
+
+  html body.pearl-world .nav .nav-link {
+    color: #b4c0d0 !important;
+  }
+
+  html body.pearl-world .nav .nav-link:hover:not([aria-current="page"]) {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+  }
+}
+
+html body.pearl-world .nav .nav-link[aria-current="page"],
+html body.pearl-world .mobile-dock [aria-current="page"] {
+  background: #f5f5f7 !important;
+  color: #06090f !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2) !important;
+}
+
+html body.pearl-world .header .button.contact,
+html body.pearl-world .button:not(.ghost):not(:disabled),
+html body.pearl-world #order:not(:disabled) {
+  background: #f5f5f7 !important;
+  color: #06090f !important;
+  border: 1px solid #ffffff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+}
+
+html body.pearl-world .button.ghost,
+html body.pearl-world .orbit-refresh,
+html body.pearl-world .orbit-moods button,
+html body.pearl-world .chip-btn,
+html body.pearl-world .filters button,
+html body.pearl-world .presets button {
+  background: rgba(255, 255, 255, 0.07) !important;
+  color: #dbe4f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+html body.pearl-world .orbit-moods button[aria-pressed="true"],
+html body.pearl-world .chip-btn.active,
+html body.pearl-world .chip-btn[aria-pressed="true"],
+html body.pearl-world .filters button[aria-pressed="true"],
+html body.pearl-world .filters button.active {
+  background: #f5f5f7 !important;
+  color: #06090f !important;
+  border-color: #ffffff !important;
+}
+
+/* 24.2 INTRO OSCURA OLED KEYNOTE CON LOGO OFICIAL BLANCO SIN CUADRO */
+html body.pearl-world dialog#welcome {
+  background:
+    radial-gradient(ellipse 64% 56% at 50% 42%, rgba(32, 92, 140, 0.26), transparent 65%),
+    radial-gradient(ellipse 50% 50% at 24% 25%, rgba(0, 229, 190, 0.1), transparent 60%),
+    #05070c !important;
+  color: #f5f5f7 !important;
+}
+
+html body.pearl-world dialog#welcome .intro-kicker {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  color: #d6e4f5 !important;
+}
+
+html body.pearl-world dialog#welcome .intro-brand-symbol {
+  color: #f5f5f7 !important;
+  filter: drop-shadow(0 12px 32px rgba(56, 189, 248, 0.22)) !important;
+}
+
+html body.pearl-world dialog#welcome .intro-brand-name {
+  color: #f5f5f7 !important;
+  -webkit-text-fill-color: #f5f5f7 !important;
+}
+
+html body.pearl-world dialog#welcome .intro-brand-name span {
+  color: #9bb0c7 !important;
+  -webkit-text-fill-color: #9bb0c7 !important;
+}
+
+html body.pearl-world dialog#welcome .intro-capabilities span {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #d4e0ee !important;
+}
+
+html body.pearl-world dialog#welcome .intro-progress {
+  background: rgba(255, 255, 255, 0.14) !important;
+}
+
+html body.pearl-world dialog#welcome .intro-progress span {
+  background: var(--oled-accent) !important;
+}
+
+html body.pearl-world dialog#welcome #welcome-skip {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #f5f5f7 !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+html body.pearl-world dialog#welcome #welcome-skip:hover {
+  background: #f5f5f7 !important;
+  color: #06090f !important;
+}
+
+/* 24.3 NUEVO HERO CENTRADO ESTILO APPLE.COM + PINTEREST BENTO GRID */
+html body.pearl-world .premiere {
+  padding: 28px 0 24px !important;
+}
+
+html body.pearl-world .apple-hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 38px;
+}
+
+html body.pearl-world .apple-hero-center .premiere-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  color: #dce8f5;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-bottom: 18px;
+}
+
+html body.pearl-world .apple-hero-center .premiere-kicker i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00e5be;
+  box-shadow: 0 0 10px #00e5be;
+}
+
+html body.pearl-world .apple-hero-center h1 {
+  font-size: clamp(42px, 6.2vw, 76px) !important;
+  font-weight: 700 !important;
+  line-height: 1.03 !important;
+  letter-spacing: -0.048em !important;
+  margin: 0 0 16px !important;
+  color: #f5f5f7 !important;
+}
+
+html body.pearl-world .apple-hero-center h1 span {
+  background: linear-gradient(100deg, #ffffff 0%, #7dd3fc 52%, #5eead4 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+html body.pearl-world .apple-hero-center > p {
+  font-size: clamp(15px, 1.7vw, 18px) !important;
+  line-height: 1.6 !important;
+  max-width: 54ch !important;
+  margin: 0 0 26px !important;
+  color: #9ba8ba !important;
+}
+
+html body.pearl-world .apple-hero-center .premiere-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+html body.pearl-world .apple-hero-center .hero-secondary-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f5f5f7 !important;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Bento Grid estilo Pinterest / Apple Studio */
+html body.pearl-world .apple-pinterest-bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(156px, auto);
+  gap: 14px;
+}
+
+html body.pearl-world .apple-pinterest-bento .bento-span-2x2 {
+  grid-column: span 2;
+  grid-row: span 2;
+  min-height: 336px !important;
+}
+
+html body.pearl-world .apple-pinterest-bento .bento-span-2 {
+  grid-column: span 2;
+}
+
+html body.pearl-world .bento-widget,
+html body.pearl-world .apple-pinterest-bento .hero-bento-mini {
+  background: var(--oled-surface) !important;
+  border: 1px solid var(--oled-border) !important;
+  box-shadow: var(--oled-specular), var(--oled-shadow) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-radius: 24px !important;
+  padding: 18px !important;
+  text-decoration: none !important;
+  color: var(--oled-ink) !important;
+}
+
+html body.pearl-world .bento-audio-widget,
+html body.pearl-world .bento-metric-widget {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+html body.pearl-world .bento-widget-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+html body.pearl-world .bento-widget-head img {
+  height: 20px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+html body.pearl-world .bento-live-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(0, 229, 190, 0.16);
+  border: 1px solid rgba(0, 229, 190, 0.35);
+  color: #5eead4;
+}
+
+html body.pearl-world .bento-waveform {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 34px;
+}
+
+html body.pearl-world .bento-waveform i {
+  flex: 1;
+  border-radius: 999px;
+  background: var(--oled-accent);
+  height: 45%;
+  animation: bento-wave 1.3s ease-in-out infinite alternate;
+}
+
+html body.pearl-world .bento-waveform i:nth-child(2n) { height: 85%; animation-delay: 0.2s; }
+html body.pearl-world .bento-waveform i:nth-child(3n) { height: 65%; animation-delay: 0.45s; }
+html body.pearl-world .bento-waveform i:nth-child(4n) { height: 100%; animation-delay: 0.65s; }
+
+@keyframes bento-wave {
+  0% { transform: scaleY(0.45); opacity: 0.65; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+html body.pearl-world .bento-widget-foot strong,
+html body.pearl-world .bento-pro-copy strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 650;
+  color: #f5f5f7;
+}
+
+html body.pearl-world .bento-widget-foot small,
+html body.pearl-world .bento-metric-widget small,
+html body.pearl-world .bento-pro-copy small {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #93a1b5;
+}
+
+html body.pearl-world .bento-metric-value {
+  font-size: clamp(34px, 3.6vw, 46px);
+  font-weight: 750;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  background: var(--oled-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  font-variant-numeric: tabular-nums;
+}
+
+html body.pearl-world .apple-pinterest-bento .hero-bento-mini {
+  display: grid !important;
+  grid-template-columns: 52px 1fr auto !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+html body.pearl-world .apple-pinterest-bento .hero-mini-copy span {
+  color: #5eead4 !important;
+}
+
+html body.pearl-world .apple-pinterest-bento .hero-mini-copy strong {
+  color: #f5f5f7 !important;
+}
+
+html body.pearl-world .apple-pinterest-bento .hero-mini-copy small {
+  color: #94a3b8 !important;
+}
+
+html body.pearl-world .apple-pinterest-bento .hero-mini-play {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+}
+
+html body.pearl-world .bento-pro-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+html body.pearl-world .bento-pro-strip .hero-bento-pills {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+html body.pearl-world .bento-pro-strip .hero-pill-item {
+  min-width: 74px;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+}
+
+/* 24.4 TODAS LAS SECCIONES, TARJETAS Y BARRAS EN DARK LIQUID GLASS */
+html body.pearl-world .platform-dock {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: var(--oled-specular) !important;
+}
+
+html body.pearl-world .platform-dock span {
+  color: #cbd5e1 !important;
+}
+
+html body.pearl-world .platform-dock img {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+html body.pearl-world :is(
+  .quick-discovery,
+  .catalog-tools,
+  .descubre-controls,
+  .orbit-pick-card,
+  .extra-glass-card,
+  .apple-bento-card,
+  .home-extras,
+  .platform-card,
+  .catalog-grid > .platform-card,
+  .platform-guide-list > div,
+  .pick-card,
+  .order-summary,
+  .descubre-card,
+  .orbit-latest-list a,
+  .pearl-faq-list details,
+  .catalog-cta,
+  .pearl-arcade,
+  .plan-notes,
+  .promo-note
+) {
+  background: var(--oled-surface) !important;
+  border: 1px solid var(--oled-border) !important;
+  box-shadow: var(--oled-specular), var(--oled-shadow) !important;
+  color: var(--oled-ink) !important;
+  backdrop-filter: blur(22px) saturate(175%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(175%) !important;
+}
+
+html body.pearl-world .pick-card:has(input:checked) {
+  background: linear-gradient(145deg, rgba(0, 229, 190, 0.18), rgba(56, 189, 248, 0.16)) !important;
+  border-color: #5eead4 !important;
+}
+
+html body.pearl-world :is(.platform-card h3, .orbit-pick-card h3, .descubre-card h2, .descubre-card h2 button, .extra-glass-card > span, .apple-bento-card h3, .pearl-faq-list summary, .pick-card strong, .order-summary h2) {
+  color: #f5f5f7 !important;
+}
+
+html body.pearl-world :is(.platform-card > p, .orbit-pick-card p, .descubre-card p, .descubre-card-meta, .extra-glass-card > small, .apple-bento-card p, .pearl-faq-list details p, .pick-card small, .order-summary .muted, .order-summary > small) {
+  color: #9ba8ba !important;
+}
+
+html body.pearl-world .platform-top img {
+  background: rgba(255, 255, 255, 0.94);
+  padding: 5px 8px;
+  border-radius: 10px;
+}
+
+html body.pearl-world .platform-top .tag,
+html body.pearl-world .extra-price-pill,
+html body.pearl-world .bento-tags span {
+  background: rgba(255, 255, 255, 0.09) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  color: #e2e8f0 !important;
+}
+
+html body.pearl-world .orbit-pick-explore,
+html body.pearl-world .extra-glass-card > b {
+  color: #7dd3fc !important;
+}
+
+html body.pearl-world .platform-whatsapp {
+  background: rgba(16, 185, 129, 0.16) !important;
+  border: 1px solid rgba(52, 211, 153, 0.35) !important;
+  color: #6ee7b7 !important;
+}
+
+html body.pearl-world .descubre-trailer {
+  background: rgba(56, 189, 248, 0.16) !important;
+  border-color: rgba(56, 189, 248, 0.35) !important;
+  color: #bae6fd !important;
+}
+
+html body.pearl-world .descubre-detail-pill,
+html body.pearl-world .round-button,
+html body.pearl-world .platform-trailer-btn {
+  background: rgba(255, 255, 255, 0.09) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: #f1f5f9 !important;
+}
+
+html body.pearl-world input:not([type="checkbox"]):not([type="radio"]),
+html body.pearl-world select,
+html body.pearl-world textarea,
+html body.pearl-world .catalog-tools .search {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: #f5f5f7 !important;
+}
+
+html body.pearl-world input::placeholder,
+html body.pearl-world textarea::placeholder {
+  color: #8291a6 !important;
+}
+
+html body.pearl-world .pay-chip,
+html body.pearl-world .payment-option {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: #e2e8f0 !important;
+}
+
+html body.pearl-world .pay-chip.is-selected,
+html body.pearl-world .payment-option.is-selected {
+  background: rgba(0, 229, 190, 0.16) !important;
+  border-color: #5eead4 !important;
+  color: #ffffff !important;
+}
+
+/* Diálogos y Orbit AI en OLED Dark Glass */
+html body.pearl-world :is(#details, #assistant, #combo-review, #orbit-trailer-modal) {
+  background: rgba(12, 17, 28, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #f5f5f7 !important;
+}
+
+html body.pearl-world dialog#assistant #assistant-title,
+html body.pearl-world dialog#assistant .copilot-title-block p,
+html body.pearl-world dialog#assistant .country-label,
+html body.pearl-world dialog#assistant .quick-prompts button,
+html body.pearl-world dialog#assistant #btn-clear-chat,
+html body.pearl-world dialog#assistant > .close,
+html body.pearl-world :is(#details, #assistant) > .close::after {
+  color: #f5f5f7 !important;
+}
+
+html body.pearl-world dialog#assistant .quick-prompts button,
+html body.pearl-world dialog#assistant .answer-title-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: #e2e8f0 !important;
+}
+
+html body.pearl-world #assistant .bot {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  color: #f1f5f9 !important;
+}
+
+/* Footer y Tab Bar móvil OLED Dark */
+html body.pearl-world .footer {
+  background: linear-gradient(180deg, rgba(10, 14, 22, 0.8), #04060a) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #cbd5e1 !important;
+}
+
+html body.pearl-world .footer :is(p, a, button, small, strong, span, .legal) {
+  color: #cbd5e1 !important;
+}
+
+html body.pearl-world .apple-scroll-progress {
+  background: var(--oled-accent) !important;
+}
+
+@media (max-width: 1024px) {
+  html body.pearl-world .apple-pinterest-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  html body.pearl-world .mobile-dock {
+    background: rgba(14, 18, 28, 0.84) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: var(--oled-specular), 0 16px 40px rgba(0, 0, 0, 0.65) !important;
+  }
+
+  html body.pearl-world .mobile-dock a,
+  html body.pearl-world .mobile-dock button {
+    color: #9aa8ba !important;
+  }
+
+  html body.pearl-world .mobile-dock [aria-current="page"] {
+    color: #06090f !important;
+  }
+
+  html body.pearl-world .nav.open {
+    background: rgba(14, 18, 28, 0.96) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  }
+
+  html body.pearl-world .apple-hero-center {
+    margin-bottom: 24px;
+  }
+
+  html body.pearl-world .apple-pinterest-bento {
+    grid-template-columns: 1fr;
+  }
+
+  html body.pearl-world .apple-pinterest-bento .bento-span-2x2,
+  html body.pearl-world .apple-pinterest-bento .bento-span-2 {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 0 !important;
+  }
+
+  html body.pearl-world .apple-pinterest-bento .bento-span-2x2 {
+    min-height: 250px !important;
+  }
+
+  html body.pearl-world .bento-pro-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

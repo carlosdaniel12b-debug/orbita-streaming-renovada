@@ -2061,6 +2061,315 @@ html body.pearl-world dialog#welcome #welcome-skip:hover {
   }
 }
 
+/* ==========================================================================
+   15. APPLE LIQUID GLASS 2.0: BARRAS, MATERIALES, MICROINTERACCIONES Y MÓVIL
+   ========================================================================== */
+
+/* Base nativa móvil y desktop (sin flash gris al tocar, sin pull-to-refresh accidental) */
+html {
+  -webkit-tap-highlight-color: transparent !important;
+  overscroll-behavior: none !important;
+}
+
+body.pearl-world {
+  overscroll-behavior: none !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Controles táctiles sin retraso de 300ms ni selección accidental al mantener pulsado */
+html body.pearl-world :is(button, a, [role="button"], .button, .chip-btn, .orbit-moods button, .filters button, .pick-card, .platform-card, .orbit-pick-card, .descubre-card, .mobile-dock a, .mobile-dock button) {
+  touch-action: manipulation !important;
+  -webkit-touch-callout: none !important;
+}
+
+html body.pearl-world :is(button, [role="button"], .chip-btn, .orbit-moods button, .filters button, .mobile-dock a, .mobile-dock button, .tag) {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+/* Barra superior Apple Liquid Glass con refracción multicapa */
+html body.pearl-world .header {
+  padding: max(10px, env(safe-area-inset-top)) 0 10px !important;
+  transition: padding 240ms var(--spring-apple) !important;
+}
+
+html body.pearl-world .header-inner {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(242, 248, 255, 0.62) 55%, rgba(232, 244, 255, 0.72) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.96) !important;
+  box-shadow:
+    inset 0 1.5px 0 0 #ffffff,
+    inset 0 -1px 0 0 rgba(168, 200, 232, 0.32),
+    0 12px 34px -8px rgba(14, 36, 64, 0.11),
+    0 2px 8px -2px rgba(14, 36, 64, 0.05) !important;
+  backdrop-filter: blur(28px) saturate(210%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+}
+
+html body.pearl-world .header.scrolled .header-inner {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(242, 248, 255, 0.8) 100%) !important;
+  box-shadow:
+    inset 0 1.5px 0 0 #ffffff,
+    inset 0 -1px 0 0 rgba(160, 194, 228, 0.4),
+    0 18px 42px -8px rgba(12, 32, 56, 0.16) !important;
+}
+
+/* Control segmentado Apple en la barra de navegación */
+@media (min-width: 901px) {
+  html body.pearl-world .nav {
+    background: rgba(206, 224, 244, 0.36) !important;
+    border: 1px solid rgba(255, 255, 255, 0.92) !important;
+    box-shadow:
+      inset 0 1px 3px rgba(18, 42, 70, 0.06),
+      0 1px 0 rgba(255, 255, 255, 0.9) !important;
+    padding: 4px !important;
+    gap: 4px !important;
+  }
+
+  html body.pearl-world .nav .nav-link {
+    transition: transform 160ms var(--spring-apple), background 220ms ease, color 220ms ease, box-shadow 220ms ease !important;
+  }
+
+  html body.pearl-world .nav .nav-link:active {
+    transform: scale(0.96) !important;
+  }
+}
+
+/* Reflejo especular Liquid Glass en tarjetas y vitrina Hero */
+html body.pearl-world :is(.platform-card, .orbit-pick-card, .descubre-card, .pick-card, .home-extras nav a, .order-summary, .quick-discovery, .catalog-tools, .descubre-controls) {
+  position: relative;
+  transition: transform 260ms var(--spring-apple), box-shadow 260ms var(--spring-apple), border-color 220ms ease !important;
+}
+
+html body.pearl-world .hero-bento-main,
+html body.pearl-world .hero-bento-mini,
+html body.pearl-world .hero-pill-item {
+  transition: transform 280ms var(--spring-apple), box-shadow 280ms var(--spring-apple), border-color 220ms ease, background 220ms ease !important;
+}
+
+/* Brillo especular interactivo al mover el puntero sobre la vitrina Hero */
+html body.pearl-world .premiere .tech-stage {
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(140, 200, 255, 0.2),
+    0 28px 64px -14px rgba(8, 24, 48, 0.28) !important;
+}
+
+/* Barras de búsqueda estilo Apple Spotlight */
+html body.pearl-world .quick-search input,
+html body.pearl-world .catalog-tools .search,
+html body.pearl-world .descubre-controls input[type="search"],
+html body.pearl-world #chat-input {
+  transition: box-shadow 200ms var(--spring-apple), border-color 200ms ease, background 200ms ease !important;
+}
+
+html body.pearl-world .quick-search input:focus,
+html body.pearl-world .catalog-tools .search:focus-within,
+html body.pearl-world .descubre-controls input[type="search"]:focus,
+html body.pearl-world #chat-input:focus {
+  border-color: rgba(21, 104, 116, 0.55) !important;
+  box-shadow: 0 0 0 3.5px rgba(21, 104, 116, 0.14), inset 0 1px 0 #ffffff !important;
+  outline: none !important;
+}
+
+/* Materialización fluida de diálogos y modales */
+html body.pearl-world :is(#details, #assistant, #combo-review, #orbit-trailer-modal)[open] {
+  animation: lg-dialog-materialize 280ms var(--spring-apple) both;
+}
+
+html body.pearl-world #chat,
+html body.pearl-world dialog:not(#welcome) {
+  overscroll-behavior: contain !important;
+}
+
+@keyframes lg-dialog-materialize {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Intro refinada: atmósfera Liquid Glass respirando suavemente detrás del logo sin cuadro */
+html body.pearl-world dialog#welcome {
+  background:
+    radial-gradient(ellipse 68% 58% at 24% 22%, rgba(176, 238, 224, 0.62) 0%, transparent 62%),
+    radial-gradient(ellipse 64% 58% at 78% 76%, rgba(196, 222, 254, 0.58) 0%, transparent 62%),
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.96) 0%, rgba(238, 246, 250, 0.96) 60%, #e6f1f7 100%) !important;
+}
+
+html body.pearl-world dialog#welcome[open] .intro-brand-symbol > circle {
+  animation: orbita-hero-planet-apple 680ms var(--spring-apple) both !important;
+}
+
+@keyframes orbita-hero-planet-apple {
+  0% {
+    opacity: 0;
+    transform: scale(0.76);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+html body.pearl-world dialog#welcome #welcome-skip {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(240, 248, 255, 0.74)) !important;
+  box-shadow:
+    inset 0 1.5px 0 #ffffff,
+    inset 0 -1px 0 rgba(180, 208, 232, 0.3),
+    0 10px 26px -6px rgba(18, 42, 68, 0.12) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  transition: transform 140ms var(--spring-apple), background 180ms ease, box-shadow 180ms ease !important;
+}
+
+html body.pearl-world dialog#welcome #welcome-skip:active {
+  transform: scale(0.95) !important;
+}
+
+/* Experiencia iOS / Teléfono Inteligente (< 700px) */
+@media (max-width: 700px) {
+  /* Espacio inferior para que el Tab Bar flotante nunca tape contenido ni enlaces */
+  html body.pearl-world {
+    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Tab Bar inferior estilo iOS 26 Liquid Glass flotante */
+  html body.pearl-world .mobile-dock {
+    position: fixed !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: max(12px, env(safe-area-inset-bottom, 12px)) !important;
+    height: 62px !important;
+    padding: 6px !important;
+    border-radius: 28px !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    gap: 4px !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.84) 0%, rgba(238, 246, 255, 0.74) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.96) !important;
+    box-shadow:
+      inset 0 1.5px 0 #ffffff,
+      inset 0 -1px 0 rgba(170, 200, 230, 0.35),
+      0 14px 36px -6px rgba(12, 32, 56, 0.2) !important;
+    backdrop-filter: blur(28px) saturate(210%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(210%) !important;
+    z-index: 95 !important;
+  }
+
+  html body.pearl-world .mobile-dock a,
+  html body.pearl-world .mobile-dock button {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    border-radius: 22px !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+    color: #365068 !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    padding: 4px 2px !important;
+    transition: transform 140ms var(--spring-apple), background 200ms ease, color 200ms ease !important;
+  }
+
+  html body.pearl-world .mobile-dock a svg,
+  html body.pearl-world .mobile-dock button svg {
+    width: 20px !important;
+    height: 20px !important;
+    transition: transform 200ms var(--spring-apple) !important;
+  }
+
+  html body.pearl-world .mobile-dock [aria-current="page"] {
+    border-radius: 22px !important;
+    color: #ffffff !important;
+  }
+
+  html body.pearl-world .mobile-dock [aria-current="page"] svg {
+    transform: scale(1.06) !important;
+  }
+
+  /* Botones flotantes elevados por encima del Tab Bar móvil */
+  html body.pearl-world .floating-actions {
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 14px !important;
+    gap: 8px !important;
+  }
+
+  /* Barras de filtros deslizables con snap y degradado lateral */
+  html body.pearl-world .orbit-moods,
+  html body.pearl-world .chips-scroll,
+  html body.pearl-world .catalog-tools .filters {
+    scroll-snap-type: x proximity !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-inline: 2px 14px !important;
+    mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%) !important;
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 92%, transparent 100%) !important;
+  }
+
+  html body.pearl-world .orbit-moods button,
+  html body.pearl-world .chips-scroll .chip-btn,
+  html body.pearl-world .catalog-tools .filters button {
+    scroll-snap-align: start !important;
+    min-height: 38px !important;
+    padding: 7px 14px !important;
+  }
+
+  /* Inputs >= 16px en móvil para evitar zoom automático de Safari iOS */
+  html body.pearl-world input:not([type="checkbox"]):not([type="radio"]),
+  html body.pearl-world select,
+  html body.pearl-world textarea {
+    font-size: 16px !important;
+  }
+
+  /* Hojas inferiores (Bottom Sheets) nativas en móvil para diálogos */
+  html body.pearl-world :is(#details, #assistant, #combo-review) {
+    width: calc(100% - 16px) !important;
+    max-width: none !important;
+    margin: auto auto 8px !important;
+    border-radius: 28px !important;
+    padding: 24px 20px calc(24px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* Accesibilidad: transparencia reducida y movimiento reducido */
+@media (prefers-reduced-transparency: reduce) {
+  html body.pearl-world .header-inner,
+  html body.pearl-world .mobile-dock,
+  html body.pearl-world .platform-card,
+  html body.pearl-world .orbit-pick-card,
+  html body.pearl-world .descubre-card,
+  html body.pearl-world .order-summary,
+  html body.pearl-world :is(#details, #assistant, #combo-review) {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body.pearl-world *,
+  html body.pearl-world *::before,
+  html body.pearl-world *::after {
+    scroll-behavior: auto !important;
+  }
+  html body.pearl-world :is(#details, #assistant, #combo-review, #orbit-trailer-modal)[open] {
+    animation: none !important;
+  }
+}
+
 
 /* ==========================================================================
    23. APPLE LIQUID GLASS 2.0 — INTRO, HERO, CARDS, BENTO & ORBIT AI UPGRADE

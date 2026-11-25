@@ -464,7 +464,7 @@ function setupFilterAnimations(){
 }
 setupFilterAnimations();
 
-// 10. Visibilidad garantizada sin saltos de opacidad
+// 10. Visibilidad garantizada, barra superior reactiva al scroll y respuesta háptica sutil
 function setupScrollReveal(){
   $$('.reveal-ready').forEach(el=>{
     el.classList.remove('reveal-ready');
@@ -472,6 +472,30 @@ function setupScrollReveal(){
   });
 }
 setupScrollReveal();
+
+// Estado scrolled de la barra superior Liquid Glass con rAF
+const mainHeader=document.getElementById('main-header')||document.querySelector('.header');
+if(mainHeader){
+  let scrollTicking=false;
+  const syncHeaderScroll=()=>{
+    mainHeader.classList.toggle('scrolled',window.scrollY>12);
+    scrollTicking=false;
+  };
+  syncHeaderScroll();
+  window.addEventListener('scroll',()=>{
+    if(!scrollTicking){
+      scrollTicking=true;
+      requestAnimationFrame(syncHeaderScroll);
+    }
+  },{passive:true});
+}
+
+// Micro-feedback háptico discreto en dispositivos móviles compatibles
+document.addEventListener('pointerdown',e=>{
+  if(reduce.matches||!navigator.vibrate) return;
+  const tappable=e.target.closest('.button, .orbit-moods button, .filters button, .chip-btn, .pick-card, .mobile-dock a, .mobile-dock button, #welcome-skip');
+  if(tappable) try{navigator.vibrate(6);}catch{}
+},{passive:true});
 
 window.OrbitaLiquid={
   refreshCards:()=>{

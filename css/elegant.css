@@ -51,61 +51,9 @@ html body.pearl-world main {
   padding-bottom: 32px !important;
 }
 
-html body.pearl-world .liquid-atmosphere {
-  display: block !important;
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
+html body.pearl-world .liquid-atmosphere,
 html body.pearl-world .liquid-caustic {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(76px);
-  opacity: 0.48;
-  will-change: transform;
-}
-
-html body.pearl-world .liquid-caustic.caustic-1 {
-  width: min(54vw, 640px);
-  height: min(54vw, 640px);
-  top: -12%;
-  left: -10%;
-  background: radial-gradient(circle, rgba(132, 235, 212, 0.52), rgba(168, 222, 255, 0.14) 70%, transparent);
-  animation: lg-caustic-1 22s ease-in-out infinite alternate;
-}
-
-html body.pearl-world .liquid-caustic.caustic-2 {
-  width: min(56vw, 680px);
-  height: min(56vw, 680px);
-  top: 26%;
-  right: -14%;
-  background: radial-gradient(circle, rgba(178, 198, 255, 0.48), rgba(214, 192, 255, 0.14) 70%, transparent);
-  animation: lg-caustic-2 26s ease-in-out infinite alternate;
-}
-
-html body.pearl-world .liquid-caustic.caustic-3 {
-  width: min(48vw, 580px);
-  height: min(48vw, 580px);
-  bottom: -14%;
-  left: 22%;
-  background: radial-gradient(circle, rgba(156, 228, 246, 0.45), rgba(190, 240, 220, 0.12) 70%, transparent);
-  animation: lg-caustic-3 20s ease-in-out infinite alternate;
-}
-
-@keyframes lg-caustic-1 {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  100% { transform: translate3d(3vw, 2vw, 0) scale(1.06); }
-}
-@keyframes lg-caustic-2 {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  100% { transform: translate3d(-3vw, 3vw, 0) scale(1.05); }
-}
-@keyframes lg-caustic-3 {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  100% { transform: translate3d(2vw, -2vw, 0) scale(1.05); }
+  display: none !important;
 }
 
 /* 2. HEADER CÁPSULA LIQUID GLASS Y NAVEGACIÓN PRINCIPAL */
@@ -2375,37 +2323,47 @@ html body.pearl-world dialog#welcome #welcome-skip:active {
    23. APPLE LIQUID GLASS 2.0 — INTRO, HERO, CARDS, BENTO & ORBIT AI UPGRADE
    ========================================================================== */
 
-/* --- 23.1 INTRO WORDMARK VISIBILITY FIX & APPLE KEYNOTE POLISH --- */
+/* --- 23.1 INTRO APPLE KEYNOTE: LOGO OFICIAL SIN CUADRO + STATUS PILL + CHIPS --- */
 html body.pearl-world dialog#welcome .intro-brand {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 14px !important;
-  padding: 36px 44px !important;
-  border-radius: 36px !important;
-  background: linear-gradient(155deg, rgba(255, 255, 255, 0.82) 0%, rgba(244, 249, 253, 0.66) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.95) !important;
-  box-shadow:
-    0 32px 80px -20px rgba(15, 32, 52, 0.14),
-    0 12px 32px -10px rgba(20, 42, 62, 0.08),
-    inset 0 1.5px 0 rgba(255, 255, 255, 1) !important;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  gap: 18px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 html body.pearl-world dialog#welcome .intro-kicker {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
-  padding: 5px 14px !important;
+  gap: 8px !important;
+  padding: 6px 14px !important;
   border-radius: 999px !important;
-  background: rgba(20, 42, 62, 0.06) !important;
-  border: 1px solid rgba(20, 42, 62, 0.1) !important;
-  font-size: 10.5px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.96) !important;
+  box-shadow: inset 0 1px 0 #ffffff, 0 4px 14px rgba(18, 42, 68, 0.06) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  font-size: 10px !important;
   font-weight: 700 !important;
-  letter-spacing: 0.18em !important;
+  letter-spacing: 0.16em !important;
   text-transform: uppercase !important;
-  color: #365673 !important;
+  color: #2c4e6b !important;
+  animation: orbita-hero-skip 500ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+html body.pearl-world dialog#welcome .intro-kicker i {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2) !important;
 }
 
 html body.pearl-world dialog#welcome .intro-brand-name {
@@ -2424,24 +2382,35 @@ html body.pearl-world dialog#welcome .intro-brand-name span {
   opacity: 1 !important;
 }
 
-html body.pearl-world dialog#welcome .intro-brand > p {
-  display: block !important;
-  margin: 4px 0 0 !important;
-  font-size: 16px !important;
-  font-weight: 500 !important;
-  letter-spacing: -0.01em !important;
-  color: #466580 !important;
-  opacity: 0;
-  animation: orbita-hero-skip 520ms cubic-bezier(0.22, 1, 0.36, 1) 260ms forwards !important;
+html body.pearl-world dialog#welcome .intro-capabilities {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 2px !important;
+  animation: orbita-hero-skip 560ms cubic-bezier(0.16, 1, 0.3, 1) 240ms both !important;
+}
+
+html body.pearl-world dialog#welcome .intro-capabilities span {
+  padding: 5px 12px !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.92) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  color: #294862 !important;
+  box-shadow: 0 2px 8px rgba(18, 42, 68, 0.04) !important;
 }
 
 html body.pearl-world dialog#welcome .intro-progress {
-  width: min(220px, 62vw) !important;
-  height: 4px !important;
+  width: min(190px, 54vw) !important;
+  height: 2.5px !important;
   border-radius: 999px !important;
   background: rgba(20, 42, 62, 0.09) !important;
   overflow: hidden !important;
-  margin-top: 6px !important;
+  margin-top: 2px !important;
 }
 
 html body.pearl-world dialog#welcome .intro-progress span {
@@ -2449,7 +2418,7 @@ html body.pearl-world dialog#welcome .intro-progress span {
   height: 100% !important;
   width: 100% !important;
   border-radius: 999px !important;
-  background: linear-gradient(90deg, #1b3854 0%, #2f6998 55%, #142a3e 100%) !important;
+  background: linear-gradient(90deg, #0d747c 0%, #20588e 55%, #43529e 100%) !important;
   transform-origin: left center !important;
   animation: orbita-intro-progress 2000ms cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
 }
@@ -3116,5 +3085,46 @@ html body.pearl-world .floating-actions .floating-btn {
 @media (max-width: 560px) {
   html body.pearl-world dialog#assistant .answer-titles {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- 23.8 DETALLES DE INGENIERÍA APPLE (SCROLL HAIRLINE, TABULAR NUMS & DYNAMIC TOAST) --- */
+.apple-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 120;
+  pointer-events: none;
+  background: linear-gradient(90deg, #0d747c 0%, #20588e 55%, #43529e 100%);
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0.85;
+}
+
+/* Cifras tabulares en precios y totales para alineación exacta */
+html body.pearl-world :is(.price, .total-row strong, .extra-price-pill, .premiere-price strong, #calc-initial-val, #calc-monthly-val) {
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* Toast estilo Dynamic Island en Liquid Glass */
+html body.pearl-world .toast {
+  border-radius: 999px !important;
+  background: rgba(16, 30, 48, 0.84) !important;
+  color: #f4f9ff !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 14px 36px rgba(8, 20, 38, 0.28) !important;
+  backdrop-filter: blur(22px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+  padding: 10px 20px !important;
+  font-weight: 560 !important;
+}
+
+/* Mantener botones flotantes por encima del Tab Bar móvil sin solapamientos */
+@media (max-width: 700px) {
+  html body.pearl-world .floating-actions {
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 14px !important;
   }
 }

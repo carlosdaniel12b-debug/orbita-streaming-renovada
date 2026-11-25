@@ -2,14 +2,8 @@
 (()=>{'use strict';
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],lib=window.ORBIT_LIBRARY||[];
 
-// 1. Atmósfera Cósmica & Caústicas de Cristal Líquido Dinámico
-if(!document.querySelector('.liquid-atmosphere')){
-  const atmosphere=document.createElement('div');
-  atmosphere.className='liquid-atmosphere';
-  atmosphere.setAttribute('aria-hidden','true');
-  atmosphere.innerHTML='<div class="liquid-caustic caustic-1"></div><div class="liquid-caustic caustic-2"></div><div class="liquid-caustic caustic-3"></div>';
-  document.body.prepend(atmosphere);
-}
+// 1. Atmósfera ligera (sin capas blur(76px) pesadas para máximo rendimiento en móvil)
+document.querySelector('.liquid-atmosphere')?.remove();
 
 // 2. Gestión de Métodos de Pago: Solo Ecuador, PayPal y Binance
 const paymentLabels={
@@ -473,12 +467,25 @@ function setupScrollReveal(){
 }
 setupScrollReveal();
 
-// Estado scrolled de la barra superior Liquid Glass con rAF
+// Estado scrolled de la barra superior Liquid Glass + indicador Apple de progreso de lectura
 const mainHeader=document.getElementById('main-header')||document.querySelector('.header');
-if(mainHeader){
+let scrollBar=document.querySelector('.apple-scroll-progress');
+if(!scrollBar&&document.body){
+  scrollBar=document.createElement('div');
+  scrollBar.className='apple-scroll-progress';
+  scrollBar.setAttribute('aria-hidden','true');
+  document.body.appendChild(scrollBar);
+}
+if(mainHeader||scrollBar){
   let scrollTicking=false;
   const syncHeaderScroll=()=>{
-    mainHeader.classList.toggle('scrolled',window.scrollY>12);
+    const y=window.scrollY||0;
+    if(mainHeader) mainHeader.classList.toggle('scrolled',y>12);
+    if(scrollBar){
+      const max=document.documentElement.scrollHeight-window.innerHeight;
+      const pct=max>0?Math.min(1,Math.max(0,y/max)):0;
+      scrollBar.style.transform=`scaleX(${pct.toFixed(4)})`;
+    }
     scrollTicking=false;
   };
   syncHeaderScroll();
